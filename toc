@@ -1,0 +1,33 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="databases-for-mongodb" audience="service" href="/docs/services/databases-for-mongodb/index.html"}
+Databases For MongoDB
+
+	{: .navgroup id="learn"}
+	index.md
+	getting-started.md
+
+	{: .topicgroup}
+	The Service Dashboard
+		dashboard-overview.md
+		dashboard-backups.md
+	{: .navgroup-end}
+
+	{: .navgroup id="howto"}
+	howto-provisioning.md
+	howto-admin-password.md
+	howto-using-ibmcloud-cli.md
+	
+	{: .topicgroup}
+	Connecting to Databases for MongoDB
+		connecting-ibmcloud-app.md
+	{: .navgroup-end}
+
+	{: .navgroup id="reference"}
+	reference-security.md
+	reference-versions.md
+	reference-access-management.md
+	reference-activity-tracker.md
+	reference-key-protect.md
+	{: .navgroup-end}
