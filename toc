@@ -1,12 +1,11 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="databases-for-mongodb" audience="service" href="/docs/services/databases-for-mongodb/index.html"}
+{: .toc subcollection="databases-for-mongodb" audience="service" href="/docs/services/databases-for-mongodb/index.html" path="services/databases-for-mongodb"}
 Databases For MongoDB
 
 	{: .navgroup id="learn"}
 	index.md
-	getting-started.md
 
 	{: .topicgroup}
 	The Service Dashboard
@@ -16,6 +15,7 @@ Databases For MongoDB
 
 	{: .navgroup id="howto"}
 	howto-provisioning.md
+	howto-getting-connection-strings
 	howto-admin-password.md
 	howto-using-ibmcloud-cli.md
 	

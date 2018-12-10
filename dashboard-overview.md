@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-10-02"
+lastupdated: "2018-12-10"
 ---
 
 {:new_window: target="_blank"}
@@ -18,15 +18,15 @@ The _Overview_ page shows you information about your {{site.data.keyword.databas
 
 ## Deployment Details
 
-The _Deployment Details_ panel shows details of your service.
+The _Deployment Details_ panel shows a quick description of your deployment.
 
 ### Type
 
-The type of database that is offered by the service, and the database version that your service uses. In this case, it is `MongoDB`.
+The type of database that is offered by the service, and the database version that your service uses. 
 
 ### ID
 
-The ID is a [CRN (Cloud Resource Name)](https://console.{DomainName}/docs/overview/crn.html) which uniquely identifies the database deployment. The CRN is used to refer to the database in the API and can be used with the CLI.
+The ID is a [CRN (Cloud Resource Name)](https://{DomainName}/docs/overview/crn.html) which uniquely identifies the database deployment. The CRN is used to refer to the database in the API and can be used with the CLI.
 
 ## Recent Tasks
 
@@ -46,8 +46,12 @@ The foundation endpoint is the opening stanza of the URL to be used to send API 
 
 ### Deployment ID
 
-Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. The ID needs to be URL encoded to be used in an API call because the CRN includes a "/".
+Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. 
+
+The ID needs to be URL encoded to be used in an API call because the CRN includes a "/".
+{: .tip}
 
 ### {{site.data.keyword.cloud_notm}} databases API Reference
 
-For more information about the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://console.{DomainName}/apidocs/cloud-databases-api) page.
+For more information about the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
+

@@ -26,7 +26,7 @@ You can create a {{site.data.keyword.databases-for-mongodb}} service from the [{
 When you create the deployment from the catalog, you need to specify the following parameters.
 
 1. **The service name** - The name can be any string and is the name that is used on the web and in the command line to identify the new database deployment.
-2. **The region** - The region in which the database deployment resides. Currently, only US-South is available.
+2. **The region** - The region in which the database deployment resides. 
 3. **The database version** - The major version of the database to be created within the deployment. The latest minor version is always be used automatically. 
 
 Users can optionally set:
@@ -56,7 +56,7 @@ ibmcloud resource service-instance-create <service-name> <service-id> <service-p
 
 More information about this command, in general, is available in the [CLI reference for resource groups](/docs/cli/reference/ibmcloud/cli_resource_group.html#ibmcloud_resource_service_instance_create).
 
-In the specific case of creating a {{site.data.keyword.databases-for-mongodb}} deployment, set the service name (quote any name with spaces in it). Then, set `databases-for-mongodb` as the service ID. Enter `standard` for the service plan ID and `us-south` for the region.
+In the specific case of creating a {{site.data.keyword.databases-for-mongodb}} deployment, set the service name (quote any name with spaces in it). Then, set `databases-for-mongodb` as the service ID. Enter `standard` for the service plan ID and `us-south` (or your region) for the region.
 
 ```
 ibmcloud resource service-instance-create example-mongo databases-for-mongodb standard us-south
@@ -84,13 +84,8 @@ For example, if a database is being provisioned from a particular backup and the
 ```
 ibmcloud resource service-instance-create example-mongo databases-for-mongodb standard us-south \
 -p \ '{
-  "backup_id": "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
+  "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "4096"
 }'
 ```
-
-
-## Using the API
-
-The Resource Controller API is not currently publicly documented. Use the command line to provision new database deployments in the interim.
 
