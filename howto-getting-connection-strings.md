@@ -88,8 +88,8 @@ The "mongodb" section contains information that is suited to applications that m
 
 Field Name|Index|Description
 ----------|-----|-----------
-`Type`||Type of connection - for PostgreSQL, it is "URI"
-`Scheme`||Scheme for a URI - for PostgreSQL, it is "mongodb"
+`Type`||Type of connection - for MongoDB, it is "URI"
+`Scheme`||Scheme for a URI - for MongoDB, it is "mongodb"
 `Path`||Path for a URI - for MongoDB, it is the database name. The default is `ibmclouddb`.
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
@@ -97,7 +97,7 @@ Field Name|Index|Description
 `Hosts`|`0...`|A hostname and port to connect to
 `Composed`|`0...`|A URI combining Scheme, Authentication, Host, and Path
 `Certificate`|`Name`|The allocated name for the self-signed certificate for database deployment
-`Certificate`|Base64|A base64 encoded version of the certificate.
+`Certificate`|`Base64`|A base64 encoded version of the certificate.
 {: caption="Table 1. `mongodb`/`URI` connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
@@ -111,9 +111,9 @@ Field Name|Index|Description
 `Bin`||The recommended binary to create a connection; in this case it is `mongo`.
 `Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses `Arguments` as command line parameters.
 `Environment`||A list of key/values you set as environment variables.
-`Arguments`|0...|The information that is passed as arguments to the command shown in the Bin field.
-`Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded.
-`Certificate`|Name|The allocated name for the self-signed certificate.
+`Arguments`|`0...`|The information that is passed as arguments to the command shown in the Bin field.
+`Certificate`|`Base64`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded.
+`Certificate`|`Name`|The allocated name for the self-signed certificate.
 `Type`||The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 2. `mongo`/`cli` connection information" caption-side="top"}
 
