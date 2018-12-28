@@ -22,6 +22,7 @@ Databases For MongoDB
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
 		connecting-ibmcloud-app.md
+		connecting-external.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
