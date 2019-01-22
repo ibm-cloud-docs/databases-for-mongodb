@@ -29,6 +29,6 @@ Databases For MongoDB
 	reference-security.md
 	reference-versions.md
 	reference-access-management.md
-	reference-activity-tracker.md
+	/databases-for-postgresql/reference-access-management
 	reference-key-protect.md
 	{: .navgroup-end}
