@@ -30,4 +30,5 @@ Databases For MongoDB
 	reference-versions.md
 	reference-access-management.md
 	reference-key-protect.md
+	reference-monitoring.md
 	{: .navgroup-end}
