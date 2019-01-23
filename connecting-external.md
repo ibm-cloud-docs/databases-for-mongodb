@@ -11,7 +11,7 @@ lastupdated: "2018-12-28"
 {:pre: .pre}
 
 # Connecting an external application
-{: #connecting-external-app}
+{: #external-app}
 
 Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. 
 

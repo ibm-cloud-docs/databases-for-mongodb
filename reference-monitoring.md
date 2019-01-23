@@ -61,11 +61,11 @@ After the region field is an ID field. The ID that appears corresponds to the la
 
 The next field contains a list of the data members of your deployment. You can customize the graph to show all of the members or just one. The next field is _usage_, the only type of metrics available for {{site.data.keyword.databases-for}}. The last field lists what metrics you can add to be displayed to the graph. You can add all of them or only one of them. 
 
-The final setting to to configure the _Axes_. Click the _Axes_ tab. You can uncheck the _Right Y_ axis, and then set the _Left Y_ axis units to _"data (Metric)"_, _bytes_. 
+The final setting to to configure the _Axes_. Click the _Axes_ tab. You can uncheck the _Right Y_ axis, and then set the _Left Y_ axis units to _"data (IEC)"_, _bytes_. 
 
 ![Setting the Axes](images/monitoring-set-axes.png)
 
-The example graph shows the memory usage for all data members of a {{site.data.keyword.databases-for-mongodb}}
+The example graph shows the memory usage for all data members of a {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ![An example graph showing memory usage for a {{site.data.keyword.databases-for-mongodb}} deployment](images/monitoring-example-graph.png)
 

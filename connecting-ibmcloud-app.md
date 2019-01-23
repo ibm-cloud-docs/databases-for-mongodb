@@ -13,6 +13,7 @@ lastupdated: "2018-10-09"
 {:tip: .tip}
 
 # Connecting an {{site.data.keyword.cloud_notm}} application
+{: #ibmcloud-app}
 
 Applications running in {{site.data.keyword.cloud_notm}} can be bound to your {{site.data.keyword.databases-for-mongodb_full}} deployment. 
 

@@ -21,7 +21,7 @@ lastupdated: "2018-12-10"
 
 {{site.data.keyword.databases-for-mongodb}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-mongodb}} from the [{{site.data.keyword.cloud_notm}} catalog](https://{DomainName}/catalog/services/databases-for-mongodb).
 
-For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](docs/services/databases-for-mongodb/howto-provisioning.html) page.
+For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-provisioning) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://{DomainName}/registration/) page.
 
@@ -33,7 +33,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ## Using {{site.data.keyword.databases-for-mongodb}}
 
-{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](./dashboard-overview.html) of your service as well as configuration settings on the [Settings](./dashboard-settings.html) tab and access to your backups on the [Backups](./dashboard-backups.html) tab.
+{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-overview) of your service as well as configuration settings on the [Settings](./dashboard-settings.html) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-backups) tab.
 
 ### Using the command line interface
 
@@ -46,9 +46,9 @@ The {{site.data.keyword.cloud_notm}} command line interface provides in interact
 
 ## Connecting to {{site.data.keyword.databases-for-mongodb}}
 
-General information on getting connection strings for your applications and for users you provision on your account can be found on the [Getting Connection Strings](./howto-getting-connection-strings.html) page.
+General information on getting connection strings for your applications and for users you provision on your account can be found on the [Getting Connection Strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
-Specific guidance on connecting with MongoDB drivers is on the [Connecting External Applications](./connecting-external.html) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html) page. The [Getting Started tutorial](./getting-started.html) that provides a sample application that can run locally or on {{site.data.keyword.cloud_notm}} to test-drive your {{site.data.keyword.databases-for-mongodb}} deployment.
+Specific guidance on connecting with MongoDB drivers is on the [Connecting External Applications](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-external-app) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app) page. The [Getting Started tutorial](./getting-started.html) that provides a sample application that can run locally or on {{site.data.keyword.cloud_notm}} to test-drive your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Other {{site.data.keyword.cloud_notm}} Integrations
 
