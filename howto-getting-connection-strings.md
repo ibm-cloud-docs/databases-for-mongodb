@@ -13,6 +13,7 @@ lastupdated: "2018-12-10"
 
 
 # Getting your Connection Strings
+{: #getting-connection-strings}
 
 In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some connection strings. A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after [setting the admin password](./howto-admin-password), you can use its connection strings to connect to your deployment.
 

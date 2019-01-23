@@ -13,7 +13,7 @@ lastupdated: "2018-12-10"
 {:tip: .tip}
 
 # About {{site.data.keyword.databases-for-mongodb_full_notm}}
-{: #about-databases-for-mongodb}
+{: #about}
 
 {{site.data.keyword.databases-for-mongodb_full}} is a managed MongoDB service that is hosted in the {{site.data.keyword.cloud_notm}} and integrated with other {{site.data.keyword.cloud_notm}} services.
 
@@ -21,7 +21,7 @@ lastupdated: "2018-12-10"
 
 {{site.data.keyword.databases-for-mongodb}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-mongodb}} from the [{{site.data.keyword.cloud_notm}} catalog](https://{DomainName}/catalog/services/databases-for-mongodb).
 
-For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](./howto-provisioning.html) page.
+For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](docs/services/databases-for-mongodb/howto-provisioning.html) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://{DomainName}/registration/) page.
 
@@ -29,7 +29,7 @@ If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on th
 
 {{site.data.keyword.databases-for-mongodb}} is an Identity and Access Management (IAM) integrated service. Access to the service is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://{DomainName}/docs/iam/index.html#iamoverview) documentation.
 
-More information on IAM roles and actions for the {{site.data.keyword.databases-for-mongodb}} service is available on the [Access Management](./reference-access-management.html) page.
+More information on IAM roles and actions for the {{site.data.keyword.databases-for-mongodb}} service is available on the [Access Management](docs/services/databases-for-mongodb/reference-access-management.html) page.
 
 ## Using {{site.data.keyword.databases-for-mongodb}}
 
@@ -37,7 +37,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ### Using the command line interface
 
-The {{site.data.keyword.cloud_notm}} command line interface provides in interactive terminal for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-mongodb}} deployments. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-mongodb}}](./howto-using-ibmcloud-cli.html) page.
+The {{site.data.keyword.cloud_notm}} command line interface provides in interactive terminal for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-mongodb}} deployments. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-mongodb}}]() page.
 
 ### Using the cloud databases API
 
