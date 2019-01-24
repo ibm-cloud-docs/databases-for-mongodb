@@ -10,25 +10,25 @@ Databases For MongoDB
 	{: .topicgroup}
 	The Service Dashboard
 		dashboard-overview.md
+		dashboard-settings.md
 		dashboard-backups.md
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
 	howto-provisioning.md
-	howto-getting-connection-strings
+	howto-getting-connection-strings.md
 	howto-admin-password.md
-	howto-using-ibmcloud-cli.md
 	
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
 		connecting-ibmcloud-app.md
 		connecting-external.md
+		connecting-mongo-cli.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
 	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
-	reference-security.md
-	reference-versions.md
+	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)
 	reference-access-management.md
 	reference-key-protect.md
 	reference-monitoring.md

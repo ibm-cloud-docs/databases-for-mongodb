@@ -13,7 +13,7 @@ lastupdated: "2018-10-16"
 {:tip: .tip}
 
 # Settings
-{: #settings}
+{: #dashboard-settings}
 
 Manage your {{site.data.keyword.databases-for-mongodb_full}} service through these available settings.
 

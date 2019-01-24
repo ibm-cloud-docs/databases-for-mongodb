@@ -14,6 +14,7 @@ lastupdated: "2019-01-22"
 
 
 # Monitoring
+{: #monitoring}
 
 Monitoring for {{site.data.keyword.databases-for}} is provided through integration with the {{site.data.keyword.cloud}} Monitoring service. Your {{site.data.keyword.databases-for}} forward information about disk space and memory usage so that you can effectively monitor your deployment. Should your deployment outgrow its allocated resources you can scale up to keep everything running smoothly.
 
@@ -57,7 +58,10 @@ Select the service name of the deployment you want to monitor on this graph and 
 
 ![Selecting the service name](images/monitoring-service-name.png)
  
-After the region field is an ID field. The ID that appears corresponds to the last part of your deployment's ID. For example if your [Deployment ID](./dashboard-overview.html#id) is,`crn:v1:bluemix:public:databases-for-mongodb:us-south:a/274074dce64e9c423ffc867536c755e1:ef400bd3-cb95-486e-b54c-18dae5477801::` then the ID in the field is `ef400bd3-cb95-486e-b54c-18dae5477801`.
+After the region field is an ID field. The ID that appears corresponds to the last part of your deployment's ID. For example if your [Deployment ID](./dashboard-overview.html#id) is,
+
+![Example deployment ID](images/monitoring-crn-example.png)
+then the ID in the field is `ef400bd3-cb95-486e-b54c-18dae5477801`.
 
 The next field contains a list of the data members of your deployment. You can customize the graph to show all of the members or just one. The next field is _usage_, the only type of metrics available for {{site.data.keyword.databases-for}}. The last field lists what metrics you can add to be displayed to the graph. You can add all of them or only one of them. 
 
@@ -65,9 +69,9 @@ The final setting to to configure the _Axes_. Click the _Axes_ tab. You can unch
 
 ![Setting the Axes](images/monitoring-set-axes.png)
 
-The example graph shows the memory usage for all data members of a {{site.data.keyword.databases-for-mongodb}} deployment.
+The example graph shows the memory usage for all data members of a deployment.
 
-![An example graph showing memory usage for a {{site.data.keyword.databases-for-mongodb}} deployment](images/monitoring-example-graph.png)
+![An example graph showing memory usage for a deployment](images/monitoring-example-graph.png)
 
 Once you have the graph configured, click the _Save_ icon and give it a name. It will now appear in your list of dashboards.
 
