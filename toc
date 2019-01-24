@@ -26,7 +26,7 @@ Databases For MongoDB
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
-	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli)
+	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
 	reference-security.md
 	reference-versions.md
 	reference-access-management.md
