@@ -10,7 +10,7 @@ This repo contains the documentation for the IBM Cloud Databases for MongoDB ser
 
 The output from these docs is available on the IBM Cloud staging server: 
 
-- [About IBM Cloud Databases for MongoDB](https://console.stage1.bluemix.net/docs/services/databases-for-mongodb/index.html#about-databases-for-mongodb)
+- [About IBM Cloud Databases for MongoDB](https://console.test.cloud.ibm.com/docs/services/databases-for-mongodb)
 
 ## Resources
 
