@@ -75,6 +75,14 @@ The example graph shows the memory usage for all data members of a deployment.
 
 Once you have the graph configured, click the _Save_ icon and give it a name. It will now appear in your list of dashboards.
 
+## Configuring Alerts
+
+Once you have a graph with the metrics you want to monitor, you can set up alerts to notify you under certain conditions. A complete set up guide to configuring alerts is on the [Configuring alerts in Grafana](https://cloud.ibm.com/docs/services/cloud-monitoring/alerts/config_alerts_grafana.html) page from the Monitoring documentation. Step 1 and Step 2 have you open Grafana and set up a Notification Channel for your alert. Step 3 "Define a Metric" is the configuration of a Graph, such as the example memory resource graph above. Step 4 defines the alert. For example, an alert for memory usage above 180 MiB is shown.
+
+![Defining an Alert](images/monitoring-alert.png)
+
+Be sure to click the _Save_ icon to save the alert.
+
 ## Available Metrics
 
 The table describes all the available metrics for {{site.data.keyword.databases-for}} deployments.
