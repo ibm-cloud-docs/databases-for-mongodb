@@ -12,7 +12,7 @@ lastupdated: "2018-10-02"
 {:pre: .pre}
 
 # Backups
-{: #backups}
+{: #dashboard-backups}
 
 {{site.data.keyword.databases-for-mongodb_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily and on-demand backups are available for 30 days. Each backup is labeled with its type, and when the backup was taken. Click the backup to reveal the full ID of the backup and a command that you can use to restore a backup with the {{site.data.keyword.cloud_notm}} CLI.
 
@@ -20,8 +20,8 @@ lastupdated: "2018-10-02"
 
 To restore a backup to a new service instance,
 
-1. Click in the corresponding row to expand the options for the backup you want to download.
-2. Click the **Restore** button.  A message is displayed that a backup is in progress, and a 'pending' backup is added to the list of available backups.
+1. Click in the corresponding row to expand the options for the backup you want to restore.
+2. Click the **Restore** button.  A message is displayed that a restore from backup has started. Clicking on **Your new instance is available now.** will take you to your _Resources List_.
 
 The new service instance is automatically named "mongodb-restore-[timestamp]", and appears on your {{site.data.keyword.cloud_notm}} dashboard when provisioning starts.
 
