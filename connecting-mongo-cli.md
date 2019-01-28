@@ -23,7 +23,7 @@ The `mongo` shell is available as part of the MongoDB distribution, which can be
 
 ## Connecting
 
-The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section of your [connection strings](./howto-getting-connection-strings.html). The table contains a breakdown for reference.
+The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section of your [connection strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings). The table contains a breakdown for reference.
 
 Field Name|Index|Description
 ----------|-----|-----------

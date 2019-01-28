@@ -87,7 +87,7 @@ ibmcloud resource service-instance-create example-mongodb databases-for-mongodb 
 You can provision new deployments by using the Resource Controller API. However, in order to use the Resource Controller API, you need some additional preparation.
 
 1. [Obtain an IAM token from your API token](https://{DomainName}/apidocs/resource-controller#authentication).
-2. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](https://{DomainName}/docs/cli/reference/ibmcloud/cli_resource_group.html#ibmcloud_resource_groups). You can find a list of resource groups with `ibmcloud resource groups` and the ID of a resource group with `ibmcloud resource group`. 
+2. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_resource_groups). You can find a list of resource groups with `ibmcloud resource groups` and the ID of a resource group with `ibmcloud resource group`. 
 3. You need to know the region that you would like to deploy to.
 
 Once you have all the information, the create request is a `POST` to the `https://resource-controller.bluemix.net/v2/resource_instances` endpoint.
