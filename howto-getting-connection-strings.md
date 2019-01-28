@@ -15,9 +15,9 @@ lastupdated: "2018-12-10"
 # Getting your Connection Strings
 {: #connection-strings}
 
-In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some connection strings. A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after [setting the admin password](./howto-admin-password), you can use its connection strings to connect to your deployment.
+In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some connection strings. A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after [setting the admin password](docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its connection strings to connect to your deployment.
 
-The simplest way to retrieve connection information is from the [cloud databases plug-in](./howto-using-ibmcloud-cli.html). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for any user on your deployment. For example, to retrieve a connection string for the admin user on a deployment named  "example-mongo", use the following command.
+The simplest way to retrieve connection information is from the [cloud databases plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for any user on your deployment. For example, to retrieve a connection string for the admin user on a deployment named  "example-mongo", use the following command.
 
 ```
 ibmcloud cdb deployment-connections example-mongo -u admin
@@ -43,7 +43,7 @@ The new credentials appear in the table, and the connection strings are availabl
 
 ### Using Service IDs
 
-Because {{site.data.keyword.databases-for-mongodb}} is an IAM service, you can use [Service IDs](https://{DomainName}/docs/iam/serviceid.html#serviceids) to manage access to this service. For example, by using an IAM-managed Service ID, that user gets a PostgreSQL user and connection string in _Service Credentials_, and has API key access to the {{site.data.keyword.cloud_notm}} Databases API.  If you have a Service ID, enter its information under _Select Service ID_.
+Because {{site.data.keyword.databases-for-mongodb}} is an IAM service, you can use [Service IDs](/docs/iam?topic=iam-serviceids) to manage access to this service. For example, by using an IAM-managed Service ID, that user gets a PostgreSQL user and connection string in _Service Credentials_, and has API key access to the {{site.data.keyword.cloud_notm}} Databases API.  If you have a Service ID, enter its information under _Select Service ID_.
 
 ## Generating Connection Strings from the command line
 

@@ -19,13 +19,13 @@ Your applications and drivers use connection strings to make a connection to {{s
 
 The easiest way to get connection strings for an application is to create a set of _Service Credentials_ specifically for your application to connect with. Doing so also returns all the connection information a JSON object in a click-to-copy field.
 
-Alternatively, the {{site.data.keyword.cloud_notm}} CLI [cloud databases plug-in](./howto-getting-connection-strings.html#generating-connection-strings-from-the-command-line) supports generating users and connection strings, as does the [{{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#creates-a-database-level-user).
+Alternatively, the {{site.data.keyword.cloud_notm}} CLI [cloud databases plug-in](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) supports generating users and connection strings, as does the [{{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#creates-a-database-level-user).
 
-Full documentation on generating and retrieving connection strings is on the [Getting Connection Strings](./howto-getting-connection-strings.html) page.
+Full documentation on generating and retrieving connection strings is on the [Getting Connection Strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
 ## Using Connection Information
 
-All the information a driver needs to make a connection to your deployment is in the "https" section of your connection strings. The table contains a breakdown for reference.
+All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of your connection strings. The table contains a breakdown for reference.
 
 Field Name|Index|Description
 ----------|-----|-----------
@@ -45,7 +45,7 @@ Field Name|Index|Description
 
 Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 ```
-https://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:31821
+mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30452,b4571ea0-114d-4db4-81ae-00f973077956-1.974550db55eb4ec0983f023940bf637f.databases.appdomain.cloud:30452/ibmclouddb?authSource=admin
 ```
 
 ## Language Drivers

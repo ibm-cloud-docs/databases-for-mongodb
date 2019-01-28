@@ -47,6 +47,8 @@ The {{site.data.keyword.cloud_notm}} command line interface provides in interact
 
 General information on getting connection strings for your applications and for users you provision on your account can be found on the [Getting Connection Strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
+{{site.data.keyword.databases-for-mongodb}} deployments are secured with authentication and SSL/TLS encrypted connections. Deployments are provisioned with an admin user. [Set the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password) to use it to access your deployment. Then, if you want to manage the MongoDB databases directly, [connect by using the `mongo` shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
+
 Specific guidance on connecting with MongoDB drivers is on the [Connecting External Applications](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-external-app) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app) page.
 
 ## Other {{site.data.keyword.cloud_notm}} Integrations

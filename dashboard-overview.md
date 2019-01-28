@@ -13,7 +13,7 @@ lastupdated: "2018-12-10"
 {:tip: .tip}
 
 # Service Overview
-{: #overview}
+{: #dashboard-overview}
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-mongodb_full}} database. The overview includes essential identifying information.
 
@@ -35,7 +35,7 @@ Every time that you make administrative changes to your service (such as scaling
 
 ## Security
 
-Encryption at rest is enabled for all {{site.data.keyword.databases-for-mongodb}} deployments. If you brought your own encryption key from [Key Protect](./reference-key-protect.html), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
+Encryption at rest is enabled for all {{site.data.keyword.databases-for-mongodb}} deployments. If you brought your own encryption key from [Key Protect](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-key-protect), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
 
 ## Instance Administration API
 

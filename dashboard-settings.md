@@ -21,7 +21,7 @@ Manage your {{site.data.keyword.databases-for-mongodb_full}} service through the
 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
-**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the Redis cluster, so the total amount of storage you use is approximately twice the size of your data set.
+**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the MongoDB cluster, so the total amount of storage you use is approximately twice the size of your data set.
 
 The minimum storage of a MongoDB deployment is 20480 MB, adjustable in step sizes of 2048 MB. This equates to an initial size of 10240 MB per member with 1024 MB increments available.
 
