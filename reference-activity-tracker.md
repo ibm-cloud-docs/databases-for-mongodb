@@ -16,7 +16,7 @@ lastupdated: "2018-10-02"
 
 {{site.data.keyword.databases-for-mongodb_full}} is integrated with  [Activity Tracker](/docs/services/cloud-activity-tracker?topic=cloud-activity-tracker-activity_tracker_ov), so you can view service-level events.
 
-In order to see the events, you need to [provision the Activity Tracker service](docs/services/cloud-activity-tracker?topic=cloud-activity-tracker-provision) from the [{{site.data.keyword.cloud_notm}}  catalog](https://{DomainName}/catalog/services/activity-tracker). Activity Tracker has a _Lite_ plan available at no additional cost.
+In order to see the events, you need to [provision the Activity Tracker service](/docs/services/cloud-activity-tracker?topic=cloud-activity-tracker-provision) from the [{{site.data.keyword.cloud_notm}}  catalog](https://{DomainName}/catalog/services/activity-tracker). Activity Tracker has a _Lite_ plan available at no additional cost.
 
 Some IBM Cloud regions do not have the Activity Tracker service available. If you have {{site.data.keyword.databases-for-mongodb}} deployment in a region that is not supported, provision Activity Tracker in the region on the table.
 

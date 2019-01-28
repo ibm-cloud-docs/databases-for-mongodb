@@ -29,7 +29,7 @@ If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on th
 
 {{site.data.keyword.databases-for-mongodb}} is an Identity and Access Management (IAM) integrated service. Access to the service is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](/docs/iam?topic=iam-getstarted). For more information on IAM, see the [What is IAM?](/docs/iam?topic=iam-iamoverview) documentation.
 
-More information on IAM roles and actions for the {{site.data.keyword.databases-for-mongodb}} service is available on the [Access Management](docs/services/databases-for-mongodb?topic=databases-for-mongodb-iam) page.
+More information on IAM roles and actions for the {{site.data.keyword.databases-for-mongodb}} service is available on the [Access Management](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-iam) page.
 
 ## Using {{site.data.keyword.databases-for-mongodb}}
 
