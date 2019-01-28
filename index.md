@@ -21,7 +21,7 @@ lastupdated: "2019-01-24"
 
 {{site.data.keyword.databases-for-mongodb}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-mongodb}} from the [{{site.data.keyword.cloud_notm}} catalog](https://{DomainName}/catalog/services/databases-for-mongodb).
 
-For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-provisioning) page.
+For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI and Terraform instructions, see the [Provisioning](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-provisioning) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://{DomainName}/registration/) page.
 
@@ -33,7 +33,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ## Using {{site.data.keyword.databases-for-mongodb}}
 
-{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-overview) of your service as well as configuration settings on the [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-settings) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-backups) tab.
+{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview) of your service as well as configuration settings on the [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-settings) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups) tab.
 
 ### Using the command line interface
 
@@ -53,7 +53,7 @@ Specific guidance on connecting with MongoDB drivers is on the [Connecting Exter
 
 {{site.data.keyword.databases-for-mongodb}} deployments offer other cloud services integrations. 
 - View events with [Activity Tracker](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-activity-tracker)
-- View usage metrics with the [Monitoring](docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring) service
+- View usage metrics with the [Monitoring](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring) service
 - BYOK encryption is available if you use [Key Protect](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-key-protect)
 
 
