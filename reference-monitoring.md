@@ -13,7 +13,7 @@ lastupdated: "2019-01-22"
 {:tip: .tip}
 
 
-# Monitoring
+# Monitoring Integration
 {: #monitoring}
 
 Monitoring for {{site.data.keyword.databases-for}} is provided through integration with the {{site.data.keyword.cloud}} Monitoring service. Your {{site.data.keyword.databases-for}} forward information about disk space and memory usage so that you can effectively monitor your deployment. Should your deployment outgrow its allocated resources you can scale up to keep everything running smoothly.

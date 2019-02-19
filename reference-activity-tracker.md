@@ -27,6 +27,8 @@ Frankfurt | Frankfurt | https://logging.eu-fra.bluemix.net
 Oslo | Frankfurt | https://logging.eu-fra.bluemix.net
 Tokyo | not supported | not supported
 Sydney | Sydney | https://logging.au-syd.bluemix.net
+US East | US South | https://logging.ng.bluemix.net
+London | Frankfurt | https://logging.eu-fra.bluemix.net
 {: caption="Table 1. Activity Tracker service regions" caption-side="top"}
 
 Once you have the Activity Tracker service, the {{site.data.keyword.databases-for-mongodb}} events appear under _Account Logs_ from the _View Logs_ dropdown menu. 

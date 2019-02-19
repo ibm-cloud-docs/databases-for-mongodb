@@ -56,5 +56,5 @@ ibmcloud cdb cxn -u example-user example-mongo -s
 
 The command prompts for the user's password and then runs the `mongo` command-line client to connect to the database.
 
-If you don't specify a user, the `deployment-connections` commands return information for the admin user by default.
+If you don't specify a user, the `cdb deployment-connections` commands return information for the admin user by default.
 {: .tip}

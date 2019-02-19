@@ -6,6 +6,9 @@ Databases For MongoDB
 
 	{: .navgroup id="learn"}
 	index.md
+	high-availability.md
+	security-compliance.md
+	versioning.md
 
 	{: .topicgroup}
 	The Service Dashboard

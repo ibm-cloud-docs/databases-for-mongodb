@@ -11,7 +11,7 @@ lastupdated: "2018-10-19"
 {:screen: .screen}
 {:tip: .tip}
 
-# Key Protect
+# Key Protect Integration
 {: #key-protect}
 
 {{site.data.keyword.databases-for-mongodb_full}} encrypts your data by default by using randomly generated keys. If you need to control the encryption keys, you can use [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/services/key-protect?topic=key-protect-getting-started-with-key-protect) to create, add, and manage encryption keys. Then, you can associate those keys with your {{site.data.keyword.databases-for-mongodb}} deployment to encrypt your databases.
