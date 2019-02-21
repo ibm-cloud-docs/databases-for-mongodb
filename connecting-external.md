@@ -45,7 +45,7 @@ Field Name|Index|Description
 
 Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 ```
-mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30452,b4571ea0-114d-4db4-81ae-00f973077956-1.974550db55eb4ec0983f023940bf637f.databases.appdomain.cloud:30452/ibmclouddb?authSource=admin
+mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/ibmclouddb?authSource=admin
 ```
 
 ## Language Drivers

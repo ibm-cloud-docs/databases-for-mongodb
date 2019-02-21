@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-02-20"
 ---
 
 {:new_window: target="_blank"}
@@ -40,14 +40,23 @@ Field Name|Index|Description
 
 ## `mongo` example
 
+```
+mongo -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
+```
 
+* `mongo` - The command itself. 
+* `--ssl --sslCAFile` -  
+* `-u` - The parameter for the username.
+* `-p` - The parameter for the password. 
+* `--authenticationDatabase` - 
+* `--host replset/` - 
 
 ## Starting `mongo` from the IBM Cloud CLI
 
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named  "example-mongo" with an "example-user", use the following command.
 
 ```
-ibmcloud cdb deployment-connections -u example-user admin example-mongo --start
+ibmcloud cdb deployment-connections -u example-user example-mongo --start
 ```
 Or
 ```
