@@ -45,11 +45,11 @@ mongo -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f
 ```
 
 * `mongo` - The command itself. 
-* `--ssl --sslCAFile` -  
+* `--ssl --sslCAFile` - The path and name of the self-signed certificate for your deployment.
 * `-u` - The parameter for the username.
 * `-p` - The parameter for the password. 
-* `--authenticationDatabase` - 
-* `--host replset/` - 
+* `--authenticationDatabase` - The database where the user and its credentials are created and stored.
+* `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members. 
 
 ## Starting `mongo` from the IBM Cloud CLI
 
@@ -67,3 +67,4 @@ The command prompts for the user's password and then runs the `mongo` command-li
 
 If you don't specify a user, the `cdb deployment-connections` commands return information for the admin user by default.
 {: .tip}
+
