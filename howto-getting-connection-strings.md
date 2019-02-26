@@ -15,7 +15,7 @@ lastupdated: "2018-12-10"
 # Getting your Connection Strings
 {: #connection-strings}
 
-In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some connection strings. A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after [setting the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its connection strings to connect to your deployment.
+In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some connection strings. A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its connection strings to connect to your deployment.
 
 The simplest way to retrieve connection information is from the [cloud databases plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for any user on your deployment. For example, to retrieve a connection string for the admin user on a deployment named  "example-mongo", use the following command.
 
@@ -110,7 +110,7 @@ The "CLI" section contains information that is suited for connecting with the mo
 Field Name|Index|Description
 ----------|-----|-----------
 `Bin`||The recommended binary to create a connection; in this case it is `mongo`.
-`Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses `Arguments` as command line parameters.
+`Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses `Arguments` as command-line parameters.
 `Environment`||A list of key/values you set as environment variables.
 `Arguments`|`0...`|The information that is passed as arguments to the command shown in the Bin field.
 `Certificate`|`Base64`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded.

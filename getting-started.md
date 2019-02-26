@@ -36,12 +36,12 @@ Choose a service name, region, organization and space to provision the service i
 
 Click **Create** to provision your service. Provisioning can take a while to complete. You are taken back to your {{site.data.keyword.cloud_notm}} _Dashboard_ while the service is provisioning. 
 
-You can not connect an application to the service until provisioning has completed.
+You can not connect an application to the service until provisioning is finished.
 {: .tip}
 
 ## Step 2. Clone the Hello World sample app from GitHub
 
-Clone the Hello World app to your local environment from your terminal by using the following command:
+Clone the Hello World app to your local environment from your terminal by using the following command.
 
 ```
 git clone git clone -b node git@github.com:IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples.git
@@ -70,7 +70,7 @@ The {{site.data.keyword.cloud_notm}} CLI tool is what you use to communicate wit
 
 ## Step 5. Connect to {{site.data.keyword.cloud_notm}}
 
-1. Connect to {{site.data.keyword.cloud_notm}} in the command line tool and follow the prompts to log in.
+1. Connect to {{site.data.keyword.cloud_notm}} in the command-line tool and follow the prompts to log in.
 
   ```
   ibmcloud login
@@ -150,7 +150,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
 3. Click **New Credential**.
 4. Choose a name for your credentials and click **Add**.
 5. Your new credentials are now listed. Click **View credentials** in the corresponding row of the table to view the credentials, and click the **Copy** icon to copy your credentials.
-6. In your editor of choice, create a new file with the following, inserting your credentials as shown:
+6. In your editor of choice, create a new file with the following, inserting your credentials as shown.
 
   ```
   {
