@@ -16,9 +16,7 @@ lastupdated: "2019-02-19"
 
 {{site.data.keyword.databases-for-mongodb_full}} is a managed cloud database service that is fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and supporting infrastructure all run in {{site.data.keyword.cloud_notm}}.
 
-{{site.data.keyword.databases-for-mongodb}} provides replication, fail-over, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and failures.
-
- If one data member becomes unreachable, your cluster continues to operate normally.
+{{site.data.keyword.databases-for-mongodb}} provides replication, fail-over, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and failures. Deployments have one node that is the primary and the other node as the secondary. Both nodes store a copy of your data.
 
 By contrast, application resilience and connection error handling are the responsibility of the application developer. 
 

@@ -25,10 +25,8 @@ lastupdated: "2018-10-02"
 ## Data Resilience
 
 - Backups are included in the service. {{site.data.keyword.databases-for-mongodb}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) and are also [encrypted](/docs/services/cloud-object-storage?topic=cloud-object-storage-security).
-- {{site.data.keyword.databases-for-mongodb}} deployments are configured with replication, 
-
-
-- If you deploy to an [{{site.data.keyword.cloud_notm}} datacenter](/docs/overview?topic=overview-data_center#data_center), your data has multiple copies and each copy resides on a different host. If you deploy to a [{{site.data.keyword.cloud_notm}} Global location](https://www.ibm.com/cloud/data-centers/), the cluster is spread over the region's availability zone locations. If one data member becomes unreachable, your cluster continues to operate normally.
+- {{site.data.keyword.databases-for-mongodb}} deployments are configured as a [replica set](https://docs.mongodb.com/manual/replication/) with two nodes. Deployments have one node that is the primary and the other node as the secondary. Both nodes store a copy of your data.
+- If you deploy to an [{{site.data.keyword.cloud_notm}} datacenter](/docs/overview?topic=overview-data_center#data_center), your data has multiple copies and each copy resides on a different host. If you deploy to a [{{site.data.keyword.cloud_notm}} Global location](https://www.ibm.com/cloud/data-centers/), the cluster is spread over the region's availability zone locations. If one data node becomes unreachable, your cluster continues to operate normally.
 
 ## General Data Protection Regulation (GDPR) 
 
@@ -37,7 +35,7 @@ If you have an account with IBM Cloud, your personal data is held by {{site.data
 
 {{site.data.keyword.databases-for-mongodb}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. 
 
-{{site.data.keyword.databases-for-mongodb}} provides a [Data Sheet Addendum (DSA)](https://www.ibm.com/software/reports/compatibility/clarityreports/report/html/softwareReqsForProduct?deliverableId=CD09D2E06DC811E8A0B560E89C071ECC){:new_window} with its policies as a Data Processor regarding content and data protection. 
+{{site.data.keyword.databases-for-mongodb}} provides a [Data Sheet Addendum (DSA)](https://www.ibm.com/software/reports/compatibility/clarity-reports/report/html/softwareReqsForProduct?deliverableId=F57A00B07A6111E89D57EFEED3CB8BE9){:new_window} with its policies as a Data Processor regarding content and data protection. 
 
 ## HIPAA
 

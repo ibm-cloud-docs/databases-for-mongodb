@@ -63,7 +63,7 @@ Count   2
 |   Allocation              20480mb
 |   Allocation per member   10240mb
 |   Minimum                 20480mb
-|   Step Size               1024mb
+|   Step Size               2048mb
 |   Adjustable              true
 ```
 
