@@ -37,7 +37,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ### Using the command-line interface
 
-The {{site.data.keyword.cloud_notm}} command-line interface provides in interactive terminal for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-mongodb}} deployments. Installation instructions and a full command reference are on the [Cloud Databases CLI Plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference) page.
+The [{{site.data.keyword.cloud_notm}} command-line interface](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli) provides in interactive terminal for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-mongodb}} deployments. Installation instructions and a full command reference are on the [Cloud Databases CLI Plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference) page.
 
 ### Using the cloud databases API
 
