@@ -28,10 +28,10 @@ The new service instance is automatically named "mongodb-restore-[timestamp]", a
 You can also use the {{site.data.keyword.cloud_notm}} CLI to restore a backup.
 
 ```
-ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-mongodb standard us-south -p '{"backup_id":"{backup_id"}
+ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-mongodb standard REGION -p '{"backup_id":"BACKUP_ID"}'
 ```
 
-**Note:** Change the value of `SERVICE_INSTANCE_NAME` to the name you want for your new service.
+**Note:** The change the value of `SERVICE_INSTANCE_NAME` to the name you want for your new service, `REGION` is where you want the service to be located, and `BACKUP_ID` is the backup you want to restore.
 
 A pre-formatted command for a specific backup is available in detailed view of the backup on the _Backups_ tab of the service dashboard.
 {: .tip}
