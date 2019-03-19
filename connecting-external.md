@@ -2,6 +2,9 @@
 copyright:
   years: 2017,2018
 lastupdated: "2018-12-28"
+
+subcollection: databases-for-mongodb
+
 ---
 
 {:new_window: target="_blank"}

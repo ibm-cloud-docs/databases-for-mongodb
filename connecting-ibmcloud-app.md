@@ -3,6 +3,9 @@
 Copyright:
   years: 2018, 2019
 lastupdated: "2019-01-28"
+
+subcollection: databases-for-mongodb
+
 ---
 
 {:new_window: target="_blank"}
