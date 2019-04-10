@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019
-lastupdated: "2019-02-20"
+lastupdated: "2019-04-10"
 
 subcollection: databases-for-mongodb
 
@@ -26,7 +26,9 @@ The `mongo` shell is available as part of the MongoDB distribution, which can be
 
 ## Connecting
 
-The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section of your [connection strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings). The table contains a breakdown for reference.
+Connection strings are displayed in the _Connections_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+
+The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section the connection strings. The table contains a breakdown for reference.
 
 Field Name|Index|Description
 ----------|-----|-----------
@@ -59,11 +61,7 @@ mongo -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named  "example-mongo" with an "example-user", use the following command.
 
 ```
-ibmcloud cdb deployment-connections -u example-user example-mongo --start
-```
-Or
-```
-ibmcloud cdb cxn -u example-user example-mongo -s
+ibmcloud cdb deployment-connections --start -u example-user example-mongo
 ```
 
 The command prompts for the user's password and then runs the `mongo` command-line client to connect to the database.
