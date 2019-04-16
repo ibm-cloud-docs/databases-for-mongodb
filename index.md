@@ -24,7 +24,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-mongodb}} from the [{{site.data.keyword.cloud_notm}} catalog](https://{DomainName}/catalog/services/databases-for-mongodb).
 
-For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI and Terraform instructions, see the [Provisioning](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-provisioning) page.
+For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI and Terraform instructions, see the [Provisioning](/docs/services/databases-for-mongodb?topic=cloud-databases-provisioning) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://{DomainName}/registration/) page.
 
@@ -32,11 +32,11 @@ If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on th
 
 {{site.data.keyword.databases-for-mongodb}} is an Identity and Access Management (IAM) integrated service. Access to the service is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](/docs/iam?topic=iam-getstarted). For more information on IAM, see the [What is IAM?](/docs/iam?topic=iam-iamoverview) documentation.
 
-More information on IAM roles and actions for the {{site.data.keyword.databases-for-mongodb}} service is available on the [Access Management](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-iam) page.
+More information on IAM roles and actions for the {{site.data.keyword.databases-for-mongodb}} service is available on the [Access Management](/docs/services/databases-for-mongodb?topic=cloud-databases-iam) page.
 
 ## Using {{site.data.keyword.databases-for-mongodb}}
 
-{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview) of your service as well as configuration settings on the [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-settings) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups) tab.
+{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview) of your service as well as configuration settings on the [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview#settings) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups) tab.
 
 ### Using the command-line interface
 
@@ -57,9 +57,11 @@ Specific guidance on connecting with MongoDB drivers is on the [Connecting Exter
 ## Other {{site.data.keyword.cloud_notm}} Integrations
 
 {{site.data.keyword.databases-for-mongodb}} deployments offer other cloud services integrations. 
-- View events with [Activity Tracker](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-activity-tracker)
-- View usage metrics with the [Monitoring](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring) service
-- BYOK encryption is available if you use [Key Protect](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-key-protect)
+- View events with [Activity Tracker](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-activity-tracker).
+- View usage metrics with the [Monitoring](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring) service.
+- View logs with the [{{site.data.keyword.la_full_notm}} integration](/docs/services/databases-for-mongodb?topic=cloud-databases-logging).
+- BYOK encryption is available if you use [Key Protect](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-key-protect).
+- [Service Endpoints Integration](/docs/services/databases-for-mongodb?topic=cloud-databases-service-endpoints) allows you to select public or private networking for your deployment at provision
 
 
 

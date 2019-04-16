@@ -35,7 +35,7 @@ Several minutes of database unavailability or connection interruption is not exp
 
 ## Performance
 
-{{site.data.keyword.databases-for-mongodb}} deployments can be [scaled to your usage](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-settings#scaling-resources), but they do not auto-scale. There are a few factors to consider if you are concerned about the performance of your deployment.
+{{site.data.keyword.databases-for-mongodb}} deployments can be [scaled to your usage](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling), but they do not auto-scale. There are a few factors to consider if you are concerned about the performance of your deployment.
 
 ### Disk IOPS
 

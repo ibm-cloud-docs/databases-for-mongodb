@@ -72,11 +72,11 @@ For more information about the {{site.data.keyword.cloud_notm}} databases API, s
 The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can 
 - [scale](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
 - [change the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password)
-- [implement or modify an IP whitelist](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-whitelisting)
+- [implement or modify an IP whitelist](/docs/services/databases-for-mongodb?topic=cloud-databases-whitelisting)
 
 ## Backups
 
-The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click on a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-backups) page.
+The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click on a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups) page.
 
 ## Docs
 

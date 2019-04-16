@@ -184,11 +184,12 @@ For more information about the credentials you created for the application to co
 
 To understand more about how the [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/mongodb) works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
 
-To start exploring your {{site.data.keyword.databases-for-mongodb}} service, see the following topics about the service dashboard:
+To start exploring your {{site.data.keyword.databases-for-mongodb}} deployment, see the following topics:
 
 - [Dashboard Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview)
-- [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups)
-- [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-settings)
+- [Managing Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups)
+- [Resources and Scaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
+
 
 
 [ibm_cloud_signup_url]: https://ibm.biz/databases-for-mongodb-signup
