@@ -9,7 +9,7 @@ Databases For MongoDB
 	getting-started.md
 	high-availability.md
 	security-compliance.md
-	versioning.md
+	/cloud-databases/cloud-databases-versioning-policy
 	dashboard-overview.md
 	/cloud-databases/cloud-databases-tutorial-k8s-app
 	{: .navgroup-end}
