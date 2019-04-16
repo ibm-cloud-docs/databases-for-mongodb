@@ -10,18 +10,17 @@ Databases For MongoDB
 	high-availability.md
 	security-compliance.md
 	versioning.md
-
-	{: .topicgroup}
-	The Service Dashboard
-		dashboard-overview.md
-		dashboard-settings.md
-		dashboard-backups.md
+	dashboard-overview.md
+	[Tutorial - Connecting a Kubernetes Service Application](/cloud-databases/cloud-databases-tutorial-k8s-app)
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	howto-provisioning.md
+	[Provisioning](/cloud-databases/cloud-databases-provisioning)
 	howto-getting-connection-strings.md
 	howto-admin-password.md
+	howto-resources-scaling.md
+	howto-backups.md
+	[Using IP Whitelists](/cloud-databases/cloud-databases-whitelisting)
 	
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
@@ -33,7 +32,7 @@ Databases For MongoDB
 	{: .navgroup id="reference"}
 	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
 	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)
-	reference-access-management.md
+	[Identity and Access Management Integration](/cloud-databases/cloud-databases-iam)
 	reference-service-endpoints.md
 	reference-activity-tracker.md
 	reference-logging.md

@@ -66,7 +66,7 @@ ibmcloud cdb cxn example-deployment -u <newusername>
 Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named  "example-deployment", use the following command.
 
 ```
-ibmcloud cdb deployment-connections example-deployment -u <newusername> --all
+ibmcloud cdb deployment-connections --all example-deployment -u <newusername>
 ```
 
 If you don't specify a user, the `deployment-connections` commands return information for the root user by default.
@@ -96,7 +96,7 @@ Field Name|Index|Description
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
 `Hosts`|`0...`|A hostname and port to connect to
-`Composed`|`0...`|A URI combining Scheme, Authentication, Host, and Path
+`Composed`|`0...`|A URI combining Scheme, Authentication, Host, Path, and Replica Set name
 `Certificate`|`Name`|The allocated name for the self-signed certificate for database deployment
 `Certificate`|`Base64`|A base64 encoded version of the certificate.
 {: caption="Table 1. `mongodb`/`URI` connection information" caption-side="top"}

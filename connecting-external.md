@@ -33,7 +33,7 @@ Field Name|Index|Description
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
 `Hosts`|`0...`|A hostname and port to connect to
-`Composed`|`0...`|A URI combining Scheme, Authentication, Host, and Path
+`Composed`|`0...`|A URI combining Scheme, Authentication, Host, Path, and Replica Set name.
 `Certificate`|`Name`|The allocated name for the self-signed certificate for database deployment
 `Certificate`|Base64|A base64 encoded version of the certificate.
 {: caption="Table 1. `mongodb`/`URI` connection information" caption-side="top"}
@@ -42,8 +42,11 @@ Field Name|Index|Description
 
 Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 ```
-mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/ibmclouddb?authSource=admin
+mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/ibmclouddb?authSource=adminreplicaSet=replset
 ```
+
+The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
+{: .tip}
 
 ## Language Drivers
 

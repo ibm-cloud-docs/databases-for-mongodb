@@ -28,8 +28,8 @@ subcollection: databases-for-mongodb
 ## Data Resilience
 
 - Backups are included in the service. {{site.data.keyword.databases-for-mongodb}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) and are also [encrypted](/docs/services/cloud-object-storage?topic=cloud-object-storage-security).
-- {{site.data.keyword.databases-for-mongodb}} deployments are configured as a [replica set](https://docs.mongodb.com/manual/replication/) with two nodes. Deployments have one node that is the primary and the other node as the secondary. Both nodes store a copy of your data.
-- If you deploy to an [{{site.data.keyword.cloud_notm}} datacenter](/docs/overview?topic=overview-data_center#data_center), your data has multiple copies and each copy resides on a different host. If you deploy to a [{{site.data.keyword.cloud_notm}} Global location](https://www.ibm.com/cloud/data-centers/), the cluster is spread over the region's availability zone locations. If one data node becomes unreachable, your cluster continues to operate normally.
+- A {{site.data.keyword.databases-for-mongodb}} deployment consists of two data nodes, one a primary node and the other as a secondary node. They are configured as a replication set without sharding, so both contain a copy of your data. An arbiter node is present for tie breaking when electing a primary.
+- If you deploy to an [{{site.data.keyword.cloud_notm}} datacenter](/docs/overview?topic=overview-data_center#data_center), your deployment has two nodes and each node resides on a different host. - If you deploy to a [{{site.data.keyword.cloud_notm}} Global location](https://www.ibm.com/cloud/data-centers/), the nodes are spread over the region's availability zone locations.
 
 ## General Data Protection Regulation (GDPR) 
 

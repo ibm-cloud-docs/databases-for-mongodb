@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018, 2019
-lastupdated: "2019-04-10"
+lastupdated: "2019-04-15"
 
 subcollection: databases-for-mongodb
 
@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# Service Overview
+# The UI - Service Overview
 {: #dashboard-overview}
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-mongodb_full}} database. The overview includes essential identifying information.
@@ -67,3 +67,17 @@ The ID needs to be URL encoded to be used in an API call because the CRN include
 
 For more information about the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
 
+## Settings
+
+The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can 
+- [scale](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
+- [change the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password)
+- [implement or modify an IP whitelist](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-whitelisting)
+
+## Backups
+
+The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click on a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-backups) page.
+
+## Docs
+
+The _Docs_ link opens the main documentation page for {{site.data.keyword.databases-for-mongodb}} in a new tab.

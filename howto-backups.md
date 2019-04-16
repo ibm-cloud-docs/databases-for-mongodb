@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017,2018
-lastupdated: "2018-10-02"
+  years: 2018, 2019
+lastupdated: "2019-04-15"
 
 subcollection: databases-for-mongodb
 
@@ -14,7 +14,7 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Backups
+# Managing Backups
 {: #dashboard-backups}
 
 {{site.data.keyword.databases-for-mongodb_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily and on-demand backups are available for 30 days. Each backup is labeled with its type, and when the backup was taken. Click the backup to reveal the full ID of the backup and a command that you can use to restore a backup with the {{site.data.keyword.cloud_notm}} CLI.
