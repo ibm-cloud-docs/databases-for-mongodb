@@ -36,6 +36,6 @@ Databases For MongoDB
 	/cloud-databases/cloud-databases-service-endpoints
 	reference-activity-tracker.md
 	/cloud-databases/cloud-databases-logging
-	reference-monitoring.md
 	/cloud-databases/cloud-databases-key-protect
+	reference-monitoring.md
 	{: .navgroup-end}
