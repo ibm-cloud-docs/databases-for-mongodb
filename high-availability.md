@@ -41,7 +41,7 @@ Several minutes of database unavailability or connection interruption is not exp
 
 The number of Input-Output Operations per second (IOPS) is limited by the type of storage volume being used. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance). Hitting IOPS limits can cause your databases to respond slowly or appear unresponsive. Things like un-optimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/), and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment. If you are exceeding the IOPS limit, you can increase the number IOPS available to your deployment by increasing disk space.
 
-### Monitoring 
+### Monitoring your deployment
 
 You can use the [monitoring integration](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring), to estimate typical resource usage, and scale your deployment accordingly.
 
