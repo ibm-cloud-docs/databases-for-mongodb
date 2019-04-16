@@ -37,5 +37,5 @@ Databases For MongoDB
 	reference-activity-tracker.md
 	/cloud-databases/cloud-databases-logging
 	reference-monitoring.md
-	cloud-databases/cloud-databases-key-protect
+	/cloud-databases/cloud-databases-key-protect
 	{: .navgroup-end}
