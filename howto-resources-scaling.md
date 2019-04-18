@@ -30,15 +30,15 @@ Billing is based on the _total_ amount of resources that are allocated to the se
 When you [provision](/docs/services/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning) a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
 **Disk Usage** -
-Your disk allocation should be enough to store all of your data. Your data is replicated to both data members so the total amount of disk you use is at least twice the size of your data set. 
+Your disk allocation has to be enough to store all of your data. Your data is replicated to both data members so the total amount of disk you use is at least twice the size of your data set. 
 
-Disk allocation also affects the performance of the disk, with larger disks having higher performance. Baseline Input-Output Operations per second (IOPS) performance for disk is 10 IOPS for each GB. Scale disk increase the IOPS your deployment can handle.
+Disk allocation also affects the performance of the disk, with larger disks having higher performance. Baseline Input-Output Operations per second (IOPS) performance for disk is 10 IOPS for each GB. Scale disk to increase the IOPS your deployment can handle.
  
 You cannot scale down storage. If your data set size has decreased, you can recover space by backing up and restoring to a new deployment.
 {: .tip} 
 
 **RAM** -
-Memory resources are used for database operations and also controls the amount of memory allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability#wiredtiger-memory-cache). If your database can serve most of the requests from the cache, then it won't have to read from disk as often, and perform better. 
+Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability#wiredtiger-memory-cache). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
@@ -50,10 +50,10 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
-For example, the command to view the resource groups for a deployment named "example-deployment":  
+For example, the command to view the resource groups for a deployment named "example-deployment" is  
 `ibmcloud cdb deployment-groups example-deployment`
 
-This produces the output:
+This command produces the output:
 
 ```
 Group   member
@@ -74,7 +74,7 @@ Count   2
 |   Adjustable              true
 ```
 
-The deployment has two members, with 2048 MB of RAM and 20480 MB of disk allocated in total. The "per member" allocation is 1024 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
+The deployment has two members, with 2048 MB of RAM and 20480 MB of disk allocated in total. The "per member" allocation is 1024 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation that can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
 The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:  
 `ibmcloud cdb deployment-groups-set example-deployment member --memory 4096`

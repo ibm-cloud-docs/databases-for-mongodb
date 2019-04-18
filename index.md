@@ -44,7 +44,7 @@ The [{{site.data.keyword.cloud_notm}} command-line interface](/docs/cli/referenc
 
 ### Using the cloud databases API
 
-{{site.data.keyword.databases-for-mongodb}} is compatible with the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API, so you can access and manage your service programmatically. Each region has a unique endpoint, so you can find the API foundation endpoint for your deployment on the [_Overview_](./dashboard-overview.html) page. The {{site.data.keyword.IBM_notm}} API documentation contains the full [{{site.data.keyword.databases-for}} API reference](https://{DomainName}/apidocs/cloud-databases-api). Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](/docs/iam?topic=iam-userroles#userroles).
+{{site.data.keyword.databases-for-mongodb}} is compatible with the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API, so you can access and manage your service programmatically. Each region has a unique endpoint, so you can find the API foundation endpoint for your deployment on the [_Overview_](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview) page. The {{site.data.keyword.IBM_notm}} API documentation contains the full [{{site.data.keyword.databases-for}} API reference](https://{DomainName}/apidocs/cloud-databases-api). Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](/docs/iam?topic=iam-userroles#userroles).
 
 ## Connecting to {{site.data.keyword.databases-for-mongodb}}
 
