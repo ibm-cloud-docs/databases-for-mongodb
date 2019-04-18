@@ -22,12 +22,12 @@ A visual representation of your data members and their resource allocation is av
 
 ![The Scale Resources Panel in _Settings_](images/settings-scaling.png)
 
-{{site.data.keyword.databases-for-mongodb_full}} runs with two data members in a cluster, and resources are allocated to both members equally. For example, the minimum disk size of a MongoDB deployment is 20480 MB, which equates to an initial size of 10240 MB per member. minimum RAM for a MongoDB deployment is 2048 MB, which equates to an initial allocation of 1028 MB per member.
+{{site.data.keyword.databases-for-mongodb_full}} runs with two data members in a cluster, and resources are allocated to both members equally. For example, the minimum disk size of a MongoDB deployment is 20480 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 2048 MB, which equates to an initial allocation of 1024 MB per member.
 
 Billing is based on the _total_ amount of resources that are allocated to the service. You can se the IBM Cloud Pricing Calculator to estimate pricing.
 {: .tip}
 
-At [provision](), you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
+At [provision](/docs/serivces/databases-for-mongodb?topic=cloud-databases-provisioning), you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
 **Disk Usage** -
 Your disk allocation should be enough to store all of your data. Your data is replicated to both data members so the total amount of disk you use is at least twice the size of your data set. 
@@ -38,7 +38,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 {: .tip} 
 
 **RAM** -
-Memory resources are used for database operations and also controls the amount of memory allocated to the internal cache. If your database can serve most of the requests from the cache, then it won't have to read from disk as often, and perform better. 
+Memory resources are used for database operations and also controls the amount of memory allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability#wiredtiger-memory-cache). If your database can serve most of the requests from the cache, then it won't have to read from disk as often, and perform better. 
 
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 

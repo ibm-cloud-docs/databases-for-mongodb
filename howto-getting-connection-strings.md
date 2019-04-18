@@ -43,7 +43,7 @@ The new credentials appear in the table, and the connection strings are availabl
 
 ### Using Service IDs
 
-Because {{site.data.keyword.databases-for-mongodb}} is an IAM service, you can use [Service IDs](/docs/iam?topic=iam-serviceids) to manage access to this service. For example, by using an IAM-managed Service ID, that user gets a PostgreSQL user and connection string in _Service Credentials_, and has API key access to the {{site.data.keyword.cloud_notm}} Databases API.  If you have a Service ID, enter its information under _Select Service ID_.
+Because {{site.data.keyword.databases-for-mongodb}} is an IAM service, you can use [Service IDs](/docs/iam?topic=iam-serviceids) to manage access to your deployment. For example, by using an IAM-managed Service ID, that user gets a MongoDB user, a connection string in _Service Credentials_, and has API key access to the {{site.data.keyword.cloud_notm}} Databases API.  If you have a Service ID, enter its information under _Select Service ID_.
 
 ## Getting Credentials and Connection Strings from the command-line
 
