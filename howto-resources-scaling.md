@@ -24,10 +24,10 @@ A visual representation of your data members and their resource allocation is av
 
 {{site.data.keyword.databases-for-mongodb_full}} runs with two data members in a cluster, and resources are allocated to both members equally. For example, the minimum disk size of a MongoDB deployment is 20480 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 2048 MB, which equates to an initial allocation of 1024 MB per member.
 
-Billing is based on the _total_ amount of resources that are allocated to the service. You can se the IBM Cloud Pricing Calculator to estimate pricing.
+Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
-At [provision](/docs/serivces/databases-for-mongodb?topic=cloud-databases-provisioning), you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
+When you [provision](/docs/services/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning) a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
 **Disk Usage** -
 Your disk allocation should be enough to store all of your data. Your data is replicated to both data members so the total amount of disk you use is at least twice the size of your data set. 
@@ -48,9 +48,7 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 ## Resources and Scaling in the CLI 
 
-{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
-
-Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
+[{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
 For example, the command to view the resource groups for a deployment named "example-deployment":  
 `ibmcloud cdb deployment-groups example-deployment`
@@ -76,7 +74,7 @@ Count   2
 |   Adjustable              true
 ```
 
-The deployment has two members, with 2048 MB of RAM and disk allocated in total. The "per member" allocation is 1024 MB of RAM and disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
+The deployment has two members, with 2048 MB of RAM and 20480 MB of disk allocated in total. The "per member" allocation is 1024 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
 The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:  
 `ibmcloud cdb deployment-groups-set example-deployment member --memory 4096`

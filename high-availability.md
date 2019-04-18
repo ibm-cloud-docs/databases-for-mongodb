@@ -39,11 +39,11 @@ Several minutes of database unavailability or connection interruption is not exp
 
 ### Disk IOPS
 
-The number of Input-Output Operations per second (IOPS) is limited by the type of storage volume being used. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance). Hitting IOPS limits can cause your databases to respond slowly or appear unresponsive. Things like un-optimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/), and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment. If you are exceeding the IOPS limit, you can increase the number IOPS available to your deployment by increasing disk space.
+The number of Input-Output Operations per second (IOPS) is limited by the type of storage volume being used. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance). Hitting IOPS limits can cause your databases to respond slowly or appear unresponsive. Things like un-optimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/), and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment. You can increase the number IOPS available to your deployment by increasing disk space.
 
 ### WiredTiger Memory Cache
 
-{{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine which has both the filesystem memory cache and an internal memory cache](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use). MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the filesystem cache, and least performant when it has to grab your data from disk.
+{{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine, which uses both the filesystem memory cache and an internal memory cache](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use). MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the filesystem cache, and least performant when it has to grab your data from disk.
 
 The default size of the internal cache is `50% of (total RAM - 1 GB)` or `256 MB`, whichever is larger.
 

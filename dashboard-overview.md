@@ -38,7 +38,7 @@ Every time that you make administrative changes to your service (such as scaling
 
 ## Connections
 
-The _Connections_ panel contains connection strings for your deployment. Each tab contains connection information tailored to the type of connection or the protocol that uses it. Basic information includes things like _hostname_ and _port_, as well as the TLS self-signed certificate, the replica set name, and arguments that can be passed to the driver or binary that you are using to connect. 
+The _Connections_ panel contains connection strings for your deployment. Each tab contains connection information tailored to the type of connection or the protocol that uses it. Basic information includes things like hostname and port number, as well as the TLS self-signed certificate, the replica set name, and arguments that can be passed to the driver or binary that you are using to connect. 
 
 Reference tables for the different connection types are available on the [Getting Credentials and Connection Strings](/docs/services/databases-for-redis?topic=databases-for-redis-connection-strings) page.
 
