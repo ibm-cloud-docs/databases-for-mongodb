@@ -18,15 +18,16 @@ Databases For MongoDB
 	/cloud-databases/cloud-databases-provisioning
 	howto-getting-connection-strings.md
 	howto-admin-password.md
-	howto-resources-scaling.md
-	howto-backups.md
-	/cloud-databases/cloud-databases-whitelisting
 	
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
 		connecting-ibmcloud-app.md
 		connecting-external.md
 		connecting-mongo-cli.md
+
+	howto-resources-scaling.md
+	howto-backups.md
+	/cloud-databases/cloud-databases-whitelisting		
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
@@ -36,6 +37,6 @@ Databases For MongoDB
 	/cloud-databases/cloud-databases-service-endpoints
 	reference-activity-tracker.md
 	/cloud-databases/cloud-databases-logging
-	/cloud-databases/cloud-databases-key-protect
 	reference-monitoring.md
+	/cloud-databases/cloud-databases-key-protect
 	{: .navgroup-end}
