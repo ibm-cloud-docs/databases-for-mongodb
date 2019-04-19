@@ -11,7 +11,6 @@ Databases For MongoDB
 	security-compliance.md
 	/cloud-databases/cloud-databases-versioning-policy
 	dashboard-overview.md
-	/cloud-databases/cloud-databases-tutorial-k8s-app
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
