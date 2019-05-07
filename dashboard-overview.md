@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# The UI - Service Overview
+# The UI - Dashboard Overview
 {: #dashboard-overview}
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-mongodb_full}} database. The overview includes essential identifying information.

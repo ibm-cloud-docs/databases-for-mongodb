@@ -7,11 +7,15 @@ Databases For MongoDB
 	{: .navgroup id="learn"}
 	index.md
 	getting-started.md
-	pricing.md
-	high-availability.md
-	security-compliance.md
-	/cloud-databases/cloud-databases-versioning-policy
-	dashboard-overview.md
+
+	{: .topicgroup}
+	Service Overview
+		dashboard-overview.md
+		high-availability.md
+		security-compliance.md
+		pricing.md
+	
+	/cloud-databases/cloud-databases-tutorial-k8s-app
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
@@ -33,6 +37,7 @@ Databases For MongoDB
 	{: .navgroup id="reference"}
 	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
 	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)
+	/cloud-databases/cloud-databases-versioning-policy
 	/cloud-databases/cloud-databases-iam
 	/cloud-databases/cloud-databases-service-endpoints
 	reference-activity-tracker.md
