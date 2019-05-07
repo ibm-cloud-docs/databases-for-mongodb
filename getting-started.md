@@ -47,7 +47,7 @@ You can not connect an application to the service until provisioning is finished
 Clone the Hello World app to your local environment from your terminal by using the following command.
 
 ```
-git clone git clone -b node git@github.com:IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples.git
+git clone -b node git@github.com:IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples.git
 ```
 
 ## Step 3. Install the app dependencies
