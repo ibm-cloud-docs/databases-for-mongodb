@@ -13,8 +13,8 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Architecture, Security, and Compliance
-{: #architecture-security-compliance}
+# Security, and Compliance
+{: #security-compliance}
 
 ## Protection Against Unauthorized Access
 
