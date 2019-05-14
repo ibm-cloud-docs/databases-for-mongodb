@@ -22,14 +22,16 @@ subcollection: databases-for-mongodb
 - All {{site.data.keyword.databases-for-mongodb}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-iam).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
-- All {{site.data.keyword.databases-for-mongodb}} storage is provided on storage encrypted with [{{site.data.keyword.keymanagementserviceshort}}](/docs/services/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/services/databases-for-elasticsearch?topic=databases-for-elasticsearch-key-protect).
-- IP Whitelisting - All deployments support whitelisting IP addresses to restrict access to the service.
+- All {{site.data.keyword.databases-for-mongodb}} storage is provided on storage encrypted with [{{site.data.keyword.keymanagementserviceshort}}](/docs/services/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/services/databases-for-mongodb?topic=cloud-databases-key-protect).
+- IP Whitelisting - All deployments support [whitelisting IP addresses](/docs/services/databases-for-mongodb?topic=cloud-databases-whitelisting) to restrict access to the service.
+- Public and Private Networking - {{site.data.keyword.databases-for-etcd}} is integrated with [Service Endpoints](/docs/services/databases-for-mongodb?topic=cloud-databases-service-endpoints). You can select whether to use connections over the public network, the {{site.data.keyword.cloud_notm}} internal network, or both.
 
 ## Data Resilience
 
-- Backups are included in the service. {{site.data.keyword.databases-for-mongodb}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) and are also [encrypted](/docs/services/cloud-object-storage?topic=cloud-object-storage-security).
+- [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups) are included in the service. {{site.data.keyword.databases-for-mongodb}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) and are also [encrypted](/docs/services/cloud-object-storage?topic=cloud-object-storage-security).
 - A {{site.data.keyword.databases-for-mongodb}} deployment consists of two data nodes, one a primary node and the other as a secondary node. They are configured as a replication set without sharding, so both contain a copy of your data. An arbiter node is present for tie breaking when electing a primary.
-- If you deploy to an [{{site.data.keyword.cloud_notm}} datacenter](/docs/overview?topic=overview-data_center#data_center), your deployment has two nodes and each node resides on a different host. - If you deploy to a [{{site.data.keyword.cloud_notm}} Global location](https://www.ibm.com/cloud/data-centers/), the nodes are spread over the region's availability zone locations.
+- If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database node resides on a different host in the datacenter. 
+- If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations..
 
 ## General Data Protection Regulation (GDPR) 
 
