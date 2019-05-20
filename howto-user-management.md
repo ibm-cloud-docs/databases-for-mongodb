@@ -25,7 +25,7 @@ When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are
 
 ## The admin User
 
-The admin user is intended for use as an administrative user. It is granted the MongoDB built-in roles[`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite), [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin), and [`userAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#userAdminAnyDatabase).
+The admin user is intended for use as an administrative user. It is granted the MongoDB built-in roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite), [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin), and [`userAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#userAdminAnyDatabase).
 
 All three roles provide privileges on all databases except local and config.
 
@@ -33,13 +33,13 @@ All three roles provide privileges on all databases except local and config.
 
 ## _Service Credential_ Users
 
-Users that you [create through the _Service Credentials_ panel](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#generating-connection-strings-from-service-credentials) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite), and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
+Users that you [create through the _Service Credentials_ panel](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#generating-connection-strings-from-service-credentials) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
 
 If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
 ## Users created through the CLI and the API
 
-Users that are created in the [CLI](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-from-the-command-line) and [API](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-with-the-api) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite), and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
+Users that are created in the [CLI](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-from-the-command-line) and [API](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-with-the-api) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
 
 If you need users to have a different role, you can use the admin user to change their role.
 
