@@ -33,6 +33,8 @@ Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not lim
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 
+When you create a user, it is assigned certain database roles and privileges. For more information, see the [Managing Users and Roles](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-user-management) page.
+
 ### Creating Users and Getting Connection Strings in _Service Credentials_
 
 1. Navigate to the service dashboard for your service.

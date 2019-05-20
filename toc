@@ -20,8 +20,9 @@ Databases For MongoDB
 
 	{: .navgroup id="howto"}
 	/cloud-databases/cloud-databases-provisioning
-	howto-getting-connection-strings.md
 	howto-admin-password.md
+	howto-getting-connection-strings.md
+	howto-user-management.md
 	
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
