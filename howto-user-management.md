@@ -23,6 +23,19 @@ subcollection: databases-for-mongodb
 
 When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can also add users in the _Service Credentials_ panel, the cloud databases CLI plug-in, or the cloud databases API. 
 
+MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [using the mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) and using the `show users` command.
+```
+ibmcloud cdb deployment-connections --start -u admin mongodb-production
+Database Password>>
+MongoDB shell version v4.0.3
+connecting to: mongodb://....
+....
+replset:PRIMARY> show users
+replset:PRIMARY> use admin
+switched to db admin
+replset:PRIMARY> show users
+```
+
 ## The admin User
 
 The admin user is intended for use as an administrative user. It is granted the MongoDB built-in roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite), [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin), and [`userAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#userAdminAnyDatabase).
@@ -50,3 +63,7 @@ Users that are created directly from the API and CLI do not appear in _Service C
 If the built-in users and roles do not suit your environment you can [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role) directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
 
 Users and roles created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/services/databases-for-mongodb?topic=cloud-databases-iam).
+
+## The `ibm` User
+
+If you use the mongo shell to list the users on your deployment, you might have noticed a user that is named `ibm`. The `ibm` user is the internal root account that manages replication, cluster operations, and other functions that ensure the stability of your deployment. Changing or deleting to the `ibm` user is not advised and will disrupt the stability of your deployment.
