@@ -30,7 +30,6 @@ Database Password>>
 MongoDB shell version v4.0.3
 connecting to: mongodb://....
 ....
-replset:PRIMARY> show users
 replset:PRIMARY> use admin
 switched to db admin
 replset:PRIMARY> show users
