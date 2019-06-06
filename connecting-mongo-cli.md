@@ -76,7 +76,5 @@ The option `--start` must come before the parameters, otherwise connection infor
 3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the `--sslCAFile` parameter.
 
-### CLI plug-in support for the self-signed certificate
-
 You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `--sslCAFile` parameter.
 

@@ -39,7 +39,7 @@ Several minutes of database unavailability or connection interruptions are not e
 
 ### Disk IOPS
 
-The number of Input-Output Operations per second (IOPS) is limited by the type of storage volume being used. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance). Hitting IOPS limits can cause your databases to respond slowly or appear unresponsive. Things like unoptimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/), and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment. You can increase the number IOPS available to your deployment by increasing disk space.
+The number of Input-Output Operations per second (IOPS) is limited by the type of storage volume. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance). Hitting IOPS limits can cause your databases to respond slowly or appear unresponsive. Things like unoptimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/), and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment. You can increase the number IOPS available to your deployment by increasing disk space.
 
 ### WiredTiger Memory Cache
 
@@ -55,9 +55,9 @@ For example, if you scale the memory to 2048 MB per member the internal cache si
 
 ### Monitoring your deployment
 
-You can use the [monitoring integration](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring), to estimate typical resource usage, and scale your deployment accordingly.
+You can use the [monitoring integration](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring) to estimate typical resource usage, and scale your deployment accordingly.
 
-If you are planning on running operations that might put a spike in the usual RAM usage, increase the size of your data, or an increase in IOPS, you can manually scale your service's resources up to avoid hitting limits that can affect deployment operations.
+If you are planning on running operations that might put a spike in the usual RAM usage, increase the size of your data, or an increase in IOPS, you can scale your deployment's resources to avoid hitting limits that affect deployment operations.
 
 ## SLA
 
