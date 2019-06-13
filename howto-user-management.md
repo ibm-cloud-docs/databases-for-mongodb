@@ -42,6 +42,14 @@ The admin user is intended for use as an administrative user. It is granted the 
 All three roles provide privileges on all databases except local and config.
 
 `userAdminAnyDatabase` is the role that provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. It also allows you to [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/) to any other user on your deployment. This includes any of the MongoDB built-in roles. For example, if you need to set up monitoring for your deployment, you can use admin to log into the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor) role to any user (including itself).
+```
+db.grantRolesToUser(
+    "admin",
+    [
+      { role: "clusterMonitor", db: "admin" }
+    ]
+)
+```
 
 ## _Service Credential_ Users
 
