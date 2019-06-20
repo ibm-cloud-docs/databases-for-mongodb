@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="databases-for-mongodb" audience="service" href="/docs/services/databases-for-mongodb/index.html" path="services/databases-for-mongodb"}
+{: .toc subcollection="databases-for-mongodb" audience="service" category="databases" href="/docs/services/databases-for-mongodb/index.html" path="services/databases-for-mongodb"}
 Databases For MongoDB
 
 	{: .navgroup id="learn"}
