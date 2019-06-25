@@ -36,7 +36,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ## Using {{site.data.keyword.databases-for-mongodb}}
 
-{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview) of your service as well as configuration settings on the [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview#settings) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups) tab.
+{{site.data.keyword.databases-for-mongodb}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview) of your service as well as configuration settings on the [Settings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview#settings) tab and access to your backups on the [Backups](/docs/services/databases-for-mongodb?topic=cloud-databases-dashboard-backups) tab.
 
 ### Using the command-line interface
 

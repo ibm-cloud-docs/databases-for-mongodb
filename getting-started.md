@@ -187,7 +187,7 @@ To understand more about how the [sample app](https://github.com/IBM-Cloud/cloud
 To start exploring your {{site.data.keyword.databases-for-mongodb}} deployment, see the following topics:
 
 - [Dashboard Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview)
-- [Managing Backups](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups)
+- [Managing Backups](/docs/services/databases-for-mongodb?topic=cloud-databases-dashboard-backups)
 - [Resources and Scaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
 
 
