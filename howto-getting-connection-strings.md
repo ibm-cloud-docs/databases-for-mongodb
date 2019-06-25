@@ -52,22 +52,17 @@ If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and 
 
 `ibmcloud cdb user-create example-deployment <newusername> <newpassword>`
 
-The response contains the task `ID`, `Deployment ID`, `Description`, `Created At`, `Status`, and `Progress Percentage` fields.  The `Status` and `Progress Percentage` fields update when the task is complete.
-
 Once the task has finished, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
-
 ```
-ibmcloud cdb deployment-connections example-deployment -u <username>
+ibmcloud cdb deployment-connections example-deployment -u <newusername> [--endpoint-type <endpoint type>]
 ```
 
 Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named  "example-deployment", use the following command.
-
 ```
-ibmcloud cdb deployment-connections example-deployment -u <username> --all
+ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [--endpoint-type <endpoint type>]
 ```
 
-If you don't specify a user, the `deployment-connections` commands return information for the admin user by default.
-{: .tip}
+If you don't specify a user, the `deployment-connections` commands return information for the admin user by default. If you don't specify an endpoint type, the connection string returns the public endpoint by default. If your deployment has a private endpoint, you have to specify `--endpoint-type private` or the commands return an error.
 
 ### Creating Users and Getting Connection Strings from the API
 
