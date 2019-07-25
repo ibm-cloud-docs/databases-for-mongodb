@@ -3,6 +3,8 @@ copyright:
   years: 2018,2019
 lastupdated: "2019-05-07"
 
+keywords: mongodb, databases, connection strings
+
 subcollection: databases-for-mongodb
 
 ---

@@ -3,6 +3,8 @@ copyright:
   years: 2019
 lastupdated: "2019-05-01"
 
+keyowrds: maongodb, databases, pricing
+
 subcollection: databases-for-mongodb
 
 ---

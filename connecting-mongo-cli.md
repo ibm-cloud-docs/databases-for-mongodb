@@ -3,6 +3,8 @@ copyright:
   years: 2019
 lastupdated: "2019-04-10"
 
+keywords: mongodb, databases, mongo shell
+
 subcollection: databases-for-mongodb
 
 ---

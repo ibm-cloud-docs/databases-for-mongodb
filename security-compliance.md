@@ -3,6 +3,8 @@ Copyright:
   years: 2018
 lastupdated: "2018-10-02"
 
+keywords: mongodb, databases
+
 subcollection: databases-for-mongodb
 
 ---

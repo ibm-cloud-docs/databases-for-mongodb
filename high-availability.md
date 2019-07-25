@@ -4,6 +4,8 @@ Copyright:
   years: 2019
 lastupdated: "2019-02-19"
 
+keywords: mongodb, databases
+
 subcollection: databases-for-mongodb
 
 ---
