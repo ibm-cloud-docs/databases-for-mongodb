@@ -57,7 +57,7 @@ For example, if you scale the memory to 2048 MB per member the internal cache si
 
 ### Monitoring your deployment
 
-You can use the [monitoring integration](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-monitoring) to estimate typical resource usage, and scale your deployment accordingly.
+You can use the [monitoring integration](/docs/services/databases-for-mongodb?topic=clouddatabases-monitoring) to estimate typical resource usage, and scale your deployment accordingly.
 
 If you are planning on running operations that might put a spike in the usual RAM usage, increase the size of your data, or an increase in IOPS, you can scale your deployment's resources to avoid hitting limits that affect deployment operations.
 
