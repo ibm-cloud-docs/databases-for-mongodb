@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 
 
-# Getting Started
+# Getting Started Tutorial
 {: #getting-started}
 
 This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/mongodb) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-mongodb_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
