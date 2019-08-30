@@ -32,7 +32,7 @@ The type of database that is offered by the service, and the database version th
 
 ### ID
 
-The ID is a [CRN (Cloud Resource Name)](https://{DomainName}/docs/overview/crn.html) which uniquely identifies the database deployment. The CRN is used to refer to the database in the API and can be used with the CLI.
+The ID is a [CRN (Cloud Resource Name)](/docs/overview?topic=overview-crn) which uniquely identifies the database deployment. The CRN is used to refer to the database in the API and can be used with the CLI.
 
 ## Recent Tasks
 
@@ -42,13 +42,13 @@ Every time that you make administrative changes to your service (such as scaling
 
 The _Connections_ panel contains connection strings for your deployment. Each tab contains connection information tailored to the type of connection or the protocol that uses it. Basic information includes things like hostname and port number, as well as the TLS self-signed certificate, the replica set name, and arguments that can be passed to the driver or binary that you are using to connect. 
 
-Reference tables for the different connection types are available on the [Getting Credentials and Connection Strings](/docs/services/databases-for-redis?topic=databases-for-redis-connection-strings) page.
+Reference tables for the different connection types are available on the [Getting Credentials and Connection Strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
-Connection strings reflect whether your deployment uses public endpoints or private endpoints. For more information, see the [Service Endpoints Integration](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints) page.
+Connection strings reflect whether your deployment uses public endpoints or private endpoints. For more information, see the [Service Endpoints Integration](/docs/services/databases-for-mongodb?topic=cloud-databases-service-endpoints) page.
 
 ## Security
 
-Encryption at rest is enabled for all {{site.data.keyword.databases-for-mongodb}} deployments. If you brought your own encryption key from [Key Protect](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-key-protect), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
+Encryption at rest is enabled for all {{site.data.keyword.databases-for-mongodb}} deployments. If you brought your own encryption key from [Key Protect](/docs/services/databases-for-mongodb?topic=cloud-databases-key-protect), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
 
 ## Instance Administration API
 

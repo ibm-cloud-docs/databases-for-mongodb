@@ -178,8 +178,6 @@ npm start
 
 The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-mongodb}} database. When you stop and restart the app, any words you added are displayed when you refresh the page.
 
-For more information about the credentials you created for the application to connect to your service, see [Using Service Credentials](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connecting-external#using-service-credentials).
-
 ## Next steps
 
 To understand more about how the [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/mongodb) works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
