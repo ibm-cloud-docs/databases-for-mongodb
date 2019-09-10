@@ -44,6 +44,9 @@ Memory resources are used for database operations and also controls the amount o
 
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
+**Dedicated Cores** - 
+If you provisioned your deployment with dedicated cores, you can increase the CPU allocation to the deployment. This option is not available on deployments that were not provisioned with an initial CPU allocation.
+
 ## Scaling in the UI
 
 Adjust the slider to increase or decrease the resources that are allocated to your service. The UI currently uses a coarser-grained resolution than is available via the CLI or API. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
