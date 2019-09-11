@@ -32,7 +32,8 @@ Databases For MongoDB
 
 	howto-resources-scaling.md
 	/cloud-databases/cloud-databases-dashboard-backups
-	/cloud-databases/cloud-databases-whitelisting		
+	/cloud-databases/cloud-databases-whitelisting
+	howto-upgrading.md	
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
