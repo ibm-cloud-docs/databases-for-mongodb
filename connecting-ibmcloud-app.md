@@ -33,12 +33,12 @@ Before connecting your Kubernetes Service application to a deployment, make sure
 
 ### Binding your deployment
 
-**Public Endpoints** - If you are using the default public service endpoint to connect to your deployment, you can run the `cluster-service-bind` command with your cluster name, the resource group and your deployment name.
+**Public Endpoints** - If you are using the default public service endpoint to connect to your deployment, you can run the `cluster-service-bind` command with your cluster name, the resource group, and your deployment name.
 ```shell
 ibmcloud ks cluster-service-bind <your_cluster_name> <resource_group> <your_database_deployment>
 ```
 OR
-**Private Endpoints** - If you want to use a private endpoint (if one is enabled on your deployment), then first you need to create a service key for your database so Kubernetes can use it when binding to the database. 
+**Private Endpoints** - If you want to use a private endpoint (if one is enabled on your deployment), then first you need to create a service key for your database. Kubernetes uses it when binding to the database. 
 ```
 ibmcloud resource service-key-create <your-private-key> Administrator --instance-name <your_database_deployment> --service-endpoint private  
 ```
@@ -47,7 +47,7 @@ This key has the `Administrator` role on the database deployment, and the privat
 ibmcloud ks cluster-service-bind <your_cluster_name> <resource_group> <your_database_deployment> --key <your-private-key>
 ```
 
-**Verify** - Verify that the Kubernetes secret was created in your cluster namespace. Running the following command, you get the API key for accessing the instance of your deployment that's provisioned in your account.
+**Verify** - Verify that the Kubernetes secret was created in your cluster namespace. Running the following command, you get the API key for accessing the instance of your deployment in your account.
 ```shell
 kubectl get secrets --namespace=default
 ```
@@ -74,9 +74,9 @@ Log in to the {{site.data.keyword.cloud_notm}} CLI and use the command:
 
 `ibmcloud resource service-alias-create alias-name --instance-name instance-name`
 
-The alias name can be the same as the database service instance name. So, for a {{site.data.keyword.databases-for-mongodb}} service named "example-es", use the following command:
+The alias name can be the same as the database service instance name. So, for a {{site.data.keyword.databases-for-mongodb}} service named `example-mongo`, use the following command:
 
-`ibmcloud resource service-alias-create example-es --instance-name example-es`
+`ibmcloud resource service-alias-create example-mongo --instance-name example-mongo`
 
 The alias appears in the list of _Cloud Foundry Apps_ in your _Resource List_. More information on aliases is available in the [Cloud Foundry documentation](/docs/cloud-foundry-public?topic=cloud-foundry-public-connect_app).
 
@@ -93,7 +93,7 @@ To create the file, open a new file and add the text:
     - route: example-application.us-south.cf.appdomain.cloud
     memory:  128M
     services:
-      - example-mongodb
+      - example-mongo
   ```
 
 - Change the route value to something unique. The route that you choose determines the subdomain of your application's URL: `<route>.{region}.cf.appdomain.cloud`. Be sure the `{region}` matches where your application is deployed.

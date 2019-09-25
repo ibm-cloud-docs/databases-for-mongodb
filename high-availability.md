@@ -23,7 +23,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb}} provides replication, fail-over, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and failures. A deployment consists of two data nodes, one a primary node and the other as a secondary node. They are configured as a replication set without sharding, so both contain a copy of your data. An arbiter node is present to handle failover. If the primary node fails or becomes unavailable, the arbiter helps break ties when promoting a secondary to be the new primary. The failed node can then rejoin as secondary and your data remains intact.
 
-Connections to a MongoDB replica are made by supplying the driver or binary the replica set name and a seed list for the hosts in the replica set. This configuration allows drivers and applications the ability to change which host they are connecting to if one of the hosts become unavailable. Your deployment has a [connection string](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) in the [DNS Seedlist Connection format](https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format), so your applications can take advantage of this feature.
+Connections to a MongoDB replica are made by supplying the driver or binary the replica set name and a seed list for the hosts in the replica set. This configuration allows drivers and applications the ability to change which host they are connecting to if one of the hosts becomes unavailable. Your deployment has a [connection string](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) in the [DNS Seedlist Connection format](https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format), so your applications can take advantage of this feature.
  
 ## Application-level High-Availability
 
@@ -45,13 +45,13 @@ The number of Input-Output Operations per second (IOPS) is limited by the type o
 
 ### WiredTiger Memory Cache
 
-{{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine, which uses both the filesystem memory cache and an internal memory cache](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use). MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the filesystem cache, and least performant when it has to grab your data from disk.
+{{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine, which uses both the file system memory cache and an internal memory cache](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use). MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the file system cache, and least performant when it has to grab your data from disk.
 
 The default size of the internal cache is `50% of (total RAM - 1 GB)` or `256 MB`, whichever is larger.
 
 For example, the minimum memory size of a {{site.data.keyword.databases-for-mongodb}} deployment is 1024 MB per data member, so the internal cache is 256 MB (because `1024 MB - 1 GB = 0`).
 
-The remaining allocated memory is used for all other host processes and the filesystem cache. The internal/filesystem cache ratio is not user-configurable on your deployment, but you can scale the total amount of memory to adjust the internal cache to make your database more performant.
+The remaining allocated memory is used for all other host processes and the file system cache. The internal/file system cache ratio is not user-configurable on your deployment, but you can scale the total amount of memory to adjust the internal cache to make your database more performant.
 
 For example, if you scale the memory to 2048 MB per member the internal cache size becomes 1024 MB. `2048 MB - 1 GB = 1024 MB.`
 

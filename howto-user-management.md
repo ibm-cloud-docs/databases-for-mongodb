@@ -25,7 +25,7 @@ subcollection: databases-for-mongodb
 
 When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can also add users in the _Service Credentials_ panel, the cloud databases CLI plug-in, or the cloud databases API. 
 
-MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [using the mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) and using the `show users` command.
+MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [in the mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) by using the `show users` command.
 ```
 ibmcloud cdb deployment-connections --start -u admin mongodb-production
 Database Password>>
@@ -43,7 +43,7 @@ The admin user is intended for use as an administrative user. It is granted the 
 
 All three roles provide privileges on all databases except local and config.
 
-`userAdminAnyDatabase` is the role that provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. It also allows you to [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/) to any other user on your deployment. This includes any of the MongoDB built-in roles. For example, if you need to set up monitoring for your deployment, you can use admin to log into the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor) role to any user (including itself).
+`userAdminAnyDatabase` is the role that provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. It also provides you the ability to [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/) to any other user on your deployment. This includes any of the MongoDB built-in roles. For example, if you need to set up monitoring for your deployment, you can use admin to log into the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor) role to any user (including itself).
 ```
 db.grantRolesToUser(
     "admin",
@@ -59,7 +59,7 @@ Users that you [create through the _Service Credentials_ panel](/docs/services/d
 
 If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
-## Users created through the CLI and the API
+## Users that are created through the CLI and the API
 
 Users that are created in the [CLI](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-from-the-command-line) and [API](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-with-the-api) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
 
@@ -69,9 +69,9 @@ Users that are created directly from the API and CLI do not appear in _Service C
 
 ## MongoDB created users and roles
 
-If the built-in users and roles do not suit your environment you can [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role) directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
+If the built-in users and roles do not suit your environment, you can [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role) directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
 
-Users and roles created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/services/databases-for-mongodb?topic=cloud-databases-iam).
+Users and roles that are created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/services/databases-for-mongodb?topic=cloud-databases-iam).
 
 ## The `ibm` User
 
