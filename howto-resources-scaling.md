@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-09-07"
 
 keywords: mongodb, databases, scaling
 
@@ -45,7 +45,10 @@ Memory resources are used for database operations and also controls the amount o
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
 **Dedicated Cores** - 
-If you provisioned your deployment with dedicated cores, you can increase the CPU allocation to the deployment. This option is not available on deployments that were not provisioned with an initial CPU allocation.
+You can enable or increase the CPU allocation to the deployment. With dedicated cores, your resource group is given a single-tenant host with a guaranteed minimum reserve of cpu shares. Your deployment is then allocated the number of CPUs you specify. The default of 0 dedicated cores uses compute resources on shared hosts.
+
+A few scaling operations can be more long running than others. Enabling dedicated cores moves your deployment to its own host and can take longer than just adding more cores. Similarly, drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
+{: .tip}
 
 ## Scaling in the UI
 
@@ -65,10 +68,17 @@ Group   member
 Count   2
 |
 +   Memory
-|   Allocation              2048mb
-|   Allocation per member   1024mb
+|   Allocation              4096mb
+|   Allocation per member   2048mb
 |   Minimum                 2048mb
 |   Step Size               256mb
+|   Adjustable              true
+|
++   CPU
+|   Allocation              0
+|   Allocation per member   0
+|   Minimum                 6
+|   Step Size               2
 |   Adjustable              true
 |
 +   Disk
@@ -79,7 +89,7 @@ Count   2
 |   Adjustable              true
 ```
 
-The deployment has two members, with 2048 MB of RAM and 20480 MB of disk allocated in total. The "per member" allocation is 1024 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation that can be set. The step size is the smallest amount by which the total allocation can be adjusted.
+The deployment has two members, with 4096 MB of RAM and 20480 MB of disk allocated in total. The "per member" allocation is 2048 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation that can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
 The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:  
 `ibmcloud cdb deployment-groups-set example-deployment member --memory 4096`
