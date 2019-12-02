@@ -1,7 +1,9 @@
 ---
 copyright:
   years: 2019
-lastupdated: "2019-02-22"
+lastupdated: "2019-11-20"
+
+keywords: mongodb, databases, mongodb compass
 
 subcollection: databases-for-mongodb
 
@@ -18,176 +20,72 @@ subcollection: databases-for-mongodb
 # Getting Started Tutorial
 {: #getting-started}
 
-This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/mongodb) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-mongodb_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
-{: shortdesc}
-
-If you have already created your deployment and just want to connect to your mongodb databases, you can skip to [getting your connection strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) and [connecting with the mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
-{: .tip}
+This tutorial is a short introduction to using an {{site.data.keyword.databases-for-mongodb_full}} deployment. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The Community Edition is the version bundled with MongoDB Community Server, and provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Before you begin
 
-Make sure that you have an [{{site.data.keyword.cloud_notm}} account][ibm_cloud_signup_url]{:new_window}.
+- You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 
-You also need to install [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/downloads).
+- And a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
 
-## Step 1. Create a {{site.data.keyword.databases-for-mongodb}} service instance
-{: #create-service}
+- [Set the Admin Password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
 
-You can create a {{site.data.keyword.databases-for-mongodb}} service from the [{{site.data.keyword.databases-for-mongodb}} page](https://cloud.ibm.com/catalog/services/databases-for-mongodb/) in the {{site.data.keyword.cloud_notm}} catalog.
+- [MongoDB Compass Community Edition](https://www.mongodb.com/download-center/compass) from MongoDB.
 
-Choose a service name, region, organization and space to provision the service in, and for the **Select a database version** field, choose _Latest Preferred Version_. In this example, the service name is "example-mongodb".
+## Set-Up
 
-Click **Create** to provision your service. Provisioning can take a while to complete. You are taken back to your {{site.data.keyword.cloud_notm}} _Dashboard_ while the service is provisioning. 
+When you first open MongoDB Compass, you get a **Connect to Host** page. This page is where you enter the connection information for your deployment. 
 
-You can not connect an application to the service until provisioning is finished.
-{: .tip}
+![Default Connect to Host page](images/getting-started-connect-to-host.png)
 
-## Step 2. Clone the Hello World sample app from GitHub
+On your deployment's _Manage_ page, there is a panel with all the relevant connection information.
 
-Clone the Hello World app to your local environment from your terminal by using the following command.
+![Connections panel](images/getting-started-connections-panel.png)
 
-```
-git clone -b node git@github.com:IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples.git
-```
+To fill out the MongoDB Compass page,
 
-## Step 3. Install the app dependencies
+- For _Hostname_ you can use either of the two hostnames for your deployment.
 
-Use npm to install dependencies.
+- In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
 
-1. From your terminal, change the directory to where the sample app is located.
-  
-  ```
-  cd clouddatabases-helloworld-cloudfoundry-examples
-  cd mongodb
-  ```
+- Enter the _Replica Set_ name of your deployment (it's probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
 
-2. Install the dependencies listed in the `package.json` file.
-  
-  ```
-  npm install
-  ```
+- Configure the _SSL_ settings.
+    1. Copy the certificate information from the _Connections_ panel
+    2. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
+    3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
+    4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
 
-## Step 4. Download and install the {{site.data.keyword.cloud_notm}} CLI tool
+- If you want to, you can give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
 
-The {{site.data.keyword.cloud_notm}} CLI tool is what you use to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line. For more information, see [Download and install {{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli).
+![Completed Connect to Host page](images/getting-started-connect-to-host-complete.png)
 
-## Step 5. Connect to {{site.data.keyword.cloud_notm}}
+Click the **Connect** button to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
-1. Connect to {{site.data.keyword.cloud_notm}} in the command-line tool and follow the prompts to log in.
+## Use
 
-  ```
-  ibmcloud login
-  ```
+Once you have connected to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version, {{site.data.keyword.databases-for-mongodb}} uses the Community version of the MondogDB database.
 
-  If you have a federated user ID, use the `ibmcloud login --sso` command to log in with your single sign-on ID. See [Logging in with a federated ID](/docs/iam?topic=iam-federated_id) to learn more.
-  {: .tip}
+Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds sharded cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
 
-2. Make sure that you are targeting the correct {{site.data.keyword.cloud_notm}} org and space.
+Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents.
 
-  ```
-  ibmcloud target --cf
-  ```
+Specific information can be founds in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/).
 
-  Choose from the options provided, by using the same values that you used when you created the service.
+## Next Steps
 
-## Step 6. Create a Cloud Foundry alias for the database service.
-{: #create-alias}
+If you are just using MongoDB for the first time, it is a good idea to take a tour through the [official MongoDB documentation](https://docs.mongodb.com/). 
 
-Make the database service discoverable by Cloud Foundry applications by giving it a Cloud Foundry alias. 
+You can connect to and manage your MongoDB through the [Mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
 
-`ibmcloud resource service-alias-create alias-name --instance-name instance-name`
+Looking for more tools on managing your databases and data? You can connect to your deployment using the [IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli)) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
-The alias name can be the same as the database service instance name. For example, use this command for database that was created in step 1.
+If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other pages on 
+- [Connecting an external application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-external-app)
+- [Connecting an IBM Cloud application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
 
-`ibmcloud resource service-alias-create example-mongodb --instance-name example-mongodb`
-
-## Step 7. Update the app's manifest file
-{: #update-manifest}
-
-{{site.data.keyword.cloud_notm}} uses a manifest file - `manifest.yml` to associate an application with a service. Follow these steps to create your manifest file.
-
-1. In an editor, open a new file and add the following text:
-
-  ```
-  ---
-  applications:
-  - name:    example-mongo-helloworld-nodejs
-    routes:
-    - route: example-mongo-helloworld-nodejs.us-south.cf.appdomain.cloud
-    memory:  128M
-    services:
-      - example-mongodb
-  ```
-
-2. Change the `route` value to something unique. The route that you choose determines the subdomain of your application's URL:  `<route>.{region}.cf.appdomain.cloud`.
-3. Change the `name` value. The name that you choose is displayed in your {{site.data.keyword.cloud_notm}} dashboard.
-4. Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-alias).
-
-## Step 8. Push the app to {{site.data.keyword.cloud_notm}}.
-
-This step fails if the service is not finished provisioning from Step 1. You can check its progress on your {{site.data.keyword.cloud_notm}} _Dashboard_.
-{: .tip}
-
-When you push the app, it is automatically bound to the service specified in the manifest file.
-
-```
-ibmcloud cf push
-```
-
-## Step 9. Check that the app is connected to your {{site.data.keyword.databases-for-mongodb}} service
-
-1. Go to your {{site.data.keyword.databases-for-mongodb}} service dashboard
-2. Select _Connections_ from the dashboard menu. Your application is listed under _Connected Applications_.
-
-If your application is not listed, repeat Steps 7 and 8, making sure that you entered the correct details in [manifest.yml](#update-manifest).
-
-## Step 10. Use the app
-
-Now, when you visit `<route>.{region}.cf.appdomain.cloud/` you can see the contents of your {{site.data.keyword.databases-for-mongodb}} collection. As you add words and their definitions, they are added to the database and displayed. If you stop and restart the app, you see any words and definitions that were already added are now listed.
-
-## Running the app locally
-
-Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally to test the connection to your {{site.data.keyword.databases-for-mongodb}} service instance. To connect to the service, you need to create a set of service credentials.
-
-2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
-3. Click **New Credential**.
-4. Choose a name for your credentials and click **Add**.
-5. Your new credentials are now listed. Click **View credentials** in the corresponding row of the table to view the credentials, and click the **Copy** icon to copy your credentials.
-6. In your editor of choice, create a new file with the following, inserting your credentials as shown.
-
-  ```
-  {
-    "services": {
-      "databases-for-mongodb": [
-        {
-          "credentials": INSERT YOUR CREDENTIALS HERE
-        }
-      ]
-    }
-  }
-  ```
-7. Save the file as `vcap-local.json` in the directory where the sample app is located.
-
-To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file that contains your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory, you can see that `vcap-local.json` is listed in both. It is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
-{: .tip}
-
-Now start the local server.
-```
-npm start
-```
-
-The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-mongodb}} database. When you stop and restart the app, any words you added are displayed when you refresh the page.
-
-## Next steps
-
-To understand more about how the [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/mongodb) works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
-
-To start exploring your {{site.data.keyword.databases-for-mongodb}} deployment, see the following topics:
-
-- [Dashboard Overview](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-dashboard-overview)
-- [Managing Backups](/docs/services/databases-for-mongodb?topic=cloud-databases-dashboard-backups)
-- [Resources and Scaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
+Also, to ensure the stability of your applications and your database, check out the pages on 
+- [High-Availability](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
+- [Performance](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-performance)
 
 
-
-[ibm_cloud_signup_url]: https://ibm.biz/databases-for-mongodb-signup
