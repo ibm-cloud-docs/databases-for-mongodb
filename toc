@@ -13,9 +13,6 @@ Databases For MongoDB
 	learn-performance.md
 	learn-security-compliance.md
 	learn-pricing.md
-	
-	/cloud-databases/cloud-databases-tutorial-k8s-app
-	/cloud-databases/cloud-databases-tutorial-cf-app
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
@@ -33,7 +30,9 @@ Databases For MongoDB
 	howto-resources-scaling.md
 	/cloud-databases/cloud-databases-dashboard-backups
 	/cloud-databases/cloud-databases-whitelisting
-	howto-upgrading.md	
+	howto-upgrading.md
+	/cloud-databases/cloud-databases-tutorial-k8s-app
+	/cloud-databases/cloud-databases-tutorial-cf-app
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
