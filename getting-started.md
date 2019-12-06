@@ -61,7 +61,7 @@ Once you have connected to your deployment, you see a basic overview. Included i
 
 ![MongoDB Compass page](images/getting-started-compass-page.png)
 
-Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds sharded cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
+Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds data for cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/).
 
