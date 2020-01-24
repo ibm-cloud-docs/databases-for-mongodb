@@ -27,7 +27,11 @@ Databases For MongoDB
 		connecting-external.md
 		connecting-mongo-cli.md
 
-	howto-resources-scaling.md
+	{: .topicgroup}
+	Resources and Scaling
+		howto-resources-scaling.md
+		howto-autoscaling.md
+
 	/cloud-databases/cloud-databases-dashboard-backups
 	/cloud-databases/cloud-databases-whitelisting
 	howto-upgrading.md

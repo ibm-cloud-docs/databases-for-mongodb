@@ -42,7 +42,7 @@ Every time that you make administrative changes to your service (such as scaling
 
 The _Connections_ panel contains connection strings for your deployment. Each tab contains connection information tailored to the type of connection or the protocol that uses it. Basic information includes things like hostname and port number, as well as the TLS self-signed certificate, the replica set name, and arguments that can be passed to the driver or binary that you are using to connect. 
 
-Reference tables for the different connection types are available on the [Getting Credentials and Connection Strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
+Reference tables for the different connection types are available on the [Getting Connection Strings](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
 Connection strings reflect whether your deployment uses public endpoints or private endpoints. For more information, see the [Service Endpoints Integration](/docs/services/databases-for-mongodb?topic=cloud-databases-service-endpoints) page.
 
@@ -69,16 +69,21 @@ The ID needs to be URL encoded to be used in an API call because the CRN include
 
 For more information about the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
 
-## Settings
+## Resources
 
-The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can 
-- [scale](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
-- [change the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password)
-- [implement or modify an IP whitelist](/docs/services/databases-for-mongodb?topic=cloud-databases-whitelisting)
+The resources tab contains information and configuration options on the size and resource usage of your deployment. You can 
+- [Scale disk, memory, and CPU](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling)
+- [Configure Autoscaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-autoscaling)
 
 ## Backups
 
 The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click on a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/services/databases-for-mongodb?topic=cloud-databases-dashboard-backups) page.
+
+## Settings
+
+The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can 
+- [change the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password)
+- [implement or modify an IP whitelist](/docs/services/databases-for-mongodb?topic=cloud-databases-whitelisting)
 
 ## Observability
 
