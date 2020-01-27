@@ -2,9 +2,9 @@
 
 Copyright:
   years: 2019, 2020
-lastupdated: "2020-01-02"
+lastupdated: "2020-01-27"
 
-keywords: mongodb, databases, scaling, memory, disk IOPS
+keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
 subcollection: databases-for-mongodb
 
@@ -20,9 +20,9 @@ subcollection: databases-for-mongodb
 # Scaling Disk, Memory, and CPU
 {: #resources-scaling}
 
-A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
+You can manually adjust the amount of resources available to your {{site.data.keyword.databases-for-mongodb_full}} deployment to suit your workload and the size of your data.
 
-![The Scale Resources Panel in _Settings_](images/settings-scaling.png)
+## Resource Breakdown
 
 {{site.data.keyword.databases-for-mongodb_full}} runs with two data members in a cluster, and resources are allocated to both members equally. For example, the minimum disk size of a MongoDB deployment is 20480 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 2048 MB, which equates to an initial allocation of 1024 MB per member.
 
@@ -47,14 +47,29 @@ The amount of memory you allocate to your deployment is split between both membe
 **Dedicated Cores** - 
 You can enable or increase the CPU allocation to the deployment. With dedicated cores, your resource group is given a single-tenant host with a reserve of CPU shares. Your deployment is then guaranteed the minimum number of CPUs you specify. The default of 0 dedicated cores uses compute resources on shared hosts.
 
-A few scaling operations can be more long running than others. Enabling dedicated cores moves your deployment to its own host and can take longer than just adding more cores. Similarly, drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
-{: .tip}
+## Scaling Considerations
+
+- Scaling your deployment up in smaller increments usually won't cause your database nodes to restart. If you scale in larger amounts your deployment might need to be moved to a host with more capacity, which does trigger a restart of your database nodes. 
+
+- Scaling down RAM or CPU does not trigger database node restarts.
+
+- Disk can not be scaled down.
+
+- A few scaling operations can be more long running than others. Enabling dedicated cores moves your deployment to its own host and can take longer than just adding more cores. Similarly, drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
+
+- Scaling operations are logged in [Activity Tracker](/docs/services/databases-for-mongodb?topic=cloud-databases-activity-tracker).
+
+- If you find consistent trends in resource usage or would like to set up scaling when certain resource thresholds are reached, checkout enabling [autoscaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) on your deployment.
 
 ## Scaling in the UI
 
+A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
+
+![The Scale Resources Panel in _Settings_](images/settings-scaling.png)
+
 Adjust the slider to increase or decrease the resources that are allocated to your service. The UI currently uses a coarser-grained resolution than is available via the CLI or API. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
-## Resources and Scaling in the CLI 
+## Scaling in the CLI 
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
@@ -94,7 +109,7 @@ The deployment has two members, with 4096 MB of RAM and 20480 MB of disk allocat
 The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:  
 `ibmcloud cdb deployment-groups-set example-deployment member --memory 4096`
 
-## Resources and Scaling in the API
+## Scaling in the API
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
