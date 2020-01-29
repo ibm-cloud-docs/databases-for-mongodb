@@ -41,13 +41,13 @@ The resource numbers refer to each database node in a deployment. For example, t
 
 ## Scaling Considerations
 
-- Scaling your deployment up in smaller increments usually won't cause your database nodes to restart. If you scale in larger amounts your deployment might need to be moved to a host with more capacity, which does trigger a restart of your database nodes.
+- Scaling your deployment up might cause your databases to restart. If you scale RAM or CPU and your deployment needs to be moved to a host with more capacity, then the databases are restarted as part of the move.
 
 - Disk can not be scaled down.
 
 - A few scaling operations can be more long running than others. Drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
 
-- Scaling operations are logged in [Activity Tracker](/docs/services/databases-for-mongodb?topic=cloud-databases-activity-tracker).
+- Autoscaling operations are logged in [Activity Tracker](/docs/services/databases-for-mongodb?topic=cloud-databases-activity-tracker).
 
 - Limits
   - can't set anything to scale in an interval less than 60 seconds.

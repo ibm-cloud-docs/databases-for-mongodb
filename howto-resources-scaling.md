@@ -31,7 +31,8 @@ Billing is based on the _total_ amount of resources that are allocated to the se
 
 When you [provision](/docs/services/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning) a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
-**Disk Usage** -
+### Disk Usage
+
 Your disk allocation has to be enough to store all of your data. Your data is replicated to both data members so the total amount of disk you use is at least twice the size of your data set. 
 
 Disk allocation also affects the performance of the disk, with larger disks having higher performance. Baseline Input-Output Operations per second (IOPS) performance for disk is 10 IOPS for each GB. Scale disk to increase the IOPS your deployment can handle.
@@ -39,17 +40,19 @@ Disk allocation also affects the performance of the disk, with larger disks havi
 You cannot scale down storage. If your data set size has decreased, you can recover space by backing up and restoring to a new deployment.
 {: .tip} 
 
-**RAM** -
+### RAM
+
 Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability#wiredtiger-memory-cache). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
-**Dedicated Cores** - 
+### Dedicated Cores
+
 You can enable or increase the CPU allocation to the deployment. With dedicated cores, your resource group is given a single-tenant host with a reserve of CPU shares. Your deployment is then guaranteed the minimum number of CPUs you specify. The default of 0 dedicated cores uses compute resources on shared hosts.
 
 ## Scaling Considerations
 
-- Scaling your deployment up in smaller increments usually won't cause your database nodes to restart. If you scale in larger amounts your deployment might need to be moved to a host with more capacity, which does trigger a restart of your database nodes. 
+- Scaling your deployment up might cause your databases to restart. If you scale RAM or CPU and your deployment needs to be moved to a host with more capacity, then the databases are restarted as part of the move. 
 
 - Scaling down RAM or CPU does not trigger database node restarts.
 
