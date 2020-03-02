@@ -16,6 +16,7 @@ subcollection: databases-for-mongodb
 {:generic: .ph data-hd-programlang='generic'}
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
+{:javascript: .ph data-hd-programlang='javascript'}
 {:pre: .pre}
 
 # Connecting an external application
@@ -102,7 +103,7 @@ public class MongodbConnect {
 {: java}
 
 
-This example uses your connection string and the Python driver[`pymongo`](http://api.mongodb.com/python/current/index.html) to connect to your database. 
+This example uses your connection string and the Python driver [`pymongo`](http://api.mongodb.com/python/current/index.html) to connect to your database. 
 {: python}
 ```python
 import pymongo
@@ -127,6 +128,34 @@ except ConnectionFailure as err:
 {: python}
 
 
+This example uses your connection string and the Node.js driver [`mongodb`](http://mongodb.github.io/node-mongodb-native/3.5/) to connect to your database. 
+{: javascript}
+```javascript
+const MongoClient = require("mongodb").MongoClient;
+
+let connectionString = "mongodb://<username>:<password>@<host>:<port>,<host>:<port>/<database>?authSource=admin&replicaSet=replset";
+
+let options = {
+    tls: true,
+    tlsCAFile: `/path/to/cert`,
+    useUnifiedTopology: true 
+};
+
+// connects to a MongoDB database
+MongoClient.connect(connectionString, options, function (err, db) {
+    if (err) {
+        console.log(err);
+    } else {
+       // lists the databases that exist in the deployment
+        db.db('example').admin().listDatabases(function(err, dbs) {
+            console.log(dbs.databases);
+            db.close();
+        });
+    }
+});
+```
+{: javascript}
+
 
 ## Driver TLS and self-signed certificate support
 
@@ -145,15 +174,4 @@ You can display the decoded certificate for your deployment with the CLI plug-in
 
 ## Other Language Drivers
 
-MongoDB has a vast array of language drivers. The table covers a few of the most common.
-
-Language|Driver|Documentation
-----------|-----------
-Node.js|`mongodb`|[Link](http://mongodb.github.io/node-mongodb-native/3.1/)
-Go|`mongo`|[Link](https://godoc.org/github.com/mongodb/mongo-go-driver/mongo)
-Python|`pymongo`|[Link](http://api.mongodb.com/python/current/index.html)
-
-{: caption="Table 2. Common MongoDB drivers" caption-side="top"}
-
-If you're looking for languages that are not in the table, try the [MongoDB.org Driver List](http://www.mongodb.org/display/DOCS/Drivers).
-{: tip}
+MongoDB has a vast array of language drivers. The table covers a few of the most common. If you're looking for more languages, try the [MongoDB.org Driver List](http://www.mongodb.org/display/DOCS/Drivers).
