@@ -3,7 +3,7 @@ copyright:
   years: 2020
 lastupdated: "2020-03-02"
 
-keywords: mongodb, sysdig, monitoring, metrics
+keywords: mongodb, sysdig, monitoring, metrics, iops, disk usage, memory usage, page faults
 
 subcollection: databases-for-mongodb
 
@@ -15,9 +15,15 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{:important: .important}
 
 # Sysdig Monitoring Integration
-{: #monitoring}
+{: #sysdig-monitoring}
+
+Sysdig monitoring is currently only available for deployments in the `eu-gb` region. 
+{: important}
+
+To see your {{site.data.keyword.databases-for-mongodb_full}} dashboards in Sysdig, you have to [Enable Platform Metrics](/docs/Monitoring-with-Sysdig?topic=Sysdig-platform_metrics_enabling) in the same region as your deployment. If you have deployments in more than one region, you have to provision Sysdig and enable platform metics in each region.
 
 ## Available Metrics
 {: metrics-by-plan}
@@ -32,11 +38,12 @@ subcollection: databases-for-mongodb
 | [IOPS read & write total count for an instance](#ibm_databases_for_mongodb_disk_iops_read_write_total) | 
 | [Max allowed memory for an instance](#ibm_databases_for_mongodb_memory_limit_bytes) | 
 | [Page faults](#ibm_databases_for_mongodb_page_faults) | 
+| [Status](#ibm_databases_for_mongodb_status) | 
 | [Total disk space for an instance](#ibm_databases_for_mongodb_disk_total_bytes) | 
 | [Used CPU for an instance](#ibm_databases_for_mongodb_cpu_used_percent) | 
 | [Used disk space for an instance](#ibm_databases_for_mongodb_disk_used_bytes) | 
 | [Used memory for an instance](#ibm_databases_for_mongodb_memory_used_bytes) | 
-{: caption="Table 1: Available Metrics Reference Table" caption-side="top"}
+{: caption="Table 1: Available Metrics" caption-side="top"}
 
 ### Connections
 {: #ibm_databases_for_mongodb_connections}
@@ -142,6 +149,19 @@ The number of times per second that MongoDB had to request data from disk. Scale
 | `Segment By` | `Service instance` |
 {: caption="Table 9: Page faults metric metadata" caption-side="top"}
 
+### Status
+{: #ibm_databases_for_mongodb_status}
+
+An integer between 0 and 10 that represents the replica state of the current member
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_status`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `count` |
+| `Segment By` | `Service instance` |
+{: caption="Table 10: Status metric metadata" caption-side="top"}
+
 ### Total disk space for an instance
 {: #ibm_databases_for_mongodb_disk_total_bytes}
 
@@ -153,7 +173,7 @@ Represents the total amount of disk available to your deployment
 | `Metric Type` | `gauge` |
 | `Value Type`  | `byte` |
 | `Segment By` | `Service instance` |
-{: caption="Table 10: Total disk space for an instance metric metadata" caption-side="top"}
+{: caption="Table 11: Total disk space for an instance metric metadata" caption-side="top"}
 
 ### Used CPU for an instance
 {: #ibm_databases_for_mongodb_cpu_used_percent}
@@ -166,7 +186,7 @@ How much CPU is used as a percentage of total CPU available. Only for deployment
 | `Metric Type` | `gauge` |
 | `Value Type`  | `percent` |
 | `Segment By` | `Service instance` |
-{: caption="Table 11: Used CPU for an instance metric metadata" caption-side="top"}
+{: caption="Table 12: Used CPU for an instance metric metadata" caption-side="top"}
 
 ### Used disk space for an instance
 {: #ibm_databases_for_mongodb_disk_used_bytes}
@@ -179,7 +199,7 @@ How much disk your deployment is using
 | `Metric Type` | `gauge` |
 | `Value Type`  | `byte` |
 | `Segment By` | `Service instance` |
-{: caption="Table 12: Used disk space for an instance metric metadata" caption-side="top"}
+{: caption="Table 13: Used disk space for an instance metric metadata" caption-side="top"}
 
 ### Used memory for an instance
 {: #ibm_databases_for_mongodb_memory_used_bytes}
@@ -192,7 +212,7 @@ How much memory your deployment is using
 | `Metric Type` | `gauge` |
 | `Value Type`  | `byte` |
 | `Segment By` | `Service instance` |
-{: caption="Table 13: Used memory for an instance metric metadata" caption-side="top"}
+{: caption="Table 14: Used memory for an instance metric metadata" caption-side="top"}
 
 ## Attributes for Segmentation
 {: attributes}
