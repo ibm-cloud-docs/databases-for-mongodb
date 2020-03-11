@@ -58,6 +58,18 @@ The resource numbers refer to each database node in a deployment. For example, t
 
 - If you just need to add resources to your deployment occasionally or rarely, you can [manually scale](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling) your deployment.
 
+## Configuring Autoscaling in the CLI
+
+You can get the autoscaling parameters for your deployment through the CLI using the [`cdb deployment-autoscaling`](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#-ibmcloud-cdb-deployment-autoscaling-) command.
+```
+ibmcloud cdb deployment-autoscaling <deployment name or CRN> member
+```
+
+To enable and set autoscaling parameters through the CLI, use a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#-ibmcloud-cdb-deployment-autoscaling-set-) command.
+```
+ibmcloud cdb deployment-autoscaling-set <deployment name or CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
+```
+
 ## Configuring Autoscaling in the UI
 
 The Autoscaling panel is on the _Resources_ tab of your deployment's _Manage_ page. To enable scaling, fill in your desired parameters. Then, check the boxes to enable the parameters you are using. Be sure to click **Save Changes** for your configuration to be saved and your changes to take affect.
