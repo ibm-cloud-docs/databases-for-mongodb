@@ -88,9 +88,9 @@ The _Settings_ tab contains the UI for many of the tunable settings for your dep
 ## Observability
 
 The _Observability_ tab provides access to the IBM Cloud monitoring, logging, and event tracking integrations available for your deployment. 
-- [Activity Tracker](/docs/services/databases-for-elasticsearch?topic=cloud-databases-activity-tracker)
-- [Logging](/docs/services/databases-for-elasticsearch?topic=cloud-databases-logging)
-- [Monitoring](/docs/services/databases-for-elasticsearch?topic=cloud-databases-monitoring)
+- [Activity Tracker](/docs/services/databases-for-mongodb?topic=cloud-databases-activity-tracker)
+- [Logging](/docs/services/databases-for-mongodb?topic=cloud-databases-logging)
+- [Monitoring](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-sysdig-monitoring)
 
 ## Docs
 
