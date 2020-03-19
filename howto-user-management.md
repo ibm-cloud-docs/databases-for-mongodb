@@ -55,17 +55,17 @@ db.grantRolesToUser(
 
 ## _Service Credential_ Users
 
-Users that you [create through the _Service Credentials_ panel](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#generating-connection-strings-from-service-credentials) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
+Users that you [create through the _Service Credentials_ panel](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
 
 If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
 ## Users that are created through the CLI and the API
 
-Users that are created in the [CLI](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-from-the-command-line) and [API](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#getting-credentials-and-connection-strings-with-the-api) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
+Users that are created in the CLI and API are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite) and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin).
 
 If you need users to have a different role, you can use the admin user to change their role.
 
-Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-connection-strings#generating-service-credentials-for-existing-users) if you choose.
+Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can add them if you choose.
 
 ## MongoDB created users and roles
 

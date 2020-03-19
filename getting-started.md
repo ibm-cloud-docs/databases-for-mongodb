@@ -20,7 +20,7 @@ subcollection: databases-for-mongodb
 # Getting Started Tutorial
 {: #getting-started}
 
-This tutorial is a short introduction to using an {{site.data.keyword.databases-for-mongodb_full}} deployment. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The Community Edition is the version bundled with MongoDB Community Server, and provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
+This tutorial is a short introduction to using an {{site.data.keyword.databases-for-mongodb_full}} deployment. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The Community Edition is the version that is bundled with MongoDB Community Server, and provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Before you begin
 
@@ -41,11 +41,11 @@ On your deployment's _Manage_ page, there is a panel with all the relevant conne
 
 To fill out the MongoDB Compass page,
 
-- For _Hostname_ you can use either of the two hostnames for your deployment.
+- For _Hostname_, you can use either of the two hostnames for your deployment.
 - In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
-- Enter the _Replica Set_ name of your deployment (it's probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
+- Enter the _Replica Set_ name of your deployment (it is probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
 - Configure the _SSL_ settings.
-    1. Copy the certificate information from the _Connections_ panel
+    1. Copy the certificate information from the _Connections_ panel.
     2. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
     3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
     4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
@@ -71,9 +71,9 @@ If you are just using MongoDB for the first time, it is a good idea to take a to
 
 You can connect to and manage your MongoDB through the [Mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
 
-Looking for more tools on managing your databases and data? You can connect to your deployment using the [IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
+Looking for more tools on managing your databases and data? You can connect to your deployment with [IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
-If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other pages on 
+If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages.
 - [Connecting an external application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-external-app)
 - [Connecting an IBM Cloud application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
 

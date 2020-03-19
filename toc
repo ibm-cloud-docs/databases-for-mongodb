@@ -1,12 +1,12 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="databases-for-mongodb" audience="service" category="databases" href="/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started" path="databases-for-mongodb"}
+{: .toc subcollection="databases-for-mongodb" audience="service" category="databases" href="/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started" console-page="/catalog/services/databases-for-mongodb" product-page="https://www.ibm.com/cloud/databases-for-mongodb" path="databases-for-mongodb"}
 Databases For MongoDB
 
 	{: .navgroup id="learn"}
 	getting-started.md
-	[What is Databases for MongoDB](https://www.ibm.com/cloud/databases-for-mongodb)
+	[What is MongoDB?](https://www.ibm.com/cloud/learn/mongodb)
 
 	learn-dashboard-overview.md
 	learn-high-availability.md

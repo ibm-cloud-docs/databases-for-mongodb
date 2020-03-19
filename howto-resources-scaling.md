@@ -42,7 +42,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 
 ### RAM
 
-Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability#wiredtiger-memory-cache). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
+Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
