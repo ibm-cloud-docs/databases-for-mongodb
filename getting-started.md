@@ -25,8 +25,8 @@ This tutorial is a short introduction to using an {{site.data.keyword.databases-
 ## Before you begin
 
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-- And a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
-- [Set the Admin Password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
+- And a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
+- [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
 - [MongoDB Compass Community Edition](https://www.mongodb.com/download-center/compass) from MongoDB.
 
 ## Connecting with MongoDB Compass
@@ -69,16 +69,16 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 
 If you are just using MongoDB for the first time, it is a good idea to take a tour through the [official MongoDB documentation](https://docs.mongodb.com/). 
 
-You can connect to and manage your MongoDB through the [Mongo shell](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
+You can connect to and manage your MongoDB through the [Mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
 
 Looking for more tools on managing your databases and data? You can connect to your deployment with [IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
 If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages.
-- [Connecting an external application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-external-app)
-- [Connecting an IBM Cloud application](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
+- [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app)
+- [Connecting an IBM Cloud application](/docs/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
 
 Also, to ensure the stability of your applications and your database, check out the pages on 
-- [High-Availability](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
-- [Performance](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-performance)
+- [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
+- [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance)
 
 

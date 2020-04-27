@@ -19,11 +19,11 @@ subcollection: databases-for-mongodb
 # Performance
 {: #performance}
 
-{{site.data.keyword.databases-for-mongodb_full}} deployments can be both manually [scaled to your usage](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling), or configured to [autoscale](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) under certain resource conditions. There are a few factors to consider if you are tuning the performance of your deployment.
+{{site.data.keyword.databases-for-mongodb_full}} deployments can be both manually [scaled to your usage](/docs/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling), or configured to [autoscale](/docs/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) under certain resource conditions. There are a few factors to consider if you are tuning the performance of your deployment.
 
 ## Monitoring your deployment
 
-{{site.data.keyword.databases-for-mongodb}} deployments offer an integration with the [Sysdig Monitoring service](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-sysdig-monitoring) for basic monitoring of resource usage on your deployment. Many of the available metrics, like disk usage and IOPS, are presented to help you configure [autoscaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) on your deployment. Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion.
+{{site.data.keyword.databases-for-mongodb}} deployments offer an integration with the [Sysdig Monitoring service](/docs/databases-for-mongodb?topic=databases-for-mongodb-sysdig-monitoring) for basic monitoring of resource usage on your deployment. Many of the available metrics, like disk usage and IOPS, are presented to help you configure [autoscaling](/docs/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) on your deployment. Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion.
 
 ## Disk Usage
 
@@ -67,5 +67,5 @@ mongostat -n 20 1 --username admin --password $PASSWORD --ssl --sslCAFile $CERTF
 
 You can also run any of the [documented commands](https://docs.mongodb.com/manual/administration/monitoring/#commands) that report on the status of your MongoDB database.
 
-Many of the MongoDB utilities and commands need the [Cluster Monitor](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor) role for in order to execute them. It is not part of the `admin` default role set. You can [grant the Cluster Monitor role](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-user-management#the-admin-user) to the `admin` user on your deployment.
+Many of the MongoDB utilities and commands need the [Cluster Monitor](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor) role for in order to execute them. It is not part of the `admin` default role set. You can [grant the Cluster Monitor role](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management#the-admin-user) to the `admin` user on your deployment.
 {: .tip}

@@ -29,7 +29,7 @@ You can manually adjust the amount of resources available to your {{site.data.ke
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
-When you [provision](/docs/services/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning) a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
+When you [provision](/docs/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning) a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
 ### Disk Usage
 
@@ -42,7 +42,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 
 ### RAM
 
-Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
+Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
 The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
@@ -60,9 +60,9 @@ You can enable or increase the CPU allocation to the deployment. With dedicated 
 
 - A few scaling operations can be more long running than others. Enabling dedicated cores moves your deployment to its own host and can take longer than just adding more cores. Similarly, drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
 
-- Scaling operations are logged in [Activity Tracker](/docs/services/databases-for-mongodb?topic=cloud-databases-activity-tracker).
+- Scaling operations are logged in [Activity Tracker](/docs/databases-for-mongodb?topic=cloud-databases-activity-tracker).
 
-- If you find consistent trends in resource usage or would like to set up scaling when certain resource thresholds are reached, checkout enabling [autoscaling](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) on your deployment.
+- If you find consistent trends in resource usage or would like to set up scaling when certain resource thresholds are reached, checkout enabling [autoscaling](/docs/databases-for-mongodb?topic=databases-for-mongodb-autoscaling) on your deployment.
 
 ## Scaling in the UI
 

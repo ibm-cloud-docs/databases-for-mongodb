@@ -24,7 +24,7 @@ In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you nee
 
 ![Connections panel on the Dashboard Overview](images/connections_panel.png)
 
-A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its credentials to connect to your deployment.
+A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its credentials to connect to your deployment.
 {: .tip}
 
 **CLI**  
@@ -52,7 +52,7 @@ Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not lim
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 
-When you create a user, it is assigned certain database roles and privileges. For more information, see the [Managing Users and Roles](/docs/services/databases-for-mongodb?topic=databases-for-mongodb-user-management) page.
+When you create a user, it is assigned certain database roles and privileges. For more information, see the [Managing Users and Roles](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management) page.
 
 ### Creating Users From _Service Credentials_
 
