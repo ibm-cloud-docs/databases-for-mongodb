@@ -71,7 +71,7 @@ If you are just using MongoDB for the first time, it is a good idea to take a to
 
 You can connect to and manage your MongoDB through the [Mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
 
-Looking for more tools on managing your databases and data? You can connect to your deployment with [IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
+Looking for more tools on managing your databases and data? You can connect to your deployment with [IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
 If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages.
 - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app)
