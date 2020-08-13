@@ -3,7 +3,7 @@ copyright:
   years: 2019, 2020
 lastupdated: "2020-08-04"
 
-keywords: mongodb, databases, mongodb compass
+keywords: mongodb, databases, mongodb compass, mongodbee
 
 subcollection: databases-for-mongodb
 
@@ -20,7 +20,7 @@ subcollection: databases-for-mongodb
 # Getting Started Tutorial
 {: #getting-started}
 
-This tutorial is a short introduction to using an {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployment. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The Community Edition is the version that is bundled with MongoDB Community Server, and provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
+This tutorial is a short introduction to using {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployments. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The Community Edition is the version that is bundled with MongoDB Community Server, and provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Before you begin
 

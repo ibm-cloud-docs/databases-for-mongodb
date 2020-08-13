@@ -3,7 +3,7 @@ copyright:
   years: 2017,2020
 lastupdated: "2020-08-12"
 
-keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate
+keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee
 
 subcollection: databases-for-mongodb
 
