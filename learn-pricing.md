@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-08-07"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -19,7 +19,13 @@ subcollection: databases-for-mongodb
 # Pricing
 {: #pricing}
 
-An {{site.data.keyword.databases-for-mongodb_full}} Standard plan deploys as one highly available MongoDB cluster with two data members. Your data is replicated on both members. The Standard plan is priced based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. Databases for MongoDB deployments have a minimum of 10 GB of disk and 1 GB of RAM per data member.
+An {{site.data.keyword.databases-for-mongodb_full}} Standard plan deploys as one highly available MongoDB cluster with two data members. Your data is replicated on both members. 
+
+The Standard plan is priced based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 10 GB of disk and 1 GB of RAM per data member.
+
+The Enterprise plan is also priced based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 20 GB of disk, 6 cores, and 14 GB of RAM per data member.
+
+![Pricing chart for Standard and Enterprise plans](images/pricing-plans.png)
 
 ## Cost Breakdown
 
@@ -27,15 +33,26 @@ An {{site.data.keyword.databases-for-mongodb_full}} Standard plan deploys as one
 **RAM per data member** - gigabytes of RAM that are allocated to a {{site.data.keyword.databases-for-mongodb}} data member.  
 **Backup storage** - amount of storage used for backups by a {{site.data.keyword.databases-for-mongodb}} deployment.
 
+### {{site.data.keyword.databases-for-mongodb}} Standard Plan: 
 Resources | Breakdown | Price
 -------|-------|-------
 10 GB-Month disk | 2 members x 10 GB x $0.58 | $11.60
 1 GB-Month RAM | 2 members x 1 GB  x $8.50 | $17
-{: caption="Table 1. Pricing example for two data members" caption-side="top"}
+{: caption="Table 1. Pricing example for two Standard data members" caption-side="top"}
 
 Total per month = $28.60/Month  
 Total per hour = $.04/Hour  
 
+### {site.data.keyword.databases-for-mongodb}} Enterprise Plan: 
+Resources | Breakdown | Price
+-------|-------|-------
+20 GB-Month disk | 3 members x 20 GB x $0.58 | $34.80
+14 GB-Month RAM | 3 members x 14 GB  x $8.50 | $357.00
+6 Cores-Month | 3 members x 6 cores x $60 | $1,080.00
+{: caption="Table 2. Pricing example for three Enterprise data members" caption-side="top"}
+
+Total per month = $1,571.80/Month  
+Total per hour = $2.18/Hour  
 All prices here are in US dollars. To see pricing in your local currency, you can to use the pricing calculator.
 {: .tip}
 
@@ -59,10 +76,18 @@ Dedicated cores are an optional feature. The default `Shared CPU` setting provis
 
 {{site.data.keyword.databases-for-mongodb}} deployments have minimum and maximum allocation for disk and RAM as shown. Scaling deployments through the API/CLI provides more granularity and also allows a user to scale a database instance up to 4 TB of disk per member.
 
+### {site.data.keyword.databases-for-mongodb}} Standard Plan:
 Resource | Minimum | Maximum | Scaling Granularity (API/CLI)
 ----------|-----|-----|-------
 Disk | 5 GB per member | 4 TB per member | 1024 MB per member
 RAM | 1 GB per member | 112 GB per member | 128 MB per member
 CPU (if enabled) | 3 CPUs per member | 28 CPUs per member| 1 CPU per member
-{: caption="Table 2. Per Member Scaling Limits" caption-side="top"}
+{: caption="Table 2. Per Member Standard Scaling Limits" caption-side="top"}
 
+### {site.data.keyword.databases-for-mongodb}} Enterprise Plan:
+Resource | Minimum | Maximum | Scaling Granularity (API/CLI)
+----------|-----|-----|-------
+Disk | 20 GB per member | 4 TB per member | 1024 MB per member
+RAM | 14 GB per member | 112 GB per member | 128 MB per member
+CPU | 6 CPUs per member | 28 CPUs per member| 1 CPU per member
+{: caption="Table 3. Per Member Enterprise Scaling Limits" caption-side="top"}
