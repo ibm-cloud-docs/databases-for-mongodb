@@ -16,7 +16,7 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# MongodDB OpsManager
+# MongoDB OpsManager
 {: #ops-manager}
 The MongodDB OpsManager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployment.
 
