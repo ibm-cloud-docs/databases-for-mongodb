@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2020
-lastupdated: "2020-08-13"
+lastupdated: "2020-08-24"
 
-keywords: databases, opsman, mongodbee
+keywords: databases, opsman, mongodbee, Enterprise Edition
 
 subcollection: databases-for-mongodb
 
@@ -16,10 +16,11 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# MongodDB Ops Manager
+# MongodDB OpsManager
 {: #ops-manager}
+The MongodDB OpsManager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployment.
 
-## Before you begin with the MongodDB Ops Manager
+## Before you begin with the MongodDB OpsManager
 
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - And a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
@@ -30,13 +31,13 @@ subcollection: databases-for-mongodb
 ## Initial login
 {: #initial-login}
 
-The {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition (EE) service is provisioned with access to the MongodDB Ops Manager user interface.
+The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition service is provisioned with access to the MongodDB Ops Manager user interface.
 
-After you create an OpsManager username & password via the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}}EE instance within the OpsManager UI:
+After you create an OpsManager username & password via the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the OpsManager UI:
 
-1. Log in with the Ops Manager username & password you created for your deployment:
+1. Log in with the OpsManager username & password you created for your deployment:
    
-    ![The MongoDBEE Ops Manager login pane](images/opsman-login.png)
+    ![The MongoDB Enterprise Edition OpsManager login pane](images/opsman-login.png)
 
 2. In the resulting view, select the 'Invitations' tab:
   
@@ -50,16 +51,16 @@ After you create an OpsManager username & password via the [Cloud Databases API]
    - Click the 'OpsManager' logo in the menu bar, 
    - Or select the 'All Clusters' link:
     
-    ![The MongoDBEE Ops Manager instance view pane](images/opsman-instance-view.png)
+    ![The MongoDB Enterprise Edition Ops Manager instance view pane](images/opsman-instance-view.png)
 
 On subsequent logins, you arrive at the last view directly so the prior procedure is only necessary on the first login.
 {: .tip}
 
 ## Connecting to the MongoDB Ops Manager by using HTTPS
 
-{{site.data.keyword.databases-for-mongodb}}EE offers an HTTPS accessible endpoint for the Ops Manager user interface. 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition offers an HTTPS accessible endpoint for the Ops Manager user interface. 
 
-{{site.data.keyword.databases-for-mongodb}}EE also offers both private and public cloud service endpoints. If you choose to enable *only* private endpoints, then you must take extra steps to access the management interface over HTTPS. We recommend: 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you choose to enable *only* private endpoints, then you must take extra steps to access the management interface over HTTPS. We recommend: 
 * Setting up a VSE (VM) in IBM Cloud and SSH into it with `ssh -D 2345` 
 * Then, configure your browser to use socks proxy on `localhost:2345`. 
   
@@ -68,7 +69,7 @@ On subsequent logins, you arrive at the last view directly so the prior procedur
 
 ## Ops Manager API key creation and usage
 
-{{site.data.keyword.databases-for-mongodb}}EE provides access to the Ops Manager API through generation of API keys. To do this: 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition provides access to the Ops Manager API through generation of API keys. To do this: 
 * Navigate to your `Account` page 
 * From the `Public API Access` tab, you are able to generate up to ten API keys by using the `Generate` button. 
 

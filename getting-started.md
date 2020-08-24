@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2020
-lastupdated: "2020-08-04"
+lastupdated: "2020-08-24"
 
 keywords: mongodb, databases, mongodb compass, mongodbee
 
@@ -20,14 +20,14 @@ subcollection: databases-for-mongodb
 # Getting Started Tutorial
 {: #getting-started}
 
-This tutorial is a short introduction to using {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployments. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The Community Edition is the version that is bundled with MongoDB Community Server, and provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
+This tutorial is a short introduction to using {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The full-featured [Compass Edition](https://docs.mongodb.com/compass/master/#available-compass-short-editions) provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Before you begin
 
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - And a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
-- [MongoDB Compass Community Edition](https://www.mongodb.com/download-center/compass) from MongoDB.
+- Download and install [MongoDB Compass](https://docs.mongodb.com/compass/master/install/) from MongoDB.
 
 ## Connecting with MongoDB Compass
 
@@ -57,7 +57,7 @@ Click the **Connect** button to connect MongoDB Compass to your {{site.data.keyw
 
 ## Using MongoDB Compass
 
-Once you have connected to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version, {{site.data.keyword.databases-for-mongodb}} uses the Community version of the MongoDB database.
+Once you have connected to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version; {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses the Enterprise version of the MongoDB database.
 
 ![MongoDB Compass page](images/getting-started-compass-page.png)
 
