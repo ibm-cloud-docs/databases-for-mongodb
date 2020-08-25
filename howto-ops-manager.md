@@ -56,15 +56,20 @@ After you create an OpsManager username & password via the [Cloud Databases API]
 On subsequent logins, you arrive at the last view directly so the prior procedure is only necessary on the first login.
 {: .tip}
 
+If a user is removed from the Ops Manager, there is no method to manually resend an invitation. To add a user back to the Ops Manager interface, you will need to delete the user with command `opsmanager_delete_user` first then create the same user again. The invitation will be again available in the `Invitations` pane as noted in the prior `Initial login` steps. 
+
 ## Connecting to the MongoDB Ops Manager by using HTTPS
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Edition offers an HTTPS accessible endpoint for the Ops Manager user interface. 
 
-{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you choose to enable *only* private endpoints, then you must take extra steps to access the management interface over HTTPS. We recommend: 
-* Setting up a VSE (VM) in IBM Cloud and SSH into it with `ssh -D 2345` 
-* Then, configure your browser to use socks proxy on `localhost:2345`. 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you choose to enable *only* private endpoints, then you must take the following extra steps to access the management interface over HTTPS: 
   
-
+* Ensure your Cloud IaaS / SL account is [enabled for private endpoints](https://cloud.ibm.com/docs/account?topic=account-service-endpoints-overview).
+* Create a virtual machine (VSI) that runs Linux
+* Configure a user account with SSH access
+* From your workstation, run `ssh -D 2345 user@vsi-host` This will start an SSH session and open a SOCKS proxy on port 2345 that forwards all traffic through the VSI
+* Configure your browser to use a SOCKS5 proxy on `localhost:2345`
+* From your browser, navigate to the {{site.data.keyword.databases-for-mongodb}} Enterprise management endpoint URL. For example: `https://bfdb-4263-8ad2-c9a4beaf4591.8f7bfc8f3faa4218afd56e0.databases.appdomain.cloud:323232`
 
 
 ## Ops Manager API key creation and usage
