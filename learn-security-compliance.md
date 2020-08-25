@@ -1,9 +1,9 @@
 ---
 Copyright:
   years: 2018, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-08-25"
 
-keywords: mongodb, databases, soc, hipaa, gdpr, terms
+keywords: mongodb, databases, soc, fips, encryption, hipaa, gdpr, terms
 
 subcollection: databases-for-mongodb
 
@@ -58,6 +58,10 @@ If you have an account with IBM Cloud, your personal data is held by {{site.data
 ## HIPAA
 
 {{site.data.keyword.databases-for-mongodb}} meets the required {{site.data.keyword.IBM_notm}} controls that are commensurate with the Health Insurance Portability and Accountability Act of 1996 (HIPAA) Security and Privacy Rule requirements. These requirements include the appropriate administrative, physical, and technical safeguards required of Business Associates in 45 CFR Part 160 and Subparts A and C of Part 164. HIPAA must be requested at the time of provisioning and requires a representative to sign a Business Associate Addendum (BAA) agreement with {{site.data.keyword.IBM_notm}}.
+
+## FIPS Encryption
+
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition is deployed with a FIPS 140-2 certified library for OpenSSL. For more information on MongoDB Enterprise and FIPS encryption, review the [documentation here](https://docs.mongodb.com/manual/tutorial/configure-fips/).
 
 ## Terms
 
