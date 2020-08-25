@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019
-lastupdated: "2019-09-10"
+  years: 2019, 2020
+lastupdated: "2020-08-25"
 
 keyowrds: mongodb, databases, upgrading
 
@@ -71,4 +71,7 @@ curl -X POST \
 
 ## Migration Notes for New MongoDB 4.x Users
 
-As with any switch between major versions, there are major and sometimes breaking changes. The MongoDB documentation has a full overview of the changes available in [Compatibility Changes in MongoDB 4.0](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/). Before upgrading, ensure that your application will continue to work with MongoDB 4.x. Since the upgraded version runs in a new deployment, you can test against it while continuing to run your application on your current MongoDB 3.x deployment.
+As with any switch between major versions, there are major and sometimes breaking changes. The MongoDB documentation has a full overview of the changes available in [Compatibility Changes in MongoDB 4.0](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/). Since the upgraded version runs in a new deployment, you can test against it while continuing to run your application on your current MongoDB 3.x deployment.
+
+Before upgrading to a new major version, ensure that your application will continue to work with MongoDB 4.x. by double checking feature compatibility.
+{: .tip}
