@@ -25,7 +25,7 @@ The MongodDB OpsManager is only available with an {{site.data.keyword.databases-
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - And a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
-- [Create an Ops Manager username and password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management.md) for your deployment by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
+- [Create an Ops Manager username and password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management.md) for your deployment by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api). Note that the OpsManager user has limited permissions.
 
 
 ## Initial login
@@ -100,3 +100,8 @@ curl -k --digest --user 'opsmanager-123:d043b2ae-bbf2-4f55-8b09-e1ce0906126f'  '
 ```
 {: .pre}
 
+## After a restore
+
+You will see the source formation replica set in the OpsManager interfce after performing a restore. Note that the menu as seen in the following screen shot does not contain the 'remove' item since the OpsManager user created during the initial login steps doesn't have the corresponding permissions. 
+
+![The MongoDB Enterprise Edition Ops Manager replica set deployment pane](images/replset_restored.png)
