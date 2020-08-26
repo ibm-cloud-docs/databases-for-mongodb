@@ -96,3 +96,4 @@ Disk | 20 GB per member | 4 TB per member | 1024 MB per member
 RAM | 14 GB per member | 112 GB per member | 128 MB per member
 CPU | 6 CPUs per member | 28 CPUs per member| 1 CPU per member
 {: caption="Table 3. Per Member Enterprise Scaling Limits" caption-side="top"}
+
