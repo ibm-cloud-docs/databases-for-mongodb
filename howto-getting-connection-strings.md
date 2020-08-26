@@ -106,7 +106,7 @@ Field Name|Index|Description
 `Path`||Path for a URI - for MongoDB, it is the database name. The default is `ibmclouddb`.
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
-`Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
+`Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver. Note that MongoDB 3.6 Standard and Enterprise editions and 4.2 Standard edition use SCRAM SHA 1, while MongoDB 4.2 Enterprise edition only uses SHA 256.  
 `Hosts`|`0...`|A hostname and port to connect to
 `Composed`|`0...`|A URI combining Scheme, Authentication, Host, Path, and Replica Set name
 `Certificate`|`Name`|The allocated name for the self-signed certificate for database deployment
