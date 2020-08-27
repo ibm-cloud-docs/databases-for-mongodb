@@ -25,7 +25,7 @@ Audit logging capabilities for {{site.data.keyword.databases-for-mongodb_full}} 
 
 ## Event Types
 
-{{site.data.keyword.databases-for-mongodb}} Enterprise Edition provides audit logging capabilities based on the following events: 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition provides audit logging capabilities based on the following event types: 
 
 * `authenticate`
 * `createCollection`
@@ -50,9 +50,12 @@ Audit logging capabilities for {{site.data.keyword.databases-for-mongodb_full}} 
 * `grantPrivilegesToRole`
 * `revokePrivilegesFromRole`
 
+The event types for {{site.data.keyword.databases-for-mongodb}} Enterprise Edition are fixed and not configurable. 
+{: .note}
+
 ## Audit Logs
 
 Audit events appear in {{site.data.keyword.la_full}}.
 
-For more information on {{site.data.keyword.databases-for-mongodb}} Enterprise Edition audit logging, review the [Log Analysis Integration documentation](/docs/databases-for-mongodb?topic=cloud-databases-logging) along with the [{{site.data.keyword.la}}](/docs/Log-Analysis-with-LogDNA) getting started tutorial.
+For more information on {{site.data.keyword.databases-for-mongodb}} Enterprise Edition audit logging, review the [Log Analysis Integration documentation](/docs/databases-for-mongodb?topic=cloud-databases-logging) along with the [{{site.data.keyword.la_full}}](/docs/Log-Analysis-with-LogDNA) getting started tutorial.
 
