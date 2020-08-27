@@ -58,11 +58,12 @@ On subsequent logins you arrive at the last view, so the prior procedure is only
 
 If a user is removed from the Ops Manager, there is no method to manually resend an invitation. To add a user back to the Ops Manager interface, you need to delete the user with command `opsmanager_delete_user` first then create the same user again. The invitation is again available in the `Invitations` pane as noted in the prior `Initial login` steps. 
 
-## Connecting to the MongoDB Ops Manager by using HTTPS
+## Connecting through private endpoints
+{: #private-endpoints}
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Edition offers an HTTPS accessible endpoint for the Ops Manager user interface. 
 
-{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you choose to enable *only* private endpoints, then you must take the following extra steps to access the management interface over HTTPS: 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you want to access the Management UI from a browser that is not on the private network, you must take these additional steps: 
   
 * Ensure your IBM Cloud account is [enabled for private endpoints](https://cloud.ibm.com/docs/account?topic=account-service-endpoints-overview).
 * Create a virtual machine (VSI) that runs Linux
