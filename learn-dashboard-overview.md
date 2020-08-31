@@ -77,7 +77,7 @@ The resources tab contains information and configuration options on the size and
 
 ## Backups
 
-The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click on a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/databases-for-mongodb?topic=cloud-databases-dashboard-backups) page.
+The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click on a backup to grab its ID, or to restore it into a new deployment. More information is on the [Managing Backups](/docs/databases-for-mongodb?topic=cloud-databases-dashboard-backups) page.
 
 ## Settings
 
