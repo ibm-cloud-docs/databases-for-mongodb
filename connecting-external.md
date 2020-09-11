@@ -165,8 +165,11 @@ All connections to {{site.data.keyword.databases-for-mongodb}} are TLS 1.2 enabl
 
 1. Copy the certificate information from the _Connections_ panel or the Base64 field of the connection information. 
 2. If needed, decode the Base64 string into text. 
-3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
+3. Save the certificate to a file. (You can use the Name that is provided or your own file name). *
 4. Provide the path to the certificate to the driver or client.
+
+ *For MacOS, ensure sure you have the certificate imported into your trust store, and mark the certificate as `trust always`.
+{: .tip}
 
 ### CLI plug-in support for the self-signed certificate
 
