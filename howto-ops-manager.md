@@ -25,7 +25,7 @@ The MongodDB OpsManager is only available with an {{site.data.keyword.databases-
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - And a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
-- [Create an Ops Manager username and password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management.md) for your deployment by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api). Note: the OpsManager user has limited permissions.
+- [Create an Ops Manager username and password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management) for your deployment by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api). Note: the OpsManager user has limited permissions.
 
 
 ## Initial login
@@ -63,7 +63,7 @@ If a user is removed from the Ops Manager, there is no method to manually resend
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Edition offers an HTTPS accessible endpoint for the Ops Manager user interface. 
 
-{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you want to access the Management UI from a browser that is not on the private network, you must take these additional steps as listed in the [Connecting Through Private Endpoints](/docs/messages-for-rabbitmq?topic=cloud-databases-service-endpoints##private-endpoint-connections) documentation for {{site.data.keyword.cloud}} Databases.
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you want to access the Management UI from a browser that is not on the private network, you must take these additional steps as listed in the [Connecting Through Private Endpoints](/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints##private-endpoint-connections) documentation for {{site.data.keyword.cloud}} Databases.
 
 After you have configured your environment for private endpoint access, you can navigate to the {{site.data.keyword.databases-for-mongodb}} Enterprise management endpoint URL from your browser. For example, `https://bfdb-4263-8ad2-c9a4beaf4591.8f7bfc8f3faa4218afd56e0.databases.appdomain.cloud:323232`
 
@@ -78,7 +78,7 @@ After you have configured your environment for private endpoint access, you can 
 These are the 'deprecated' personal API-keys.
 {: .note}
 
-Using the Ops Manager connection string (found in the [Getting connection strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-connection-strings.md) pane of your deployment), you can use the credentials that you created for Ops Manager user access to API commands. 
+Using the Ops Manager connection string (found in the [Getting connection strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-connection-strings) pane of your deployment), you can use the credentials that you created for Ops Manager user access to API commands. 
 
 ### Example connection details: 
  
