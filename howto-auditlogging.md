@@ -18,7 +18,7 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 
 
-# Audit logging with MondgoDB Enterprise Edition
+# Audit logging with MongoDB Enterprise Edition
 {: #auditlogging}
 
 Audit logging capabilities for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition are provided with {{site.data.keyword.la_full}}.
