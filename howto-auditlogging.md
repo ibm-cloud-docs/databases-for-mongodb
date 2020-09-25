@@ -18,10 +18,10 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 
 
-# MongoDBEE Audit logging
+# MongoDB Enterprise Audit logging
 {: #auditlogging}
 
-Audit logging capabilities for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition (MongoDBEE) are provided with {{site.data.keyword.la_full}}.
+Audit logging capabilities for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition are provided with {{site.data.keyword.la_full}}.
 
 ## Event Types
 
