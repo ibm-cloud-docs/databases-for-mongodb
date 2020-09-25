@@ -23,6 +23,7 @@ Databases For MongoDB
 	howto-ops-manager.md
 	howto-user-management.md
 	/cloud-databases/cloud-databases-deprovisioning
+	/cloud-databases/cloud-databases-ha-dr
 	
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
