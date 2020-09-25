@@ -16,7 +16,7 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# MongoDB Enterprise Edition Ops Manager
+# MongoDBEE Ops Manager
 {: #ops-manager}
 The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition (MongoDBEE) deployment.
 
