@@ -16,11 +16,11 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# MongoDB OpsManager
+# MongoDB Enterprise Edition Ops Manager
 {: #ops-manager}
-The MongodDB OpsManager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployment.
+The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition (MongoDBEE) deployment.
 
-## Before you begin with the MongodDB OpsManager
+## Before you begin with the MongoDBEE Ops Manager
 
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - And a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
@@ -35,19 +35,25 @@ The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition service is pr
 
 After you create an OpsManager username and password by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the OpsManager UI:
 
-1. Log in with the OpsManager username and password you created for your deployment:
+1. Discover the Ops Manager link with the command:
+    ```
+    ibmcloud cdb deployment-connections <CRN> -t ops_manager
+    ```
+    {: .pre}
+
+2. Log in with the OpsManager username and password you created for your deployment:
    
     ![The MongoDB Enterprise Edition OpsManager login pane](images/opsman-login.png)
 
-2. In the resulting view, select the 'Invitations' tab:
+3. In the resulting view, select the 'Invitations' tab:
   
     ![The Ops Manager invitations pane](images/opsman-invitations.png)
 
-3. Click 'Accept' for the invitation as role 'Project Data Access Admin'. This step adds your Ops Manager user ID to the Organization and project shown:
+4. Click 'Accept' for the invitation as role 'Project Data Access Admin'. This step adds your Ops Manager user ID to the Organization and project shown:
   
     ![The Ops Manager accepted invitations success pane](images/opsman-invite-success.png)
 
-4. Lastly, to navigate to the instance view: 
+5. Lastly, to navigate to the instance view: 
    - Click the 'OpsManager' logo in the menu bar, 
    - Or select the 'All Clusters' link:
     
