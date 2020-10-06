@@ -19,12 +19,16 @@ Databases For MongoDB
 	/cloud-databases/cloud-databases-provisioning
 	howto-admin-password.md
 	howto-getting-connection-strings.md
-	howto-auditlogging.md
-	howto-ops-manager.md
+
 	howto-user-management.md
 	/cloud-databases/cloud-databases-deprovisioning
 	/cloud-databases/cloud-databases-ha-dr
 	
+	{: .topicgroup}
+	MongoDB Enterprise Edition
+	howto-auditlogging.md
+	howto-ops-manager.md
+
 	{: .topicgroup}
 	Connecting to Databases for MongoDB
 		connecting-ibmcloud-app.md
