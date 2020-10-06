@@ -20,7 +20,7 @@ subcollection: databases-for-mongodb
 {: #ops-manager}
 The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployment.
 
-## Before you begin with the MongoDBEE Ops Manager
+## Before you begin with the MongoDB Enterprise Ops Manager
 
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - And a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
