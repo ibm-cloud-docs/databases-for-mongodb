@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019
-lastupdated: "2019-05-17"
+  years: 2019, 2020
+lastupdated: "2020-10-23"
 
 keywords: mongodb, databases
 
@@ -76,3 +76,7 @@ Users and roles that are created directly in MongoDB do not appear in _Service C
 ## The `ibm` User
 
 If you use the mongo shell to list the users on your deployment, you might have noticed a user that is named `ibm`. The `ibm` user is the internal root account that manages replication, cluster operations, and other functions that ensure the stability of your deployment. Changing or deleting to the `ibm` user is not advised and will disrupt the stability of your deployment.
+
+## The `ops_manager` users for MongoDB Enterprise Edition
+
+The Ops Manager is only available in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments. The `ops_manager` user type has limited permissions. For details on creating an Ops Manager user, please see the [Ops Manager documentation](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager). 
