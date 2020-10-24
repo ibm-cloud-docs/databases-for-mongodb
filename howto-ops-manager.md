@@ -32,7 +32,7 @@ The Ops Manager is only available with an {{site.data.keyword.databases-for-mong
 {: #create-ops-man}
 Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api). To create a new Ops Manager user, run the following command: 
 
-`ibmcloud cdb user-create <crn> <username> <password> -t opsmanager`
+`ibmcloud cdb user-create <crn> <username> <password> -t ops_manager`
 
 Note, the password must be at least 10 characters and contain at least one special character.
 
