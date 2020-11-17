@@ -46,7 +46,7 @@ To fill out the MongoDB Compass page,
 - Enter the _Replica Set_ name of your deployment (it is probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
 - Configure the _SSL_ settings.
     1. Copy the certificate information from the _Connections_ panel.
-    2. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
+    2. Save the certificate to a file. (You can use the name that is provided in the download, or your own file name.)
     3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
     4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
 - If you want to, you can give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
