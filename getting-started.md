@@ -37,7 +37,7 @@ When you first open MongoDB Compass, you get a **Connect to Host** page. This pa
 
 On your deployment's _Manage_ page, there is a panel with all the relevant connection information.
 
-![Connections panel](images/getting-started-connections-panel.png)
+![Endpoints panel](images/getting-started-endpoints-panel.png)
 
 To fill out the MongoDB Compass page,
 
@@ -45,7 +45,7 @@ To fill out the MongoDB Compass page,
 - In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
 - Enter the _Replica Set_ name of your deployment (it is probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
 - Configure the _SSL_ settings.
-    1. Copy the certificate information from the _Connections_ panel.
+    1. Copy the certificate information from the _Endpoints_ panel.
     2. Save the certificate to a file. (You can use the name that is provided in the download, or your own file name.)
     3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
     4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.

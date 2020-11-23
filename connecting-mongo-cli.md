@@ -28,7 +28,9 @@ The `mongo` shell is available as part of the MongoDB distribution, which can be
 
 ## Connecting
 
-Connection strings are displayed in the _Connections_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+
+![CLI Endpoints panel](images/cli-endpoints-pane.png)
 
 The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section the connection strings. The table contains a breakdown for reference.
 
@@ -73,7 +75,7 @@ The option `--start` must come before the parameters, otherwise connection infor
 
 ## Using the self-signed certificate
 
-1. Copy the certificate information from the _Connections_ panel or the Base64 field of the connection information. 
+1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information. 
 2. If needed, decode the Base64 string into text. 
 3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the `--sslCAFile` parameter.

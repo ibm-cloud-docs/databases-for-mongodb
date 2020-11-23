@@ -20,9 +20,9 @@ subcollection: databases-for-mongodb
 # Getting Connection Strings
 {: #connection-strings}
 
-In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some users and connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Connections_ panel. These strings can be used with any set of credentials that you generate.
+In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some users and connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ panel. These strings can be used with any set of credentials that you generate.
 
-![Connections panel on the Dashboard Overview](images/connections_panel.png)
+![Endpoints panel on the Dashboard Overview](images/getting-started-endpoints-panel.png)
 
 A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its credentials to connect to your deployment.
 {: .tip}
