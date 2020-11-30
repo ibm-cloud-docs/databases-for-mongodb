@@ -24,7 +24,7 @@ You can manually adjust the amount of resources available to your {{site.data.ke
 
 ## Resource Breakdown
 
-{{site.data.keyword.databases-for-mongodb_full}} runs with two data members in a cluster, and resources are allocated to both members equally. For example, the minimum disk size of a MongoDB deployment is 20480 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 2048 MB, which equates to an initial allocation of 1024 MB per member.
+{{site.data.keyword.databases-for-mongodb_full}} runs with three data members in a cluster, and resources are allocated to all members equally. For example, the minimum disk size of a MongoDB deployment is 30720 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 3072 MB, which equates to an initial allocation of 1024 MB per member.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
@@ -44,7 +44,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 
 Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
-The amount of memory you allocate to your deployment is split between both members. Adding memory to the total allocation adds memory to both members equally.
+The amount of memory you allocate to your deployment is split between all members. Adding memory to the total allocation adds memory to all members equally.
 
 ### Dedicated Cores
 
@@ -83,12 +83,12 @@ This command produces the output:
 
 ```
 Group   member
-Count   2
+Count   3
 |
 +   Memory
-|   Allocation              4096mb
+|   Allocation              6144mb
 |   Allocation per member   2048mb
-|   Minimum                 2048mb
+|   Minimum                 6144mb
 |   Step Size               256mb
 |   Adjustable              true
 |
@@ -100,17 +100,17 @@ Count   2
 |   Adjustable              true
 |
 +   Disk
-|   Allocation              20480mb
+|   Allocation              30720mb
 |   Allocation per member   10240mb
-|   Minimum                 20480mb
+|   Minimum                 30720mb
 |   Step Size               2048mb
 |   Adjustable              true
 ```
 
-The deployment has two members, with 4096 MB of RAM and 20480 MB of disk allocated in total. The "per member" allocation is 2048 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation that can be set. The step size is the smallest amount by which the total allocation can be adjusted.
+The deployment has three members, with 6144 MB of RAM and 30720 MB of disk allocated in total. The "per member" allocation is 2048 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation that can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
-The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:  
-`ibmcloud cdb deployment-groups-set example-deployment member --memory 4096`
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 12288 MB), you use the command:  
+`ibmcloud cdb deployment-groups-set example-deployment member --memory 12288`
 
 ## Scaling in the API
 
@@ -121,13 +121,13 @@ To view the current and scalable resources on a deployment,
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
 ```
 
-To scale the memory of a deployment to 2048 MB of RAM for each memory member (for a total memory of 4096 MB).
+To scale the memory of a deployment to 4096 MB of RAM for each memory member (for a total memory of 12288 MB).
 ```
 curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
 -d '{"memory": {
-        "allocation_mb": 4096
+        "allocation_mb": 12288
       }
     }'
 ```
