@@ -41,6 +41,8 @@ If you have deployments that are in a Single-zone Region (SZR) - `osl01`, `che01
 
 | Metric Name |
 |-----------|
+| [Average time spent acquiring locks in microseconds](#ibm_databases_for_mongodb_locks_time_acquiring_microseconds_total_average) | 
+| [Average time spent acquiring locks in microseconds](#ibm_databases_for_mongodb_locks_time_acquiring_microseconds_W_average) | 
 | [Connections](#ibm_databases_for_mongodb_connections) | 
 | [IO utilization as a percent - 5 minute average](#ibm_databases_for_mongodb_disk_io_utilization_percent_average_5m) |
 | [IO utilization as a percent - 15 minute average](#ibm_databases_for_mongodb_disk_io_utilization_percent_average_15m) | 
@@ -48,7 +50,15 @@ If you have deployments that are in a Single-zone Region (SZR) - `osl01`, `che01
 | [IO utilization as a percent - 60 minute average](#ibm_databases_for_mongodb_disk_io_utilization_percent_average_60m) | 
 | [IOPS read & write total count for an instance.](#ibm_databases_for_mongodb_disk_iops_read_write_total) | 
 | [Max allowed memory for an instance.](#ibm_databases_for_mongodb_memory_limit_bytes) | 
+| [Oplog gigabyte per hour](#ibm_databases_for_mongodb_oplog_gb_per_hour) | 
+| [Oplog used bytes](#ibm_databases_for_mongodb_oplog_used_bytes) | 
+| [Oplog used bytes percent of total](#ibm_databases_for_mongodb_oplog_used_bytes_percent) | 
+| [Oplog window hours](#ibm_databases_for_mongodb_oplog_window_hours) | 
 | [Page faults](#ibm_databases_for_mongodb_page_faults) | 
+| [Process resident memory in bytes](#ibm_databases_for_mongodb_process_resident_memory_bytes) |
+| [Process virtual memory in bytes](#ibm_databases_for_mongodb_process_virtual_memory_bytes) |
+| [Replica set member state](#ibm_databases_for_mongodb_status) |
+| [Replication lag](#ibm_databases_for_mongodb_replica_lag) |
 | [Status](#ibm_databases_for_mongodb_status) | 
 | [Total disk space for an instance.](#ibm_databases_for_mongodb_disk_total_bytes) | 
 | [Used CPU for an instance.](#ibm_databases_for_mongodb_cpu_used_percent) | 
@@ -56,6 +66,32 @@ If you have deployments that are in a Single-zone Region (SZR) - `osl01`, `che01
 | [Used memory for an instance.](#ibm_databases_for_mongodb_memory_used_bytes) | 
 {: caption="Table 1. Available Metrics" caption-side="top"}
 
+
+### Average time spent acquiring locks in microseconds
+{: #ibm_databases_for_mongodb_locks_time_acquiring_microseconds_total_average}
+
+Average time spent acquiring locks in microseconds
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_locks_time_acquiring_microseconds_total_average`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `second` |
+| `Segment By` | `Service instance` |
+{: caption="Table 2: Average time spent acquiring locks in microseconds metric metadata" caption-side="top"}
+
+### Average time spent acquiring locks in microseconds
+{: #ibm_databases_for_mongodb_locks_time_acquiring_microseconds_W_average}
+
+Average time spent acquiring locks in microseconds
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_locks_time_acquiring_microseconds_W_average`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `second` |
+| `Segment By` | `Service instance` |
+{: caption="Table 3: Average time spent acquiring locks in microseconds metric metadata" caption-side="top"}
 ### Connections
 {: #ibm_databases_for_mongodb_connections}
 
@@ -147,6 +183,58 @@ The maximum amount of memory available to your deployment.
 | `Segment By` | `Service instance` |
 {: caption="Table 8. Max allowed memory for an instance metric metadata" caption-side="top"}
 
+### Oplog gigabyte per hour
+{: #ibm_databases_for_mongodb_oplog_gb_per_hour}
+
+The gigabytes of oplog per hour the primary generates
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_oplog_gb_per_hour`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `none` |
+| `Segment By` | `Service instance` |
+{: caption="Table 59: Oplog gigabyte per hour metric metadata" caption-side="top"}
+
+### Oplog used bytes
+{: #ibm_databases_for_mongodb_oplog_used_bytes}
+
+The total amount of space used by the oplog in bytes.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_oplog_used_bytes`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance` |
+{: caption="Table 60: Oplog used bytes metric metadata" caption-side="top"}
+
+### Oplog used bytes percent of total
+{: #ibm_databases_for_mongodb_oplog_used_bytes_percent}
+
+The total used oplog space in percent
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_oplog_used_bytes_percent`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance` |
+{: caption="Table 61: Oplog used bytes percent of total metric metadata" caption-side="top"}
+
+### Oplog window hours
+{: #ibm_databases_for_mongodb_oplog_window_hours}
+
+The approximate number of hours available in the oplog.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_oplog_window_hours`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `none` |
+| `Segment By` | `Service instance` |
+{: caption="Table 62: Oplog window hours metric metadata" caption-side="top"}
+
 ### Page faults
 {: #ibm_databases_for_mongodb_page_faults}
 
@@ -159,6 +247,58 @@ The number of times per second that MongoDB had to request data from disk. Scale
 | `Value Type`  | `count` |
 | `Segment By` | `Service instance` |
 {: caption="Table 9. Page faults metric metadata" caption-side="top"}
+
+### Process resident memory in bytes
+{: #ibm_databases_for_mongodb_process_resident_memory_bytes}
+
+Amount of actual physical memory used by the MongoDB process.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_process_resident_memory_bytes`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance` |
+{: caption="Table 64: Process resident memory in bytes metric metadata" caption-side="top"}
+
+### Process virtual memory in bytes
+{: #ibm_databases_for_mongodb_process_virtual_memory_bytes}
+
+Amount of virtual memory used by the MongoDB process.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_process_virtual_memory_bytes`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance` |
+{: caption="Table 65: Process virtual memory in bytes metric metadata" caption-side="top"}
+
+### Replica set member state
+{: #ibm_databases_for_mongodb_status}
+
+An integer between 0 and 10 that represents the replica state of the current member.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_status`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `count` |
+| `Segment By` | `Service instance` |
+{: caption="Table 68: Replica set member state metric metadata" caption-side="top"}
+
+### Replication lag
+{: #ibm_databases_for_mongodb_replica_lag}
+
+The replication lag in seconds
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_replica_lag`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `second` |
+| `Segment By` | `Service instance` |
+{: caption="Table 69: Replication lag metric metadata" caption-side="top"}
 
 ### Status
 {: #ibm_databases_for_mongodb_status}
