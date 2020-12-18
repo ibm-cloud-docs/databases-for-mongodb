@@ -251,7 +251,7 @@ The number of times per second that MongoDB had to request data from disk. Scale
 ### Process resident memory in bytes
 {: #ibm_databases_for_mongodb_process_resident_memory_bytes}
 
-Amount of actual physical memory used by the MongoDB process.
+Amount of actual physical memory used by the MongoDB process. Resident memory (the number of megabytes resident): In a standard deployment resident is the amount of memory used by the WiredTiger cache plus the memory dedicated to other in-memory structures used by the `mongod` process. By default, `mongod` with WiredTiger reserves 50% of the total physical memory on the server for the cache and at a steady state, WiredTiger tries to limit cache usage to 80% of that total. For example, if a server has 16GB of memory, WiredTiger will assume it can use 8GB for cache and at steady state should use about 6.5GB. To learn more about the WiredTiger Storage Engine, reference the [MongoDB documentation](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance#wiredtiger-cache-and-memory).
 
 | Metadata | Description |
 |----------|-------------|
@@ -264,7 +264,7 @@ Amount of actual physical memory used by the MongoDB process.
 ### Process virtual memory in bytes
 {: #ibm_databases_for_mongodb_process_virtual_memory_bytes}
 
-Amount of virtual memory used by the MongoDB process.
+Amount of virtual memory used by the `mongod` process. Generally, virtual memory should be slightly larger than mapped memory. If virtual memory is many gigabytes larger, it indicates that excessive memory is being used by other aspects than the memory mapping of files and is sub-optimal. The most common case of usage of a high amount of memory for non-mapped is excessive connections to the database. Each connection has a thread stack and the memory for those stacks can add up considerably.
 
 | Metadata | Description |
 |----------|-------------|
