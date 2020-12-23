@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-12-14"
+lastupdated: "2020-12-22"
 
 keywords: troubleshooting for MongoDB
 
@@ -24,7 +24,7 @@ content-type: troubleshoot
 {:troubleshoot: data-hd-content-type='troubleshoot'}
 
 
-# Why can’t I connect to my PostgreSQLMongoDB deployment?
+# Why can’t I connect to my MongoDB deployment?
 {: #troubleshoot-connect}
 {: troubleshoot}
 {: support}
