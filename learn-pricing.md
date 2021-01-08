@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-11-30"
+  years: 2019, 2021
+lastupdated: "2021-01-08"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -36,12 +36,12 @@ The Standard plan is priced based on the total amount of disk storage, RAM, and 
 ### {{site.data.keyword.databases-for-mongodb}} Standard Plan: 
 Resources | Breakdown | Price
 -------|-------|-------
-10 GB-Month disk | 3 members x 10 GB x $0.58 | $11.40
+10 GB-Month disk | 3 members x 10 GB x $0.58 | $17.40
 1 GB-Month RAM | 3 members x 1 GB  x $8.50 | $25.50
 {: caption="Table 1. Pricing example for three Standard data members" caption-side="top"}
 
-Total per month = $36.90/Month  
-Total per hour = $.05/Hour  
+Total per month = $42.90/Month  
+Total per hour = $.06/Hour  
 
 ### {{site.data.keyword.databases-for-mongodb}} Enterprise Plan: 
 Resources | Breakdown | Price
