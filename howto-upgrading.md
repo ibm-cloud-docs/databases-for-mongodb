@@ -80,7 +80,7 @@ db.adminCommand( { setFeatureCompatibilityVersion: "4.0" } )
 ```
 {: .pre}
 
-You can only issue the setFeatureCompatibilityVersion against the admin database. Likewise, ensure that no initial sync is in progress as running the command while an initial sync is in progress will cause the initial sync to restart. If for any reason the command does not complete successfully, you can safely retry the command on the primary.
+You can only issue the `setFeatureCompatibilityVersion` against the admin database. Likewise, ensure that no initial sync is in progress as running the command while an initial sync is in progress will cause the initial sync to restart. If for any reason the command does not complete successfully, you can safely retry the command on the primary.
 {: .note}
 ## Migration Notes for New MongoDB 4.x Users
 
