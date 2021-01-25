@@ -21,7 +21,7 @@ subcollection: databases-for-mongodb
 # Upgrading to a new Major Version
 {: #upgrading}
 
-Once a major version of a database is at its End Of Life (EOL), it is necessary to upgrade to the current major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 3.x to 4.x. We recommend preparing to run on, and then migrating to, the latest version prior to the EOL date [as documented here](/docs/databases-for-mongodb?topic=cloud-databases-versioning-policy#major-versions-defined). Note that downgrading versions is not supported. 
+Once a major version of a database is at its End Of Life (EOL), it is necessary to upgrade to To the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 3.x to 4.x. We recommend preparing to run on, and then migrating to, the latest version prior to the EOL date [as documented here](/docs/databases-for-mongodb?topic=cloud-databases-versioning-policy#major-versions-defined). Note that downgrading versions is not supported. 
 
 You may upgrade to the latest version of MongoDB available to {{site.data.keyword.databases-for-mongodb}}. You can find the latest version from the catalog page, from the cloud databases cli plugin command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
