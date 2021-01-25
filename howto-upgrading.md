@@ -25,9 +25,6 @@ Once a major version of a database is at its End Of Life (EOL), it is necessary 
 
 You may upgrade to the latest version of MongoDB available to {{site.data.keyword.databases-for-mongodb}}. You can find the latest version from the catalog page, from the cloud databases cli plugin command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
-To upgrade an existing MongoDB deployment to 4.0, you must be running a 3.6-series release. Likewise, to upgrade an existing MongoDB deployment to 4.2, you must be running a 4.0-series release. To upgrade from a version earlier than the  noted series, you must successively upgrade major releases until you have upgraded to the appropriate series. For example, if you are running a 3.6-series, you must upgrade first to 4.0 before you can upgrade to 4.2.
-{: .note}
-
 Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?topic=cloud-databases-dashboard-backups#restoring-a-backup) of your data into a new deployment. Restoring from a backup has a number of advantages:
 
 - The original database stays running and production work can be uninterrupted.
@@ -45,7 +42,8 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 |MongoDB 4.2| Latest version |
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
 
-
+To upgrade an existing MongoDB deployment to 4.0, you must be running a 3.6-series release. Likewise, to upgrade an existing MongoDB deployment to 4.2, you must be running a 4.0-series release. To upgrade from a version earlier than the  noted series, you must successively upgrade major releases until you have upgraded to the appropriate series. For example, if you are running a 3.6-series, you must upgrade first to 4.0 before you can upgrade to 4.2.
+{: .note}
 ## Upgrading in the UI
 
 You can upgrade to a new version when [restoring a backup](/docs/databases-for-mongodb?topic=cloud-databases-dashboard-backups#restoring-a-backup) from the _Backups_ tab of your _Deployment Overview_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
