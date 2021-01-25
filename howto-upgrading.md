@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-08-25"
+  years: 2019, 2021
+lastupdated: "2021-01-25"
 
 keyowrds: mongodb, databases, upgrading
 
@@ -14,13 +14,14 @@ subcollection: databases-for-mongodb
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:note: .note}
 {:tip: .tip}
 
 
 # Upgrading to a new Major Version
 {: #upgrading}
 
-Once a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to the current major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 3.x to 4.x.
+Once a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to the current major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 3.x to 4.x. 
 
 You upgrade to the latest version of MongoDB available to {{site.data.keyword.databases-for-mongodb}}. You can find the latest version from the catalog page, from the cloud databases cli plugin command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
@@ -30,7 +31,6 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 - You can test the new database out of production and act on any application incompatibilities.
 - The entire process can be rerun at any point.
 - A fresh restoration reduces the likelihood that unneeded artifacts of the older version of the database are carried over to the new database.
-
 ## Upgrading in the UI
 
 You can upgrade to a new version when [restoring a backup](/docs/databases-for-mongodb?topic=cloud-databases-dashboard-backups#restoring-a-backup) from the _Backups_ tab of your _Deployment Overview_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
@@ -69,6 +69,19 @@ curl -X POST \
   }'
 ```
 
+## After the primary has been upgraded
+{: #setFCV}
+
+When upgrading {{site.data.keyword.databases-for-mongodb}} Community Edition from 3.6 -> 4.0 the [`FeatureCompatibilityVersion`](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion) flag needs to be updated to enable the [4.0 features that persist data incompatible](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compatibility-enabled) with earlier versions of MongoDB. 
+
+On the primary, run the `setFeatureCompatibilityVersion` command in the admin database:
+```
+db.adminCommand( { setFeatureCompatibilityVersion: "4.0" } )
+```
+{: .pre}
+
+You can only issue the setFeatureCompatibilityVersion against the admin database. Likewise, ensure that no initial sync is in progress as running the command while an initial sync is in progress will cause the initial sync to restart. If for any reason the command does not complete successfully, you can safely retry the command on the primary.
+{: .note}
 ## Migration Notes for New MongoDB 4.x Users
 
 As with any switch between major versions, there are major and sometimes breaking changes. The MongoDB documentation has a full overview of the changes available in [Compatibility Changes in MongoDB 4.0](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/). Since the upgraded version runs in a new deployment, you can test against it while continuing to run your application on your current MongoDB 3.x deployment.
