@@ -79,6 +79,14 @@ Looking for more tools on managing your databases and data? You can connect to y
 If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages.
 - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app)
 - [Connecting an IBM Cloud application](/docs/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
+- [Connecting with the mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell)
+- [MongoDB Node.js Driver — Connection Guide](https://docs.mongodb.com/drivers/node/fundamentals/connection)
+
+For information on TLS/SSL certificate configuration in the API, review the documentation at: 
+- [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app#driver-tls-and-self-signed-certificate-support)
+- [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell#using-the-self-signed-certificate)
+- [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/) 
+  
 
 Also, to ensure the stability of your applications and your database, check out the pages on 
 - [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
