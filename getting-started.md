@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-12-22"
+  years: 2019, 2021
+lastupdated: "2021-02-02"
 
 keywords: mongodb, databases, mongodb compass, mongodbee
 
@@ -30,6 +30,7 @@ This tutorial is a short introduction to using {{site.data.keyword.databases-for
 - Download and install [MongoDB Compass](https://docs.mongodb.com/compass/master/install/) from MongoDB.
 - If your deployment is not using public endpoints, you must take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. MongoDB supports only [public or private endpoints](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#provisioning-with-service-endpoints), not both simultaneously. 
 
+Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 ## Connecting with MongoDB Compass
 
 When you first open MongoDB Compass, you get a **Connect to Host** page. This page is where you enter the connection information for your deployment. 
