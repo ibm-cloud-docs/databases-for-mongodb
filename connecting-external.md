@@ -13,7 +13,6 @@ subcollection: databases-for-mongodb
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
-{:generic: .ph data-hd-programlang='generic'}
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
 {:javascript: .ph data-hd-programlang='javascript'}
@@ -48,18 +47,20 @@ Field Name|Index|Description
 
 
 Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
-{: generic}
 ```
 mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/ibmclouddb?authSource=adminreplicaSet=replset
 ```
-{: generic}
 
 The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
 {: .tip}
-{: generic}
 
 
 This example uses the information from your connection string and the Java driver [`mongo-java-driver`](http://mongodb.github.io/mongo-java-driver/?jmp=docs) to connect to your database.
+
+This example uses your connection string and the Python driver [`pymongo`](http://api.mongodb.com/python/current/index.html) to connect to your database. 
+
+This example uses your connection string and the Node.js driver [`mongodb`](http://mongodb.github.io/node-mongodb-native/3.5/) to connect to your database. 
+
 {: java}
 ```java
 public class MongodbConnect {
@@ -103,7 +104,6 @@ public class MongodbConnect {
 {: java}
 
 
-This example uses your connection string and the Python driver [`pymongo`](http://api.mongodb.com/python/current/index.html) to connect to your database. 
 {: python}
 ```python
 import pymongo
@@ -127,8 +127,6 @@ except ConnectionFailure as err:
 ```
 {: python}
 
-
-This example uses your connection string and the Node.js driver [`mongodb`](http://mongodb.github.io/node-mongodb-native/3.5/) to connect to your database. 
 {: javascript}
 ```javascript
 const MongoClient = require("mongodb").MongoClient;
