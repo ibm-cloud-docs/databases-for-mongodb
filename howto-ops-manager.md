@@ -102,7 +102,7 @@ After you have configured your environment for private endpoint access, you can 
 These are the 'deprecated' personal API-keys.
 {: .note}
 
-Using the Ops Manager connection string (found in the [Getting connection strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-connection-strings) pane of your deployment), you can use the credentials that you created for Ops Manager user access to API commands. 
+Using the Ops Manager connection string (also found in the [Getting connection strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-connection-strings) pane of your deployment dashboard), you can use the credentials that you created for Ops Manager user access to API commands. 
 
 ### Example connection details: 
  
