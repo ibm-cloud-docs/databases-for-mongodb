@@ -1,14 +1,14 @@
 {
     "troubleshoot-connect": [
         "How do I connect to my MongoDB deployment?",
-        "cannot connect to my Postgres instance",
+        "cannot connect to my MongoDB instance",
         "can't connect to MongoDB database",
         "error connecting to MongoDB deployment ",
-        "issue connecting to PostgeSQL Via Command line",
+        "issue connecting to MongoDB database Via Command line",
         "problem connecting to my MongoDB production db",
         "errors connecting external application to MongoDB database ",
         "application recieving timeouts when connecting to MongoDB Database",
-        "external application logging Intermittent connection timeouts to ICD postgres Deployment",
+        "external application logging Intermittent connection timeouts to ICD MongoDB Deployment",
         "error when connecting External app to Databases for MongoDB",
         "MongoDB Database will not connect to my external application ",
         "VMware vSphere VMs unable to connect to MongoDB",
