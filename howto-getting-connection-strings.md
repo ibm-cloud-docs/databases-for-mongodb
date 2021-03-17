@@ -20,9 +20,9 @@ subcollection: databases-for-mongodb
 # Getting Connection Strings
 {: #connection-strings}
 
-In order to connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some users and connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ panel. These strings can be used with any set of credentials that you generate.
+To connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some users and connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ section. These strings can be used with any set of credentials that you generate.
 
-![Endpoints panel on the Dashboard Overview](images/getting-started-endpoints-panel.png)
+![Endpoints section on the Dashboard Overview](images/getting-started-endpoints-panel.png)
 
 A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its credentials to connect to your deployment.
 {: .tip}
@@ -34,25 +34,25 @@ You can also grab connection strings from the [CLI](/docs/databases-cli-plugin?t
 ibmcloud cdb deployment-connections example-deployment -u <newusername> [--endpoint-type <endpoint type>]
 ```
 
-Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named  "example-deployment", use the following command.
+Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named "example-deployment", use the following command.
 ```
 ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [--endpoint-type <endpoint type>]
 ```
 
-If you don't specify a user, the `deployment-connections` commands return information for the admin user by default. If you don't specify an endpoint type, the connection string returns the public endpoint by default. If your deployment only has a private endpoint, you have to specify `--endpoint-type private` or the commands return an error. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
+If you don't specify a user, the `deployment-connections` commands return information for the admin user by default. If you don't specify an endpoint type, the connection string returns the public endpoint by default. If your deployment only has a private endpoint, you must specify `--endpoint-type private` or the commands return an error. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
 
-To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plugin](/docs/databases-for-mongodb?topic=databases-cli-plugin-cdb-reference#installing-the-cloud-databases-cli-plug-in).
+To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plug-in](/docs/databases-for-mongodb?topic=databases-cli-plugin-cdb-reference#installing-the-cloud-databases-cli-plug-in).
 {: .tip}
 
 **API**  
-To retrieve user's connection strings from the API, use the [`/users/{userid}/connections`](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026) endpoint. You have to specify in the path which user and which type of endpoint (public or private) should be used in the returned connection strings. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
+To retrieve user's connection strings from the API, use the [`/users/{userid}/connections`](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026) endpoint. You must specify in the path which user and which type of endpoint (public or private) should be used in the returned connection strings. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
 ```
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections/{endpoint_type}'
 ```
 
 ## Additional Users and Connection Strings
 
-Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not limited to the admin user. You can create additional users and retrieve connection strings specific to them by using the _Service Credentials_ panel, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API. 
+Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not limited to the admin user. You can create more users and retrieve connection strings specific to them by using the _Service Credentials_ section, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API. 
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 
@@ -60,11 +60,11 @@ When you create a user, it is assigned certain database roles and privileges. Fo
 
 ### Creating Users From _Service Credentials_
 
-1. Navigate to the service dashboard for your service.
-2. Click _Service Credentials_ to open the _Service Credentials_ panel.
+1. Go to the service dashboard for your service.
+2. Click _Service Credentials_ to open the _Service Credentials_ section.
 3. Click **New Credential**.
 4. Choose a descriptive name for your new credential. 
-5. (Optional) Specify whether the new credentials use a public or private endpoint. Use either `{ "service-endpoints": "public" }` / `{ "service-endpoints": "private" }` in the _Add Inline Configuration Parameters_ field to generate connection strings using the specified endpoint. Use of the endpoint is not enforced. It just controls which hostnames are in the connection strings. Public endpoints are generated by default.
+5. (Optional) Specify whether the new credentials use a public or private endpoint. Use either `{ "service-endpoints": "public" }` / `{ "service-endpoints": "private" }` in the _Add Inline Configuration Parameters_ field to generate connection strings that use the specified endpoint. Use of the endpoint is not enforced. It just controls which hostnames are in the connection strings. Public endpoints are generated by default.
 6. Click **Add** to provision the new credentials. A username and password, and an associated MongoDB user is auto-generated.
 
 The new credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under _View Credentials_.
@@ -76,11 +76,11 @@ If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and 
 ibmcloud cdb user-create example-deployment <newusername> <newpassword>
 ```
 
-Once the task has finished, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
+When the task finishes, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
 ### Creating Users from the API
 
-The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#creates-a-database-level-user).
+The _Foundation Endpoint_ that is shown on the _Overview_ section of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#creates-a-database-level-user).
 ```
 curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users' \
 -H "Authorization: Bearer $APIKEY" \
@@ -92,7 +92,7 @@ To retrieve user's connection strings, use the base URL with the `/users/{userid
 
 ### Adding users to _Service Credentials_
 
-Creating a new user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information. Enter the user name and password in the JSON field under _Add Inline Configuration Parameters_. For example, {"existing_credentials":{"username":"Robert","password":"supersecure"}}. Basically, you send in the username and password, and _Service Credentials_ generates the connection strings with the credentials filled in.
+Creating a user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information. Enter the username and password in the JSON field under _Add Inline Configuration Parameters_. For example, {"existing_credentials":{"username":"Robert","password":"supersecure"}}. Basically, you send in the username and password, and _Service Credentials_ generates the connection strings with the credentials filled in.
 
 Generating credentials from an existing user does not check for or create that user. 
 {: .tip}
@@ -110,7 +110,7 @@ Field Name|Index|Description
 `Path`||Path for a URI - for MongoDB, it is the database name. The default is `ibmclouddb`.
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
-`Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver. Note that MongoDB 3.6 Standard and Enterprise editions and 4.2 Standard edition use SCRAM SHA 1, while MongoDB 4.2 Enterprise edition only uses SHA 256.  
+`Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver. Note: MongoDB 3.6 Standard and Enterprise editions and 4.2 Standard edition use SCRAM SHA 1, while MongoDB 4.2 Enterprise edition only uses SHA 256.  
 `Hosts`|`0...`|A hostname and port to connect to
 `Composed`|`0...`|A URI combining Scheme, Authentication, Host, Path, and Replica Set name
 `Certificate`|`Name`|The allocated name for the self-signed certificate for database deployment
