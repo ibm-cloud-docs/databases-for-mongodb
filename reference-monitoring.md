@@ -44,6 +44,8 @@ If you have deployments that are in a Single-zone Region (SZR) - `osl01`, `che01
 | [Average time spent acquiring locks in microseconds](#ibm_databases_for_mongodb_locks_time_acquiring_microseconds_total_average) | 
 | [Average time spent acquiring locks in microseconds](#ibm_databases_for_mongodb_locks_time_acquiring_microseconds_W_average) | 
 | [Connections](#ibm_databases_for_mongodb_connections) | 
+| [Disk read latency mean](#ibm_databases_for_mongodb_disk_read_latency_mean) | 
+| [Disk write latency mean](#ibm_databases_for_mongodb_disk_write_latency_mean) | 
 | [IO utilization as a percent - 5 minute average](#ibm_databases_for_mongodb_disk_io_utilization_percent_average_5m) |
 | [IO utilization as a percent - 15 minute average](#ibm_databases_for_mongodb_disk_io_utilization_percent_average_15m) | 
 | [IO utilization as a percent - 30 minute average](#ibm_databases_for_mongodb_disk_io_utilization_percent_average_30m) | 
@@ -104,7 +106,30 @@ The number of connections to the database.
 | `Value Type`  | `count` |
 | `Segment By` | `Service instance` |
 {: caption="Table 2. Connections metric metadata" caption-side="top"}
+### Disk read latency mean
+{: #ibm_databases_for_mongodb_disk_read_latency_mean}
 
+Disk read latency mean
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_disk_read_latency_mean`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `count` |
+| `Segment By` | `Service instance` |
+{: caption="Table 22: Disk read latency mean metric metadata" caption-side="top"}
+### Disk write latency mean
+{: #ibm_databases_for_mongodb_disk_write_latency_mean}
+
+Disk write latency mean
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_databases_for_mongodb_disk_write_latency_mean`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `count` |
+| `Segment By` | `Service instance` |
+{: caption="Table 29: Disk write latency mean metric metadata" caption-side="top"}
 ### IO utilization in percent 5 minute average
 {: #ibm_databases_for_mongodb_disk_io_utilization_percent_average_5m}
 
