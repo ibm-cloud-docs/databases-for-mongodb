@@ -57,5 +57,5 @@ The event types for {{site.data.keyword.databases-for-mongodb}} Enterprise Editi
 
 Audit events appear in {{site.data.keyword.la_full}}.
 
-For more information on {{site.data.keyword.databases-for-mongodb}} Enterprise Edition audit logging, review the [Log Analysis Integration documentation](/docs/databases-for-mongodb?topic=cloud-databases-logging) along with the [{{site.data.keyword.la_full}}](/docs/Log-Analysis-with-LogDNA) getting started tutorial.
+For more information on {{site.data.keyword.databases-for-mongodb}} Enterprise Edition audit logging, review the [Log Analysis Integration documentation](/docs/databases-for-mongodb?topic=cloud-databases-logging) along with the [{{site.data.keyword.loganalysisfull}}](/docs/Log-Analysis-with-LogDNA) getting started tutorial.
 
