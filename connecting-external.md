@@ -101,6 +101,7 @@ public class MongodbConnect {
     }
 }
 ```
+{: codeblock}
 {: java}
 
 
@@ -125,6 +126,7 @@ try:
 except ConnectionFailure as err:
     print("Unable to connect to database")
 ```
+{: codeblock}
 {: python}
 
 {: javascript}
@@ -152,6 +154,7 @@ MongoClient.connect(connectionString, options, function (err, db) {
     }
 });
 ```
+{: codeblock}
 {: javascript}
 
 
