@@ -51,7 +51,7 @@ The OpsManager user has limited permissions.
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition service is provisioned with access to the MongodDB Ops Manager user interface.
 
-As the handling of self-signed certificates is continually updated, your browser may require you to add a root certificate to your browser before being able to log in. 
+As {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses self-signed certificates, your browser may require you to accept the certificate or add the certificate to your certificate store before being able to log in.
 {: .tip}
 
 After you create an OpsManager username and password by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the OpsManager UI:
