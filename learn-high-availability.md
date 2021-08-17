@@ -43,5 +43,3 @@ Issuing commands that break replication or force node shut down, such as `db.shu
 {: .important}
 
 {{site.data.keyword.databases-for-mongodb}} deployments conform to the {{site.data.keyword.cloud_notm}} Databases [HA, DR, and SLA](/docs/cloud-databases?topic=cloud-databases-ha-dr) information and terms.
-
-
