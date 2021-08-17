@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019, 2020
-lastupdated: "2021-08-16"
+lastupdated: "2021-08-17"
 
 keywords: mongodb, databases
 
@@ -29,9 +29,6 @@ Connections to a MongoDB replica are made by supplying the driver or binary the 
  
 ## Application-level High-Availability
 
-Issuing commands that break replication or force node shut down, such as `db.shutdown()`, will break the high availability of your database, void your SLA, and will require restoring from a backup.
-{: .important}
-
 Applications that communicate over networks and cloud services are subject to transient connection failures. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}.
 
 Because {{site.data.keyword.databases-for-mongodb}} is a managed service, regular updates and database maintenance occurs as part of normal operations. This can occasionally cause short intervals where your database is unavailable.
@@ -41,6 +38,9 @@ Your applications have to be designed to handle temporary interruptions to the d
 Several minutes of database unavailability or connection interruptions are not expected. Open a [support ticket](https://cloud.ibm.com/unifiedsupport/cases/add) with details if you have time periods longer than a minute with no connectivity so we can investigate.
 
 ## High availability, disaster recovery, and SLA resources
+
+Issuing commands that break replication or force node shut down, such as `db.shutdown()`, will break the high availability of your database, void your SLA, and will require restoring from a backup.
+{: .important}
 
 {{site.data.keyword.databases-for-mongodb}} deployments conform to the {{site.data.keyword.cloud_notm}} Databases [HA, DR, and SLA](/docs/cloud-databases?topic=cloud-databases-ha-dr) information and terms.
 
