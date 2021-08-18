@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020
-lastupdated: "2020-10-23"
+lastupdated: "2021-08-18"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -15,6 +15,7 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
 
 # MongoDB Enterprise Ops Manager
 {: #ops-manager}
@@ -42,7 +43,7 @@ Example command:
  ```
  {: .pre}
 
-The OpsManager user has limited permissions.
+The Ops Manager user has limited permissions.
 {: .note}
 
 
@@ -54,17 +55,20 @@ The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition service is pr
 As {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses self-signed certificates, your browser may require you to accept the certificate or add the certificate to your certificate store before being able to log in.
 {: .tip}
 
-After you create an OpsManager username and password by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the OpsManager UI:
+After you create an Ops Manager username and password by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the Ops Manager UI:
 
 1. Discover the Ops Manager link with the command:
     ```
     ibmcloud cdb deployment-connections <CRN> -t ops_manager
     ```
     {: .pre}
+    
+If setting up Ops Manager with private endpoints, you will need to append `-e 'private'` to your command.
+{: .note}
 
-2. Log in with the OpsManager username and password you created for your deployment:
+2. Log in with the Ops Manager username and password you created for your deployment:
    
-    ![The MongoDB Enterprise Edition OpsManager login section](images/opsman-login.png)
+    ![The MongoDB Enterprise Edition Ops Manager login section](images/opsman-login.png)
 
 3. In the resulting view, select the 'Invitations' tab:
   
@@ -75,7 +79,7 @@ After you create an OpsManager username and password by using the [Cloud Databas
     ![The Ops Manager accepted invitations success section](images/opsman-invite-success.png)
 
 5. Lastly, to navigate to the instance view: 
-   - Click the 'OpsManager' logo in the menu bar, 
+   - Click the 'Ops Manager' logo in the menu bar, 
    - Or select the 'All Clusters' link:
     
     ![The MongoDB Enterprise Edition Ops Manager instance view section](images/opsman-instance-view.png)
@@ -123,11 +127,11 @@ curl -k --digest --user 'opsmanager-123:d043b2ae-bbf2-4f55-8b09-e1ce0906126f'  '
 ```
 {: .pre}
 
-## Updating the OpsManager user record by using the OpsManager API
+## Updating the Ops Manager user record by using the Ops Manager API
 
-When you create an OpsManager user before the initial login steps previously noted, you defined the username and password as arguments. This username can't be changed by using the OpsManager API or UI, and the password can only be changed via the UI. However, you can update these values by using the OpsManager 'user' API.
+When you create an Ops Manager user before the initial login steps previously noted, you defined the username and password as arguments. This username can't be changed by using the Ops Manager API or UI, and the password can only be changed via the UI. However, you can update these values by using the Ops Manager 'user' API.
 
-The OpsManager 'user' API requires several other values to be set when creating a user. These fields are set to 'opsmanager' by default:
+The Ops Manager 'user' API requires several other values to be set when creating a user. These fields are set to 'opsmanager' by default:
 * firstName
 * lastName
 * emailAddress
@@ -140,6 +144,6 @@ curl -H "Content-Type:application/json" -XPATCH -k --digest --user 'opsmanager-1
 
 ## After a restore
 
-You will see the source formation replica set in the OpsManager interface after a restore completes. Note: the menu as seen in the following screen capture does not contain the 'remove' item since the OpsManager user who is created during the initial login steps doesn't have the corresponding permissions. 
+You will see the source formation replica set in the Ops Manager interface after a restore completes. Note: the menu as seen in the following screen capture does not contain the 'remove' item since the Ops Manager user who is created during the initial login steps doesn't have the corresponding permissions. 
 
 ![The MongoDB Enterprise Edition Ops Manager replica set deployment section](images/replset_restored.png)
