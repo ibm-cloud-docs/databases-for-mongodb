@@ -30,6 +30,7 @@ toc:
   - navgroup: 
       id: howto
       topics:
+      - /cloud-databases/cloud-databases-provisioning
       - howto-admin-password.md
       - howto-getting-connection-strings.md
       - /cloud-databases/cloud-databases-deprovisioning
