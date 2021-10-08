@@ -69,3 +69,5 @@ You can also run any of the [documented commands](https://docs.mongodb.com/manua
 
 Many of the MongoDB utilities and commands need the [Cluster Monitor](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor) role for in order to execute them. It is not part of the `admin` default role set. You can [grant the Cluster Monitor role](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management#the-admin-user) to the `admin` user on your deployment.
 {: .tip}
+
+You can find more information about best practices when using your MongoDB deployment on the IBM Cloud in this [Best Practices blog post](https://www.ibm.com/cloud/blog/best-practices-for-mongodb-on-the-ibm-cloud)
