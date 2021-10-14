@@ -33,7 +33,7 @@ Field Name|Index|Description
 ----------|-----|-----------
 `Type`||Type of connection - for MongoDB, it is "URI"
 `Scheme`||Scheme for a URI - for MongoDB, it is "mongodb"
-`Path`||Path for a URI - for MongoDB, it is the database name. The default is `ibmclouddb`.
+`Path`||Path for a URI - for MongoDB, it is the database name.
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver. Mongo 3.6 uses SCRAM SHA 1, whereas Mongo 4.2 uses SHA 256
@@ -48,7 +48,7 @@ Field Name|Index|Description
 
 Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 ```shell
-mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/ibmclouddb?authSource=admin&replicaSet=replset
+mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/<your database name; default:admin>?authSource=admin&replicaSet=replset
 ```
 
 The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
@@ -109,7 +109,7 @@ from pymongo.errors import ConnectionFailure
 
 
 client = MongoClient(
-    "mongodb://admin:$PASSWORD@host.databases.appdomain.cloud:30484/ibmclouddb?authSource=adminreplicaSet=replset",
+    "mongodb://admin:$PASSWORD@host.databases.appdomain.cloud:30484/<your database name; default:admin>?authSource=adminreplicaSet=replset",
     ssl=True,
     ssl_ca_certs="/path/to/cert/ca-certificate.crt"
 )
