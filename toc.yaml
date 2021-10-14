@@ -51,6 +51,7 @@ toc:
           topics: 
           - howto-resources-scaling.md
           - howto-autoscaling.md
+      - howto-user-management.md
       - /cloud-databases/cloud-databases-dashboard-backups
       - /cloud-databases/cloud-databases-allowlisting
       - howto-upgrading.md
