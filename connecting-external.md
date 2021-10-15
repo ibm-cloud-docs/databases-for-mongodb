@@ -34,7 +34,7 @@ Field Name|Index|Description
 ----------|-----|-----------
 `Type`||Type of connection - for MongoDB, it is "URI"
 `Scheme`||Scheme for a URI - for MongoDB, it is "mongodb"
-`Path`|`admin`|Path for a URI - for MongoDB, it is the database name. When provisioning a MongoDB instance for the first time, the default database for the user to connect to is `admin`.
+`Path`||Path for a URI - for MongoDB, it is the database name. When provisioning a MongoDB instance for the first time, the default database for the user to connect to is `admin`.
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver. Mongo 3.6 uses SCRAM SHA 1, whereas Mongo 4.2 uses SHA 256
