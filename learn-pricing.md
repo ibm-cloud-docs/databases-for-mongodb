@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2021
-lastupdated: "2021-01-08"
+lastupdated: "2021-10-20"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
