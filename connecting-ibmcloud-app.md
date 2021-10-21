@@ -85,7 +85,8 @@ The alias appears in the list of _Cloud Foundry Apps_ in your _Resource List_. M
 Cloud Foundry uses a manifest file - `manifest.yml` to associate an application with another {{site.data.keyword.cloud_notm}} service.
 
 To create the file, open a new file and add the text:
-  ```
+
+  ```shell
   ---
   applications:
   - name:    example-application
