@@ -86,7 +86,7 @@ Cloud Foundry uses a manifest file - `manifest.yml` to associate an application 
 
 To create the file, open a new file and add the text:
 
-  ```shell
+  ```
   ---
   applications:
   - name:    example-application
