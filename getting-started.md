@@ -31,11 +31,10 @@ This tutorial is a short introduction to using {{site.data.keyword.databases-for
 - If your deployment is not using public endpoints, you must take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. MongoDB supports only [public or private endpoints](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#provisioning-with-service-endpoints), not both simultaneously. 
 
 Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
+
 ## Connecting with MongoDB Compass
 
 When you first open MongoDB Compass to the **Connect to Host** page, enter your deployment's connection information. All relevant connection information can be found within a panel in your deployment's _Manage_ page.
-
-When you first open MongoDB Compass, . All relevant connection information can be found within a panel in your deployment's Manage page.
 
 ![Endpoints panel](images/getting-started-endpoints-panel.png)
 
