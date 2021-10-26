@@ -27,6 +27,7 @@ Your applications and drivers use connection strings to make a connection to {{s
 The connection strings can be used by any of the users you have created on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. Documentation on generating credentials is on the [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
 ## Using Connection Information
+{: #using-connection-info}
 
 All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of your connection strings. The table contains a breakdown for reference.
 
