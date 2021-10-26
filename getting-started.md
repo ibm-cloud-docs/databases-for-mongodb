@@ -33,11 +33,9 @@ This tutorial is a short introduction to using {{site.data.keyword.databases-for
 Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 ## Connecting with MongoDB Compass
 
-When you first open MongoDB Compass, you get a **Connect to Host** page. This page is where you enter the connection information for your deployment. 
+When you first open MongoDB Compass to the **Connect to Host** page, enter your deployment's connection information. All relevant connection information can be found within a panel in your deployment's _Manage_ page.
 
-![Default Connect to Host page](images/getting-started-connect-to-host.png)
-
-On your deployment's _Manage_ page, there is a panel with all the relevant connection information.
+When you first open MongoDB Compass, . All relevant connection information can be found within a panel in your deployment's Manage page.
 
 ![Endpoints panel](images/getting-started-endpoints-panel.png)
 
