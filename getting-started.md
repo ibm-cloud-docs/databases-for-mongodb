@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2021
-lastupdated: "2021-02-02"
+lastupdated: "2021-10-29"
 
 keywords: mongodb, databases, mongodb compass, mongodbee
 
@@ -16,8 +16,8 @@ subcollection: databases-for-mongodb
 {:screen: .screen}
 {:tip: .tip}
 
-
 # Getting Started Tutorial
+
 {: #getting-started}
 
 This tutorial is a short introduction to using {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The full-featured [Compass Edition](https://docs.mongodb.com/compass/master/#available-compass-short-editions) provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
@@ -28,7 +28,7 @@ This tutorial is a short introduction to using {{site.data.keyword.databases-for
 - And a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
 - Download and install [MongoDB Compass](https://docs.mongodb.com/compass/master/install/) from MongoDB.
-- If your deployment is not using public endpoints, you must take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. MongoDB supports only [public or private endpoints](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#provisioning-with-service-endpoints), not both simultaneously. 
+- If your deployment is not using public endpoints, you must take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. MongoDB supports only [public or private endpoints](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#provisioning-with-service-endpoints), not both simultaneously.
 
 Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 
@@ -66,7 +66,7 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 
 ## Next Steps
 
-If you are just using MongoDB for the first time, it is a good idea to take a tour through the [official MongoDB documentation](https://docs.mongodb.com/). 
+If you are just using MongoDB for the first time, it is a good idea to take a tour through the [official MongoDB documentation](https://docs.mongodb.com/).
 
 You can connect to and manage your MongoDB through the [Mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
 
@@ -75,19 +75,19 @@ Explore the [OpsManager](/docs/databases-for-mongodb?topic=databases-for-mongodb
 Looking for more tools on managing your databases and data? You can connect to your deployment with [IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Or use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
 If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages.
+
 - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app)
 - [Connecting an IBM Cloud application](/docs/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
 - [Connecting with the mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell)
 - [MongoDB Node.js Driver — Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/)
 
-For information on TLS/SSL certificate configuration in the API, review the documentation at: 
+For information on TLS/SSL certificate configuration in the API, review the documentation at:
+
 - [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app#driver-tls-and-self-signed-certificate-support)
 - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell#using-the-self-signed-certificate)
-- [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/) 
+- [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/)
   
+Also, to ensure the stability of your applications and your database, check out the pages on
 
-Also, to ensure the stability of your applications and your database, check out the pages on 
 - [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
 - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance)
-
-
