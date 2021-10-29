@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2020
-lastupdated: "2020-08-12"
+lastupdated: "2020-10-29"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee
 
@@ -20,13 +20,15 @@ subcollection: databases-for-mongodb
 {:term: .term}
 
 # Connecting an external application
+
 {: #external-app}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
 The connection strings can be used by any of the users you have created on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. Documentation on generating credentials is on the [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
 ## Using Connection Information
+
 {: #using-connection-info}
 
 All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of your connection strings. The table contains a breakdown for reference.
@@ -47,8 +49,8 @@ Field Name|Index|Description
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-
 Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
+
 ```shell
 mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/<database name>?authSource=admin&replicaSet=replset
 ```
@@ -56,10 +58,10 @@ mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218a
 The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
 {: .tip}
 
-
-This language specific example uses the information from your connection string and the driver, [`mongo-java-driver`](http://mongodb.github.io/mongo-java-driver/?jmp=docs){: java} [`pymongo`](https://docs.mongodb.com/drivers/pymongo/){: python} [`mongodb`](http://mongodb.github.io/node-mongodb-native/3.5/){: javascript}, to connect to your database.
+The following language-specific examples use the information from your connection string and the driver, [mongo-java-driver](http://mongodb.github.io/mongo-java-driver/?jmp=docs), to connect to your database.
 
 {: java}
+
 ```java
 public class MongodbConnect {
     private static Logger log = LoggerFactory.getLogger(LoggerFactory.class);
@@ -99,11 +101,12 @@ public class MongodbConnect {
     }
 }
 ```
+
 {: codeblock}
 {: java}
 
+The following example uses information from your connection string and the Python driver [pymongo](https://docs.mongodb.com/drivers/pymongo/) driver to connect to your database. This is just a simple connection example, without error handling or retry logic and may not be suitable for production.
 
-{: python}
 ```python
 import pymongo
 from pymongo import MongoClient
@@ -124,10 +127,12 @@ try:
 except ConnectionFailure as err:
     print("Unable to connect to database")
 ```
+
 {: codeblock}
 {: python}
 
-{: javascript}
+The following example uses the node driver [mongodb](http://mongodb.github.io/node-mongodb-native/3.5/)
+
 ```javascript
 const MongoClient = require("mongodb").MongoClient;
 
@@ -152,9 +157,9 @@ MongoClient.connect(connectionString, options, function (err, db) {
     }
 });
 ```
+
 {: codeblock}
 {: javascript}
-
 
 ## Driver TLS and self-signed certificate support
 
