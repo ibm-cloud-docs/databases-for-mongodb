@@ -58,7 +58,7 @@ mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218a
 The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
 {: .tip}
 
-The following language-specific examples use the information from your connection string and the driver, [mongo-java-driver](http://mongodb.github.io/mongo-java-driver/?jmp=docs), to connect to your database.
+The following example uses the information from your connection string and the [MongoDB Java Driver](http://mongodb.github.io/mongo-java-driver/?jmp=docs) to connect to your database.
 
 {: java}
 
@@ -105,7 +105,7 @@ public class MongodbConnect {
 {: codeblock}
 {: java}
 
-The following example uses information from your connection string and the Python driver [pymongo](https://docs.mongodb.com/drivers/pymongo/) driver to connect to your database. This is just a simple connection example, without error handling or retry logic and may not be suitable for production.
+This next example uses information from your connection string and the Python driver [pymongo](https://docs.mongodb.com/drivers/pymongo/) to connect to your database. This is just a simple connection example, without error handling or retry logic and may not be suitable for production.
 
 ```python
 import pymongo
@@ -131,7 +131,7 @@ except ConnectionFailure as err:
 {: codeblock}
 {: python}
 
-The following example uses the node driver [mongodb](http://mongodb.github.io/node-mongodb-native/3.5/)
+This final example uses the [MongoDB Node.js driver](http://mongodb.github.io/node-mongodb-native/3.5/)
 
 ```javascript
 const MongoClient = require("mongodb").MongoClient;
