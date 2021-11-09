@@ -13,9 +13,6 @@ subcollection: databases-for-mongodb
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:javascript: .ph data-hd-programlang='javascript'}
 {:pre: .pre}
 {:term: .term}
 
