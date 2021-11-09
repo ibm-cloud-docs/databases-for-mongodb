@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2021
-lastupdated: "2021-10-29"
+lastupdated: "2021-11-09"
 
 keywords: mongodb, databases, mongodb compass, mongodbee
 
@@ -17,7 +17,6 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 
 # Getting Started Tutorial
-
 {: #getting-started}
 
 This tutorial is a short introduction to using {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments. MongoDB Compass is a GUI for MongoDB, provided by the developers for MongoDB. The full-featured [Compass Edition](https://docs.mongodb.com/compass/master/#available-compass-short-editions) provides basic tools for viewing your MongoDB databases. You can download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
