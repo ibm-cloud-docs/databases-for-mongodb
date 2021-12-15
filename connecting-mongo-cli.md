@@ -23,14 +23,16 @@ subcollection: databases-for-mongodb
 You can access your MongoDB database from a command-line client, which allows for direct interaction and monitoring of the data structures that are created within the database. You can use it to query and update data as well as performing administrative operations and monitoring performance. 
 
 ## Installing 
+{: #connecting-cli-client-install}
 
 The `mongo` shell is available as part of the MongoDB distribution, which can be downloaded from [the MongoDB Download Center](https://www.mongodb.com/download-center/community?jmp=docs).
 
 ## Connecting
+{: #connecting-cli-connect}
 
 Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
-![CLI Endpoints panel](images/cli-endpoints-pane.png)
+![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="Figure 1. CLI Endpoints panel" caption-side="bottom"}
 
 The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section the connection strings. The table contains a breakdown for reference.
 
@@ -48,8 +50,9 @@ Field Name|Index|Description
 * `0...` indicates that there might be one or more of these entries in an array.
 
 ## `mongo` example
+{: #connecting-cli-client-mongo-example}
 
-```
+```shell
 mongo -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
 ```
 
@@ -61,10 +64,11 @@ mongo -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f
 * `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members. 
 
 ## Starting `mongo` from the IBM Cloud CLI
+{: #connecting-cli-client-ibmcloud-cli}
 
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named  "example-mongo" with an "example-user", use the following command.
 
-```
+```shell
 ibmcloud cdb deployment-connections --start -u example-user example-mongo
 ```
 
@@ -74,6 +78,7 @@ The option `--start` must come before the parameters, otherwise connection infor
 {: .tip}
 
 ## Using the self-signed certificate
+{: #connecting-cli-client-cert}
 
 1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information. 
 2. If needed, decode the Base64 string into text. 
@@ -81,4 +86,3 @@ The option `--start` must come before the parameters, otherwise connection infor
 4. Provide the path to the certificate to the `--sslCAFile` parameter.
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `--sslCAFile` parameter.
-
