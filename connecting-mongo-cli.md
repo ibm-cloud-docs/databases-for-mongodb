@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019
-lastupdated: "2019-04-10"
+lastupdated: "2021-12-15"
 
 keywords: mongodb, databases, mongo shell
 
@@ -9,7 +9,7 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:new_window: target="_blank"}
+{:external: .external target="_blank"}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -18,7 +18,7 @@ subcollection: databases-for-mongodb
 
 
 # Connecting with the `mongo` Shell
-{: #mongo-shell}
+{: #connecting-cli-client}
 
 You can access your MongoDB database from a command-line client, which allows for direct interaction and monitoring of the data structures that are created within the database. You can use it to query and update data as well as performing administrative operations and monitoring performance. 
 
