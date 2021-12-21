@@ -25,7 +25,7 @@ The Standard plan is priced based on the total amount of disk storage, RAM, and 
 
  The Enterprise plan pricing is based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 20 GB of disk, 6 cores, and 14 GB of RAM per data member.
 
-![Pricing chart for Standard and Enterprise plans](images/pricing-plans.png)
+![Pricing chart for Standard and Enterprise plans](images/pricing-plans.png){: caption="Figure 1. Pricing chart for Standard and Enterprise plans" caption-side="bottom"}
 
 ## Cost Breakdown
 
