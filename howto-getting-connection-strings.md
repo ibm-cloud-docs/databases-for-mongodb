@@ -1,7 +1,8 @@
 ---
+
 copyright:
-  years: 2018,2019
-lastupdated: "2019-12-03"
+  years: 2018, 2019
+lastupdated: "2021-12-21"
 
 keywords: mongodb, databases, connection strings
 
@@ -22,20 +23,21 @@ subcollection: databases-for-mongodb
 
 To connect to {{site.data.keyword.databases-for-mongodb_full}}, you need some users and connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ section. These strings can be used with any set of credentials that you generate.
 
-![Endpoints section on the Dashboard Overview](images/getting-started-endpoints-panel.png)
+![Endpoints section on the Dashboard Overview](images/getting-started-endpoints-panel.png){: caption="Figure 1. Endpoints section on the Dashboard Overview" caption-side="bottom"}
 
 A {{site.data.keyword.databases-for-mongodb}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password), you can use its credentials to connect to your deployment.
 {: .tip}
 
-**CLI** 
+## CLI
+{: #connection-strings-cli}
 
 You can also grab connection strings from the [CLI](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections).
-```
+```shell
 ibmcloud cdb deployment-connections example-deployment -u <newusername> [--endpoint-type <endpoint type>]
 ```
 
 Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named "example-deployment", use the following command.
-```
+```shell
 ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [--endpoint-type <endpoint type>]
 ```
 
@@ -44,13 +46,16 @@ If you don't specify a user, the `deployment-connections` commands return inform
 To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plug-in](/docs/databases-for-mongodb?topic=databases-cli-plugin-cdb-reference#installing-the-cloud-databases-cli-plug-in).
 {: .tip}
 
-**API**  
+## API
+{: #connection-strings-api}
+
 To retrieve user's connection strings from the API, use the [`/users/{userid}/connections`](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026) endpoint. You must specify in the path which user and which type of endpoint (public or private) should be used in the returned connection strings. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
-```
+```curl
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections/{endpoint_type}'
 ```
 
 ## Additional Users and Connection Strings
+{: #connection-strings-additional-users-strings}
 
 Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not limited to the admin user. You can create more users and retrieve connection strings specific to them by using the _Service Credentials_ section, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API. 
 
@@ -59,6 +64,7 @@ All users on your deployment can use the connection strings, including connectio
 When you create a user, it is assigned certain database roles and privileges. For more information, see the [Managing Users and Roles](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management) page.
 
 ### Creating Users From _Service Credentials_
+{: #connection-strings-create-users-service-cred}
 
 1. Go to the service dashboard for your service.
 2. Click _Service Credentials_ to open the _Service Credentials_ section.
@@ -70,18 +76,20 @@ When you create a user, it is assigned certain database roles and privileges. Fo
 The new credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under _View Credentials_.
 
 ### Creating Users From the Command Line
+{: #connection-strings-create-users-cli}
 
 If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and the [cloud databases plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), you can create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command.
-```
+```shell
 ibmcloud cdb user-create example-deployment <newusername> <newpassword>
 ```
 
 When the task finishes, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
 ### Creating Users from the API
+{: #connection-strings-create-users-api}
 
 The _Foundation Endpoint_ that is shown on the _Overview_ section of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#creates-a-database-level-user).
-```
+```curl
 curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
@@ -91,6 +99,7 @@ curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{i
 To retrieve user's connection strings, use the base URL with the `/users/{userid}/connections` endpoint. 
 
 ### Adding users to _Service Credentials_
+{: #connection-strings-add-users-service-cred}
 
 Creating a user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information. Enter the username and password in the JSON field under _Add Inline Configuration Parameters_. For example, {"existing_credentials":{"username":"Robert","password":"supersecure"}}. Basically, you send in the username and password, and _Service Credentials_ generates the connection strings with the credentials filled in.
 
@@ -98,8 +107,10 @@ Generating credentials from an existing user does not check for or create that u
 {: .tip}
 
 ## Connection String Breakdown
+{: #connection-string-breakdown}
 
 ### The MongoDB Section
+{: #connection-strings-mongodb-section}
 
 The "mongodb" section contains information that is suited to applications that make connections to MongoDB.
 
@@ -120,6 +131,7 @@ Field Name|Index|Description
 * `0...` indicates that there might be one or more of these entries in an array.
 
 ### The CLI Section
+{: #connection-strings-cli-section}
 
 The "CLI" section contains information that is suited for connecting with the mongo shell.
 
