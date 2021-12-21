@@ -1,8 +1,8 @@
 ---
 
-Copyright:
+copyright:
   years: 2020
-lastupdated: "2020-08-26"
+lastupdated: "2021-12-21"
 
 keywords: mongodb, databases, logs, audit, enterprise
 
@@ -24,6 +24,7 @@ subcollection: databases-for-mongodb
 Audit logging capabilities for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition are provided with {{site.data.keyword.la_full}}.
 
 ## Event Types
+{: #event-types}
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Edition provides audit logging capabilities based on the following event types: 
 
@@ -54,8 +55,8 @@ The event types for {{site.data.keyword.databases-for-mongodb}} Enterprise Editi
 {: .note}
 
 ## Audit Logs
+{: #audit-logs}
 
 Audit events appear in {{site.data.keyword.la_full}}.
 
 For more information on {{site.data.keyword.databases-for-mongodb}} Enterprise Edition audit logging, review the [Log Analysis Integration documentation](/docs/databases-for-mongodb?topic=cloud-databases-logging) along with the [{{site.data.keyword.la_full}}](/docs/log-analysis) getting started tutorial.
-
