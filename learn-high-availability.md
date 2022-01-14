@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2021-09-08"
+lastupdated: "2021-01-14"
 
 keywords: mongodb, databases
 
@@ -16,7 +16,7 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
-{:important .important}
+{:important: .important}
 
 # High-Availability
 {: #high-availability}
@@ -28,6 +28,7 @@ Both {{site.data.keyword.databases-for-mongodb}} Standard and Enterprise Edition
 Connections to a MongoDB replica are made by supplying the driver or binary the replica set name and a seed list for the hosts in the replica set. This configuration allows drivers and applications the ability to change which host they are connecting to if one of the hosts becomes unavailable. Your deployment has a [connection string](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) in the [DNS Seedlist Connection format](https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format), so your applications can take advantage of this feature.
  
 ## Application-level High-Availability
+{: #high-availability-app-level}
 
 Applications that communicate over networks and cloud services are subject to transient connection failures. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}.
 
@@ -38,6 +39,7 @@ Your applications have to be designed to handle temporary interruptions to the d
 Several minutes of database unavailability or connection interruptions are not expected. Open a [support ticket](https://cloud.ibm.com/unifiedsupport/cases/add) with details if you have time periods longer than a minute with no connectivity so we can investigate.
 
 ## High availability, disaster recovery, and SLA resources
+{: #high-availability-da-sla}
 
 Issuing commands that break replication or force node shut down, such as `db.shutdown()`, will break the high availability of your database, void your SLA, and will require restoring from a backup.
 {: .important}
