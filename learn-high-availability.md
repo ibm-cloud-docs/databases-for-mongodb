@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2021-01-14"
+lastupdated: "2022-01-14"
 
 keywords: mongodb, databases
 
