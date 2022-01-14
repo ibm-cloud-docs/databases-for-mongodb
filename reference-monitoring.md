@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2021
-lastupdated: "2021-09-02"
+lastupdated: "2022-01-14"
 
 keywords: mongodb, monitoring, metrics, iops, disk usage, memory usage, page faults
 
@@ -24,20 +24,21 @@ Monitoring for {{site.data.keyword.databases-for-mongodb_full}} deployments is p
 
 To access {{site.data.keyword.monitoringfull_notm}} from your deployment, use the _Monitoring_ link from the right menu. (If you do not already have a monitoring service in the same region as your deployment it says _Add monitoring_.)
 
-![The Monitoring link in a deployment](images/monitoring-ui-link.png)
+![The Monitoring link in a deployment](images/monitoring-ui-link.png){: caption="Figure 1. The Monitoring link in a deployment" caption-side="bottom"}
 
 To access your deployment's monitoring dashboard from {{site.data.keyword.monitoringfull_notm}}, it's in the sidebar, under _IBM_.
 
-![Cloud databases dashboard in monitoring](images/monitoring-ibm-list.png)
+![Cloud databases dashboard in monitoring](images/monitoring-ibm-list.png){: caption="Figure 2. Cloud databases dashboard in monitoring" caption-side="bottom"}
 
 ## Monitoring Availability
+{: #monitoring-availability}
 
 {{site.data.keyword.monitoringfull_notm}} is available for deployments in every region. Deployments in Multi-zone Regions (MZRs) - `eu-gb`, `eu-de`, `us-east`, `us-south`, `jp-tok`, `au-syd` - have their metrics in the corresponding region.
 
 If you have deployments that are in a Single-zone Region (SZR) - `che01`, or `seo01` - then your logs are forwarded to an {{site.data.keyword.monitoringfull_notm}} instance in another region. You need to provision monitoring instances in the region where your metrics are forwarded to. Metrics for deployments in `seo01` and `che01` go to `jp-tok`. 
 
 ## Available Metrics
-{: metrics-by-plan}
+{: #metrics-by-plan}
 
 | Metric Name |
 |-----------|
@@ -69,7 +70,7 @@ If you have deployments that are in a Single-zone Region (SZR) - `che01`, or `se
 {: caption="Table 1. Available Metrics" caption-side="top"}
 
 
-### Average time spent acquiring locks in microseconds
+### Average time spent acquiring locks in microseconds total_average
 {: #ibm_databases_for_mongodb_locks_time_acquiring_microseconds_total_average}
 
 Average time spent acquiring locks in microseconds
@@ -82,7 +83,7 @@ Average time spent acquiring locks in microseconds
 | `Segment By` | `Service instance` |
 {: caption="Table 2: Average time spent acquiring locks in microseconds metric metadata" caption-side="top"}
 
-### Average time spent acquiring locks in microseconds
+### Average time spent acquiring locks in microseconds W_average
 {: #ibm_databases_for_mongodb_locks_time_acquiring_microseconds_W_average}
 
 Average time spent acquiring locks in microseconds
@@ -94,6 +95,7 @@ Average time spent acquiring locks in microseconds
 | `Value Type`  | `second` |
 | `Segment By` | `Service instance` |
 {: caption="Table 3: Average time spent acquiring locks in microseconds metric metadata" caption-side="top"}
+
 ### Connections
 {: #ibm_databases_for_mongodb_connections}
 
@@ -106,6 +108,7 @@ The number of connections to the database.
 | `Value Type`  | `count` |
 | `Segment By` | `Service instance` |
 {: caption="Table 2. Connections metric metadata" caption-side="top"}
+
 ### Disk read latency mean
 {: #ibm_databases_for_mongodb_disk_read_latency_mean}
 
@@ -118,6 +121,7 @@ Disk read latency mean
 | `Value Type`  | `count` |
 | `Segment By` | `Service instance` |
 {: caption="Table 22: Disk read latency mean metric metadata" caption-side="top"}
+
 ### Disk write latency mean
 {: #ibm_databases_for_mongodb_disk_write_latency_mean}
 
@@ -130,6 +134,7 @@ Disk write latency mean
 | `Value Type`  | `count` |
 | `Segment By` | `Service instance` |
 {: caption="Table 29: Disk write latency mean metric metadata" caption-side="top"}
+
 ### IO utilization in percent 5 minute average
 {: #ibm_databases_for_mongodb_disk_io_utilization_percent_average_5m}
 
@@ -391,10 +396,10 @@ How much memory your deployment is using.
 {: caption="Table 14. Used memory for an instance metric metadata" caption-side="top"}
 
 ## Attributes for Segmentation
-{: attributes}
+{: #attributes}
 
 ### Global Attributes
-{: global-attributes}
+{: #global-attributes}
 
 The following attributes are available for segmenting all of the metrics listed above
 
@@ -405,11 +410,10 @@ The following attributes are available for segmenting all of the metrics listed 
 | `Resource` | `ibm_resource` | The resource being measured by the service - typically a identifying name or GUID. |
 | `Resource Type` | `ibm_resource_type` | The type of the resource being measured by the service. |
 | `Scope` | `ibm_scope` | The scope is the account, organization, or space GUID associated with this metric. |
-
 {: caption="Table 15. Global Attributes Metadata" caption-side="top"}
 
 ### Additional Attributes
-{: additional-attributes}
+{: #additional-attributes}
 
 The following attributes are available for segmenting one or more attributes as described in the reference above.  Please see the individual metrics for segmentation options.
 
