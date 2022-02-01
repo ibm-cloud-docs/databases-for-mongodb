@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020
-lastupdated: "2021-12-21"
+lastupdated: "2022-02-01"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -153,3 +153,15 @@ curl -H "Content-Type:application/json" -XPATCH -k --digest --user 'opsmanager-1
 You will see the source formation replica set in the Ops Manager interface after a restore completes. Note: the menu as seen in the following screen capture does not contain the 'remove' item since the Ops Manager user who is created during the initial login steps doesn't have the corresponding permissions. 
 
 ![The MongoDB Enterprise Edition Ops Manager replica set deployment section](images/replset_restored.png){: caption="Figure 5. The MongoDB Enterprise Edition Ops Manager replica set deployment section" caption-side="bottom"}
+
+## Creating roles within Ops Manager
+{: #ops-manager-after-restore}
+
+When creating an Ops Manager user, you have the option of creating two additional roles:
+- group_data_access_admin
+- group_read_only
+
+To create these roles, input the respective parameter within the [user_type](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser) API.
+
+By default in the API, users do not input a role, which will default to group_data_access_admin. By creating roles within Ops Manager, you can input group_read_only to prohibit access to view data in the Ops Manager UI.
+{: .note}
