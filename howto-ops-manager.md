@@ -157,11 +157,8 @@ You will see the source formation replica set in the Ops Manager interface after
 ## Creating roles within Ops Manager
 {: #ops-manager-after-restore}
 
-When creating an Ops Manager user, you have the option of creating two additional roles:
-- group_data_access_admin
-- group_read_only
+When creating an Ops Manager user, you have the option of creating two roles: group_data_access_admin and group_read_only. 
+
+The group_read_only role can view most components, including activity, operational data, Ops Manager users, and Ops Manager User roles. This user cannot modify or delete anything. group_read_only users also do not have access to view data in the Ops Manager UI.
 
 To create these roles, input the respective parameter within the [user_type](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser) API.
-
-By default in the API, users do not input a role, which will default to group_data_access_admin. By creating roles within Ops Manager, you can input group_read_only to prohibit access to view data in the Ops Manager UI.
-{: .note}
