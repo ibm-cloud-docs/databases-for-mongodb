@@ -25,12 +25,20 @@ The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add
 ## How does the MongoDB Enterprise Edition Analytics Add-On work?
 {: #mongodbee-analytics-how}
 
-### What Problem does the add-on solve?
+### What problems does the add-on solve?
 {: #mongodbee-analytics-how-problem}
 
-MongoDB uses a document data model, made up of complex documents with arbitrary, nested data. This document model schema makes storing data flexible, easy, and scalable. However, most BI tools require data to be in tabular format, which is rigidly defined and stored in tables, not documents. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On converts MongoDB document data into SQL-readable tabular data:
+1. Most BI tools do not work with MongoDB document data model. 
 
-![Connector for BI converting document model to table](images/bi-connector-model.png){: caption="Figure 1. Connector for BI converting document model to table" caption-side="bottom"}
+    MongoDB uses a document data model, made up of complex documents with arbitrary, nested data. This document model schema makes storing data flexible, easy, and scalable. However, most BI tools require data to be in tabular format, which is rigidly defined and stored in tables, not documents. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On converts MongoDB document data into SQL-readable tabular data:
+
+    ![Connector for BI converting document model to table](images/bi-connector-model.png){: caption="Figure 1. Connector for BI converting document model to table" caption-side="bottom"}
+
+1. BI queries are expensive and can degrade database performance. 
+    Long-running queries can negatively impact the operational workflow of your deployment. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On introduces an extra data member, which isolates analytics from operation.
+
+    ![Introducing an extra data member](images/bi-connector-extra-data-member.png){: caption="Figure 1. Introducing an extra data member" caption-side="bottom"}
+    
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On consists of 2 components:
 - the Analytics Node
