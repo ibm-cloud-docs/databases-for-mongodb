@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020
-lastupdated: "2022-02-18"
+lastupdated: "2022-02-28"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -24,8 +24,8 @@ subcollection: databases-for-mongodb
 The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On allows you to execute long-running analytical queries and/or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/) to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/).
 
 The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On is made up of two components:
-- [The Analytics node]()
-- The connector for Business Intelligence
+- [The Analytics node](#mongodbee-analytics-node)
+- [The connector for Business Intelligence (BI)](#mongodbee-analytics-connector-bi)
 
 ## What problems does the add-on solve?
 {: #mongodbee-analytics-how-problem}
@@ -75,7 +75,11 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} Enter
 
 - The add-on is available only for {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 - You cannot deprovision the analytics node once it is enabled.
-- You cannot scale the disk space of the Analytics members.
+- You cannot scale the disk space of the Analytics member. 
+  
+    Scaling the disk space of the main database members will result in proportional scaling of the Analytics member.
+    {: .important}
+
 - Analytics nodes support horizontal scaling of up to 1 member.
 
 ## Provisioning an Analytics node
