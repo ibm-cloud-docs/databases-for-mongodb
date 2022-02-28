@@ -25,5 +25,3 @@ As detailed in the MongoDB [documentation](https://docs.mongodb.com/bi-connector
 {: #mongodb-using-bi-connector}
 
 To use a BI connector tool with your MongoDB deployment, you need to provision a read only replica and enable it to be an [Analytics node](https://docs.atlas.mongodb.com/reference/faq/deployment/#what-are-analytics-nodes-), which is a specialized read-only node used to isolate queries that you don't want to affect your operational workload.
-
-

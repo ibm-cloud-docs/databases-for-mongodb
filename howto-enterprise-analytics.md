@@ -21,7 +21,11 @@ subcollection: databases-for-mongodb
 # MongoDB Enterprise Edition Analytics Add-On
 {: #mongodbee-analytics}
 
-The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On allows you to execute long-running analytical queries, without affecting the performance of your regular operational workflow, as well as provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/) to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/).
+The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On allows you to execute long-running analytical queries and/or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/) to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/).
+
+The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On is made up of two components:
+- [The Analytics node]()
+- The connector for Business Intelligence
 
 ## What problems does the add-on solve?
 {: #mongodbee-analytics-how-problem}
