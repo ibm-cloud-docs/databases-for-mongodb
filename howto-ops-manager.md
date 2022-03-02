@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020
-lastupdated: "2022-02-23"
+lastupdated: "2022-03-02"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -54,7 +54,7 @@ The Ops Manager user has limited permissions.
 
 When creating an Ops Manager user, you have the option of creating two roles: `group_data_access_admin` and `group_read_only`. 
 
-If no role is specified, `group_data_access_admin` is the default user, affording you Ops Manager default access and privileges. The `group_data_access_admin` role is equivalent to MongoDB's [Project Data Access Admin](https://docs.opsmanager.mongodb.com/current/reference/user-roles/#Project-Data-Access-Admin)role.
+If no role is specified, `group_data_access_admin` is the default user, affording you Ops Manager default access and privileges. The `group_data_access_admin` role is equivalent to MongoDB's [Project Data Access Admin](https://docs.opsmanager.mongodb.com/current/reference/user-roles/#Project-Data-Access-Admin) role.
 
 The `group_read_only` role, which is equivalent to MongoDB's [Project Read Only role](https://docs.opsmanager.mongodb.com/current/reference/user-roles/#Project-Read-Only), can view most components, including activity, operational data, Ops Manager users, and Ops Manager User roles. This user cannot modify or delete anything. `group_read_only` users also do not have access to view data in the Ops Manager UI.
 
