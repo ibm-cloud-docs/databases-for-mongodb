@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020
-lastupdated: "2022-03-02"
+lastupdated: "2022-03-03"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -59,6 +59,8 @@ If no role is specified, `group_data_access_admin` is the default user, affordin
 The `group_read_only` role, which is equivalent to MongoDB's [Project Read Only role](https://docs.opsmanager.mongodb.com/current/reference/user-roles/#Project-Read-Only), can view most components, including activity, operational data, Ops Manager users, and Ops Manager User roles. This user cannot modify or delete anything. `group_read_only` users also do not have access to view data in the Ops Manager UI.
 
 To create these roles, input the respective parameter within the `user_type` using the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser).
+
+If you are using the CLI, you can assign a role by appending the `-r` flag to the `user-create` command in the above example.
 
 For more information on roles with Ops Manager, see MongoDB's [Ops Manager Roles](https://docs.opsmanager.mongodb.com/current/reference/user-roles/).
 {: .tip}
