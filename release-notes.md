@@ -31,4 +31,4 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 Security and Compliance Goals Updated
-:  Updated goals added to the [Security and Compliance documentation](/docs/databases-for-mongodb?topic=manage-security-compliance).
+:  Updated goals added to the [Managing security and compliance documentation](/docs/databases-for-mongodb?topic=databases-for-mongodb-manage-security-compliance).
