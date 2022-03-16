@@ -25,3 +25,10 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 16 March 2022
+{: #databases-for-mongodb-16march2022}
+{: release-note}
+
+Security and Compliance Goals Updated
+:  Updated goals added to the [Security and Compliance documentation](/docs/databases-for-mongodb?topic=manage-security-compliance).
