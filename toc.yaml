@@ -5,7 +5,7 @@
 toc:
   properties:
     subcollection: databases-for-mongodb
-    service-name: databases-for-mongodb-group
+    service-name: databases-for-mongodb
     version: 2
     category: database
     audience: service
