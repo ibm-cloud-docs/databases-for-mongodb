@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2021
-lastupdated: "2022-03-21"
+lastupdated: "2022-03-22"
 
 keywords: databases-for-mongodb release notes
 
@@ -26,9 +26,9 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
-## 16 March 2022
-{: #databases-for-mongodb-16march2022}
+## 27 February 2019
+{: #databases-for-mongodb-19feb2019}
 {: release-note}
 
-Security and Compliance Goals Updated
-:  Updated goals added to the [Managing security and compliance documentation](/docs/databases-for-mongodb?topic=databases-for-mongodb-manage-security-compliance).
+General Availability of {{site.data.keyword.databases-for-mongodb_full}}
+:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-etcd-elasticsearch-and-messages-for-rabbitmq-are-now-generally-available).
