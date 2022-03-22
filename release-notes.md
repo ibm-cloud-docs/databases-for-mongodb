@@ -31,4 +31,4 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
-:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-etcd-elasticsearch-and-messages-for-rabbitmq-are-now-generally-available).
+:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-mongodb-is-generally-available#:~:text=IBM%20Cloud%20is%20announcing%20the,with%20enterprise%20security%20in%20mind.).
