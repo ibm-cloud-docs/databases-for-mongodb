@@ -27,7 +27,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: shortdesc}
 
 ## 27 February 2019
-{: #databases-for-mongodb-19feb2019}
+{: #databases-for-mongodb-27feb2019}
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
