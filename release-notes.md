@@ -40,6 +40,13 @@ General Availability of {{site.data.keyword.databases-for-mongodb_full}}
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
 :  Introducing IBM Cloud Databases for MongoDB Enterprise. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/powering-up-databases-for-mongodb).
 
+## 13 April 2020
+{: #databases-for-mongodb-13apr2020}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb_full}} autoscaling
+:  We are excited to announce that autoscaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-mongodb_full}} via the UI, API, and CLI. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-portfolio-introduces-autoscaling).
+
 ## 26 May 2020
 {: #databases-for-mongodb-26may2020}
 {: release-note}
