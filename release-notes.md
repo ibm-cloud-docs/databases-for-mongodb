@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2021
-lastupdated: "2022-03-22"
+lastupdated: "2022-03-23"
 
 keywords: databases-for-mongodb release notes
 
@@ -32,3 +32,10 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
 :  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-mongodb-is-generally-available#:~:text=IBM%20Cloud%20is%20announcing%20the,with%20enterprise%20security%20in%20mind.).
+
+## 31 August 2020
+{: #databases-for-mongodb-31aug2020}
+{: release-note}
+
+General Availability of {{site.data.keyword.databases-for-mongodb_full}}
+:  Introducing IBM Cloud Databases for MongoDB Enterprise. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/powering-up-databases-for-mongodb).
