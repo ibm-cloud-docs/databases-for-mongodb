@@ -39,3 +39,10 @@ General Availability of {{site.data.keyword.databases-for-mongodb_full}}
 
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
 :  Introducing IBM Cloud Databases for MongoDB Enterprise. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/powering-up-databases-for-mongodb).
+
+## 1 December 2020
+{: #databases-for-mongodb-01dec2020}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb_full}} 3.6 End of Life in April, 2021
+:  On April 27, 2021, all {{site.data.keyword.databases-for-mongodb_full}} instances on version 3.6 that are still active will be upgraded in-place to the next major version. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/databases-for-mongodb-36-end-of-life-in-april-2021).
