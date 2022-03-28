@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2021
-lastupdated: "2022-03-24"
+lastupdated: "2022-03-28"
 
 keywords: databases-for-mongodb release notes
 
@@ -27,7 +27,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: shortdesc}
 
 ## 17 September 2021
-{: #databases-for-mongodb-17sept02021}
+{: #databases-for-mongodb-17sep02021}
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb_full}} 4.0 End of Life in April, 2022
