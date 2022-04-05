@@ -83,8 +83,6 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} Enter
     Scaling the disk space of the main database members will result in proportional scaling of the Analytics member.
     {: .important}
 
-- Analytics nodes support horizontal scaling of up to 1 member.
-
 ## Provisioning an Analytics node
 {: #mongodbee-analytics-node-provisioning}
 
