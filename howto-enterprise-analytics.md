@@ -1,6 +1,6 @@
 ---
 copyright:
-  years: 2020
+  years: 2020, 2022
 lastupdated: "2022-04-04"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
