@@ -100,7 +100,7 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} Enter
 {: #mongodbee-analytics-node-provisioning-ui}
 
 
-## Enabling an {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On connector for BI
+## Enabling n {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On connector for BI
 {: #mongodbee-analytics-bi-connector-enable}
 
 
