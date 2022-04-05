@@ -27,7 +27,7 @@ The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytic
 - [The Analytics node](#mongodbee-analytics-node)
 - [The connector for Business Intelligence (BI)](#mongodbee-analytics-connector-bi)
 
-## What problems does the add-on solve?
+## What problems does the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On solve?
 {: #mongodbee-analytics-how-problem}
 
 1. Most BI tools do not work with the MongoDB document data model. 
