@@ -39,7 +39,7 @@ The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytic
 1. BI queries are expensive and can degrade database performance. 
     Long-running queries can negatively impact the operational workflow of your deployment. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On introduces an extra data member, which isolates analytics from operation.
 
-    ![Introducing an extra data member](images/bi-connector-extra-data-member.png){: caption="Figure 1. Introducing an extra data member" caption-side="bottom"}
+    ![Introducing an extra data member](images/bi-connector-extra-data-member.png){: caption="Figure 2. Introducing an extra data member" caption-side="bottom"}
     
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On consists of two components:
