@@ -52,7 +52,7 @@ The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add
 ### The Analytics node
 {: #mongodbee-analytics-node}
 
-The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly using MongoDB queries or by using SQL queries, if SQL queries are enabled by the connector for BI. 
+The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly using MongoDB queries or SQL queries, if SQL queries are enabled by the connector for BI. 
 
 Enabling the Analytics node without engaging the connector for BI allows you to run document-type MongoDB queries or test a query on production data _without_ affecting your application. 
 {: .note}
