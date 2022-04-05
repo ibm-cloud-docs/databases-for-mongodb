@@ -42,6 +42,10 @@ The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytic
     ![Introducing an extra data member](images/bi-connector-extra-data-member.png){: caption="Figure 2. Introducing an extra data member" caption-side="bottom"}
     
 
+## The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On Components
+{: #mongodbee-analytics-components}
+
+
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On consists of two components:
 - the Analytics node
 - connector for BI
