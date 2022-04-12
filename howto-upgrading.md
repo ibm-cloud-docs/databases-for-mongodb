@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2021
-lastupdated: "2021-12-22"
+lastupdated: "2022-04-12"
 
 keyowrds: mongodb, databases, upgrading
 
@@ -21,7 +21,7 @@ subcollection: databases-for-mongodb
 # Upgrading to a new Major Version
 {: #upgrading}
 
-Once a major version of a database is at its End Of Life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 3.x to 4.x. We recommend preparing to run on, and then migrating to, the latest version prior to the EOL date [as documented here](/docs/databases-for-mongodb?topic=cloud-databases-versioning-policy#major-versions-defined). Note that downgrading versions is not supported. 
+Once a major version of a database is at its End Of Life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 4.0 to 4.x. We recommend preparing to run on, and then migrating to, the latest version prior to the EOL date [as documented here](/docs/databases-for-mongodb?topic=cloud-databases-versioning-policy#major-versions-defined). Note that downgrading versions is not supported. 
 
 You may upgrade to the latest version of MongoDB available to {{site.data.keyword.databases-for-mongodb}}. You can find the latest version from the catalog page, from the cloud databases cli plugin command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
@@ -37,6 +37,7 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 
 |Current Version|	Major Version Upgrade Path
 |----|-----|
+|MongoDB 3.4|	-> MongoDB 3.6 -> 4.0 -> 4.2| 
 |MongoDB 3.4|	-> MongoDB 3.6 -> 4.0 -> 4.2| 
 |MongoDB 3.6|	-> MongoDB 4.0 -> 4.2|
 |MongoDB 4.0|	-> MongoDB 4.2 |
