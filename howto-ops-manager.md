@@ -169,7 +169,6 @@ You will see the source formation replica set in the Ops Manager interface after
 
 ![The MongoDB Enterprise Edition Ops Manager replica set deployment section](images/replset_restored.png){: caption="Figure 5. The MongoDB Enterprise Edition Ops Manager replica set deployment section" caption-side="bottom"}
 
-<<<<<<< HEAD
 ## Creating roles within Ops Manager
 {: #ops-manager-after-restore}
 
@@ -181,5 +180,3 @@ To create these roles, input the respective parameter within the [user_type](htt
 
 By default in the API, users do not input a role, which will default to group_data_access_admin. By creating roles within Ops Manager, you can input group_read_only to prohibit access to view data in the Ops Manager UI.
 {: .note}
-=======
->>>>>>> draft

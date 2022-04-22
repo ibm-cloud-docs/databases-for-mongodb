@@ -46,17 +46,13 @@ The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytic
 {: #mongodbee-analytics-components}
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On consists of two components:
-- the Analytics node
+- the Analytics Node
 - connector for BI
 
-### The Analytics node
+### The Analytics Node
 {: #mongodbee-analytics-node}
 
-<<<<<<< HEAD
-The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly using MongoDB queries or by using SQL queries, if SQL queries are enabled by the connector for BI. 
-=======
 The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly using MongoDB queries or SQL queries, if SQL queries are enabled by the connector for BI. 
->>>>>>> draft
 
 Enabling the Analytics node without engaging the connector for BI allows you to run document-type MongoDB queries or test a query on production data _without_ affecting your application. 
 {: .note}
@@ -64,13 +60,19 @@ Enabling the Analytics node without engaging the connector for BI allows you to 
 You can access your Analytics node directly through a connection string:
 
 ```shell
-<connection string>
+mongodb://$USERNAME:$PASSWORD@host-0:30783,host-1:30783,host-2:30783/?readPreference=secondary&readPreferenceTags=nodeType%3AANALYTICS&replicaSet=replset
 ```
 
 ### The connector for BI
 {: #mongodbee-analytics-connector-bi}
 
 Traditional BI tools are designed to work with tabular, row-and-column data. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On connector for BI allows you to query MongoDB data with SQL using tools, such as Tableau, by connecting to the Analytics node and providing an SQL interface.
+
+You can access your BI Connector through the ODBC connector of your BI tool by using your username and password and the host URL, which will be something like:
+
+```shell
+https://xyz1234-scfr5rer-496hjgo6ghtg-biconnector.abc12345deft7.databases.appdomain.cloud:32757
+```
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On connector for BI cannot be enabled without the Analytics node.
 {: .important}
@@ -87,24 +89,54 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} Enter
     Scaling the disk space of the main database members will result in proportional scaling of the Analytics member.
     {: .important}
 
-## Provisioning an Analytics node
+## Provisioning an Analytics Node and BI Connector
 {: #mongodbee-analytics-node-provisioning}
 
-## Provisioning an Analytics node using terraform
+### Provisioning using Terraform
 {: #mongodbee-analytics-node-provisioning-terraform}
 
+Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-database-instance-by-using-group-attributes). 
 
 
-## Provisioning an Analytics node through the {{site.data.keyword.cloud_notm}} Databases API
+### Provisioning through the {{site.data.keyword.cloud_notm}} Databases API
 {: #mongodbee-analytics-node-provisioning-api}
 
+Provisioning via the API is a two-step process: First, [create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment.
 
+After that you can add the Analytics Node and BI Connector `group` to your deployment by using the [Update Resource Instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#update-resource-instance) method.
 
-## Provisioning an Analytics node through the UI
-{: #mongodbee-analytics-node-provisioning-ui}
+Example for Analytics Node:
 
+```
+curl --request PATCH \
+  --url https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/analytics \
+  --header 'Authorization: Bearer <> \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "group": {
+        "members": {
+            "allocation_count": 1
+        }
+    }
+}'
+```
 
-## Enabling n {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On connector for BI
-{: #mongodbee-analytics-bi-connector-enable}
+Example for BI Connector:
 
+```
+curl --request PATCH \
+  --url https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/bi_connector \
+  --header 'Authorization: Bearer <> \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "group": {
+        "members": {
+            "allocation_count": 1
+        }
+    }
+}'
+```
+Remember that the Analytics Node has to be provisioned **before** the BI Connector or your provisioning will fail {: .important}
+
+To get the connection strings to connect to the Analytics Node and/or BI Connector, follow the instructions [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
 
