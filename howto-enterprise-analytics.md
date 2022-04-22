@@ -71,7 +71,7 @@ Traditional BI tools are designed to work with tabular, row-and-column data. The
 You can access your BI Connector through the ODBC connector of your BI tool by using your username and password and the host URL, which will be something like:
 
 ```shell
-https://xyz1234-scfr5rer-496hjgo6ghtg-biconnector.abc12345deft7.databases.appdomain.cloud:32757
+xyz1234-scfr5rer-496hjgo6ghtg-biconnector.abc12345deft7.databases.appdomain.cloud:32757
 ```
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On connector for BI cannot be enabled without the Analytics node.
