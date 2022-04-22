@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2021
-lastupdated: "2021-11-09"
+lastupdated: "2022-03-01"
 
 keywords: mongodb, databases, mongodb compass, mongodbee
 
@@ -15,6 +15,7 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{:important: .important}
 
 # Getting Started
 {: #getting-started}
@@ -28,7 +29,10 @@ This tutorial is a short introduction to using {{site.data.keyword.databases-for
 - And a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
 - Download and install [MongoDB Compass](https://docs.mongodb.com/compass/master/install/) from MongoDB.
-- If your deployment is not using public endpoints, you must take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. MongoDB supports only [public or private endpoints](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#provisioning-with-service-endpoints), not both simultaneously.
+- If your deployment is not using public endpoints, you must take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. 
+  
+    MongoDB cannot support both [public and private endpoints simultaneously](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#provisioning-with-service-endpoints). This cannot be changed after provisioning.
+    {: .important}
 
 Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 

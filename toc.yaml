@@ -5,6 +5,7 @@
 toc:
   properties:
     subcollection: databases-for-mongodb
+    service-name: databases-for-mongodb
     version: 2
     category: database
     audience: service
@@ -25,8 +26,8 @@ toc:
       - learn-dashboard-overview.md
       - learn-high-availability.md
       - learn-performance.md
-      - learn-security-compliance.md
       - learn-pricing.md
+      - release-notes.md
   - navgroup: 
       id: howto
       topics:
@@ -41,6 +42,7 @@ toc:
           topics: 
           - howto-auditlogging.md
           - howto-ops-manager.md
+      - howto-enterprise-analytics.md
       - topicgroup: 
           label: Connecting to Databases for MongoDB
           topics: 
@@ -71,7 +73,8 @@ toc:
       - topicgroup: 
           label: Enhancing security
           topics: 
-          - /cloud-databases/cloud-databases-manage-security-compliance
+          - learn-security-compliance.md
+          - manage-scc.md
   - navgroup: 
       id: help
       topics:
