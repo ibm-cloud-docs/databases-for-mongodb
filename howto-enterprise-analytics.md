@@ -32,32 +32,22 @@ The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytic
 
 1. Most BI tools do not work with the MongoDB document data model. 
 
-    MongoDB's document data model is made up of complex documents with arbitrary, nested data. This schema makes storing data flexible, easy, and scalable. However, most BI tools require data to be in tabular format, which is rigidly defined and stored in tables, not documents. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On converts MongoDB document data into SQL-readable tabular data:
-
-    ![Connector for BI converting document model to table](images/bi-connector-model.png){: caption="Figure 1. Connector for BI converting document model to table" caption-side="bottom"}
+    MongoDB's document data model is made up of complex documents with arbitrary, nested data. This schema makes storing data flexible, easy, and scalable. However, most BI tools require data to be in tabular format, which is rigidly defined and stored in tables, not documents. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On converts MongoDB document data into SQL-readable tabular data that can be queried and displayed by BI tools.
 
 1. BI queries are expensive and can degrade database performance. 
-    Long-running queries can negatively impact the operational workflow of your deployment. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On introduces an extra data member, which isolates analytics from operation.
 
-    ![Introducing an extra data member](images/bi-connector-extra-data-member.png){: caption="Figure 2. Introducing an extra data member" caption-side="bottom"}
-    
+    Long-running queries can negatively impact the operational workflow of your deployment. The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On introduces an extra data member, which isolates analytics workloads from operational workloads. The Analytics Node data is kept in sync with the other nodes, so any queries performed against it produce the same results.
 
-## The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On Components
-{: #mongodbee-analytics-components}
-
-The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Analytics Add-On consists of two components:
-- the Analytics Node
-- connector for BI
 
 ### The Analytics Node
 {: #mongodbee-analytics-node}
 
-The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly using MongoDB queries or SQL queries, if SQL queries are enabled by the connector for BI. 
+The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly using MongoDB queries, or through the BI Connector if you want to run SQL queries.
 
 Enabling the Analytics node without engaging the connector for BI allows you to run document-type MongoDB queries or test a query on production data _without_ affecting your application. 
 {: .note}
 
-You can access your Analytics node directly through a connection string:
+You can access your Analytics node directly through a connection string, e.g.:
 
 ```shell
 mongodb://$USERNAME:$PASSWORD@host-0:30783,host-1:30783,host-2:30783/?readPreference=secondary&readPreferenceTags=nodeType%3AANALYTICS&replicaSet=replset
