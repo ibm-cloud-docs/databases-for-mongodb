@@ -85,7 +85,7 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE An
 ### Provisioning using Terraform
 {: #mongodbee-analytics-node-provisioning-terraform}
 
-Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} EE deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-database-instance-by-using-group-attributes). 
+Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} EE deployment (and obtain the connection strings to access them) [see this Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-database-instance-by-using-group-attributes). 
 
 
 ### Provisioning through the {{site.data.keyword.cloud_notm}} Databases API
