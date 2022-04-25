@@ -97,7 +97,7 @@ After that you can add the Analytics Node and BI Connector `group` to your deplo
 
 Example for Analytics Node:
 
-```
+```shell
 curl --request PATCH \
   --url https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/analytics \
   --header 'Authorization: Bearer <> \
@@ -113,7 +113,7 @@ curl --request PATCH \
 
 Example for BI Connector:
 
-```
+```shell
 curl --request PATCH \
   --url https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/bi_connector \
   --header 'Authorization: Bearer <> \
