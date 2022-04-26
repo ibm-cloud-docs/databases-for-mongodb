@@ -32,7 +32,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb_full}} 4.0 End of Life in April, 2022
-:  On April 27, 2021, all {{site.data.keyword.databases-for-mongodb_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/databases-for-mongodb-40-end-of-life-in-april-2022).
+:  On April 27, 2022, all {{site.data.keyword.databases-for-mongodb_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/databases-for-mongodb-40-end-of-life-in-april-2022).
 
 ## 1 December 2020
 {: #databases-for-mongodb-01dec2020}
