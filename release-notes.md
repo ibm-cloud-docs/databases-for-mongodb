@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-04-26"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 26 April 2022
+{: #databases-for-mongodb-26apr02022}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On Release
+:  The {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On allows you to execute long-running analytical queries and/or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/) to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/). For more information, see the documentation [here](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
 
 ## 17 September 2021
 {: #databases-for-mongodb-17sep02021}
