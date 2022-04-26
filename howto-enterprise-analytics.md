@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-04-26"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -128,7 +128,7 @@ curl --request PATCH \
     }
 }'
 ```
-Remember that the Analytics Node has to be provisioned **before** the BI Connector or your provisioning will fail {: .important}
+Remember that the Analytics Node has to be scaled **before** the BI Connector or your request will fail. {: .important}
 
 To get the connection strings to connect to the Analytics Node and/or BI Connector, follow the instructions [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
 
