@@ -92,8 +92,8 @@ Analytics Node and BI Connector are `group` attributes that can be added to a Te
 {: #mongodbee-analytics-node-provisioning-api}
 
 Provisioning via the API is a two-step process: 
-
-After that you can add the Analytics Node and BI Connector `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
+1. [Create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) a {{site.data.keyword.databases-for-mongodb}} EE deployment.
+2. After that you can add the Analytics Node and BI Connector `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
 
 Example for Analytics Node:
 
