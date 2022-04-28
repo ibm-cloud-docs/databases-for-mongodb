@@ -73,7 +73,7 @@ The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On connector fo
 Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On, consider the following:
 
 - The add-on is available only for {{site.data.keyword.databases-for-mongodb}} EE.
-- Once it's enable, you cannot deprovision the analytics node.
+- Once enabled, you cannot deprovision the analytics node.
 - You cannot scale the disk space of the Analytics member. 
   
     Scaling the disk space of the main database members will result in proportional scaling of the Analytics member.
