@@ -85,17 +85,15 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE An
 ### Provisioning using Terraform
 {: #mongodbee-analytics-node-provisioning-terraform}
 
-Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} EE deployment (and obtain the connection strings to access them) [see this Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-database-instance-by-using-group-attributes). 
+Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#s#user-content-sample-mongodb-enterprise-database-instance-with-bi-connector-and-analytics). 
 
 
 ### Provisioning through the {{site.data.keyword.cloud_notm}} Databases API
 {: #mongodbee-analytics-node-provisioning-api}
 
 Provisioning via the API is a two-step process: 
-
 1. [Create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) a {{site.data.keyword.databases-for-mongodb}} EE deployment.
-
-2. Next, add the Analytics Node and BI Connector `group` to your deployment by using the [Update Resource Instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#update-resource-instance) method.
+2. After that you can add the Analytics Node and BI Connector `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
 
 Example for Analytics Node:
 
