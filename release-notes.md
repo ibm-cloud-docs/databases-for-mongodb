@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2022
-lastupdated: "2022-04-01"
+lastupdated: "2022-04-26"
 
 keywords: databases-for-mongodb release notes
 
@@ -12,26 +12,27 @@ content-type: release-note
 
 ---
 
-<!-- keywords values above are place holders. Actual values should be pulled from the release notes entries. -->
-
 {{site.data.keyword.attribute-definition-list}}
-
-<!-- You must add the release-note content type in your attribute definitions AND to each release note H2. This will ensure that the release note entry is pulled into the notifications library. -->
 
 # Release notes for {{site.data.keyword.databases-for-mongodb_full}}
 {: #mongodb-relnotes}
 
-<!-- The title of your H1 should be Release notes for _service-name_, where _service-name_ is the non-trademarked short version keyref. Include your service name as a search keyword at the top of your Markdown file. See the example keywords above. -->
-
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 26 April 2022
+{: #databases-for-mongodb-26apr02022}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On Release
+:  The {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On allows you to execute long-running analytical queries and/or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/) to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/). For more information, see the documentation [here](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
 
 ## 17 September 2021
 {: #databases-for-mongodb-17sep02021}
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb_full}} 4.0 End of Life in April, 2022
-:  On April 27, 2021, all {{site.data.keyword.databases-for-mongodb_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/databases-for-mongodb-40-end-of-life-in-april-2022).
+:  On April 27, 2022, all {{site.data.keyword.databases-for-mongodb_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/databases-for-mongodb-40-end-of-life-in-april-2022).
 
 ## 1 December 2020
 {: #databases-for-mongodb-01dec2020}
