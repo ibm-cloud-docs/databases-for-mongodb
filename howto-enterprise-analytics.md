@@ -130,3 +130,9 @@ Remember that the Analytics Node has to be scaled **before** the BI Connector or
 
 To get the connection strings to connect to the Analytics Node and/or BI Connector, follow the instructions [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
 
+## Connecting using BI tools
+{: #mongodbee-analytics-node-connecting-bi-tools}
+
+To connect to the MongoDB Connector for BI using popular BI tools, consult the following:
+* [Microsoft Power BI Desktop](https://www.mongodb.com/docs/bi-connector/current/connect/powerbi/)
+* [Tableau](https://help.tableau.com/current/pro/desktop/en-us/examples_mongodb.htm)
