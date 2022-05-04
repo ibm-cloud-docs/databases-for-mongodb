@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-04-29"
+lastupdated: "2022-05-04"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -85,7 +85,7 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE An
 ### Provisioning using Terraform
 {: #mongodbee-analytics-node-provisioning-terraform}
 
-Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#s#user-content-sample-mongodb-enterprise-database-instance-with-bi-connector-and-analytics). 
+Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-mongodb-enterprise-database-instance-with-bi-connector-and-analytics). 
 
 
 ### Provisioning through the {{site.data.keyword.cloud_notm}} Databases API
