@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2021
-lastupdated: "2022-03-01"
+lastupdated: "2022-05-04"
 
 keywords: mongodb, databases, mongodb compass, mongodbee
 
@@ -90,7 +90,7 @@ If you are planning to use {{site.data.keyword.databases-for-mongodb}} for your 
 
 For information on TLS/SSL certificate configuration in the API, review the documentation at:
 
-- [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app#driver-tls-and-self-signed-certificate-support)
+- [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app#mongodb-tls-certificate-support)
 - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell#using-the-self-signed-certificate)
 - [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/)
   
