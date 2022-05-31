@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2022
-lastupdated: "2022-04-26"
+lastupdated: "2022-05-31"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 31 May 2022
+{: #databases-for-mongodb-31may2022}
+{: release-note}
+
+Provision a {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform tutorial published
+:  In this tutorial, you learn how to use Terraform to provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance that includes the {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On. For more information, see [Provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform](/docs/databases-for-postgresql?topic=cloud-databases-tutorial-provision-mongodbee-tf).
 
 ## 26 April 2022
 {: #databases-for-mongodb-26apr02022}
