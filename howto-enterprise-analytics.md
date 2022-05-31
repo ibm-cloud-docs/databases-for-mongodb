@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-05-04"
+lastupdated: "2022-05-31"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -49,7 +49,7 @@ Enabling the Analytics node without engaging the connector for BI allows you to 
 
 You can access your Analytics node directly through a connection string, e.g.:
 
-```shell
+```sh
 mongodb://$USERNAME:$PASSWORD@host-0:30783,host-1:30783,host-2:30783/?readPreference=secondary&readPreferenceTags=nodeType%3AANALYTICS&replicaSet=replset
 ```
 
@@ -60,7 +60,7 @@ Traditional BI tools are designed to work with tabular, row-and-column data. The
 
 You can access your BI Connector through the ODBC connector of your BI tool by using your username and password and the host URL, which will be something like:
 
-```shell
+```sh
 xyz1234-scfr5rer-496hjgo6ghtg-biconnector.abc12345deft7.databases.appdomain.cloud:32757
 ```
 
@@ -97,7 +97,7 @@ Provisioning via the API is a two-step process:
 
 Example for Analytics Node:
 
-```shell
+```sh
 curl --request PATCH \
   --url https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/analytics \
   --header 'Authorization: Bearer <> \
@@ -113,7 +113,7 @@ curl --request PATCH \
 
 Example for BI Connector:
 
-```shell
+```sh
 curl --request PATCH \
   --url https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/bi_connector \
   --header 'Authorization: Bearer <> \
