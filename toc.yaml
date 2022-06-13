@@ -56,6 +56,7 @@ toc:
           - howto-autoscaling.md
       - howto-user-management.md
       - /cloud-databases/cloud-databases-dashboard-backups
+      - howto-pitr.md
       - /cloud-databases/cloud-databases-allowlisting
       - howto-upgrading.md
       - topicgroup: 
