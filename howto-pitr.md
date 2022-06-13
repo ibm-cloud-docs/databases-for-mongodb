@@ -1,12 +1,11 @@
 ---
-
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-06-08"
+  years: 2020, 2022
+lastupdated: "2022-06-13"
 
-keywords: postgresql, databases, point in time recovery, backups, restore, pitr
+keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr
 
-subcollection: databases-for-postgresql
+subcollection: databases-for-mongodb
 
 ---
 
@@ -15,29 +14,27 @@ subcollection: databases-for-postgresql
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:tip: .tip}
+{:note: .note}
 
 # Point-in-time Recovery
 {: #pitr}
 
-{{site.data.keyword.databases-for-postgresql_full}} offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need.
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need.
 
 The _Backups_ tab of your deployment's UI keeps all your PITR information under _Point-in-Time_.
 
 ![PITR section of the Backups tab](images/pitr-backups-tab.png){: caption="PITR section of the Backups tab" caption-side="bottom"}
 
-Included information is the earliest time for a PITR. To discover the earliest recovery point through the CLI, use the [`cdb postgresql earliest-pitr-timestamp`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#postgresql-earliest-pitr-timestamp) command.
+Included information is the earliest time for a PITR. To discover the earliest recovery point through the CLI, use the **CLI COMMAND** command.
 ```sh
-ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN>
+CODE SNIPPET NEEDED
 ```
 {: pre}
 
-To discover the earliest recovery point through the API, use the [`/deployments/{id}/point_in_time_recovery_data`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-earliest-point-in-time-recovery-timestamp) endpoint to find the earliest PITR time. 
+To discover the earliest recovery point through the API, use the **API COMMAND** endpoint to find the earliest PITR time. 
 ```sh
-{
-    "point_in_time_recovery_data": {
-        "earliest_point_in_time_recovery_time": "2019-09-09T23:16:00Z"
-    }
-}
+CODE SNIPPET NEEDED
 ```
 {: .codeblock}
 
@@ -87,7 +84,7 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> s
 ### In the API
 {: #pitr-api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup. 
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) **REPLACE THIS** before you can use it to restore from a backup. 
 
 Once you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) endpoint.
 
@@ -116,7 +113,7 @@ If you need to adjust resources or use a Key Protect key, add the optional param
 ## Verifying PITR
 {: #pitr-verify}
 
-To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging) to be set up on your deployment.
+To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging) **UPDATE THIS** to be set up on your deployment.
 
 When you perform a recovery, your data is restored from the most recent incremental backup. Any outstanding transactions from the WAL log are used to restore your database up to the time you recovered to. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
 ```sh
