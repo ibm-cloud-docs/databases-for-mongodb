@@ -67,6 +67,7 @@ toc:
           - /cloud-databases/cloud-databases-tutorial-provision-mongodbee-tf
           - /cloud-databases/cloud-databases-tutorial-k8s-app
           - /cloud-databases/cloud-databases-truck-tracker-ibmcloud
+          - /cloud-databases/cloud-databases-bi-connector-tutorial-description
       - topicgroup: 
           label: Logging and monitoring
           topics: 
