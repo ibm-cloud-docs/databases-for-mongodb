@@ -60,7 +60,7 @@ You can upgrade to a new version when [restoring a backup](/docs/databases-for-m
 ## Upgrading through the CLI
 {: #upgrading-cli}
 
-When you upgrade and restore from backup through the  {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
+When you upgrade and restore from backup through the {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
 ```sh
 ibmcloud resource service-instance-create <service-name> <service-id> <service-plan-id> <region>
 ```
@@ -96,7 +96,7 @@ curl -X POST \
 ## After the primary has been upgraded
 {: #setFCV}
 
-When upgrading {{site.data.keyword.databases-for-mongodb}} Community Edition from 3.6 -> 4.0 the [`FeatureCompatibilityVersion`](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion){: .external} flag needs to be updated to enable the [4.0 features that persist data incompatible](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compatibility-enabled){: .external} with earlier versions of MongoDB. This is only required, however, when upgrading due to an EOL forced migration. 
+When upgrading {{site.data.keyword.databases-for-mongodb}} Community Edition from 3.6 -> 4.0 the [`FeatureCompatibilityVersion`](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion){: .external} flag needs to be updated to enable the [4.0 features that persist data incompatible](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compatibility-enabled){: .external} with earlier versions of MongoDB. However, this is only required when upgrading due to an EOL forced migration. 
 
 On the primary, run the `setFeatureCompatibilityVersion` command in the admin database:
 ```sh
@@ -104,7 +104,7 @@ db.adminCommand( { setFeatureCompatibilityVersion: "4.0" } )
 ```
 {: .pre}
 
-You can only issue the `setFeatureCompatibilityVersion` against the admin database. Likewise, ensure that no initial sync is in progress as running the command while an initial sync is in progress will cause the initial sync to restart. If for any reason the command does not complete successfully, you can safely retry the command on the primary.
+You can issue the `setFeatureCompatibilityVersion` only against the admin database. Likewise, ensure that no initial sync is in progress as running the command while an initial sync is in progress causes the initial sync to restart. If for any reason the command does not complete successfully, you can safely retry the command on the primary.
 {: .note}
 
 ## Migration Notes for New MongoDB 4.x Users
@@ -112,5 +112,5 @@ You can only issue the `setFeatureCompatibilityVersion` against the admin databa
 
 As with any switch between major versions, there are major and sometimes breaking changes. The MongoDB documentation has a full overview of the changes available in [Compatibility Changes in MongoDB 4.0](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/){: .external}. Since the upgraded version runs in a new deployment, you can test against it while continuing to run your application on your current MongoDB 3.x deployment.
 
-Before upgrading to a new major version, ensure that your application will continue to work with MongoDB 4.x. by double checking feature compatibility.
+Before upgrading to a new major version, ensure that your application continues to work with MongoDB 4.x. by double checking feature compatibility.
 {: .tip}
