@@ -47,8 +47,6 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 |MongoDB 4.4|	-> Latest version|
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
 
-To upgrade your database, ensure your [`setFeatureCompatibilityVersion`](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#setfeaturecompatibilityversion){: .external} is set to the value of your current deployment, otherwise the backup fails and restoring might not work. For instance, if you are running v4.2 but your `setFeatureCompatibilityVersion` is set to v4.0, restoration will be unsuccessful.{: .important}
-
 To upgrade an existing MongoDB deployment to 4.0, you must be running a 3.6-series release. Likewise, to upgrade an existing MongoDB deployment to 4.2, you must be running a 4.0-series release. To upgrade from a version earlier than the noted series, you must successively upgrade major releases until you have upgraded to the appropriate series. For example, if you are running a 3.6-series, you must upgrade first to 4.0 before you can upgrade to 4.2.
 {: .note}
 
@@ -93,10 +91,12 @@ curl -X POST \
   }'
 ```
 
-## After the primary has been upgraded
+## Setting the `setFeatureCompatibilityVersion`
 {: #setFCV}
 
-When upgrading {{site.data.keyword.databases-for-mongodb}} Community Edition from 3.6 -> 4.0 the [`FeatureCompatibilityVersion`](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion){: .external} flag needs to be updated to enable the [4.0 features that persist data incompatible](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compatibility-enabled){: .external} with earlier versions of MongoDB. However, this is only required when upgrading due to an EOL forced migration. 
+When upgrading {{site.data.keyword.databases-for-mongodb}} Community Edition, the [`FeatureCompatibilityVersion`](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion){: .external} flag needs to be updated to enable the [4.0 features that persist data incompatible](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compatibility-enabled){: .external} with earlier versions of MongoDB. 
+
+You must also ensure your [`setFeatureCompatibilityVersion`](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#setfeaturecompatibilityversion){: .external} is set to the value of your current deployment, otherwise the backup fails and restoring might not work. For instance, if you are running v4.2 but your `setFeatureCompatibilityVersion` is set to v4.0, restoration will be unsuccessful. Only backups taken after `setFeatureCompatibilityVersion` is set to the appropriate value will be restorable into a newer major version. The simplest way to ensure this is done properly is to always update the `setFeatureCompatibilityVersion` after you upgrade or after your database is upgraded.{: .important}
 
 On the primary, run the `setFeatureCompatibilityVersion` command in the admin database:
 ```sh
