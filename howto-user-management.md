@@ -25,7 +25,7 @@ subcollection: databases-for-mongodb
 
 When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can also add users in the _Service Credentials_ panel, the cloud databases CLI plug-in, or the cloud databases API. 
 
-MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [in the mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) by using the `show users` command.
+MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [in the mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client) by using the `show users` command.
 ```shell
 ibmcloud cdb deployment-connections --start -u admin mongodb-production
 Database Password>>
