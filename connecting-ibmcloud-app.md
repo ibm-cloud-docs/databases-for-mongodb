@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-06-07"
+lastupdated: "2022-07-21"
 
 keywords: mongodb, databases, kubernetes, cloud foundry
 
@@ -38,21 +38,21 @@ Before connecting your Kubernetes Service application to a deployment, make sure
 {: #mongodb-binding-deployment}
 
 **Public Endpoints** - If you are using the default public service endpoint to connect to your deployment, you can run the `cluster service bind` command with your cluster name, the resource group, and your deployment name.
-```shell
+```sh
 ibmcloud ks cluster service bind <your_cluster_name> <resource_group> <your_database_deployment>
 ```
 OR
 **Private Endpoints** - If you want to use a private endpoint (if one is enabled on your deployment), then first you need to create a service key for your database. Kubernetes uses it when binding to the database. 
-```shell
+```sh
 ibmcloud resource service-key-create <your-private-key> --instance-name <your_database_deployment> --service-endpoint private  
 ```
 The private service endpoint is selected with `--service-endpoint private`. After that, you bind the database to the Kubernetes cluster through the private endpoint with the `cluster service bind` command.
-```shell
+```sh
 ibmcloud ks cluster service bind <your_cluster_name> <resource_group> <your_database_deployment> --key <your-private-key>
 ```
 
 **Verify** - Verify that the Kubernetes secret was created in your cluster namespace. Running the following command, you get the API key for accessing the instance of your deployment in your account.
-```shell
+```sh
 kubectl get secrets --namespace=default
 ```
 More information on binding services is found in the [Kubernetes Service documentation](/docs/containers?topic=containers-service-binding#bind-services).
@@ -96,7 +96,7 @@ The alias appears in the list of _Cloud Foundry Apps_ in your _Resource List_. M
 Cloud Foundry uses a manifest file - `manifest.yml` to associate an application with another {{site.data.keyword.cloud_notm}} service.
 
 To create the file, open a new file and add the text:
-   ```shell
+   ```sh
    ---
    applications:
    - name:    example-application
