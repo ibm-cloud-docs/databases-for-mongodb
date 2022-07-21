@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2021
-lastupdated: "2022-01-14"
+  years: 2019, 2022
+lastupdated: "2022-07-21"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -37,10 +37,10 @@ The Standard plan is priced based on the total amount of disk storage, RAM, and 
 ### {{site.data.keyword.databases-for-mongodb}} Standard Plan: 
 {: #mongodb-standard-plan}
 
-Resources | Breakdown | Price
--------|-------|-------
-10 GB-Month disk | 3 members x 10 GB x $0.58 | $17.40
-1 GB-Month RAM | 3 members x 1 GB  x $8.50 | $25.50
+| Resources | Breakdown | Price |
+| ------- | ------- | ------- |
+| 10 GB-Month disk | 3 members x 10 GB x $0.58 | $17.40 |
+| 1 GB-Month RAM | 3 members x 1 GB  x $8.50 | $25.50 |
 {: caption="Table 1. Pricing example for three Standard data members" caption-side="top"}
 
 Total per month = $42.90/Month  
@@ -49,11 +49,11 @@ Total per hour = $.06/Hour
 ### {{site.data.keyword.databases-for-mongodb}} Enterprise Plan: 
 {: #mongodb-enterp-plan}
 
-Resources | Breakdown | Price
--------|-------|-------
-20 GB-Month disk | 3 members x 20 GB x $0.58 | $34.80
-14 GB-Month RAM | 3 members x 14 GB  x $25.00 | $1,050.00
-6 Cores-Month | 3 members x 6 cores x $60 | $1,080.00
+| Resources | Breakdown | Price |
+| ------- | ------- | ------- |
+| 20 GB-Month disk | 3 members x 20 GB x $0.58 | $34.80 |
+| 14 GB-Month RAM | 3 members x 14 GB  x $25.00 | $1,050.00 |
+| 6 Cores-Month | 3 members x 6 cores x $60 | $1,080.00 |
 {: caption="Table 2. Pricing example for three Enterprise data members" caption-side="top"}
 
 Total per month = $2,164.80/Month  
@@ -93,19 +93,19 @@ Dedicated cores are an optional feature for {{site.data.keyword.databases-for-mo
 ### {{site.data.keyword.databases-for-mongodb}} Two-member Standard Plan:
 {: #mongodb-standard-plan-two-member}
 
-Resource | Minimum | Maximum | Scaling Granularity (API/CLI)
-----------|-----|-----|-------
-Disk | 5 GB per member | 4 TB per member | 1024 MB per member
-RAM | 1 GB per member | 112 GB per member | 128 MB per member
-CPU (if enabled) | 3 CPUs per member | 28 CPUs per member| 1 CPU per member
-{: caption="Table 2. Per Member Standard Scaling Limits" caption-side="top"}
+| Resource | Minimum | Maximum | Scaling Granularity (API/CLI) |
+| ---------- | ----- | ----- | ------- |
+| Disk | 5 GB per member | 4 TB per member | 1024 MB per member |
+| RAM | 1 GB per member | 112 GB per member | 128 MB per member |
+| CPU (if enabled) | 3 CPUs per member | 28 CPUs per member| 1 CPU per member |
+{: caption="Table 3. Per Member Standard Scaling Limits" caption-side="top"}
 
 ### {{site.data.keyword.databases-for-mongodb}} Three-member Enterprise Plan:
 {: #mongodb-enterp-plan-three-member}
 
-Resource | Minimum | Maximum | Scaling Granularity (API/CLI)
-----------|-----|-----|-------
-Disk | 20 GB per member | 4 TB per member | 1024 MB per member
-RAM | 14 GB per member | 112 GB per member | 128 MB per member
-CPU | 6 CPUs per member | 28 CPUs per member| 1 CPU per member
-{: caption="Table 3. Per Member Enterprise Scaling Limits" caption-side="top"}
+| Resource | Minimum | Maximum | Scaling Granularity (API/CLI) |
+| ---------- | ----- | ----- | ------- |
+| Disk | 20 GB per member | 4 TB per member | 1024 MB per member |
+| RAM | 14 GB per member | 112 GB per member | 128 MB per member |
+| CPU | 6 CPUs per member | 28 CPUs per member| 1 CPU per member |
+{: caption="Table 4. Per Member Enterprise Scaling Limits" caption-side="top"}
