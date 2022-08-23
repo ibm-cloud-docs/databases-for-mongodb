@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-08-03"
+lastupdated: "2022-08-23"
 
-keywords: mongodb, databases, mongodb compass, mongodbee
+keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
 subcollection: databases-for-mongodb
 
@@ -20,7 +20,9 @@ subcollection: databases-for-mongodb
 # Getting Started
 {: #getting-started}
 
-This tutorial is a short introduction to using {{site.data.keyword.databases-for-mongodb_full}} Standard or {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments. MongoDB Compass is a GUI for MongoDB, provided by developers for MongoDB. The full-featured [Compass Edition](https://docs.mongodb.com/compass/master/#available-compass-short-editions){: .external} provides basic tools for viewing your MongoDB databases. Download a stand-alone edition from MongoDB and connect it to your {{site.data.keyword.databases-for-mongodb}} deployment.
+{{site.data.keyword.databases-for-mongodb_full}} allows developers to take advantage of the latest MongoDB features: rich JSON documents, powerful query language, multi-document transactions, and authentic APIs. The service also automates common database administration tasks like high availability, backups, encryption, and infrastructure planning.
+
+To get started with {{site.data.keyword.databases-for-mongodb_full}}, you need to take advantage of MongoDB Compass, an interactive GUI tool for querying, optimizing, and analyzing your MongoDB data. The full-featured [Compass Edition](https://docs.mongodb.com/compass/master/#available-compass-short-editions){: .external} provides basic tools for viewing your MongoDB databases. 
 
 ## Before you begin
 {: #before-begin-mongodb}
@@ -36,14 +38,31 @@ This tutorial is a short introduction to using {{site.data.keyword.databases-for
 
 Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 
+## {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition
+{: #mongodbee}
+
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition (EE) offers more functionality, including:
+* Automatic, client-side encryption
+* [Audit logging](/docs/databases-for-mongodb?topic=databases-for-mongodb-auditlogging)
+* Federal Information Processing Standard (FIPS) approved encryption
+* [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager), which allows you to manage, monitor, and back up MongoDB deployments
+* [MongoDB EE Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics), which allows you to make your query data compatible with business intelligence (BI) tools
+
+### Provisioning {{site.data.keyword.databases-for-mongodb_full}} EE
+{: #mongodbee-provision}
+
+To take advantage of the additional functionality of {{site.data.keyword.databases-for-mongodb_full}} EE, choose **Enterprise** during your {{site.data.keyword.databases-for-mongodb_full}} provisioning process.
+
+![MongoDB Enterprise Edition Provisioning](images/mongodbee-provision.png){: caption="Figure 1. MongoDB Enterprise Edition Provisioning" caption-side="bottom"}
+
 ## Connecting with MongoDB Compass
 {: #connecting-mongodb-compass}
 
 When you first open MongoDB Compass to the **Connect to Host** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's _Manage_ page.
 
-![Endpoints panel](images/getting-started-endpoints-panel.png){: caption="Figure 1. Endpoints panel" caption-side="bottom"}
+![Endpoints panel](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
 
-To fill out the MongoDB Compass page,
+To complete the MongoDB Compass page,
 
 - For _Hostname_, use either of the two hostnames for your deployment.
 - In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
@@ -55,14 +74,14 @@ To fill out the MongoDB Compass page,
     4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
 - If you want to, you can give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
 
-![Completed Connect to Host page](images/getting-started-connect-to-host-complete.png){: caption="Figure 2. Completed Connect to Host page" caption-side="bottom"}
+![Completed Connect to Host page](images/getting-started-connect-to-host-complete.png){: caption="Figure 3. Completed Connect to Host page" caption-side="bottom"}
 
 Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Using MongoDB Compass
 {: #using-mongodb-compass}
 
-Once you have connected to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version; {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses the Enterprise version of the MongoDB database.
+Once you have connected to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
 
 ![MongoDB Compass page](images/getting-started-compass-page.png){: caption="Figure 3. MongoDB Compass page" caption-side="bottom"}
 
