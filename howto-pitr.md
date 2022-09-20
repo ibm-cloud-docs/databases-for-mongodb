@@ -19,10 +19,10 @@ subcollection: databases-for-mongodb
 {:preview: .preview}
 {:important: .important}
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
-
 # Point-in-time Recovery
 {: #pitr}
+
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window.
 
