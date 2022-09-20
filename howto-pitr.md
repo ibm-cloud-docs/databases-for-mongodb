@@ -28,7 +28,7 @@ subcollection: databases-for-mongodb
 
 When using the timestamp returned by the point-in-time-recovery timestamp API, ensure that the provided `point_in_time_recovery_time` is no older than one week. If the timestamp is any older than 7 days, down to the second, validation will fail.{: important}
 
-# Get Point-in-time-recovery timestamp using the {{site.data.keyword.databases-for}} API
+## Get Point-in-time-recovery timestamp using the {{site.data.keyword.databases-for}} API
 {: #pitr-recovery-api}
 
 To return the earliest available time for PITR, use the [point-in-time-recovery timestamp endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
