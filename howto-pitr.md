@@ -31,7 +31,7 @@ When using the timestamp returned by the point-in-time-recovery timestamp API, e
 # Get Point-in-time-recovery timestamp using the {{site.data.keyword.databases-for}} API
 {: #pitr-recovery-api}
 
-Use the [point-in-time-recovery timestamp endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) to return the earliest available time for PITR.
+To return the earliest available time for PITR, use the [point-in-time-recovery timestamp endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
 
 ```sh
 {
@@ -50,12 +50,12 @@ The point-in-time-recovery timestamp endpoint always returns *current time* - *1
 
 Backups are restored to a new deployment. After the new deployment finishes provisioning, your data in the backup file is restored into the new deployment. Backups are also restorable across accounts, but only by using the API and only if the user that is running the restore has access to both the source and destination accounts. 
 
-By default the new deployment is auto-sized to the same disk and memory allocation as the source deployment at the time of the backup that you are restoring from. Especially in the case of PITR that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. Be sure to allocate enough for your data and workload, if the deployment is not given enough resources the restore fails.
+The new deployment is automatically sized to the same disk and memory allocation as the source deployment at the time of the backup from which you restore. Especially in the case of PITR, that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. If the deployment is not given enough resources the restore fails, so allocate enough for your data and workload.
 
-While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like shared_buffers, max_connections, deadlock_timeout, archive_timeout, and others) to ensure accurate setting for the instance after the restore is complete.
+While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`, and others) to ensure accurate setting for the instance after the restore is complete.
 
-It is important that you do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups so not only will the restore fail, you might not be able to recover the backup either.
-{: .tip}
+Do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups so not only will the restore fail, you might not be able to recover the backup either.
+{: important}
 
 ### In the CLI
 {: #pitr-cli}
