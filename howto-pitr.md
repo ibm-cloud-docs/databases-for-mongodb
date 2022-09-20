@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-06-13"
+lastupdated: "2022-09-20"
 
-keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr
+keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
 subcollection: databases-for-mongodb
 
@@ -16,27 +16,34 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 {:note: .note}
+{:preview: .preview}
+{:important: .important}
+
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
 # Point-in-time Recovery
 {: #pitr}
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need.
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window.
 
-The _Backups_ tab of your deployment's UI keeps all your PITR information under _Point-in-Time_.
+When using the timestamp returned by the point-in-time-recovery timestamp API, ensure that the provided `point_in_time_recovery_time` is no older than one week. If the timestamp is any older than 7 days, down to the second, validation will fail.{: important}
 
-![PITR section of the Backups tab](images/pitr-backups-tab.png){: caption="PITR section of the Backups tab" caption-side="bottom"}
+# Get Point-in-time-recovery timestamp using the {{site.data.keyword.databases-for}} API
+{: #pitr-recovery-api}
 
-Included information is the earliest time for a PITR. To discover the earliest recovery point through the CLI, use the **CLI COMMAND** command.
+Use the [point-in-time-recovery timestamp endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) to return the earliest available time for PITR.
+
 ```sh
-CODE SNIPPET NEEDED
-```
-{: pre}
-
-To discover the earliest recovery point through the API, use the **API COMMAND** endpoint to find the earliest PITR time. 
-```sh
-CODE SNIPPET NEEDED
+{
+    "point_in_time_recovery_data": {
+        "earliest_point_in_time_recovery_time": "2019-09-09T23:16:00Z"
+    }
+}
 ```
 {: .codeblock}
+
+The point-in-time-recovery timestamp endpoint always returns *current time* - *1 week*.{: important}
+
 
 ## Recovery
 {: #recovery}
@@ -49,15 +56,6 @@ While storage and memory are restored to the same as the source deployment, spec
 
 It is important that you do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups so not only will the restore fail, you might not be able to recover the backup either.
 {: .tip}
-
-### In the UI
-{: #pitr-ui}
-
-To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time. If you want to restore to the most recent available time, select that option. Clicking **Restore** brings up the options for your recovery. Enter a name, select the version, region, and allocated resources for the new deployment. Click **Recover** to start the process.
-
-![Recovery Options dialog](images/pitr-dialog.png){: caption="Recovery Options Dialog" caption-side="bottom"}
-
-If you use Key Protect and have a key, you have to use the CLI to recover and a command is provided for your convenience.
 
 ### In the CLI
 {: #pitr-cli}
