@@ -24,11 +24,9 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window.
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) using the timestamp that is returned by the {{site.data.keyword.databases-for}} API `point-in-time-recovery` timestamp API.
 
-When using the timestamp returned by the point-in-time-recovery timestamp API, ensure that the provided `point_in_time_recovery_time` is no older than one week. If the timestamp is any older than 7 days, down to the second, validation will fail.{: important}
-
-## Get Point-in-time-recovery timestamp using the {{site.data.keyword.databases-for}} API
+## Get Point-in-time-recovery timestamp by using the {{site.data.keyword.databases-for}} API
 {: #pitr-recovery-api}
 
 To return the earliest available time for PITR, use the [point-in-time-recovery timestamp endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
@@ -54,15 +52,17 @@ The new deployment is automatically sized to the same disk and memory allocation
 
 While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`, and others) to ensure accurate setting for the instance after the restore is complete.
 
-Do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups so not only will the restore fail, you might not be able to recover the backup either.
+Do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups. So, not only will the restore fail, but you might not be able to recover the backup.
 {: important}
 
-### Restoring a backup using Terraform
+### Restoring a backup by using Terraform
 {: #restore-terraform}
+
+Before restoring, ensure that your `point_in_time_recovery_time` is no older than one week. If the timestamp is any older than 7 days, down to the second, validation fails.{: important}
 
 Use the [`ibm_database_point_in_time_recovery`](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_pitr){}: external} data source and restore database instance by using [`point_in_time_recovery`](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-database-instance-by-using-point_in_time_recovery).{: external} 
 
-Your Terraform script will look like this. 
+Your Terraform script looks like this. 
 ```sh
 terraform {
   required_providers {
@@ -125,7 +125,7 @@ resource "ibm_database" "mongodb_enterprise" {
 
 To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-mongodb?topic=cloud-databases-logging) to be set up on your deployment.
 
-When you perform a recovery, your data is restored from the latest available backup. Any outstanding transactions from the WAL log are used to restore your database up to the time to which you recovered. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
+When performing a recovery, your data is restored from the latest available backup. Any outstanding transactions from the WAL log are used to restore your database up to the time to which you recovered. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
 ```sh
 LOG:  last completed transaction was at log time 2019-09-03 19:40:48.997696+00
 ```
