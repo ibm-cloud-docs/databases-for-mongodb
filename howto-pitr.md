@@ -53,7 +53,7 @@ The new deployment is automatically sized to the same disk and memory allocation
 While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`, and others) to ensure accurate setting for the instance after the restore is complete.
 
 Do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups. So, not only will the restore fail, but you might not be able to recover the backup.
-{: important}
+{: note}
 
 ### Restoring a backup by using Terraform
 {: #restore-terraform}
