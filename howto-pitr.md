@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-09-21"
+lastupdated: "2022-09-30"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -29,7 +29,7 @@ subcollection: databases-for-mongodb
 ## Get Point-in-time-recovery timestamp by using the {{site.data.keyword.databases-for}} API
 {: #pitr-recovery-api}
 
-To return the earliest available time for PITR, use the [point-in-time-recovery timestamp endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
+To return the earliest available time for PITR, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
 
 ```sh
 {
@@ -50,7 +50,7 @@ Backups are restored to a new deployment. After the new deployment finishes prov
 
 The new deployment is automatically sized to the same disk and memory allocation as the source deployment at the time of the backup from which you restore. Especially in the case of PITR, that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. If the deployment is not given enough resources the restore fails, so allocate enough for your data and workload.
 
-While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`, and others) to ensure accurate setting for the instance after the restore is complete.
+While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`) to ensure accurate settings for the instance after the restore is complete.
 
 Do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups. So, not only will the restore fail, but you might not be able to recover the backup.
 {: note}
@@ -88,7 +88,7 @@ data "ibm_resource_group" "default_group" {
 
 resource "ibm_database" "mongodb_enterprise" {
   resource_group_id = data.ibm_resource_group.default_group.id
-  name              = "obai-testing-mongodb-pitr"
+  name              = "testing-mongodb-pitr"
   service           = "databases-for-mongodb"
   plan              = "enterprise"
   location          = "eu-fr2"
