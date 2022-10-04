@@ -19,14 +19,14 @@ subcollection: databases-for-mongodb
 {:preview: .preview}
 {:important: .important}
 
-# Point-in-time Recovery
+# Point-in-time Recovery (PITR)
 {: #pitr}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
-The API for earliest recovery point and the restore do not currently use PITR capabilities. They are provided as a shim so that external applications can begin testing the feature. In its current phase, {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) requires the submission of a support ticket. {: important}
+The APIs for earliest recovery point and restore do not currently use PITR capabilities. They are provided as a shim so that external applications can begin testing the feature. In its current phase, {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition PITR requires the submission of a support ticket. {: important}
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
 
 ```sh
 {
@@ -114,6 +114,5 @@ resource "ibm_database" "mongodb_enterprise" {
 }
 ```
 {: codeblock}
- 
  
  
