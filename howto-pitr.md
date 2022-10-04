@@ -37,7 +37,7 @@ The APIs for earliest recovery point and restore do not currently use PITR capab
 ```
 {: .codeblock}
 
-The point-in-time-recovery timestamp endpoint always returns *current time* - *1 week*.{: important}
+In this phase, the point-in-time-recovery timestamp endpoint always returns *current time* - *1 week*.{: important}
 
 ## Recovery
 {: #recovery}
