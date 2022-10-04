@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-09-30"
+lastupdated: "2022-10-04"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -24,12 +24,9 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) using the timestamp that is returned by the {{site.data.keyword.databases-for}} API `point-in-time-recovery` timestamp API.
+The API for earliest recovery point and the restore do not currently use PITR capabilities. They are provided as a shim so that external applications can begin testing the feature. In its current phase, {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) requires the submission of a support ticket. {: important}
 
-## Get Point-in-time-recovery timestamp by using the {{site.data.keyword.databases-for}} API
-{: #pitr-recovery-api}
-
-To return the earliest available time for PITR, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers Point-In-Time Recovery (PITR) using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
 
 ```sh
 {
@@ -41,7 +38,6 @@ To return the earliest available time for PITR, use the [point-in-time-recovery 
 {: .codeblock}
 
 The point-in-time-recovery timestamp endpoint always returns *current time* - *1 week*.{: important}
-
 
 ## Recovery
 {: #recovery}
@@ -119,19 +115,3 @@ resource "ibm_database" "mongodb_enterprise" {
 ```
 {: codeblock}
 
-
-## Verifying PITR
-{: #pitr-verify}
-
-To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-mongodb?topic=cloud-databases-logging) to be set up on your deployment.
-
-When performing a recovery, your data is restored from the latest available backup. Any outstanding transactions from the WAL log are used to restore your database up to the time to which you recovered. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
-```sh
-LOG:  last completed transaction was at log time 2019-09-03 19:40:48.997696+00
-```
-
-There are two scenarios where recovery does not show up in the logs. 
-1. Your deployment has a recent full backup and there is no activity after the backup was taken that needs to be replayed.
-2. If you entered a time to recover to that is **after** the current time or is past latest available point-in-time recovery point.
-
-In both cases the recovery is usually still successful, but there won't be an entry in the logs to check the exact time to which the database was restored.
