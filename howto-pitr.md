@@ -114,4 +114,6 @@ resource "ibm_database" "mongodb_enterprise" {
 }
 ```
 {: codeblock}
-
+ 
+ 
+ 
