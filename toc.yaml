@@ -32,6 +32,7 @@ toc:
       id: howto
       topics:
       - /cloud-databases/cloud-databases-provisioning
+      - /cloud-databases/cloud-databases-cbr
       - howto-admin-password.md
       - howto-getting-connection-strings.md
       - /cloud-databases/cloud-databases-deprovisioning
