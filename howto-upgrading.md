@@ -22,7 +22,7 @@ subcollection: databases-for-mongodb
 # Upgrading to a new Major Version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 3.6 to 4.0. Prepare to run on, and then migrate to, the latest version before the EOL date [as documented here](/docs/databases-for-mongodb?topic=cloud-databases-versioning-policy#major-versions-defined). 
+When a major version of a database is at its end of life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 4.2 to 4.4. Prepare to run on, and then migrate to, the latest version before the EOL date [as documented here](/docs/databases-for-mongodb?topic=cloud-databases-versioning-policy#major-versions-defined). 
 
 Rolling back versions is not supported.{: .note} 
 
@@ -40,14 +40,11 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 
 |Current Version|	Major Version Upgrade Path
 |----|-----|
-|MongoDB 3.4|	-> MongoDB 3.6 -> 4.0| 
-|MongoDB 3.4|	-> MongoDB 3.6 -> 4.0| 
-|MongoDB 3.6|	-> MongoDB 4.0 -> 4.2|
 |MongoDB 4.0|	-> MongoDB 4.2-> 4.4|
 |MongoDB 4.4|	-> Latest version|
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
 
-To upgrade an existing MongoDB deployment to 4.0, you must be running a 3.6-series release. Likewise, to upgrade an existing MongoDB deployment to 4.2, you must be running a 4.0-series release. To upgrade from a version earlier than the noted series, you must successively upgrade major releases until you have upgraded to the appropriate series. For example, if you are running a 3.6-series, you must upgrade first to 4.0 before you can upgrade to 4.2.
+To upgrade an existing MongoDB deployment to 4.4, you must be running a 4.0-series release.To upgrade from a version earlier than the noted series, you must successively upgrade major releases until you have upgraded to the appropriate series. For example, if you are running a 3.6-series, you must upgrade first to 4.0 before you can upgrade to 4.2.
 {: .note}
 
 ## Upgrading in the UI
@@ -91,7 +88,7 @@ curl -X POST \
   }'
 ```
 
-## Setting the `setFeatureCompatibilityVersion`
+<!-- ## Setting the `setFeatureCompatibilityVersion`
 {: #setFCV}
 
 When upgrading {{site.data.keyword.databases-for-mongodb}} Community Edition, the [`FeatureCompatibilityVersion`](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion){: .external} flag needs to be updated to enable the [4.0 features that persist data incompatible](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compatibility-enabled){: .external} with earlier versions of MongoDB. 
@@ -113,4 +110,4 @@ You can issue the `setFeatureCompatibilityVersion` only against the admin databa
 As with any switch between major versions, there are major and sometimes breaking changes. The MongoDB documentation has a full overview of the changes available in [Compatibility Changes in MongoDB 4.0](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/){: .external}. Since the upgraded version runs in a new deployment, you can test against it while continuing to run your application on your current MongoDB 3.x deployment.
 
 Before upgrading to a new major version, ensure that your application continues to work with MongoDB 4.x. by double checking feature compatibility.
-{: .tip}
+{: .tip} -->
