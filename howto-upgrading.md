@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-06-24"
+lastupdated: "2022-10-11"
 
 keyowrds: mongodb, databases, upgrading
 
@@ -38,7 +38,7 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 ## Upgrade paths
 {: #upgrading-paths}
 
-|Current Version|	Major Version Upgrade Path
+|Current Version|	Major Version Upgrade Path |
 |----|-----|
 |MongoDB 4.0|	-> MongoDB 4.2-> 4.4|
 |MongoDB 4.4|	-> Latest version|
