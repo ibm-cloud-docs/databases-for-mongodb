@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-10-05"
+lastupdated: "2022-10-18"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -24,7 +24,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
-The APIs for earliest recovery point and restore do not currently use PITR capabilities. They are provided as a shim so that external applications can begin testing the feature.{: important}
+The APIs for earliest recovery point and restore do not currently use PITR capabilities. They are provided as a shim so that external applications can begin integrating with the IBM {{site.data.keyword.databases-for}} management API.{: important}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
 
