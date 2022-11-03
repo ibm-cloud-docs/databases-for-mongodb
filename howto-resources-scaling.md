@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2021
-lastupdated: "2021-12-22"
+  years: 2019, 2022
+lastupdated: "2022-11-03"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -16,6 +16,7 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Scaling Disk, Memory, and CPU
 {: #resources-scaling}
@@ -35,9 +36,9 @@ When you [provision](/docs/databases-for-mongodb?topic=cloud-databases-provision
 ### Disk Usage
 {: #resources-scaling-disk-usage}
 
-Your disk allocation has to be enough to store all of your data. Your data is replicated to both data members so the total amount of disk you use is at least twice the size of your data set. 
+Your disk allocation must be enough to store all of your data. Your data is replicated to both data members so the total amount of disk that you use is at least twice the size of your data set. 
 
-Disk allocation also affects the performance of the disk, with larger disks having higher performance. Baseline Input-Output Operations per second (IOPS) performance for disk is 10 IOPS for each GB. Scale disk to increase the IOPS your deployment can handle.
+Disk allocation also affects the performance of the disk, with larger disks having higher performance. Baseline Input-Output Operations per second (IOPS) performance for disk is 10 IOPS for each GB. Scale disk to increase the IOPS that your deployment can handle.
  
 You cannot scale down storage. If your data set size has decreased, you can recover space by backing up and restoring to a new deployment.
 {: .tip} 
@@ -45,7 +46,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 ### RAM
 {: #resources-scaling-ram}
 
-Memory resources are used for database operations and also controls the amount of memory that is allocated to the [internal and filesystem cache](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
+Memory resources are used for database operations and also control the amount of memory that is allocated to the [internal and file system cache](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
 The amount of memory you allocate to your deployment is split between all members. Adding memory to the total allocation adds memory to all members equally.
 
@@ -61,7 +62,7 @@ You can enable or increase the CPU allocation to the deployment. With dedicated 
 
 - Scaling down RAM or CPU does not trigger database node restarts.
 
-- Disk can not be scaled down.
+- Disk cannot be scaled down.
 
 - A few scaling operations can be more long running than others. Enabling dedicated cores moves your deployment to its own host and can take longer than just adding more cores. Similarly, drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
 
@@ -71,6 +72,7 @@ You can enable or increase the CPU allocation to the deployment. With dedicated 
 
 ## Scaling in the UI
 {: #resources-scaling-scale-ui}
+{: ui}
 
 A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
 
@@ -80,6 +82,7 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 ## Scaling in the CLI 
 {: #resources-scaling-scale-cli}
+{: cli}
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
@@ -88,7 +91,7 @@ For example, the command to view the resource groups for a deployment named "exa
 
 This command produces the output:
 
-```shell
+```sh
 Group   member
 Count   3
 |
@@ -121,16 +124,17 @@ The `cdb deployment-groups-set` command allows either the total RAM or total dis
 
 ## Scaling in the API
 {: #resources-scaling-scale-api}
+{: api}
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
 To view the current and scalable resources on a deployment,
-```curl
+```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
 ```
 
 To scale the memory of a deployment to 4096 MB of RAM for each memory member (for a total memory of 12288 MB).
-```curl
+```sh
 curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
