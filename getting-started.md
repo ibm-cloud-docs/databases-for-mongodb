@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-08-23"
+lastupdated: "2022-11-07"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -51,7 +51,7 @@ Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases
 ### Provisioning {{site.data.keyword.databases-for-mongodb_full}} EE
 {: #mongodbee-provision}
 
-To take advantage of the additional functionality of {{site.data.keyword.databases-for-mongodb_full}} EE, choose **Enterprise** during your {{site.data.keyword.databases-for-mongodb_full}} provisioning process.
+To take advantage of the additional functions of {{site.data.keyword.databases-for-mongodb_full}} EE, choose **Enterprise** during your {{site.data.keyword.databases-for-mongodb_full}} provisioning process.
 
 ![MongoDB Enterprise Edition Provisioning](images/mongodbee-provision.png){: caption="Figure 1. MongoDB Enterprise Edition Provisioning" caption-side="bottom"}
 
@@ -60,7 +60,7 @@ To take advantage of the additional functionality of {{site.data.keyword.databas
 
 When you first open MongoDB Compass to the **Connect to Host** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's _Manage_ page.
 
-![Endpoints panel](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
+![Endpoints](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
 
 To complete the MongoDB Compass page,
 
@@ -68,7 +68,7 @@ To complete the MongoDB Compass page,
 - In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
 - Enter the _Replica Set_ name of your deployment (it is probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
 - Configure the _SSL_ settings.
-    1. Copy the certificate information from the _Endpoints_ panel.
+    1. Copy the certificate information from _Endpoints_.
     2. Save the certificate to a file. (You can use the name that is provided in the download, or your own file name.)
     3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
     4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
@@ -81,7 +81,7 @@ Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databas
 ## Using MongoDB Compass
 {: #using-mongodb-compass}
 
-Once you have connected to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
+After connecting to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
 
 ![MongoDB Compass page](images/getting-started-compass-page.png){: caption="Figure 3. MongoDB Compass page" caption-side="bottom"}
 
@@ -94,9 +94,9 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 
 If you are using MongoDB for the first time, see the [official MongoDB documentation](https://docs.mongodb.com/){: .external}.
 
-Connect to and manage your MongoDB database through the [Mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell).
+Connect to and manage your MongoDB database through the [Mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client).
 
-Explore the [OpsManager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functionality offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments.
+Explore the [OpsManager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments.
 
 Looking for more tools on managing your databases and data? Connect to your deployment with the [IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). You can also use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
@@ -105,7 +105,7 @@ If you plan to use {{site.data.keyword.databases-for-mongodb}} for your applicat
 - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app)
 - [Connecting an IBM Cloud application](/docs/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
 - [Connecting with the mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell)
-- [MongoDB Node.js Driver — Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/)
+- [MongoDB Node.js Driver Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/)
 
 For information on TLS/SSL certificate configuration in the API, review the documentation at.
 
