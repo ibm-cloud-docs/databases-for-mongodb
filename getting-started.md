@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-11-07"
+lastupdated: "2022-11-08"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -91,6 +91,8 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 
 ## Next Steps
 {: #getting-started-mongodb-next-steps}
+
+For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/cloud/blog/best-practices-for-mongodb-on-the-ibm-cloud){: .external}.
 
 If you are using MongoDB for the first time, see the [official MongoDB documentation](https://docs.mongodb.com/){: .external}.
 
