@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-05-31"
+lastupdated: "2022-11-09"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -17,11 +17,12 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
+{{site.data.keyword.attribute-definition-list}}
 
 # MongoDB Enterprise Edition Analytics Add-On
 {: #mongodbee-analytics}
 
-The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/) to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/).
+The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/){: external} to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/){: external}.
 
 The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On is made up of two components:
 - [The Analytics node](#mongodbee-analytics-node)
@@ -84,12 +85,15 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE An
 
 ### Provision by using Terraform
 {: #mongodbee-analytics-node-provisioning-terraform}
+{: terraform}
 
-Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-mongodb-enterprise-database-instance-with-bi-connector-and-analytics). 
+Analytics Node and BI Connector are `group` attributes that can be added to a Terraform script. For an example of how to add these to a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment (and obtain the connection strings to access them) [see this section of our Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-mongodb-enterprise-database-instance-with-bi-connector-and-analytics){: external}. 
 
+Remember that the Analytics Node must be scaled **before** the BI Connector or your request will fail. {: .important}
 
 ### Provisioning through the {{site.data.keyword.cloud_notm}} Databases API
 {: #mongodbee-analytics-node-provisioning-api}
+{: api}
 
 Provisioning via the API is a two-step process: 
 1. [Create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) a {{site.data.keyword.databases-for-mongodb}} EE deployment.
@@ -134,5 +138,5 @@ To get the connection strings to connect to the Analytics Node and/or BI Connect
 {: #mongodbee-analytics-node-connecting-bi-tools}
 
 To connect to the MongoDB Connector for BI using popular BI tools, see:
-* [Microsoft Power BI Desktop](https://www.mongodb.com/docs/bi-connector/current/connect/powerbi/)
-* [Tableau](https://help.tableau.com/current/pro/desktop/en-us/examples_mongodb.htm)
+* [Microsoft Power BI Desktop](https://www.mongodb.com/docs/bi-connector/current/connect/powerbi/){: external}
+* [Tableau](https://help.tableau.com/current/pro/desktop/en-us/examples_mongodb.htm){: external}
