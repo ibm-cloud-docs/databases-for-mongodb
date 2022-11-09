@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2022
-lastupdated: "2022-11-03"
+lastupdated: "2022-11-09"
 
 keywords: mongodb, databases, scaling, autoscaling, memory, disk I/O
 
@@ -16,7 +16,7 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Autoscaling
 {: #autoscaling}
