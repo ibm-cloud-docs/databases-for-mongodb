@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2022
-lastupdated: "2022-11-07"
+lastupdated: "2022-11-09"
 
 keywords: mongodb, databases
 
@@ -17,8 +17,11 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
-# Setting the Admin Password through the UI
+# Setting the Admin Password
 {: #admin-password}
+
+## Setting the Admin Password through the UI
+{: #admin-password-ui}
 {: ui}
 
 The {{site.data.keyword.databases-for-mongodb_full}} service is provisioned with an admin user.
@@ -34,7 +37,7 @@ Set the admin password before you use it to connect. To set the password through
 Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in to set the admin password through the CLI.
 
 For example, to set the admin password for a deployment named "example-deployment", use the following command.
-```shell
+```sh
 ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 
@@ -43,7 +46,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: api}
 
 The _Foundation Endpoint_ that is shown in the _Overview_ section of your service provides the base URL to access this deployment through the API. Use it with the `/deployments/{id}/users/{username}` endpoint to set the admin password.
-```shell
+```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
