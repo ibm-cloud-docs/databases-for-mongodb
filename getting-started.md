@@ -102,20 +102,20 @@ Explore the [OpsManager](/docs/databases-for-mongodb?topic=databases-for-mongodb
 
 Looking for more tools on managing your databases and data? Connect to your deployment with the [IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). You can also use the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
-If you plan to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages.
+If you plan to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out some of our other documentation pages:
 
 - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-external-app)
 - [Connecting an IBM Cloud application](/docs/databases-for-mongodb?topic=databases-for-mongodb-ibmcloud-app)
 - [Connecting with the mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell)
 - [MongoDB Node.js Driver Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/)
 
-For information on TLS/SSL certificate configuration in the API, review the documentation at.
+For information on TLS/SSL certificate configuration in the API, review the following documentation:
 
 - [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app#mongodb-tls-certificate-support)
 - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell#using-the-self-signed-certificate)
 - [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: .external}
   
-Also, to ensure the stability of your applications and your database, check out the pages on.
+To ensure the stability of your applications and databases, check out:
 
 - [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
 - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance)
