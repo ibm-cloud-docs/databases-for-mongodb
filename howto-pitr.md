@@ -74,7 +74,6 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> <
 A pre-formatted command for a specific backup or PITR is available in detailed view of the backup.
 {: .tip}
 
-
 When restoring through the CLI, optional parameters are available. Use them to customize resources or use a Key Protect key for BYOK encryption on the new deployment.
 ```sh
 ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> standard <region> <--service-endpoints SERVICE_ENDPOINTS_TYPE> -p
@@ -114,6 +113,7 @@ If you need to adjust resources or use a Key Protect key, add the optional param
 
 ### Restoring a backup using Terraform
 {: #restore-terraform}
+{: terraform}
 
 Before restoring, ensure that your `point_in_time_recovery_time` is no older than one week. If the timestamp is any older than 7 days, down to the second, validation fails.{: important}
 
@@ -176,7 +176,7 @@ resource "ibm_database" "mongodb_enterprise" {
 ```
 {: codeblock}
  
- ## Verifying PITR
+## Verifying PITR
 {: #pitr-verify}
 
 To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging) to be set up on your deployment.
