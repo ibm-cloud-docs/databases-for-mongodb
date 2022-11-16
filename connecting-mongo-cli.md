@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-07-21"
+lastupdated: "2022-11-16"
 
 keywords: mongodb, databases, mongo shell
 
@@ -17,15 +17,15 @@ subcollection: databases-for-mongodb
 {:tip: .tip}
 
 
-# Connecting with the `mongo` shell
+# Connecting with the MongoDB Shell
 {: #connecting-cli-client}
 
-You can access your MongoDB database from a command-line client, which allows for direct interaction and monitoring of the data structures that are created within the database. You can use it to query and update data as well as performing administrative operations and monitoring performance. 
+You can access your MongoDB database from a command-line client, which allows for direct interaction and monitoring of the data structures that are created within the database. Use it to query and update data, as well to perform administrative operations and monitor performance. 
 
 ## Installing 
 {: #connecting-cli-client-install}
 
-The `mongo` shell is available as part of the MongoDB distribution, which can be downloaded from [the MongoDB Download Center](https://www.mongodb.com/download-center/community?jmp=docs).
+The MongoDB shell is available as part of the MongoDB distribution. Download it [here](https://www.mongodb.com/try/download/shell){: .external}.
 
 ## Connecting
 {: #connecting-cli-connect}
@@ -34,7 +34,7 @@ Connection strings are displayed in the _Endpoints_ panel of your deployment's _
 
 ![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="Figure 1. CLI Endpoints panel" caption-side="bottom"}
 
-The information the `mongo` shell needs to make a connection to your deployment is in the "cli" section the connection strings. The table contains a breakdown for reference.
+The information the MongoDB shell needs to connect to your deployment is in the "cli" section the connection strings. The table contains a breakdown for reference.
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
@@ -49,21 +49,21 @@ The information the `mongo` shell needs to make a connection to your deployment 
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-## `mongo` example
+## MongoDB Shell Example
 {: #connecting-cli-client-mongo-example}
 
 ```sh
-mongo -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
+mongosh -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
 ```
 
-* `mongo` - The command itself. 
+* `mongosh` - The command itself. 
 * `--ssl --sslCAFile` - The path and name of the self-signed certificate for your deployment.
 * `-u` - The parameter for the username.
 * `-p` - The parameter for the password. 
 * `--authenticationDatabase` - The database where the user and its credentials are created and stored.
 * `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members. 
 
-## Starting `mongo` from the IBM Cloud CLI
+## Starting the MongoDB Shell from the IBM Cloud CLI
 {: #connecting-cli-client-ibmcloud-cli}
 
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named  "example-mongo" with an "example-user", use the following command.
@@ -73,9 +73,9 @@ ibmcloud cdb deployment-connections --start -u example-user example-mongo
 ```
 {: .pre}
 
-The command prompts for the user's password and then runs the `mongo` command-line client to connect to the database.
+The command prompts for the user's password and then runs the MongoDB command-line client to connect to the database.
 
-The option `--start` must come before the parameters, otherwise connection information is just returned and the `mongo` shell is not started.
+The option `--start` must come before the parameters, otherwise connection information is just returned and the MongoDB Shell is not started.
 {: .tip}
 
 ## Using the self-signed certificate
