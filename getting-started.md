@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-11-08"
+lastupdated: "2022-11-16"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -96,7 +96,7 @@ For guidance on best practices, check out [Best Practices for MongoDB on the IBM
 
 If you are using MongoDB for the first time, see the [official MongoDB documentation](https://docs.mongodb.com/){: .external}.
 
-Connect to and manage your MongoDB database through the [Mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client).
+Connect to and manage your MongoDB database through the [MongoDB Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client).
 
 Explore the [OpsManager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments.
 
