@@ -172,21 +172,3 @@ resource "ibm_database" "mongodb_enterprise" {
 ```
 {: codeblock}
  
-## Verifying PITR
-{: #pitr-verify}
-
-To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging) to be set up on your deployment.
-
-When you perform a recovery, your data is restored from the most recent incremental backup. Any outstanding transactions from the Oplog are used to restore your database up to the time you recovered to. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
-```sh
-LOG:  last completed transaction was at log time 2019-09-03 19:40:48.997696+00
-```
-
-There are two scenarios where recovery does not show up in the logs:
-- Your deployment has a recent full backup and there is no activity after the backup was taken that needs to be replayed.
-- If you entered a time to recover to that is **after** the current time or is past latest available point-in-time recovery point.
-
-The formation deployed through PITR is a new formation. To create another PITR formation, use the original source formation.
-{: note}
-
-In both cases the recovery is usually still successful, but there won't be an entry in the logs to check the exact time that the database was restored to.
