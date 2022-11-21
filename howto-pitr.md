@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2022
-lastupdated: "2022-11-16"
+lastupdated: "2022-11-21"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -9,21 +9,10 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-{:note: .note}
-{:preview: .preview}
-{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # Point-in-time Recovery (PITR)
 {: #pitr}
-
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Point-In-Time Recovery (PITR) is available for select clients.{: preview}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
 
@@ -44,6 +33,7 @@ In this phase, the point-in-time-recovery timestamp endpoint always returns *cur
 Backups are restored to a new deployment. After the new deployment finishes provisioning, your data in the backup file is restored into the new deployment. Backups are also restorable across accounts, but only by using the API and only if the user that is running the restore has access to both the source and destination accounts. 
 
 The new deployment is automatically sized to the same disk and memory allocation as the source deployment at the time of the backup from which you restore. Especially in the case of PITR, that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. If the deployment is not given enough resources the restore fails, so allocate enough for your data and workload.
+{: .important}
 
 While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`) to ensure accurate settings for the instance after the restore is complete.
 
@@ -81,6 +71,9 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> s
 ```
 {: pre}
 
+The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
+{: important}
+
 ### Recovery through the API
 {: #pitr-api}
 {: api}
@@ -104,6 +97,9 @@ curl -X POST \
   }'
 ```
 {: pre}
+
+The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
+{: important}
 
 The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. The `target` is the region where you want the new deployment to be located, which can be a different region from the source deployment. Cross region restores are supported, except for restoring a `eu-de` backup to another region.
 
@@ -135,7 +131,7 @@ variable "ibmcloud_api_key" {
 }
 
 provider "ibm" {
-  region = "eu-fr2"
+  region = "us-south"
   ibmcloud_api_key = var.ibmcloud_api_key
 }
 
@@ -148,7 +144,7 @@ resource "ibm_database" "mongodb_enterprise" {
   name              = "testing-mongodb-pitr"
   service           = "databases-for-mongodb"
   plan              = "enterprise"
-  location          = "eu-fr2"
+  location          = "us-south"
 
   point_in_time_recovery_deployment_id = "<crn>"
   point_in_time_recovery_time = "2022-09-14T14:47:45Z"
@@ -181,13 +177,16 @@ resource "ibm_database" "mongodb_enterprise" {
 
 To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging) to be set up on your deployment.
 
-When you perform a recovery, your data is restored from the most recent incremental backup. Any outstanding transactions from the WAL log are used to restore your database up to the time you recovered to. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
+When you perform a recovery, your data is restored from the most recent incremental backup. Any outstanding transactions from the Oplog are used to restore your database up to the time you recovered to. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
 ```sh
 LOG:  last completed transaction was at log time 2019-09-03 19:40:48.997696+00
 ```
 
-There are two scenarios where recovery does not show up in the logs. 
-1. Your deployment has a recent full backup and there is no activity after the backup was taken that needs to be replayed.
-2. If you entered a time to recover to that is **after** the current time or is past latest available point-in-time recovery point.
+There are two scenarios where recovery does not show up in the logs:
+- Your deployment has a recent full backup and there is no activity after the backup was taken that needs to be replayed.
+- If you entered a time to recover to that is **after** the current time or is past latest available point-in-time recovery point.
+
+The formation deployed through PITR is a new formation. To create another PITR formation, use the original source formation.
+{: note}
 
 In both cases the recovery is usually still successful, but there won't be an entry in the logs to check the exact time that the database was restored to.
