@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-11-16"
+lastupdated: "2022-12-07"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -28,7 +28,9 @@ To get started with {{site.data.keyword.databases-for-mongodb_full}}, you need t
 {: #before-begin-mongodb}
 
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}.
-- You also need a {{site.data.keyword.databases-for-mongodb}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-mongodb). Give your deployment a memorable name that appears in your account's Resource List.
+- You also need a {{site.data.keyword.databases-for-mongodb}} deployment. 
+   [![Configure and deploy](images/configure-deploy.svg)](https://cloud.ibm.com/catalog/databases-for-mongodb){: target="_blank"}
+   Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment.
 - Download and install [MongoDB Compass](https://docs.mongodb.com/compass/master/install/){: .external} from MongoDB.
 - If your deployment is not using public endpoints, take [these additional steps](https://cloud.ibm.com/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints#private-endpoint-connections) to configure private endpoint access. 
