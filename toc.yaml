@@ -1,6 +1,3 @@
-#  Name your file `toc.yaml`
-#  Make sure you include all nav file coding requirements, as defined in https://test.cloud.ibm.com/docs/writing?topic=writing-code-nav
-#  Anything with a fully qualified URL with `http` or `https` will get an external link icon added to the nav entry
 ---
 toc:
   properties:
@@ -19,7 +16,7 @@ toc:
       id: learn
       topics:
       - getting-started.md
-      - /cloud-databases/cloud-databases-best-practices
+      - include: ../cloud-databases/learn-getting-to-production.md
       - link:
           label: What is MongoDB?
           href: https://www.ibm.com/cloud/learn/mongodb)
@@ -31,12 +28,12 @@ toc:
   - navgroup: 
       id: howto
       topics:
-      - /cloud-databases/cloud-databases-provisioning
+      - include: ../cloud-databases/howto-provisioning.md
+      - include: ../cloud-databases/howto-deprovisioning.md
       - howto-admin-password.md
       - howto-getting-connection-strings.md
-      - /cloud-databases/cloud-databases-deprovisioning
-      - /cloud-databases/cloud-databases-migrate-data-center
-      - /cloud-databases/cloud-databases-ha-dr
+      - include: ../cloud-databases/closures.md
+      - include: ../cloud-databases/ha-dr.md
       - topicgroup: 
           label: MongoDB Enterprise Edition
           topics: 
@@ -55,33 +52,33 @@ toc:
           - howto-resources-scaling.md
           - howto-autoscaling.md
       - howto-user-management.md
-      - /cloud-databases/cloud-databases-dashboard-backups
+      - include: ../cloud-databases/howto-manage-backups.md
       - howto-pitr.md
-      - /cloud-databases/cloud-databases-allowlisting
+      - include: ../cloud-databases/howto-allowlists.md
       - howto-upgrading.md
       - topicgroup: 
           label: Tutorials
           topics: 
-          - /cloud-databases/cloud-databases-tutorial-getting-started
-          - /cloud-databases/cloud-databases-create-instance-tutorial
-          - /cloud-databases/cloud-databases-tutorial-provision-postgres-tf
-          - /cloud-databases/cloud-databases-tutorial-provision-mongodbee-tf
-          - /cloud-databases/cloud-databases-tutorial-k8s-app
-          - /cloud-databases/cloud-databases-truck-tracker-ibmcloud
-          - /cloud-databases/cloud-databases-bi-connector-tutorial-description
+          - include: ../cloud-databases/howto-tutorials.md
+          - include: ../cloud-databases/hello-world-tutorial.md
+          - include: ../cloud-databases/terra-postgres-tutorial.md
+          - include: ../cloud-databases/terra-mongodb-tutorial.md
+          - include: ../cloud-databases/k8-tutorial.md
+          - include: ../cloud-databases/truck-tracker-tutorial.md
       - topicgroup: 
           label: Logging and monitoring
           topics: 
-          - /cloud-databases/cloud-databases-activity-tracker
-          - /cloud-databases/cloud-databases-logging
+          - include: ../cloud-databases/reference-activity-tracker.md
+          - include: ../cloud-databases/reference-logging.md
           - reference-monitoring.md
       - topicgroup: 
           label: Enhancing security
           topics: 
+          - include: ../cloud-databases/manage-scc.md
           - learn-security-compliance.md
           - manage-scc.md
-          - /cloud-databases/cloud-databases-cbr
-          - /cloud-databases/cloud-databases-cbr-tutorial
+          - include: ../cloud-databases/howto-cbr.md
+          - include: ../cloud-databases/cbr-tutorial.md
   - navgroup: 
       id: help
       topics:
@@ -89,7 +86,7 @@ toc:
   - navgroup: 
       id: reference
       topics:
-      - /databases-cli-plugin/databases-cli-plugin-cdb-reference
+      - include: ../databases-cli-plugin/cloud-databases-cli.md
       - link:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
@@ -97,9 +94,9 @@ toc:
       - topicgroup: 
           label: Connecting over Private Networks
           topics: 
-          - /cloud-databases/cloud-databases-vpes
-          - /cloud-databases/cloud-databases-service-endpoints
-      - /cloud-databases/cloud-databases-key-protect
-      - /cloud-databases/cloud-databases-iam
-      - /cloud-databases/cloud-databases-hpcs
-      - /cloud-databases/cloud-databases-responsibilities-cloud-databases
+          - include: ../cloud-databases/howto-vpes.md
+          - include: ../cloud-databases/reference-service-endpoints.md
+      - include: ../cloud-databases/reference-key-protect.md
+      - include: ../cloud-databases/reference-iam.md
+      - include: ../cloud-databases/reference-hpcs.md
+      - include: ../cloud-databases/reference-responsibilities.md
