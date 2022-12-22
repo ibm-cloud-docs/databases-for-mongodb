@@ -66,25 +66,22 @@ To take advantage of the additional functions of {{site.data.keyword.databases-f
 ## Connecting with MongoDB Compass
 {: #connecting-mongodb-compass}
 
-When you first open MongoDB Compass to the **Connect to Host** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's _Manage_ page.
+When you first open MongoDB Compass to the **New Connection** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's _Manage_ page.
 
 ![Endpoints](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
 
 To complete the MongoDB Compass page,
 
-- For _Hostname_, use either of the two hostnames for your deployment.
-- In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
-- Enter the _Replica Set_ name of your deployment (it is probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
-- Configure the _SSL_ settings.
-    1. Copy the certificate information from _Endpoints_.
-    2. Save the certificate to a file. (You can use the name that is provided in the download, or your own file name.)
-    3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
+- In **New Connection**, enter the **URI**. Find this in the _Endpoint_ field within **Public Connections**, in your deployment's **Overview**.
+- Click on **>Advanced Connection Options**.
+- In _Authentication_, select _Username/Password_, and enter the credentials that you set for the admin user in your deployment's **Settings**. 
+- Configure the **TLS/SSL settings.
+    1. Copy the certificate information from **TLS Certificate**, in your deployment's **Overview**.
+    2. Download the certificate.
+    3. In MongoDB Compass, set **SSL/TLS Connection** to **On**.
     4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
-- If you want to, you can give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
-
-![Completed Connect to Host page](images/getting-started-connect-to-host-complete.png){: caption="Figure 3. Completed Connect to Host page" caption-side="bottom"}
-
-Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
+- (Optional) Give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
+- Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Using MongoDB Compass
 {: #using-mongodb-compass}
