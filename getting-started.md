@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-12-22"
+  years: 2019, 2023
+lastupdated: "2023-01-03"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -9,13 +9,6 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: .external target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # Getting Started
