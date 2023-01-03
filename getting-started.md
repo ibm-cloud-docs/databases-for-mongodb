@@ -66,11 +66,9 @@ To take advantage of the additional functions of {{site.data.keyword.databases-f
 ## Connecting with MongoDB Compass
 {: #connecting-mongodb-compass}
 
-When you first open MongoDB Compass to the **New Connection** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's _Manage_ page.
+When you first open MongoDB Compass to the **New Connection** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's **Overview** page.
 
-![Endpoints](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
-
-To complete the MongoDB Compass page, complete the following steps:
+To connect to your deployment with MongoDB Compass, complete the following steps:
 
 - In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your deployment's **Overview**.
 - Click on **>Advanced Connection Options**.
