@@ -70,16 +70,15 @@ When you first open MongoDB Compass to the **New Connection** page, enter your d
 
 ![Endpoints](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
 
-To complete the MongoDB Compass page,
+To complete the MongoDB Compass page, complete the following steps:
 
-- In **New Connection**, enter the **URI**. Find this in the _Endpoint_ field within **Public Connections**, in your deployment's **Overview**.
+- In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your deployment's **Overview**.
 - Click on **>Advanced Connection Options**.
-- In _Authentication_, select _Username/Password_, and enter the credentials that you set for the admin user in your deployment's **Settings**. 
+- In the _Authentication_ tab, select _Username/Password_, and enter the credentials that you set for the admin user in your deployment's **Settings**. 
 - Configure the **TLS/SSL settings.
-    1. Copy the certificate information from **TLS Certificate**, in your deployment's **Overview**.
-    2. Download the certificate.
-    3. In MongoDB Compass, set **SSL/TLS Connection** to **On**.
-    4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
+    1. In your deployment's **Overview**, copy the certificate information from **TLS Certificate**.
+    1. In your deployment's **Overview**, download the TLS certificate from the **Certificate Authority** section.
+    1. In MongoDB Compass, click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
 - (Optional) Give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
 - Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
