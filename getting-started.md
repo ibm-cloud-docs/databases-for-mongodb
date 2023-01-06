@@ -9,13 +9,6 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: .external target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # Getting Started
