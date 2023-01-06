@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-01-03"
+lastupdated: "2023-01-06"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -9,6 +9,13 @@ subcollection: databases-for-mongodb
 
 ---
 
+{:shortdesc: .shortdesc}
+{:external: .external target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # Getting Started
@@ -59,30 +66,24 @@ To take advantage of the additional functions of {{site.data.keyword.databases-f
 ## Connecting with MongoDB Compass
 {: #connecting-mongodb-compass}
 
-When you first open MongoDB Compass to the **Connect to Host** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's _Manage_ page.
+When you first open MongoDB Compass to the **New Connection** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's **Overview** page.
 
-![Endpoints](images/getting-started-endpoints-panel.png){: caption="Figure 2. Endpoints panel" caption-side="bottom"}
+To connect to your deployment with MongoDB Compass, complete the following steps:
 
-To complete the MongoDB Compass page,
-
-- For _Hostname_, use either of the two hostnames for your deployment.
-- In the _Authentication_ field, select `Username/Password`, and enter the credentials that you set for the admin user in the prerequisites. The _Authentication Database_ should stay at the default of 'admin'.
-- Enter the _Replica Set_ name of your deployment (it is probably `replset`) into the _Replica Set Name_ field on MongoDB Compass.
-- Configure the _SSL_ settings.
-    1. Copy the certificate information from _Endpoints_.
-    2. Save the certificate to a file. (You can use the name that is provided in the download, or your own file name.)
-    3. Set the **SSL** field in MongoDB Compass to _Server Validation_.
-    4. Click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
-- If you want to, you can give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
-
-![Completed Connect to Host page](images/getting-started-connect-to-host-complete.png){: caption="Figure 3. Completed Connect to Host page" caption-side="bottom"}
-
-Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
+- In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your deployment's **Overview**.
+- Click **>Advanced Connection Options**.
+- In the _Authentication_ tab, select _Username/Password_, and enter the credentials that you set for the admin user in your deployment's **Settings**. 
+- Configure the **TLS/SSL settings.
+    1. In your deployment's **Overview**, copy the certificate information from **TLS Certificate**.
+    1. In your deployment's **Overview**, download the TLS certificate from the **Certificate Authority** section.
+    1. In MongoDB Compass, click **Select Files** in the _Certificate Authority_ field and upload the certificate file to MongoDB Compass.
+- (Optional) Give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
+- Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
 ## Using MongoDB Compass
 {: #using-mongodb-compass}
 
-After connecting to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
+After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
 
 ![MongoDB Compass page](images/getting-started-compass-page.png){: caption="Figure 3. MongoDB Compass page" caption-side="bottom"}
 
