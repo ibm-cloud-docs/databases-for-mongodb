@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-12-22"
+  years: 2019, 2023
+lastupdated: "2023-01-06"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -71,7 +71,7 @@ When you first open MongoDB Compass to the **New Connection** page, enter your d
 To connect to your deployment with MongoDB Compass, complete the following steps:
 
 - In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your deployment's **Overview**.
-- Click on **>Advanced Connection Options**.
+- Click **>Advanced Connection Options**.
 - In the _Authentication_ tab, select _Username/Password_, and enter the credentials that you set for the admin user in your deployment's **Settings**. 
 - Configure the **TLS/SSL settings.
     1. In your deployment's **Overview**, copy the certificate information from **TLS Certificate**.
@@ -83,7 +83,7 @@ To connect to your deployment with MongoDB Compass, complete the following steps
 ## Using MongoDB Compass
 {: #using-mongodb-compass}
 
-After connecting to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
+After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
 
 ![MongoDB Compass page](images/getting-started-compass-page.png){: caption="Figure 3. MongoDB Compass page" caption-side="bottom"}
 
