@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-03-03"
+  years: 2020, 2023
+lastupdated: "2023-01-31"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -9,13 +9,7 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-{:note: .note}
+{{site.data.keyword.attribute-definition-list}}
 
 # MongoDB Enterprise Ops Manager
 {: #ops-manager}
@@ -31,8 +25,9 @@ The Ops Manager is only available with an {{site.data.keyword.databases-for-mong
 - Create an Ops Manager username and password.
  
 
-## Creating an Ops Manager user
+## Creating an Ops Manager user in the CLI
 {: #create-ops-man}
+{: cli}
 
 Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api). To create a new Ops Manager user, run the following command: 
 
@@ -41,7 +36,7 @@ Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise 
 Note, the password must be at least 10 characters and contain at least one special character.
 
 Example command: 
- ```shell
+ ```sh
  ibmcloud cdb user-create "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/40ddc34a953a8c02f10987b59085b60e:32bd88c9-1d96-4486-8012-1dgcd629e609::" newuser01 SuperSecure001! -t ops_manager
  ```
  {: .pre}
@@ -49,8 +44,9 @@ Example command:
 The Ops Manager user has limited permissions.
 {: .note}
 
-### Creating roles within Ops Manager
-{: #ops-manager-after-restore}
+### Creating roles within Ops Manager in the CLI
+{: #create-roles-man}
+{: cli}
 
 When creating an Ops Manager user, you have the option of creating two roles: `group_data_access_admin` and `group_read_only`. 
 
@@ -65,6 +61,15 @@ If you are using the CLI, you can assign a role by appending the `-r` flag to th
 For more information on roles with Ops Manager, see MongoDB's [Ops Manager Roles](https://docs.opsmanager.mongodb.com/current/reference/user-roles/).
 {: .tip}
 
+When creating an Ops Manager user, you have the option of creating two additional roles:
+- `group_data_access_admin`
+- `group_read_only`
+
+To create these roles, input the respective parameter within the [user_type](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser) API.
+
+By default in the API, users do not input a role, which will default to group_data_access_admin. By creating roles within Ops Manager, you can input group_read_only to prohibit access to view data in the Ops Manager UI.
+{: .note}
+
 ## Initial login
 {: #initial-login}
 
@@ -76,7 +81,7 @@ As {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses self-sign
 After you create an Ops Manager username and password by using the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api), you must follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the Ops Manager UI:
 
 1. Discover the Ops Manager link with the command:
-    ```shell
+    ```sh
     ibmcloud cdb deployment-connections <CRN> -t ops_manager
     ```
     {: .pre}
@@ -85,23 +90,15 @@ If setting up Ops Manager with private endpoints, you will need to append `-e 'p
 {: .note}
 
 1. Log in with the Ops Manager username and password you created for your deployment:
-   
-    ![The MongoDB Enterprise Edition Ops Manager login section](images/opsman-login.png){: caption="Figure 1. The MongoDB Enterprise Edition Ops Manager login section" caption-side="bottom"}
 
 1. In the resulting view, select the 'Invitations' tab:
   
-    ![The Ops Manager invitations section](images/opsman-invitations.png){: caption="Figure 2. The Ops Manager invitations section" caption-side="bottom"}
-
 1. Click 'Accept' for the invitation as role 'Project Data Access Admin'. This step adds your Ops Manager user ID to the Organization and project shown:
   
-    ![The Ops Manager accepted invitations success section](images/opsman-invite-success.png){: caption="Figure 3. The Ops Manager accepted invitations success section" caption-side="bottom"}
-
 1. Lastly, to navigate to the instance view: 
    - Click the 'Ops Manager' logo in the menu bar, 
    - Or select the 'All Clusters' link:
     
-    ![The MongoDB Enterprise Edition Ops Manager instance view section](images/opsman-instance-view.png){: caption="Figure 4. The MongoDB Enterprise Edition Ops Manager instance view section" caption-side="bottom"}
-
 On subsequent logins you arrive at the last view, so the prior procedure is only necessary on the first login.
 {: .tip}
 
@@ -141,13 +138,14 @@ You can use the example credentials as follow to query the Ops Manager 'user' AP
    * `https://opsmanager-d66861a0-9ec2-4d14-9f66-15d4ad4547ac.9b48689db8eb415ca00444450bd4e589.databases.appdomain.cloud:30649`  
 
 Combine to form the following example command: 
-```curl
+```sh
 curl -k --digest --user 'opsmanager-123:d043b2ae-bbf2-4f55-8b09-e1ce0906126f'  'https://opsmanager-d66861a0-9ec2-4d14-9f66-15d4ad4547ac.9b48689db8eb415ca00444450bd4e589.databases.appdomain.cloud:30649/api/public/v1.0/users/byName/opsmanager-123'
 ```
 {: .pre}
 
 ## Updating the Ops Manager user record by using the Ops Manager API
 {: #ops-manager-updating-api}
+{: api}
 
 When you create an Ops Manager user before the initial login steps previously noted, you defined the username and password as arguments. This username can't be changed by using the Ops Manager API or UI, and the password can only be changed via the UI. However, you can update these values by using the Ops Manager 'user' API.
 
@@ -157,7 +155,7 @@ The Ops Manager 'user' API requires several other values to be set when creating
 * emailAddress
 
 With your own username and API key that is generated in the prior steps, you can follow this example command to update these fields:
-```curl
+```sh
 curl -H "Content-Type:application/json" -XPATCH -k --digest --user 'opsmanager-123:d043b2ae-bbf2-4f55-8b09-e1ce0906126f'  'https://opsmanager-d66861a0-9ec2-4d14-9f66-15d4ad4547ac.9b48689db8eb415ca00444450bd4e589.databases.appdomain.cloud:30649/api/public/v1.0/users/5f07020545a4e8013688627a' -d '{"firstName": "your first name", "lastName": "your last name, "emailAddress": "your e-mail"}'
 ```
 {: .pre}
@@ -172,11 +170,4 @@ You will see the source formation replica set in the Ops Manager interface after
 ## Creating roles within Ops Manager
 {: #ops-manager-after-restore}
 
-When creating an Ops Manager user, you have the option of creating two additional roles:
-- group_data_access_admin
-- group_read_only
 
-To create these roles, input the respective parameter within the [user_type](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser) API.
-
-By default in the API, users do not input a role, which will default to group_data_access_admin. By creating roles within Ops Manager, you can input group_read_only to prohibit access to view data in the Ops Manager UI.
-{: .note}

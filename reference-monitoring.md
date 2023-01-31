@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2021
-lastupdated: "2022-01-14"
+  years: 2020, 2023
+lastupdated: "2023-01-31"
 
 keywords: mongodb, monitoring, metrics, iops, disk usage, memory usage, page faults
 
@@ -329,19 +329,6 @@ The replication lag in seconds
 | `Value Type`  | `second` |
 | `Segment By` | `Service instance` |
 {: caption="Table 69: Replication lag metric metadata" caption-side="top"}
-
-### Status
-{: #ibm_databases_for_mongodb_status}
-
-An integer between 0 and 10 that represents the replica state of the current member.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_mongodb_status`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `count` |
-| `Segment By` | `Service instance` |
-{: caption="Table 10. Status metric metadata" caption-side="top"}
 
 ### Total disk space for an instance
 {: #ibm_databases_for_mongodb_disk_total_bytes}

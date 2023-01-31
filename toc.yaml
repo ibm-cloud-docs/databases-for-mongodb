@@ -76,7 +76,6 @@ toc:
           topics: 
           - include: ../cloud-databases/manage-scc.md
           - learn-security-compliance.md
-          - manage-scc.md
           - include: ../cloud-databases/howto-cbr.md
           - include: ../cloud-databases/cbr-tutorial.md
   - navgroup: 
