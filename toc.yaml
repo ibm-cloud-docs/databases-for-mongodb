@@ -78,7 +78,6 @@ toc:
           label: Enhancing security
           topics: 
           - include: ../cloud-databases/manage-scc.md
-          - manage-scc.md
           - include: ../cloud-databases/howto-cbr.md
           - include: ../cloud-databases/cbr-tutorial.md
   - navgroup: 
