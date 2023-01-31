@@ -1,9 +1,9 @@
 ---
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-07-21"
+  years: 2017, 2023
+lastupdated: "2023-01-31"
 
-keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee
+keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
 subcollection: databases-for-mongodb
 
@@ -19,9 +19,9 @@ subcollection: databases-for-mongodb
 # Connecting an external application
 {: #mongodb-external-app}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [cloud databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
-The connection strings can be used by any of the users you have created on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. Documentation on generating credentials is on the [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
+The connection strings can be used by any of the users you create in your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. Documentation on generating credentials is on the [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
 ## Using Connection Information
 {: #mongodb-using-connection-info}
@@ -151,7 +151,20 @@ MongoClient.connect(connectionString, options, function (err, db) {
 ## Driver TLS and self-signed certificate support
 {: #mongodb-tls-certificate-support}
 
-All connections to {{site.data.keyword.databases-for-mongodb}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
+All connections to {{site.data.keyword.databases-for-mongodb}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption.
+
+The following [cipher suites](https://www.mongodb.com/docs/manual/core/security-transport-encryption/#tls-ssl-ciphers){: external} are supported by {{site.data.keyword.databases-for-mongodb}} Enterprise Edition:
+
+- ECDHE-ECDSA-AES128-GCM-SHA256
+- ECDHE-RSA-AES128-GCM-SHA256
+- ECDHE-ECDSA-AES256-GCM-SHA384
+- ECDHE-RSA-AES256-GCM-SHA384
+- ECDHE-ECDSA-CHACHA20-POLY1305
+- ECDHE-RSA-CHACHA20-POLY1305
+- DHE-RSA-AES128-GCM-SHA256
+- DHE-RSA-AES256-GCM-SHA384
+
+Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
 
 ### Using the self-signed certificate
 {: #mongodb-using-cert}
