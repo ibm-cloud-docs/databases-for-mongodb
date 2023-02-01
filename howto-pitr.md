@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-12-12"
+  years: 2020, 2023
+lastupdated: "2023-02-01"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -44,7 +44,7 @@ Do not delete the source deployment while the backup is restoring. You must wait
 {: #pitr-ui}
 {: ui}
 
-To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time.
+After your deployment's first backup is complete, the point-in-time recovery option will display in the UI. To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time. 
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
