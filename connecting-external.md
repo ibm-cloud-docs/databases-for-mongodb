@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2023
-lastupdated: "2023-01-31"
+lastupdated: "2023-02-01"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
@@ -9,12 +9,7 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:term: .term}
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting an external application
 {: #mongodb-external-app}
