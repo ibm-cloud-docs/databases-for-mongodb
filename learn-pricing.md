@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-09-15"
+  years: 2019, 2023
+lastupdated: "2023-03-03"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -9,12 +9,7 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Pricing
 {: #pricing}
@@ -25,50 +20,12 @@ The Standard plan is priced based on the total amount of disk storage, RAM, and 
 
  The Enterprise plan pricing is based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 20 GB of disk, 6 cores, and 14 GB of RAM per data member.
 
-![Pricing chart for Standard and Enterprise plans](images/pricing-plans.png){: caption="Figure 1. Pricing chart for Standard and Enterprise plans" caption-side="bottom"}
-
-## Cost Breakdown
-{: #cost-breakdown}
-
-**Disk storage per data member** - gigabytes of disk that are allocated to a {{site.data.keyword.databases-for-mongodb}} data member, or the size of your data.  
-**RAM per data member** - gigabytes of RAM that are allocated to a {{site.data.keyword.databases-for-mongodb}} data member.  
-**Backup storage** - amount of storage used for backups by a {{site.data.keyword.databases-for-mongodb}} deployment.
-
-### {{site.data.keyword.databases-for-mongodb}} Standard Plan: 
-{: #mongodb-standard-plan}
-
-| Resources | Breakdown | Price |
-| ------- | ------- | ------- |
-| 10 GB-Month disk | 3 members x 10 GB x $0.58 | $17.40 |
-| 1 GB-Month RAM | 3 members x 1 GB  x $8.50 | $25.50 |
-{: caption="Table 1. Pricing example for three Standard data members" caption-side="top"}
-
-Total per month = $42.90/Month  
-Total per hour = $.06/Hour  
-
-### {{site.data.keyword.databases-for-mongodb}} Enterprise Plan: 
-{: #mongodb-enterp-plan}
-
-| Resources | Breakdown | Price |
-| ------- | ------- | ------- |
-| 20 GB-Month disk | 3 members x 20 GB x $0.58 | $34.80 |
-| 14 GB-Month RAM | 3 members x 14 GB  x $25.00 | $1,050.00 |
-| 6 Cores-Month | 3 members x 6 cores x $60 | $1,080.00 |
-{: caption="Table 2. Pricing example for three Enterprise data members" caption-side="top"}
-
-Total per month = $2,164.80/Month  
-Total per hour = $2.91/Hour  
-All prices here are in US dollars. To see pricing in your local currency, you can to use the pricing calculator.
-{: .tip}
-
 ## Using the Pricing Calculator
 {: #mongodb-price-calc}
 
 Templates are provided for ease of use and provide balanced resource allocations appropriate for general purpose workloads. The **Custom** tab can be used to configure Disk, RAM, and vCPU, as desired.
 
 For pricing estimation, use the **Add to Estimate** button at the bottom of the [{{site.data.keyword.databases-for-mongodb}} catalog page](https://cloud.ibm.com/catalog/databases-for-mongodb). Input your total consumption across two data members into the calculator. This is roughly double the size of your data because your data is replicated to both members. For example, 10 GB of disk and 1 GB of RAM across two data members would be priced at 20 GB of disk and 2 GB of RAM respectively.
-
-![Pricing calculator estimation with 10 GB of disk and 1 GB of RAM, per member](images/pricing-calc.png){: caption="FPricing calculator estimation with 10 GB of disk and 1 GB of RAM, per member" caption-side="bottom"}
 
 ## Backups Pricing
 {: #pricing-backup}
@@ -106,7 +63,7 @@ Dedicated cores are an optional feature for {{site.data.keyword.databases-for-mo
 | Disk | 5 GB per member | 4 TB per member | 1024 MB per member |
 | RAM | 1 GB per member | 112 GB per member | 128 MB per member |
 | CPU (if enabled) | 3 CPUs per member | 28 CPUs per member| 1 CPU per member |
-{: caption="Table 3. Per Member Standard Scaling Limits" caption-side="top"}
+{: caption="Table 1. Per Member Standard Scaling Limits" caption-side="top"}
 
 ### {{site.data.keyword.databases-for-mongodb}} Three-member Enterprise Plan:
 {: #mongodb-enterp-plan-three-member}
@@ -116,4 +73,4 @@ Dedicated cores are an optional feature for {{site.data.keyword.databases-for-mo
 | Disk | 20 GB per member | 4 TB per member | 1024 MB per member |
 | RAM | 14 GB per member | 112 GB per member | 128 MB per member |
 | CPU | 6 CPUs per member | 28 CPUs per member| 1 CPU per member |
-{: caption="Table 4. Per Member Enterprise Scaling Limits" caption-side="top"}
+{: caption="Table 2. Per Member Enterprise Scaling Limits" caption-side="top"}
