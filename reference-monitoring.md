@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-02-01"
+lastupdated: "2023-03-13"
 
-keywords: mongodb, monitoring, metrics, iops, disk usage, memory usage, page faults
+keywords: mongodb, monitoring, metrics, iops, disk usage, memory usage, page faults, oplog size, oplog
 
 subcollection: databases-for-mongodb
 
@@ -30,6 +30,11 @@ To access your deployment's monitoring dashboard from {{site.data.keyword.monito
 {{site.data.keyword.monitoringfull_notm}} is available for deployments in every region. Deployments in Multi-zone Regions (MZRs) - `eu-gb`, `eu-de`, `us-east`, `us-south`, `jp-tok`, `au-syd` - have their metrics in the corresponding region.
 
 If you have deployments that are in a Single-zone Region (SZR) - `che01`, or `seo01` - then your logs are forwarded to an {{site.data.keyword.monitoringfull_notm}} instance in another region. You need to provision monitoring instances in the region where your metrics are forwarded to. Metrics for deployments in `seo01` and `che01` go to `jp-tok`. 
+
+## Oplog Sizing
+{: #oplog-sizing}
+
+Oplog sizing is handled by {{site.data.keyword.databases-for}}. If you run a command to resize your Oplog in Compass, the resize will not persist. For more information, please [create a support ticket](https://www.ibm.com/cloud/support){: external}. 
 
 ## Available Metrics
 {: #metrics-by-plan}
