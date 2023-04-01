@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-01-31"
+lastupdated: "2023-04-01"
 
 keyowrds: mongodb, databases, upgrading
 
@@ -14,7 +14,7 @@ subcollection: databases-for-mongodb
 # Upgrading to a new Major Version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 4.2 to 4.4. Prepare to run on, and then migrate to, the latest version before the EOL date [as documented here](/docs/cloud-databases?topic=cloud-databases-versioning-policy#version-definitions). 
+When a major version of a database is at its end of life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. It is possible to upgrade from MongoDB 4.2 to 4.4. Prepare to run on, and then migrate to, the latest version before the EOL date [as documented here](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy&interface=ui#version-definitions). 
 
 Rolling back versions is not supported.
 {: .note} 
