@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-04-01"
+lastupdated: "2023-04-03"
 
 keyowrds: mongodb, databases, upgrading
 
@@ -33,12 +33,9 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 
 | Current Version |	Major Version Upgrade Path |
 | ---- | ----- |
-| MongoDB 4.0 |	-> MongoDB 4.2-> 4.4 |
+| MongoDB 4.2 |	-> MongoDB 4.2-> 4.4 |
 | MongoDB 4.4 |	-> Latest version |
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
-
-To upgrade an existing MongoDB deployment to 4.4, you must be running a 4.0-series release. To upgrade from a version earlier than the noted series, you must successively upgrade major releases until you have upgraded to the appropriate series. For example, if you are running a 3.6 series, you must upgrade to 4.0 before you can upgrade to 4.2.
-{: .note}
 
 ## Upgrading in the UI
 {: #upgrading-ui}
@@ -51,9 +48,11 @@ You can upgrade to a new version when [restoring a backup](/docs/databases-for-m
 {: cli}
 
 When you upgrade and restore from backup through the {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
+
 ```sh
 ibmcloud resource service-instance-create <service-name> <service-id> <service-plan-id> <region>
 ```
+
 The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are all required. You also supply the `-p` with the version and backup ID parameters in a JSON object. The new deployment is automatically sized with the same disk and memory as the source deployment at the time of the backup.
 
 ```sh
