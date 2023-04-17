@@ -18,9 +18,9 @@ An {{site.data.keyword.databases-for-mongodb_full}} Standard plan deploys as one
 
 The Standard plan is priced based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 10 GB of disk and 1 GB of RAM per data member.
 
- The Enterprise plan pricing is based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 20 GB of disk, 6 cores, and 14 GB of RAM per data member.
+The Enterprise plan pricing is based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 20 GB of disk, 6 cores, and 14 GB of RAM per data member.
 
- An {{site.data.keyword.databases-for-mongodb}} EE Analytics node is priced as a data member.
+A {{site.data.keyword.databases-for-mongodb}} EE Analytics node is priced as a data member.
 
 ## Using the Pricing Calculator
 {: #mongodb-price-calc}
