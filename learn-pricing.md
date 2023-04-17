@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-03-03"
+lastupdated: "2023-04-17"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -19,6 +19,8 @@ An {{site.data.keyword.databases-for-mongodb_full}} Standard plan deploys as one
 The Standard plan is priced based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 10 GB of disk and 1 GB of RAM per data member.
 
  The Enterprise plan pricing is based on the total amount of disk storage, RAM, and backup storage that is allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-mongodb}} deployments have a minimum of 20 GB of disk, 6 cores, and 14 GB of RAM per data member.
+
+ An {{site.data.keyword.databases-for-mongodb}} EE Analytics node is priced as a data member.
 
 ## Using the Pricing Calculator
 {: #mongodb-price-calc}
@@ -74,3 +76,5 @@ Dedicated cores are an optional feature for {{site.data.keyword.databases-for-mo
 | RAM | 14 GB per member | 112 GB per member | 128 MB per member |
 | CPU | 6 CPUs per member | 28 CPUs per member| 1 CPU per member |
 {: caption="Table 2. Per Member Enterprise Scaling Limits" caption-side="top"}
+
+
