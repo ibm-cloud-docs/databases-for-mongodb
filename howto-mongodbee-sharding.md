@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-04-11"
+lastupdated: "2023-04-18"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -19,13 +19,21 @@ subcollection: databases-for-mongodb
 ## What problems does {{site.data.keyword.databases-for-mongodb}} EE Sharding solve?
 {: #mongodbee-sharding-how-problem}
 
-1. **Issue 1** 
-
-
-1. **Issue 2** 
+When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. ICD supports a maximum of 4TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
 
 ## MongoDB EE Sharding Add-On Considerations
 {: #mongodbee-sharding-consider}
+
+- Sharding is not only an infrastructure operation. It is a shared customer/provider responsibility. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
+   - enable sharding in each of the databases in your {{site.data.keyword.databases-for-mongodb}} EE deployment.
+   - enable sharding in each of the collections of a database. Otherwise, unsharded collections get stored in a single shard, therefore unbalancing nodes. These unbalanced nodes may get full before others and cause operational problems.
+   - Choose a suitable shard key for each collection to avoid overloading some shards when retrieving data.
+   - Optimize querying to try to avoid scatter/gather operations across shards that are more time consuming and computationally expensive.
+- {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding is only for versions of MongoDB EE >= 5.0.
+- A single shard cluster is allowed.
+- Additional infrastructure does come with additional cost. For more information on pricing, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).
+- Once created, shards cannot be deleted.
+- Existing unsharded clusters cannot be converted to sharded.
 
 ## Provisioning with {{site.data.keyword.databases-for-mongodb}} EE Sharding
 {: #mongodbee-sharding-node-provisioning}
@@ -115,4 +123,4 @@ curl --request PATCH \
 }'
 ```
 
-To get the connection strings to connect to the MongoDB EE Shard, follow the instructions [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
+For more information on connection strings, see [Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings&interface=ui).
