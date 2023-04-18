@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-11-11"
+  years: 2020, 2023
+lastupdated: "2023-04-17"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -9,14 +9,6 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # MongoDB Enterprise Edition Analytics Add-On
@@ -35,7 +27,7 @@ The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On is made up o
 
     MongoDB's document data model is made up of complex documents with arbitrary, nested data. This schema makes storing data flexible, easy, and scalable. However, most BI tools require data to be in tabular format, which is rigidly defined and stored in tables, not documents. The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On converts MongoDB document data into SQL-readable tabular data that can be queried and displayed by BI tools.
 
-1. **BI queries are expensive and can degrade database performance.** 
+1. **BI queries are expensive and can degrade database performance.**
 
     Long-running queries can negatively impact the operational workflow of your deployment. The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On introduces an extra data member, which isolates analytics workloads from operational workloads. The Analytics Node data is kept in sync with the other nodes, so any queries run against it produce the same results.
 
@@ -45,7 +37,7 @@ The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On is made up o
 
 The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly by using MongoDB queries, or through the BI Connector if you want to run SQL queries.
 
-Enabling the Analytics node without engaging the connector for BI allows you to run document-type MongoDB queries or test a query on production data _without_ affecting your application. 
+Enabling the Analytics node without engaging the connector for BI allows you to run document-type MongoDB queries or test a query on production data _without_ affecting your application.
 {: .note}
 
 You can access your Analytics node directly through a connection string, for example:
@@ -75,8 +67,9 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE An
 
 - The add-on is available only for {{site.data.keyword.databases-for-mongodb}} EE.
 - Once enabled, you cannot deprovision the analytics node.
-- You cannot scale the disk space of the Analytics member. 
-  
+- You cannot scale the disk space of the Analytics member.
+- An Analytics node is priced as a data member. For more information on {{site.data.keyword.databases-for-mongodb}} EE, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing&interface=api).
+
     Scaling the disk space of the main database members results in proportional scaling of the Analytics member.
     {: .important}
 
