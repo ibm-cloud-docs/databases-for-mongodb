@@ -16,7 +16,7 @@ subcollection: databases-for-mongodb
 
 When a major version of a database is at its end of life (EOL), it is necessary to upgrade to the next available major version. You can upgrade {{site.data.keyword.databases-for-mongodb_full}} deployments to use the newest version of MongoDB. 
 
-Upgrade from MongoDB 4.2 to 4.4 by [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment.
+Upgrade from MongoDB 4.2 to 4.4 by [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment. Upgrading through PITR is not supported.
 {: important}
 
 Prepare to run on, and then migrate to, the latest version before the EOL date [as documented here](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy&interface=ui#version-definitions). 
@@ -48,7 +48,7 @@ Upgrading is handled through [restoring a backup](/docs/databases-for-mongodb?to
 
 You can upgrade to a new version when [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) from the _Backups_ tab of your _Deployment Overview_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
 
-Upgrade from MongoDB 4.2 to 4.4 by [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment.
+Upgrade from MongoDB 4.2 to 4.4 by [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment. Upgrading through PITR is not supported.
 {: important}
 
 ## Upgrading through the CLI
@@ -77,7 +77,7 @@ ibmcloud resource service-instance-create example-upgrade databases-for-mongodb 
 
 Similar to provisioning through the API, you need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
 
-Upgrade from MongoDB 4.2 to 4.4 by [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment.
+Upgrade from MongoDB 4.2 to 4.4 by [restoring a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment. Upgrading through PITR is not supported.
 {: important}
 
 ```sh
