@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-04-18"
+lastupdated: "2023-04-20"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -86,11 +86,6 @@ data "ibm_database_connection" "mongodb_shard" {
   user_type     = "database"
   user_id       = "admin"
   endpoint_type = "public"
-}
-
-output "sharding_connection" {
-  description = "BI Connector connection string"
-  value       = data.ibm_database_connection.mongodb_conn.sharding.0.composed.0
 }
 
 output "sharding_connection" {
