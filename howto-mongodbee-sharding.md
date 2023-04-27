@@ -25,12 +25,15 @@ When increased demand or workload requires database scaling, you can scale verti
 {: #mongodbee-sharding-consider}
 
 - Sharding is not only an infrastructure operation. It is a shared customer/provider responsibility. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
-   - enable sharding in each of the databases in your {{site.data.keyword.databases-for-mongodb}} EE deployment.
+   - enable sharding in each of the databases in your {{site.data.keyword.databases-for-mongodb}} EE Sharding deployment.
    - enable sharding in each of the collections of a database. Otherwise, unsharded collections get stored in a single shard, therefore unbalancing nodes. These unbalanced nodes may get full before others and cause operational problems.
    - Choose a suitable shard key for each collection to avoid overloading some shards when retrieving data.
    - Optimize querying to try to avoid scatter/gather operations across shards that are more time consuming and computationally expensive.
+
+   For more information, see [Responsibilities for Cloud Databases](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
+   {: tip}
+
 - {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding is only for versions of MongoDB EE >= 5.0.
-- A single shard cluster is allowed.
 - Additional infrastructure does come with additional cost. For more information on pricing, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).
 - Once created, shards cannot be deleted.
 - Existing unsharded clusters cannot be converted to sharded.
