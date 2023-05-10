@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2018, 2020
-lastupdated: "2022-03-16"
+  years: 2018, 2023
+lastupdated: "2023-05-10"
 
 keywords: mongodb, databases, soc, fips, encryption, hipaa, gdpr, terms, security goals, security and compliance, security
 
@@ -9,12 +9,7 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Managing security and compliance with {{site.data.keyword.databases-for-mongodb_full}}
 {: #manage-security-compliance}
@@ -38,8 +33,8 @@ To start monitoring your resources, check out [Getting started with {{site.data.
 {: #mongodb-available-goals}
 
 - **Check whether {{site.data.keyword.databases-for-mongodb_full}} is enabled with IBM-managed or customer-managed encryption and Bring Your Own Key (BYOK).** All {{site.data.keyword.databases-for-mongodb_full}} instances are automatically encrypted at rest with IBM-managed keys, for customer-managed encryption keys review the [following documentation.](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-key-protect)
-- **Check whether {{site.data.keyword.databases-for-mongodb_full}} is accessible only through HTTPS.** All {{site.data.keyword.databases-for}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2. 
-- **Check whether {{site.data.keyword.databases-for-mongodb_full}} is accessible only by using private endpoints.** Customers can disable public endpoints at provision time. For more information see [Service Endpoints Integration.](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-service-endpoints)
-- **Check whether {{site.data.keyword.databases-for-mongodb_full}} network access is restricted to a specific IP range.** To learn more about how to check or achieve this goal, review our [allowlisting documentation.](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-allowlisting)
-- **Check whether {{site.data.keyword.databases-for-mongodb_full}} version is up-to-date.**
+TLS- **Check whether {{site.data.keyword.databases-for-mongodb_full}} is accessible only through HTTPS.** All {{site.data.keyword.databases-for}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2. 
+- **Check whether {{site.data.keyword.databases-for-mongodb_full}} is accessible only by using private endpoints.** Customers can disable public endpoints at provision time. For more information, see [Service Endpoints Integration.](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-service-endpoints)
+- **Check whether {{site.data.keyword.databases-for-mongodb_full}} network access is restricted to a specific IP range.** For more information, [Allowlisting](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-allowlisting).
+- **Check whether {{site.data.keyword.databases-for-mongodb_full}} version is up to date.**
 - **Check whether {{site.data.keyword.databases-for-mongodb_full}} disk space autoscales to avoid database downtime.**
