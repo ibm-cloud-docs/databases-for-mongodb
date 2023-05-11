@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2023
-lastupdated: "2023-02-01"
+lastupdated: "2023-05-11"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
@@ -14,9 +14,12 @@ subcollection: databases-for-mongodb
 # Connecting an external application
 {: #mongodb-external-app}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [cloud databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
-The connection strings can be used by any of the users you create in your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. Documentation on generating credentials is on the [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
+The connection strings can be used by any of the users you create in your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
+
+When connecting an external application, use only drivers that are supported by [MongoDB](https://www.mongodb.com/docs/drivers/){: external} or [MongoDB's Featured Community-Supported Libraries](https://www.mongodb.com/docs/drivers/#featured-community-supported-libraries){: external}. {{site.data.keyword.databases-for}} does not support any drivers that are not supported by MongoDB.
+{: important}
 
 ## Using Connection Information
 {: #mongodb-using-connection-info}
@@ -39,7 +42,7 @@ All the information a driver needs to make a connection to your deployment is in
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-Many MongoDB drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
+Many MongoDB drivers are able to connect to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 
 ```sh
 mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/<database name>?authSource=admin&replicaSet=replset
