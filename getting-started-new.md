@@ -69,115 +69,85 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 ## Connect to MongoDB
 {: #connect-mongodb}
 
+### Connect to MongoDB with Python
+{: #connect-mongodb-python}
+{: python}
+
+In this code, you need to replace the following placeholders with your actual connection details:
+
+`localhost`: Replace with the hostname or IP address of your MongoDB server.
+27017: Replace with the port number of your MongoDB server. The default port for MongoDB is 27017.
+`your_username`: Replace with the username for authentication (if applicable). If authentication is not enabled, you can omit the username and password variables from the connection string.
+`your_password`: Replace with the password for authentication (if applicable).
+`your_database_name`: Replace with the name of the database you want to connect to.
+The code creates a connection string using the provided connection parameters and the f-string formatting method. It then establishes a connection to the MongoDB server using MongoClient() from PyMongo. Finally, it prints the version of the connected MongoDB server using client.server_info()['version'].
+
+```python
+from pymongo import MongoClient
+
+# Connection parameters
+host = 'localhost'       # MongoDB server hostname or IP address
+port = 27017             # MongoDB server port (default is 27017)
+username = 'your_username'   # Username for authentication (if applicable)
+password = 'your_password'   # Password for authentication (if applicable)
+database_name = 'your_database_name'   # Name of the database to connect to
+
+# Create a MongoDB connection string
+connection_string = f"mongodb://{username}:{password}@{host}:{port}/{database_name}"
+
+# Connect to MongoDB
+client = MongoClient(connection_string)
+
+# Print the MongoDB server version
+print("Connected to MongoDB server:", client.server_info()['version'])
+
+```
+{: codeblock}
+{: python}
+
+### Connect to MongoDB with Javascript
+{: #connect-mongodb-javascript}
+{: javascript}
+
+Here's a JavaScript code snippet that demonstrates how to connect to a MongoDB server using the Mongoose library, which is a MongoDB object modeling tool for Node.js:
+
 ```javascript
 const { MongoClient } = require('mongodb');
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
+// Connection parameters
+const host = 'localhost';           // MongoDB server hostname or IP address
+const port = 27017;                 // MongoDB server port (default is 27017)
+const username = 'your_username';   // Username for authentication (if applicable)
+const password = 'your_password';   // Password for authentication (if applicable)
+const databaseName = 'your_database_name';   // Name of the database to connect to
 
-// Database Name
-const dbName = 'myproject';
+// Create a MongoDB connection string
+const uri = `mongodb://${username}:${password}@${host}:${port}/${databaseName}`;
 
 // Create a new MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(uri);
 
-async function run() {
-  try {
-    // Connect to the MongoDB server
-    await client.connect();
-    console.log('Connected successfully to server');
-
-    // Select a database
-    const db = client.db(dbName);
-
-    // Select a collection
-    const collection = db.collection('mycollection');
-
-    // Insert a document into a collection
-    const document = {
-      title: 'MongoDB Tutorial',
-      description: 'Learn MongoDB with JavaScript',
-      by: 'user',
-      url: 'http://www.example.com',
-      tags: ['mongodb', 'database', 'NoSQL'],
-      likes: 100
-    };
-    const insertResult = await collection.insertOne(document);
-    console.log('Document inserted:', insertResult.insertedId);
-
-    // Find documents in a collection
-    const findResult = await collection.find({}).toArray();
-    console.log('Found the following records:');
-    console.log(findResult);
-
-    // Update a document in a collection
-    const filter = { title: 'MongoDB Tutorial' };
-    const update = { $set: { likes: 200 } };
-    const updateResult = await collection.updateOne(filter, update);
-    console.log('Document updated:', updateResult.modifiedCount);
-
-    // Delete a document from a collection
-    const deleteResult = await collection.deleteOne(filter);
-    console.log('Document deleted:', deleteResult.deletedCount);
-  } catch (error) {
-    console.log('Error:', error);
-  } finally {
-    // Close the MongoDB connection
-    await client.close();
+// Connect to MongoDB
+client.connect((err) => {
+  if (err) {
+    console.error('Failed to connect to MongoDB:', err);
+    return;
   }
-}
+  console.log('Connected to MongoDB server');
 
-run();
+  // Use the connected client to interact with the database
+
+  // Close the connection when finished
+  client.close();
+});
 
 ```
 {: codeblock}
 {: javascript}
 
-```python
-from pymongo import MongoClient
-
-# Connection URL
-url = "mongodb://localhost:27017"
-
-# Database Name
-db_name = "myproject"
-
-# Create a MongoClient
-client = MongoClient(url)
-
-# Select a database
-db = client[db_name]
-
-# Select a collection
-collection = db.mycollection
-
-# Insert a document into a collection
-document = {
-    "title": "MongoDB Tutorial",
-    "description": "Learn MongoDB with Python",
-    "by": "user",
-    "url": "http://www.example.com",
-    "tags": ["mongodb", "database", "NoSQL"],
-    "likes": 100
-}
-collection.insert_one(document)
-
-# Find documents in a collection
-cursor = collection.find({})
-for document in cursor:
-    print(document)
-
-# Update a document in a collection
-filter = {"title": "MongoDB Tutorial"}
-update = {"$set": {"likes": 200}}
-collection.update_one(filter, update)
-
-# Delete a document from a collection
-filter = {"title": "MongoDB Tutorial"}
-collection.delete_one(filter)
-```
-{: codeblock}
-{: python}
+### Connect to MongoDB with Go
+{: #connect-mongodb-go}
+{: go}
 
 ```go
 package main
@@ -186,102 +156,53 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-// Connection URL
-const url = "mongodb://localhost:27017"
-
-// Database Name
-const dbName = "myproject"
-
-// Collection Name
-const collectionName = "mycollection"
-
-// Document struct
-type Document struct {
-	Title       string   `bson:"title"`
-	Description string   `bson:"description"`
-	By          string   `bson:"by"`
-	URL         string   `bson:"url"`
-	Tags        []string `bson:"tags"`
-	Likes       int      `bson:"likes"`
-}
-
 func main() {
-	// Create a MongoDB client
-	clientOptions := options.Client().ApplyURI(url)
-	client, err := mongo.Connect(context.Background(), clientOptions)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer func() {
-		if err = client.Disconnect(context.Background()); err != nil {
-			log.Fatal(err)
-		}
-	}()
+	// Connection parameters
+	uri := "mongodb://localhost:27017" // MongoDB server URI
+	databaseName := "your_database_name" // Name of the database to connect to
 
-	// Ping the MongoDB server
-	err = client.Ping(context.Background(), readpref.Primary())
+	// Set up the MongoDB client options
+	clientOptions := options.Client().ApplyURI(uri)
+
+	// Connect to MongoDB
+	client, err := mongo.NewClient(clientOptions)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Failed to create MongoDB client:", err)
 	}
 
-	fmt.Println("Connected successfully to server")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
-	// Get the database and collection
-	db := client.Database(dbName)
-	collection := db.Collection(collectionName)
+	err = client.Connect(ctx)
+	if err != nil {
+		log.Fatal("Failed to connect to MongoDB:", err)
+	}
+	defer client.Disconnect(ctx)
 
-	// Insert a document into the collection
-	document := Document{
-		Title:       "MongoDB Tutorial",
-		Description: "Learn MongoDB with Go",
-		By:          "ChatGPT",
-		URL:         "http://www.example.com",
-		Tags:        []string{"mongodb", "database", "NoSQL"},
-		Likes:        100,
-	}
-	insertResult, err := collection.InsertOne(context.Background(), document)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Document inserted:", insertResult.InsertedID)
+	fmt.Println("Connected to MongoDB server")
 
-	// Find documents in the collection
-	cursor, err := collection.Find(context.Background(), nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	var documents []Document
-	err = cursor.All(context.Background(), &documents)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Found the following records:")
-	for _, doc := range documents {
-		fmt.Println(doc)
-	}
+	// Use the connected client to interact with the database
+	// ...
 
-	// Update a document in the collection
-	filter := Document{Title: "MongoDB Tutorial"}
-	update := Document{Likes: 200}
-	updateResult, err := collection.UpdateOne(context.Background(), filter, bson.M{"$set": update})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Document updated:", updateResult.ModifiedCount)
-
-	// Delete a document from the collection
-	deleteResult, err := collection.DeleteOne(context.Background(), filter)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Document deleted:", deleteResult.DeletedCount)
+	// Close the connection when finished
 }
 ```
 {: codeblock}
-{: python}
+{: go}
+
+In this code, you need to replace the following placeholders with your actual connection details:
+
+`mongodb://localhost:27017`: Replace with the URI of your MongoDB server. The default port for MongoDB is 27017.
+`your_database_name`: Replace with the name of the database you want to connect to.
+The code sets up the MongoDB client options using the provided URI. It then creates a new MongoDB client using mongo.NewClient() and attempts to connect to the MongoDB server using client.Connect(). If the connection is successful, it prints a success message to the console.
+
+After establishing the connection, you can use the client object to interact with the database. Remember to defer client.Disconnect() to close the connection when you are finished with your database operations.
+
+Make sure to import the necessary packages by running the command go get go.mongodb.org/mongo-driver/mongo to download the MongoDB Go driver before running the code.
+{: note}
