@@ -17,13 +17,13 @@ completion-time: 30m
 {{site.data.keyword.attribute-definition-list}}
 
 # Getting Started
-{: #getting-started}
+{: #getting-started-new}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
 {: toc-completion-time="30m"}
 
 ## Before you begin
-{: #before-begin-mongodb}
+{: #before-begin-mongodb-new}
 {: step}
 
 * You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external} and a {{site.data.keyword.databases-for-mongodb}} deployment. Give your deployment a memorable name that appears in your account's Resource List.
@@ -40,7 +40,7 @@ completion-time: 30m
 * Finally, review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 
 ## Connect with MongoDB Compass
-{: #connecting-mongodb-compass}
+{: #connecting-mongodb-compass-new}
 {: step}
 
 When you first open MongoDB Compass to the **New Connection** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's **Overview** page.
@@ -67,10 +67,7 @@ Next, you see the default databases for your deployment, which all hold informat
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
 ## Connect to MongoDB
-{: #connect-mongodb}
-
-### Connect to MongoDB
-{: #connect-mongodb}
+{: #connect-mongodb-new}
 
 ```python
 from pymongo import MongoClient
