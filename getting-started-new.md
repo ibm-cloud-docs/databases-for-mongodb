@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-01-06"
+lastupdated: "2023-05-17"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -69,18 +69,8 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 ## Connect to MongoDB
 {: #connect-mongodb}
 
-### Connect to MongoDB with Python
-{: #connect-mongodb-python}
-{: python}
-
-In this code, you need to replace the following placeholders with your actual connection details:
-
-`localhost`: Replace with the hostname or IP address of your MongoDB server.
-27017: Replace with the port number of your MongoDB server. The default port for MongoDB is 27017.
-`your_username`: Replace with the username for authentication (if applicable). If authentication is not enabled, you can omit the username and password variables from the connection string.
-`your_password`: Replace with the password for authentication (if applicable).
-`your_database_name`: Replace with the name of the database you want to connect to.
-The code creates a connection string using the provided connection parameters and the f-string formatting method. It then establishes a connection to the MongoDB server using MongoClient() from PyMongo. Finally, it prints the version of the connected MongoDB server using client.server_info()['version'].
+### Connect to MongoDB
+{: #connect-mongodb}
 
 ```python
 from pymongo import MongoClient
@@ -102,14 +92,8 @@ client = MongoClient(connection_string)
 print("Connected to MongoDB server:", client.server_info()['version'])
 
 ```
-{: codeblock}
+{: pre}
 {: python}
-
-### Connect to MongoDB with Javascript
-{: #connect-mongodb-javascript}
-{: javascript}
-
-Here's a JavaScript code snippet that demonstrates how to connect to a MongoDB server using the Mongoose library, which is a MongoDB object modeling tool for Node.js:
 
 ```javascript
 const { MongoClient } = require('mongodb');
@@ -142,12 +126,8 @@ client.connect((err) => {
 });
 
 ```
-{: codeblock}
+{: pre}
 {: javascript}
-
-### Connect to MongoDB with Go
-{: #connect-mongodb-go}
-{: go}
 
 ```go
 package main
@@ -193,16 +173,5 @@ func main() {
 	// Close the connection when finished
 }
 ```
-{: codeblock}
+{: pre}
 {: go}
-
-In this code, you need to replace the following placeholders with your actual connection details:
-
-`mongodb://localhost:27017`: Replace with the URI of your MongoDB server. The default port for MongoDB is 27017.
-`your_database_name`: Replace with the name of the database you want to connect to.
-The code sets up the MongoDB client options using the provided URI. It then creates a new MongoDB client using mongo.NewClient() and attempts to connect to the MongoDB server using client.Connect(). If the connection is successful, it prints a success message to the console.
-
-After establishing the connection, you can use the client object to interact with the database. Remember to defer client.Disconnect() to close the connection when you are finished with your database operations.
-
-Make sure to import the necessary packages by running the command go get go.mongodb.org/mongo-driver/mongo to download the MongoDB Go driver before running the code.
-{: note}
