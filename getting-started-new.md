@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-05-17"
+lastupdated: "2023-05-25"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -16,11 +16,18 @@ completion-time: 30m
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting Started
+# Getting Started 
 {: #getting-started-new}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
 {: toc-completion-time="30m"}
+
+Now that you've provisioned your {{site.data.keyword.databases-for-mongodb_full}} instance, let's create a basic ToDo app. This app will demonstrate to you how to:
+- connect your {{site.data.keyword.databases-for-mongodb}} instance
+- create a collection
+- add data to that collection
+- delete data from that collection
+- update data from that collection
 
 ## Before you begin
 {: #before-begin-mongodb-new}
@@ -32,7 +39,7 @@ completion-time: 30m
 
 * Then, download and install [MongoDB Compass](https://docs.mongodb.com/compass/master/install/){: .external} from MongoDB. 
 
-* If your deployment is not using public endpoints, take [these additional steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints#private-endpoints) to configure private endpoint access. 
+* If your deployment does not use public endpoints, take [these additional steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints#private-endpoints) to configure private endpoint access. 
   
    MongoDB cannot support both [public and private endpoints simultaneously](/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints&interface=ui#provisioning-service-endpoints). This cannot be changed after provisioning.
    {: .important}
@@ -66,109 +73,71 @@ Next, you see the default databases for your deployment, which all hold informat
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
-## Connect to MongoDB
-{: #connect-mongodb-new}
+## Create your ToDo App
+{: #getting-started-create-todo-app}
+
+First, import the necessary modules, using a command like:
+{: javascript}
+{: python}
+
+```javascript
+const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
+// The code begins by importing the Express framework for building the server and the MongoDB client module for connecting to the MongoDB database.
+```
+{: pre}
+{: javascript}
 
 ```python
+from flask import Flask, request, jsonify
 from pymongo import MongoClient
+# The code begins by importing the Flask framework for building the server and the PyMongo library for connecting to the MongoDB database.
+```
+{: pre}
+{: python}
 
-# Connection parameters
-host = 'localhost'       # MongoDB server hostname or IP address
-port = 27017             # MongoDB server port (default is 27017)
-username = 'your_username'   # Username for authentication (if applicable)
-password = 'your_password'   # Password for authentication (if applicable)
-database_name = 'your_database_name'   # Name of the database to connect to
+Next, create the Express app and define the port, using a command like:
+{: javascript}
 
-# Create a MongoDB connection string
-connection_string = f"mongodb://{username}:{password}@{host}:{port}/{database_name}"
+Next, create the Flask app:
+{: python}
 
-# Connect to MongoDB
-client = MongoClient(connection_string)
+```javascript
+const app = express();
+const port = 3000;
+```
+{: pre}
+{: javascript}
 
-# Print the MongoDB server version
-print("Connected to MongoDB server:", client.server_info()['version'])
+```python
+from flask import Flask, request, jsonify
+from pymongo import MongoClient
 
 ```
 {: pre}
 {: python}
 
+Now, establish a connection to MongoDB:
+{: javascript}
+
 ```javascript
-const { MongoClient } = require('mongodb');
+const uri = 'YOUR_MONGODB_CONNECTION_URI';
 
-// Connection parameters
-const host = 'localhost';           // MongoDB server hostname or IP address
-const port = 27017;                 // MongoDB server port (default is 27017)
-const username = 'your_username';   // Username for authentication (if applicable)
-const password = 'your_password';   // Password for authentication (if applicable)
-const databaseName = 'your_database_name';   // Name of the database to connect to
-
-// Create a MongoDB connection string
-const uri = `mongodb://${username}:${password}@${host}:${port}/${databaseName}`;
-
-// Create a new MongoClient
-const client = new MongoClient(uri);
-
-// Connect to MongoDB
-client.connect((err) => {
-  if (err) {
-    console.error('Failed to connect to MongoDB:', err);
-    return;
-  }
-  console.log('Connected to MongoDB server');
-
-  // Use the connected client to interact with the database
-
-  // Close the connection when finished
-  client.close();
-});
-
+MongoClient.connect(uri, { useUnifiedTopology: true })
+  .then(client => {
+    const db = client.db('todoapp');
+    const collection = db.collection('todos');
+// This code establishes a connection to the MongoDB database using the provided connection URI. It then creates a reference to the todos collection within the todoapp database.
 ```
 {: pre}
 {: javascript}
 
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"log"
-	"time"
-
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-)
-
-func main() {
-	// Connection parameters
-	uri := "mongodb://localhost:27017" // MongoDB server URI
-	databaseName := "your_database_name" // Name of the database to connect to
-
-	// Set up the MongoDB client options
-	clientOptions := options.Client().ApplyURI(uri)
-
-	// Connect to MongoDB
-	client, err := mongo.NewClient(clientOptions)
-	if err != nil {
-		log.Fatal("Failed to create MongoDB client:", err)
-	}
-
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	err = client.Connect(ctx)
-	if err != nil {
-		log.Fatal("Failed to connect to MongoDB:", err)
-	}
-	defer client.Disconnect(ctx)
-
-	fmt.Println("Connected to MongoDB server")
-
-	// Use the connected client to interact with the database
-	// ...
-
-	// Close the connection when finished
-}
+```python
+uri = 'YOUR_MONGODB_CONNECTION_URI'
+client = MongoClient(uri)
+db = client.todoapp
+collection = db.todos
+# This code establishes a connection to the MongoDB database using the provided connection URI. It then creates references to the todos collection within the todoapp database.
 ```
 {: pre}
-{: go}
+{: python}
