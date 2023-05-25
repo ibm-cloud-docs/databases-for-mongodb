@@ -119,6 +119,7 @@ from pymongo import MongoClient
 
 Now, establish a connection to MongoDB:
 {: javascript}
+{: python}
 
 ```javascript
 const uri = 'YOUR_MONGODB_CONNECTION_URI';
