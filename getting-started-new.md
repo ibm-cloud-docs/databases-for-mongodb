@@ -161,7 +161,7 @@ collection := db.Collection("todos")
 Now, set up middleware for parsing request bodies:
 {: javascript}
 
-Now, defin handlers for retrieving and creating todos:
+Now, define handlers for retrieving and creating todos:
 {: go}
 
 ```go
