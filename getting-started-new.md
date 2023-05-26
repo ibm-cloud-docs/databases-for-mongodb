@@ -46,9 +46,22 @@ Now that you've provisioned your {{site.data.keyword.databases-for-mongodb_full}
 
 * Finally, review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-mongodb_full}} deployment.
 
-## Connect with MongoDB Compass
+### Using MongoDB Compass
+{: #using-mongodb-compass}
+
+After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
+
+Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds data for cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
+
+Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
+
+## Creating a ToDo App with MongoDB Compass
+{: #create-todo-app-mongodb-compass}
+
+Use MongoDB Compass to perform similar tasks as the code examples.
+
+### Connect with MongoDB Compass
 {: #connecting-mongodb-compass-new}
-{: step}
 
 When you first open MongoDB Compass to the **New Connection** page, enter your deployment's connection information. All relevant connection information can be found within your deployment's **Overview** page.
 
@@ -64,17 +77,32 @@ To connect to your deployment with MongoDB Compass, complete the following steps
 - (Optional) Give your {{site.data.keyword.databases-for-mongodb}} deployment a name.
 - Click **Connect** to connect MongoDB Compass to your {{site.data.keyword.databases-for-mongodb}} deployment.
 
-### Using MongoDB Compass
-{: #using-mongodb-compass}
+### Create and retrieve ToDos
+{: #connecting-mongodb-compass-create-retrieve-todos}
 
-After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} EE uses the Enterprise version of the MongoDB database.
+Create a new database and collection:
 
-Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds data for cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
+- Once connected, you'll see a list of databases on the left-hand side of the Compass interface.
+- Right-click on the "Databases" section and choose "Create Database".
+- Enter a name for the database (e.g., "todoapp") and click "Create".
+- With the newly created database selected, right-click on the "Collections" section and choose "Create Collection".
+- Enter a name for the collection (e.g., "todos") and click "Create".
 
-Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
+Add documents to the collection:
+
+- Select the "todos" collection in the left-hand sidebar.
+- Click on the "Insert Document" button in the top-right corner of the Compass interface.
+- Enter the details of the todo, such as "task", "priority", and any other relevant fields, in the document editor.
+- Click "Insert" to add the document to the collection.
+- Repeat this step to add more todo documents.
 
 ## Create your ToDo App
 {: #getting-started-create-todo-app}
+
+Create a ToDo app that allows you to add and update items on a ToDo list. 
+
+The examples below use multiple programming languages. Switch between the languages of your choice for the relevant steps and code snippets.
+{: note}
 
 The ToDo app in this tutorial sets up a basic Express server that connects to a MongoDB database, provides endpoints for retrieving and creating todos, and listens for incoming requests on port `3000`.
 {: javascript}
