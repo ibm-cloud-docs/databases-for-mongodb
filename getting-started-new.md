@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-05-25"
+lastupdated: "2023-05-26"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -76,9 +76,21 @@ Now you can use MongoDB Compass to view any data you and your applications have 
 ## Create your ToDo App
 {: #getting-started-create-todo-app}
 
+The ToDo app in this tutorial sets up a basic Express server that connects to a MongoDB database, provides endpoints for retrieving and creating todos, and listens for incoming requests on port `3000`.
+{: javascript}
+
+The ToDo app in this tutorial sets up a basic Flask server that connects to a MongoDB database, provides endpoints for retrieving and creating todos, and listens for incoming requests on port `3000`.
+{: python}
+
+The ToDo app in this tutorial sets up an Actix web server, connects to a MongoDB database, provides handlers for retrieving and creating todos, and listens for incoming requests on `127.0.0.1:3000`.
+{: rust}
+
 First, import the necessary modules, using a command like:
 {: javascript}
 {: python}
+
+First, import the necessary crates:
+{: rust}
 
 ```javascript
 const express = require('express');
@@ -96,6 +108,14 @@ from pymongo import MongoClient
 {: pre}
 {: python}
 
+```rust
+use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use mongodb::{bson::doc, options::ClientOptions, Client};
+// The code begins by importing the necessary crates. actix_web is used for building the server, mongodb for connecting to the MongoDB database.
+```
+{: pre}
+{: rust}
+
 Next, create the Express app and define the port, using a command like:
 {: javascript}
 
@@ -110,9 +130,7 @@ const port = 3000;
 {: javascript}
 
 ```python
-from flask import Flask, request, jsonify
-from pymongo import MongoClient
-
+app = Flask(__name__)
 ```
 {: pre}
 {: python}
@@ -120,6 +138,7 @@ from pymongo import MongoClient
 Now, establish a connection to MongoDB:
 {: javascript}
 {: python}
+{: rust}
 
 ```javascript
 const uri = 'YOUR_MONGODB_CONNECTION_URI';
@@ -142,3 +161,156 @@ collection = db.todos
 ```
 {: pre}
 {: python}
+
+```rust
+#[actix_rt::main]
+async fn main() -> std::io::Result<()> {
+    // Connect to the MongoDB database
+    let client_options = ClientOptions::parse("YOUR_MONGODB_CONNECTION_URI").await?;
+    let client = Client::with_options(client_options)?;
+
+    // Get a handle to the "todos" collection
+    let db = client.database("todoapp");
+    let collection = db.collection::<Document>("todos");
+
+    // Start the Actix web server
+    HttpServer::new(move || {
+        App::new()
+            .data(collection.clone())
+            .route("/todos", web::get().to(get_todos))
+            .route("/todos", web::post().to(create_todo))
+    })
+    .bind("127.0.0.1:3000")?
+    .run()
+    .await
+}
+```
+{: pre}
+{: rust}
+
+Now, define handlers for retrieving and creating todos:
+
+```rust
+async fn get_todos(collection: web::Data<Collection<Document>>) -> impl Responder {
+    let cursor = collection.find(doc! {}, None).await.unwrap();
+    let todos: Vec<Document> = cursor.map(|doc| doc.unwrap()).collect();
+
+    HttpResponse::Ok().json(todos)
+}
+
+async fn create_todo(
+    todo: web::Json<Document>,
+    collection: web::Data<Collection<Document>>,
+) -> impl Responder {
+    collection.insert_one(todo.into_inner(), None).await.unwrap();
+    HttpResponse::Ok().json(todo.into_inner())
+// These functions are defined to handle the /todos endpoint. The get_todos function retrieves all todos from the MongoDB collection and returns them as a JSON response. The create_todo function takes a JSON payload representing a new todo, inserts it into the MongoDB collection, and returns the inserted todo as a JSON response.
+}
+```
+{: pre}
+{: rust}
+
+Now, set up middleware for parsing request bodies:
+{: javascript}
+
+```javascript
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// This code configure Express middleware to parse URL-encoded and JSON request bodies.
+```
+{: pre}
+{: javascript}
+
+Now, define a route for retrieving todos:
+{: javascript}
+{: python}
+
+```javascript
+app.get('/todos', (req, res) => {
+  collection.find().toArray()
+    .then(results => {
+      res.json(results);
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+// This code defines a GET route at /todos. When a GET request is made to this endpoint, it queries the MongoDB collection to retrieve all todos and sends the results as a JSON response.
+```
+{: pre}
+{: javascript}
+
+```python
+@app.route('/todos', methods=['GET'])
+def get_todos():
+    todos = list(collection.find())
+    return jsonify(todos)
+```
+{: pre}
+{: python}
+
+Define a route for creating todos:
+{: javascript}
+{: python}
+
+```javascript
+app.post('/todos', (req, res) => {
+  collection.insertOne(req.body)
+    .then(result => {
+      res.json(result.ops[0]);
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+// This code defines a POST route at /todos. When a POST request is made to this endpoint, it takes the request body (assuming it contains a JSON payload with a task property) and inserts it as a new todo document into the MongoDB collection. It then responds with the inserted todo document.
+```
+{: pre}
+{: javascript}
+
+```python
+@app.route('/todos', methods=['POST'])
+def create_todo():
+    new_todo = request.json
+    result = collection.insert_one(new_todo)
+    return jsonify(new_todo)
+# This code defines a route for handling POST requests to the /todos endpoint. When a POST request is made to this endpoint, it expects a JSON payload containing a new todo. It inserts the new todo into the MongoDB collection and returns the inserted todo as a JSON response.
+```
+{: pre}
+{: python}
+
+Now, start the Express server, listening on the specified port.
+{: javascript}
+
+Now, start the Flask server, listening on port `3000`.
+{: python}
+
+Now, start the server. The server is started using the `HttpServer::new()` method, defining the routes and handlers, and binding it to the address `127.0.0.1:3000`.
+{: rust}
+
+```javascript
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+// This line of code starts the Express server, listening on the specified port.
+```
+{: pre}
+{: javascript}
+
+```rust
+#[actix_rt::main]
+async fn main() -> std::io::Result<()> {
+    // ... Connection to MongoDB and handler functions ...
+
+    HttpServer::new(move || {
+        // ... Routes and handlers ...
+    })
+    .bind("127.0.0.1:3000")?
+    .run()
+    .await
+}
+```
+{: pre}
+{: rust}
