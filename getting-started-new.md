@@ -158,13 +158,10 @@ collection := db.Collection("todos")
 {: pre}
 {: go}
 
-
-Now, define handlers for retrieving and creating todos:
-
 Now, set up middleware for parsing request bodies:
 {: javascript}
 
-Now, defining handlers for retrieving and creating todos:
+Now, defin handlers for retrieving and creating todos:
 {: go}
 
 ```go
