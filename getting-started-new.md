@@ -67,7 +67,7 @@ First, import the necessary modules, using a command like:
 {: javascript}
 {: python}
 
-First, import the necessary packages: 
+First, import the necessary packages:
 {: go}
 
 ```go
@@ -121,6 +121,7 @@ app = Flask(__name__)
 Now, establish a connection to MongoDB:
 {: javascript}
 {: python}
+{: go}
 
 ```javascript
 const uri = 'YOUR_MONGODB_CONNECTION_URI';
@@ -144,10 +145,61 @@ collection = db.todos
 {: pre}
 {: python}
 
+```go
+uri := "YOUR_MONGODB_CONNECTION_URI"
+client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
+if err != nil {
+	log.Fatal(err)
+}
+
+db := client.Database("todoapp")
+collection := db.Collection("todos")
+```
+{: pre}
+{: go}
+
+
 Now, define handlers for retrieving and creating todos:
 
 Now, set up middleware for parsing request bodies:
 {: javascript}
+
+Now, defining handlers for retrieving and creating todos:
+{: go}
+
+```go
+func getTodos(w http.ResponseWriter, r *http.Request) {
+	cursor, err := collection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var todos []bson.M
+	if err := cursor.All(context.TODO(), &todos); err != nil {
+		log.Fatal(err)
+	}
+
+	json.NewEncoder(w).Encode(todos)
+}
+
+func createTodo(w http.ResponseWriter, r *http.Request) {
+	var todo bson.M
+	err := json.NewDecoder(r.Body).Decode(&todo)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	_, err = collection.InsertOne(context.TODO(), todo)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	json.NewEncoder(w).Encode(todo)
+}
+```
+{: pre}
+{: go}
 
 ```javascript
 app.use(express.urlencoded({ extended: true }));
@@ -160,6 +212,17 @@ app.use(express.json());
 Now, define a route for retrieving todos:
 {: javascript}
 {: python}
+
+Set up the router and routes:
+{: go}
+
+```go
+router := mux.NewRouter()
+router.HandleFunc("/todos", getTodos).Methods("GET")
+router.HandleFunc("/todos", createTodo).Methods("POST")
+```
+{: pre}
+{: go}
 
 ```javascript
 app.get('/todos', (req, res) => {
@@ -223,6 +286,8 @@ Now, start the Express server, listening on the specified port.
 Now, start the Flask server, listening on port `3000`.
 {: python}
 
+Now, start the server:
+
 ```javascript
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
@@ -231,6 +296,19 @@ app.listen(port, () => {
 ```
 {: pre}
 {: javascript}
+
+```python
+if __name__ == '__main__':
+    app.run(port=3000)
+```
+{: pre}
+{: python}
+
+```go
+log.Fatal(http.ListenAndServe(":3000", router))
+```
+{: pre}
+{: go}
 
 ## Create a ToDo App with MongoDB Compass
 {: #create-todo-app-mongodb-compass}
