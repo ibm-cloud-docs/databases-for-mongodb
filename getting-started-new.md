@@ -232,7 +232,7 @@ func createTodo(w http.ResponseWriter, r *http.Request) {
 {: go}
 
 ## Set up your route
-{: # set-up-route}
+{: #set-up-route}
 {: step}
 
 Now, define a route for retrieving todos:
