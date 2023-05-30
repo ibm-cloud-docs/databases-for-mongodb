@@ -46,6 +46,7 @@ Now that you've provisioned your {{site.data.keyword.databases-for-mongodb_full}
 
 ## Create your ToDo App
 {: #getting-started-create-todo-app}
+{: step}
 
 Create a ToDo app that allows you to add and update items on a ToDo list. 
 
@@ -61,7 +62,7 @@ The ToDo app in this tutorial sets up a basic Flask server that connects to a Mo
 The ToDo app in this tutorial sets up a basic HTTP server using the Gorilla Mux router, connects to a MongoDB database, provides handlers for retrieving and creating todos, and listens for incoming requests on port 3000.
 {: go}
 
-### Import necessary modules
+## Import necessary modules
 {: #import-modules}
 {: step}
 
@@ -100,7 +101,7 @@ import (
 {: pre}
 {: go}
 
-### Create your app
+## Create your app
 {: #create-your-app}
 {: step}
 
@@ -129,7 +130,7 @@ app = Flask(__name__)
 {: go}
 
 
-### Connect to your {{site.data.keyword.databases-for-mongodb}} deployment
+## Connect to your {{site.data.keyword.databases-for-mongodb}} deployment
 {: #connect-to-deployment}
 {: step}
 
@@ -173,7 +174,7 @@ collection := db.Collection("todos")
 {: pre}
 {: go}
 
-### Set up middleware and handlers
+## Set up middleware and handlers
 {: #set-up-middleware-handlers}
 
 Now, set up middleware for parsing request bodies:
@@ -230,7 +231,7 @@ func createTodo(w http.ResponseWriter, r *http.Request) {
 {: pre}
 {: go}
 
-### Set up your route
+## Set up your route
 {: # set-up-route}
 
 Now, define a route for retrieving todos:
@@ -273,7 +274,7 @@ def get_todos():
 {: pre}
 {: python}
 
-### Define a route for creating todos
+## Define a route for creating todos
 {: #definte-routes}
 {: javascript}
 {: python}
@@ -311,7 +312,7 @@ def create_todo():
 ```
 {: go}
 
-### Start the server
+## Start the server
 {: #start-server}
 
 Now, start the Express server, listening on the specified port.
