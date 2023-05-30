@@ -129,8 +129,7 @@ app = Flask(__name__)
 ```
 {: go}
 
-
-## Connect to your {{site.data.keyword.databases-for-mongodb}} deployment
+## Connect to your deployment
 {: #connect-to-deployment}
 {: step}
 
@@ -176,6 +175,7 @@ collection := db.Collection("todos")
 
 ## Set up middleware and handlers
 {: #set-up-middleware-handlers}
+{: step}
 
 Now, set up middleware for parsing request bodies:
 {: javascript}
@@ -233,6 +233,7 @@ func createTodo(w http.ResponseWriter, r *http.Request) {
 
 ## Set up your route
 {: # set-up-route}
+{: step}
 
 Now, define a route for retrieving todos:
 {: javascript}
@@ -275,7 +276,10 @@ def get_todos():
 {: python}
 
 ## Define a route for creating todos
-{: #definte-routes}
+{: #define-routes}
+{: step}
+
+Define your route.
 {: javascript}
 {: python}
 {: go}
@@ -314,6 +318,7 @@ def create_todo():
 
 ## Start the server
 {: #start-server}
+{: step}
 
 Now, start the Express server, listening on the specified port.
 {: javascript}
