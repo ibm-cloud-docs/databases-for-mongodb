@@ -30,7 +30,6 @@ Now that you've provisioned your {{site.data.keyword.databases-for-mongodb_full}
 
 ## Before you begin
 {: #before-begin-mongodb-new}
-{: step}
 
 * You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external} and a {{site.data.keyword.databases-for-mongodb}} deployment. Give your deployment a memorable name that appears in your account's Resource List.
 
