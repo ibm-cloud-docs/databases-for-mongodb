@@ -62,24 +62,13 @@ The ToDo app in this tutorial sets up a basic Flask server that connects to a Mo
 The ToDo app in this tutorial sets up a basic HTTP server using the Gorilla Mux router, connects to a MongoDB database, provides handlers for retrieving and creating todos, and listens for incoming requests on port 3000.
 {: go}
 
-First, import the necessary modules, using a command like:
+### Import necessary modules
+{: #import-modules}
+{: step}
+
+First, import the necessary modules or packages, using a command like:
 {: javascript}
 {: python}
-
-First, import the necessary packages:
-{: go}
-
-```go
-import (
-	"log"
-	"net/http"
-
-	"github.com/gorilla/mux"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-)
-```
-{: pre}
 {: go}
 
 ```javascript
@@ -97,6 +86,24 @@ from pymongo import MongoClient
 ```
 {: pre}
 {: python}
+
+```go
+import (
+	"log"
+	"net/http"
+
+	"github.com/gorilla/mux"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+
+)
+```
+{: pre}
+{: go}
+
+### Create your app
+{: #create-your-app}
+{: step}
 
 Next, create the Express app and define the port, using a command like:
 {: javascript}
@@ -116,6 +123,16 @@ app = Flask(__name__)
 ```
 {: pre}
 {: python}
+
+```go
+"Nothing to do here! This example doesn't apply to this programming language."
+```
+{: go}
+
+
+### Connect to your {{site.data.keyword.databases-for-mongodb}} deployment
+{: #connect-to-deployment}
+{: step}
 
 Now, establish a connection to MongoDB. Your applications use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the Endpoints panel of your deployment's Overview, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections){: external} and the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026){: external}. For more information, see [Connecting an external application](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app){: external}.
 {: javascript}
@@ -157,11 +174,28 @@ collection := db.Collection("todos")
 {: pre}
 {: go}
 
+### Set up middleware and handlers
+{: #set-up-middleware-handlers}
+
 Now, set up middleware for parsing request bodies:
 {: javascript}
+{: python}
 
 Now, define handlers for retrieving and creating todos:
 {: go}
+
+```javascript
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// This code configure Express middleware to parse URL-encoded and JSON request bodies.
+```
+{: pre}
+{: javascript}
+
+```python
+"Nothing to do here! This example doesn't apply to this programming language."
+```
+{: python}
 
 ```go
 func getTodos(w http.ResponseWriter, r *http.Request) {
@@ -197,13 +231,8 @@ func createTodo(w http.ResponseWriter, r *http.Request) {
 {: pre}
 {: go}
 
-```javascript
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// This code configure Express middleware to parse URL-encoded and JSON request bodies.
-```
-{: pre}
-{: javascript}
+### Set up your route
+{: # set-up-route}
 
 Now, define a route for retrieving todos:
 {: javascript}
@@ -245,9 +274,11 @@ def get_todos():
 {: pre}
 {: python}
 
-Define a route for creating todos:
+### Define a route for creating todos
+{: #definte-routes}
 {: javascript}
 {: python}
+{: go}
 
 ```javascript
 app.post('/todos', (req, res) => {
@@ -276,13 +307,22 @@ def create_todo():
 {: pre}
 {: python}
 
+```go
+"Nothing to do here! This example doesn't apply to this programming language."
+```
+{: go}
+
+### Start the server
+{: #start-server}
+
 Now, start the Express server, listening on the specified port.
 {: javascript}
 
 Now, start the Flask server, listening on port `3000`.
 {: python}
 
-Now, start the server:
+Now, start the server using `http.ListenAndServe()` with the router and port `3000`.
+{: go}
 
 ```javascript
 app.listen(port, () => {
@@ -308,7 +348,6 @@ log.Fatal(http.ListenAndServe(":3000", router))
 
 ## Create a ToDo App with MongoDB Compass
 {: #create-todo-app-mongodb-compass}
-{: step}
 
 Use MongoDB Compass to perform similar tasks as the code examples.
 
