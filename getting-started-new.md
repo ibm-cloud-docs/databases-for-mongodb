@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-05-26"
+lastupdated: "2023-05-30"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
 
@@ -15,7 +15,6 @@ completion-time: 30m
 ---
 
 {{site.data.keyword.attribute-definition-list}}
-{:go: .ph data-hd-programlang="go"}
 
 # Getting Started 
 {: #getting-started-new}
@@ -118,7 +117,7 @@ app = Flask(__name__)
 {: pre}
 {: python}
 
-Now, establish a connection to MongoDB:
+Now, establish a connection to MongoDB. Your applications use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the Endpoints panel of your deployment's Overview, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections){: external} and the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026){: external}. For more information, see [Connecting an external application](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app){: external}.
 {: javascript}
 {: python}
 {: go}
