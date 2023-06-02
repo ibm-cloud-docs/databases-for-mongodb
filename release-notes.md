@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-05-23"
+lastupdated: "2023-06-02"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 30 May 2023
+{: #databases-for-mongodb-30may2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} version 5 Preferred
+:  {{site.data.keyword.databases-for-mongodb}} version 5 is the preferred version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui).
 
 ## 22 May 2023
 {: #databases-for-mongodb-18may2023}
