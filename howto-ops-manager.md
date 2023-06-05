@@ -11,10 +11,10 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# MongoDB Enterprise Ops Manager
+# {{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager
 {: #ops-manager}
 
-The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition deployment.
+The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment.
 
 ## Before you begin with the MongoDB Enterprise Ops Manager
 {: #ops-manager-before-begin}
