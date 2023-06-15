@@ -33,7 +33,7 @@ Follow these steps to retrieve your {{site.data.keyword.databases-for-mongodb}} 
 {: #connection-strings-cli}
 {: cli}
 
-You can also retrieve connection strings using the [site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) Connection command.
+You can also retrieve connection strings using the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) Connection command.
 
 The command looks like this: 
 
@@ -56,7 +56,7 @@ For more information, see [Connections Command options](/docs/databases-cli-plug
 {: #connection-strings-api}
 {: api}
 
-To retrieve users' connection strings from the [site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external}, use the [Connections endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection){: external}. To create the connection strings, ensure that the path includes the specific user and endpoint type (public or private) that should be used. The user and endpoint type are not restricted or enforced. You have the flexibility to utilize any user available in your deployment, along with either endpoint (if both are present in your deployment).
+To retrieve users' connection strings from the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external}, use the [Connections endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection){: external}. To create the connection strings, ensure that the path includes the specific user and endpoint type (public or private) that should be used. The user and endpoint type are not restricted or enforced. You have the flexibility to utilize any user available in your deployment, along with either endpoint (if both are present in your deployment).
 
 The API command looks like: 
 
@@ -71,7 +71,7 @@ Remember to replace {region}, {id}, {userid}, and {endpoint_type} with the appro
 ## Additional Users and Connection Strings
 {: #connection-strings-additional-users-strings}
 
-Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not limited to the `admin` user. Create more users and retrieve connection strings specific to them by using the UI, the [site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference), or the [site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
+Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not limited to the `admin` user. Create more users and retrieve connection strings specific to them by using the UI, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 
