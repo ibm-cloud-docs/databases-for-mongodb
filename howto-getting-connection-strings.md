@@ -18,7 +18,7 @@ subcollection: databases-for-mongodb
 
 Connection strings allow you to establish a connection between your application and your {{site.data.keyword.databases-for-mongodb}} instance.
 
-# Getting Connection Strings in the UI
+## Getting Connection Strings in the UI
 {: #connection-strings-ui}
 {: ui}
 
