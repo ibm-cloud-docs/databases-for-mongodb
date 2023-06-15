@@ -70,25 +70,3 @@ Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not lim
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 
 When you create a user, it is assigned certain database roles and privileges. For more information, see the [Managing Users and Roles](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management) page.
-
-## Connection String Breakdown
-{: #connection-string-breakdown}
-
-### The CLI Section
-{: #connection-strings-cli-section}
-{: cli}
-
-The "CLI" section contains information that is suited for connecting with the [`mongo` Shell](https://www.mongodb.com/docs/v4.4/mongo/){: external}.
-
-| Field Name | Index | Description |
-| ---------- | ----- | ----------- |
-| `Bin` | | The recommended binary to create a connection; in this case it is `mongo`. |
-| `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses  |`Arguments` as command-line parameters.
-| `Environment` | | A list of key/values you set as environment variables. |
-| `Arguments` | `0...` | The information that is passed as arguments to the command shown in the Bin field. |
-| `Certificate` | `Base64` | A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate. |
-| `Type` | | The type of package that uses this connection information; in this case `cli`.  |
-{: caption="Table 1. mongo/cli connection information" caption-side="top"}
-
-* `0...` indicates that there might be one or more of these entries in an array.
