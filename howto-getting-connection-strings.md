@@ -74,27 +74,6 @@ When you create a user, it is assigned certain database roles and privileges. Fo
 ## Connection String Breakdown
 {: #connection-string-breakdown}
 
-### The MongoDB Section
-{: #connection-strings-mongodb-section}
-
-Use the information in the table to connect to your deployment using a URI. 
-
-| Field Name | Index | Description |
-| ---------- | ----- | ----------- |
-| `Type` | | Type of connection - for MongoDB, it is "URI". It helps identify the connection protocol. |
-| `Scheme` | | Scheme for a URI - for MongoDB, it is "mongodb" |
-| `Path` | | Path for a URI - for MongoDB, it is the database name. When provisioning a MongoDB instance for the first time, the default database for the user to connect to is  | `admin`.
-| `Authentication` | `Username` | The username that you use to connect. |
-| `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD` |
-| `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. Note: MongoDB 3.6 Standard and Enterprise editions and 4.2  |Standard edition use SCRAM SHA 1, while MongoDB 4.2 Enterprise edition only uses SHA 256.  
-| `Hosts` | `0...` | A hostname and port to connect to |
-| `Composed` | `0...` | A URI combining Scheme, Authentication, Host, Path, and Replica Set name |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment |
-| `Certificate` | `Base64` | A base64 encoded version of the certificate. |
-{: caption="Table 1. mongodb/URI connection information" caption-side="top"}
-
-* `0...` indicates that there might be one or more of these entries in an array.
-
 ### The CLI Section
 {: #connection-strings-cli-section}
 {: cli}
