@@ -77,11 +77,11 @@ When you create a user, it is assigned certain database roles and privileges. Fo
 ### The MongoDB Section
 {: #connection-strings-mongodb-section}
 
-The "mongodb" section contains information that is suited to applications that make connections to MongoDB.
+Use the information in the table to connect to your deployment using a URI. 
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
-| `Type` | | Type of connection - for MongoDB, it is "URI" |
+| `Type` | | Type of connection - for MongoDB, it is "URI". It helps identify the connection protocol. |
 | `Scheme` | | Scheme for a URI - for MongoDB, it is "mongodb" |
 | `Path` | | Path for a URI - for MongoDB, it is the database name. When provisioning a MongoDB instance for the first time, the default database for the user to connect to is  | `admin`.
 | `Authentication` | `Username` | The username that you use to connect. |
@@ -99,7 +99,7 @@ The "mongodb" section contains information that is suited to applications that m
 {: #connection-strings-cli-section}
 {: cli}
 
-The "CLI" section contains information that is suited for connecting with the mongo shell.
+The "CLI" section contains information that is suited for connecting with the [`mongo` Shell](https://www.mongodb.com/docs/v4.4/mongo/){: external}.
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
