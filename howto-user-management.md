@@ -20,6 +20,7 @@ subcollection: databases-for-mongodb
 When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction). 
 
 MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [in the mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) by using the `show users` command.
+
 ```sh
 ibmcloud cdb deployment-connections --start -u admin mongodb-production
 Database Password>>
@@ -48,14 +49,7 @@ db.grantRolesToUser(
 )
 ```
 
-## _Service Credential_ Users
-{: #user-management-service-cred-users}
-
-Users that you [create through _Service Credentials_](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
-
-If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
-
-### Creating Users in the UI
+## Creating Users in the UI
 {: #user-management-service-cred-users-ui}
 {: ui}
 
@@ -72,6 +66,10 @@ Creating a user from the CLI or API doesn't automatically populate that user's c
 
 Generating credentials from an existing user does not check for or create that user. 
 {: .tip}
+
+Users that you [create through _Service Credentials_](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
+
+If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
 ## Creating users through the CLI
 {: #user-management-cli}
@@ -94,6 +92,7 @@ When the task finishes, you can retrieve the new user's connection strings with 
 
 ## Creating users through the API
 {: #user-management-api}
+{: api}
 
 Users that are created in the API are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
 
