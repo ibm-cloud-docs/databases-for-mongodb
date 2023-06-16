@@ -22,7 +22,7 @@ subcollection: databases-for-mongodb
 
 When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
-# Managing Users and Roles in the CLI
+## Managing Users and Roles in the CLI
 {: #user-management-cli}
 {: cli}
 
