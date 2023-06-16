@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-06-15"
+lastupdated: "2023-06-16"
 
 keywords: mongodb, databases, admin user, service credentials, ops manager, mongodb managing users, roles, root account
 
@@ -13,6 +13,9 @@ subcollection: databases-for-mongodb
 
 # Managing Users and Roles
 {: #user-management}
+{: ui}
+{: cli}
+{: api}
 
 {{site.data.keyword.databases-for-mongodb_full}} deployments come with authentication enabled and use MongoDB's
 [role-based access control](https://docs.mongodb.com/manual/core/authorization/){: external}.
@@ -122,6 +125,9 @@ To retrieve a user's connection strings, use the base URL with the `/users/{user
 
 ## MongoDB created users and roles
 {: #user-management-mongodb-users}
+{: ui}
+{: cli}
+{: api}
 
 If the built-in users and roles do not suit your environment, you can [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role){: external} directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
 
@@ -129,10 +135,16 @@ Users and roles that are created directly in MongoDB do not appear in _Service C
 
 ## The `ibm` User
 {: #user-management-ibm}
+{: ui}
+{: cli}
+{: api}
 
 If you use the mongo shell to list the users on your deployment, you might notice a user that is named `ibm`. The `ibm` user is the internal root account that manages replication, cluster operations, and other functions that ensure the stability of your deployment. Changing or deleting to the `ibm` user is not advised and disrupts the stability of your deployment.
 
 ## The `ops_manager` users for MongoDB Enterprise Edition
 {: #user-management-ops-manager}
+{: ui}
+{: cli}
+{: api}
 
 The Ops Manager is only available in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployments. The `ops_manager` user type has limited permissions. For more information, see the [Ops Manager documentation](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager).
