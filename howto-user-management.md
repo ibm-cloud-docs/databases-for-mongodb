@@ -17,9 +17,13 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.databases-for-mongodb_full}} deployments come with authentication enabled and use MongoDB's
 [role-based access control](https://docs.mongodb.com/manual/core/authorization/){: external}.
 
-When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction). 
+When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to a MongoDB admin user. You can add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
-MongoDB centralizes user data in the `admin` database. You can list all users and their roles and database permissions [in the mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) by using the `show users` command.
+# Managing Users and Roles in the CLI
+{: #user-management-cli}
+{: cli}
+
+MongoDB centralizes user data in the `admin` database. List all users and their roles and database permissions [in the mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) by using the `show users` command.
 
 ```sh
 ibmcloud cdb deployment-connections --start -u admin mongodb-production
@@ -34,12 +38,14 @@ replset:PRIMARY> show users
 
 ## The admin User
 {: #user-management-admin}
+{: cli}
 
 The admin user is intended for use as an administrative user. It is granted the MongoDB built-in roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external}, [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}, and [`userAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#userAdminAnyDatabase){: external}.
 
 All three roles provide privileges on all databases except local and config.
 
 `userAdminAnyDatabase` is the role that provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. With `userAdminAnyDatabase`, [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/){: external} to any other user on your deployment, including any of the MongoDB built-in roles. For example, to monitor your deployment, use `admin` to log in to the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor){: external} role to any user (including itself).
+
 ```sh
 db.grantRolesToUser(
     "admin",
