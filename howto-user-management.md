@@ -90,14 +90,14 @@ If you need users to have a different role, you can use the admin user to change
 
 Users that are created directly from the CLI do not appear in _Service Credentials_, but you can add them.
 
-If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and the [cloud databases plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), you can create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command.
+If you manage your service through the {{site.data.keyword.databases-for}} CLI and the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command:
 
 ```sh
 ibmcloud cdb user-create example-deployment <newusername> <newpassword>
 ```
 {: pre}
 
-When the task finishes, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
+When the task finishes, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
 ## Creating users through the API
 {: #user-management-api}
@@ -105,7 +105,7 @@ When the task finishes, you can retrieve the new user's connection strings with 
 
 Users that are created in the API are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
 
-If you need users to have a different role, you can use the admin user to change their role.
+If you need users to have a different role, use the admin user to change their role.
 
 Users that are created directly from the API do not appear in _Service Credentials_, but you can add them.
 
@@ -129,7 +129,7 @@ To retrieve a user's connection strings, use the base URL with the `/users/{user
 {: cli}
 {: api}
 
-If the built-in users and roles do not suit your environment, you can [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role){: external} directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
+If the built-in users and roles do not suit your environment, [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role){: external} directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
 
 Users and roles that are created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/databases-for-mongodb?topic=cloud-databases-iam).
 
