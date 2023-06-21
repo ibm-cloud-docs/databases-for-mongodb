@@ -15,7 +15,7 @@ subcollection: cloud-databases
 # Provisioning
 {: #provisioning}
 
-Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog page]((https://cloud.ibm.com/catalog/services/databases-for-mongodb)){: external}, or by specifying the service ID in the [{{site.data.keyword.databases-for}} CLI](/docs/databases-for-mongodb?topic=databases-for-mongodb-cdb-reference){: external}, [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog page]((https://cloud.ibm.com/catalog/services/databases-for-mongodb)){: external}, the [{{site.data.keyword.databases-for}} CLI](/docs/databases-for-mongodb?topic=databases-for-mongodb-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Provisioning through the catalog
 {: #catalog}
