@@ -38,26 +38,63 @@ After you select the appropriate settings, click **Create** to start the provisi
 {: #use-cli}
 {: cli}
 
-Use the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external} to communicate with {{site.data.keyword.cloud_notm}} from your CLI.
+1. Follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
 
-To create a {{site.data.keyword.databases-for}} deployment, use the {{site.data.keyword.cloud_notm}} CLI tool to request a service instance with the {{site.data.keyword.databases-for-mongodb}} service ID.
+1. Log in to {{site.data.keyword.cloud_notm}}.
 
-The command looks like:
+   ```sh
+   ibmcloud login
+   ```
+   {: pre}
 
-```sh
-ibmcloud resource service-instance-create <service-name> databases-for-mongodb
- <service-plan-id> <region> --service-endpoints <SERVICE_ENDPOINTS_TYPE>
-```
-{: .pre}
+1. Set the target region and resource group.
 
-To check provisioning status, use the following command that reports the current state of the service instance.
+   ```sh
+   ibmcloud target -r <region> -g <resource_group>
+   ```
+   {: pre}
 
-```sh
-ibmcloud resource service-instance <service-name>
-```
-{: .pre}
+1. Create an instance.
 
-For more information, see [Working with resources and resource groups](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instances){: external}.
+   ```sh
+   ibmcloud resource service-instance-create <instance_name> databases-for-mongodb standard
+   ```
+   {: pre}
+
+1. To check provisioning status, use the following command that reports the current state of the service instance.
+
+   ```sh
+   ibmcloud resource service-instance <service-name>
+   ```
+   {: .pre}
+
+1. Create credentials for the instance.
+
+   ```sh
+   ibmcloud resource service-key-create <service_key_name> Manager --instance-name <instance_name>
+   ```
+   {: pre}
+
+1. Retrieve the connection details.
+
+   ```sh
+   ibmcloud resource service-key <service_key_name>
+   ```
+   {: pre}
+
+1. Export the connection details as environment variables.
+   ```sh
+   export MONGODB_HOST="<hostname>"
+   export MONGODB_PORT="<port>"
+   export MONGODB_USERNAME="<username>"
+   export MONGODB_PASSWORD="<password>"
+   export MONGODB_DATABASE="<database_name>"
+   ```
+   {: pre}
+
+Replace `<region>` with the desired region (for example, `us-south`), `<resource_group>` with the name of your resource group, `<instance_name>` with the desired name for your MongoDB instance, and `<service_key_name>` with the desired name for your service key.
+
+After you run this code, the connection details will be exported as environment variables, allowing you to use them in your applications or scripts for connecting to the MongoDB instance.
 
 ### More flags and parameters
 {: #flags-params}
