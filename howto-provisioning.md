@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-06-21"
+lastupdated: "2023-06-23"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -15,7 +15,7 @@ subcollection: cloud-databases
 # Provisioning
 {: #provisioning-new}
 
-Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog page]((https://cloud.ibm.com/catalog/services/databases-for-mongodb)){: external}, the [{{site.data.keyword.databases-for}} CLI](/docs/databases-for-mongodb?topic=databases-for-mongodb-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog page](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}, the [{{site.data.keyword.databases-for}} CLI](/docs/databases-for-mongodb?topic=databases-for-mongodb-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Provisioning through the catalog
 {: #catalog}
@@ -23,16 +23,15 @@ Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through 
 
 Deploy from the catalog by specifying the following parameters:
 
-- [Required]{: tag-red} **The service name** - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
-- [Required]{: tag-red} **Location** - The deployment's public cloud region or Satellite location.
-- [Required]{: tag-red} **Database Version** - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically.
-- [Optional]{: tag-purple} **The resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default.
-- [Optional]{: tag-purple} **Key Protect instance and disk encryption key** - If you use Key Protect, an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- [Optional]{: tag-purple} **Initial resource allocation** - Specify initial memory and disk sizes for your databases. The minimum sizes of memory and disk are selected by default. 
-- [Optional]{: tag-purple} **CPU allocation** - Choose dedicated compute resources for your deployment. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of cpu shares. Your deployments are then allocated the number of CPUs you specify. If not specified in the provisioning request by using the API or CLI, the default minimum is used.
-- [Optional]{: tag-purple} **Endpoints** - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. The default is that connections to your deployment can be made from the public network.
+- **Service name** - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
+- **Location** - The deployment's public cloud region or Satellite location.
+- [Set only at deployment]{: tag-red} **Database Version** - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy){: external}.
+- **Resource allocation** - Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. **Once provisioned, disk cannot be scaled down.**
+- [Set only at deployment]{: tag-red} **Endpoints** - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. **A MongoDB deployment cannot have both public and private endpoints simultaneously**.
+- **The resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
+- **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
 
-After you select the appropriate settings, click **Create** to start the provisioning process. 
+After you select the appropriate settings, click **Create** to start the provisioning process.
 
 ## Provisioning through the CLI
 {: #use-cli}
