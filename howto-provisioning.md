@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-06-26"
+lastupdated: "2023-06-27"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -50,12 +50,7 @@ Follow the instructions provided in the documentation to install the [{{site.dat
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
-   ```
-   {: pre}
-
-   You will see a response like: 
    
-   ```sh
    Creating service instance INSTANCE_NAME in resource group default of account USER...
    OK
    Service instance INSTANCE_NAME was created.
@@ -80,7 +75,7 @@ Follow the instructions provided in the documentation to install the [{{site.dat
 
    The fields in the command are described in the table that follows.
 
-   | Field | FlagDescription |
+   | Field | Description |
    |-------|------------|
    | `INSTANCE_NAME` | The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |
    | `SERVICE_NAME` | `databases-for-mongodb` |
