@@ -39,95 +39,93 @@ After you select the appropriate settings, click **Create** to start the provisi
 
 Follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
 
-Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API key (`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
+1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API ke(`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?   topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
+   
+      ```sh
+      ibmcloud login
+      ```
+      {: pre}
+
+
+1. Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running the following command:
 
    ```sh
-   ibmcloud login
+   ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb    <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
+   ```
+   {: pre}
+   
+   The fields in the command are described in the table that follows.
+   | Field | Description |
+   |-------|------------|
+   | `INSTANCE_NAME` | The name can be any string and is the name that is used on    the web and in the CLI to identify the new deployment. |
+   | `SERVICE_NAME` | `databases-for-mongodb` |
+   | `SERVICE_PLAN_NAME` |  Standard plan (`standard`) or Enterprise plan    (`enterprise`)|
+   | `LOCATION` | The location where you want to deploy. To retrieve a list of    regions, use the `ibmcloud regions` command. |
+   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/   cloud-databases?topic=cloud-databases-service-endpoints) of your deployment,    either `public` or `private`. *A MongoDB deployment cannot have both public and    private endpoints simultaneously*. If the `-p` flag is omitted, the default is    `public`. |
+   {: caption="Table 1. Basic command format fields" caption-side="top"}
+   
+   You should see a response like: 
+   
+   ```text
+   Creating service instance INSTANCE_NAME in resource group default of account    USER...
+   OK
+   Service instance INSTANCE_NAME was created.
+                        
+   Name:                INSTANCE_NAME
+   ID:                  crn:v1:bluemix:public:databases-for-mongodb:us-east:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+   GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
+   Location:            LOCATION
+   State:               provisioning
+   Type:                service_instance
+   Sub Type:            Public
+   Service Endpoints:   public
+   Allow Cleanup:       false
+   Locked:              false
+   Created at:          2023-06-26T19:42:07Z
+   Updated at:          2023-06-26T19:42:07Z
+   Last Operation:                
+                        Status    create in progress
+                        Message   Started create instance operation
+   ```
+   {: codeblock}
+
+1. To check provisioning status, use the following command:
+
+   ```sh
+   ibmcloud resource service-instance <"INSTANCE_NAME">
    ```
    {: pre}
 
-### Create your instance
-{: #use-cli-create-instance}
-{: cli}
+   When complete, you will see a response like: 
+   
+   ```text
+   Retrieving service instance INSTANCE_NAME in resource group default under account    USER's Account as USER...
+   OK
+                          
+   Name:                  INSTANCE_NAME
+   ID:                    crn:v1:bluemix:public:databases-for-mongodb:us-east:a/   40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+   GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
+   Location:              LOCATION
+   Service Name:          databases-for-mongodb
+   Service Plan Name:     standard
+   Resource Group Name:   default
+   State:                 active
+   Type:                  service_instance
+   Sub Type:              Public
+   Locked:                false
+   Service Endpoints:     public
+   Created at:            2023-06-26T19:42:07Z
+   Created by:            USER
+   Updated at:            2023-06-26T19:53:25Z
+   Last Operation:                  
+                          Status    create succeeded
+                          Message   Provisioning mongodb with version 4.4 (100%)
+   ```
+   {: codeblck}
 
-Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running the following command:
 
-```sh
-ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
-```
-{: pre}
-
-The fields in the command are described in the table that follows.
-| Field | Description |
-|-------|------------|
-| `INSTANCE_NAME` | The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |
-| `SERVICE_NAME` | `databases-for-mongodb` |
-| `SERVICE_PLAN_NAME` |  Standard plan (`standard`) or Enterprise plan (`enterprise`)|
-| `LOCATION` | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |
-| `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. *A MongoDB deployment cannot have both public and private endpoints simultaneously*. If the `-p` flag is omitted, the default is `public`. |
-{: caption="Table 1. Basic command format fields" caption-side="top"}
-
-You should see a response like: 
-
-```text
-Creating service instance INSTANCE_NAME in resource group default of account USER...
-OK
-Service instance INSTANCE_NAME was created.
-                     
-Name:                INSTANCE_NAME
-ID:                  crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
-Location:            LOCATION
-State:               provisioning
-Type:                service_instance
-Sub Type:            Public
-Service Endpoints:   public
-Allow Cleanup:       false
-Locked:              false
-Created at:          2023-06-26T19:42:07Z
-Updated at:          2023-06-26T19:42:07Z
-Last Operation:                
-                     Status    create in progress
-                     Message   Started create instance operation
-```
-{: codeblock}
-
-To check provisioning status, use the following command:
-
-```sh
-ibmcloud resource service-instance <"INSTANCE_NAME">
-```
-{: pre}
-
-When complete, you will see a response like: 
-
-```text
-Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
-OK
-                       
-Name:                  INSTANCE_NAME
-ID:                    crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
-Location:              LOCATION
-Service Name:          databases-for-mongodb
-Service Plan Name:     standard
-Resource Group Name:   default
-State:                 active
-Type:                  service_instance
-Sub Type:              Public
-Locked:                false
-Service Endpoints:     public
-Created at:            2023-06-26T19:42:07Z
-Created by:            USER
-Updated at:            2023-06-26T19:53:25Z
-Last Operation:                  
-                       Status    create succeeded
-                       Message   Provisioning mongodb with version 4.4 (100%)
-```
-{: codeblck}
-
-### Create credentials for your instance
-{: #use-cli-create-credentials}
+### Creating and retrieving credentials through the CLI
+{: #create-retrieve-creds-cli}
 {: cli}
 
 Applications that require access to your {{site.data.keyword.databases-for-mongodb}} service must have the necessary credentials.
@@ -153,9 +151,9 @@ For more information about the fields included in the service credentials, see [
    | `INSTANCE_NAME` | The name that you give to your {{site.data.keyword.databases-for-mongodb}} instance. |
    {: caption="Table 2. Create credential fields" caption-side="top"}
 
-1. After you receive the request to create credentials for the service instance, review the response from {{site.data.keyword.databases-for-mongodb}} that contains a message similar to the one in the following example.
+   After you receive the request to create credentials for the service instance, review the response from {{site.data.keyword.databases-for-mongodb}} that contains a message similar to the one in the following example.
 
-    ```sh
+    ```text
     Creating service key in resource group default of account John Does's Account as john.doe@email.com...
     OK
     Service key crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4:: was created.
@@ -176,14 +174,14 @@ For more information about the fields included in the service credentials, see [
                    iam_serviceid_crn:        crn:v1:bluemix:public:iam-identity::a/b42116849bb7e2abb0841ca25d28ee4c::serviceid:ServiceId-53f9e2a2-cdfb-4f90-b072-bfffafb68b3e
                    password:                 581138...7d48d61
     ```
-    {: pre}
+    {: codeblock}
 
-   Next, learn how to retrieve your service credentials. You need your service credentials to log in to your {{site.data.keyword.databases-for-mongodb}} instance.
+   Next, retrieve your service credentials to log in to your {{site.data.keyword.databases-for-mongodb}} instance.
 
-1. Retrieve credentials for the `cs20170517a` instance of an {{site.data.keyword.databases-for-mongodb}} service. The name for the credentials is `creds_for_cs20170517a`.
+1. Retrieve credentials for the `cs20170517a` instance of an {{site.data.keyword.databases-for-mongodb}} service, using a command like:
 
     ```sh
-    ibmcloud resource service-key creds_for_cs20170517b
+    ibmcloud resource service-key <NAME>
     ```
     {: codeblock}
 
@@ -211,6 +209,22 @@ For more information about the fields included in the service credentials, see [
                  password:                 581138...7d48d61
     ```
     {: pre}
+
+1. (Optional) Deleting Service Credentials
+   Delete credentials by running a command like this one:
+
+   ```sh
+   ibmcloud resource service-key-delete <NAME>
+   ```
+   {: pre}
+
+1. (Optional) Deleting a service instance
+   Delete an instance by running a command like this one:
+
+   ```sh
+   ibmcloud resource service-instance-delete <INSTANCE_NAME>
+   ```
+   {: pre}
 
 ### More flags and parameters
 {: #flags-params}
