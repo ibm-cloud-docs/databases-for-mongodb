@@ -39,7 +39,7 @@ After you select the appropriate settings, click **Create** to start the provisi
 
 Follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
 
-1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API key (`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
+Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API key (`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
 
    ```sh
    ibmcloud login
@@ -54,7 +54,22 @@ Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{s
 
 ```sh
 ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
+```
+{: pre}
 
+The fields in the command are described in the table that follows.
+| Field | Description |
+|-------|------------|
+| `INSTANCE_NAME` | The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |
+| `SERVICE_NAME` | `databases-for-mongodb` |
+| `SERVICE_PLAN_NAME` |  Standard plan (`standard`) or Enterprise plan (`enterprise`)|
+| `LOCATION` | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |
+| `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. *A MongoDB deployment cannot have both public and private endpoints simultaneously*. If the `-p` flag is omitted, the default is `public`. |
+{: caption="Table 1. Basic command format fields" caption-side="top"}
+
+You should see a response like: 
+
+```text
 Creating service instance INSTANCE_NAME in resource group default of account USER...
 OK
 Service instance INSTANCE_NAME was created.
@@ -77,22 +92,16 @@ Last Operation:
 ```
 {: codeblock}
 
-The fields in the command are described in the table that follows.
-| Field | Description |
-|-------|------------|
-| `INSTANCE_NAME` | The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |
-| `SERVICE_NAME` | `databases-for-mongodb` |
-| `SERVICE_PLAN_NAME` |  Standard plan (`standard`) or Enterprise plan (`enterprise`)|
-| `LOCATION` | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |
-| `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. *A MongoDB deployment cannot have both public and private endpoints simultaneously*. If the `-p` flag is omitted, the default is `public`. |
-{: caption="Table 1. Basic command format fields" caption-side="top"}
-
 To check provisioning status, use the following command:
 
 ```sh
 ibmcloud resource service-instance <"INSTANCE_NAME">
+```
+{: pre}
 
-ibmcloud resource service-instance INSTANCE_NAME                                              
+When complete, you will see a response like: 
+
+```text
 Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
 OK
                        
@@ -128,19 +137,80 @@ Service credentials are valuable. If anyone or any application has access to the
 
 For more information about the fields included in the service credentials, see [Identity and Access Management Integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-iam).
 
-Create credentials for a service instance within {{site.data.keyword.cloud_notm}} by running the following command:
+1. Create credentials for a service instance within {{site.data.keyword.cloud_notm}} by running the following command:
 
-```sh
-ibmcloud resource service-key-create <NAME> <ROLE_NAME> --instance-name <SERVICE_INSTANCE_NAME>
-```
-{: pre}
+   ```sh
+   ibmcloud resource service-key-create <NAME> <ROLE_NAME> --instance-name <INSTANCE_NAME>
+   ```
+   {: pre}
+   
+   The fields in the command are described in the table that follows.
+   
+   | Field | Description |
+   |-------|-------------|
+   | `NAME` | Arbitrary name that you give the service credentials. |
+   | `ROLE_NAME` | This field currently allows the Manager role only. |
+   | `INSTANCE_NAME` | The name that you give to your {{site.data.keyword.databases-for-mongodb}} instance. |
+   {: caption="Table 2. Create credential fields" caption-side="top"}
 
-Retrieve the connection details.
+1. After you receive the request to create credentials for the service instance, review the response from {{site.data.keyword.databases-for-mongodb}} that contains a message similar to the one in the following example.
 
-```sh
-ibmcloud resource service-key <SERVICE_KEY_NAME>
-```
-{: pre}
+    ```sh
+    Creating service key in resource group default of account John Does's Account as john.doe@email.com...
+    OK
+    Service key crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4:: was created.
+
+    Name:          creds_for_cs20170517a
+    ID:            crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+    Created At:    Tue Sep 18 19:58:38 UTC 2018
+    State:         active
+    Credentials:
+                   iam_apikey_name:          auto-generated-apikey-621ffde2-ea10-4318-b297-d6d849cec48a
+                   iam_role_crn:             crn:v1:bluemix:public:iam::::serviceRole:Manager
+                   url:                      https://apikey-v2-58B528DF5397465BB6673E1B79482A8C:5811381f6daff7255b288695c3544be63f550e975bcde46799473e69c7d48d61@f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
+                   username:                 apikey-v2-58B528DF5397465BB6673E1B79482A8C
+                   port:                     443
+                   apikey:                   XXXXX-XXXXXX_XXXXXXXXXXXXX-XXXXXXXXXXX
+                   host:                     f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
+                   iam_apikey_description:   Auto generated apikey during resource-k  ey operation for Instance - crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42116849bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3::
+                   iam_serviceid_crn:        crn:v1:bluemix:public:iam-identity::a/b42116849bb7e2abb0841ca25d28ee4c::serviceid:ServiceId-53f9e2a2-cdfb-4f90-b072-bfffafb68b3e
+                   password:                 581138...7d48d61
+    ```
+    {: pre}
+
+   Next, learn how to retrieve your service credentials. You need your service credentials to log in to your {{site.data.keyword.databases-for-mongodb}} instance.
+
+1. Retrieve credentials for the `cs20170517a` instance of an {{site.data.keyword.databases-for-mongodb}} service. The name for the credentials is `creds_for_cs20170517a`.
+
+    ```sh
+    ibmcloud resource service-key creds_for_cs20170517b
+    ```
+    {: codeblock}
+
+1. After you receive the request to retrieve the credentials for the service instance, review the response from {{site.data.keyword.cloud_notm}} that contains a message similar to the one in the following (abbreviated) example.
+
+    ```sh
+    Retrieving service key in resource group default of account John Does's Account as john.doe@email.com...
+    OK
+    Service key crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42223455bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3:resource-key:621ffde2-ea10-4318-b297-d6d849cec48a was created.
+
+    Name:          creds_for_cs20170517a
+    ID:            crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42223455bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3:resource-key:621ffde2-ea10-4318-b297-d6d849cec48a
+    Created At:    Tue Sep 18 19:58:38 UTC 2018
+    State:         active
+    Credentials:
+                 iam_apikey_name:          auto-generated-apikey-621ffde2-ea10-4318-b297-d6d849cec48a
+                 iam_role_crn:             crn:v1:bluemix:public:iam::::serviceRole:Manager
+                 url:                      https://apikey-v2-58B528DF5397465BB6673E1B79482A8C:5811381f6daff7255b288695c3544be63f550e975bcde46799473e69c7d48d61@f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
+                 username:                 apikey-v2-58B528DF5397465BB6673E1B79482A8C
+                 port:                     443
+                 apikey:                   XXXXX-XXXXXX_XXXXXXXXXXXXX-XXXXXXXXXXX
+                 host:                     f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
+                 iam_apikey_description:   Auto generated apikey during resource-key operation for Instance - crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42116849bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3::
+                 iam_serviceid_crn:        crn:v1:bluemix:public:iam-identity::a/b42116849bb7e2abb0841ca25d28ee4c::serviceid:ServiceId-53f9e2a2-cdfb-4f90-b072-bfffafb68b3e
+                 password:                 581138...7d48d61
+    ```
+    {: pre}
 
 ### More flags and parameters
 {: #flags-params}
