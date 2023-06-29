@@ -158,9 +158,9 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 {: #provision-controller-api}
 {: api}
 
-Provision new deployments with the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}. To use the Resource Controller API, you need some additional preparation.
+Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
-1. [Obtain an IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
+1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
 1. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
 
    Use a command like: 
@@ -169,9 +169,9 @@ Provision new deployments with the [Resource Controller API](https://cloud.ibm.c
    ```
    {: pre}
 
-1. You need to know the region to which you would like to deploy.
+1. You need to know the region you would like to deploy to.
 
-   To list all of the regions that deployments can be provisioned into from the current region, use the {{site.data.keyword.databases-for}} CLI plug-in. 
+   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}. 
    
    The command looks like: 
 
@@ -181,7 +181,7 @@ Provision new deployments with the [Resource Controller API](https://cloud.ibm.c
    {: pre}
 
 
-Once you have all the information, [Create (provision) a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
+Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
 
 ```sh
 curl -X POST \
@@ -199,12 +199,6 @@ curl -X POST \
 
 The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
 {: required}
-
-## Provisioning with Terraform
-{: #provisioning-terraform}
-{: terraform}
-
-If you use Terraform to manage your infrastructure, the [{{site.data.keyword.cloud_notm}} provider for Terraform](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-getting-started) supports provisioning {{site.data.keyword.databases-for}} deployments. Find a sample Terraform configuration file at [{{site.data.keyword.databases-for}} Resources](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: .external}.
 
 ## List of Additional Parameters
 {: #provisioning-parameters-api}
@@ -225,3 +219,9 @@ If you use Terraform to manage your infrastructure, the [{{site.data.keyword.clo
    
    In the CLI, `service-endpoints` is a flag, not a parameter.
    {: note}
+
+## Provisioning with Terraform
+{: #provisioning-terraform}
+{: terraform}
+
+Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) supports provisioning {{site.data.keyword.databases-for}} deployments. 
