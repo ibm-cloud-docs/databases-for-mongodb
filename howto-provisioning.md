@@ -51,7 +51,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       {: pre}
 
 
-1. Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running the following command:
+1. Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running a command like:
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP>
@@ -61,10 +61,10 @@ Before provisioning, follow the instructions provided in the documentation to in
    The fields in the command are described in the table that follows.
    | Field | Description | Flag |
    |-------|------------|------------|
-   | `NAME` (required) | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
-   | `SERVICE_NAME` (required) | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
-   | `SERVICE_PLAN_NAME` (required) | Standard plan (`standard`) or Enterprise plan    (`enterprise`) |  |
-   | `LOCATION` (required) | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
+   | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
+   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
+   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) or Enterprise plan (`enterprise`) |  |
+   | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
