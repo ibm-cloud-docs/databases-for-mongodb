@@ -181,24 +181,24 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    {: pre}
 
 
-Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
+   Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with    the {{site.data.keyword.cloud_notm}} Resource Controller.
+   
+   ```sh
+   curl -X POST \
+     https://resource-controller.cloud.ibm.com/v2/resource_instances \
+     -H 'Authorization: Bearer <>' \
+     -H 'Content-Type: application/json' \
+       -d '{
+       "name": "my-instance",
+       "target": "blue-us-south",
+       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
+       "resource_plan_id": "databases-for-mongodb-standard"
+     }'
+   ```
+   {: .pre}
 
-```sh
-curl -X POST \
-  https://resource-controller.cloud.ibm.com/v2/resource_instances \
-  -H 'Authorization: Bearer <>' \
-  -H 'Content-Type: application/json' \
-    -d '{
-    "name": "my-instance",
-    "target": "blue-us-south",
-    "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-    "resource_plan_id": "databases-for-mongodb-standard"
-  }'
-```
-{: .pre}
-
-The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
-{: required}
+   The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
+   {: required}
 
 ## List of Additional Parameters
 {: #provisioning-parameters-api}
@@ -215,7 +215,7 @@ The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are al
 * `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used.
 * `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used.
 * `members_cpu_allocation_count` - Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts.
-* `service-endpoints` - Selects the types [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment. Options are `public`, `private`, or `public-and-private`. If omitted, the default is `public`. 
+* `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.*
    
    In the CLI, `service-endpoints` is a flag, not a parameter.
    {: note}
