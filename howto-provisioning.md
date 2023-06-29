@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-06-27"
+lastupdated: "2023-06-28"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -37,7 +37,11 @@ After you select the appropriate settings, click **Create** to start the provisi
 {: #use-cli}
 {: cli}
 
-Follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
+### Create a service instance through the CLI
+{: #create-service-instance-cli}
+{: cli}
+
+Before provisioning, follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
 
 1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API ke(`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?   topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
    
@@ -50,7 +54,7 @@ Follow the instructions provided in the documentation to install the [{{site.dat
 1. Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running the following command:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb    <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
+   ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
    ```
    {: pre}
    
@@ -124,7 +128,7 @@ Follow the instructions provided in the documentation to install the [{{site.dat
    {: codeblck}
 
 
-### Creating and retrieving credentials through the CLI
+### Create and retrieve credentials through the CLI
 {: #create-retrieve-creds-cli}
 {: cli}
 
@@ -230,20 +234,32 @@ For more information about the fields included in the service credentials, see [
 {: #flags-params}
 {: cli}
 
-The `--service-endpoints` flag enables connections to your deployments from the public internet and over the {{site.data.keyword.cloud_notm}} Private network using [Service Endpoints](/docs/services/cloud-databases?topic=cloud-databases-service-endpoints). By default, connections to your deployment can be made from the public network. Possible values are `public`, `private`, `public-and-private`. 
+#### The service endpoints parameter
+{: #flags-params-service-endpoints}
+{: cli}
 
-The command looks like:
+The `--service-endpoints` flag configures the [`SERVICE_ENDPOINTS_TYPE`](/docs/services/cloud-databases?topic=cloud-databases-service-endpoints) for your {{site.data.keyword.databases-for-mongodb}} deployment. By default, connections to your deployment are `public`. Possible values for `<ENDPOINT_TYPE>` are `public` or `private`. 
+
+A {{site.data.keyword.databases-for-mongodb}} deployment cannot support `public` and `private` endpoints simultaneously. This parameter cannot be changed after provisioning.
+{: important}
+
+Configure your endpoints using a command like:
 
 ```sh
-ibmcloud resource service-instance-create <service-name> --service-endpoints <endpoint-type>
+ibmcloud resource service-instance-create <SERVICE_NAME> --service-endpoints <ENDPOINT_TYPE>
 ```
 {: .pre}
 
+#### The `--parameters` parameter
+{: #flags-params-service-endpoints}
+{: cli}
+
 The `service-instance-create` command supports a `-p` flag, which allows JSON-formatted parameters to be passed to the provisioning process. Some parameter values are Cloud Resource Names (CRNs), which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
 
-For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 9 GB of memory across three members, then the command to provision 3 GB per member looks like:
+For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 9 GB of memory across three members, then the command to provision 3 GBs per member looks like:
+
 ```sh
-ibmcloud resource service-instance-create databases-for-mongodb <service-name> standard us-south \
+ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> standard us-south \
 -p \ '{
   "backup_id": "crn:v1:blue:public:databases-for-mysql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "3072"
