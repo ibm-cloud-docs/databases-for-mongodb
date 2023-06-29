@@ -54,18 +54,20 @@ Before provisioning, follow the instructions provided in the documentation to in
 1. Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running the following command:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <PLAN_ID> <LOCATION> <SERVICE_ENDPOINTS_TYPE>
+   ibmcloud resource service-instance-create <INSTANCE_NAME> databases-for-mongodb <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP>
    ```
    {: pre}
    
    The fields in the command are described in the table that follows.
-   | Field | Description |
-   |-------|------------|
-   | `INSTANCE_NAME` | The name can be any string and is the name that is used on    the web and in the CLI to identify the new deployment. |
-   | `SERVICE_NAME` | `databases-for-mongodb` |
-   | `SERVICE_PLAN_NAME` |  Standard plan (`standard`) or Enterprise plan    (`enterprise`)|
-   | `LOCATION` | The location where you want to deploy. To retrieve a list of    regions, use the `ibmcloud regions` command. |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/   cloud-databases?topic=cloud-databases-service-endpoints) of your deployment,    either `public` or `private`. *A MongoDB deployment cannot have both public and    private endpoints simultaneously*. If the `-p` flag is omitted, the default is    `public`. |
+   | Field | Description | Flag |
+   |-------|------------|------------|
+   | `NAME` (required) | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
+   | `SERVICE_NAME` (required) | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
+   | `SERVICE_PLAN_NAME` (required) | Standard plan (`standard`) or Enterprise plan    (`enterprise`) |  |
+   | `LOCATION` (required) | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
+   | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
+   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
+   | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
    
    You should see a response like: 
@@ -103,7 +105,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    When complete, you will see a response like: 
    
    ```text
-   Retrieving service instance INSTANCE_NAME in resource group default under account    USER's Account as USER...
+   Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
    OK
                           
    Name:                  INSTANCE_NAME
@@ -127,101 +129,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```
    {: codeblck}
 
-
-### Create and retrieve credentials through the CLI
-{: #create-retrieve-creds-cli}
-{: cli}
-
-Applications that require access to your {{site.data.keyword.databases-for-mongodb}} service must have the necessary credentials.
-
-Service credentials are valuable. If anyone or any application has access to the credentials, they can effectively do whatever they want with the service instance. For example, they might create spurious data or delete valuable information. Protect these credentials carefully.
-{: important}
-
-For more information about the fields included in the service credentials, see [Identity and Access Management Integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-iam).
-
-1. Create credentials for a service instance within {{site.data.keyword.cloud_notm}} by running the following command:
-
-   ```sh
-   ibmcloud resource service-key-create <NAME> <ROLE_NAME> --instance-name <INSTANCE_NAME>
-   ```
-   {: pre}
-   
-   The fields in the command are described in the table that follows.
-   
-   | Field | Description |
-   |-------|-------------|
-   | `NAME` | Arbitrary name that you give the service credentials. |
-   | `ROLE_NAME` | This field currently allows the Manager role only. |
-   | `INSTANCE_NAME` | The name that you give to your {{site.data.keyword.databases-for-mongodb}} instance. |
-   {: caption="Table 2. Create credential fields" caption-side="top"}
-
-   After you receive the request to create credentials for the service instance, review the response from {{site.data.keyword.databases-for-mongodb}} that contains a message similar to the one in the following example.
-
-    ```text
-    Creating service key in resource group default of account John Does's Account as john.doe@email.com...
-    OK
-    Service key crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4:: was created.
-
-    Name:          creds_for_cs20170517a
-    ID:            crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-    Created At:    Tue Sep 18 19:58:38 UTC 2018
-    State:         active
-    Credentials:
-                   iam_apikey_name:          auto-generated-apikey-621ffde2-ea10-4318-b297-d6d849cec48a
-                   iam_role_crn:             crn:v1:bluemix:public:iam::::serviceRole:Manager
-                   url:                      https://apikey-v2-58B528DF5397465BB6673E1B79482A8C:5811381f6daff7255b288695c3544be63f550e975bcde46799473e69c7d48d61@f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
-                   username:                 apikey-v2-58B528DF5397465BB6673E1B79482A8C
-                   port:                     443
-                   apikey:                   XXXXX-XXXXXX_XXXXXXXXXXXXX-XXXXXXXXXXX
-                   host:                     f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
-                   iam_apikey_description:   Auto generated apikey during resource-k  ey operation for Instance - crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42116849bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3::
-                   iam_serviceid_crn:        crn:v1:bluemix:public:iam-identity::a/b42116849bb7e2abb0841ca25d28ee4c::serviceid:ServiceId-53f9e2a2-cdfb-4f90-b072-bfffafb68b3e
-                   password:                 581138...7d48d61
-    ```
-    {: codeblock}
-
-   Next, retrieve your service credentials to log in to your {{site.data.keyword.databases-for-mongodb}} instance.
-
-1. Retrieve credentials for the `cs20170517a` instance of an {{site.data.keyword.databases-for-mongodb}} service, using a command like:
-
-    ```sh
-    ibmcloud resource service-key <NAME>
-    ```
-    {: codeblock}
-
-1. After you receive the request to retrieve the credentials for the service instance, review the response from {{site.data.keyword.cloud_notm}} that contains a message similar to the one in the following (abbreviated) example.
-
-    ```sh
-    Retrieving service key in resource group default of account John Does's Account as john.doe@email.com...
-    OK
-    Service key crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42223455bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3:resource-key:621ffde2-ea10-4318-b297-d6d849cec48a was created.
-
-    Name:          creds_for_cs20170517a
-    ID:            crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42223455bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3:resource-key:621ffde2-ea10-4318-b297-d6d849cec48a
-    Created At:    Tue Sep 18 19:58:38 UTC 2018
-    State:         active
-    Credentials:
-                 iam_apikey_name:          auto-generated-apikey-621ffde2-ea10-4318-b297-d6d849cec48a
-                 iam_role_crn:             crn:v1:bluemix:public:iam::::serviceRole:Manager
-                 url:                      https://apikey-v2-58B528DF5397465BB6673E1B79482A8C:5811381f6daff7255b288695c3544be63f550e975bcde46799473e69c7d48d61@f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
-                 username:                 apikey-v2-58B528DF5397465BB6673E1B79482A8C
-                 port:                     443
-                 apikey:                   XXXXX-XXXXXX_XXXXXXXXXXXXX-XXXXXXXXXXX
-                 host:                     f6cf0c55-48ea-4908-b441-a962b27d3bb6-bluemix.cloudant.com
-                 iam_apikey_description:   Auto generated apikey during resource-key operation for Instance - crn:v1:bluemix:public:cloudantnosqldb:us-south:a/b42116849bb7e2abb0841ca25d28ee4c:ee78351d-82bf-4e80-bc22-825c937fafa3::
-                 iam_serviceid_crn:        crn:v1:bluemix:public:iam-identity::a/b42116849bb7e2abb0841ca25d28ee4c::serviceid:ServiceId-53f9e2a2-cdfb-4f90-b072-bfffafb68b3e
-                 password:                 581138...7d48d61
-    ```
-    {: pre}
-
-1. (Optional) Deleting Service Credentials
-   Delete credentials by running a command like this one:
-
-   ```sh
-   ibmcloud resource service-key-delete <NAME>
-   ```
-   {: pre}
-
 1. (Optional) Deleting a service instance
    Delete an instance by running a command like this one:
 
@@ -230,27 +137,7 @@ For more information about the fields included in the service credentials, see [
    ```
    {: pre}
 
-### More flags and parameters
-{: #flags-params}
-{: cli}
-
-#### The service endpoints parameter
-{: #flags-params-service-endpoints}
-{: cli}
-
-The `--service-endpoints` flag configures the [`SERVICE_ENDPOINTS_TYPE`](/docs/services/cloud-databases?topic=cloud-databases-service-endpoints) for your {{site.data.keyword.databases-for-mongodb}} deployment. By default, connections to your deployment are `public`. Possible values for `<ENDPOINT_TYPE>` are `public` or `private`. 
-
-A {{site.data.keyword.databases-for-mongodb}} deployment cannot support `public` and `private` endpoints simultaneously. This parameter cannot be changed after provisioning.
-{: important}
-
-Configure your endpoints using a command like:
-
-```sh
-ibmcloud resource service-instance-create <SERVICE_NAME> --service-endpoints <ENDPOINT_TYPE>
-```
-{: .pre}
-
-#### The `--parameters` parameter
+### The `--parameters` parameter
 {: #flags-params-service-endpoints}
 {: cli}
 
