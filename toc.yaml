@@ -31,7 +31,6 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
-      - include: ../cloud-databases/howto-deprovisioning.md
       - howto-admin-password.md
       - howto-getting-connection-strings.md
       - include: ../cloud-databases/closures.md
@@ -82,6 +81,7 @@ toc:
           - learn-security-compliance.md
           - include: ../cloud-databases/howto-cbr.md
           - include: ../cloud-databases/cbr-tutorial.md
+      - include: ../cloud-databases/howto-deprovisioning.md
   - navgroup: 
       id: help
       topics:
