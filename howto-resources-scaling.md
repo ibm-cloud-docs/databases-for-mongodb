@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-11-03"
+  years: 2019, 2023
+lastupdated: "2023-06-30"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -10,28 +10,22 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Scaling Disk, Memory, and CPU
 {: #resources-scaling}
 
-You can manually adjust the amount of resources available to your {{site.data.keyword.databases-for-mongodb_full}} deployment to suit your workload and the size of your data.
+You can manually adjust the amount of resources available to your {{site.data.keyword.databases-for-mongodb}} deployment to suit your workload and the size of your data.
 
 ## Resource Breakdown
 {: #resources-breakdown}
 
-{{site.data.keyword.databases-for-mongodb_full}} runs with three data members in a cluster, and resources are allocated to all members equally. For example, the minimum disk size of a MongoDB deployment is 30720 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 3072 MB, which equates to an initial allocation of 1024 MB per member.
+{{site.data.keyword.databases-for-mongodb}} runs with three data members in a cluster, and resources are allocated to all members equally. For example, the minimum disk size of a MongoDB deployment is 30720 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 3072 MB, which equates to an initial allocation of 1024 MB per member.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
-When you [provision](/docs/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning) a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
+When you provision a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
 ### Disk Usage
 {: #resources-scaling-disk-usage}
@@ -75,8 +69,6 @@ You can enable or increase the CPU allocation to the deployment. With dedicated 
 {: ui}
 
 A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
-
-![The Scale Resources Panel in Resources](images/scaling-update.png){: caption="Figure 1. The Scale Resources Panel in Resources" caption-side="bottom"}
 
 Adjust the slider to increase or decrease the resources that are allocated to your service. The UI currently uses a coarser-grained resolution than is available via the CLI or API. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
