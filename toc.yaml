@@ -31,6 +31,7 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
+      - howto-upgrade.md
       - howto-admin-password.md
       - howto-getting-connection-strings.md
       - include: ../cloud-databases/closures.md
@@ -57,7 +58,6 @@ toc:
       - include: ../cloud-databases/howto-manage-backups.md
       - howto-pitr.md
       - include: ../cloud-databases/howto-allowlists.md
-      - howto-upgrading.md
       - topicgroup: 
           label: Tutorials
           topics: 
