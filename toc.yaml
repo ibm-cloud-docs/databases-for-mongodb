@@ -31,6 +31,7 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
+      - howto-NEW-manage-users.md
       - howto-upgrade.md
       - howto-admin-password.md
       - howto-getting-connection-strings.md
