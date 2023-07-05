@@ -20,8 +20,16 @@ Add users in the UI in _Service Credentials_, with the [{{site.data.keyword.data
 
 ## The admin user
 {: #user-management-admin-user}
+{: ui}
+{: cli}
+{: api}
 
-When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an `admin` user is automatically created. The `admin` user has the following permissions:
+When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an `admin` user is automatically created. 
+
+Set the admin password before using it to connect.
+{: important}
+
+The `admin` user has the following permissions:
 
 - [`userAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdminAnyDatabase){: external} provides the same privileges as [`userAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdmin){: external} on all databases except `local` and `config`. `userAdminAnyDatabase` provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. With `userAdminAnyDatabase`, [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/){: external} to any other user on your deployment, including any of the MongoDB built-in roles. For example, to monitor your deployment, use `admin` to log in to the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor){: external} role to any user (including itself).
    Use a command like:
@@ -39,18 +47,13 @@ When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an 
 - [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} provides the same privileges as [`readWrite`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWrite){: external} on all databases except `local` and `config`. 
 - [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
 
-### Setting the Admin Password
-{: #user-management-set-admin-password}
-
-Set the admin password before using it to connect.
-
-#### Setting the Admin Password in the UI
+### Setting the Admin Password in the UI
 {: #user-management-set-admin-password-ui}
 {: ui}
 
 To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select __Manage__ from the service dashboard. Open the _Settings_ tab, and use the _Change Database Admin Password_ to set a new admin password.
 
-#### Setting the Admin Password in the CLI
+### Setting the Admin Password in the CLI
 {: #user-management-set-admin-password-cli}
 {: cli}
 
@@ -63,7 +66,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 {: pre}
 
-#### Setting the Admin Password in the API
+### Setting the Admin Password in the API
 {: #user-management-set-admin-password-api}
 {: api}
 
@@ -77,7 +80,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ```
 {: pre}
 
-## Managing Users and Roles in the UI
+## Managing Users and Roles through the UI
 {: #user-management-ui}
 {: ui}
 
@@ -100,7 +103,7 @@ Users that you [create through _Service Credentials_](/docs/databases-for-mongod
 If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
 
-## Managing Users and Roles in the CLI
+## Managing Users and Roles through the CLI
 {: #user-management-cli}
 {: cli}
 
@@ -134,7 +137,7 @@ replset:PRIMARY> show users
 {: pre}
 
 
-## Managing users through the API
+## Managing Users and Roles through the API
 {: #user-management-api}
 {: api}
 
