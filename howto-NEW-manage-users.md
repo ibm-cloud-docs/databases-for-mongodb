@@ -12,7 +12,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 # Managing Users and Roles
-{: #user-management}
+{: #user-management-new}
 
 {{site.data.keyword.databases-for-mongodb}} deployments come with authentication enabled and use MongoDB's [role-based access control](https://docs.mongodb.com/manual/core/authorization/){: external}.
 
