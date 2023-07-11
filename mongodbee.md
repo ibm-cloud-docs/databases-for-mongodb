@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-06-05"
+lastupdated: "2023-07-11"
 
 keywords: mongodb ee, mongodb enterprise, mongodb enterprise edition, mongodb eneterprise plan
 
@@ -71,6 +71,8 @@ The {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On
 6. Scalability and Availability: The add-on is designed to work seamlessly with{{site.data.keyword.databases-for-mongodb}} Enterprise deployments, providing scalability and high availability. It can handle large volumes of data and support high-performance analytics for demanding workloads.
 
 By using the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On, unlock the full potential of your MongoDB data for analytics and reporting purposes. It enables integration with popular BI tools, SQL-based analytics, performance optimization, and data governance, allowing you to derive valuable insights and make data-driven decisions from your MongoDB databases.
+
+For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
 
 ### Features and Capabilities
 {: #mongodb-ee-feat-cap}
