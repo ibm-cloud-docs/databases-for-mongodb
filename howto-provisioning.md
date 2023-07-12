@@ -2,11 +2,11 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-06-28"
+lastupdated: "2023-07-12"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
-subcollection: cloud-databases
+subcollection: databases-for-mongodb
 
 ---
 
