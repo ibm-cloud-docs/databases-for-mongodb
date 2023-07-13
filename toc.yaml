@@ -33,7 +33,6 @@ toc:
       - howto-provisioning.md
       - howto-user-management.md
       - howto-upgrade.md
-      - howto-admin-password.md
       - howto-getting-connection-strings.md
       - include: ../cloud-databases/closures.md
       - include: ../cloud-databases/ha-dr.md
