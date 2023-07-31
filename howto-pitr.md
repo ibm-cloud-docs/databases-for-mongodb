@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-02-01"
+lastupdated: "2023-07-26"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -15,6 +15,9 @@ subcollection: databases-for-mongodb
 {: #pitr}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
+
+When restoring to a specific point within the last 7 days, with a restore time after the last transaction, your restore fails with the message: `recovery ended before configured recovery target is reached`. If your restore fails for this reason, restore to the last available point or choose an earlier date and time for restore to a specific point in the last 7 days.
+{: note}
 
 ```sh
 {
