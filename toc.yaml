@@ -83,11 +83,6 @@ toc:
           - include: ../cloud-databases/cbr-tutorial.md
       - include: ../cloud-databases/howto-deprovisioning.md
   - navgroup: 
-      id: help
-      topics:
-      - ts-connect.md
-      - ts-workload.md
-  - navgroup: 
       id: reference
       topics:
       - include: ../databases-cli-plugin/cloud-databases-cli.md
@@ -107,6 +102,8 @@ toc:
   - navgroup:
       id: help
       topics:
+      - ts-connect.md
+      - ts-workload.md
       - topicgroup:
           label: FAQs
           topics:
