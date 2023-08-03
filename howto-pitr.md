@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-07-26"
+lastupdated: "2023-08-26"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -183,3 +183,57 @@ resource "ibm_database" "mongodb_enterprise" {
 ```
 {: codeblock}
  
+## Point-in-time Recovery (PITR) Offline Restore
+{: #pitr-offline-restore}
+
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition requires two processes to initiate a restore. First, a snapshot is taken of the Ops Manager AppDB. This snapshot then serves as a PITR backup, which can be used to restore your database.
+
+In a [disaster recovery](#x2113280){: term} scenario, this process might not be successful. {{site.data.keyword.databases-for-mongodb}} EE Point-in-time Recovery (PITR) Offline Restore skips the AppDB snapshot and restores the earliest snapshot possible. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
+
+### Point-in-time Recovery (PITR) Offline Restore through the CLI
+{: #pitr-offline-restore-cli}
+{: cli}
+
+Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} CLI using a command like:
+
+```sh
+ibmcloud resource service-instance-create 3-aug-pitr-dr-cli-lorna databases-for-mongodb-development enterprise us-south -p '{"point_in_time_recovery_deployment_id":"crn:v1:staging:public:databases-for-mongodb-development:us-south:a/b9552134280015ebfde430a819fa4bb3:4e765b52-72f5-4664-9cc0-e1e2f6e1ecde::","point_in_time_recovery_time": "", "offline_restore": true}'
+```
+{: pre}
+
+The command output looks like:
+
+```text
+Creating service instance <INSTANCE_NAME> in resource group Default of account <ACCOUNT> as <USER>...
+OK
+Service instance <INSTANCE_NAME> was created.
+
+Name:                <INSTANCE_NAME>
+ID:                  crn:v1:staging:public:databases-for-mongodb-development:us-south:a/b9552134280015ebfde430a819fa4bb3:3558fedf-8170-4ab7-99ad-6baab449551b::
+GUID:                3558fedf-8170-4ab7-99ad-6baab449551b
+Location:            <LOCATION>
+State:               provisioning
+Type:                service_instance
+Sub Type:            Public
+Service Endpoints:   public
+Allow Cleanup:       false
+Locked:              false
+Created at:          2023-08-03T09:36:37Z
+Updated at:          2023-08-03T09:36:41Z
+Last Operation:
+                     Status    create in progress
+                     Message   Started create instance operation
+
+```
+
+### Point-in-time Recovery (PITR) Offline Restore through the API
+{: #pitr-offline-restore-api}
+{: api}
+
+Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} CLI using a command like:
+
+```sh
+-p '{"point_in_time_recovery_deployment_id":"<crn_of_source>","point_in_time_recovery_time": "", "offline_restore": true}
+
+```
+{: pre}
