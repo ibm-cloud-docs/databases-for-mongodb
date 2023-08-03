@@ -190,6 +190,15 @@ resource "ibm_database" "mongodb_enterprise" {
 
 In a [disaster recovery](#x2113280){: term} scenario, this process might not be successful. {{site.data.keyword.databases-for-mongodb}} EE Point-in-time Recovery (PITR) Offline Restore skips the AppDB snapshot and restores the earliest snapshot possible. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
 
+### Point-in-time Recovery (PITR) Offline Restore through the UI
+{: #pitr-offline-restore-cli}
+{: ui}
+
+Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} Dashboard just as you would for a standard PITR. Choose the third Point-in-time recovery option.
+
+The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
+{: important}
+
 ### Point-in-time Recovery (PITR) Offline Restore through the CLI
 {: #pitr-offline-restore-cli}
 {: cli}
@@ -226,14 +235,22 @@ Last Operation:
 
 ```
 
+The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
+{: important}
+
 ### Point-in-time Recovery (PITR) Offline Restore through the API
 {: #pitr-offline-restore-api}
 {: api}
 
-Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} CLI using a command like:
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. Complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before using it to restore from a backup.
+
+After you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) that will look like:
 
 ```sh
 -p '{"point_in_time_recovery_deployment_id":"<crn_of_source>","point_in_time_recovery_time": "", "offline_restore": true}
 
 ```
 {: pre}
+
+The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
+{: important}
