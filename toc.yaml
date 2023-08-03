@@ -43,7 +43,7 @@ toc:
           - howto-ops-manager.md
           - howto-pitr.md
           - howto-mongodbee-sharding.md
-      - howto-enterprise-analytics.md
+          - howto-enterprise-analytics.md
       - topicgroup: 
           label: Connecting to Databases for MongoDB
           topics: 
