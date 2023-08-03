@@ -42,7 +42,8 @@ toc:
           topics: 
           - howto-auditlogging.md
           - howto-ops-manager.md
-      - howto-enterprise-analytics.md
+          - howto-pitr.md
+          - howto-enterprise-analytics.md
       - topicgroup: 
           label: Connecting to Databases for MongoDB
           topics: 
@@ -55,7 +56,6 @@ toc:
           - howto-resources-scaling.md
           - howto-autoscaling.md
       - include: ../cloud-databases/howto-manage-backups.md
-      - howto-pitr.md
       - include: ../cloud-databases/howto-allowlists.md
       - howto-upgrading.md
       - topicgroup: 
