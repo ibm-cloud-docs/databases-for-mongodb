@@ -41,6 +41,7 @@ toc:
           topics: 
           - howto-auditlogging.md
           - howto-ops-manager.md
+          - howto-pitr.md
           - howto-mongodbee-sharding.md
       - howto-enterprise-analytics.md
       - topicgroup: 
@@ -55,7 +56,6 @@ toc:
           - howto-resources-scaling.md
           - howto-autoscaling.md
       - include: ../cloud-databases/howto-manage-backups.md
-      - howto-pitr.md
       - include: ../cloud-databases/howto-allowlists.md
       - topicgroup: 
           label: Tutorials
