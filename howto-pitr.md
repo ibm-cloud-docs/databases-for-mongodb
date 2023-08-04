@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-08-26"
+lastupdated: "2023-08-04"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -195,9 +195,6 @@ In a [disaster recovery](#x2113280){: term} scenario, this process might not be 
 {: ui}
 
 Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} Dashboard just as you would for a standard PITR. Choose the third Point-in-time recovery option.
-
-The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
-{: important}
 
 ### Point-in-time Recovery (PITR) Offline Restore through the CLI
 {: #pitr-offline-restore-cli}
