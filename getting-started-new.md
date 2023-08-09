@@ -35,7 +35,7 @@ IBM Cloud® Databases for MongoDB allows developers to take advantage of the lat
 ## Before you begin
 {: #prereqs}
 
-You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external} and a {{site.data.keyword.databases-for-mongodb}} deployment. Give your deployment a memorable name that appears in your account's Resource List and set the [Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-admin-password) for your deployment. If your deployment is not using public endpoints, take [these additional steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints#private-endpoints) to configure private endpoint access.
+You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external} and a {{site.data.keyword.databases-for-mongodb}} deployment. Give your deployment a memorable name that appears in your account's Resource List and set the [Admin Password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management&interface=ui#user-management-set-admin-password-ui) for your deployment. If your deployment is not using public endpoints, take [these additional steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints#private-endpoints) to configure private endpoint access.
 
 MongoDB cannot support both public and private endpoints simultaneously. This cannot be changed after provisioning.
 {: important}
