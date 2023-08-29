@@ -33,7 +33,7 @@ db.createUser({user: "oplogUser", pwd: "PASSWORD", roles: [{role: "read", db: "l
 ```
 {: pre}
 
-## Set up Mongodb for meteor-based applications
+## Set up Mongodb for open source application use
 {: #mongodb-faq-oplog-meteor}
 {: faq}
 {: support}
