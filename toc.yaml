@@ -107,8 +107,8 @@ toc:
       - topicgroup:
           label: FAQs
           topics:
-          - include: ../cloud-databases/availability-zones-faq.md
           - include: ../cloud-databases/status-page-faq.md
+          - service-faq.md
           - include: ../cloud-databases/resource-config-faq.md
           - oplog-faq.md
-          - service-faq.md
+          - include: ../cloud-databases/availability-zones-faq.md
