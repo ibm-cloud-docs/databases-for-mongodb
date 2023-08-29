@@ -110,5 +110,4 @@ toc:
           - include: ../cloud-databases/status-page-faq.md
           - service-faq.md
           - include: ../cloud-databases/resource-config-faq.md
-          - oplog-faq.md
           - include: ../cloud-databases/availability-zones-faq.md
