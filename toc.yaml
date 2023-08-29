@@ -111,3 +111,4 @@ toc:
           - include: ../cloud-databases/status-page-faq.md
           - include: ../cloud-databases/resource-config-faq.md
           - oplog-faq.md
+          - service-faq.md
