@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-04-27"
+lastupdated: "2023-09-18"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -19,7 +19,7 @@ subcollection: databases-for-mongodb
 ## What problems does {{site.data.keyword.databases-for-mongodb}} EE Sharding solve?
 {: #mongodbee-sharding-how-problem}
 
-When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. ICD supports a maximum of 4TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
+When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. {{site.data.keyword.databases-for}} supports a maximum of 4TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
 
 ## MongoDB EE Sharding Add-On Considerations
 {: #mongodbee-sharding-consider}
@@ -105,7 +105,7 @@ For more information, see [Terraform documentation](https://registry.terraform.i
 
 Provisioning via the API is a two-step process: 
 1. [Create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) a {{site.data.keyword.databases-for-mongodb}} EE Sharded deployment.
-2. After that you can add a MongoDB sharding `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
+2. After your deployment is provisioned, add a MongoDB sharding `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
 
 ```sh
 curl --request PATCH \
@@ -121,4 +121,10 @@ curl --request PATCH \
 }'
 ```
 
-For more information on connection strings, see [Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings&interface=ui).
+### {{site.data.keyword.databases-for-mongodb}} EE Sharding Connection Strings
+{: #mongodbee-sharding-connection-string}
+
+The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the process of getting connection strings is different than it would be for a standard {{site.data.keyword.databases-for}} deployment. 
+
+<INSERT CONNECTION STRING PROCESS HERE>
+
