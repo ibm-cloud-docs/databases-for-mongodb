@@ -13,6 +13,7 @@ subcollection: databases-for-mongodb
 
 # MongoDB Enterprise Edition Sharding
 {: #mongodbee-sharding}
+{: beta}
 
 {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding allows you to distribute data across multiple machines.
 
@@ -30,7 +31,7 @@ When increased demand or workload requires database scaling, you can scale verti
    - Choose a suitable shard key for each collection to avoid overloading some shards when retrieving data.
    - Optimize querying to try to avoid scatter/gather operations across shards that are more time consuming and computationally expensive.
 
-   For more information, see [Responsibilities for Cloud Databases](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
+   For more information, see [Responsibilities for {{site.data.keyword.databases-for}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
    {: tip}
 
 - {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding is only for versions of MongoDB EE >= 5.0.
@@ -113,7 +114,7 @@ For more information, see [Terraform documentation](https://registry.terraform.i
 {: #mongodbee-sharding-node-provisioning-api}
 {: api}
 
-Provisioning via the API is a two-step process: 
+Provisioning through the API is a two-step process: 
 1. [Create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) a {{site.data.keyword.databases-for-mongodb}} EE Sharded deployment.
 2. After your deployment is provisioned, add a MongoDB sharding `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
 
