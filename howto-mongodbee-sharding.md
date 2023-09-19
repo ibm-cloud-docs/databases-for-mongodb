@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-09-18"
+lastupdated: "2023-09-19"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -40,6 +40,16 @@ When increased demand or workload requires database scaling, you can scale verti
 
 ## Provisioning with {{site.data.keyword.databases-for-mongodb}} EE Sharding
 {: #mongodbee-sharding-node-provisioning}
+
+### Provision using the UI
+{: #mongodbee-sharding-node-provisioning-ui}
+{: ui}
+
+Provision through the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}. 
+- Within **Service Configuration**, find the **Database Edition** dropdown menu. 
+- Select *Enterprise Sharding*.
+
+For more information on {{site.data.keyword.databases-for-mongodb}} provisioning, see [Provisioning](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning).
 
 ### Provision using Terraform
 {: #mongodbee-sharding-node-provisioning-terraform}
@@ -126,5 +136,5 @@ curl --request PATCH \
 
 The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the process of getting connection strings is different than it would be for a standard {{site.data.keyword.databases-for}} deployment. 
 
-<INSERT CONNECTION STRING PROCESS HERE>
+
 
