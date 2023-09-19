@@ -163,11 +163,22 @@ For more information, see [MongoDB sh.enableSharding()](https://www.mongodb.com/
 By default, all collections in MongoDB are not sharded. To use sharding, enable sharding for each collection with a command like:
 
 ```sh
-sh.shardCollection("COLLECTION_NAME",{category_id:"hashed"}}
+sh.shardCollection("namespace",{key}}
 ```
 {: pre}
 
+The parameters for the `shardCollection` commands are:
+- `namespace`: The namespace of the collection to shard in the form `"<database>.<collection>"`.
+- `key`: The document that specifies the field or fields to use as the shard key.
+
 For more information, see [MongoDB sh.shardCollection()](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#sh.shardcollection--){: external}.
+
+#### Your MongoDB Shard Key
+{: #mongodbee-sharding-enable-sharding-collections-shard-key}
+
+A [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external} is a field in a MongoDB document that is used to distribute the document across multiple shards. The cardinality of a shard key is crucial to the effectiveness of horizontal scaling in the cluster. High cardinality allows MongoDB to to distribute documents evenly throughout the cluster.
+
+For more information, see [Shard Keys](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external}.
 
 ### {{site.data.keyword.databases-for-mongodb}} EE Sharding Connection Strings
 {: #mongodbee-sharding-connection-string}
