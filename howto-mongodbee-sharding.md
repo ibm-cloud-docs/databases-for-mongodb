@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 {: #mongodbee-sharding}
 {: beta}
 
-{{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding allows you to distribute data across multiple machines.
+{{site.data.keyword.databases-for-mongodb_full}} EE (Enterprise Edition) Sharding allows you to distribute data across multiple machines.
 {: beta}
 
 ## What problems does {{site.data.keyword.databases-for-mongodb}} EE Sharding solve?
@@ -133,10 +133,44 @@ curl --request PATCH \
 }'
 ```
 
+## Configure Sharding
+{: #mongodbee-sharding-config}
+
+### Enable sharding in your databases and collections
+{: #mongodbee-sharding-enable-sharding-databases}
+
+For database and collection create, a useful GUI tool is [MongoDB Compass](https://www.mongodb.com/products/tools/compass){: external}.
+
+Start by creating a database. Choose your **Database Name** and **Collection Name**.
+
+When enabling sharding in your databases and collections, use the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}.
+
+### Enable sharding in your databases 
+{: #mongodbee-sharding-enable-sharding-databases}
+
+By default, all databases in MongoDB are not sharded. Enable sharding for each database with a command like:
+
+```sh
+sh.enableSharding("DATABASE_NAME")
+```
+{: pre}
+
+For more information, see [MongoDB sh.enableSharding()](https://www.mongodb.com/docs/manual/reference/method/sh.enableSharding/#sh.enablesharding--){: external}.
+
+### Enable sharding in your collections
+{: #mongodbee-sharding-enable-sharding-collections}
+
+By default, all collections in MongoDB are not sharded. To use sharding, enable sharding for each collection with a command like:
+
+```sh
+sh.shardCollection("COLLECTION_NAME",{category_id:"hashed"}}
+```
+{: pre}
+
+For more information, see [MongoDB sh.shardCollection()](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#sh.shardcollection--){: external}.
+
 ### {{site.data.keyword.databases-for-mongodb}} EE Sharding Connection Strings
 {: #mongodbee-sharding-connection-string}
 
-The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the process of getting connection strings is different than it would be for a standard {{site.data.keyword.databases-for}} deployment. 
-
-
+The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the connection strings are different than they would be for a standard {{site.data.keyword.databases-for}} deployment.
 
