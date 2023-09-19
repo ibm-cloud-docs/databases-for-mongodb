@@ -13,6 +13,7 @@ subcollection: databases-for-mongodb
 
 # MongoDB Enterprise Edition Sharding
 {: #mongodbee-sharding}
+{: beta}
 
 {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding allows you to distribute data across multiple machines.
 {: beta}
