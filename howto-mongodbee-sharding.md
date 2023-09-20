@@ -20,39 +20,39 @@ subcollection: databases-for-mongodb
 ## What problems does {{site.data.keyword.databases-for-mongodb}} EE Sharding solve?
 {: #mongodbee-sharding-how-problem}
 
-When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. {{site.data.keyword.databases-for}} supports a maximum of 4TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
+When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. {{site.data.keyword.databases-for}} supports a maximum of 4 TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
 
 ## MongoDB EE Sharding Add-On Considerations
 {: #mongodbee-sharding-consider}
 
-- Sharding is not only an infrastructure operation. It is a shared customer/provider responsibility. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
-   - [enable sharding in each of the databases](#mongodbee-sharding-enable-sharding-databases) in your {{site.data.keyword.databases-for-mongodb}} EE Sharding deployment.
-   - [enable sharding in each of the collections](#mongodbee-sharding-enable-sharding-collections) of a database. Unsharded collections get stored in a single shard. These unbalanced nodes may get full before others and cause operational problems.
+- Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
+   - [Enable sharding in each of the databases](#mongodbee-sharding-enable-sharding-databases) in your {{site.data.keyword.databases-for-mongodb}} EE Sharding deployment.
+   - [Enable sharding in each of the collections](#mongodbee-sharding-enable-sharding-collections) of a database. Unsharded collections get stored in a single shard. These unbalanced nodes can get full before others and cause operational problems.
    - Choose a suitable [shard key](#mongodbee-sharding-enable-sharding-collections-shard-key) for each collection to avoid overloading some shards when retrieving data.
-   - Optimize querying to avoid scatter/gather operations across shards that are more time consuming and computationally expensive.
+   - Optimize querying to avoid scatter/gather operations across shards that are more time-consuming and computationally expensive.
 
    For more information, see [Responsibilities for {{site.data.keyword.databases-for}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
    {: tip}
 
 - {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding is only for versions of MongoDB EE >= 5.0.
-- Additional infrastructure does come with additional cost. For more information on pricing, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).
-- Once created, shards cannot be deleted.
+- Additional infrastructure does come with additional cost. For more information, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).
+- After creation, shards cannot be deleted.
 - Existing unsharded clusters cannot be converted to sharded.
 
 ## Provisioning with {{site.data.keyword.databases-for-mongodb}} EE Sharding
 {: #mongodbee-sharding-node-provisioning}
 
-### Provision using the UI
+### Provision through the UI
 {: #mongodbee-sharding-node-provisioning-ui}
 {: ui}
 
 Provision through the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}. 
-- Within **Service Configuration**, find the **Database Edition** dropdown menu. 
+- Within **Service Configuration**, find the **Database Edition** menu. 
 - Select *Enterprise Sharding*.
 
-For more information on {{site.data.keyword.databases-for-mongodb}} provisioning, see [Provisioning](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning).
+For more information, see [Provisioning](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning).
 
-### Provision using Terraform
+### Provision through Terraform
 {: #mongodbee-sharding-node-provisioning-terraform}
 {: terraform}
 
@@ -138,11 +138,11 @@ curl --request PATCH \
 ### Enable sharding in your databases and collections
 {: #mongodbee-sharding-enable-sharding-databases}
 
-For database and collection create, a useful GUI tool is [MongoDB Compass](https://www.mongodb.com/products/tools/compass){: external}.
+For database and collection creation, a useful GUI tool is [MongoDB Compass](https://www.mongodb.com/products/tools/compass){: external}.
 
 Start by creating a database. Choose your **Database Name** and **Collection Name**.
 
-When enabling sharding in your databases and collections, use the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}.
+To enable sharding in your databases and collections, use the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}.
 
 ### Enable sharding in your databases 
 {: #mongodbee-sharding-enable-sharding-databases}
@@ -175,7 +175,7 @@ For more information, see [MongoDB sh.shardCollection()](https://www.mongodb.com
 #### Your MongoDB Shard Key
 {: #mongodbee-sharding-enable-sharding-collections-shard-key}
 
-A [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external} is a field in a MongoDB document that is used to distribute the document across multiple shards. The [cardinality of a shard key](https://www.mongodb.com/docs/v5.0/core/sharding-choose-a-shard-key/#shard-key-cardinality){: external} is crucial to the effectiveness of horizontal scaling in the cluster. High cardinality allows MongoDB to to distribute documents evenly throughout the cluster.
+A [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external} is a field in a MongoDB document that is used to distribute the document across multiple shards. The [cardinality of a shard key](https://www.mongodb.com/docs/v5.0/core/sharding-choose-a-shard-key/#shard-key-cardinality){: external} is crucial to the effectiveness of horizontal scaling in the cluster. High cardinality allows MongoDB to distribute documents evenly throughout the cluster.
 
 For more information, see [Shard Keys](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external}.
 
