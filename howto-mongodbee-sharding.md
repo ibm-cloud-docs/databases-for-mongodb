@@ -175,7 +175,7 @@ For more information, see [MongoDB sh.shardCollection()](https://www.mongodb.com
 #### Your MongoDB Shard Key
 {: #mongodbee-sharding-enable-sharding-collections-shard-key}
 
-A [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external} is a field in a MongoDB document that is used to distribute the document across multiple shards. The cardinality of a shard key is crucial to the effectiveness of horizontal scaling in the cluster. High cardinality allows MongoDB to to distribute documents evenly throughout the cluster.
+A [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external} is a field in a MongoDB document that is used to distribute the document across multiple shards. The [cardinality of a shard key](https://www.mongodb.com/docs/v5.0/core/sharding-choose-a-shard-key/#shard-key-cardinality){: external} is crucial to the effectiveness of horizontal scaling in the cluster. High cardinality allows MongoDB to to distribute documents evenly throughout the cluster.
 
 For more information, see [Shard Keys](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external}.
 
