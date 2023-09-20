@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-09-19"
+lastupdated: "2023-09-20"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -13,7 +13,6 @@ subcollection: databases-for-mongodb
 
 # MongoDB Enterprise Edition Sharding
 {: #mongodbee-sharding}
-{: beta}
 
 {{site.data.keyword.databases-for-mongodb_full}} EE (Enterprise Edition) Sharding allows you to distribute data across multiple machines.
 {: beta}
@@ -27,10 +26,10 @@ When increased demand or workload requires database scaling, you can scale verti
 {: #mongodbee-sharding-consider}
 
 - Sharding is not only an infrastructure operation. It is a shared customer/provider responsibility. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
-   - enable sharding in each of the databases in your {{site.data.keyword.databases-for-mongodb}} EE Sharding deployment.
-   - enable sharding in each of the collections of a database. Otherwise, unsharded collections get stored in a single shard, therefore unbalancing nodes. These unbalanced nodes may get full before others and cause operational problems.
-   - Choose a suitable shard key for each collection to avoid overloading some shards when retrieving data.
-   - Optimize querying to try to avoid scatter/gather operations across shards that are more time consuming and computationally expensive.
+   - [enable sharding in each of the databases](#mongodbee-sharding-enable-sharding-databases) in your {{site.data.keyword.databases-for-mongodb}} EE Sharding deployment.
+   - [enable sharding in each of the collections](#mongodbee-sharding-enable-sharding-collections) of a database. Unsharded collections get stored in a single shard. These unbalanced nodes may get full before others and cause operational problems.
+   - Choose a suitable [shard key](#mongodbee-sharding-enable-sharding-collections-shard-key) for each collection to avoid overloading some shards when retrieving data.
+   - Optimize querying to avoid scatter/gather operations across shards that are more time consuming and computationally expensive.
 
    For more information, see [Responsibilities for {{site.data.keyword.databases-for}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
    {: tip}
@@ -167,7 +166,7 @@ sh.shardCollection("namespace",{key}}
 ```
 {: pre}
 
-The parameters for the `shardCollection` commands are:
+The parameters for the `shardCollection` command are:
 - `namespace`: The namespace of the collection to shard in the form `"<database>.<collection>"`.
 - `key`: The document that specifies the field or fields to use as the shard key.
 
@@ -184,4 +183,3 @@ For more information, see [Shard Keys](https://www.mongodb.com/docs/manual/core/
 {: #mongodbee-sharding-connection-string}
 
 The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the connection strings are different than they would be for a standard {{site.data.keyword.databases-for}} deployment.
-
