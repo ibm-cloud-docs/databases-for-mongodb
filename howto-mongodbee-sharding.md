@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-09-20"
+lastupdated: "2023-09-21"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -67,7 +67,7 @@ resource "ibm_database" "mongodb_enterprise" {
   resource_group_id = data.ibm_resource_group.test_acc.id
   name              = "test"
   service           = "databases-for-mongodb"
-  plan              = "enterprise"
+  plan              = "enterprise-sharding"
   location          = "us-south"
   adminpassword     = "password12"
   tags              = ["one:two"]
@@ -107,6 +107,7 @@ output "sharding_connection" {
   value       = data.ibm_database_connection.mongodb_conn.sharding.0.composed.0
 }
 ```
+{: codeblock}
 
 For more information, see [Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}. 
 
@@ -131,6 +132,7 @@ curl --request PATCH \
     }
 }'
 ```
+{: pre}
 
 ## Configure Sharding
 {: #mongodbee-sharding-config}
