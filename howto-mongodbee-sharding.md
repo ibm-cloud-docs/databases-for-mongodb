@@ -73,7 +73,7 @@ resource "ibm_database" "mongodb_enterprise" {
   tags              = ["one:two"]
 
   group {
-    group_id = "members",
+    group_id = "members"
     group_shard_id = "itsashard"
 
     memory { 
