@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-09-21"
+lastupdated: "2023-09-22"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -56,7 +56,7 @@ For more information, see [Provisioning](/docs/databases-for-mongodb?topic=datab
 {: #mongodbee-sharding-node-provisioning-terraform}
 {: terraform}
 
-{{site.data.keyword.databases-for-mongodb}} EE Sharding is a `group` attribute that can be added to a Terraform script. See an example here:
+{{site.data.keyword.databases-for-mongodb}} EE Sharding is a `plan` attribute that can be added to a Terraform script. The plan name is `enterprise-sharding`. See an example here:
 
 ```terraform
 data "ibm_resource_group" "test_acc" {
@@ -73,8 +73,7 @@ resource "ibm_database" "mongodb_enterprise" {
   tags              = ["one:two"]
 
   group {
-    group_id = "members"
-    group_shard_id = "itsashard"
+    group_id = "member"
 
     memory { 
       allocation_mb = 24576
@@ -104,10 +103,16 @@ data "ibm_database_connection" "mongodb_shard" {
 
 output "sharding_connection" {
   description = "Sharding connection string"
-  value       = data.ibm_database_connection.mongodb_conn.sharding.0.composed.0
+  value       = data.ibm_database_connection.mongodb_shard.mongodb.0.composed.0
 }
 ```
 {: codeblock}
+
+If successful, expect an output that looks like:
+
+```text
+sharding_connection = "mongodb://admin:$PASSWORD@71dff696-864b-4051-9f3a-db1445567912-r-0.bn5hbied0ao9rn2ced1g.databases.appdomain.cloud:30092,71dff696-864b-4051-9f3a-db1445567912-r-1.bn5hbied0ao9rn2ced1g.databases.appdomain.cloud:30122,71dff696-864b-4051-9f3a-db1445567912-r-2.bn5hbied0ao9rn2ced1g.databases.appdomain.cloud:31235?authMechanism=SCRAM-SHA-256&authSource=admin&tls=true"
+```
 
 For more information, see [Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}. 
 
