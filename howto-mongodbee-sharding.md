@@ -169,10 +169,11 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 {: #mongodbee-sharding-enable-sharding-databases}
 
 For database and collection creation, a useful GUI tool is [MongoDB Compass](https://www.mongodb.com/products/tools/compass){: external}.
+{: tip}
 
-Start by creating a database. Choose your **Database Name** and **Collection Name**.
+First, Create a database. Then, choose your **Database Name** and **Collection Name**.
 
-To enable sharding in your databases and collections, use the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}. For more information, see [MongoDB sh.enableSharding()](https://www.mongodb.com/docs/manual/reference/method/sh.enableSharding/#sh.enablesharding--){: external} and [MongoDB sh.shardCollection()](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#sh.shardcollection--){: external}
+Now, enable sharding in your databases and collections using the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}. For more information, see [MongoDB sh.enableSharding()](https://www.mongodb.com/docs/manual/reference/method/sh.enableSharding/#sh.enablesharding--){: external} and [MongoDB sh.shardCollection()](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#sh.shardcollection--){: external}
 
 ### Your MongoDB Shard Key
 {: #mongodbee-sharding-enable-sharding-collections-shard-key}
