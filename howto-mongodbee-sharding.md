@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-09-25"
+lastupdated: "2023-09-26"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -171,7 +171,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 For database and collection creation, a useful GUI tool is [MongoDB Compass](https://www.mongodb.com/products/tools/compass){: external}.
 {: tip}
 
-First, Create a database. Then, choose your **Database Name** and **Collection Name**.
+First, create a database. Then, choose your **Database Name** and **Collection Name**.
 
 Now, enable sharding in your databases and collections using the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}. For more information, see [MongoDB sh.enableSharding()](https://www.mongodb.com/docs/manual/reference/method/sh.enableSharding/#sh.enablesharding--){: external} and [MongoDB sh.shardCollection()](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#sh.shardcollection--){: external}
 
