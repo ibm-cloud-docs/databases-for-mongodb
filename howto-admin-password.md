@@ -28,7 +28,7 @@ Set the admin password before you use it to connect. To set the password through
 {: #admin-password-cli}
 {: cli}
 
-Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in to set the admin password through the CLI.
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password through the CLI.
 
 For example, to set the admin password for a deployment named "example-deployment", use the following command.
 ```sh
