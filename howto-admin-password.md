@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-11-09"
+  years: 2017, 2023
+lastupdated: "2023-09-29"
 
 keywords: mongodb, databases
 
@@ -9,12 +9,6 @@ subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Setting the Admin Password
@@ -34,7 +28,7 @@ Set the admin password before you use it to connect. To set the password through
 {: #admin-password-cli}
 {: cli}
 
-Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in to set the admin password through the CLI.
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password through the CLI.
 
 For example, to set the admin password for a deployment named "example-deployment", use the following command.
 ```sh
