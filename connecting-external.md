@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2023
-lastupdated: "2023-05-11"
+lastupdated: "2023-09-29"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
@@ -163,6 +163,8 @@ The following [cipher suites](https://www.mongodb.com/docs/manual/core/security-
 - DHE-RSA-AES256-GCM-SHA384
 
 Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
+
+For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/databases-for-mongodb?topic=databases-for-mongodb-faq-cert){: external}.
 
 ### Using the self-signed certificate
 {: #mongodb-using-cert}
