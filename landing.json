@@ -11,7 +11,7 @@
       {
         "title": "Getting Started",
         "description": "A brief tutorial to introduce using an IBM Cloud® Databases for MongoDB deployment.",
-        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started"
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-mdb"
       },
       {
         "title": "Setting the Admin Password",
