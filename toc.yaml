@@ -12,8 +12,10 @@ toc:
     path: databases-for-mongodb
     label: Databases For MongoDB
   entries:
-  - link:
-      label: IBM Cloud Databases
+  - navgroup:
+      label: icd
+      topics:
+      - link: IBM Cloud Databases
       href: https://cloud.ibm.com/docs/cloud-databases
   - navgroup:
       id: learn
