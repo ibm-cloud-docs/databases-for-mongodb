@@ -11,11 +11,11 @@ toc:
     product-page: https://www.ibm.com/cloud/databases-for-mongodb
     path: databases-for-mongodb
     label: Databases For MongoDB
-  entries: 
+  entries:
   - link:
       label: IBM Cloud Databases
       href: https://cloud.ibm.com/docs/cloud-databases
-  - navgroup: 
+  - navgroup:
       id: learn
       topics:
       - getting-started.md
