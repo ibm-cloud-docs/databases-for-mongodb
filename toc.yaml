@@ -13,8 +13,8 @@ toc:
     label: Databases For MongoDB
   entries: 
   - link:
-      - label: IBM Cloud Databases
-      - href: https://cloud.ibm.com/docs/cloud-databases
+      label: IBM Cloud Databases
+      href: https://cloud.ibm.com/docs/cloud-databases
   - navgroup: 
       id: learn
       topics:
