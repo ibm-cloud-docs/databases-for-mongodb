@@ -15,6 +15,9 @@ toc:
   - navgroup:
       id: learn
       topics:
+      - link:
+          label: IBM Cloud Databases
+          href: https://cloud.ibm.com/docs/cloud-databases
       - getting-started.md
       - getting-started-new.md
       - getting-started-mdb.md
@@ -28,9 +31,6 @@ toc:
       - learn-performance.md
       - learn-pricing.md
       - release-notes.md
-      - link:
-          label: IBM Cloud Databases
-          href: https://cloud.ibm.com/docs/cloud-databases
   - navgroup: 
       id: howto
       topics:
