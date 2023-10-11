@@ -13,12 +13,6 @@ toc:
     label: Databases For MongoDB
   entries:
   - navgroup:
-      id: icd
-      label: IBM Cloud Databases
-      topics:
-      - link: IBM Cloud Databases
-      href: https://cloud.ibm.com/docs/cloud-databases
-  - navgroup:
       id: learn
       topics:
       - getting-started.md
@@ -34,6 +28,9 @@ toc:
       - learn-performance.md
       - learn-pricing.md
       - release-notes.md
+      - link:
+          label: IBM Cloud Databases
+          href: https://cloud.ibm.com/docs/cloud-databases
   - navgroup: 
       id: howto
       topics:
