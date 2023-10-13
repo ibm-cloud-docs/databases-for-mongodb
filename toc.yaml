@@ -21,8 +21,10 @@ toc:
       - link:
           label: IBM Cloud Databases
           href: https://cloud.ibm.com/docs/cloud-databases
+      - link:
+          label: What is MongoDB?
+          href: https://www.ibm.com/cloud/learn/mongodb
       - getting-started.md
-      - include: ../cloud-databases/learn-getting-to-production.md
       - link:
           label: What is MongoDB?
           href: https://www.ibm.com/cloud/learn/mongodb)
@@ -97,6 +99,9 @@ toc:
       - link:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
+      - link:
+          label: Getting to Production
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
       - topicgroup: 
           label: Connecting over Private Networks
           topics: 
