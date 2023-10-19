@@ -12,8 +12,8 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.databases-for-mongodb}} Enterprise
-{: #mongodb-ee-info}
+# {{site.data.keyword.databases-for-mongodb}}
+{: #mongodb-info}
 
 {{site.data.keyword.databases-for}} offers two plans for MongoDB: {{site.data.keyword.databases-for-mongodb_full}} and {{site.data.keyword.databases-for-mongodb_full}} Enterprise. 
 
