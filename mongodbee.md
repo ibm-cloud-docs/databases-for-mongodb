@@ -12,8 +12,8 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.databases-for-mongodb}}
-{: #mongodb-info}
+# {{site.data.keyword.databases-for-mongodb}} Plans
+{: #mongodb-plans}
 
 {{site.data.keyword.databases-for}} offers two plans for MongoDB: **{{site.data.keyword.databases-for-mongodb_full}}** and **{{site.data.keyword.databases-for-mongodb_full}} Enterprise**. {{site.data.keyword.databases-for-mongodb}} is a fully managed NoSQL database service based on the MongoDB Community Edition. {{site.data.keyword.databases-for-mongodb}} Enterprise offers advanced features, such as the MongoDB Ops Manager, the Analytics Add-on, and point-in-time recovery.
 
