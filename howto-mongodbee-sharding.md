@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-09-26"
+lastupdated: "2023-10-23"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -25,8 +25,8 @@ When increased demand or workload requires database scaling, you can scale verti
 ## MongoDB EE Sharding Add-On Considerations
 {: #mongodbee-sharding-consider}
 
-- Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
-   - [Enable sharding in each of the databases](#mongodbee-sharding-enable-sharding-databases) in your {{site.data.keyword.databases-for-mongodb}} EE Sharding deployment.
+- Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for provisioning nodes according to user needs, scaling vertically or horizontally. You are expected to:
+   - [Enable sharding in each of the databases](#mongodbee-sharding-enable-sharding-databases) in your {{site.data.keyword.databases-for-mongodb}} EE Sharding instance.
    - [Enable sharding in each of the collections](#mongodbee-sharding-enable-sharding-collections) of a database. Unsharded collections get stored in a single shard. These unbalanced nodes can get full before others and cause operational problems.
    - Choose a suitable [shard key](#mongodbee-sharding-enable-sharding-collections-shard-key) for each collection to avoid overloading some shards when retrieving data.
    - Optimize querying to avoid scatter/gather operations across shards that are more time-consuming and computationally expensive.
@@ -123,7 +123,7 @@ For more information, see [Terraform documentation](https://registry.terraform.i
 Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
-1. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
+1. You need to know the ID of the resource group that you would like to provision into. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
 
    Use a command like: 
    ```sh
@@ -131,9 +131,9 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-1. You need to know the region you would like to deploy to.
+1. You need to know the region you would like to provision into.
 
-   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}. 
+   To list all of the regions that instances can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}. 
    
    The command looks like: 
 
@@ -185,4 +185,4 @@ For more information, see [Shard Keys](https://www.mongodb.com/docs/manual/core/
 ### {{site.data.keyword.databases-for-mongodb}} EE Sharding Connection Strings
 {: #mongodbee-sharding-connection-string}
 
-The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the connection strings are different than they would be for a standard {{site.data.keyword.databases-for}} deployment.
+The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the connection strings are different than they would be for a standard {{site.data.keyword.databases-for}} instance.
