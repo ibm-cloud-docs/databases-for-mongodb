@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-10-12"
+lastupdated: "2023-11-13"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,15 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 13 November 2023
+{: #databases-for-mongodb-13nov2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} Plans documentation
+:  {{site.data.keyword.databases-for-mongodb}} Plans documentation created. For more information, see [{{site.data.keyword.databases-for-mongodb}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+
+For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
 
 ## 12 October 2023
 {: #databases-for-mongodb-12oct2023}
@@ -47,7 +56,7 @@ Setting up disk alerts for disk utilization tutorial
 {: #databases-for-mongodb-12dec2022}
 {: release-note}
 
-Point-in-time Recovery 
+Point-in-time Recovery
 :  {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability). For more information, see [Point-in-time Recovery (PITR)](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr&interface=ui).
 
 ## 19 October 2022
