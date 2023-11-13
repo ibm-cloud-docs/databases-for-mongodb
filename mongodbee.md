@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-10-19"
+lastupdated: "2023-11-13"
 
 keywords: mongodb ee, mongodb enterprise, mongodb enterprise edition, mongodb eneterprise plan
 
@@ -19,7 +19,10 @@ subcollection: databases-for-mongodb
 
 The choice between the two depends on your specific needs, security requirements, and budget.
 
-## Ops Manager
+## Enterprise Edition Features
+{: #mongodb-plans-ee}
+
+### Ops Manager
 {: #mongodbee-ops-manager}
 
 The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb}} Enterprise Plan deployment. MongoDB Ops Manager allows administrators to monitor, deploy, configure, and optimize MongoDB deployments. Ops Manager offers a range of features that help streamline database management and enhance operational efficiency. Here are some key benefits and features of MongoDB Ops Manager:
@@ -33,7 +36,7 @@ The Ops Manager is only available with an {{site.data.keyword.databases-for-mong
 
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager).
 
-## {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On
+## Analytics Add-On
 {: #mongodbee-analytics-addon}
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On enhances the capabilities of {{site.data.keyword.databases-for-mongodb}}. The add-on enables users to leverage powerful analytics and business intelligence (BI) tools to extract insights and perform advanced analytics on their MongoDB data. Here are the key features and benefits of the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On:
@@ -50,7 +53,7 @@ By using the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analyti
 
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
 
-## {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Point-in-time Recovery
+## Point-in-time Recovery
 {: #mongodbee-pitr}
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Plan offers point-in-time recovery (PITR). PITR restores an instance to a specific moment in time, allowing you to recover your data up to a particular point, such as just before a critical error or data loss occurred. This feature is essential for ensuring data durability and minimizing the impact of accidental data deletions or database corruption.For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Plan Point-in-time Recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr).
