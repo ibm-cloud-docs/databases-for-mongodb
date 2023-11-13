@@ -25,9 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb}} Plans documentation
-:  {{site.data.keyword.databases-for-mongodb}} Plans documentation created. For more information, see [{{site.data.keyword.databases-for-mongodb}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
-
-For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
+:  {{site.data.keyword.databases-for-mongodb}} Plans documentation created. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
 
 ## 12 October 2023
 {: #databases-for-mongodb-12oct2023}
