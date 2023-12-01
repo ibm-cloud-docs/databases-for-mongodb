@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-08-04"
+lastupdated: "2023-12-01"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -33,7 +33,7 @@ In this phase, the point-in-time-recovery timestamp endpoint always returns *cur
 ## Recovery
 {: #recovery}
 
-Backups are restored to a new deployment. After the new deployment finishes provisioning, your data in the backup file is restored into the new deployment. Backups are also restorable across accounts, but only by using the API and only if the user that is running the restore has access to both the source and destination accounts. 
+Backups are restored to a new deployment. After the new deployment finishes provisioning, your data in the backup file is restored into the new deployment. Backups are also restorable across accounts, but only by using the API and only if the user that is running the restore has access to both the source and destination accounts.
 
 The new deployment is automatically sized to the same disk and memory allocation as the source deployment at the time of the backup from which you restore. Especially with PITR, that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. If the deployment is not given enough resources the restore fails, so allocate enough for your data and workload.
 {: .important}
@@ -47,7 +47,7 @@ Do not delete the source deployment while the backup is restoring. You must wait
 {: #pitr-ui}
 {: ui}
 
-After your deployment's first backup is complete, the point-in-time recovery option will display in the UI. To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time. 
+After your deployment's first backup is complete, the point-in-time recovery option will display in the UI. To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time.
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
@@ -86,7 +86,7 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> s
 {: #pitr-api}
 {: api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup. 
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup.
 
 After you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) endpoint.
 
@@ -126,7 +126,7 @@ Use the [`ibm_database_point_in_time_recovery`](https://registry.terraform.io/pr
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
 
-Your Terraform script looks like this. 
+Your Terraform script looks like this.
 ```sh
 terraform {
   required_providers {
@@ -182,7 +182,7 @@ resource "ibm_database" "mongodb_enterprise" {
 }
 ```
 {: codeblock}
- 
+
 ## Point-in-time Recovery (PITR) Offline Restore
 {: #pitr-offline-restore}
 
@@ -206,6 +206,12 @@ Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} CLI usi
 ibmcloud resource service-instance-create 3-aug-pitr-dr-cli-lorna databases-for-mongodb-development enterprise us-south -p '{"point_in_time_recovery_deployment_id":"crn:v1:staging:public:databases-for-mongodb-development:us-south:a/b9552134280015ebfde430a819fa4bb3:4e765b52-72f5-4664-9cc0-e1e2f6e1ecde::","point_in_time_recovery_time": "", "offline_restore": true}'
 ```
 {: pre}
+
+Specify the following parameters:
+
+- `point_in_time_recovery_deployment_id` - This is the source CRN.
+- `point_in_time_recovery_time` - Leave this blank, `""`.
+- `offline_restore` - Set this value to `true`.
 
 The command output looks like:
 
@@ -248,6 +254,12 @@ After you have all the information, the create request is a `POST` to the [`/res
 
 ```
 {: pre}
+
+Specify the following parameters:
+
+- `point_in_time_recovery_deployment_id` - This is the source CRN.
+- `point_in_time_recovery_time` - Leave this blank, `""`.
+- `offline_restore` - Set this value to `true`.
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
