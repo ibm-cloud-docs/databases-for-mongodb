@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-08-04"
+lastupdated: "2023-12-01"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -207,6 +207,12 @@ ibmcloud resource service-instance-create 3-aug-pitr-dr-cli-lorna databases-for-
 ```
 {: pre}
 
+Specify the following parameters:
+
+- `point_in_time_recovery_deployment_id` - This is the source CRN.
+- `point_in_time_recovery_time` - Leave this blank, `""`.
+- `offline_restore` - Set this value to `true`.
+
 The command output looks like:
 
 ```text
@@ -248,6 +254,12 @@ After you have all the information, the create request is a `POST` to the [`/res
 
 ```
 {: pre}
+
+Specify the following parameters:
+
+- `point_in_time_recovery_deployment_id` - This is the source CRN.
+- `point_in_time_recovery_time` - Leave this blank, `""`.
+- `offline_restore` - Set this value to `true`.
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
