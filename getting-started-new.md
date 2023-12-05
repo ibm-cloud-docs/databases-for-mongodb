@@ -111,29 +111,23 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 
 1. When your instance has been provisioned, click on the instance name to view more information.
 
-## Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance by using the CLI
+## Step 2: Provision a {{site.data.keyword.databases-for-mongodb}} instance through the CLI
 {: #provision_instance_cli}
 {: cli}
 
-If it's the first time you've used the CLI, see [Getting started with the CLI](/docs/cli?topic=cli-getting-started){: external}.
+You can provision a {{site.data.keyword.databases-for-mongodb}} instance using the CLI. If you don't already have it, you will need to install the [{{site.data.keyword.cloud_notm}} CLI](https://www.ibm.com/cloud/cli){: external}.
 
-To provision an instance of {{site.data.keyword.databases-for-mongodb}} Standard Plan with the {{site.data.keyword.cloud_notm}} CLI, complete the following steps:
-
-1. Install the {{site.data.keyword.Bluemix_notm}} CLI by completing the steps in [Getting started with the {{site.data.keyword.Bluemix_notm}} CLI](/docs/cli?topic=cli-getting-started#step1-install-idt){: external}.
-{: #step1_install_cli_qsg}
-
-
-
-2. Log in to {{site.data.keyword.Bluemix_notm}} by running the following command:
+1. Log in to {{site.data.keyword.cloud_notm}} with the following command:
 {: #step2_login_qsg}
 
-
     ```sh
-    ibmcloud login -a cloud.ibm.com
+    ibmcloud login
     ```
-    {: codeblock}
+    {: pre}
 
-3. Create an {{site.data.keyword.databases-for-mongodb}} instance on {{site.data.keyword.Bluemix_notm}} using the Lite, Standard, or Enterprise plans.
+    If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API key (`ibmcloud --apikey key` or `@key_file`) to authenticate. For more information about how to log in using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) under `ibmcloud login`.
+
+1. Create a {{site.data.keyword.databases-for-mongodb}} instance.
 {: #step3_es_instance}
 
     Select one of the following methods:
@@ -141,22 +135,105 @@ To provision an instance of {{site.data.keyword.databases-for-mongodb}} Standard
     * To create an instance from the CLI on the Enterprise plan, run the following command:
 
         ```sh
-        ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-3nodes-2tb <REGION>
+        ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP>
         ```
         {: codeblock}
 
-        Because the Enterprise plan has its own dedicated resources for each cluster, it requires more time for provisioning, so a new Enterprise instance might take up to 3 hours.
+   The fields in the command are described in the table that follows.
+   | Field | Description | Flag |
+   |-------|------------|------------|
+   | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
+   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
+   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) or Enterprise plan (`enterprise`) |  |
+   | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
+   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
+   | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
+   | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
+   {: caption="Table 1. Basic command format fields" caption-side="top"}
 
+   You will see a response like:
 
-    * To create an instance from the CLI on the Standard plan, run the following command:
+   ```text
+   Creating service instance INSTANCE_NAME in resource group default of account    USER...
+   OK
+   Service instance INSTANCE_NAME was created.
 
-        ```sh
-        ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub standard <REGION>
-        ```
-        {: codeblock}
+   Name:                INSTANCE_NAME
+   ID:                  crn:v1:bluemix:public:databases-for-mongodb:us-east:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+   GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
+   Location:            LOCATION
+   State:               provisioning
+   Type:                service_instance
+   Sub Type:            Public
+   Service Endpoints:   public
+   Allow Cleanup:       false
+   Locked:              false
+   Created at:          2023-06-26T19:42:07Z
+   Updated at:          2023-06-26T19:42:07Z
+   Last Operation:
+                        Status    create in progress
+                        Message   Started create instance operation
+   ```
+   {: codeblock}
 
-        Provisioning a new Standard plan instance is instantaneous because the underlying resources are already set up.
+1. To check provisioning status, use the following command:
 
+   ```sh
+   ibmcloud resource service-instance <INSTANCE_NAME>
+   ```
+   {: pre}
+
+   When complete, you will see a response like:
+
+   ```text
+   Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
+   OK
+
+   Name:                  INSTANCE_NAME
+   ID:                    crn:v1:bluemix:public:databases-for-mongodb:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+   GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
+   Location:              <LOCATION>
+   Service Name:          databases-for-mongodb
+   Service Plan Name:     standard
+   Resource Group Name:   default
+   State:                 active
+   Type:                  service_instance
+   Sub Type:              Public
+   Locked:                false
+   Service Endpoints:     public
+   Created at:            2023-06-26T19:42:07Z
+   Created by:            USER
+   Updated at:            2023-06-26T19:53:25Z
+   Last Operation:
+                          Status    create succeeded
+                          Message   Provisioning mongodb with version 4.4 (100%)
+   ```
+   {: codeblck}
+
+1. (Optional) Deleting a service instance
+   Delete an instance by running a command like this one:
+
+   ```sh
+   ibmcloud resource service-instance-delete <INSTANCE_NAME>
+   ```
+   {: pre}
+
+### The `--parameters` parameter
+{: #flags-params-service-endpoints}
+{: cli}
+
+The `service-instance-create` command supports a `-p` flag, which allows JSON-formatted parameters to be passed to the provisioning process. Some parameter values are Cloud Resource Names (CRNs), which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
+
+For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 9 GB of memory across three members, then the command to provision 3 GBs per member looks like:
+
+```sh
+ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> standard us-south \
+-p \ '{
+  "backup_id": "crn:v1:blue:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
+  "members_memory_allocation_mb": "3072"
+}'
+```
+{: .pre}
 
 ## Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance by using the resource controller API
 {: #provision_instance_api}
