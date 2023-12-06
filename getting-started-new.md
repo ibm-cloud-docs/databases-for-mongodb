@@ -68,7 +68,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance using Terraform](#provision_instance_tf})
+* [Step 2: Provision using Terraform](#provision_instance_tf})
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Download and install MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
