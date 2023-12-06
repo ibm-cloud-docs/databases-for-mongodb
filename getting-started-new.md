@@ -32,8 +32,8 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 2: Provision using the console](#provision_instance_ui)
 * [Step 3: Set your Admin password using the console](#admin_password)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
-* [Step 7: Connect Activity Tracker](#activity_tracker_ui)
+* [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
+* [Step 6: Connect Activity Tracker](#activity_tracker_ui)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
@@ -43,9 +43,8 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 2: Provision using the CLI](#provision_instance_cli)
 * [Step 3: Set your Admin password using the CLI](#admin_password_cli)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
-* [Step 7: Connect Activity Tracker](#activity_tracker_cli)
-
+* [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
+* [Step 6: Connect Activity Tracker](#activity_tracker_cli)
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
@@ -55,8 +54,8 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 2: Provision using the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
-* [Step 7: Connect Activity Tracker](#activity_tracker_api)
+* [Step 5: Connect IBM Cloud Monitoring](#connect_monitoring_api)
+* [Step 6: Connect Activity Tracker](#activity_tracker_api)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -67,7 +66,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect IBM Cloud Monitoring](#connect_monitoring_tf)
-* [Step 7: Connect Activity Tracker](#activity_tracker_tf)
+* [Step 6: Connect Activity Tracker](#activity_tracker_tf)
 {: terraform}
 
 
@@ -443,7 +442,7 @@ You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the
 {: note}
 
 
-## Step 6: Connect {{site.data.keyword.at_full}}
+## Step 5: Connect {{site.data.keyword.at_full}}
 {: #activity_tracker_ui}
 {: ui}
 
@@ -458,7 +457,7 @@ For more information about events specific to {{site.data.keyword.databases-for-
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 6: Connect {{site.data.keyword.at_full}} using the CLI
+## Step 5: Connect {{site.data.keyword.at_full}} using the CLI
 {: #activity_tracker_cli}
 {: cli}
 
@@ -475,7 +474,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} using the API
+## Step 5: Connect {{site.data.keyword.at_full}} using the API
 {: #activity_tracker_api}
 {: api}
 
@@ -492,7 +491,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} using Terraform
+## Step 5: Connect {{site.data.keyword.at_full}} using Terraform
 {: #activity_tracker_tf}
 {: terraform}
 
