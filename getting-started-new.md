@@ -75,7 +75,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
 * [Step 8: If you need more help](#getting_help)
-{: api}
+{: terraform}
 
 
 ## Before you begin
