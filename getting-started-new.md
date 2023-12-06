@@ -30,7 +30,7 @@ Follow these steps to complete the tutorial: {: ui}
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision using the console](#provision_instance_ui)
-* [Step 3: Set your Admin password using the console](#admin_password_ui)
+* [Step 3: Set your Admin password using the console](#admin_password)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
@@ -43,7 +43,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision using the CLI](#provision_instance_cli)
-* [Step 3: Set your Admin password](#admin_password_cli)
+* [Step 3: Set your Admin password using the CLI](#admin_password_cli)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_cli)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
@@ -318,14 +318,10 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Step 3: Set the Admin password
-{: #admin_pw_ui}
-{: ui}
+{: #admin_pw}
 
 ### The admin user
 {: #user-management-admin-user}
-{: ui}
-{: cli}
-{: api}
 
 When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an Admin user is automatically created.
 
@@ -350,13 +346,13 @@ The Admin user has the following permissions:
 - [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} provides the same privileges as [`readWrite`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWrite){: external} on all databases except `local` and `config`.
 - [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
 
-### Setting the Admin Password in the UI
+### Set the Admin password in the UI
 {: #user-management-set-admin-password-ui}
 {: ui}
 
-Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
+Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
-### Setting the Admin Password in the CLI
+### Set the Admin password in the CLI
 {: #user-management-set-admin-password-cli}
 {: cli}
 
@@ -369,7 +365,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 {: pre}
 
-### Setting the Admin Password in the API
+### Set the Admin password in the API
 {: #user-management-set-admin-password-api}
 {: api}
 
