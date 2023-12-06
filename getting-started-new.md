@@ -29,7 +29,7 @@ Follow these steps to complete the tutorial: {: ui}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance using the console](#provision_instance_ui)
+* [Step 2: Provision using the console](#provision_instance_ui)
 * [Step 3: Set your Admin password using the console](#admin_password_ui)
 * [Step 4: Download and install MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints)
@@ -42,7 +42,7 @@ Follow these steps to complete the tutorial: {: cli}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance using the CLI](#provision_instance_cli)
+* [Step 2: Provision using the CLI](#provision_instance_cli)
 * [Step 3: Set your Admin password](#admin_password_cli)
 * [Step 4: Download and install MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_cli)
@@ -55,7 +55,7 @@ Follow these steps to complete the tutorial: {: api}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance using an API](#provision_instance_api)
+* [Step 2: Provision using the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Download and install MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
