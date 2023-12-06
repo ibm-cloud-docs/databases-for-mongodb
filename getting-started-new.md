@@ -64,6 +64,19 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 8: If you need more help](#getting_help)
 {: api}
 
+Follow these steps to complete the tutorial: {: terraform}
+
+* [Before you begin](#prereqs)
+* [Step 1: Choose your plan](#choose_plan)
+* [Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance using Terraform](#provision_instance_tf})
+* [Step 3: Set your Admin password](#admin_password_api)
+* [Step 4: Download and install MongoDB Compass](#mongodb_compass)
+* [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
+* [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
+* [Step 7: Connect Activity Tracker](#activity_tracker_api)
+* [Step 8: If you need more help](#getting_help)
+{: api}
+
 
 ## Before you begin
 {: #prereqs}
@@ -86,7 +99,7 @@ Follow these steps to complete the tutorial: {: api}
 Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external} to work with your {{site.data.keyword.databases-for-mongodb}} instance. The resource controller API is used to [provision an instance](#provision_instance_api).
 
 
-## Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance through the console
+## Step 2: Provision through the console
 {: #provision_instance_ui}
 {: ui}
 
@@ -111,7 +124,7 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 
 1. When your instance has been provisioned, click on the instance name to view more information.
 
-## Step 2: Provision a {{site.data.keyword.databases-for-mongodb}} instance through the CLI
+## Step 2: Provision through the CLI
 {: #provision_instance_cli}
 {: cli}
 
@@ -151,7 +164,7 @@ You can provision a {{site.data.keyword.databases-for-mongodb}} instance using t
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
 
-   You will see a response like:
+   You see a response like:
 
    ```text
    Creating service instance INSTANCE_NAME in resource group default of account    USER...
@@ -208,7 +221,7 @@ You can provision a {{site.data.keyword.databases-for-mongodb}} instance using t
                           Status    create succeeded
                           Message   Provisioning mongodb with version 4.4 (100%)
    ```
-   {: codeblck}
+   {: codeblock}
 
 1. (Optional) Deleting a service instance
    Delete an instance by running a command like this one:
@@ -235,359 +248,140 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 ```
 {: .pre}
 
-## Step 2: Provision an {{site.data.keyword.databases-for-mongodb}} instance by using the resource controller API
+## Step 2: Provision through the resource controller API
 {: #provision_instance_api}
 {: api}
 
-The preferred method to provision an instance is to use the [CLI](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=cli#provision_instance_cli) but if you want use the [resource controller API](/apidocs/resource-controller/resource-controller#create-resource-instance){: external}, run a command like the following to create an Enterprise instance in US South:
+Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
-```sh
-curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances -H "Authorization: ${token}" -H "Content-Type: application/json" \
--d '{ "name": "JG-test-curl", "target": "us-south", "resource_group":"9eba3cff1b0540b9ab7fb93829911da0", "resource_plan_id": "ibm.message.hub.enterprise.3nodes.2tb", "parameters":{"service-endpoints":"public","throughput":"150"}}'
-```
-{: codeblock}
+1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
+1. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
 
-## Step 3: Create a topic and select number of partitions by using the console
-{: #create_topic_ui}
-{: ui}
+   Use a command like:
+   ```sh
+   ibmcloud resource groups
+   ```
+   {: pre}
 
-For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams?topic=EventStreams-kafka_java_api){: external}.
+1. You need to know the region you would like to deploy to.
 
-1. From your newly provisioned instance, navigate to **Topics** using the menu on the left.
-2. Click the **Create topic** button and an enter a topic name. Click **Next**. Topic names are restricted to a maximum of 200 characters.
-3. Select the number of partitions.
+   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
 
-    One or more partitions make up a topic. A partition is an ordered list of messages. 1 partition is sufficient for getting started, but production systems often have more.
+   The command looks like:
 
-    Partitions are distributed across the brokers to increase the scalability of your topic. You can also use them to distribute messages across the members of a consumer group.
+   ```sh
+   ibmcloud cdb regions --json
+   ```
+   {: pre}
 
-    Click **Next**.
 
+   Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with    the {{site.data.keyword.cloud_notm}} Resource Controller.
 
-4. Set the message retention period. This is how long messages are retained before they are deleted. If your messages are not read by a consumer within this time, they will be missed.
+   ```sh
+   curl -X POST \
+     https://resource-controller.cloud.ibm.com/v2/resource_instances \
+     -H 'Authorization: Bearer <>' \
+     -H 'Content-Type: application/json' \
+       -d '{
+       "name": "my-instance",
+       "target": "blue-us-south",
+       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
+       "resource_plan_id": "databases-for-mongodb-standard"
+     }'
+   ```
+   {: .pre}
 
-    Click **Create topic**.
+   The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
+   {: required}
 
-### Working with topics using the console
-{: #work_topic_ui}
-{: ui}
-
-After you create topics, you can use the console to [list topics](#list_topic_ui) and [delete topics](#delete_topic_ui).
-
-
-#### List topics
-{: #list_topic_ui}
-{: ui}
-
-From your {{site.data.keyword.databases-for-mongodb}} instance, navigate to **Topics** from the menu on the left.
-
-From the **Topics page**, you can view the following information about your topics:
-**Name**, **Partitions**, **Retention time**, **Retention size**, **Cleanup policy**, and **Stream landing**.
-
-#### Delete a topic
-{: #delete_topic_ui}
-{: ui}
-
-From your {{site.data.keyword.databases-for-mongodb}} instance, navigate to **Topics** from the menu on the left.
-
-From the **Topics page**, click the three dots to the right of the topic name and click **Delete this topic**.
-
-
-## Step 3: Create a topic and select number of partitions by using the CLI
-{: #create_topic_cli}
-{: cli}
-
-For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams?topic=EventStreams-kafka_java_api){: external}.
-
-Run the following [**ibmcloud es topic-create**](/docs/EventStreams?topic=EventStreams-cli_reference#ibmcloud_es){: external} command to create a new topic with one partition:
-
-```bash
-ibmcloud es topic-create [--name] topic1 [--partitions 1]
-```
-{: codeblock}
-
-**Prerequisites**: None
-
-**Command options**:
-
---name value
-:   Topic name. Topic names are restricted to a maximum of 200 characters.
-
---partitions value
-:   Set the number of partitions for the topic.
-
-    One or more partitions make up a topic. A partition is an ordered list of messages. 1 partition is sufficient for getting started, but production systems often have more.
-
-    Partitions are distributed across the brokers to increase the scalability of your topic. You can also use them to distribute messages across the members of a consumer group.
-
-### Working with topics
-{: #work_topic_cli}
-{: cli}
-
-After you create topics, you can use the CLI to [list topics](#ibmcloud_es_topic_list_cli), [delete topics](#ibmcloud_es_topic_delete_cli), and [update the configuration of topics](#ibmcloud_es_topic_update_cli). You can also [view details about your cluster](#ibmcloud_es_cluster_cli) using the CLI.
-
-
-#### List a topic using the **ibmcloud es topics** command
-{: #ibmcloud_es_topic_list_cli}
-
-Run the **ibmcloud es topics** command to list your topics.
-
-```bash
-ibmcloud es topics [--filter FILTER] [--json]
-```
-{: codeblock}
-
-**Prerequisites**: None
-
-**Command options**:
-
---filter value, -f value (optional)
-:   Topic name.
-
---json (optional)
-:   Format output in JSON. Up to 1000 topics are returned.
-
-#### Delete a topic using the **ibmcloud es topic-delete** command
-{: #ibmcloud_es_topic_delete_cli}
-
-Run the **ibmcloud es topic-delete** command to delete a topic.
-
-```bash
-ibmcloud es topic-delete [--name] TOPIC_NAME [--force]
-```
-{: codeblock}
-
-**Prerequisites**: None
-
-**Command options**:
-
---name value, -n value
-:   Topic name.
-
---force, -f (optional)
-:   Delete without confirmation.
-
-
-
-#### Update the configuration of a topic using the **ibmcloud es topic-update** command
-{: #ibmcloud_es_topic_update_cli}
-
-Run the **ibmcloud es topic-update** command to update the configuration of a topic.
-
-```bash
-ibmcloud es topic-update [--name] TOPIC_NAME --config KEY[=VALUE][;KEY[=VALUE]]* [--default]
-```
-{: codeblock}
-
-**Prerequisites**: None
-
-**Command options**:
-
---name value, -n value
-:   Topic name.
-
---config KEY[=VALUE], -c KEY[=VALUE]
-:   Set a configuration option for the topic as a KEY[=VALUE] pair.
-:   If VALUE is not given, the '--default' flag is to be specified to indicate resetting the configuration value back to the default. Multiple '--config' options can be specified. Each '--config' option can specify a semicolon-delimited list of assignments. The following list shows valid configuration keys:
-
-    - cleanup.policy
-    - retention.ms
-    - retention.bytes
-    - segment.bytes
-    - segment.ms
-    - segment.index.bytes
-
---default, -d  (optional)
-:   Reset each configuration parameter that is specified by using '--config' to its default value.
-
-#### Display cluster details using the **ibmcloud es cluster** command
-{: #ibmcloud_es_cluster_cli}
-
-Run the **ibmcloud es cluster** command to display the details of the cluster, including the Kafka version.
-
-```bash
-ibmcloud es cluster [--json]
-```
-{: codeblock}
-
-**Prerequisites**: None
-
-**Command options**:
-
---json (optional)
-:   Output format in JSON.
-
-## Step 3: Create a topic and select number of partitions by using the Admin REST API
-{: #create_topic_api}
+## List of Additional Parameters
+{: #provisioning-parameters-api}
 {: api}
 
-{{site.data.keyword.databases-for-mongodb}} provides a REST API for administration that you can use to create, delete, list, and update topics.
+* `backup_id`- A CRN of a backup resource to restore from. The backup must be created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<...>:backup:<uuid>`. If omitted, the database is provisioned empty.
+* `version` - The version of the database to be provisioned. If omitted, the database is created with the most recent major and minor version.
+* `disk_encryption_key_crn` - The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about)), which is then used for disk encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.
+* `backup_encryption_key_crn` - The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about)), which is then used for backup encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.
 
-You can create a Kafka topic by issuing a POST request to the `/admin/topics` path. The body of the request must contain a JSON document. For example:
+   To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect#byok-for-backups).
+   {: note}
 
-```json
-{
-    "name": "topicname",
-    "partitions": 1,
-    "configs": {
-        "retentionMs": 86400000,
-        "cleanupPolicy": "delete"
-    }
-}
-```
-{: codeblock}
+* `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used.
+* `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used.
+* `members_cpu_allocation_count` - Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts.
+* `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.*
 
+## Step 2: Provision through Terraform
+{: #provision_instance_tf}
+{: terraform}
 
-The JSON document must contain a `name` attribute, specifying the name of the Kafka topic to create. Topic names are restricted to a maximum of 200 characters.The JSON can also specify the number of partitions to assign to the topic (using the `partitions` property). If the number of partitions is not specified, the topic is created with a single partition.
+Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
-One or more partitions make up a topic. A partition is an ordered list of messages. 1 partition is sufficient for getting started, but production systems often have more.
+## Step 3: Set the Admin password
+{: #admin_pw_ui}
+{: ui}
 
-Partitions are distributed across the brokers to increase the scalability of your topic. You can also use them to distribute messages across the members of a consumer group.
-
-You can also specify an optional `configs` object within the request. This allows you to specify the `retentionMs` property, which controls how long (in milliseconds) Kafka retains messages published to the topic. After this time elapses the messages are automatically deleted to free space. You must specify the value of the `retentionMs` property in a whole number of hours (for example, multiples of 3600000).
-
-For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams?topic=EventStreams-kafka_java_api{: external}).
-
-The expected HTTP status codes are as follows:
-
-* 202: Topic creation request was accepted.
-* 400: Invalid request JSON.
-* 403: Not authorized to create topic.
-* 422: Semantically invalid request.
-
-If the request to create a Kafka topic succeeds, HTTP status code 202 (Accepted) is returned. If the operation fails, an HTTP status code of 422 (Unprocessable Entity) is returned, and a JSON object containing additional information about the failure is returned as the body of the response.
-
-### Example
-{: #create_topic_api_example}
-
-You can exercise the REST endpoint for creating a Kafka topic using the following snippet of curl. You'll need to supply your own API key or token and specify the correct endpoint for ADMIN API.
-
-```sh
-curl -i -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TOKEN}' --data '{ "name": "newtopic", "partitions": 1}' ${ADMIN_URL}/admin/topics
-```
-{: codeblock}
-
-
-### Working with topics using the Admin REST API
-{: #work_topic_api}
+### The admin user
+{: #user-management-admin-user}
+{: ui}
+{: cli}
 {: api}
 
-After you create topics, you can use the Admin REST API to [list topics](#topic_list_api) and [delete topics](#topic_delete_api) and [update topic configuration](#topic_update_api).
+When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an Admin user is automatically created.
 
-#### List topics
-{: #topic_list_api}
+Set the admin password before using it to connect.
+{: important}
 
-You can list all your Kafka topics by issuing a GET request to the
-`/admin/topics` path.
+The Admin user has the following permissions:
 
-The expected status code is:
+- [`userAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdminAnyDatabase){: external} provides the same privileges as [`userAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdmin){: external} on all databases except `local` and `config`. `userAdminAnyDatabase` provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. With `userAdminAnyDatabase`, [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/){: external} to any other user on your deployment, including any of the MongoDB built-in roles. For example, to monitor your deployment, use `admin` to log in to the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor){: external} role to any user (including itself).
+   Use a command like:
 
-* 200: The topic list is returned as JSON in the following format:
+   ```sh
+   db.grantRolesToUser(
+    "admin",
+    [
+      { role: "clusterMonitor", db: "admin" }
+    ]
+   )
+   ```
+   {: pre}
 
-```json
-[
-  {
-    "name": "topic1",
-    "partitions": 1,
-    "retentionMs": 86400000,
-    "cleanupPolicy": "delete"
-  },
-  { "name": "topic2",
-    "partitions": 2,
-    "retentionMs": 86400000,
-    "cleanupPolicy": "delete"
-  }
-]
-```
-{: codeblock}
+- [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} provides the same privileges as [`readWrite`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWrite){: external} on all databases except `local` and `config`.
+- [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
 
-A successful response will have HTTP status code 200 (OK) and contain an
-array of JSON objects, where each object represents a Kafka topic and has the following properties:
+### Setting the Admin Password in the UI
+{: #user-management-set-admin-password-ui}
+{: ui}
 
-| Property name     | Description                                             |
-|-------------------|---------------------------------------------------------|
-| name              | The name of the Kafka topic.                            |
-| partitions        | The number of partitions assigned to the Kafka topic.   |
-| retentionsMs      | The retention period for messages on the topic (in ms). |
-| cleanupPolicy     | The cleanup policy of the Kafka topic.        |
-{: caption="Table 1. {{site.data.keyword.databases-for-mongodb}} topic properties" caption-side="top"}
+Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
-##### List topics example
-{: #topic_list_example_api}
+### Setting the Admin Password in the CLI
+{: #user-management-set-admin-password-cli}
+{: cli}
 
-You can use the following curl command to list all your Kafka topics:
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
+
+For example, to set the admin password for a deployment named `example-deployment`, use the following command:
 
 ```sh
-curl -i -X GET -H 'Accept: application/json' -H 'Authorization: Bearer ${TOKEN}' ${ADMIN_URL}/admin/topics
+ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
-{: codeblock}
+{: pre}
 
-#### Delete a topic
-{: #topic_delete_api}
+### Setting the Admin Password in the API
+{: #user-management-set-admin-password-api}
+{: api}
 
-To delete a topic, issue a DELETE request to the `/admin/topics/TOPICNAME`path (where TOPICNAME is the name of the Kafka topic that you want to delete).
-
-The expected return codes are as follows:
-
-- 202: Topic deletion request was accepted.
-- 403: Not authorized to delete topic.
-- 404: Topic does not exist.
-
-A 202 (Accepted) status code is returned if the REST API accepts the delete
-request. A status code 422 (Unprocessable Entity) is returned if the delete request is rejected. If a delete request is rejected, the body of the HTTP response contains a JSON object, which
-provides additional information about why the request was rejected.
-
-Kafka deletes topics asynchronously. Deleted topics can still appear in the
-response to a list topics request for a short period of time after the completion of a REST request to delete the topic.
-
-##### Delete topic example
-{: #topic_delete_example_api}
-
-The following curl command deletes a topic called `MYTOPIC`:
+The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
 
 ```sh
-curl -i -H 'Content-Type: application/json' -X DELETE -H 'Authorization: Bearer ${TOKEN}' ${ADMIN_URL}/admin/topics/MYTOPIC
+curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
+-H `Authorization: Bearer <>` \
+-H `Content-Type: application/json` \
+-d `{"password":"newrootpasswordsupersecure21"}` \
 ```
-{: codeblock}
-
-#### Update a topic's configuration
-{: #topic_update_api}
-
-To increase a topic's partition number or to update a topic's configuration, issue a`PATCH` request to `/admin/topics/{topic}` with the following body:
-
-```json
-{
-  "new_total_partition_count": 4,
-  "configs": [
-    {
-      "name": "cleanup.policy",
-      "value": "compact"
-    }
-  ]
-}
-```
-{: codeblock}
-
-The following configuration keys are supported: 'cleanup.policy', 'retention.ms', 'retention.bytes', 'segment.bytes', 'segment.ms', and 'segment.index.bytes'.
-
-You can only increase the partition number, not decrease it.
-
-The expected status codes are as follows:
-* 202: Update topic request was accepted.
-* 400: Invalid request JSON or number of partitions is invalid.
-* 404: Topic specified does not exist.
-* 422: Semantically invalid request.
-
-##### Update topic configuration example
-{: #topic_update_example_api}
-
-The following curl command updates a topic called `MYTOPIC`, set its `partitions` to 4 and its `cleanup.policy` to be `compact`.
-
-```sh
-curl -i -X PATCH -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TOKEN}' --data '{"new_total_partition_count": 4,"configs":[{"name":"cleanup.policy","value":"compact"}]}' ${ADMIN_URL}/admin/topics/MYTOPIC
-```
-{: codeblock}
-
+{: pre}
 
 ## Step 4: Create a service credential by using the console
 {: #create_credential_ui}
