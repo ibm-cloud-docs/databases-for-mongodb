@@ -35,7 +35,6 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 5: Configure private endpoint access](#config_priv_endpoints)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
 * [Step 7: Connect Activity Tracker](#activity_tracker_ui)
-* [Step 8: If you need more help](#getting_help)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
@@ -48,7 +47,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_cli)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
 * [Step 7: Connect Activity Tracker](#activity_tracker_cli)
-* [Step 8: If you need more help](#getting_help)
+
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
@@ -61,7 +60,6 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
-* [Step 8: If you need more help](#getting_help)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -74,7 +72,6 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
-* [Step 8: If you need more help](#getting_help)
 {: terraform}
 
 
@@ -407,151 +404,51 @@ Next, you see the default databases for your deployment, which all hold informat
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
-## Step 6: Consume data using the console
-{: #consume_data_ui}
-{: ui}
-
-You cannot consume data by using the console. You can consume data using the [CLI](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=cli#consume_data_cli) or the [Kafka API](https://kafka.apache.org/documentation/#consumerapi).
-
-## Step 6: Consume data using the CLI
-{: #consume_data_cli}
-{: cli}
-
-You can use the {{site.data.keyword.databases-for-mongodb}} Kafka console consumer tool to consume data.
-
-The console tools are in the `bin` directory of your Kafka client download.
-
-You must provide a list of brokers and SASL credentials. After you create the properties file as described in [produce data using the CLI](#produce_data_cli), run the console consumer in a terminal as follows:
-
-```bash
-   kafka-console-consumer.sh --bootstrap-server BOOTSTRAP_ENDPOINTS --consumer.config CONFIG_FILE --topic TOPIC_NAME
-```
-{: codeblock}
-
-Replace the following variables in the example with your own values:
-
-- BOOTSTRAP_ENDPOINTS with the value from your {{site.data.keyword.databases-for-mongodb}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
-- CONFIG_FILE with the path of the configuration file.
-
-You can use many of the other options of this tool, except for those that require access to ZooKeeper. For more information, see [Using Kafka console tools with Event Streams](/docs/EventStreams?topic=EventStreams-kafka_console_tools).
-
-### Consumer configuration settings
-{: #consumer_config_cli}
-{: cli}
-
-For details of some of the most important settings that you can configure for the consumer, see the following information:
-
-* [General configuration settings](/docs/EventStreams?topic=EventStreams-consuming_messages#configuring_consumer_properties){: external}
-* [Consumer liveness](/docs/EventStreams?topic=EventStreams-consuming_messages#consumer_liveness){: external}
-* [Consumer groups](/docs/EventStreams?topic=EventStreams-consuming_messages#consumer_groups){: external}
-* [Delivery semantics](/docs/EventStreams?topic=EventStreams-producing_messages#delivery_semantics){: external}
-* [Managing offsets](/docs/EventStreams?topic=EventStreams-consuming_messages#managing_offsets){: external}
-* [Handling consumer rebalancing](/docs/EventStreams?topic=EventStreams-consuming_messages#consumer_rebalancing){: external}
-
-
-## Step 6: Consume data using an API
-{: #consume_data_api}
-{: api}
-
-You cannot consume data using an {{site.data.keyword.databases-for-mongodb}} API although consumption of data from Kafka is possible using the native Kafka libraries. For more information, see [Kafka consumer API](https://kafka.apache.org/documentation/#consumerapi).
-
-As an alternative, use the [CLI](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=cli#consume_data_cli).
-
-
-## Step 7: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console
 {: #connect_monitoring_ui}
 {: ui}
 
 You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
 
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see:
-* [Opting in to metrics](/docs/EventStreams?topic=EventStreams-metrics#opt_in_metrics){: external}
-* [Enabling default metrics](/docs/EventStreams?topic=EventStreams-metrics#enabling_default_metrics){: external}
-* [Enabling enhanced metrics](/docs/EventStreams?topic=EventStreams-metrics#opt_in_enhanced_metrics){: external}
-* [Viewing details of available metrics](/docs/EventStreams?topic=EventStreams-metrics#metric_details){: external}
-* [Understanding metrics cost information](/docs/EventStreams?topic=EventStreams-metrics#metric_costs){: external}
+For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 7: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the CLI
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the CLI
 {: #connect_monitoring_cli}
 {: cli}
 
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the [console](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=ui#connect_monitoring_ui) to complete this task.
+You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
-## Step 7: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the API
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the API
 {: #connect_monitoring_api}
 {: api}
 
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the API. Use the [console](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=ui#connect_monitoring_ui) to complete this task.
+You cannot connect {{site.data.keyword.mon_full_notm}} by using the API. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 8: Connect {{site.data.keyword.at_full}} to audit service activity
+## Step 6: Connect {{site.data.keyword.at_full}} to audit service activity
 {: #activity_tracker_ui}
 {: ui}
 
-{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-mongodb}} service on the Standard and Enterprise plans.
+{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-mongodb}} service.
 
 To get up and running with {{site.data.keyword.at_short}}, see [Getting Started with {{site.data.keyword.at_short}}](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives){: external}.
 
 {{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
 
-For more information about events specific to {{site.data.keyword.databases-for-mongodb}}, see:
-
-* [Where to view events](/docs/EventStreams?topic=EventStreams-at_events#ui){: external}
-* [Topic events](/docs/EventStreams?topic=EventStreams-at_events#topic-events){: external}
-* [Message audit events](/docs/EventStreams?topic=EventStreams-at_events#message-events){: external}
-* [Other events](/docs/EventStreams?topic=EventStreams-at_events#other-events){: external}
+For more information about events specific to {{site.data.keyword.databases-for-mongodb}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 8: Connect {{site.data.keyword.at_full}} using the CLI to audit service activity
+## Step 6: Connect {{site.data.keyword.at_full}} using the CLI to audit service activity
 {: #activity_tracker_cli}
 {: cli}
 
-You cannot connect {{site.data.keyword.at_short}} using the CLI. Use the [console](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=ui#activity_tracker_ui) to complete this task.
+You cannot connect {{site.data.keyword.at_short}} using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 
-## Step 8: Connect {{site.data.keyword.at_full}} using the API to audit service activity
+## Step 6: Connect {{site.data.keyword.at_full}} using the API to audit service activity
 {: #activity_tracker_api}
 {: api}
 
-You cannot connect {{site.data.keyword.at_short}} using the API. Use the [console](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=ui#activity_tracker_ui) to complete this task.
-
-
-## Step 9: (Optional) Use Kafka Connect or ksqlDB
-{: #kafka_connect_ksql}
-
-### Kafka Connect
-{: #kafka_connect}
-
-Kafka Connect is part of the Apache Kafka project and allows you to connect external systems to Kafka. It consists of a runtime  that can run connectors to copy data to and from a cluster.
-
-Its key benefits are as follows:
-
-* Scalability: it can easily scale from a single worker to many.
-* Reliability: it automatically manages offsets and the lifecycle of connectors
-* Extensibility: the community has built connectors for most popular systems. {{site.data.keyword.IBM_notm}} has connectors for [MQ](/docs/EventStreams?topic=EventStreams-mq_connector){: external} and [Cloud Object Storage](/docs/EventStreams?topic=EventStreams-cos_connector){: external}.
-
-For more information, see [Using Kafka Connect with Event Streams](/docs/EventStreams?topic=EventStreams-kafka_connect){: external}.
-
-Kafka Connect is not part of the managed {{site.data.keyword.databases-for-mongodb}} service.
-
-### ksqlDB
-{: #ksqldb}
-
-You can use [KSQL](https://github.com/confluentinc/ksql){: external} with the {{site.data.keyword.databases-for-mongodb}} Enterprise plan for stream processing.
-{: shortdesc}
-
-ksqlDB is a purpose-built database for event streaming. Use it to build end-to-end event streaming applications quickly with a purpose-built stream processing database for Apache Kafka.
-
-First complete these [setup steps](/docs/EventStreams?topic=EventStreams-ksql_using##kqsldbsteps){: external}. Then the quickest and easiest way to run ksqlDB with {{site.data.keyword.databases-for-mongodb}} is to use a docker container as described in [ksqlDB quickstart](https://ksqldb.io/quickstart.html){: external}.
-
-
-## Step 10: Get help
-{: #getting_help}
-
-For a general overview of how to get help with {{site.data.keyword.databases-for-mongodb}} and where to get support, see [Getting help and support](/docs/EventStreams?topic=EventStreams-gettinghelp){: external}.
-
-[FAQs](/docs/EventStreams?topic=EventStreams-faqs){: external} details answers to some of the common questions about {{site.data.keyword.databases-for-mongodb}}.
-
-If you're experiencing a problem with {{site.data.keyword.databases-for-mongodb}}, here's a list of the information you need to gather before you open a case [Reporting a problem to the Event Streams team - Standard and Enterprise plans](/docs/EventStreams?topic=EventStreams-report_problem_enterprise){: external}.
+You cannot connect {{site.data.keyword.at_short}} using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
