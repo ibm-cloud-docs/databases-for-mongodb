@@ -321,7 +321,7 @@ Use Terraform to manage your infrastructure through the [`ibm_database` Resource
 {: #admin_pw}
 
 ### The admin user
-{: #user-management-admin-user}
+{: #admin_pw_admin_user}
 
 When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an Admin user is automatically created.
 
@@ -347,13 +347,13 @@ The Admin user has the following permissions:
 - [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
 
 ### Set the Admin password in the UI
-{: #user-management-set-admin-password-ui}
+{: #admin_pw_set_ui}
 {: ui}
 
 Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
 ### Set the Admin password in the CLI
-{: #user-management-set-admin-password-cli}
+{: #admin_pw_set_cli}
 {: cli}
 
 Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
@@ -366,7 +366,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: pre}
 
 ### Set the Admin password in the API
-{: #user-management-set-admin-password-api}
+{: #admin_pw_set_api}
 {: api}
 
 The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
