@@ -31,7 +31,7 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision using the console](#provision_instance_ui)
 * [Step 3: Set your Admin password using the console](#admin_password_ui)
-* [Step 4: Download and install MongoDB Compass](#mongodb_compass)
+* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
 * [Step 7: Connect Activity Tracker](#activity_tracker_ui)
@@ -44,7 +44,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision using the CLI](#provision_instance_cli)
 * [Step 3: Set your Admin password](#admin_password_cli)
-* [Step 4: Download and install MongoDB Compass](#mongodb_compass)
+* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_cli)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
 * [Step 7: Connect Activity Tracker](#activity_tracker_cli)
@@ -57,7 +57,7 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision using the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_password_api)
-* [Step 4: Download and install MongoDB Compass](#mongodb_compass)
+* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
@@ -70,7 +70,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision using Terraform](#provision_instance_tf})
 * [Step 3: Set your Admin password](#admin_password_api)
-* [Step 4: Download and install MongoDB Compass](#mongodb_compass)
+* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
 * [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
@@ -383,163 +383,33 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ```
 {: pre}
 
-## Step 4: Create a service credential by using the console
-{: #create_credential_ui}
-{: ui}
+## Step 4: Connect with MongoDB Compass
+{: #mongodb_compass}
 
+[MongoDB Compass](https://www.mongodb.com/docs/compass/current/){: external} is a powerful GUI for querying, aggregating, and analyzing your MongoDB data in a visual environment. Compass is free to use and source available, and can be run on macOS, Windows, and Linux.
 
-To allow you to connect to your {{site.data.keyword.databases-for-mongodb}} instance, create a service key by using the {{site.data.keyword.Bluemix_notm}} console:
+When you first open MongoDB Compass to the **New Connection** page, enter your instance's connection information. All relevant connection information can be found within your instance's **Overview** page.
 
-1. Locate your {{site.data.keyword.databases-for-mongodb}} service in the **Resource list**.
-2. Click your service tile.
-3. Click **Service credentials**.
-4. Click **New credential**.
-5. Complete the details for your new credential like a name and role and click **Add**. A new credential appears in the credentials list.
-6. Click the chevron next to the new credential to reveal the details in JSON format.
+To connect to your deployment with MongoDB Compass, complete the following steps:
 
-## Step 4: Create a service credential by using the CLI
-{: #create_credential_cli}
-{: cli}
+- In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your instance's **Overview**.
+- Click **>Advanced Connection Options**.
+- In the *Authentication* tab, select *Username/Password*, and enter the credentials that you set for the admin user in your instance's **Settings**.
+- Configure the **TLS/SSL** settings.
+    1. In your instance's **Overview**, copy the certificate information from **TLS Certificate**.
+    1. In your instance's **Overview**, download the TLS certificate from the **Certificate Authority** section.
+    1. In MongoDB Compass, click **Select Files** in the *Certificate Authority* field and upload the certificate file to MongoDB Compass.
+- (Optional) Give your instance a name.
+- Click **Connect** to connect MongoDB Compass to your instance.
 
-Create a service key by using the {{site.data.keyword.Bluemix_notm}} CLI, so that you can connect to your {{site.data.keyword.databases-for-mongodb}} instance:
+### Use MongoDB Compass
+{: #using-mongodb-compass}
 
-1. Locate your service:
-    ```bash
-    ibmcloud resource service-instances
-    ```
-    {: codeblock}
+After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} Enterprise uses the Enterprise version.
 
-2. Create a service key:
-    ```bash
-    ibmcloud resource service-key-create <key_name> <key_role> --instance-name <your_service_name>
-    ```
-    {: codeblock}
+Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds data for cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
 
-3. Print the service key:
-    ```bash
-    ibmcloud resource service-key <key_name>
-    ```
-    {: codeblock}
-
-    A single set of endpoint details are contained in each service key. For service instances configured to be connected to a single network type, either the {{site.data.keyword.Bluemix_notm}} Public network (the default) or the {{site.data.keyword.Bluemix_notm}} Private network, the service key contains the details relevant to that network type. For instances configured to support both the private and public networks, details for the public network are returned. If you want details for the private network, you must add the `--service-endpoint private` parameter to the previous **service-key-create** CLI command. For example:
-    {: note}
-
-    ```bash
-    ibmcloud resource service-key-create <private-key-name> <role> --instance-name <instance-name> --service-endpoint private
-    ```
-    {: codeblock}
-
-## Step 4: Create a service credential by using the CLI and the REST producer API
-{: #create_credential_api}
-{: api}
-
-To connect to your {{site.data.keyword.databases-for-mongodb}} instance, the supported authentication mechanism is using a bearer token. To obtain your token by using the {{site.data.keyword.Bluemix_notm}} CLI, first log in to {{site.data.keyword.Bluemix_notm}} and then run the following command:
-
-```sh
-ibmcloud iam oauth-tokens
-```
-{: codeblock}
-
-Place this token in the Authorization header of the HTTP request in the form `Bearer<token>`. Both API key or JWT tokens are supported.
-
-## Step 5: Produce data using the console
-{: #produce_data_ui}
-{: ui}
-
-You cannot produce data by using the console. You can produce data using the [CLI](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=cli#produce_data_cli), the [REST Producer API](/docs/EventStreams?topic=EventStreams-quick_setup_guide&interface=api#produce_data_api), or the [Kafka API](https://kafka.apache.org/documentation/#producerapi).
-
-
-## Step 5: Produce data using the CLI
-{: #produce_data_cli}
-{: cli}
-
-You can use the {{site.data.keyword.databases-for-mongodb}} Kafka console producer tool to produce data. The console tools are in the `bin` directory of your Kafka client download, which you can download from [Apache Kafka downloads](http://kafka.apache.org/downloads){: external}.
-
-You must provide a list of brokers (using the BOOTSTRAP_ENDPOINTS property) and SASL credentials. To provide the SASL credentials to this tool, create a properties file based on the following example:
-
-```config
-    sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
-    security.protocol=SASL_SSL
-    sasl.mechanism=PLAIN
-    ssl.protocol=TLSv1.2
-    ssl.enabled.protocols=TLSv1.2
-    ssl.endpoint.identification.algorithm=HTTPS
-```
-{: codeblock}
-
-Replace USER and PASSWORD with the values from your {{site.data.keyword.databases-for-mongodb}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
-
-{{site.data.keyword.databases-for-mongodb}} provides example `producer.properties` and `consumer.properties` files for the [Java client](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample/resources){: external}.
-
-After you create the properties file, you can run the console producer in a terminal as follows:
-
-```bash
-   kafka-console-producer.sh --broker-list BOOTSTRAP_ENDPOINTS --producer.config CONFIG_FILE --topic TOPIC_NAME
-```
-{: codeblock}
-
-Replace the following variables in the example with your own values:
-
-- BOOTSTRAP_ENDPOINTS with the value from your {{site.data.keyword.databases-for-mongodb}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
-- CONFIG_FILE with the path of the configuration file.
-
-You can use many of the other options of this tool, except for those that require access to ZooKeeper. For more information, see [Using Kafka console tools with Event Streams](/docs/EventStreams?topic=EventStreams-kafka_console_tools){: external}.
-
-
-
-### Producer configuration settings
-{: #producer_config_cli}
-{: cli}
-
-For details of some of the most important settings that you can configure for the producer, see the following information:
-
-* [General configuration settings](/docs/EventStreams?topic=EventStreams-producing_messages#config_settings){: external}
-* [Delivery semantics](/docs/EventStreams?topic=EventStreams-producing_messages#delivery_semantics){: external}
-
-
-## Step 5: Produce data using the REST Producer API
-{: #produce_data_api}
-{: api}
-
-Use the v2 endpoint of the REST Producer API to send messages of type `text`, `binary`, `JSON`, or `avro` to topics. With the v2 endpoint you can use the {{site.data.keyword.databases-for-mongodb}} schema registry by specifying the schema for the avro data type.
-
-The following code shows an example of sending a message of `text` type by using curl:
-
-```sh
-curl -v -X POST \
--H "Authorization: Bearer $token" -H "Content-Type: application/json" -H "Accept: application/json" \
--d '{
-  "headers": [
-    {
-      "name": "colour",
-      "value": "YmxhY2s="
-    }
-  ],
-  "key": {
-    "type": "text",
-    "data": "Test Key"
-  },
-  "value": {
-    "type": "text",
-    "data": "Test Value"
-  }
-}' \
-"$kafka_http_url/v2/topics/$topic_name/records"
-```
-{: codeblock}
-
-For more information, see the [{{site.data.keyword.databases-for-mongodb}} REST Producer API reference](https://cloud.ibm.com/apidocs/event-streams/restproducer){: external}.
-
-
-### Producer configuration settings
-{: #producer_config_api}
-{: api}
-
-For details of some of the most important settings that you can configure for the producer, see the following information:
-
-* [General configuration settings](/docs/EventStreams?topic=EventStreams-producing_messages#config_settings){: external}
-* [Delivery semantics](/docs/EventStreams?topic=EventStreams-producing_messages#delivery_semantics){: external}
-
+Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
 ## Step 6: Consume data using the console
 {: #consume_data_ui}
