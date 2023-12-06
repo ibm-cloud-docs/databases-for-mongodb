@@ -32,7 +32,6 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 2: Provision using the console](#provision_instance_ui)
 * [Step 3: Set your Admin password using the console](#admin_password)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 5: Configure private endpoint access](#config_priv_endpoints)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
 * [Step 7: Connect Activity Tracker](#activity_tracker_ui)
 {: ui}
@@ -44,7 +43,6 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 2: Provision using the CLI](#provision_instance_cli)
 * [Step 3: Set your Admin password using the CLI](#admin_password_cli)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 5: Configure private endpoint access](#config_priv_endpoints_cli)
 * [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
 * [Step 7: Connect Activity Tracker](#activity_tracker_cli)
 
@@ -57,7 +55,6 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 2: Provision using the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
 {: api}
@@ -69,7 +66,6 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 2: Provision using Terraform](#provision_instance_tf})
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Connect using MongoDB Compass](#mongodb_compass)
-* [Step 5: Configure private endpoint access](#config_priv_endpoints_api)
 * [Step 6: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 7: Connect Activity Tracker](#activity_tracker_api)
 {: terraform}
@@ -404,7 +400,7 @@ Next, you see the default databases for your deployment, which all hold informat
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} using the console
 {: #connect_monitoring_ui}
 {: ui}
 
@@ -413,20 +409,20 @@ You can use {{site.data.keyword.mon_full_notm}} to get operational visibility in
 For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the CLI
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} using the CLI
 {: #connect_monitoring_cli}
 {: cli}
 
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the API
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} using the API
 {: #connect_monitoring_api}
 {: api}
 
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the API. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 6: Connect {{site.data.keyword.at_full}} to audit service activity
+## Step 6: Connect {{site.data.keyword.at_full}}
 {: #activity_tracker_ui}
 {: ui}
 
@@ -441,13 +437,13 @@ For more information about events specific to {{site.data.keyword.databases-for-
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 6: Connect {{site.data.keyword.at_full}} using the CLI to audit service activity
+## Step 6: Connect {{site.data.keyword.at_full}} using the CLI
 {: #activity_tracker_cli}
 {: cli}
 
 You cannot connect {{site.data.keyword.at_short}} using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 
-## Step 6: Connect {{site.data.keyword.at_full}} using the API to audit service activity
+## Step 6: Connect {{site.data.keyword.at_full}} using the API
 {: #activity_tracker_api}
 {: api}
 
