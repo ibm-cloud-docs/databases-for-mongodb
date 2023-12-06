@@ -457,7 +457,7 @@ For more information about events specific to {{site.data.keyword.databases-for-
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 5: Connect {{site.data.keyword.at_full}} using the CLI
+## Step 6: Connect {{site.data.keyword.at_full}} using the CLI
 {: #activity_tracker_cli}
 {: cli}
 
@@ -474,7 +474,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.at_full}} using the API
+## Step 6: Connect {{site.data.keyword.at_full}} using the API
 {: #activity_tracker_api}
 {: api}
 
@@ -491,7 +491,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.at_full}} using Terraform
+## Step 6: Connect {{site.data.keyword.at_full}} using Terraform
 {: #activity_tracker_tf}
 {: terraform}
 
