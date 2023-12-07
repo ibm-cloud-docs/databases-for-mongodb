@@ -346,13 +346,13 @@ The Admin user has the following permissions:
 - [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} provides the same privileges as [`readWrite`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWrite){: external} on all databases except `local` and `config`.
 - [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
 
-### Set the Admin password in the UI
+### Set the Admin password through the UI
 {: #admin_pw_set_ui}
 {: ui}
 
 Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
-### Set the Admin password in the CLI
+### Set the Admin password through the CLI
 {: #admin_pw_set_cli}
 {: cli}
 
@@ -365,7 +365,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 {: pre}
 
-### Set the Admin password in the API
+### Set the Admin password through the API
 {: #admin_pw_set_api}
 {: api}
 
@@ -378,6 +378,37 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 -d `{"password":"newrootpasswordsupersecure21"}` \
 ```
 {: pre}
+
+### Set the Admin password through Terraform
+{: #admin_pw_set_tf}
+{: terraform}
+
+To set the Admin password, use the API:
+
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+
+```sh
+curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
+-H `Authorization: Bearer <>` \
+-H `Content-Type: application/json` \
+-d `{"password":"newrootpasswordsupersecure21"}` \
+```
+{: pre}
+
+You can also use the CLI:
+
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
+
+For example, to set the admin password for a deployment named `example-deployment`, use the following command:
+
+```sh
+ibmcloud cdb user-password example-deployment admin <newpassword>
+```
+{: pre}
+
+To set the Admin password through the UI, follow these steps:
+
+Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
 ## Step 4: Set up MongoDB Compass
 {: #mongodb_compass}
