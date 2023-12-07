@@ -35,6 +35,7 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 5: Set up context-based restrictions](#mongodb_cbr)
 * [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_ui)
 * [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_ui)
+* [Next Steps](#next_steps)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
@@ -47,6 +48,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 5: Set up context-based restrictions](#mongodb_cbr)
 * [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_cli)
 * [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_cli)
+* [Next Steps](#next_steps)
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
@@ -59,6 +61,7 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 5: Set up context-based restrictions](#mongodb_cbr)
 * [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_api)
 * [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_api)
+* [Next Steps](#next_steps)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -71,6 +74,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 5: Set up context-based restrictions](#mongodb_cbr)
 * [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
 * [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_tf)
+* [Next Steps](#next_steps)
 {: terraform}
 
 
@@ -518,3 +522,29 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 
 You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
+
+## Next Steps
+{: #next_steps}
+
+- For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/cloud/blog/best-practices-for-mongodb-on-the-ibm-cloud){: .external}. If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: .external}.
+
+- Connect to and manage your instance through the [MongoDB Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client){: external} and explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external} functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
+
+- Looking for more tools on managing your databases? Connect to your instance with:
+    - The [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli){: external}
+    - The [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}
+    - The [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}.
+
+- If you plan to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out:
+    - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app){: external}
+    - [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-connecting-ibmcloud-app){: external}
+    - [MongoDB Node.js Driver Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/){: external}.
+
+- For information on TLS/SSL certificate configuration in the API, review:
+    - [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app#mongodb-tls-certificate-support){: external}
+    - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client#connecting-cli-client-cert)
+    - [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: .external}.
+
+- To ensure the stability of your applications and databases, check out
+    - [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
+    - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance).
