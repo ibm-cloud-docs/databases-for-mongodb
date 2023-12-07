@@ -62,7 +62,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision by using Terraform](#provision_instance_tf})
+* [Step 2: Provision by using Terraform](#provision_instance_tf)
 * [Step 3: Set your Admin password](#admin_pw)
 * [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
