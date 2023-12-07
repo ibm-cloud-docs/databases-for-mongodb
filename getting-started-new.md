@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-05-30"
+lastupdated: "2023-12-07"
 
-keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager
+keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
 subcollection: databases-for-mongodb
 
@@ -22,16 +22,16 @@ completion-time: 30m
 {: toc-services=""}
 {: toc-completion-time="30m"}
 
-This tutorial guides you through the steps to quickly start using {{site.data.keyword.databases-for-mongodb}} by provisioning an instance, creating a database and a credential, and then uploading some data. Additionally, you'll learn how to connect {{site.data.keyword.mon_full}} and {{site.data.keyword.at_full}}. Finally, you also find out how to get help with {{site.data.keyword.databases-for-mongodb}}.
+This tutorial guides you through the steps to quickly start by using {{site.data.keyword.databases-for-mongodb}} by provisioning an instance, setting up MongoDB Compass, setting your Admin password, and setting up logging and monitoring.
 {: shortdesc}
 
 Follow these steps to complete the tutorial: {: ui}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision using the console](#provision_instance_ui)
-* [Step 3: Set your Admin password using the console](#admin_password)
-* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
+* [Step 2: Provision by using the console](#provision_instance_ui)
+* [Step 3: Set your Admin password by using the console](#admin_password)
+* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
 * [Step 6: Connect Activity Tracker](#activity_tracker_ui)
 {: ui}
@@ -40,9 +40,9 @@ Follow these steps to complete the tutorial: {: cli}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision using the CLI](#provision_instance_cli)
-* [Step 3: Set your Admin password using the CLI](#admin_password_cli)
-* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
+* [Step 2: Provision by using the CLI](#provision_instance_cli)
+* [Step 3: Set your Admin password by using the CLI](#admin_password_cli)
+* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
 * [Step 6: Connect Activity Tracker](#activity_tracker_cli)
 {: cli}
@@ -51,9 +51,9 @@ Follow these steps to complete the tutorial: {: api}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision using the API](#provision_instance_api)
+* [Step 2: Provision by using the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_password_api)
-* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
+* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect IBM Cloud Monitoring](#connect_monitoring_api)
 * [Step 6: Connect Activity Tracker](#activity_tracker_api)
 {: api}
@@ -62,9 +62,9 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision using Terraform](#provision_instance_tf})
+* [Step 2: Provision by using Terraform](#provision_instance_tf})
 * [Step 3: Set your Admin password](#admin_password_api)
-* [Step 4: Connect using MongoDB Compass](#mongodb_compass)
+* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect IBM Cloud Monitoring](#connect_monitoring_tf)
 * [Step 6: Connect Activity Tracker](#activity_tracker_tf)
 {: terraform}
@@ -96,17 +96,17 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 {: ui}
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
-1. Click the [**{{site.data.keyword.databases-for-mongodb}} service**](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **Catalog**.
+1. Click the [**{{site.data.keyword.databases-for-mongodb}} service**](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **catalog**.
 
 1. In **Service Details**, configure the following:
     - **Service name** - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
     - **The Resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
     - **Location** - The deployment's public cloud region or Satellite location.
-1. **Resource allocation** - Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. *Once provisioned, disk cannot be scaled down.*
+1. **Resource allocation** - Specify the initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores that you specify. *Once provisioned, disk cannot be scaled down.*
 
 1. In **Service Configuration**, configure the following:
     - **Database Version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-    - **Database Edition** [Set only at deployment]{: tag-red} - Select the edition you would like to provision. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+    - **Database Edition** [Set only at deployment]{: tag-red} - Select the edition that you would like to provision. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
     - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
     - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A {{site.data.keyword.databases-for-mongodb}} instance cannot have both public and private endpoints simultaneously*.
 
@@ -114,13 +114,13 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 
 1. Click **Create**. The {{site.data.keyword.databases-for}} **Resource list** page opens.
 
-1. When your instance has been provisioned, click on the instance name to view more information.
+1. When your instance has been provisioned, click the instance name to view more information.
 
 ## Step 2: Provision through the CLI
 {: #provision_instance_cli}
 {: cli}
 
-You can provision a {{site.data.keyword.databases-for-mongodb}} instance using the CLI. If you don't already have it, you will need to install the [{{site.data.keyword.cloud_notm}} CLI](https://www.ibm.com/cloud/cli){: external}.
+You can provision a {{site.data.keyword.databases-for-mongodb}} instance by using the CLI. If you don't already have it, you need to install the [{{site.data.keyword.cloud_notm}} CLI](https://www.ibm.com/cloud/cli){: external}.
 
 1. Log in to {{site.data.keyword.cloud_notm}} with the following command:
 {: #step2_login_qsg}
@@ -244,7 +244,7 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 {: #provision_instance_api}
 {: api}
 
-Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
+Follow these steps to provision by using the [resource controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
 1. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
@@ -255,7 +255,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-1. You need to know the region you would like to deploy to.
+1. You need to know the region that you would like to deploy into.
 
    To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
 
@@ -267,7 +267,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    {: pre}
 
 
-   Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with    the {{site.data.keyword.cloud_notm}} Resource Controller.
+   Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} resource controller.
 
    ```sh
    curl -X POST \
@@ -361,7 +361,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: #admin_pw_set_api}
 {: api}
 
-The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -399,7 +399,7 @@ Next, you see the default databases for your deployment, which all hold informat
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} using the console
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} by using the console
 {: #connect_monitoring_ui}
 {: ui}
 
@@ -408,7 +408,7 @@ You can use {{site.data.keyword.mon_full_notm}} to get operational visibility in
 For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} using the CLI
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} by using the CLI
 {: #connect_monitoring_cli}
 {: cli}
 
@@ -419,7 +419,7 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} using the API
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} by using the API
 {: #connect_monitoring_api}
 {: api}
 
@@ -457,7 +457,7 @@ For more information about events specific to {{site.data.keyword.databases-for-
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 6: Connect {{site.data.keyword.at_full}} using the CLI
+## Step 6: Connect {{site.data.keyword.at_full}} by using the CLI
 {: #activity_tracker_cli}
 {: cli}
 
@@ -471,10 +471,10 @@ For more information about events specific to {{site.data.keyword.databases-for-
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} using the API
+## Step 6: Connect {{site.data.keyword.at_full}} by using the API
 {: #activity_tracker_api}
 {: api}
 
@@ -488,7 +488,7 @@ For more information about events specific to {{site.data.keyword.databases-for-
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
 ## Step 6: Connect {{site.data.keyword.at_full}} using Terraform
@@ -505,5 +505,5 @@ For more information about events specific to {{site.data.keyword.databases-for-
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
