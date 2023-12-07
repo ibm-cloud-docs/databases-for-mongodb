@@ -29,33 +29,33 @@ Follow these steps to complete the tutorial: {: ui}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision by using the console](#provision_instance_ui)
-* [Step 3: Set your Admin password by using the console](#admin_password)
-* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
+* [Step 2: Provision through the console](#provision_instance_ui)
+* [Step 3: Set your Admin password through the console](#admin_password)
+* [Step 4: Set up MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
-* [Step 6: Connect Activity Tracker](#activity_tracker_ui)
+* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_ui)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision by using the CLI](#provision_instance_cli)
-* [Step 3: Set your Admin password by using the CLI](#admin_password_cli)
-* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
+* [Step 2: Provision through the CLI](#provision_instance_cli)
+* [Step 3: Set your Admin password through the CLI](#admin_password_cli)
+* [Step 4: Set up MongoDB Compass](#mongodb_compass)
 * [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_cli)
-* [Step 6: Connect Activity Tracker](#activity_tracker_cli)
+* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_cli)
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
 
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
-* [Step 2: Provision by using the API](#provision_instance_api)
+* [Step 2: Provision through the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_password_api)
-* [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
-* [Step 5: Connect IBM Cloud Monitoring](#connect_monitoring_api)
-* [Step 6: Connect Activity Tracker](#activity_tracker_api)
+* [Step 4: Set up MongoDB Compass](#mongodb_compass)
+* [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_api)
+* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_api)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -65,8 +65,8 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 2: Provision by using Terraform](#provision_instance_tf})
 * [Step 3: Set your Admin password](#admin_password_api)
 * [Step 4: Connect by using MongoDB Compass](#mongodb_compass)
-* [Step 5: Connect IBM Cloud Monitoring](#connect_monitoring_tf)
-* [Step 6: Connect Activity Tracker](#activity_tracker_tf)
+* [Step 5: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_tf)
+* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_tf)
 {: terraform}
 
 
