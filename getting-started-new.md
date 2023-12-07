@@ -545,6 +545,6 @@ You cannot connect {{site.data.keyword.at_short}} by using the API. Use the cons
     - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client#connecting-cli-client-cert)
     - [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: .external}.
 
-- To ensure the stability of your applications and databases, check out
+- To ensure the stability of your applications and databases, check out:
     - [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
     - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance).
