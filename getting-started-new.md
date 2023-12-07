@@ -32,8 +32,9 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 2: Provision through the console](#provision_instance_ui)
 * [Step 3: Set your Admin password through the console](#admin_pw)
 * [Step 4: Set up MongoDB Compass](#mongodb_compass)
-* [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_ui)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_ui)
+* [Step 5: Set up context-based restrictions](#mongodb_cbr)
+* [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_ui)
+* [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_ui)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
@@ -43,8 +44,9 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 2: Provision through the CLI](#provision_instance_cli)
 * [Step 3: Set your Admin password through the CLI](#admin_pw)
 * [Step 4: Set up MongoDB Compass](#mongodb_compass)
-* [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_cli)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_cli)
+* [Step 5: Set up context-based restrictions](#mongodb_cbr)
+* [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_cli)
+* [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_cli)
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
@@ -54,8 +56,9 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 2: Provision through the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_pw)
 * [Step 4: Set up MongoDB Compass](#mongodb_compass)
-* [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_api)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_api)
+* [Step 5: Set up context-based restrictions](#mongodb_cbr)
+* [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_api)
+* [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_api)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -64,9 +67,10 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision through Terraform](#provision_instance_tf)
 * [Step 3: Set your Admin password](#admin_pw)
-* [Step 4: Set up through MongoDB Compass](#mongodb_compass)
-* [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_tf)
+* [Step 4: Set up  MongoDB Compass](#mongodb_compass)
+* [Step 5: Set up context-based restrictions](#mongodb_cbr)
+* [Step 6: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
+* [Step 7: Connect {{site.data.keyword.at_full}}](#activity_tracker_tf)
 {: terraform}
 
 
@@ -399,7 +403,14 @@ Next, you see the default databases for your deployment, which all hold informat
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the console
+## Step 5: Set up context-based restrictions
+{: #mongodb_cbr}
+
+Context-based restrictions give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with context-based restrictions and Identity and Access Management (IAM) policies.
+
+To set up context-based restrictions for your {{site.data.keyword.databases-for-mongodb}} instance, follow the steps at [Protecting {{site.data.keyword.databases-for}} resources with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr){: external}.
+
+## Step 6: Connect {{site.data.keyword.mon_full_notm}} through the console
 {: #connect_monitoring_ui}
 {: ui}
 
@@ -408,7 +419,7 @@ You can use {{site.data.keyword.mon_full_notm}} to get operational visibility in
 For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the CLI
+## Step 6: Connect {{site.data.keyword.mon_full_notm}} through the CLI
 {: #connect_monitoring_cli}
 {: cli}
 
@@ -419,7 +430,7 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the API
+## Step 6: Connect {{site.data.keyword.mon_full_notm}} through the API
 {: #connect_monitoring_api}
 {: api}
 
@@ -430,7 +441,7 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} through Terraform
+## Step 6: Connect {{site.data.keyword.mon_full_notm}} through Terraform
 {: #connect_monitoring_tf}
 {: terraform}
 
@@ -442,7 +453,7 @@ You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the
 {: note}
 
 
-## Step 5: Connect {{site.data.keyword.at_full}}
+## Step 7: Connect {{site.data.keyword.at_full}}
 {: #activity_tracker_ui}
 {: ui}
 
@@ -457,7 +468,7 @@ For more information about events specific to {{site.data.keyword.databases-for-
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 6: Connect {{site.data.keyword.at_full}} through the CLI
+## Step 7: Connect {{site.data.keyword.at_full}} through the CLI
 {: #activity_tracker_cli}
 {: cli}
 
@@ -474,7 +485,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} by using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} through the API
+## Step 7: Connect {{site.data.keyword.at_full}} through the API
 {: #activity_tracker_api}
 {: api}
 
@@ -491,7 +502,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} through Terraform
+## Step 7: Connect {{site.data.keyword.at_full}} through Terraform
 {: #activity_tracker_tf}
 {: terraform}
 
