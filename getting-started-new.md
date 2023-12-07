@@ -399,7 +399,7 @@ Next, you see the default databases for your deployment, which all hold informat
 
 Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} by using the console
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the console
 {: #connect_monitoring_ui}
 {: ui}
 
@@ -408,7 +408,7 @@ You can use {{site.data.keyword.mon_full_notm}} to get operational visibility in
 For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} by using the CLI
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the CLI
 {: #connect_monitoring_cli}
 {: cli}
 
@@ -419,7 +419,7 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} by using the API
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the API
 {: #connect_monitoring_api}
 {: api}
 
@@ -430,7 +430,7 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 {: note}
 
-## Step 5: Connect {{site.data.keyword.mon_full_notm}} using Terraform
+## Step 5: Connect {{site.data.keyword.mon_full_notm}} through Terraform
 {: #connect_monitoring_tf}
 {: terraform}
 
@@ -457,7 +457,7 @@ For more information about events specific to {{site.data.keyword.databases-for-
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 6: Connect {{site.data.keyword.at_full}} by using the CLI
+## Step 6: Connect {{site.data.keyword.at_full}} through the CLI
 {: #activity_tracker_cli}
 {: cli}
 
@@ -474,7 +474,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} by using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} by using the API
+## Step 6: Connect {{site.data.keyword.at_full}} through the API
 {: #activity_tracker_api}
 {: api}
 
@@ -491,7 +491,7 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}} using Terraform
+## Step 6: Connect {{site.data.keyword.at_full}} through Terraform
 {: #activity_tracker_tf}
 {: terraform}
 
