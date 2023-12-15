@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-10-26"
+lastupdated: "2023-12-15"
 
-keyowrds: mongodb, databases, upgrading, new deployment, major version, upgrade
+keywords: mongodb, databases, upgrading, new deployment, major version, upgrade
 
 subcollection: databases-for-mongodb
 
@@ -16,10 +16,10 @@ subcollection: databases-for-mongodb
 
 When a major version of a database is at its end of life (EOL), upgrade to the next available major version.
 
-Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see our [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}. 
+Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see our [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
 Rolling back versions is not supported.
-{: .note} 
+{: .note}
 
 Upgrade to the latest version of MongoDB available to {{site.data.keyword.databases-for-mongodb}}. Find the latest version from the catalog page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases){: external} endpoint.
 
@@ -36,7 +36,8 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 | Current Version |	Major Version Upgrade Path |
 | ---- | ----- |
 | MongoDB 4.4 |	-> MongoDB 4.4 -> 5.0 |
-| MongoDB 5.0 |	-> Latest version |
+| MongoDB 5.0 |	-> MongoDB 5.0 -> 6.0 |
+| MongoDB 6.0 |	-> Latest version |
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
 
 ## Upgrading in the UI
