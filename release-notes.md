@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-11-29"
+lastupdated: "2023-12-15"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 15 December 2023
+{: #databases-for-mongodb-15dec2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} version 6 released
+:  [{{site.data.keyword.databases-for-mongodb}} version 6](https://www.mongodb.com/blog/post/mongodb-6-0-now-available){: external} is now available. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
 
 ## 22 November 2023
 {: #databases-for-mongodb-22nov2023}
