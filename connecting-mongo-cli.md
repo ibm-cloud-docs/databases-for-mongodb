@@ -1,28 +1,22 @@
 ---
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-11-16"
+  years: 2019, 2023
+lastupdated: "2023-12-18"
 
-keywords: mongodb, databases, mongo shell
+keywords: mongodb, databases, mongo shell, mongosh
 
 subcollection: databases-for-mongodb
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting with the MongoDB Shell
 {: #connecting-cli-client}
 
-You can access your MongoDB database from a command-line client, which allows for direct interaction and monitoring of the data structures that are created within the database. Use it to query and update data, as well to perform administrative operations and monitor performance. 
+You can access your MongoDB database from a command-line client, which allows for direct interaction and monitoring of the data structures that are created within the database. Use it to query and update data, as well to perform administrative operations and monitor performance.
 
-## Installing 
+## Installing
 {: #connecting-cli-client-install}
 
 The MongoDB shell is available as part of the MongoDB distribution. Download it [here](https://www.mongodb.com/try/download/shell){: .external}.
@@ -31,8 +25,6 @@ The MongoDB shell is available as part of the MongoDB distribution. Download it 
 {: #connecting-cli-connect}
 
 Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
-
-![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="Figure 1. CLI Endpoints panel" caption-side="bottom"}
 
 The information the MongoDB shell needs to connect to your deployment is in the "cli" section the connection strings. The table contains a breakdown for reference.
 
@@ -56,12 +48,12 @@ The information the MongoDB shell needs to connect to your deployment is in the 
 mongosh -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
 ```
 
-* `mongosh` - The command itself. 
+* `mongosh` - The command itself.
 * `--ssl --sslCAFile` - The path and name of the self-signed certificate for your deployment.
 * `-u` - The parameter for the username.
-* `-p` - The parameter for the password. 
+* `-p` - The parameter for the password.
 * `--authenticationDatabase` - The database where the user and its credentials are created and stored.
-* `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members. 
+* `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members.
 
 ## Starting the MongoDB Shell from the IBM Cloud CLI
 {: #connecting-cli-client-ibmcloud-cli}
@@ -81,8 +73,8 @@ The option `--start` must come before the parameters, otherwise connection infor
 ## Using the self-signed certificate
 {: #connecting-cli-client-cert}
 
-1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information. 
-2. If needed, decode the Base64 string into text. 
+1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information.
+2. If needed, decode the Base64 string into text.
 3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the `--sslCAFile` parameter.
 
