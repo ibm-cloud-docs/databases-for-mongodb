@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-10-23"
+lastupdated: "2023-12-22"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -25,6 +25,7 @@ When increased demand or workload requires database scaling, you can scale verti
 ## MongoDB EE Sharding Add-On Considerations
 {: #mongodbee-sharding-consider}
 
+- {{site.data.keyword.databases-for-mongodb}} EE Sharding requires [{{site.data.keyword.databases-for}} Isolated Compute](docs/cloud-databases?topic=cloud-databases-hosting-models){: external}.
 - Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for provisioning nodes according to user needs, scaling vertically or horizontally. You are expected to:
    - [Enable sharding in each of the databases](#mongodbee-sharding-enable-sharding-databases) in your {{site.data.keyword.databases-for-mongodb}} EE Sharding instance.
    - [Enable sharding in each of the collections](#mongodbee-sharding-enable-sharding-collections) of a database. Unsharded collections get stored in a single shard. These unbalanced nodes can get full before others and cause operational problems.
@@ -46,17 +47,30 @@ When increased demand or workload requires database scaling, you can scale verti
 {: #mongodbee-sharding-node-provisioning-ui}
 {: ui}
 
-Provision through the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}. 
-- Within **Service Configuration**, find the **Database Edition** menu. 
-- Select *Enterprise Sharding*.
+{{site.data.keyword.databases-for-mongodb}} EE Sharding requires {{site.data.keyword.databases-for}} Isolated Compute. To configure Isolated Compute, follow the appropriate steps at [Hosting Models](docs/cloud-databases?topic=cloud-databases-hosting-models){: external}.
+{: requirement}
 
-For more information, see [Provisioning](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning).
+Provision through the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}.
+- Within **Service Configuration**, find the **Database Edition** menu.
+- Select *Enterprise Sharding*.
 
 ### Provision through Terraform
 {: #mongodbee-sharding-node-provisioning-terraform}
 {: terraform}
 
-{{site.data.keyword.databases-for-mongodb}} EE Sharding is a `plan` attribute that can be added to a Terraform script. The plan name is `enterprise-sharding`. See an example here:
+{{site.data.keyword.databases-for-mongodb}} EE Sharding requires {{site.data.keyword.databases-for}} Isolated Compute. To configure Isolated Compute, follow the appropriate steps at [Hosting Models](docs/cloud-databases?topic=cloud-databases-hosting-models){: external}.
+{: requirement}
+
+{{site.data.keyword.databases-for-mongodb}} EE Sharding is a `plan` attribute that can be added to a Terraform script. The plan name is `enterprise-sharding`.
+
+#### Isolated Compute
+{: #mongodbee-sharding-node-provisioning-terraform-iso-compute}
+
+Through dedicated computing resources and security, Isolated Compute is the service for secure enterprise data hosting.
+
+{{site.data.keyword.databases-for-mongodb}} EE Sharding requires Isolated Compute. To provision with Isolated Compute, add `host_flavor` to your Terraform script, along with the appropriate resource allocation.
+
+The script looks like:
 
 ```terraform
 data "ibm_resource_group" "test_acc" {
@@ -75,11 +89,15 @@ resource "ibm_database" "mongodb_enterprise" {
   group {
     group_id = "member"
 
-    memory { 
+    host_flavor {
+      id = "b3c.8x32.encrypted"
+    }
+
+    memory {
       allocation_mb = 24576
     }
 
-    disk { 
+    disk {
       allocation_mb = 122880
     }
 
@@ -114,18 +132,21 @@ If successful, expect an output that looks like:
 sharding_connection = "mongodb://admin:$PASSWORD@71dff696-864b-4051-9f3a-db1445567912-r-0.bn5hbied0ao9rn2ced1g.databases.appdomain.cloud:30092,71dff696-864b-4051-9f3a-db1445567912-r-1.bn5hbied0ao9rn2ced1g.databases.appdomain.cloud:30122,71dff696-864b-4051-9f3a-db1445567912-r-2.bn5hbied0ao9rn2ced1g.databases.appdomain.cloud:31235?authMechanism=SCRAM-SHA-256&authSource=admin&tls=true"
 ```
 
-For more information, see [Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}. 
+For more information, see [Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}.
 
 ### Provisioning through the {{site.data.keyword.cloud_notm}} Databases API
 {: #mongodbee-sharding-node-provisioning-api}
 {: api}
+
+{{site.data.keyword.databases-for-mongodb}} EE Sharding requires {{site.data.keyword.databases-for}} Isolated Compute. To configure Isolated Compute, follow the appropriate steps at [Hosting Models](docs/cloud-databases?topic=cloud-databases-hosting-models){: external}.
+{: requirement}
 
 Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
 1. You need to know the ID of the resource group that you would like to provision into. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
 
-   Use a command like: 
+   Use a command like:
    ```sh
    ibmcloud resource groups
    ```
@@ -133,9 +154,9 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 
 1. You need to know the region you would like to provision into.
 
-   To list all of the regions that instances can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}. 
-   
-   The command looks like: 
+   To list all of the regions that instances can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
+
+   The command looks like:
 
    ```sh
    ibmcloud cdb regions --json
@@ -144,7 +165,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 
 
    Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
-   
+
    ```sh
    curl -X POST \
      https://resource-controller.cloud.ibm.com/v2/resource_instances \
