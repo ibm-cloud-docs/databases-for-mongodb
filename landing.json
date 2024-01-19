@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for MongoDB docs",
-    "lastupdated": "2023-12-15",
+    "lastupdated": "2024-01-19",
     "introduction": "MongoDB is a JSON document store with a rich query and aggregation framework.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
@@ -34,6 +34,11 @@
       "view_more": "/docs/acme-test?topic=acme-test-release-notes",
       "tiles": [
         {
+          "date": "19 January 2024",
+          "title": "Databases for MongoDB End of life announcement: Version 5 reaches end of life on September 25, 2024",
+          "description": "All IBM Cloud® Databases for MongoDB instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our backup and restore process before the EOL date of your version. For more information, see Upgrading to a new Major Version."
+        },
+        {
           "date": "15 December 2023",
           "title": "Databases for MongoDB version 6 released",
           "description": "Databases for MongoDB version 6 is now available. For more information, see Upgrading to a new Major Version."
@@ -42,11 +47,6 @@
           "date": "13 November 2023",
           "title": "Databases for MongoDB Plans documentation",
           "description": "Databases for MongoDB Plans documentation created."
-        },
-        {
-          "date": "12 October 2023",
-          "title": "Databases for MongoDB end of life dates",
-          "description": "End of life announcement: Version 4.2 reaches end of life July 2023. Version 4.4 reaches end of life 26 April 2024. Version 5 reaches end of life September 2024. All Databases for MongoDB instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our backup and restore process before the EOL date of your version."
         }
       ]
     }
