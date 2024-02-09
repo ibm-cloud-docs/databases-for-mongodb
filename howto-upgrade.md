@@ -1,9 +1,9 @@
 ---
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-12-15"
+  years: 2019, 2024
+lastupdated: "2024-02-09"
 
-keywords: mongodb, databases, upgrading, new deployment, major version, upgrade
+keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
 subcollection: databases-for-mongodb
 
@@ -16,14 +16,14 @@ subcollection: databases-for-mongodb
 
 When a major version of a database is at its end of life (EOL), upgrade to the next available major version.
 
-Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see our [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
 Rolling back versions is not supported.
 {: .note}
 
 Upgrade to the latest version of MongoDB available to {{site.data.keyword.databases-for-mongodb}}. Find the latest version from the catalog page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases){: external} endpoint.
 
-Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} of your data into a new deployment. Restoring from a backup has a number of advantages:
+Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} of your data into a new deployment. Restoring from a backup has various advantages:
 
 - The original database stays running and production work can be uninterrupted.
 - You can test the new database out of production and act on any application incompatibilities.
@@ -63,7 +63,7 @@ The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are
 ibmcloud resource service-instance-create example-upgrade databases-for-mongodb standard us-south \
 -p \ '{
   "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-  "version":5.0
+  "version":"5.0"
 }'
 ```
 {: pre}
@@ -85,7 +85,7 @@ curl -X POST \
     "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
     "resource_plan_id": "databases-for-mongodb-standard",
     "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-    "version":5.0
+    "version":"5.0"
   }'
 ```
 {: pre}
