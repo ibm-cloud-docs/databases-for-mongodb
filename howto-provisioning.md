@@ -307,7 +307,7 @@ The `host_flavor` parameter defines your Isolated Compute sizing. Input the appr
 | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
 | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Table 2. Host Flavor sizing parameter" caption-side="bottom"}
+{: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
 
 CPU and RAM allocation is not allowed when provisioning or scaling through Isolated Compute. You must specify `multitenant` for the `host_flavor` parameter.
 {: note}
