@@ -24,18 +24,18 @@ Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through 
 Provision from the catalog by specifying the following parameters:
 
 - Service Details:
-   - Service name - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
-   - Resource group - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
-   - Location - The deployment's public cloud region or Satellite location.
+   - Service name: The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
+   - Resource group: If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
+   - Location: The deployment's public cloud region or Satellite location.
 - Hosting type:
-    - Isolated - Secure single-tenant offering for complex, highly-performant enterprise workloads.
-    - Shared - Flexible multi-tenant offering for dynamic, fine-tuned, and decouple capacity selections.
-- Resource allocation - Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. *Once provisioned, disk cannot be scaled down.*
+    - Isolated: Secure single-tenant offering for complex, highly-performant enterprise workloads.
+    - Shared: Flexible multi-tenant offering for dynamic, fine-tuned, and decouple capacity selections.
+- Resource allocation: Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. *Once provisioned, disk cannot be scaled down.*
 - Service Configuration
-    - Database Version [Set only at deployment]{: tag-red} - This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-    - Database Edition [Set only at deployment]{: tag-red} - Select either "Standard" or "Enterprise". For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){L external}.
-    - Encryption [Set only at deployment]{: tag-red} - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-    - Endpoints - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
+    - Database Version: [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+    - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){L external}.
+    - Encryption: [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
+    - Endpoints: Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
