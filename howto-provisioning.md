@@ -43,10 +43,6 @@ After you select the appropriate settings, click **Create** to start the provisi
 {: #use-cli}
 {: cli}
 
-### Create a service instance through the CLI
-{: #create-service-instance-cli}
-{: cli}
-
 Before provisioning, follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
 
 1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API ke(`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
@@ -57,7 +53,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       {: pre}
 
 
-1. Create a {{site.data.keyword.databases-for-mongodb}} service instance within {{site.data.keyword.cloud_notm}} by running a command like:
+1. Provision a {{site.data.keyword.databases-for-mongodb}} Shared service instance with a command like:
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP>
@@ -74,6 +70,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
+   | `host_flavor` | For Shared Compute, specify `multitenant`. To provision an Isolated Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. The `host_flavor value` parameter defines your Isolated Compute sizing. For more information, see Hosting Models(/docs/cloud-databases?topic=cloud-databases-hosting-models)| |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
 
    You will see a response like:
