@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-02-24"
+lastupdated: "2024-02-26"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -33,7 +33,7 @@ Provision from the catalog by specifying the following parameters:
 - Resource allocation: Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. *Once provisioned, disk cannot be scaled down.*
 - Service Configuration
     - Database Version: [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-    - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){L external}.
+    - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
     - Encryption: [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
     - Endpoints: Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
 
