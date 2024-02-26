@@ -30,7 +30,7 @@ Provision from the catalog by specifying the following parameters:
 - Hosting type:
     - Isolated: Secure single-tenant offering for complex, highly-performant enterprise workloads.
     - Shared: Flexible multi-tenant offering for dynamic, fine-tuned, and decouple capacity selections.
-- Resource allocation: Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. *Once provisioned, disk cannot be scaled down.*
+- Resource allocation: Fine tune your resource allocation, or choose to automatically allocate your performance. If you don’t select your CPU amount, CPU will be automatically allocated for you at a 1:8 CPU to RAM ratio, limited up to 2 cores. *Once provisioned, disk cannot be scaled down.* With Isolated Compute, take your security posture to a new level with not only single-tenanted instance isolation, but also isolated database management agents, dedicated IO bandwidth, and dedicated network bandwidth.
 - Service Configuration
     - Database Version: [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
     - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
@@ -45,7 +45,7 @@ After you select the appropriate settings, click **Create** to start the provisi
 
 Before provisioning, follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](https://www.ibm.com/cloud/cli){: external}.
 
-1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API ke(`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
+1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API ke(`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log through the CLI, see [General CLI commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external}.
 
       ```sh
       ibmcloud login
@@ -79,6 +79,24 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    | `host_flavor` | For Shared Compute, specify `multitenant`. To provision an Isolated Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. The `host_flavor value` parameter defines your Isolated Compute sizing. For more information, see [Hosting Models](/docs/cloud-databases?topic=cloud-databases-hosting-models)| |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
+
+The `host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`.
+| **Host Flavor** | **host_flavor value** |
+|:-------------------------:|:---------------------:|
+| Shared Compute            | `multitenant`    |
+| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
+| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
+| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
+| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
+| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
+| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
+{: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
+
+CPU and RAM allocation is not allowed when provisioning or scaling through Isolated Compute. You must specify `multitenant` for the `host_flavor` parameter.
+{: note}
+
+CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+{: note}
 
 1. To check provisioning status, use the following command:
 
@@ -185,6 +203,24 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 
    The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
    {: required}
+
+The `host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`.
+| **Host Flavor** | **host_flavor value** |
+|:-------------------------:|:---------------------:|
+| Shared Compute            | `multitenant`    |
+| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
+| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
+| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
+| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
+| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
+| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
+{: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
+
+CPU and RAM allocation is not allowed when provisioning or scaling through Isolated Compute. You must specify `multitenant` for the `host_flavor` parameter.
+{: note}
+
+CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+{: note}
 
 ## List of Additional Parameters
 {: #provisioning-parameters-api}
