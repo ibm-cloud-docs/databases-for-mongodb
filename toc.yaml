@@ -61,8 +61,12 @@ toc:
           topics:
           - howto-resources-scaling.md
           - howto-autoscaling.md
-      - include: ../cloud-databases/howto-manage-backups.md
-      - include: ../cloud-databases/howto-allowlists.md
+      - link:
+          label: Managing Cloud Databases backups
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups
+      - link:
+          label: Allowlisting
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-allowlisting
       - howto-upgrading.md
       - topicgroup:
           label: Tutorials
