@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-02-26"
+lastupdated: "2024-03-14"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -33,7 +33,7 @@ Provision from the catalog by specifying the following parameters:
 - Resource allocation: Fine tune your resource allocation. Choose the minimum allocation for testing, and then you can customize to or above 2 CPU. *Once provisioned, disk cannot be scaled down.* With Isolated Compute, take your security posture to a new level with not only single-tenanted instance isolation, but also isolated database management agents, dedicated IO bandwidth, and dedicated network bandwidth.
 - Service Configuration
     - Database Version: [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-    - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". Note that the Standard plan is not possible for shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+    - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". Note that the Standard plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
     - Encryption: [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
     - Endpoints: Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
 
@@ -234,9 +234,9 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
    To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect#byok-for-backups).
    {: note}
 
-* `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to Shared Compute.
-* `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used. This parameter only applies to Shared Compute.
-* `members_cpu_allocation_count` - Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts. This parameter only applies to Shared Compute.
+* `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
+* `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used.This parameter only applies to `multitenant'.
+* `members_cpu_allocation_count` - Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts. This parameter only applies to `multitenant'.
 * `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.*
 
    In the CLI, `service-endpoints` is a flag, not a parameter.
