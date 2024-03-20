@@ -58,10 +58,13 @@ Once provisioned, disk cannot be scaled down.
 - **Database Version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 - **Database Edition:** [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise".<br>
  Note that the Standard plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}. 
+ 
  The Standard plan is not possible for Shared hosting.
  {: important}
+ 
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.<br>
+- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
+
 A MongoDB deployment cannot have both public and private endpoints simultaneously.
 {: note}
 
