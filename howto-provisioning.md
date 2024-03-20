@@ -61,7 +61,9 @@ Once provisioned, disk cannot be scaled down.
  The Standard plan is not possible for Shared hosting.
  {: important}
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
+- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.<br>
+A MongoDB deployment cannot have both public and private endpoints simultaneously.
+{: note}
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
