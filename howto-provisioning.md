@@ -36,7 +36,7 @@ Provision from the UI by specifying the following parameters:
 {: ui}
 
 - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
-- **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decouple capacity selections.<br>
+- **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
 For more information, see [Cloud Databases Hosting Types](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 
 ### Resource allocation
