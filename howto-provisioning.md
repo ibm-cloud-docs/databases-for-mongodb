@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-03-14"
+lastupdated: "2024-03-19"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -17,25 +17,49 @@ subcollection: databases-for-mongodb
 
 Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
-## Provisioning through the catalog
+## Provisioning through the UI
 {: #catalog}
 {: ui}
 
-Provision from the catalog by specifying the following parameters:
+Provision from the UI by specifying the following parameters:
 
-- Service Details:
-   - Service name: The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
-   - Resource group: If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
-   - Location: The deployment's public cloud region or Satellite location.
-- Hosting type:
-    - Isolated: Secure single-tenant offering for complex, highly-performant enterprise workloads.
-    - Shared: Flexible multi-tenant offering for dynamic, fine-tuned, and decouple capacity selections.
-- Resource allocation: Fine tune your resource allocation. Choose the minimum allocation for testing, and then you can customize to or above 2 CPU. *Once provisioned, disk cannot be scaled down.* With Isolated Compute, take your security posture to a new level with not only single-tenanted instance isolation, but also isolated database management agents, dedicated IO bandwidth, and dedicated network bandwidth.
-- Service Configuration
-    - Database Version: [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-    - Database Edition: [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise". Note that the Standard plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
-    - Encryption: [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-    - Endpoints: Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
+### Service details
+{: #service_details}
+{: ui}
+
+- **Service name:** The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
+- **Resource group:** If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
+- **Location:** The deployment's public cloud region or Satellite location.
+
+### Hosting type
+{: #hosting_type}
+{: ui}
+
+- **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
+- **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decouple capacity selections.<br>
+For more information, see [Cloud Databases Hosting Types](/docs/cloud-databases?topic=cloud-databases-hosting-models).
+
+### Resource allocation
+{: #resource_allocation}
+{: ui}
+
+Fine tune your resource allocation.
+
+   - **Test:** Choose the minimum allocation for testing, then you can customize to or above 2 CPU.
+   - **Production:** With Isolated Compute, take your security posture to a new level with not only single-tenanted instance isolation, but also isolated database management agents, dedicated IO bandwidth, and dedicated network bandwidth.
+
+Once provisioned, disk cannot be scaled down.
+{: note}
+
+### Service Configuration
+{: #service_configuration}
+{: ui}
+
+- **Database Version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+- **Database Edition:** [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise".<br>
+ Note that the Standard plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+- **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
+- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A MongoDB deployment cannot have both public and private endpoints simultaneously*.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
