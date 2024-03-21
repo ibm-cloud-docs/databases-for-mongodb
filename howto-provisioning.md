@@ -57,10 +57,8 @@ Once provisioned, disk cannot be scaled down.
 
 - **Database Version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 - **Database Edition:** [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise".<br>
- Note that the Standard plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}. 
+ Note that the Enterprise plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}. 
  
- The Standard plan is not possible for Shared hosting.
- {: important}
  
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
 - **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
@@ -123,8 +121,6 @@ The `host_flavor` parameter defines your Compute sizing. Input the appropriate v
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
 
-CPU and RAM customization is not allowed when provisioning or scaling through Isolated Compute. You must specify `multitenant` for the `host_flavor` parameter.
-{: note}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
@@ -247,8 +243,6 @@ The `host_flavor` parameter defines your Compute sizing. Input the appropriate v
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
 
-CPU and RAM customization is not allowed when provisioning or scaling through Isolated Compute. You must specify `multitenant` for the `host_flavor` parameter.
-{: note}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
@@ -282,7 +276,7 @@ Use Terraform to manage your infrastructure through the [`ibm_database` Resource
 Before executing a Terraform script on an existing instance, use the `terraform plan` command to compare the current infrastructure state with the desired state defined in your Terraform files. Any alteration to the `resource_group_id`, `service plan`, `version`, `key_protect_instance`, `key_protect_key`, `backup_encryption_key_crn` attributes recreates your instance. For a list of current argument references with the `Forces new resource` specification, see the [ibm_database Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 {: important}
 
-To provision an instance through Isolated Compute, use Terraform.
+To provision an instance through Isolated Compute:
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -320,7 +314,7 @@ output "ICD Etcd database connection string" {
 ```
 {: codeblock}
 
-To provision an instance through Shared Compute, use Terraform.
+To provision an instance through Shared Compute:
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -376,8 +370,6 @@ The `host_flavor` parameter defines your Isolated Compute sizing. Input the appr
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
 
-CPU and RAM customization is not allowed when provisioning or scaling through Isolated Compute. You must specify `multitenant` for the `host_flavor` parameter.
-{: note}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
