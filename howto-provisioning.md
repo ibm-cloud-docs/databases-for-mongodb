@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-03-20"
+lastupdated: "2024-04-04"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -31,13 +31,13 @@ Provision from the UI by specifying the following parameters:
 - **Resource group:** If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
 - **Location:** The deployment's public cloud region or Satellite location.
 
-### Hosting type
-{: #hosting_type}
+### Hosting model
+{: #hosting_model}
 {: ui}
 
 - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
 - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
-For more information, see [Cloud Databases Hosting Types](/docs/cloud-databases?topic=cloud-databases-hosting-models).
+For more information, see [Cloud Databases Hosting Models](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 
 ### Resource allocation
 {: #resource_allocation}
