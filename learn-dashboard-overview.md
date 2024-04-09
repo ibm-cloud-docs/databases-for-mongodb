@@ -44,7 +44,7 @@ The _Endpoints_ pane within the _Overview_ pane contains connection strings for 
 
 Reference tables for the different connection types are available on the [Getting Credentials and Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) page.
 
-Connection strings reflect whether your deployment uses public endpoints, private endpoints or both. You can configure which endpoints are available on your deployment. For more information, see the [Service Endpoints Integration](/docs/databases-for-mongodb?topic=cloud-databases-service-endpoints) page.
+Connection strings reflect whether your deployment uses public endpoints, private endpoints or both. You can configure which endpoints are available on your deployment. For more information, see the [Service Endpoints Integration](/docs/cloud-databases?topic=cloud-databases-service-endpoints) page.
 
 You can manage your {{site.data.keyword.databases-for-mongodb}} service through the {{site.data.keyword.databases-for}} API. This panel provides the essential information for using the API. For more information about the {{site.data.keyword.databases-for}} API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
 
