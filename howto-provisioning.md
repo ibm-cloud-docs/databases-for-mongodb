@@ -43,12 +43,12 @@ For more information, see [Cloud Databases Hosting Models](/docs/cloud-databases
 {: #resource_allocation}
 {: ui}
 
-Fine tune your resource allocation.
+Fine tune your resource allocation. The available options differ based on your selected hosting model.
 
-   - **Test:** Choose the minimum allocation for testing, then you can customize to or above 2 CPU.
-   - **Production:** With Isolated Compute, take your security posture to a new level with not only single-tenanted instance isolation, but also isolated database management agents, dedicated IO bandwidth, and dedicated network bandwidth.
+   - **Isolated:** Use the table to choose the machine size for each member of your deployment and specify the disk size.
+   - **Shared:** By default the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations select the 'Custom' tile which allows flexible resource configuration with 2+ cores. 
 
-Once provisioned, disk cannot be scaled down.
+Specify the disk size depending on your requirements. This can be increased after provisioning but can not be decreased to prevent data loss.
 {: note}
 
 ### Service Configuration
