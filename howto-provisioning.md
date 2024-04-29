@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-04-15"
+lastupdated: "2024-04-29"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -48,7 +48,7 @@ Fine tune your resource allocation. The available options differ based on your s
    - **Isolated:** Use the table to choose the machine size for each member of your deployment, and specify the disk size.
    - **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores. 
 
-Specify the disk size depending on your requirements. This can be increased after provisioning but cannot be decreased to prevent data loss.
+Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 {: note}
 
 ### Service Configuration
