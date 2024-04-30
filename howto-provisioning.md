@@ -17,11 +17,11 @@ subcollection: databases-for-mongodb
 
 Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
-## Provisioning through the UI
+## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
 {: ui}
 
-Provision from the UI by specifying the following parameters:
+Provision from the console by specifying the following parameters:
 
 ### Service details
 {: #service_details}
