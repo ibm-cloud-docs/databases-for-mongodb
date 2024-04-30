@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-01-19"
+lastupdated: "2024-04-30"
 
 keywords: databases-for-mongodb release notes
 
@@ -14,11 +14,18 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for {{site.data.keyword.databases-for-mongodb_full}}
+# Release notes
 {: #mongodb-relnotes}
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 1 May 2024
+{: #databases-for-mongodb-01may2024}
+{: release-note}
+
+New hosting models
+:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types&interface=ui#hosting-models-iso-compute-ui){: external}.
 
 ## 18 January 2024
 {: #databases-for-mongodb-18jan2024}
