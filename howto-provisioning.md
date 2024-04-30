@@ -229,7 +229,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 
 The `host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`.
 
-| **Host Flavor** | **host_flavor value** |
+| **Host flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
 | Shared Compute            | `multitenant`    |
 | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
@@ -356,7 +356,7 @@ output "ICD Etcd database connection string" {
 
 The `host_flavor` parameter defines your Isolated Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`.
 
-| **Host Flavor** | **host_flavor value** |
+| **Host flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
 | Shared Compute            | `multitenant`    |
 | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
