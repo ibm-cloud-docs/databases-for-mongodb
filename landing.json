@@ -33,7 +33,7 @@
     "section_updates": {
       "view_more": "/docs/acme-test?topic=acme-test-release-notes",
       "tiles": [
-         {
+        {
           "date": "1 May 2024",
           "title": "New hosting models",
           "description": "You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections."
