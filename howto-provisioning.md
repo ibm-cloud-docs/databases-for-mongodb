@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-05-01"
+lastupdated: "2024-05-02"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -37,7 +37,7 @@ Provision from the console by specifying the following parameters:
 
 - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
 - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
-For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types).
+For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 
 ### Resource allocation
 {: #resource_allocation}
