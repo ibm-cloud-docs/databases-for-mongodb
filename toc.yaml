@@ -22,9 +22,12 @@ toc:
           label: What is MongoDB?
           href: https://www.ibm.com/cloud/learn/mongodb
       - getting-started.md
-      - include: ../cloud-databases/hosting-models.md
-      - include: ../cloud-databases/hosting-pricing.md
       - mongodbee.md
+      - topicgroup:
+          label: Hosting models
+          topics: 
+          - include: ../cloud-databases/hosting-models.md
+          - include: ../cloud-databases/hosting-pricing.md
       - learn-dashboard-overview.md
       - learn-high-availability.md
       - learn-performance.md
