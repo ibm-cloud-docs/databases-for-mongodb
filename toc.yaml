@@ -56,7 +56,7 @@ toc:
           - connecting-ibmcloud-app.md
           - connecting-mongo-cli.md
       - topicgroup:
-          label: Managing Resources
+          label: Managing resources
           topics:
           - howto-resources-scaling.md
           - howto-autoscaling.md
@@ -64,32 +64,35 @@ toc:
       - link:
           label: Managing Cloud Databases backups
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups
-      - link:
-          label: Allowlisting
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-allowlisting
       - topicgroup:
           label: Logging and monitoring
           topics:
           - link:
-              label: Monitoring Integration
+              label: Monitoring integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring
           - link:
-              label: Activity Tracker Integration
+              label: Activity Tracker integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
           - link:
-              label: Log Analysis Integration
+              label: Log Analysis integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-logging
           - link:
               label: IBM Cloud® Monitoring
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-sysdig-monitor
       - topicgroup:
           label: Enhancing security
-          topics:
+          topics:          
           - include: ../cloud-databases/manage-scc.md
           - learn-security-compliance.md
           - include: ../cloud-databases/howto-cbr.md
+          - include: ../cloud-databases/howto-allowlists.md
+          - include: ../cloud-databases/reference-service-endpoints.md
+          - include: ../cloud-databases/howto-vpes.md
+          - include: ../cloud-databases/reference-iam.md
+          - include: ../cloud-databases/reference-key-protect.md
+          - include: ../cloud-databases/reference-hpcs.md
           - include: ../cloud-databases/cbr-tutorial.md
-      - include: ../cloud-databases/howto-deprovisioning.md
+          - include: ../cloud-databases/howto-deprovisioning.md
   - navgroup:
       id: tutorial
       topics:
@@ -97,7 +100,7 @@ toc:
           label: Getting Started with Cloud Databases tutorials
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-getting-started
       - link:
-          label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes Service application
+          label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes service application
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app
       - link:
           label: Example context-based restrictions scenarios
@@ -109,7 +112,7 @@ toc:
       id: reference
       topics:
       - link:
-          label: Versioning Policy
+          label: Versioning policy
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy
       - link:
           label: Cloud Databases CLI plug-in
@@ -118,16 +121,8 @@ toc:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
       - link:
-          label: Getting to Production
+          label: Getting to production
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
-      - topicgroup:
-          label: Connecting over Private Networks
-          topics:
-          - include: ../cloud-databases/howto-vpes.md
-          - include: ../cloud-databases/reference-service-endpoints.md
-      - include: ../cloud-databases/reference-key-protect.md
-      - include: ../cloud-databases/reference-iam.md
-      - include: ../cloud-databases/reference-hpcs.md
       - include: ../cloud-databases/reference-responsibilities.md
   - navgroup:
       id: help
