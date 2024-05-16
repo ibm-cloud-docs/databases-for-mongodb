@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023
-lastupdated: "2023-11-13"
+  years: 2024
+lastupdated: "2024-05-16"
 
 keywords: mongodb ee, mongodb enterprise, mongodb enterprise edition, mongodb eneterprise plan
 
@@ -18,6 +18,9 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.databases-for}} offers two plans for MongoDB: **{{site.data.keyword.databases-for-mongodb_full}}** and **{{site.data.keyword.databases-for-mongodb_full}} Enterprise**. {{site.data.keyword.databases-for-mongodb}} is a fully managed NoSQL database service based on the MongoDB Community Edition. {{site.data.keyword.databases-for-mongodb}} Enterprise offers advanced features, such as the [MongoDB Ops Manager](#ops-manager), the [Analytics Add-on](#analytics-add-on), and [point-in-time recovery](#point-in-time-recovery).
 
 The choice between the two depends on your specific needs, security requirements, and budget.
+
+**{{site.data.keyword.databases-for-mongodb_full}} Enterprise** is only available on *Isolated Compute* and *Dedicated Cores* hosting models. *Dedicated cores* will be replaced by *Isolated Compute* as of May, 2025.
+{: #note}
 
 ## Enterprise Edition Features
 {: #mongodb-plans-ee}
