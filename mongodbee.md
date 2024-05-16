@@ -19,7 +19,7 @@ subcollection: databases-for-mongodb
 
 The choice between the two depends on your specific needs, security requirements, and budget.
 
-**{{site.data.keyword.databases-for-mongodb_full}} Enterprise** is only available on *Isolated Compute* and *Dedicated Cores* hosting models. *Dedicated cores* will be replaced by *Isolated Compute* as of May, 2025.
+**{{site.data.keyword.databases-for-mongodb_full}} Enterprise** is only available on Isolated Compute and Dedicated Cores hosting models. Dedicated cores will be replaced by Isolated Compute as of May, 2025.
 {: note}
 
 ## Enterprise Edition Features
