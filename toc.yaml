@@ -99,9 +99,7 @@ toc:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
       - include: ../cloud-databases/db-version-policy.md
-      - link:
-          label: Getting to production
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
+      - include: ../cloud-databases/learn-getting-to-production.md
       - include: ../cloud-databases/reference-responsibilities.md
   - navgroup:
       id: help
@@ -111,9 +109,7 @@ toc:
           topics:
           - ts-connect.md
           - ts-workload.md
-          - link:
-              label: Why did my Terraform script delete my instance?
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-troubleshoot-terraform
+          - include: ../cloud-databases/ts-terraform.md
       - topicgroup:
           label: FAQs
           topics:
