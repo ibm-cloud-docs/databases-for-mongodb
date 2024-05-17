@@ -62,24 +62,14 @@ toc:
           - howto-resources-scaling.md
           - howto-autoscaling.md
           - howto-managing-connections.md
-      - link:
-          label: Managing Cloud Databases backups
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups
+      - include: ../cloud-databases/howto-manage-backups.md
       - topicgroup:
           label: Logging and monitoring
           topics:
-          - link:
-              label: Monitoring integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring
-          - link:
-              label: Activity Tracker integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
-          - link:
-              label: Log Analysis integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-logging
-          - link:
-              label: IBM Cloud® Monitoring
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-sysdig-monitor
+          - include: ../cloud-databases/reference-monitoring.md
+          - include: ../cloud-databases/reference-activity-tracker.md
+          - include: ../cloud-databases/reference-logging.md
+          - include: ../cloud-databases/reference-sysdig.md
       - topicgroup:
           label: Enhancing security
           topics:          
@@ -97,30 +87,17 @@ toc:
   - navgroup:
       id: tutorial
       topics:
-      - link:
-          label: Getting Started with Cloud Databases tutorials
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-getting-started
-      - link:
-          label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes service application
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app
-      - link:
-          label: Example context-based restrictions scenarios
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-cbr-tutorial
-      - link:
-          label: Setting up disk alerts for disk utilization
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial
-  - navgroup:
+      - include: ../cloud-databases/hello-world-tutorial.md
+      - include: ../cloud-databases/k8-tutorial.md
+      - include: ../cloud-databases/cbr-tutorial.md
+      - include: ../cloud-databases/disk-util-alerts-tutorial.md
       id: reference
       topics:
-      - link:
-          label: Versioning policy
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy
-      - link:
-          label: Cloud Databases CLI plug-in
-          href: https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference
+      - include: ../cloud-databases/icd-cli.md
       - link:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
+      - include: ../cloud-databases/db-version-policy.md
       - link:
           label: Getting to production
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
