@@ -38,10 +38,10 @@ Provision from the console by specifying the following parameters:
 - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
 - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise features are only available on Isolated Compute.
+{{site.data.keyword.databases-for-mongodb}} Enterprise features are only available on Isolated Compute.
 {: note}
 
-For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models) and [{{site.data.keyword.databases-for-mongodb}} plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans&interface=ui).
+For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models) and [{{site.data.keyword.databases-for-mongodb}} plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans).
 
 ### Resource allocation
 {: #resource_allocation}
