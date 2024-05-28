@@ -16,7 +16,7 @@ completion-time: 30m
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting Started with {{site.data.keyword.databases-for-mongodb}}
+# Getting started with {{site.data.keyword.databases-for-mongodb}}
 {: #getting-started-new}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
