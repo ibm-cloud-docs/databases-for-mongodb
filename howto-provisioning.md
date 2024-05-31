@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-05-16"
+lastupdated: "2024-05-30"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -83,14 +83,14 @@ Before provisioning, follow the instructions provided in the documentation to in
       ```
       {: pre}
 
-1. Select the [hosting model]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models)) you want your database to be provisioned on. This can be changed later. Provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute instance with a command like:
+1. Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models)) you want your database to be provisioned on. You  can change this later. Provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute instance with a command like:
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p `{"members_host_flavor": "multitenant"}`
    ```
    {: pre}
 
-   Provision a {{site.data.keyword.databases-for-mongodb}} Isolated Compute instance with the same `"members_host_flavor"` -p flag, which is instead set to the Isolated size. Available hosting sizes are listed in Table 2 below, as the  `host_flavor value` parameter. For example: `{"members_host_flavor": "b3c.4x16.encrypted"}`
+   Provision a {{site.data.keyword.databases-for-mongodb}} Isolated Compute instance with the same `"members_host_flavor"` -p parameter, which is instead set to the Isolated size. Available hosting sizes are listed in [Table 2](#table_host_flavor), as the  `host_flavor value` parameter. For example: `{"members_host_flavor": "b3c.4x16.encrypted"}`
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p `{"members_host_flavor": "<host_flavor value>"}`
@@ -122,6 +122,7 @@ The `host_flavor` parameter defines your Compute sizing. Input the appropriate v
 | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
+{: #table_host_flavor}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
@@ -172,7 +173,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 {: #flags-params-service-endpoints}
 {: cli}
 
-The `service-instance-create` command supports a `-p` flag, which allows JSON-formatted parameters to be passed to the provisioning process. For example, you can pass Cloud Resource Names (CRNs) as parameter values, which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
+The `service-instance-create` command supports a `-p` parameter, which allows JSON-formatted parameters to be passed to the provisioning process. For example, you can pass Cloud Resource Names (CRNs) as parameter values, which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
 
 For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 9 GB of memory across three members, then the command to provision 3 GBs per member looks like:
 
@@ -211,7 +212,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-   You should also determine what [hosting model]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models)) you want your database to be provisioned on. This can be changed later. The `host_flavor` parameter defines your sizing; to provision a Shared Compute instance and select flexible resources according to Shared Compute guidelines, specify `multitenant`. All other options place you on different Isolated Compute sizes. 
+   You should also determine which [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models)) you want your database to be provisioned on. You can change this later. The `host_flavor` parameter defines your sizing; to provision a Shared Compute instance and select flexible resources according to Shared Compute guidelines, specify `multitenant`. All other options place you on different Isolated Compute sizes. 
 
 | **Host flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
@@ -224,7 +225,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
    
-   Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller. The example below creates a Mongodb database on Isolated Compute, with a size of 4 CPU by 16 RAM. 
+   After you have all the information, [provision a new resource instance](/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller. The following example creates a Mongodb database on Isolated Compute, with a size of 4 CPU by 16 RAM. 
 
    ```sh
    curl -X POST \
@@ -278,7 +279,7 @@ Use Terraform to manage your infrastructure through the [`ibm_database` Resource
 Before executing a Terraform script on an existing instance, use the `terraform plan` command to compare the current infrastructure state with the desired state defined in your Terraform files. Any alteration to the `resource_group_id`, `service plan`, `version`, `key_protect_instance`, `key_protect_key`, `backup_encryption_key_crn` attributes recreates your instance. For a list of current argument references with the `Forces new resource` specification, see the [ibm_database Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 {: important}
 
-Select which [hosting model]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models)) you would like to place your database on. This can be changed later. Note that the `host_flavor` parameter defines your hosting model. To provision a Shared Compute instance, specify `multitenant`. All other options place you on different Isolated Compute sizes. 
+Select which [hosting model]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models)) you would like to place your database on. You can change this later. Note that the `host_flavor` parameter defines your hosting model. To provision a Shared Compute instance, specify `multitenant`. All other options place you on different Isolated Compute sizes. 
 
 | **Host flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
@@ -291,7 +292,7 @@ Select which [hosting model]([url](https://cloud.ibm.com/docs/cloud-databases?to
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 1. Host Flavor sizing parameter" caption-side="bottom"}
 
-To provision an instance through Isolated Compute hosting model:
+To provision an instance through the Isolated Compute hosting model:
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -329,7 +330,7 @@ output "ICD Etcd database connection string" {
 ```
 {: codeblock}
 
-To provision an instance through Shared Compute hosting model:
+To provision an instance through the Shared Compute hosting model:
 
 ```terraform
 data "ibm_resource_group" "group" {
