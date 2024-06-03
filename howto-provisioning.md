@@ -83,7 +83,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       ```
       {: pre}
 
-1. Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models)) you want your database to be provisioned on. You  can change this later. Provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute instance with a command like:
+1. Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be provisioned on. You  can change this later. Provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute instance with a command like:
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p `{"members_host_flavor": "multitenant"}`
@@ -212,7 +212,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-   You should also determine which [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models)) you want your database to be provisioned on. You can change this later. The `host_flavor` parameter defines your sizing; to provision a Shared Compute instance and select flexible resources according to Shared Compute guidelines, specify `multitenant`. All other options place you on different Isolated Compute sizes. 
+   You should also determine which [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be provisioned on. You can change this later. The `host_flavor` parameter defines your sizing; to provision a Shared Compute instance and select flexible resources according to Shared Compute guidelines, specify `multitenant`. All other options place you on different Isolated Compute sizes. 
 
 | **Host flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
