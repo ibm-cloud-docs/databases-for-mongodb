@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-04-11"
+  years: 2019, 2024
+lastupdated: "2024-05-28"
 
 keywords: mongodb, databases, replica set, best practices, high availability, transient connection failures
 
