@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2021
-lastupdated: "2021-12-22"
+  years: 2018, 2024
+lastupdated: "2024-05-28"
 
 keywords: deployment, crn, task, gui, api endpoint
 
@@ -17,7 +17,7 @@ subcollection: databases-for-mongodb
 {:pre: .pre}
 {:tip: .tip}
 
-# The Dashboard Overview
+# The Dashboard overview
 {: #dashboard-overview}
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-mongodb_full}} deployment. The overview includes essential identifying information.
