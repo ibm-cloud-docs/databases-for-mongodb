@@ -1,6 +1,3 @@
-#  Name your file `toc.yaml`
-#  Make sure you include all nav file coding requirements, as defined in https://test.cloud.ibm.com/docs/writing?topic=writing-code-nav
-#  Anything with a fully qualified URL with `http` or `https` will get an external link icon added to the nav entry
 ---
 toc:
   properties:
@@ -24,11 +21,13 @@ toc:
       - link:
           label: What is MongoDB?
           href: https://www.ibm.com/cloud/learn/mongodb
-      - mongodb-plans.md
       - getting-started.md
-      - link:
-          label: What is MongoDB?
-          href: https://www.ibm.com/cloud/learn/mongodb)
+      - mongodb-plans.md
+      - topicgroup:
+          label: Hosting models
+          topics: 
+          - include: ../cloud-databases/hosting-models.md
+          - include: ../cloud-databases/hosting-pricing.md
       - learn-dashboard-overview.md
       - learn-high-availability.md
       - learn-performance.md
@@ -49,6 +48,7 @@ toc:
           - howto-auditlogging.md
           - howto-ops-manager.md
           - howto-pitr.md
+          - howto-mongodbee-sharding.md
           - howto-enterprise-analytics.md
       - topicgroup:
           label: Connecting to Databases for MongoDB
@@ -57,77 +57,49 @@ toc:
           - connecting-ibmcloud-app.md
           - connecting-mongo-cli.md
       - topicgroup:
-          label: Managing Resources
+          label: Managing resources
           topics:
           - howto-resources-scaling.md
           - howto-autoscaling.md
-      - link:
-          label: Managing Cloud Databases backups
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups
-      - link:
-          label: Allowlisting
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-allowlisting
-      - howto-upgrading.md
+          - howto-managing-connections.md
+      - include: ../cloud-databases/howto-manage-backups.md
       - topicgroup:
           label: Logging and monitoring
           topics:
-          - link:
-              label: Monitoring Integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring
-          - link:
-              label: Activity Tracker Integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
-          - link:
-              label: Log Analysis Integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-logging
-          - link:
-              label: IBM Cloud® Monitoring
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-sysdig-monitor
+          - include: ../cloud-databases/reference-monitoring.md
+          - include: ../cloud-databases/reference-activity-tracker.md
+          - include: ../cloud-databases/reference-logging.md
+          - include: ../cloud-databases/reference-sysdig.md
       - topicgroup:
           label: Enhancing security
-          topics:
+          topics:          
           - include: ../cloud-databases/manage-scc.md
+          - learn-security-compliance.md
           - include: ../cloud-databases/howto-cbr.md
+          - include: ../cloud-databases/howto-allowlists.md
+          - include: ../cloud-databases/reference-service-endpoints.md
+          - include: ../cloud-databases/howto-vpes.md
+          - include: ../cloud-databases/reference-iam.md
+          - include: ../cloud-databases/reference-key-protect.md
+          - include: ../cloud-databases/reference-hpcs.md
           - include: ../cloud-databases/cbr-tutorial.md
-      - include: ../cloud-databases/howto-deprovisioning.md
+          - include: ../cloud-databases/howto-deprovisioning.md
   - navgroup:
       id: tutorial
       topics:
-      - link:
-          label: Getting Started with Cloud Databases tutorials
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-getting-started
-      - link:
-          label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes Service application
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app
-      - link:
-          label: Example context-based restrictions scenarios
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-cbr-tutorial
-      - link:
-          label: Setting up disk alerts for disk utilization
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial
+      - include: ../cloud-databases/hello-world-tutorial.md
+      - include: ../cloud-databases/k8-tutorial.md
+      - include: ../cloud-databases/cbr-tutorial.md
+      - include: ../cloud-databases/disk-util-alerts-tutorial.md
   - navgroup:
       id: reference
       topics:
-      - link:
-          label: Versioning Policy
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy
-      - link:
-          label: Cloud Databases CLI plug-in
-          href: https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference
+      - include: ../cloud-databases/icd-cli.md
       - link:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
-      - link:
-          label: Getting to Production
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
-      - topicgroup:
-          label: Connecting over Private Networks
-          topics:
-          - include: ../cloud-databases/howto-vpes.md
-          - include: ../cloud-databases/reference-service-endpoints.md
-      - include: ../cloud-databases/reference-key-protect.md
-      - include: ../cloud-databases/reference-iam.md
-      - include: ../cloud-databases/reference-hpcs.md
+      - include: ../cloud-databases/db-version-policy.md
+      - include: ../cloud-databases/learn-getting-to-production.md
       - include: ../cloud-databases/reference-responsibilities.md
   - navgroup:
       id: help
@@ -137,15 +109,13 @@ toc:
           topics:
           - ts-connect.md
           - ts-workload.md
-          - link:
-              label: Why did my Terraform script delete my instance?
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-troubleshoot-terraform
+          - include: ../cloud-databases/ts-terraform.md
       - topicgroup:
           label: FAQs
           topics:
           - include: ../cloud-databases/status-page-faq.md
           - service-faq.md
           - include: ../cloud-databases/resource-config-faq.md
-          - oplog-faq.md
           - include: ../cloud-databases/availability-zones-faq.md
+          - oplog-faq.md
           - include: ../cloud-databases/cert-faq.md
