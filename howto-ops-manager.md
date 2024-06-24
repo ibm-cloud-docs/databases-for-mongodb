@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2023
-lastupdated: "2023-01-31"
+  years: 2020, 2024
+lastupdated: "2024-04-11"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
