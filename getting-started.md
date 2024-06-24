@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-12-07"
+  years: 2019, 2024
+lastupdated: "2024-06-24"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -16,8 +16,8 @@ completion-time: 30m
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting Started with {{site.data.keyword.databases-for-mongodb}}
-{: #getting-started}
+# Getting started with {{site.data.keyword.databases-for-mongodb}}
+{: #getting-started-new}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
 {: toc-completion-time="30m"}
