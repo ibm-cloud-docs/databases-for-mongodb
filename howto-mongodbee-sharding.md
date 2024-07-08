@@ -22,7 +22,7 @@ subcollection: databases-for-mongodb
 
 When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. {{site.data.keyword.databases-for}} supports a maximum of 4 TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
 
-## MongoDB EE Sharding Add-On Considerations
+## MongoDB EE Sharding Considerations
 {: #mongodbee-sharding-consider}
 
 - Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
@@ -37,7 +37,7 @@ When increased demand or workload requires database scaling, you can scale verti
 - {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Sharding is only for versions of MongoDB EE >= 5.0.
 - Additional infrastructure does come with additional cost. For more information, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).
 - After creation, shards cannot be deleted.
-- Existing unsharded clusters cannot be converted to sharded.
+- Existing unsharded deployments cannot be converted to sharded.
 
 ## Provisioning with {{site.data.keyword.databases-for-mongodb}} EE Sharding
 {: #mongodbee-sharding-node-provisioning}
