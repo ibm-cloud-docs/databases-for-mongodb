@@ -20,6 +20,13 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 10 July 2024
+{: #databases-for-mongodb-10july2024}
+{: release-note}
+
+Point In Time Recovery (PITR) speed enhancements for the Enterprise plan
+:  Point in Time Recovery allows database administrators greater granularity when restoring a backup to a particular point in time, as a means to recover from data corruption or accidental deletion. Speed is key when recovering from a disaster. With our latest release we have made enhancements to the speed of restore when using PITR functionality. By enhancing the backend processes that deal with these restores, these are now 3-4 times faster than before. Actual restore times for individual database deployments are a function of the size of the data under management in the deployment. PITR is only available on our Enterprise Plan”
+
 ## 1 May 2024
 {: #databases-for-mongodb-01may2024}
 {: release-note}
