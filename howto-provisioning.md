@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-05-30"
+lastupdated: "2024-07-10"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -50,7 +50,10 @@ For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-dat
 Fine tune your resource allocation. The available options differ based on your selected hosting model.
 
 - **Isolated:** Use the table to choose the machine size for each member of your deployment, and specify the disk size.
-- **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores. 
+- **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores.
+
+The Shared Compute hosting model supports more fine-grained resource allocations that are not shown in the UI to maintain clarity. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).
+{: note}
 
 Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 {: note}
@@ -59,13 +62,12 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: #service_configuration}
 {: ui}
 
-- **Database Version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Version policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-- **Database Edition:** [Set only at deployment]{: tag-red} Select either "Standard" or "Enterprise".<br>
- Note that the Enterprise plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+- **Database Version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+- **Database Edition:** [Set only at deployment]{: tag-red} Select either Standard or Enterprise. Note that the Enterprise plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
 - **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
-A MongoDB deployment cannot have both public and private endpoints simultaneously.
+A {{site.data.keyword.databases-for-mongodb}} deployment cannot have both public and private endpoints simultaneously.
 {: note}
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
