@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-04-30"
+lastupdated: "2024-07-10"
 
 keywords: databases-for-mongodb release notes
 
@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 Point In Time Recovery (PITR) speed enhancements for the Enterprise plan
-:  Point in Time Recovery allows database administrators greater granularity when restoring a backup to a particular point in time, as a means to recover from data corruption or accidental deletion. Speed is key when recovering from a disaster. With our latest release we have made enhancements to the speed of restore when using PITR functionality. By enhancing the backend processes that deal with these restores, these are now 3-4 times faster than before. Actual restore times for individual database deployments are a function of the size of the data under management in the deployment. PITR is only available on our Enterprise Plan”
+:  Point in Time Recovery allows database administrators greater granularity when restoring a backup to a particular point in time, as a means to recover from data corruption or accidental deletion. Speed is key when recovering from a disaster. The latest release provides enhancements to the speed of restore when using PITR functionality. By enhancing the backend processes that deal with these restores, these are now 3-4 times faster than before. Actual restore times for individual database deployments are a function of the size of the data under management in the deployment. PITR is only available on the Enterprise plan.
 
 ## 1 May 2024
 {: #databases-for-mongodb-01may2024}
@@ -39,8 +39,7 @@ New hosting models
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb}} End of life announcement: Version 5 reaches end of life on September 25, 2024
-:  All {{site.data.keyword.databases-for-mongodb_full}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version.
-For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
+:  All {{site.data.keyword.databases-for-mongodb_full}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
 
 ## 15 December 2023
 {: #databases-for-mongodb-15dec2023}
