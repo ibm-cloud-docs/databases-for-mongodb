@@ -90,7 +90,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * {{site.data.keyword.databases-for-mongodb}} is a fully managed NoSQL database service based on the MongoDB Community Edition.
 
-* [{{site.data.keyword.databases-for-mongodb}} Enterprise](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#mongodb-plans-ee){: external} offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#ops-manager){: external}, the [Analytics Add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#analytics-add-on){: external}, and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#point-in-time-recovery){: external}.
+* [{{site.data.keyword.databases-for-mongodb}} Enterprise](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#mongodb-plans-ee){: external} offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external}, the [Analytics Add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics){: external}, and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr){: external}.
 
 ### Using APIs
 {: #using_apis}
@@ -107,20 +107,27 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 1. Click the [**{{site.data.keyword.databases-for-mongodb}} service**](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **catalog**.
 
 1. In **Service Details**, configure the following:
-    - **Service name** - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
-    - **The Resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
-    - **Location** - The deployment's public cloud region or Satellite location.
-1. **Resource allocation** - Specify the initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores that you specify. *Once provisioned, disk cannot be scaled down.*
+    - **Service name** - The name can be any string and is used on the web and in the CLI to identify the new deployment.
+    - **The Resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup){: external}, specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs){: external}.
+    - **Location** - The deployment's public cloud region.
+    - **Tags** - You can assign a tag to help manage your IBM Cloud resources.
+
+1. **Hosting model** - Select the hosting (tenancy) model for your deployment.
+    - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
+    - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
+
+1. **Resource allocation** - Fine tune your resource allocation. The available options differ based on your selected hosting model.
+    - **Isolated:** Use the table to choose the machine size for each member of your deployment, and specify the disk size.
+    - **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores. 
+    Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 
 1. In **Service Configuration**, configure the following:
     - **Database Version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
     - **Database Edition** [Set only at deployment]{: tag-red} - Select the edition that you would like to provision. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
-    - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
+    - **Encryption** [Set only at deployment]{: tag-red} - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
     - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A {{site.data.keyword.databases-for-mongodb}} instance cannot have both public and private endpoints simultaneously*.
 
-    After you configure the appropriate settings, click **Create** to start the provisioning process. The {{site.data.keyword.databases-for-mongodb}} **Resource list** page opens.
-
-1. Click **Create**. The {{site.data.keyword.databases-for}} **Resource list** page opens.
+1. After you configure the appropriate settings, click **Create** to start the provisioning process. The **IBM Cloud Resource list** page opens.
 
 1. When your instance has been provisioned, click the instance name to view more information.
 
@@ -128,7 +135,7 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 {: #provision_instance_cli}
 {: cli}
 
-You can provision a {{site.data.keyword.databases-for-mongodb}} instance by using the CLI. If you don't already have it, you need to install the [{{site.data.keyword.cloud_notm}} CLI](https://www.ibm.com/cloud/cli){: external}.
+You can provision a {{site.data.keyword.databases-for-mongodb}} instance by using the CLI. If you don't already have it, you need to install the [{{site.data.keyword.cloud_notm}} CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started){: external}.
 
 1. Log in to {{site.data.keyword.cloud_notm}} with the following command:
 {: #step2_login_qsg}
@@ -155,11 +162,11 @@ You can provision a {{site.data.keyword.databases-for-mongodb}} instance by usin
    The fields in the command are described in the table that follows.
    | Field | Description | Flag |
    |-------|------------|------------|
-   | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
+   | `INSTANCE NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) or Enterprise plan (`enterprise`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
+   | `SERVICE_ENDPOINTS_TYPE` [Required]{: tag-red} | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
@@ -330,7 +337,7 @@ Set the admin password before using it to connect.
 
 The Admin user has the following permissions:
 
-- [`userAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdminAnyDatabase){: external} provides the same privileges as [`userAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdmin){: external} on all databases except `local` and `config`. `userAdminAnyDatabase` provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. With `userAdminAnyDatabase`, [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/){: external} to any other user on your deployment, including any of the MongoDB built-in roles. For example, to monitor your deployment, use `admin` to log in to the mongo shell and grant the [`clusterMonitor`](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor){: external} role to any user (including itself).
+- [`userAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdminAnyDatabase){: external} provides the same privileges as [`userAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdmin){: external} on all databases except `local` and `config`. `userAdminAnyDatabase` provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. With `userAdminAnyDatabase`, [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/){: external} to any other user on your deployment, including any of the MongoDB built-in roles. For example, to monitor your deployment, use `admin` to log in to the mongo shell and grant the [`clusterMonitor`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor){: external} role to any user (including itself).
    Use a command like:
 
    ```sh
@@ -350,7 +357,7 @@ The Admin user has the following permissions:
 {: #admin_pw_set_ui}
 {: ui}
 
-Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
+Set your Admin password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource List](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
 ### Set the Admin password through the CLI
 {: #admin_pw_set_cli}
@@ -369,7 +376,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: #admin_pw_set_api}
 {: api}
 
-The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser){: external} endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -419,7 +426,7 @@ When you first open MongoDB Compass to the **New Connection** page, enter your i
 
 To connect to your deployment with MongoDB Compass, complete the following steps:
 
-- In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your instance's **Overview**.
+- In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your instance's Overview page under the **Endpoints section**.
 - Click **>Advanced Connection Options**.
 - In the *Authentication* tab, select *Username/Password*, and enter the credentials that you set for the admin user in your instance's **Settings**.
 - Configure the **TLS/SSL** settings.
@@ -557,7 +564,7 @@ You cannot connect {{site.data.keyword.at_short}} by using the API. Use the cons
 ## Next Steps
 {: #next_steps}
 
-- For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/cloud/blog/best-practices-for-mongodb-on-the-ibm-cloud){: .external}. If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: .external}.
+- For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: .external}.
 
 - Connect to and manage your instance through the [MongoDB Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client){: external} and explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external} functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 
