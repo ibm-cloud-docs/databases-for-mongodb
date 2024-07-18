@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-07-17"
+lastupdated: "2024-07-18"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 # Provisioning
 {: #provisioning}
 
-Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
@@ -62,10 +62,10 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: #service_configuration}
 {: ui}
 
-- **Database Version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-- **Database Edition:** [Set only at deployment]{: tag-red} Select either Standard or Enterprise. Note that the Enterprise plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+- **Database version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+- **Database edition:** [Set only at deployment]{: tag-red} Select either Standard or Enterprise. Note that the Enterprise plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
+- **Endpoints:** Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
 A {{site.data.keyword.databases-for-mongodb}} deployment cannot have both public and private endpoints simultaneously.
 {: note}
@@ -89,7 +89,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       ```
       {: pre}
 
-2. Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
+2. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
 3. Provision your database with the following command:
 
    ```sh
@@ -104,7 +104,7 @@ For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared C
    ```
    {: pre}
 
-Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
    ```sh
 ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
@@ -257,7 +257,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-4. Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later. 
+4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later. 
 
 A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) like this:
 
@@ -446,7 +446,7 @@ To make a Shared Compute instance, follow this example:
    ```
    {: .pre}
 
-Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.  
+Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#host-flavor-parameter-api). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.  
 
    ```sh
    curl -X POST \
@@ -513,7 +513,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 - `disk_encryption_key_crn` - The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about)), which is then used for disk encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.
 - `backup_encryption_key_crn` - The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about)), which is then used for backup encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.
 
-   To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect#byok-for-backups).
+   To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=api#key-byok).
    {: note}
 
 - `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
@@ -530,7 +530,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 
 Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) supports provisioning {{site.data.keyword.databases-for}} deployments.
 
-Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later. 
+Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later. 
 
 Provision a {{site.data.keyword.databases-for-mongodb}} Shared hosting model instance with the `"host_flavor"` parameter set to `multitenant`. See the following example:  
 
@@ -576,7 +576,7 @@ output "ICD MongoDB database connection string" {
 ```
 {: codeblock}
 
-Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections. 
+Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections. 
 
 ```terraform
 data "ibm_resource_group" "group" {
