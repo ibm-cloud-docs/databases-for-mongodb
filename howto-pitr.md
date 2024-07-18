@@ -1,7 +1,8 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-05-06"
+
+lastupdated: "2024-07-18"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -65,23 +66,25 @@ If you use Key Protect and have a key, you must use the CLI to recover, and a co
 
 The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller CLI. Use the [`resource service-instance-create`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_create) command.
 
-For PITR, use the `point_in_time_recovery_time` and `point_in_time_recovery_deployment_id` parameters. The `point_in_time_recovery_deployment_id` is the source deployment's ID and `point_in_time_recovery_time` is the timestamp in Coordinated Universal Time you want to restore to. To restore to the latest available point-in-time, use `"point_in_time_recovery_time":" "`.
-
-The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
-{: important}
-
 ```sh
-ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> <region> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":" "}'
+ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> <region> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":""}'
 ```
 {: pre}
 
-A pre-formatted command for a specific backup or PITR is available in detailed view of the backup.
-{: .tip}
+- `service_instance_name`: The human-readable name of the new instance to be deployed, for example, `new-mongo`.
+- `service_id`: In this context this is `databases-for-mongodb`.
+- `service_plan_name`: `Standard` or `enterprise`.
+- `region`: The {{site.data.keyword.cloud}} region where the new database will be deployed, for example, `eu-gb`.
+- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN).
+- `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
+- `version`: The database version, for example, "6.0". Leave this field blank to use the latest, preferred version.
+- `key_protect_key`: ID (CRN) of the Key Protect resource used. This field is optional, for BYOK (Bring Your Own Key) encryption.
+- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the [table](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
 
-When restoring through the CLI, optional parameters are available. Use them to customize resources or use a Key Protect key for BYOK encryption on the new deployment.
+#### Example
+
 ```sh
-ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> standard <region> <--service-endpoints SERVICE_ENDPOINTS_TYPE> -p
-'{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP","key_protect_key":"KEY_PROTECT_KEY_CRN", "members_disk_allocation_mb":"DESIRED_DISK_IN_MB", "members_memory_allocation_mb":"DESIRED_MEMORY_IN_MB", "members_cpu_allocation_count":"NUMBER_OF_CORES", "version":" "}'
+ibmcloud resource service-instance-create big-mongo-restore databases-for-mongodb enterprise eu-gb -p '{"point_in_time_recovery_deployment_id":"crn:v1:bluemix:public:databases-for-mongodb:eu-gb:a/f19c0f5eff94b69ae419xyz2345ra7a0ed:3c647ad1-b9a8-2233-a47e-668d8b83e79f::", "members_host_flavor":"b3c.4x16.encrypted", "point_in_time_recovery_time":"", "version":""}'
 ```
 {: pre}
 
@@ -89,7 +92,7 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> s
 {: #pitr-api}
 {: api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup.
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup. 
 
 After you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) endpoint.
 
@@ -102,21 +105,32 @@ curl -X POST \
     "name": "<SERVICE_INSTANCE_NAME>",
     "target": "<region>",
     "resource_group": "<your-resource-group>",
-    "resource_plan_id": "<service-id>"
-    "point_in_time_recovery_time":"<TIMESTAMP>",
-    "point_in_time_recovery_deployment_id":"<DEPLOYMENT_ID>"
+    "resource_plan_id": "<service-id>",
+    "parameters": {
+      "point_in_time_recovery_time":"<TIMESTAMP>",
+      "point_in_time_recovery_deployment_id":"<DEPLOYMENT_ID>"
+    }
   }'
 ```
 {: pre}
 
+The following fields are all required:
+
+- `name`: The human-readable name of the new instance to be deployed, e.g. `new-mongo`.
+- `resource_group`: The ID of the resource group, e.g. `5c49eabc12fgt65`
+- `resource_plan_id`: In this context this is `databases-for-mongodb-enterprise`
+- `target`: The IBM Cloud region where the new database will be deployed, e.g. `eu-gb`. Cross region restores are supported, except for restoring a `eu-de` backup to another region.
+
+Additionally, a `parameters` object can be supplied with the following fields:
+
+- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN).
+- `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
+- `version`: The database version, for example, "6.0". Leave this field blank to use the latest, preferred version.
+- `key_protect_key`: ID (CRN) of the Key Protect resource used. This field is optional, for BYOK (Bring Your Own Key) encryption.
+- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the [table](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
+
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
-
-The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. The `target` is the region where you want the new deployment to be located, which can be a different region from the source deployment. Cross region restores are supported, except for restoring a `eu-de` backup to another region.
-
-For PITR, use the `point_in_time_recovery_time` and `point_in_time_recovery_deployment_id` parameters. The `point_in_time_recovery_deployment_id` is the source deployment's ID and `point_in_time_recovery_time` is the timestamp in Coordinated Universal Time you want to restore to. To restore to the latest available point-in-time use `"point_in_time_recovery_time":" "`.
-
-If you need to adjust resources or use a Key Protect key, add the optional parameters `key_protect_key`, `members_disk_allocation_mb`, `members_memory_allocation_mb`, and/or `members_cpu_allocation_count`, and their values to the body of the request.
 
 ### Restoring a backup with Terraform
 {: #restore-terraform}
@@ -130,6 +144,7 @@ The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:
 {: important}
 
 Your Terraform script looks like this.
+
 ```sh
 terraform {
   required_providers {
@@ -163,35 +178,18 @@ resource "ibm_database" "mongodb_enterprise" {
   point_in_time_recovery_deployment_id = "<crn>"
   point_in_time_recovery_time = "2022-09-14T14:47:45Z"
 
-  group {
-    group_id = "member"
-
-    members {
-      allocation_count = 3
-    }
-
-    cpu {
-      allocation_count = 6
-    }
-
-    memory {
-      allocation_mb = 14336
-    }
-
-    disk {
-      allocation_mb = 20480
-    }
-  }
 }
 ```
 {: codeblock}
+
+The above will restore to a new database with the same host size and disk size as the source. If you want to modify the host size or disk size of your deployment, refer to the [Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) for the right formatting.
 
 ## Point-in-time Recovery (PITR) Offline Restore
 {: #pitr-offline-restore}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition requires two processes to initiate a restore. First, a snapshot is taken of the Ops Manager AppDB. This snapshot then serves as a PITR backup, which can be used to restore your database.
 
-In a [disaster recovery](#x2113280){: term} scenario, this process might not be successful. {{site.data.keyword.databases-for-mongodb}} EE Point-in-time Recovery (PITR) Offline Restore skips the AppDB snapshot and restores the earliest snapshot possible. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
+In some [disaster recovery](#x2113280){: term} scenarios, the PITR process may fail. In such cases {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Point-in-time Recovery (PITR) Offline Restore can be used to restore to the latest available snapshot. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
 
 ### Point-in-time Recovery (PITR) Offline Restore through the UI
 {: #pitr-offline-restore-cli}
@@ -206,7 +204,7 @@ Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} Dashboa
 Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} CLI using a command like:
 
 ```sh
-ibmcloud resource service-instance-create 3-aug-pitr-dr-cli-lorna databases-for-mongodb-development enterprise us-south -p '{"point_in_time_recovery_deployment_id":"crn:v1:staging:public:databases-for-mongodb-development:us-south:a/b9552134280015ebfde430a819fa4bb3:4e765b52-72f5-4664-9cc0-e1e2f6e1ecde::","point_in_time_recovery_time": "", "offline_restore": true}'
+ibmcloud resource service-instance-create big-mongo-restore databases-for-mongodb enterprise eu-gb -p '{"point_in_time_recovery_deployment_id":"crn:v1:bluemix:public:databases-for-mongodb:eu-gb:a/f19c0f5eff94b69ae419xyz2345ra7a0ed:3c647ad1-b9a8-2233-a47e-668d8b83e79f::", "members_host_flavor":"b3c.4x16.encrypted", "point_in_time_recovery_time":"", "version":"", "offline_restore": true}'
 ```
 {: pre}
 
@@ -224,8 +222,8 @@ OK
 Service instance <INSTANCE_NAME> was created.
 
 Name:                <INSTANCE_NAME>
-ID:                  crn:v1:staging:public:databases-for-mongodb-development:us-south:a/b9552134280015ebfde430a819fa4bb3:3558fedf-8170-4ab7-99ad-6baab449551b::
-GUID:                3558fedf-8170-4ab7-99ad-6baab449551b
+ID:                  crn:v1:bluemix:public:databases-for-mongodb:eu-gb:a/f19c0f5eff94b69ae419xyz2345ra7a0ed:3c647ad1-b9a8-2233-a47e-668d8b83e79f::
+GUID:                3c647ad1-b9a8-2233-a47e-668d8b83e79f
 Location:            <LOCATION>
 State:               provisioning
 Type:                service_instance
@@ -253,8 +251,21 @@ The Resource Controller supports provisioning of database deployments, and provi
 After you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) that will look like:
 
 ```sh
--p '{"point_in_time_recovery_deployment_id":"<crn_of_source>","point_in_time_recovery_time": "", "offline_restore": true}
-
+curl -X POST \
+  https://resource-controller.cloud.ibm.com/v2/resource_instances \
+  -H 'Authorization: Bearer <>' \
+  -H 'Content-Type: application/json' \
+    -d '{
+    "name": "<SERVICE_INSTANCE_NAME>",
+    "target": "<region>",
+    "resource_group": "<your-resource-group-id>",
+    "resource_plan_id": "<service-id>",
+    "parameters": {
+      "point_in_time_recovery_time":"<TIMESTAMP>",
+      "point_in_time_recovery_deployment_id":"<DEPLOYMENT_ID>",
+      "offline_restore": true
+    }
+  }'
 ```
 {: pre}
 
