@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2023
-lastupdated: "2023-09-26"
+  years: 2020, 2024
+lastupdated: "2024-07-18"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -22,7 +22,7 @@ subcollection: databases-for-mongodb
 
 When increased demand or workload requires database scaling, you can scale vertically or horizontally. Vertical scaling, adding additional CPUs or RAM, alleviates increased workload but has physical limitations because vertical scaling requires physical hardware. {{site.data.keyword.databases-for}} supports a maximum of 4 TB of storage. An alternative to scaling vertically is [sharding](https://www.mongodb.com/docs/v4.4/sharding/){: external}, or horizontal scaling. Horizontal scaling adds cluster nodes, enabling data to be distributed as shards among the nodes. This distribution allows you to scale proportionally without the same physical limitations as vertical scaling. Scaling horizontally, instead of vertically, allows for much greater infrastructure growth and flexibility.
 
-## MongoDB EE Sharding Considerations
+## MongoDB EE Sharding considerations
 {: #mongodbee-sharding-consider}
 
 - Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for deploying nodes according to user needs, scaling vertically or horizontally. You are expected to:
@@ -47,7 +47,7 @@ When increased demand or workload requires database scaling, you can scale verti
 {: ui}
 
 Provision through the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-mongodb){: external}. 
-- Within **Service Configuration**, find the **Database Edition** menu. 
+- Within **Service configuration**, find the **Database edition** menu. 
 - Select *Enterprise Sharding*.
 
 For more information, see [Provisioning](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning).
@@ -171,18 +171,18 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 For database and collection creation, a useful GUI tool is [MongoDB Compass](https://www.mongodb.com/products/tools/compass){: external}.
 {: tip}
 
-First, create a database. Then, choose your **Database Name** and **Collection Name**.
+First, create a database. Then, choose your **Database name** and **Collection name**.
 
 Now, enable sharding in your databases and collections using the [MongoDB Shell, `mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-shell--mongosh-){: external}. For more information, see [MongoDB sh.enableSharding()](https://www.mongodb.com/docs/manual/reference/method/sh.enableSharding/#sh.enablesharding--){: external} and [MongoDB sh.shardCollection()](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#sh.shardcollection--){: external}
 
-### Your MongoDB Shard Key
+### Your MongoDB shard key
 {: #mongodbee-sharding-enable-sharding-collections-shard-key}
 
 A [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external} is a field in a MongoDB document that is used to distribute the document across multiple shards. The [cardinality of a shard key](https://www.mongodb.com/docs/v5.0/core/sharding-choose-a-shard-key/#shard-key-cardinality){: external} is crucial to the effectiveness of horizontal scaling in the cluster. High cardinality allows MongoDB to distribute documents evenly throughout the cluster.
 
-For more information, see [Shard Keys](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external}.
+For more information, see [shard keys](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-keys){: external}.
 
-### {{site.data.keyword.databases-for-mongodb}} EE Sharding Connection Strings
+### {{site.data.keyword.databases-for-mongodb}} EE Sharding connection strings
 {: #mongodbee-sharding-connection-string}
 
 The `mongos` router is the interface between a MongoDB cluster and applications. Because {{site.data.keyword.databases-for-mongodb}} EE Sharding clusters connect to applications through the `mongos` router, instead of the directly to the cluster members, the connection strings are different than they would be for a standard {{site.data.keyword.databases-for}} deployment.
