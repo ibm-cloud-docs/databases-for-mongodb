@@ -1,6 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
+
 lastupdated: "2024-07-18"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
@@ -15,6 +16,9 @@ subcollection: databases-for-mongodb
 {: #pitr}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
+
+For new hosting models, PITR is currently available through the CLI, API, and Terraform.
+{: note}
 
 When restoring to a specific point within the last 7 days, with a restore time after the last transaction, your restore fails with the message: `recovery ended before configured recovery target is reached`. If your restore fails for this reason, restore to the last available point or choose an earlier date and time for restore to a specific point in the last 7 days.
 {: note}
@@ -33,7 +37,7 @@ In this phase, the point-in-time-recovery timestamp endpoint always returns *cur
 ## Recovery
 {: #recovery}
 
-Backups are restored to a new deployment. After the new deployment finishes provisioning, your data in the backup file is restored into the new deployment. Backups are also restorable across accounts, but only by using the API and only if the user that is running the restore has access to both the source and destination accounts. 
+Backups are restored to a new deployment. After the new deployment finishes provisioning, your data in the backup file is restored into the new deployment. Backups are also restorable across accounts, but only by using the API and only if the user that is running the restore has access to both the source and destination accounts.
 
 The new deployment is automatically sized to the same disk and memory allocation as the source deployment at the time of the backup from which you restore. Especially with PITR, that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. If the deployment is not given enough resources the restore fails, so allocate enough for your data and workload.
 {: .important}
@@ -47,7 +51,7 @@ Do not delete the source deployment while the backup is restoring. You must wait
 {: #pitr-ui}
 {: ui}
 
-After your deployment's first backup is complete, the point-in-time recovery option will display in the UI. To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time. 
+After your deployment's first backup is complete, the point-in-time recovery option will display in the UI. To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time.
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
@@ -204,6 +208,12 @@ ibmcloud resource service-instance-create big-mongo-restore databases-for-mongod
 ```
 {: pre}
 
+Specify the following parameters:
+
+- `point_in_time_recovery_deployment_id` - This is the source CRN.
+- `point_in_time_recovery_time` - Leave this blank, `""`.
+- `offline_restore` - Set this value to `true`.
+
 The command output looks like:
 
 ```text
@@ -258,6 +268,12 @@ curl -X POST \
   }'
 ```
 {: pre}
+
+Specify the following parameters:
+
+- `point_in_time_recovery_deployment_id` - This is the source CRN.
+- `point_in_time_recovery_time` - Leave this blank, `""`.
+- `offline_restore` - Set this value to `true`.
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}

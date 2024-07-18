@@ -1,53 +1,53 @@
 {
-    "title": "IBM Cloud® Databases for MongoDB docs",
-    "lastupdated": "2023-08-01",
-    "introduction": "MongoDB is a JSON document store with a rich query and aggregation framework.",
-    "section_devtools": {
-      "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
-      "cli": "/docs/databases-cli-plugin", 
-      "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
+  "title": "IBM Cloud® Databases for MongoDB",
+  "lastupdated": "2024-04-30",
+  "introduction": "MongoDB is a JSON document store with a rich query and aggregation framework.",
+  "section_devtools": {
+    "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
+    "cli": "/docs/databases-cli-plugin",
+    "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
+  },
+  "section_recommended": [
+    {
+      "title": "Getting Started",
+      "description": "A brief tutorial to introduce using an IBM Cloud® Databases for MongoDB deployment.",
+      "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new"
     },
-    "section_recommended": [
-      {
-        "title": "Getting Started",
-        "description": "A brief tutorial to introduce using an IBM Cloud® Databases for MongoDB deployment.",
-        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-mdb"
-      },
-      {
-        "title": "Setting the Admin Password",
-        "description": "The IBM Cloud® Databases for MongoDB service is provisioned with a admin user. You must set the admin password before you use it to connect.",
-        "href": "https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management&interface=ui#user-management-set-admin-password-ui"
-      },
-      {
-        "title": "Getting Connection Strings",
-        "description": "To connect to IBM Cloud® Databases for MongoDB, you need some users and connection strings.",
-        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings&interface=ui"
-      }
-    ],
-    "section_learn": {
-      "developer": "https://developer.ibm.com/depmodels/cloud/",
-      "architecture": "https://www.ibm.com/cloud/architecture",
-      "training": "https://www.ibm.com/training/cloud",
-      "community": "https://community.ibm.com/community/user/publiccloud/home"
+    {
+      "title": "Setting the Admin Password",
+      "description": "The IBM Cloud® Databases for MongoDB service is provisioned with a admin user. You must set the admin password before you use it to connect.",
+      "href": "https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management&interface=ui#user-management-set-admin-password-ui"
     },
-    "section_updates": {
-      "view_more": "/docs/acme-test?topic=acme-test-release-notes",
-      "tiles": [
-        {
-          "date": "12 December 2022",
-          "title": "Point-in-time Recovery",
-          "description": "IBM Cloud® Databases for MongoDB Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point."
-        },
-        {
-          "date": "19 October 2022",
-          "title": "Deploying and Connecting an IBM Cloud® Databases Instance Tutorial",
-          "description": "This tutorial guides you through the process of deploying a Cloud Databases instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on Cloud Databases. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker."
-        },
-        {
-          "date": "11 October 2022",
-          "title": "Protecting IBM Cloud® Databases for MongoDB resources with context-based restrictions",
-          "description": "Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for IBM Cloud® resources based on the context of access requests. Access to Cloud Databases resources can be controlled with CBR and identity and access management (IAM) policies."
-        }
-      ]
+    {
+      "title": "Getting Connection Strings",
+      "description": "To connect to IBM Cloud® Databases for MongoDB, you need some users and connection strings.",
+      "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings&interface=ui"
     }
+  ],
+  "section_learn": {
+    "developer": "https://developer.ibm.com/depmodels/cloud/",
+    "architecture": "https://www.ibm.com/cloud/architecture",
+    "training": "https://www.ibm.com/training/cloud",
+    "community": "https://community.ibm.com/community/user/publiccloud/home"
+  },
+  "section_updates": {
+    "view_more": "docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-relnotes",
+    "tiles": [
+      {
+        "date": "1 May 2024",
+        "title": "New hosting models",
+        "description": "You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections."
+      },
+      {
+        "date": "19 January 2024",
+        "title": "Databases for MongoDB End of life announcement: Version 5 reaches end of life on September 25, 2024",
+        "description": "All IBM Cloud® Databases for MongoDB instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our backup and restore process before the EOL date of your version. For more information, see Upgrading to a new Major Version."
+      },
+      {
+        "date": "15 December 2023",
+        "title": "Databases for MongoDB version 6 released",
+        "description": "Databases for MongoDB version 6 is now available. For more information, see Upgrading to a new Major Version."
+      }
+    ]
   }
+}

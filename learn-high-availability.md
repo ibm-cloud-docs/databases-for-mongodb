@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-04-11"
+  years: 2019, 2024
+lastupdated: "2024-05-28"
 
 keywords: mongodb, databases, replica set, best practices, high availability, transient connection failures
 
@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# High-Availability
+# High availability
 {: #high-availability}
 
 {{site.data.keyword.databases-for-mongodb_full}} is a managed cloud database service that is fully integrated into the {{site.data.keyword.cloud_notm}} environment. The database, storage, and supporting infrastructure all run in {{site.data.keyword.cloud_notm}}.

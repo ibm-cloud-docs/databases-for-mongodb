@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-10-12"
+  years: 2019, 2024
+lastupdated: "2024-07-10"
 
 keywords: databases-for-mongodb release notes
 
@@ -14,11 +14,53 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for {{site.data.keyword.databases-for-mongodb_full}}
+# Release notes
 {: #mongodb-relnotes}
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 10 July 2024
+{: #databases-for-mongodb-10july2024}
+{: release-note}
+
+Point In Time Recovery (PITR) speed enhancements for the Enterprise plan
+:  Point in Time Recovery allows database administrators greater granularity when restoring a backup to a particular point in time, as a means to recover from data corruption or accidental deletion. Speed is key when recovering from a disaster. The latest release provides enhancements to the speed of restore when using PITR functionality. By enhancing the backend processes that deal with these restores, these are now 3-4 times faster than before. Actual restore times for individual database deployments are a function of the size of the data under management in the deployment. PITR is only available on the Enterprise plan.
+
+## 1 May 2024
+{: #databases-for-mongodb-01may2024}
+{: release-note}
+
+New hosting models
+:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types){: external}.
+
+## 18 January 2024
+{: #databases-for-mongodb-18jan2024}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} End of life announcement: Version 5 reaches end of life on September 25, 2024
+:  All {{site.data.keyword.databases-for-mongodb_full}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
+
+## 15 December 2023
+{: #databases-for-mongodb-15dec2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} version 6 released
+:  [{{site.data.keyword.databases-for-mongodb}} version 6](https://www.mongodb.com/blog/post/mongodb-6-0-now-available){: external} is now available. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
+
+## 22 November 2023
+{: #databases-for-mongodb-22nov2023}
+{: release-note}
+
+Monitoring Integration documentation updated
+:  Monitoring Integration documentation now lists metrics for all {{site.data.keyword.databases-for}} services. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+
+## 13 November 2023
+{: #databases-for-mongodb-13nov2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} Plans documentation
+:  {{site.data.keyword.databases-for-mongodb}} Plans documentation created. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
 
 ## 12 October 2023
 {: #databases-for-mongodb-12oct2023}
@@ -47,7 +89,7 @@ Setting up disk alerts for disk utilization tutorial
 {: #databases-for-mongodb-12dec2022}
 {: release-note}
 
-Point-in-time Recovery 
+Point-in-time Recovery
 :  {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability). For more information, see [Point-in-time Recovery (PITR)](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr&interface=ui).
 
 ## 19 October 2022

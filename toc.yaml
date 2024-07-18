@@ -6,7 +6,7 @@ toc:
     version: 2
     category: database
     audience: service
-    href: /docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started
+    href: /docs/databases-for-mongodb
     console-page: /catalog/services/databases-for-mongodb
     product-page: https://www.ibm.com/cloud/databases-for-mongodb
     path: databases-for-mongodb
@@ -22,15 +22,18 @@ toc:
           label: What is MongoDB?
           href: https://www.ibm.com/cloud/learn/mongodb
       - getting-started.md
-      - getting-started-new.md
-      - getting-started-mdb.md
       - mongodbee.md
+      - topicgroup:
+          label: Hosting models
+          topics: 
+          - include: ../cloud-databases/hosting-models.md
+          - include: ../cloud-databases/hosting-pricing.md
       - learn-dashboard-overview.md
       - learn-high-availability.md
       - learn-performance.md
       - learn-pricing.md
       - release-notes.md
-  - navgroup: 
+  - navgroup:
       id: howto
       topics:
       - howto-provisioning.md
@@ -39,81 +42,74 @@ toc:
       - howto-getting-connection-strings.md
       - include: ../cloud-databases/closures.md
       - include: ../cloud-databases/ha-dr.md
-      - topicgroup: 
+      - topicgroup:
           label: MongoDB Enterprise Edition
-          topics: 
+          topics:
           - howto-auditlogging.md
           - howto-ops-manager.md
           - howto-pitr.md
           - howto-mongodbee-sharding.md
           - howto-enterprise-analytics.md
-      - topicgroup: 
+      - topicgroup:
           label: Connecting to Databases for MongoDB
-          topics: 
+          topics:
           - connecting-external.md
           - connecting-ibmcloud-app.md
           - connecting-mongo-cli.md
-      - topicgroup: 
-          label: Managing Resources
-          topics: 
+      - topicgroup:
+          label: Managing resources
+          topics:
           - howto-resources-scaling.md
           - howto-autoscaling.md
+          - howto-managing-connections.md
       - include: ../cloud-databases/howto-manage-backups.md
-      - include: ../cloud-databases/howto-allowlists.md
-      - topicgroup: 
-          label: Tutorials
-          topics: 
-          - include: ../cloud-databases/howto-tutorials.md
-          - include: ../cloud-databases/hello-world-tutorial.md
-          - include: ../cloud-databases/terra-postgres-tutorial.md
-          - include: ../cloud-databases/terra-mongodb-tutorial.md
-          - include: ../cloud-databases/k8-tutorial.md
-          - include: ../cloud-databases/truck-tracker-tutorial.md
-          - include: ../cloud-databases/disk-util-alerts-tutorial.md
-      - topicgroup: 
+      - topicgroup:
           label: Logging and monitoring
-          topics: 
+          topics:
+          - include: ../cloud-databases/reference-monitoring.md
           - include: ../cloud-databases/reference-activity-tracker.md
           - include: ../cloud-databases/reference-logging.md
-          - reference-monitoring.md
           - include: ../cloud-databases/reference-sysdig.md
-      - topicgroup: 
+      - topicgroup:
           label: Enhancing security
-          topics: 
+          topics:          
           - include: ../cloud-databases/manage-scc.md
           - learn-security-compliance.md
           - include: ../cloud-databases/howto-cbr.md
+          - include: ../cloud-databases/howto-allowlists.md
+          - include: ../cloud-databases/reference-service-endpoints.md
+          - include: ../cloud-databases/howto-vpes.md
+          - include: ../cloud-databases/reference-iam.md
+          - include: ../cloud-databases/reference-key-protect.md
+          - include: ../cloud-databases/reference-hpcs.md
           - include: ../cloud-databases/cbr-tutorial.md
-      - include: ../cloud-databases/howto-deprovisioning.md
-  - navgroup: 
+          - include: ../cloud-databases/howto-deprovisioning.md
+  - navgroup:
+      id: tutorial
+      topics:
+      - include: ../cloud-databases/hello-world-tutorial.md
+      - include: ../cloud-databases/k8-tutorial.md
+      - include: ../cloud-databases/cbr-tutorial.md
+      - include: ../cloud-databases/disk-util-alerts-tutorial.md
+  - navgroup:
       id: reference
       topics:
-      - link:
-          label: Versioning Policy
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy
-      - link:
-          label: Cloud Databases CLI plug-in
-          href: https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference
+      - include: ../cloud-databases/icd-cli.md
       - link:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
-      - link:
-          label: Getting to Production
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
-      - topicgroup: 
-          label: Connecting over Private Networks
-          topics: 
-          - include: ../cloud-databases/howto-vpes.md
-          - include: ../cloud-databases/reference-service-endpoints.md
-      - include: ../cloud-databases/reference-key-protect.md
-      - include: ../cloud-databases/reference-iam.md
-      - include: ../cloud-databases/reference-hpcs.md
+      - include: ../cloud-databases/db-version-policy.md
+      - include: ../cloud-databases/learn-getting-to-production.md
       - include: ../cloud-databases/reference-responsibilities.md
   - navgroup:
       id: help
       topics:
-      - ts-connect.md
-      - ts-workload.md
+      - topicgroup:
+          label: Troubleshooting
+          topics:
+          - ts-connect.md
+          - ts-workload.md
+          - include: ../cloud-databases/ts-terraform.md
       - topicgroup:
           label: FAQs
           topics:
