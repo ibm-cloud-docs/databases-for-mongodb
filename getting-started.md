@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-06-24"
+lastupdated: "2024-07-18"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -106,30 +106,30 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 1. Click the [**{{site.data.keyword.databases-for-mongodb}} service**](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **catalog**.
 
-1. In **Service Details**, configure the following:
+1. In **Service details**, configure the following:
     - **Service name** - The name can be any string and is used on the web and in the CLI to identify the new deployment.
-    - **The Resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup){: external}, specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs){: external}.
+    - **The resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup){: external}, specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs){: external}.
     - **Location** - The deployment's public cloud region.
-    - **Tags** - You can assign a tag to help manage your IBM Cloud resources.
+    - **Tags** - You can assign a tag to help manage your {{site.data.keyword.cloud_notm}} resources.
 
 1. **Hosting model** - Select the hosting (tenancy) model for your deployment.
     - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
-    - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
+    - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.
 
 1. **Resource allocation** - Fine tune your resource allocation. The available options differ based on your selected hosting model.
     - **Isolated:** Use the table to choose the machine size for each member of your deployment, and specify the disk size.
     - **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores. 
     Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 
-1. In **Service Configuration**, configure the following:
-    - **Database Version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-    - **Database Edition** [Set only at deployment]{: tag-red} - Select the edition that you would like to provision. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+1. In **Service configuration**, configure the following:
+    - **Database version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+    - **Database edition** [Set only at deployment]{: tag-red} - Select the edition that you would like to provision. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
     - **Encryption** [Set only at deployment]{: tag-red} - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-    - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A {{site.data.keyword.databases-for-mongodb}} instance cannot have both public and private endpoints simultaneously*.
+    - **Endpoints** - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A {{site.data.keyword.databases-for-mongodb}} instance cannot have both public and private endpoints simultaneously.*
 
-1. After you configure the appropriate settings, click **Create** to start the provisioning process. The **IBM Cloud Resource list** page opens.
+1. After you configure the appropriate settings, click **Create** to start the provisioning process. The **{{site.data.keyword.cloud_notm}} resource list** page opens.
 
-1. When your instance has been provisioned, click the instance name to view more information.
+1. When your instance is provisioned, click the instance name to view more information.
 
 ## Step 2: Provision through the CLI
 {: #provision_instance_cli}
@@ -164,11 +164,11 @@ You can provision a {{site.data.keyword.databases-for-mongodb}} instance by usin
    |-------|------------|------------|
    | `INSTANCE NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
-   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) or Enterprise plan (`enterprise`) |  |
+   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) or Enterprise plan (`enterprise`). |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` [Required]{: tag-red} | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
+   | `SERVICE_ENDPOINTS_TYPE` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A {{site.data.keyword.databases-for-mongodb}} deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.* |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
-   | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
+   | `--parameters` | JSON file or JSON string of parameters to create service instance. | -p |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
 
    You see a response like:
@@ -357,7 +357,7 @@ The Admin user has the following permissions:
 {: #admin_pw_set_ui}
 {: ui}
 
-Set your Admin password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource List](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
+Set your Admin password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
 ### Set the Admin password through the CLI
 {: #admin_pw_set_cli}
@@ -422,17 +422,17 @@ Set your Admin password through the UI by selecting your instance from the Resou
 
 [MongoDB Compass](https://www.mongodb.com/docs/compass/current/){: external} is a powerful GUI for querying, aggregating, and analyzing your MongoDB data in a visual environment. Compass is free to use and source available, and can be run on macOS, Windows, and Linux.
 
-When you first open MongoDB Compass to the **New Connection** page, enter your instance's connection information. All relevant connection information can be found within your instance's **Overview** page.
+When you first open MongoDB Compass to the **New connection** page, enter your instance's connection information. All relevant connection information can be found within your instance's **Overview** page.
 
 To connect to your deployment with MongoDB Compass, complete the following steps:
 
-- In **New Connection**, enter the **URI**. Copy this from the **Public Connections** Endpoint, within your instance's Overview page under the **Endpoints section**.
-- Click **>Advanced Connection Options**.
+- In **New connection**, enter the **URI**. Copy this from the **Public connections** Endpoint, within your instance's Overview page under the **Endpoints** section.
+- Click **>Advanced connection options**.
 - In the *Authentication* tab, select *Username/Password*, and enter the credentials that you set for the admin user in your instance's **Settings**.
 - Configure the **TLS/SSL** settings.
-    1. In your instance's **Overview**, copy the certificate information from **TLS Certificate**.
-    1. In your instance's **Overview**, download the TLS certificate from the **Certificate Authority** section.
-    1. In MongoDB Compass, click **Select Files** in the *Certificate Authority* field and upload the certificate file to MongoDB Compass.
+    1. In your instance's **Overview**, copy the certificate information from **TLS certificate**.
+    1. In your instance's **Overview**, download the TLS certificate from the **Certificate authority** section.
+    1. In MongoDB Compass, click **Select files** in the *Certificate Authority* field and upload the certificate file to MongoDB Compass.
 - (Optional) Give your instance a name.
 - Click **Connect** to connect MongoDB Compass to your instance.
 
