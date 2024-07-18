@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2023
-lastupdated: "2023-08-04"
+  years: 2020, 2024
+lastupdated: "2024-07-18"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -67,16 +67,15 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> <
 ```
 {: pre}
 
-- `service_instance_name`: The human-readable name of the new instance to be deployed, e.g. `new-mongo`.
-- `service_id`: In this context this is `databases-for-mongodb`
-- `service_plan_name`: One of `standard` or `enterprise`
-- `region`: The IBM Cloud region where the new database will be deployed, e.g. `eu-gb`
-- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN)
-- `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, e.g. `2024-05-10T08:15:00Z`. Leave blank to get the latest restorable point.
-- `version`: The database version, e.g. "6.0". Leave blank to use the latest, preferred version.
-- `key_protect_key`: id (CRN) of the Key Protect resource used. Optional, for BYOK (Bring Your Own Key) encryption.
-- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the table [here](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
-
+- `service_instance_name`: The human-readable name of the new instance to be deployed, for example, `new-mongo`.
+- `service_id`: In this context this is `databases-for-mongodb`.
+- `service_plan_name`: `Standard` or `enterprise`.
+- `region`: The {{site.data.keyword.cloud}} region where the new database will be deployed, for example, `eu-gb`.
+- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN).
+- `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
+- `version`: The database version, for example, "6.0". Leave this field blank to use the latest, preferred version.
+- `key_protect_key`: ID (CRN) of the Key Protect resource used. This field is optional, for BYOK (Bring Your Own Key) encryption.
+- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the [table](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
 
 #### Example
 
@@ -118,19 +117,16 @@ The following fields are all required:
 - `resource_plan_id`: In this context this is `databases-for-mongodb-enterprise`
 - `target`: The IBM Cloud region where the new database will be deployed, e.g. `eu-gb`. Cross region restores are supported, except for restoring a `eu-de` backup to another region.
 
-
 Additionally, a `parameters` object can be supplied with the following fields:
 
-- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN)
-- `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, e.g. `2024-05-10T08:15:00Z`. Leave blank to get the latest restorable point. To restore to the latest available point-in-time use `"point_in_time_recovery_time":""`.
-- `version`: The database version, e.g. "6.0". Leave blank to use the latest, preferred version.
-- `key_protect_key`: id (CRN) of the Key Protect resource used. Optional, for BYOK encryption.
-- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the table [here](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
-
+- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN).
+- `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
+- `version`: The database version, for example, "6.0". Leave this field blank to use the latest, preferred version.
+- `key_protect_key`: ID (CRN) of the Key Protect resource used. This field is optional, for BYOK (Bring Your Own Key) encryption.
+- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the [table](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
-
 
 ### Restoring a backup with Terraform
 {: #restore-terraform}
@@ -143,7 +139,8 @@ Use the [`ibm_database_point_in_time_recovery`](https://registry.terraform.io/pr
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
 
-Your Terraform script looks like this. 
+Your Terraform script looks like this.
+
 ```sh
 terraform {
   required_providers {
@@ -188,7 +185,7 @@ The above will restore to a new database with the same host size and disk size a
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition requires two processes to initiate a restore. First, a snapshot is taken of the Ops Manager AppDB. This snapshot then serves as a PITR backup, which can be used to restore your database.
 
-In some [disaster recovery](#x2113280){: term} scenarios, the PITR process may fail. In such cases {{site.data.keyword.databases-for-mongodb}} EE Point-in-time Recovery (PITR) Offline Restore can be used to restore to the latest available snapshot. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
+In some [disaster recovery](#x2113280){: term} scenarios, the PITR process may fail. In such cases {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Point-in-time Recovery (PITR) Offline Restore can be used to restore to the latest available snapshot. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
 
 ### Point-in-time Recovery (PITR) Offline Restore through the UI
 {: #pitr-offline-restore-cli}
@@ -206,8 +203,6 @@ Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} CLI usi
 ibmcloud resource service-instance-create big-mongo-restore databases-for-mongodb enterprise eu-gb -p '{"point_in_time_recovery_deployment_id":"crn:v1:bluemix:public:databases-for-mongodb:eu-gb:a/f19c0f5eff94b69ae419xyz2345ra7a0ed:3c647ad1-b9a8-2233-a47e-668d8b83e79f::", "members_host_flavor":"b3c.4x16.encrypted", "point_in_time_recovery_time":"", "version":"", "offline_restore": true}'
 ```
 {: pre}
-
-
 
 The command output looks like:
 
@@ -263,8 +258,6 @@ curl -X POST \
   }'
 ```
 {: pre}
-
-
 
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
