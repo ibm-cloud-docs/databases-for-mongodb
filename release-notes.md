@@ -32,7 +32,7 @@ Point In Time Recovery (PITR) speed enhancements for the Enterprise plan
 {: release-note}
 
 New hosting models
-:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types){: external}.
+:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models){: external}.
 
 ## 18 January 2024
 {: #databases-for-mongodb-18jan2024}
@@ -97,28 +97,28 @@ Point-in-time Recovery
 {: release-note}
 
 Deploying and Connecting a Cloud Databases Instance Tutorial
-:  This tutorial guides you through the process of deploying a {{site.data.keyword.databases-for}} instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on {{site.data.keyword.databases-for}}. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker. For more information, see [Deploying and Connecting a {{site.data.keyword.databases-for}} Instance](/docs/databases-for-mongodb?topic=cloud-databases-create-instance-tutorial).
+:  This tutorial guides you through the process of deploying a {{site.data.keyword.databases-for}} instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on {{site.data.keyword.databases-for}}. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker. For more information, see [Deploying and Connecting a {{site.data.keyword.databases-for}} Instance](/docs/cloud-databases?topic=cloud-databases-create-instance-tutorial).
 
 ## 11 October 2022
 {: #databases-for-mongodb-11oct2022}
 {: release-note}
 
 Protecting {{site.data.keyword.databases-for-mongodb_full}} resources with context-based restrictions
-:  Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with CBR and identity and access management (IAM) policies. For more information, see [Protecting Cloud Databases resources with context-based restrictions](/docs/databases-for-mongodb?topic=cloud-databases-cbr&interface=ui).
+:  Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with CBR and identity and access management (IAM) policies. For more information, see [Protecting Cloud Databases resources with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr).
 
 ## 22 June 2022
 {: #databases-for-mongodb-22june2022}
 {: release-note}
 
 Mapping Global COVID-19 cases with the {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On and Tableau tutorial published
-:  The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/){: .external} to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/){: .external}. For more information, see [{{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics). This tutorial familiarizes you with the Analytics Add-On using Tableau to visualize data in your MongoDB instance. For more information, see [Mapping Global COVID-19 cases with the Databases for MongoDB EE (Enterprise Edition) Analytics Add-On and Tableau](/docs/databases-for-mongodb?topic=cloud-databases-bi-connector-tutorial-description).
+:  The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/){: .external} to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/){: .external}. For more information, see [{{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics). This tutorial familiarizes you with the Analytics Add-On using Tableau to visualize data in your MongoDB instance. For more information, see [Mapping Global COVID-19 cases with the Databases for MongoDB EE (Enterprise Edition) Analytics Add-On and Tableau](/docs/cloud-databases?topic=cloud-databases-bi-connector-tutorial-description).
 
 ## 31 May 2022
 {: #databases-for-mongodb-31may2022}
 {: release-note}
 
 Provision a {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform tutorial published
-:  In this tutorial, you learn how to use Terraform to provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance that includes the {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On. For more information, see [Provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform](/docs/databases-for-postgresql?topic=cloud-databases-tutorial-provision-mongodbee-tf).
+:  In this tutorial, you learn how to use Terraform to provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance that includes the {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On. For more information, see [Provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform](/docs/cloud-databases?topic=cloud-databases-tutorial-provision-mongodbee-tf).
 
 ## 26 April 2022
 {: #databases-for-mongodb-26apr02022}
@@ -174,4 +174,4 @@ New Regions Available for IBM Cloud Database Services
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
-:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-mongodb-is-generally-available#:~:text=IBM%20Cloud%20is%20announcing%20the,with%20enterprise%20security%20in%20mind.).
+:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/blog/announcement/generally-available-mongodb-community-on-ibm-cloud-databases/).
