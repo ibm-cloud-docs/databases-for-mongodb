@@ -70,7 +70,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: #user-management-set-admin-password-api}
 {: api}
 
-The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser){: external} endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -98,7 +98,7 @@ Creating a user from the CLI or API doesn't automatically populate that user's c
 Generating credentials from an existing user does not check for or create that user. 
 {: .tip}
 
-Users that you [create through _Service Credentials_](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
+Users that you [create through _Service Credentials_](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings) are given the roles [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} and [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external}.
 
 If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
@@ -107,7 +107,7 @@ If you need users that are created from _Service Credentials_ to have a differen
 {: #user-management-cli}
 {: cli}
 
-Users that are created in the CLI are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
+Users that are created in the CLI are given the roles [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} and [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external}.
 
 If you need users to have a different role, you can use the `admin` user to change their role.
 
@@ -122,7 +122,7 @@ ibmcloud cdb user-create example-deployment <newusername> <newpassword>
 
 When the task finishes, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
-MongoDB centralizes user data in the `admin` database. List all users and their roles and database permissions [in the mongo shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongo-shell) by using the `show users` command.
+MongoDB centralizes user data in the `admin` database. List all users and their roles and database permissions [in the mongo shell](https://www.mongodb.com/try/download/shell){: external} by using the `show users` command.
 
 ```sh
 ibmcloud cdb deployment-connections --start -u admin mongodb-production
@@ -141,13 +141,13 @@ replset:PRIMARY> show users
 {: #user-management-api}
 {: api}
 
-Users that are created in the API are given the roles [`readWriteAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite){: external} and [`dbAdminAnyDatabase`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin){: external}.
+Users that are created in the API are given the roles [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} and [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external}.
 
 If you need users to have a different role, use the admin user to change their role.
 
 Users that are created directly from the API do not appear in _Service Credentials_, but you can add them.
 
-The _Foundation Endpoint_ that is shown on the _Overview_ section of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#creates-a-database-level-user).
+The _Foundation Endpoint_ that is shown on the _Overview_ section of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser).
 
 The command looks like: 
 
@@ -166,7 +166,7 @@ To retrieve a user's connection strings, use the base URL with the `/users/{user
 
 If the built-in users and roles do not suit your environment, [create users and roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/#create-a-user-defined-role){: external} directly in MongoDB. The admin user for your deployment has the power to create any role or set of privileges for use on your deployment.
 
-Users and roles that are created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/databases-for-mongodb?topic=cloud-databases-iam).
+Users and roles that are created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/databases-for-mongodb?topic=databases-for-mongodb-iam).
 
 ## The `ibm` User
 {: #user-management-ibm}
