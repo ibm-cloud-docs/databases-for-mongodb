@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-07-18"
+lastupdated: "2024-07-23"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -65,7 +65,7 @@ Specify the disk size depending on your requirements. It can be increased after 
 - **Database version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 - **Database edition:** [Set only at deployment]{: tag-red} Select either Standard or Enterprise. Note that the Enterprise plan is not possible for Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints:** Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
+- **Endpoints:** [Set only at deployment]{: tag-red} Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
 A {{site.data.keyword.databases-for-mongodb}} deployment cannot have both public and private endpoints simultaneously.
 {: note}
