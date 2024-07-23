@@ -30,7 +30,7 @@ If you are concerned about how much space MongoDB is using to store your data, y
 ## Disk I/O
 {: #disk-iops}
 
-The number of Input-Output Operations per second (IOPS) on {{site.data.keyword.databases-for-mongodb}} deployments is limited by the type of storage volume. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/BlockStorage?topic=BlockStorage-orderingthroughConsole#orderingthroughConsoleEndurance). Hitting I/O utilization limits can cause your databases to respond slowly or appear unresponsive. Things like unoptimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/){: .external}, and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment.
+The number of Input-Output Operations per second (IOPS) on {{site.data.keyword.databases-for-mongodb}} deployments is limited by the type of storage volume. Storage volumes for {{site.data.keyword.databases-for-mongodb}} deployments are [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/BlockStorage?topic=BlockStorage-orderingBlockStorage){: .external}. Hitting I/O utilization limits can cause your databases to respond slowly or appear unresponsive. Things like unoptimized queries, [index building](https://docs.mongodb.com/manual/core/index-creation/){: .external}, and creating new indexes can cause spikes in IOPS, but it's also possible that normal work loads for your applications can exceed the available IOPS for your deployment.
 
 You can increase the number IOPS available to your deployment by increasing disk space. You can also configure autoscaling to increase disk size automatically if your deployment's I/O utilization hits a certain saturation point for an extended period of time.
 
@@ -39,7 +39,7 @@ For more information, see the [MongoDB documentation](https://docs.mongodb.com/m
 ## WiredTiger Cache and Memory
 {: #wiredtiger-cache-memory}
 
-{{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine, which uses both the file system memory cache and an internal memory cache](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use){: .external}. MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the file system cache, and least performant when it has to grab your data from disk.
+{{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use){: .external}, which uses both the file system memory cache and an internal memory cache. MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the file system cache, and least performant when it has to grab your data from disk.
 
 The default size of the internal cache is `50% of (total RAM - 1 GB)` or `256 MB`, whichever is larger. For example, the minimum memory size of a {{site.data.keyword.databases-for-mongodb}} deployment is 1024 MB per data member, so the internal cache is 512 MB (because `(3072 MB / 2) - 1 GB = 512`.
 
@@ -69,7 +69,7 @@ mongostat -n 20 1 --username admin --password $PASSWORD --ssl --sslCAFile $CERTF
 
 Run any of the [documented commands](https://docs.mongodb.com/manual/administration/monitoring/#commands){: .external} that report on the status of your MongoDB database.
 
-Many of the MongoDB utilities and commands need the [Cluster Monitor](https://docs.mongodb.com/manual/reference/built-in-roles/#clusterMonitor){: .external} role to execute. It is not part of the `admin` default role set. [Grant the Cluster Monitor role](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management#the-admin-user) to the `admin` user on your deployment.
+Many of the MongoDB utilities and commands need the [Cluster Monitor](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor){: .external} role to execute. It is not part of the `admin` default role set. [Grant the Cluster Monitor role](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management#the-admin-user) to the `admin` user on your deployment.
 {: .tip}
 
-For more information, see the [Best Practices blog post](https://www.ibm.com/cloud/blog/best-practices-for-mongodb-on-the-ibm-cloud).
+For more information, see the [Best Practices blog post](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/).
