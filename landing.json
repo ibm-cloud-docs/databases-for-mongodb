@@ -1,6 +1,6 @@
 {
   "title": "IBM Cloud® Databases for MongoDB",
-  "lastupdated": "2024-04-30",
+  "lastupdated": "2024-07-23",
   "introduction": "MongoDB is a JSON document store with a rich query and aggregation framework.",
   "section_devtools": {
     "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
@@ -31,7 +31,7 @@
     "community": "https://community.ibm.com/community/user/publiccloud/home"
   },
   "section_updates": {
-    "view_more": "docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-relnotes",
+    "view_more": "/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-relnotes",
     "tiles": [
       {
         "date": "1 May 2024",
