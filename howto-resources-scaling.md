@@ -136,4 +136,4 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
     }'
 ```
 
-More information is in the [API Reference](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups).
+More information is in the [API Reference](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups).

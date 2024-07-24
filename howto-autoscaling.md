@@ -65,12 +65,12 @@ To disable autoscaling, clear the boxes for the parameters that you no longer wa
 {: #autoscaling-config-cli}
 {: cli}
 
-You can get the autoscaling parameters for your deployment through the CLI by using the [`cdb deployment-autoscaling`](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling) command.
+You can get the autoscaling parameters for your deployment through the CLI by using the [`cdb deployment-autoscaling`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling) command.
 ```sh
 ibmcloud cdb deployment-autoscaling <deployment name or CRN> member
 ```
 
-To enable and set autoscaling parameters through the CLI, use a JSON object or file with the [`cdb deployment-autoscaling-set`](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling-set) command.
+To enable and set autoscaling parameters through the CLI, use a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling-set) command.
 ```sh
 ibmcloud cdb deployment-autoscaling-set <deployment name or CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
 ```
@@ -79,7 +79,7 @@ ibmcloud cdb deployment-autoscaling-set <deployment name or CRN> member '{"autos
 {: #autoscaling-config-api}
 {: api}
 
-You can get the autoscaling parameters for your deployment through the API by sending a `GET` request to the [`/deployments/{id}/groups/{group_id}/autoscaling`](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getautoscalingconditions) endpoint. Enabling autoscaling works by setting your desired `scalers` (`io_utilization` or `capacity`) to `true`.
+You can get the autoscaling parameters for your deployment through the API by sending a `GET` request to the [`/deployments/{id}/groups/{group_id}/autoscaling`](/apidocs/cloud-databases-api/cloud-databases-api-v5#getautoscalingconditions) endpoint. Enabling autoscaling works by setting your desired `scalers` (`io_utilization` or `capacity`) to `true`.
 ```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling'
 ```

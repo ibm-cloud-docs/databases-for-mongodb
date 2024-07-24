@@ -16,7 +16,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb}} deployments come with authentication enabled and use MongoDB's [role-based access control](https://docs.mongodb.com/manual/core/authorization/){: external}.
 
-Add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
+Add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
 ## The admin user
 {: #user-management-admin-user}
@@ -70,7 +70,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: #user-management-set-admin-password-api}
 {: api}
 
-The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser){: external} endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -147,7 +147,7 @@ If you need users to have a different role, use the admin user to change their r
 
 Users that are created directly from the API do not appear in _Service Credentials_, but you can add them.
 
-The _Foundation Endpoint_ that is shown on the _Overview_ section of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser).
+The _Foundation Endpoint_ that is shown on the _Overview_ section of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the [`/users` endpoint](/apidocs/cloud-databases-api/cloud-databases-api-v5#createdatabaseuser).
 
 The command looks like: 
 
