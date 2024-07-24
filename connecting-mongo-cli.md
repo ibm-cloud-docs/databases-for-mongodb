@@ -24,7 +24,7 @@ The MongoDB shell is available as part of the MongoDB distribution. Download it 
 ## Connecting
 {: #connecting-cli-connect}
 
-Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
 The information the MongoDB shell needs to connect to your instance is in the "cli" section of the connection strings. The table contains a breakdown for reference.
 
