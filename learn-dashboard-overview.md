@@ -58,7 +58,7 @@ You can manage your {{site.data.keyword.databases-for-mongodb}} service through 
 ## Backups and restore
 {: #dashboard-overview-backups-and-restore}
 
-The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/databases-for-mongodb?topic=cloud-databases-dashboard-backups) page.
+The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) page.
 
 ## Settings
 {: #dashboard-overview-settings}
