@@ -24,7 +24,7 @@ When connecting an external application, use only drivers that are supported by 
 ## Using Connection Information
 {: #mongodb-using-connection-info}
 
-All the information a driver needs to make a connection to your deployment is on **Overview page**. Scroll down to the *Endpoints* section and click the *MongoDB* tab to see your connection strings. The table contains a breakdown for reference.
+All the information a driver needs to make a connection to your deployment is in the "mongo" section of a credential created on the *Service credentials* page.. The table contains a breakdown for reference.
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
