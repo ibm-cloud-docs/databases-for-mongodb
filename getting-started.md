@@ -22,7 +22,7 @@ completion-time: 30m
 {: toc-services=""}
 {: toc-completion-time="30m"}
 
-This tutorial guides you through the steps to quickly start by using {{site.data.keyword.databases-for-mongodb}} by provisioning an instance, setting up MongoDB Compass, setting your Admin password, and setting up logging and monitoring.
+This tutorial guides you through the steps to quickly start using {{site.data.keyword.databases-for-mongodb}} by provisioning an instance, setting your Admin password, and connecting to it using the [mongo shell]()
 {: shortdesc}
 
 Follow these steps to complete the tutorial: {: ui}
@@ -86,11 +86,13 @@ Follow these steps to complete the tutorial: {: terraform}
 ## Step 1: Choose your plan
 {: #choose_plan}
 
-{{site.data.keyword.databases-for-mongodb}} offers two different plans. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
+{{site.data.keyword.databases-for-mongodb}} offers two different plans:
 
-* {{site.data.keyword.databases-for-mongodb}} is a fully managed NoSQL database service based on the MongoDB Community Edition.
+* {{site.data.keyword.databases-for-mongodb}} Standard is a fully managed NoSQL database service based on the MongoDB Community Edition.
 
-* [{{site.data.keyword.databases-for-mongodb}} Enterprise](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#mongodb-plans-ee){: external} offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external}, the [Analytics Add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics){: external}, and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr){: external}.
+* {{site.data.keyword.databases-for-mongodb}} Enterprise offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#ops
+-manager){: external}, the [Analytics Add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#analytics-add-on){: external}, and [point-in-time recovery](/docs/databases
+-for-mongodb?topic=databases-for-mongodb-mongodb-plans#point-in-time-recovery){: external}.
 
 ### Using APIs
 {: #using_apis}
@@ -112,7 +114,7 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
     - **Location** - The deployment's public cloud region.
     - **Tags** - You can assign a tag to help manage your {{site.data.keyword.cloud_notm}} resources.
 
-1. **Hosting model** - Select the hosting (tenancy) model for your deployment.
+1. **Hosting model** - Select the hosting (tenancy) model for your deployment. See [this page](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=ui) for more information about our hosting options.
     - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
     - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.
 
@@ -324,40 +326,23 @@ Follow these steps to provision by using the [resource controller API](https://c
 
 Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
-## Step 3: Set the Admin password
+## Step 3: Set the admin password
 {: #admin_pw}
 
 ### The admin user
 {: #admin_pw_admin_user}
 
-When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an Admin user is automatically created.
+When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an `admin` user is automatically created.
 
 Set the admin password before using it to connect.
 {: important}
 
-The Admin user has the following permissions:
 
-- [`userAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdminAnyDatabase){: external} provides the same privileges as [`userAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-userAdmin){: external} on all databases except `local` and `config`. `userAdminAnyDatabase` provides the administrative power to the admin user. It provides the `listDatabases` action on the cluster as a whole. With `userAdminAnyDatabase`, [create and grant roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/){: external} to any other user on your deployment, including any of the MongoDB built-in roles. For example, to monitor your deployment, use `admin` to log in to the mongo shell and grant the [`clusterMonitor`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor){: external} role to any user (including itself).
-   Use a command like:
-
-   ```sh
-   db.grantRolesToUser(
-    "admin",
-    [
-      { role: "clusterMonitor", db: "admin" }
-    ]
-   )
-   ```
-   {: pre}
-
-- [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} provides the same privileges as [`readWrite`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWrite){: external} on all databases except `local` and `config`.
-- [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
-
-### Set the Admin password through the UI
+### Set the admin password through the UI
 {: #admin_pw_set_ui}
 {: ui}
 
-Set your Admin password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
+Set your admin password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
 ### Set the Admin password through the CLI
 {: #admin_pw_set_cli}
@@ -417,156 +402,56 @@ To set the Admin password through the UI, follow these steps:
 
 Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
-## Step 4: Set up MongoDB Compass
-{: #mongodb_compass}
+## Step 4: Connect to your {{site.data.keyword.databases-for-mongodb}} instance
 
-[MongoDB Compass](https://www.mongodb.com/docs/compass/current/){: external} is a powerful GUI for querying, aggregating, and analyzing your MongoDB data in a visual environment. Compass is free to use and source available, and can be run on macOS, Windows, and Linux.
+You can easily connect to your instance by either using the Mongo Shell (a command line interface) or Mongo Compass, a powerful GUI for querying and analyizing your data. Both of these tools are provided my MongoDB.
 
-When you first open MongoDB Compass to the **New connection** page, enter your instance's connection information. All relevant connection information can be found within your instance's **Overview** page.
+### Using the Mongo Shell
 
-To connect to your deployment with MongoDB Compass, complete the following steps:
+Follow [these instructions](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client&interface=ui) to download and connect to the Mongo Shell.
 
-- In **New connection**, enter the **URI**. Copy this from the **Public connections** Endpoint, within your instance's Overview page under the **Endpoints** section.
-- Click **>Advanced connection options**.
-- In the *Authentication* tab, select *Username/Password*, and enter the credentials that you set for the admin user in your instance's **Settings**.
-- Configure the **TLS/SSL** settings.
-    1. In your instance's **Overview**, copy the certificate information from **TLS certificate**.
-    1. In your instance's **Overview**, download the TLS certificate from the **Certificate authority** section.
-    1. In MongoDB Compass, click **Select files** in the *Certificate Authority* field and upload the certificate file to MongoDB Compass.
-- (Optional) Give your instance a name.
-- Click **Connect** to connect MongoDB Compass to your instance.
+You can then test your deployment by inserting a document into a collection:
 
-### Use MongoDB Compass
-{: #using-mongodb-compass}
+```sh
+use sample_mflix
 
-After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} Enterprise uses the Enterprise version.
+db.movies.insertOne(
+  {
+    title: "The Favourite",
+    genres: [ "Drama", "History" ],
+    runtime: 121,
+    rated: "R",
+    year: 2018,
+    directors: [ "Yorgos Lanthimos" ],
+    cast: [ "Olivia Colman", "Emma Stone", "Rachel Weisz" ],
+    type: "movie"
+  }
+)
+```
+{:pre}
 
-Next, you see the default databases for your deployment, which all hold information related to the database instance. `local` holds replication data. `config` holds data for cluster operations. `admin` holds user authentication data. MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
+The above command will switch to a database called `sample_mflix` (and will create it if it does not already exist), and then insert a document into the `movies` collection (which will also be created if it does not already exist).
 
-Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. Specific information can be found in the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
+You can then retrieve the document with:
 
-## Step 5: Set up context-based restrictions
-{: #mongodb_cbr}
+```sh
+db.movies.find( { title: "The Favourite" } )
+```
+{:pre}
 
-Context-based restrictions give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with context-based restrictions and Identity and Access Management (IAM) policies.
+Congratulations! You have now connected to your database and have written and read data using the Mongo Shell.
 
-To set up context-based restrictions for your {{site.data.keyword.databases-for-mongodb}} instance, follow the steps at [Protecting {{site.data.keyword.databases-for}} resources with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr){: external}.
+### Using MongoDB Compass
 
-## Step 6: Connect {{site.data.keyword.mon_full_notm}} through the console
-{: #connect_monitoring_ui}
-{: ui}
-
-You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
-
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-
-
-## Step 6: Connect {{site.data.keyword.mon_full_notm}} through the CLI
-{: #connect_monitoring_cli}
-{: cli}
-
-You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
-
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-{: note}
-
-## Step 6: Connect {{site.data.keyword.mon_full_notm}} through the API
-{: #connect_monitoring_api}
-{: api}
-
-You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
-
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-{: note}
-
-## Step 6: Connect {{site.data.keyword.mon_full_notm}} through Terraform
-{: #connect_monitoring_tf}
-{: terraform}
-
-You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
-
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-mongodb}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
-{: note}
-
-
-## Step 7: Connect {{site.data.keyword.at_full}}
-{: #activity_tracker_ui}
-{: ui}
-
-{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-mongodb}} service.
-
-To get up and running with {{site.data.keyword.at_short}}, see [Getting Started with {{site.data.keyword.at_short}}](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives){: external}.
-
-{{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
-
-For more information about events specific to {{site.data.keyword.databases-for-mongodb}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
-
-
-## Step 7: Connect {{site.data.keyword.at_full}} through the CLI
-{: #activity_tracker_cli}
-{: cli}
-
-{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-mongodb}} service.
-
-To get up and running with {{site.data.keyword.at_short}}, see [Getting Started with {{site.data.keyword.at_short}}](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives){: external}.
-
-{{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
-
-For more information about events specific to {{site.data.keyword.databases-for-mongodb}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
-
-You cannot connect {{site.data.keyword.at_short}} by using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-{: note}
-
-## Step 7: Connect {{site.data.keyword.at_full}} through the API
-{: #activity_tracker_api}
-{: api}
-
-{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-mongodb}} service.
-
-To get up and running with {{site.data.keyword.at_short}}, see [Getting Started with {{site.data.keyword.at_short}}](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives){: external}.
-
-{{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
-
-For more information about events specific to {{site.data.keyword.databases-for-mongodb}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
-
-You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-{: note}
-
-## Step 7: Connect {{site.data.keyword.at_full}} through Terraform
-{: #activity_tracker_tf}
-{: terraform}
-
-{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-mongodb}} service.
-
-To get up and running with {{site.data.keyword.at_short}}, see [Getting Started with {{site.data.keyword.at_short}}](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives){: external}.
-
-{{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
-
-For more information about events specific to {{site.data.keyword.databases-for-mongodb}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
-
-You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
-{: note}
+Follow [these instructions]() to download and connect to MongoDB Compass. You will then be able to write and read data using the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current).
 
 ## Next Steps
 {: #next_steps}
 
 - For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: .external}.
-
-- Connect to and manage your instance through the [MongoDB Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client){: external} and explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external} functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
+- Secure your deployment by adding context-based resttrictions [link]
+- Connect your deployment to IBM Cloud Logs and IBM Cloud Monitoring for observability and alerting [link]
+- Explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external} functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 
 - Looking for more tools on managing your databases? Connect to your instance with:
     - The [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli){: external}
