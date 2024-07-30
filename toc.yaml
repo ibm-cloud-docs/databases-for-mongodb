@@ -48,7 +48,7 @@ toc:
           - howto-auditlogging.md
           - howto-ops-manager.md
           - howto-pitr.md
-          - howto-mongodbee-sharding.md
+          <staging>- howto-mongodbee-sharding.md</staging>
           - howto-enterprise-analytics.md
       - topicgroup:
           label: Connecting to Databases for MongoDB
