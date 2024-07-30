@@ -100,6 +100,10 @@ Follow these steps to complete the tutorial: {: terraform}
 
 Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external} to work with your {{site.data.keyword.databases-for-mongodb}} instance. The resource controller API is used to [provision an instance](#provision_instance_api).
 
+You will need an API key to perform actions via the API. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key) to create an IBM Cloud API key that enables Terraform to provision infrastructure into your account. You can create up to 20 API keys.
+
+For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key.
+ {: note}
 
 ## Step 2: Provision through the console
 {: #provision_instance_ui}
@@ -264,37 +268,34 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 Follow these steps to provision by using the [resource controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
-1. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
+1. You need to know the ID of the resource group that you would like to deploy to. You can obtain those via this API call:
 
-   Use a command like:
-   ```sh
-   ibmcloud resource groups
-   ```
-   {: pre}
-
-1. You need to know the region that you would like to deploy into.
-
-   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
+```sh
+curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
+```
+{: pre}
+1. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call
 
    The command looks like:
 
    ```sh
-   ibmcloud cdb regions --json
+    curl -X GET https://api.<YOUR-REGION>.databases.cloud.ibm.com/v5/ibm/regions -H 'Authorization: Bearer <TOKEN>' \
    ```
    {: pre}
 
 
    Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} resource controller.
+   Example API call:
 
    ```sh
    curl -X POST \
      https://resource-controller.cloud.ibm.com/v2/resource_instances \
-     -H 'Authorization: Bearer <>' \
+     -H 'Authorization: Bearer <TOKEN>' \
      -H 'Content-Type: application/json' \
        -d '{
        "name": "my-instance",
-       "target": "blue-us-south",
-       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
+       "target": "us-south",
+       "resource_group": "5g9f447903254bb567ab72a2f3f5a4c711",
        "resource_plan_id": "databases-for-mongodb-standard"
      }'
    ```
@@ -303,9 +304,27 @@ Follow these steps to provision by using the [resource controller API](https://c
    The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
    {: required}
 
+   The response  object will include a `guid` parameter, which can be used to check on the provisioning progress:
+
+   ```sh
+   curl -X GET https://resource-controller.cloud.ibm.com/v2/resource_instances/<GUID> -H "Authorization: Bearer <TOKEN>"
+   {
+    "id": "crn:v1:bluemix:.....",
+    ....
+    "last_operation": {
+    "type": "create",
+    "state": "succeeded",
+    ....
+    }
+   }
+  ```
+  {: pre}
+
 ## List of Additional Parameters
 {: #provisioning-parameters-api}
 {: api}
+
+A `parameter` object can optionally be added to the API call with one or more of these additional parameters:
 
 * `backup_id`- A CRN of a backup resource to restore from. The backup must be created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<...>:backup:<uuid>`. If omitted, the database is provisioned empty.
 * `version` - The version of the database to be provisioned. If omitted, the database is created with the most recent major and minor version.
@@ -361,15 +380,19 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: #admin_pw_set_api}
 {: api}
 
-The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser){: external} endpoint to set the admin password.
+YOu can use the `id` parameter obtained in the response to Step 2 above with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser){: external} endpoint to set the admin password.
 
 ```sh
-curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
--H `Authorization: Bearer <>` \
--H `Content-Type: application/json` \
--d `{"password":"newrootpasswordsupersecure21"}` \
+curl -X PATCH -H "Authorization: Bearer <TOKEN>" \
+     -H 'Content-Type: application/json' \
+     -d '{"password":"newrootpasswordsupersecure21"}' \
+      "https://api.<REGION>.databases.cloud.ibm.com/v5/ibm/deployments/<DEPLOYMENT_ID>/users/database/admin"
+
 ```
 {: pre}
+
+The `id` parameter needs to be url encoded for the above API call to work.
+{: important}
 
 ### Set the Admin password through Terraform
 {: #admin_pw_set_tf}
