@@ -60,7 +60,8 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Before you begin](#prereqs)
 * [Step 1: Choose your plan](#choose_plan)
 * [Step 2: Provision through Terraform](#provision_instance_tf)
-* [Step 3: Connect to your instance](#mongodb_connect)
+* [Step 3: Set your Admin password](#admin_pw)
+* [Step 4: Connect to your instance](#mongodb_connect)
 * [Next Steps](#next_steps)
 {: terraform}
 
@@ -85,7 +86,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external} to work with your {{site.data.keyword.databases-for-mongodb}} instance. The resource controller API is used to [provision an instance](#provision_instance_api).
 
-You will need an API key to perform actions via the API. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key) to create an IBM Cloud API key that enables you to use the API to provision infrastructure into your account. You can create up to 20 API keys.
+You will need an API key to perform actions via the API. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key){: external} to create an IBM Cloud API key that enables you to use the API to provision infrastructure into your account. You can create up to 20 API keys.
 
 For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key.
  {: note}
@@ -97,7 +98,7 @@ For security reasons, the API key is only available to be copied or downloaded a
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 1. Click the [**{{site.data.keyword.databases-for-mongodb}} service**](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **catalog**.
 
-1. Follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=ui) to provision a {{site.data.keyword.databases-for-mongodb}} instance.
+1. Follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=ui){: external} to provision a {{site.data.keyword.databases-for-mongodb}} instance.
 
 1. When your instance is provisioned, click the instance name to view more information.
 
@@ -107,7 +108,7 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 You can provision a {{site.data.keyword.databases-for-mongodb}} instance by using the CLI. If you don't already have it, you need to install the [{{site.data.keyword.cloud_notm}} CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started){: external}.
 
-You can follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) to provision a {{site.data.keyword.databases-for-mongodb}} instance.
+You can follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli){: external} to provision a {{site.data.keyword.databases-for-mongodb}} instance.
 
 ## Step 2: Provision through the resource controller API
 {: #provision_instance_api}
@@ -119,12 +120,12 @@ Follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-pro
 {: #provision_instance_tf}
 {: terraform}
 
-You will need an API key to perform actions via Terraform. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key) to create an IBM Cloud API key that enables Terraform to provision infrastructure into your account. You can create up to 20 API keys.
+You will need an API key to perform actions via Terraform. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key){: external} to create an IBM Cloud API key that enables Terraform to provision infrastructure into your account. You can create up to 20 API keys.
 
 For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key.
  {: note}
 
-Once you have an API Key, follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform) to provision a {{site.data.keyword.databases-for-mongodb}} instance using Terraform.
+Once you have an API Key, follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform){: external} to provision a {{site.data.keyword.databases-for-mongodb}} instance using Terraform.
 
 ## Step 3: Set the Admin password
 {: #admin_pw}
@@ -175,6 +176,11 @@ curl -X PATCH -H "Authorization: Bearer <TOKEN>" \
 The `id` parameter needs to be url encoded for the above API call to work.
 {: important}
 
+### Setting the Admin password through Terraform
+{: terraform}
+
+The admin password is passed in as one of the database resource parameters in the Terraform script. There is no need for any further action.
+
 ## Step 4: Connect to your {{site.data.keyword.databases-for-mongodb}} instance
 {: #mongodb_connect}
 
@@ -182,7 +188,7 @@ You can easily connect to your instance by either using the Mongo Shell (a comma
 
 ### Using the Mongo Shell
 
-Follow [these instructions](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client&interface=ui) to download and connect to the Mongo Shell.
+Follow [these instructions](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client&interface=ui){: external} to download and connect to the Mongo Shell.
 
 You can then test your deployment by inserting a document into a collection:
 
@@ -223,8 +229,8 @@ Follow [these instructions]() to download and connect to MongoDB Compass. You wi
 {: #next_steps}
 
 - For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: .external}.
-- Secure your deployment by adding context-based resttrictions [link]
-- Connect your deployment to IBM Cloud Logs and IBM Cloud Monitoring for observability and alerting [link]
+- Secure your deployment by adding [context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui){: external}
+- Connect your deployment to [IBM Cloud Log Analysis](/docs/cloud-databases?topic=cloud-databases-logging&interface=ui) and [IBM Cloud Monitoring](/docs/cloud-databases?topic=cloud-databases-monitoring&interface=ui) for observability and alerting.
 - Explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager){: external} functions offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 
 - Looking for more tools on managing your databases? Connect to your instance with:
