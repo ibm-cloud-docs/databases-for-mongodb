@@ -92,9 +92,9 @@ ibmcloud resource service-instance-create big-mongo-restore databases-for-mongod
 {: #pitr-api}
 {: api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup. 
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#provision-controller-api) before you can use it to restore from a backup. 
 
-After you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) endpoint.
+After you have all the information, the create request is a `POST` to the [`/resource_instances`](/apidocs/resource-controller/resource-controller#create-resource-instance) endpoint.
 
 ```sh
 curl -X POST \
@@ -246,9 +246,9 @@ The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:
 {: #pitr-offline-restore-api}
 {: api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. Complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before using it to restore from a backup.
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. Complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#provision-controller-api) before using it to restore from a backup.
 
-After you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) that will look like:
+After you have all the information, the create request is a `POST` to the [`/resource_instances`](/apidocs/resource-controller/resource-controller#create-resource-instance) that will look like:
 
 ```sh
 curl -X POST \
