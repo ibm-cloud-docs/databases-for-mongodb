@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-09-29"
+  years: 2017, 2024
+lastupdated: "2024-07-31"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
@@ -21,10 +21,10 @@ The connection strings can be used by any of the users you create in your deploy
 When connecting an external application, use only drivers that are supported by [MongoDB](https://www.mongodb.com/docs/drivers/){: external} or [MongoDB's Featured Community-Supported Libraries](https://www.mongodb.com/docs/drivers/#featured-community-supported-libraries){: external}. {{site.data.keyword.databases-for}} does not support any drivers that are not supported by MongoDB.
 {: important}
 
-## Using Connection Information
+## Using connection information
 {: #mongodb-using-connection-info}
 
-All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of a credential created on the *Service credentials* page.. The table contains a breakdown for reference.
+All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of a credential created on the **Service credentials** page. The table contains a breakdown for reference.
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
