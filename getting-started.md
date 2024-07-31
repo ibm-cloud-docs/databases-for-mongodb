@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-07-18"
+lastupdated: "2024-07-31"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -96,7 +96,9 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 1. Click the [**{{site.data.keyword.databases-for-mongodb}} service**](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **catalog**.
+
 1. Follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=ui) to provision a {{site.data.keyword.databases-for-mongodb}} instance.
+
 1. When your instance is provisioned, click the instance name to view more information.
 
 ## Step 2: Provision through the CLI

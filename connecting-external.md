@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-09-29"
+  years: 2017, 2024
+lastupdated: "2024-07-31"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
@@ -16,15 +16,15 @@ subcollection: databases-for-mongodb
 
 Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-mongodb_full}}. Each deployment has connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
-The connection strings can be used by any of the users you create in your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
+The connection strings can be used by any of the users you create in your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Getting Connection Strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
 
 When connecting an external application, use only drivers that are supported by [MongoDB](https://www.mongodb.com/docs/drivers/){: external} or [MongoDB's Featured Community-Supported Libraries](https://www.mongodb.com/docs/drivers/#featured-community-supported-libraries){: external}. {{site.data.keyword.databases-for}} does not support any drivers that are not supported by MongoDB.
 {: important}
 
-## Using Connection Information
+## Using connection information
 {: #mongodb-using-connection-info}
 
-All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of your connection strings. The table contains a breakdown for reference.
+All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of a credential created on the **Service credentials** page. The table contains a breakdown for reference.
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
