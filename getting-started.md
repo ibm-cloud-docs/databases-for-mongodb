@@ -126,6 +126,9 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 Once you have an API Key, follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform) to provision a {{site.data.keyword.databases-for-mongodb}} instance using Terraform.
 
+## Step 3: Set the Admin password
+{: #admin_pw}
+
 ### The admin user
 {: #admin_pw_admin_user}
 
