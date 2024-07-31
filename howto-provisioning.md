@@ -235,42 +235,35 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 {: #provision-controller-api}
 {: api}
 
-Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
+Follow these steps to provision by using the [resource controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
-2. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
+1. You need to know the ID of the resource group that you would like to deploy to. You can obtain those via this API call:
 
-   Use a command like:
-   ```sh
-   ibmcloud resource groups
-   ```
-   {: pre}
-
-3. You need to know the region you want to deploy to.
-
-   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
+```sh
+curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
+```
+{: pre}
+1. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call
 
    The command looks like:
 
    ```sh
-   ibmcloud cdb regions --json
+    curl -X GET https://api.<YOUR-REGION>.databases.cloud.ibm.com/v5/ibm/regions -H 'Authorization: Bearer <TOKEN>' \
    ```
    {: pre}
 
+   {: pre}
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later. 
 
 A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) like this:
 
 ```sh
-curl -X POST  https://api.{region}.databases.cloud.ibm.com/v5/ibm/capability/flavors  \
-  -H 'Authorization: Bearer <>' \
-  -H 'ContentType: application/json' \
-  -d '{
-    "deployment": {
-      "type": "postgresql",
-      "location": "us-south"
-    },
-  }'
+
+curl -X POST -H "Authorization: Bearer <TOKEN>" \
+-H 'ContentType: application/json' \
+-d '{ "deployment": { "type": "mongodb","location": "us-south" } }'\
+ "https://api.us-south.databases.cloud.ibm.com/v5/ibm/capability/flavors"
 ```
 {: pre}
 
@@ -279,7 +272,7 @@ This returns:
 ```sh
 {
   "deployment": {
-    "type": "postgresql",
+    "type": "mongodb",
     "location": "us-south",
     "platform": "classic"
   },
@@ -365,11 +358,10 @@ This returns:
     ]
   }
 }
-
 ```
 {: pre}
 
-As shown, the Isolated Compute host flavors available to a {{site.data.keyword.databases-for-postgresql}} instance in the `us-south` region are:
+As shown, the Isolated Compute host flavors available to a {{site.data.keyword.databases-for-mongodb}} instance in the `us-south` region are:
 
 - `b3c.4x16.encrypted`
 - `b3c.8x32.encrypted`
@@ -404,8 +396,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the fol
 
    ```sh
    curl -X POST \
-     https://resource-controller.cloud.ibm.com/v2/resource_instances \
-     -H "Authorization: Bearer <>" \
+     -H "Authorization: Bearer <TOKEN>" \
      -H 'Content-Type: application/json' \
        -d '{
        "name": "<INSTANCE_NAME",
@@ -416,6 +407,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the fol
            "host_flavor": {"id": "<host_flavor_value>"}
       }
      }'
+     "https://resource-controller.cloud.ibm.com/v2/resource_instances"
 ```
 {: .pre}
 
@@ -423,26 +415,26 @@ To make a Shared Compute instance, follow this example:
    
    ```sh
    curl -X POST \
-     https://resource-controller.cloud.ibm.com/v2/resource_instances \
-     -H "Authorization: Bearer <>" \
+     -H "Authorization: Bearer <TOKEN>" \
      -H 'Content-Type: application/json' \
-       -d '{
-       "name": "my-instance",
-       "location": "us-south",
-       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-       "resource_plan_id": "databases-for-mongodb-enterprise"
-       "parameters": {
-        "host_flavor": {
-          "id": "multitenant"
-        },
-        "memory": {
-          "allocation_mb": 16384
-        },
-        "cpu": {
-          "allocation_count": 4
-        }
-      }
-     }'
+       -d '{  \
+       "name": "my-instance", \ 
+       "location": "us-south", \
+       "resource_group": "5g9f447903254bb58972a2f3f5a4c711", \
+       "resource_plan_id": "databases-for-mongodb-enterprise" \
+       "parameters": { \
+        "host_flavor": { \
+          "id": "multitenant" \
+        }, \
+        "memory": {  \
+          "allocation_mb": 16384 \
+        }, \
+        "cpu": { \
+          "allocation_count": 4 \
+        } \
+      } \
+     }' \
+     "https://resource-controller.cloud.ibm.com/v2/resource_instances"
    ```
    {: .pre}
 
@@ -450,20 +442,20 @@ Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with t
 
    ```sh
    curl -X POST \
-     https://resource-controller.cloud.ibm.com/v2/resource_instances \
-     -H "Authorization: Bearer <>" \
+     -H "Authorization: Bearer <TOKEN>" \
      -H 'Content-Type: application/json' \
-       -d '{
-       "name": "my-instance",
-       "location": "us-south",
-       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-       "resource_plan_id": "databases-for-mongodb-enterprise"
-       "parameters": {
-        "host_flavor": {
-          "id": "b3c.4x16.encrypted"
-        }
-      }
-     }'
+       -d '{  \
+       "name": "my-instance",  \
+       "location": "us-south",  \
+       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",  \
+       "resource_plan_id": "databases-for-mongodb-enterprise" \
+       "parameters": {  \
+        "host_flavor": {  \
+          "id": "b3c.4x16.encrypted"  \
+        }  \
+      }  \
+     }'  \
+     "https://resource-controller.cloud.ibm.com/v2/resource_instances"
    ```
    {: .pre}
 
