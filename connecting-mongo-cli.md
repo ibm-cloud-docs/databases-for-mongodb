@@ -49,9 +49,9 @@ mongosh -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed6
 ```
 
 * `mongosh` - The command itself.
-* `--ssl --sslCAFile` - The path and name of the self-signed certificate for your deployment.
 * `-u` - The parameter for the username.
 * `-p` - The parameter for the password.
+* `--ssl --sslCAFile` - The path and name of the self-signed certificate for your deployment.
 * `--authenticationDatabase` - The database where the user and its credentials are created and stored.
 * `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members.
 

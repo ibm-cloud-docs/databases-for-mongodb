@@ -131,7 +131,7 @@ For security reasons, the API key is only available to be copied or downloaded a
     - **Database version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
     - **Database edition** [Set only at deployment]{: tag-red} - Select the edition that you would like to provision. For more information, see [{{site.data.keyword.databases-for-mongodb}} Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans){: external}.
     - **Encryption** [Set only at deployment]{: tag-red} - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-    - **Endpoints** - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A {{site.data.keyword.databases-for-mongodb}} instance cannot have both public and private endpoints simultaneously.*
+    - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. *A {{site.data.keyword.databases-for-mongodb}} instance cannot have both public and private endpoints simultaneously.*
 
 1. After you configure the appropriate settings, click **Create** to start the provisioning process. The **{{site.data.keyword.cloud_notm}} resource list** page opens.
 

@@ -51,7 +51,7 @@ The `admin` user has the following permissions:
 {: #user-management-set-admin-password-ui}
 {: ui}
 
-Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
+Set your Admin Password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
 ### Setting the Admin Password in the CLI
 {: #user-management-set-admin-password-cli}
@@ -93,7 +93,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 
 The new credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under _View Credentials_.
 
-Creating a user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information. Enter the username and password in the JSON field under _Add Inline Configuration Parameters_. For example, {"existing_credentials":{"username":"Robert","password":"supersecure"}}. Basically, you send in the username and password, and _Service Credentials_ generates the connection strings with the credentials filled in.
+Creating a user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information. Enter the username and password in the JSON field under _Add Inline Configuration Parameters_. For example, `{"existing_credentials":{"username":"Robert","password":"supersecure"}}`. Basically, you send in the username and password, and _Service Credentials_ generates the connection strings with the credentials filled in.
 
 Generating credentials from an existing user does not check for or create that user. 
 {: .tip}
@@ -113,16 +113,16 @@ If you need users to have a different role, you can use the `admin` user to chan
 
 Users that are created directly from the CLI do not appear in _Service Credentials_, but you can add them.
 
-If you manage your service through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command:
+1. If you manage your service through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command:
 
 ```sh
 ibmcloud cdb user-create example-deployment <newusername> <newpassword>
 ```
 {: pre}
 
-When the task finishes, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
+2. When the task finishes, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
-MongoDB centralizes user data in the `admin` database. List all users and their roles and database permissions [in the mongo shell](https://www.mongodb.com/try/download/shell){: external} by using the `show users` command.
+3. MongoDB centralizes user data in the `admin` database. List all users and their roles and database permissions [in the mongo shell](https://www.mongodb.com/try/download/shell){: external} by using the `show users` command.
 
 ```sh
 ibmcloud cdb deployment-connections --start -u admin mongodb-production
