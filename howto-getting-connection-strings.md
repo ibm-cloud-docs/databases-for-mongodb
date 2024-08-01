@@ -24,8 +24,8 @@ Connection strings allow you to establish a connection between your application 
 
 Follow these steps to retrieve your {{site.data.keyword.databases-for-mongodb}} instance connection strings:
 
-1. In your deployment's **Overview**, scroll down to the *Endpoints* section. 
-1. Within the *Endpoints* section, you find: 
+1. In your deployment's **Overview page**, scroll down to the *Endpoints* section. 
+1. Within the *Endpoints* section, you find a *Quick start tab* with the following sections: 
    - **Connect using a CLI** - This section contains information for connecting to your deployment through the [{{site.data.keyword.IBM_notm}} CLI](https://www.ibm.com/cloud/cli){: external}.
    - **Connect using a MongoDB Enterprise Client** - This section allows you to get a TLS certificate and connect to your deployment.
 
@@ -50,7 +50,7 @@ For more information, see [Connections Command options](/docs/databases-cli-plug
 
 - If you don't specify a `user`, the Connections commands return information for the `admin` user, by default. 
 - If you don't specify an `endpoint-type`, the connection string returns the public endpoint by default. 
-- If your deployment has only a private endpoint, specify `--endpoint-type private` or the commands return an error. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
+- If your deployment has only a private endpoint, specify `--endpoint-type private` or the commands return an error. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint.
 
 ## Getting Connection Strings in the API
 {: #connection-strings-api}
