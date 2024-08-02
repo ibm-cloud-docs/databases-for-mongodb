@@ -120,7 +120,7 @@ Follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-pro
 {: #provision_instance_tf}
 {: terraform}
 
-You will need an API key to perform actions via Terraform. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key) to create an IBM Cloud API key that enables Terraform to provision infrastructure into your account. You can create up to 20 API keys.
+You need an API key to perform actions via Terraform. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key) to create an IBM Cloud API key that enables Terraform to provision infrastructure into your account. You can create up to 20 API keys.
 
 For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key.
  {: note}
@@ -209,7 +209,7 @@ db.movies.insertOne(
 ```
 {:pre}
 
-The above command will switch to a database called `sample_mflix` (and will create it if it does not already exist), and then insert a document into the `movies` collection (which will also be created if it does not already exist).
+The above command switches to a database called `sample_mflix` (and creates it if it does not already exist), and then insert a document into the `movies` collection (which gets also be created if it does not already exist).
 
 You can then retrieve the document with:
 
@@ -218,13 +218,13 @@ db.movies.find( { title: "The Favourite" } )
 ```
 {:pre}
 
-Congratulations! You have now connected to your database and have written and read data using the Mongo Shell.
+You now connected to your database and wrote and read data using the Mongo Shell.
 
 ### Using MongoDB Compass
 
-Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-mongodb-compass&interface=ui) to download MongoDB Compass and use it to connect to your {{site.data.keyword.databases-for-mongodb}} instance. You will then be able to write and read data using the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current).
+Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-mongodb-compass&interface=ui) to download MongoDB Compass and use it to connect to your {{site.data.keyword.databases-for-mongodb}} instance. You can write and read data using the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current).
 
-## Next Steps
+## Next steps
 {: #next_steps}
 
 - If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: external}.
