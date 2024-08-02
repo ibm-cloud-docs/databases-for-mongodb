@@ -46,4 +46,4 @@ Next, you see the default databases for your deployment, which all hold informat
 
 MongoDB Compass might not have access to all the data in these databases for permissions and security reasons.
 
-Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. For more information, see the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: .external}.
+Now you can use MongoDB Compass to view any data you and your applications have stored in your deployment. You can also use MongoDB Compass to create new databases, collections, and documents. For more information, see the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current/){: external}.
