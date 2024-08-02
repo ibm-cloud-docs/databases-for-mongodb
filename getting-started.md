@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-07-31"
+lastupdated: "2024-08-02"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -127,7 +127,7 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 Once you have an API Key, follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform) to provision a {{site.data.keyword.databases-for-mongodb}} instance using Terraform.
 
-## Step 3: Set the Admin password
+## Step 3: Set the admin password
 {: #admin_pw}
 
 ### The admin user
@@ -145,7 +145,7 @@ Set the admin password before using it to connect.
 
 Set your admin password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
-### Set the Admin password through the CLI
+### Set the admin password through the CLI
 {: #admin_pw_set_cli}
 {: cli}
 
@@ -158,7 +158,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 {: pre}
 
-### Set the Admin password through the API
+### Set the admin password through the API
 {: #admin_pw_set_api}
 {: api}
 
@@ -169,14 +169,13 @@ curl -X PATCH -H "Authorization: Bearer <TOKEN>" \
      -H 'Content-Type: application/json' \
      -d '{"password":"newrootpasswordsupersecure21"}' \
       "https://api.<REGION>.databases.cloud.ibm.com/v5/ibm/deployments/<DEPLOYMENT_ID>/users/database/admin"
-
 ```
 {: pre}
 
-The `id` parameter needs to be url encoded for the above API call to work.
+The `id` parameter needs to be URL-encoded for the above API call to work.
 {: important}
 
-### Setting the Admin password through Terraform
+### Setting the admin password through Terraform
 {: terraform}
 
 The admin password is passed in as one of the database resource parameters in the Terraform script. There is no need for any further action.
@@ -229,26 +228,26 @@ Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mon
 {: #next_steps}
 
 - If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: external}.
-- For guidance on best practices, check out [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. 
-- Secure your deployment by adding [context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui)
+- For guidance on best practices, see [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. 
+- Secure your deployment by adding [context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
 - Connect your deployment to [IBM Cloud Log Analysis](/docs/cloud-databases?topic=cloud-databases-logging&interface=ui) and [IBM Cloud Monitoring](/docs/cloud-databases?topic=cloud-databases-monitoring&interface=ui) for observability and alerting.
-- Explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functionality offered in {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
+- Explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functionality offered in the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 
-- Looking for more tools on managing your databases? Connect to your instance with:
-    - The [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli)
-    - The [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference)
-    - The [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}.
+- Looking for more tools on managing your databases? Connect to your instance with the following tools:
+    - [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli)
+    - [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference)
+    - [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}
 
-- If you plan to use {{site.data.keyword.databases-for-mongodb}} for your applications, check out:
+- If you plan to use {{site.data.keyword.databases-for-mongodb}} for your applications, see the following topics:
     - [Connecting an external application](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app)
     - [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-connecting-ibmcloud-app)
-    - [MongoDB Node.js Driver Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/){: external}.
+    - [MongoDB Node.js Driver Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/){: external}
 
-- For information on TLS/SSL certificate configuration in the API, review:
+- For information on TLS/SSL certificate configuration in the API, see the following topics:
     - [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app#mongodb-tls-certificate-support)
     - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client#connecting-cli-client-cert)
-    - [MongoDB TLS/SSL Configuration for Clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: external}.
+    - [MongoDB TLS/SSL configuration for clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: external}
 
-- To ensure the stability of your applications and databases, check out:
-    - [High-Availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
-    - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance).
+- To ensure the stability of your applications and databases, see the following topics:
+    - [High-availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
+    - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance)
