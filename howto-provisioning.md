@@ -87,7 +87,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud login
    ```
-
    {: pre}
 
 2. Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
@@ -97,7 +96,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
    ```
-
    {: pre}
 
 - **Shared:** For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute hosting model instance, use a command like:
@@ -105,7 +103,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
    ```
-
    {: pre}
 
 - **Isolated:** Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
@@ -113,7 +110,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
   ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
    ```
-
    {: pre}
 
    The fields in the command are described in the table that follows.
@@ -173,7 +169,6 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
                         Status    create in progress
                         Message   Started create instance operation
    ```
-
    {: codeblock}
 
 1. To check provisioning status, use the following command:
@@ -181,7 +176,6 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
    ```sh
    ibmcloud resource service-instance <INSTANCE_NAME>
    ```
-
    {: pre}
 
    When complete, you will see a response like:
@@ -209,7 +203,6 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
                           Status    create succeeded
                           Message   Provisioning mongodb with version 7.17 (100%)
    ```
-
    {: codeblock}
 
 2. (Optional) Delete a service instance by running a command like this one:
@@ -217,7 +210,6 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
    ```sh
    ibmcloud resource service-instance-delete <INSTANCE_NAME>
    ```
-
    {: pre}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
@@ -238,7 +230,6 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
   "members_memory_allocation_mb": "3072"
 }'
 ```
-
 {: .pre}
 
 ## Provisioning through the Resource Controller API
@@ -253,7 +244,6 @@ Follow these steps to provision by using the [resource controller API](https://c
 ```sh
 curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
 ```
-
 {: pre}
 
 1. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call
@@ -263,7 +253,6 @@ curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?accoun
    ```sh
     curl -X GET https://api.<YOUR-REGION>.databases.cloud.ibm.com/v5/ibm/regions -H 'Authorization: Bearer <TOKEN>' \
    ```
-
    {: pre}
 
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
@@ -277,7 +266,6 @@ curl -X POST -H "Authorization: Bearer <TOKEN>" \
 -d '{ "deployment": { "type": "mongodb","location": "us-south" } }'\
  "https://api.us-south.databases.cloud.ibm.com/v5/ibm/capability/flavors"
 ```
-
 {: pre}
 
 This returns:
@@ -372,7 +360,6 @@ This returns:
   }
 }
 ```
-
 {: pre}
 
 As shown, the Isolated Compute host flavors available to a {{site.data.keyword.databases-for-mongodb}} instance in the `us-south` region are:
@@ -393,7 +380,6 @@ To provision or scale your instance to 4 CPUs and `16384` megabytes or RAM, subm
   }
 }
 ```
-
 {: pre}
 
 To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the following command:
@@ -405,7 +391,6 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the fol
   }
 }
 ```
-
 {: pre}
 
 3. Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
@@ -426,7 +411,6 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the fol
      "https://resource-controller.cloud.ibm.com/v2/resource_instances"
 
    ```
-
    {: .pre}
 
 To make a Shared Compute instance, follow this example:
@@ -454,7 +438,6 @@ To make a Shared Compute instance, follow this example:
      }' \
      "https://resource-controller.cloud.ibm.com/v2/resource_instances"
    ```
-
    {: .pre}
 
 Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#host-flavor-parameter-api). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.  
@@ -476,7 +459,6 @@ Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with t
      }'  \
      "https://resource-controller.cloud.ibm.com/v2/resource_instances"
    ```
-
    {: .pre}
 
    The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
@@ -591,7 +573,6 @@ output "ICD MongoDB database connection string" {
   value = "http://${ibm_database.test_acc.ibm_database_connection.icd_conn}"
 }
 ```
-
 {: codeblock}
 
 - **Isolated:** Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
@@ -630,7 +611,6 @@ output "ICD MongoDB database connection string" {
   value = "http://${ibm_database.test_acc.ibm_database_connection.icd_conn}"
 }
 ```
-
 {: codeblock}
 
 ### The `host flavor` parameter
