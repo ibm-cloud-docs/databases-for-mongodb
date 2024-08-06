@@ -13,20 +13,17 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 # Provisioning
-
 {: #provisioning}
 
 Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
-
 {: #catalog}
 {: ui}
 
 Provision from the console by specifying the following parameters:
 
 ### Service details
-
 {: #service_details}
 {: ui}
 
@@ -35,7 +32,6 @@ Provision from the console by specifying the following parameters:
 - **Location:** The deployment's public cloud region or Satellite location.
 
 ### Hosting model
-
 {: #hosting_model}
 {: ui}
 
@@ -48,7 +44,6 @@ Provision from the console by specifying the following parameters:
 For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models) and [{{site.data.keyword.databases-for-mongodb}} plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans).
 
 ### Resource allocation
-
 {: #resource_allocation}
 {: ui}
 
@@ -64,7 +59,6 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: note}
 
 ### Service configuration
-
 {: #service_configuration}
 {: ui}
 
@@ -79,12 +73,10 @@ A {{site.data.keyword.databases-for-mongodb}} deployment cannot have both public
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
 ## Provisioning through the CLI
-
 {: #use-cli}
 {: cli}
 
 ### Create a service instance through the CLI
-
 {: #create-service-instance-cli}
 {: cli}
 
@@ -96,7 +88,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ibmcloud login
    ```
 
-      {: pre}
+   {: pre}
 
 2. Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
 
@@ -142,7 +134,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    {: note}
 
 ### The `host flavor` parameter
-
 {: #host-flavor-parameter-cli}
 {: cli}
 
@@ -233,7 +224,6 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 {: note}
 
 ### The `--parameters` parameter
-
 {: #flags-params-service-endpoints}
 {: cli}
 
@@ -252,7 +242,6 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 {: .pre}
 
 ## Provisioning through the Resource Controller API
-
 {: #provision-controller-api}
 {: api}
 
@@ -277,7 +266,6 @@ curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?accoun
 
    {: pre}
 
-   {: pre}
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
 
 A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) like this:
@@ -439,7 +427,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the fol
 
    ```
 
-{: .pre}
+   {: .pre}
 
 To make a Shared Compute instance, follow this example:
 
