@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-07-23"
+lastupdated: "2024-08-06"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -90,6 +90,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       {: pre}
 
 2. Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
+
 3. Provision your database with the following command:
 
    ```sh
