@@ -98,14 +98,14 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```
    {: pre}
 
-- **Shared:** For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute hosting model instance, use a command like:
+   - **Shared:** For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute hosting model instance, use a command like:
 
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
    ```
    {: pre}
 
-- **Isolated:** Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+   - **Isolated:** Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
    ```sh
   ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
@@ -133,45 +133,47 @@ Before provisioning, follow the instructions provided in the documentation to in
 {: #host-flavor-parameter-cli}
 {: cli}
 
-The `host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
+The `host_flavor` parameter defines your Compute sizing. 
 
-| **Host flavor** | **host_flavor value** |
-|:-------------------------:|:---------------------:|
-| Shared Compute            | `multitenant`    |
-| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
-| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
-| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
-| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
+- To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
-   You will see a response like:
+  | **Host flavor** | **host_flavor value** |
+  |:-------------------------:|:---------------------:|
+  | Shared Compute            | `multitenant`    |
+  | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
+  | 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
+  | 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
+  | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
+  | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
+  | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
+  {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
 
-   ```text
-   Creating service instance INSTANCE_NAME in resource group default of account    USER...
-   OK
-   Service instance INSTANCE_NAME was created.
+    You will see a response like:
 
-   Name:                INSTANCE_NAME
-   ID:                  crn:v1:bluemix:public:databases-for-mongodb:us-south:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-   GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
-   Location:            LOCATION
-   State:               provisioning
-   Type:                service_instance
-   Sub Type:            Public
-   Service Endpoints:   public
-   Allow Cleanup:       false
-   Locked:              false
-   Created at:          2023-06-26T19:42:07Z
-   Updated at:          2023-06-26T19:42:07Z
-   Last Operation:
-                        Status    create in progress
-                        Message   Started create instance operation
-   ```
-   {: codeblock}
+    ```text
+    Creating service instance INSTANCE_NAME in resource group default of account    USER...
+    OK
+    Service instance INSTANCE_NAME was created.
 
-1. To check provisioning status, use the following command:
+    Name:                INSTANCE_NAME
+    ID:                  crn:v1:bluemix:public:databases-for-mongodb:us-south:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+    GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
+    Location:            LOCATION
+    State:               provisioning
+    Type:                service_instance
+    Sub Type:            Public
+    Service Endpoints:   public
+    Allow Cleanup:       false
+    Locked:              false
+    Created at:          2023-06-26T19:42:07Z
+    Updated at:          2023-06-26T19:42:07Z
+    Last Operation:
+                         Status    create in progress
+                         Message   Started create instance operation
+    ```
+    {: codeblock}
+
+- To check provisioning status, use the following command:
 
    ```sh
    ibmcloud resource service-instance <INSTANCE_NAME>
@@ -205,7 +207,7 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
    ```
    {: codeblock}
 
-2. (Optional) Delete a service instance by running a command like this one:
+- To delete a service instance by running a command like this one (optional):
 
    ```sh
    ibmcloud resource service-instance-delete <INSTANCE_NAME>
@@ -239,14 +241,14 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 Follow these steps to provision by using the [resource controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
-1. You need to know the ID of the resource group that you would like to deploy to. You can obtain those via this API call:
+2. You need to know the ID of the resource group that you would like to deploy to. You can obtain those via this API call:
 
 ```sh
 curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
 ```
 {: pre}
 
-1. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call
+3. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call
 
    The command looks like:
 
