@@ -87,6 +87,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud login
    ```
+
    {: pre}
 
 2. Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
@@ -96,6 +97,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
    ```
+
    {: pre}
 
    - **Shared:** For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute hosting model instance, use a command like:
@@ -103,16 +105,18 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
    ```
+
    {: pre}
 
    - **Isolated:** Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
    ```sh
-  ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
+   ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
    ```
+
    {: pre}
 
-The fields in the command are described in the table that follows.
+   The fields in the command are described in the table that follows.
 
    | Field | Description | Flag |
    |-------|------------|------------|
@@ -148,7 +152,7 @@ The `host_flavor` parameter defines your Compute sizing.
   | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
   {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
 
-    You will see a response like:
+   You will see a response like:
 
     ```text
     Creating service instance INSTANCE_NAME in resource group default of account    USER...
@@ -171,6 +175,7 @@ The `host_flavor` parameter defines your Compute sizing.
                          Status    create in progress
                          Message   Started create instance operation
     ```
+
     {: codeblock}
 
 - To check provisioning status, use the following command:
@@ -178,6 +183,7 @@ The `host_flavor` parameter defines your Compute sizing.
    ```sh
    ibmcloud resource service-instance <INSTANCE_NAME>
    ```
+
    {: pre}
 
    When complete, you will see a response like:
@@ -241,20 +247,21 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 Follow these steps to provision by using the [resource controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
+
 2. You need to know the ID of the resource group that you would like to deploy to. You can obtain those via this API call:
 
 ```sh
 curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
 ```
+
 {: pre}
 
-3. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call
-
-   The command looks like:
+3. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call:
 
    ```sh
     curl -X GET https://api.<YOUR-REGION>.databases.cloud.ibm.com/v5/ibm/regions -H 'Authorization: Bearer <TOKEN>' \
    ```
+
    {: pre}
 
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
