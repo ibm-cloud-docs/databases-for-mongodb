@@ -112,7 +112,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```
    {: pre}
 
-   The fields in the command are described in the table that follows.
+The fields in the command are described in the table that follows.
 
    | Field | Description | Flag |
    |-------|------------|------------|
