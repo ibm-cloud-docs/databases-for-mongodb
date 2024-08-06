@@ -87,7 +87,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud login
    ```
-
    {: pre}
 
 2. Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli) you want your database to be provisioned on. You can change this later.
