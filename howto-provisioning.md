@@ -96,7 +96,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
    ```
-
    {: pre}
 
    - **Shared:** For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute hosting model instance, use a command like:
@@ -104,7 +103,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
    ```
-
    {: pre}
 
    - **Isolated:** Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
@@ -112,7 +110,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
    ```
-
    {: pre}
 
    The fields in the command are described in the table that follows.
@@ -140,16 +137,16 @@ The `host_flavor` parameter defines your Compute sizing.
 
 - To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
-  | **Host flavor** | **host_flavor value** |
-  |:-------------------------:|:---------------------:|
-  | Shared Compute            | `multitenant`    |
-  | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
-  | 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-  | 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
-  | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
-  | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-  | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-  {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
+    | **Host flavor** | **host_flavor value** |
+    |:-------------------------:|:---------------------:|
+    | Shared Compute            | `multitenant`    |
+    | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
+    | 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
+    | 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
+    | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
+    | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
+    | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
+    {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
 
    You will see a response like:
 
@@ -174,7 +171,6 @@ The `host_flavor` parameter defines your Compute sizing.
                          Status    create in progress
                          Message   Started create instance operation
     ```
-
     {: codeblock}
 
 - To check provisioning status, use the following command:
@@ -182,7 +178,6 @@ The `host_flavor` parameter defines your Compute sizing.
    ```sh
    ibmcloud resource service-instance <INSTANCE_NAME>
    ```
-
    {: pre}
 
    When complete, you will see a response like:
@@ -252,7 +247,6 @@ Follow these steps to provision by using the [resource controller API](https://c
 ```sh
 curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
 ```
-
 {: pre}
 
 3. You need to know the region that you would like to deploy into. To list all of the regions that deployments can be provisioned into from the current region, use the following API call:
@@ -260,7 +254,6 @@ curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?accoun
    ```sh
     curl -X GET https://api.<YOUR-REGION>.databases.cloud.ibm.com/v5/ibm/regions -H 'Authorization: Bearer <TOKEN>' \
    ```
-
    {: pre}
 
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
@@ -268,7 +261,6 @@ curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?accoun
 A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) like this:
 
 ```sh
-
 curl -X POST -H "Authorization: Bearer <TOKEN>" \
 -H 'ContentType: application/json' \
 -d '{ "deployment": { "type": "mongodb","location": "us-south" } }'\
