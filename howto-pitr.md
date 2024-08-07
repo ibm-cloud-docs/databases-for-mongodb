@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 # Point-in-time Recovery (PITR)
 {: #pitr}
 
-{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability).
+{{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getpitrdata).
 
 For new hosting models, PITR is currently available through the CLI, API, and Terraform.
 {: note}
@@ -67,15 +67,17 @@ If you use Key Protect and have a key, you must use the CLI to recover, and a co
 The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller CLI. Use the [`resource service-instance-create`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_create) command.
 
 ```sh
-ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> <region> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":""}'
+ibmcloud resource service-instance-create <service_instance_name> <service_id> <service_plan_name> <region> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":""}'
 ```
 {: pre}
 
-- `service_instance_name`: The human-readable name of the new instance to be deployed, for example, `new-mongo`.
-- `service_id`: In this context this is `databases-for-mongodb`.
-- `service_plan_name`: `Standard` or `enterprise`.
-- `region`: The {{site.data.keyword.cloud}} region where the new database will be deployed, for example, `eu-gb`.
-- `point_in_time_recovery_deployment_id`: The source deployment's ID (also known as the CRN).
+Available parameters are:
+
+- `service_instance_name`(Required): The human-readable name of the new instance to be deployed, for example, `new-mongo`.
+- `service_id`(Required): In this context this is `databases-for-mongodb`.
+- `service_plan_name`(Required): `Standard` or `enterprise`.
+- `region` (Required): The {{site.data.keyword.cloud}} region where the new database will be deployed, for example, `eu-gb`.
+- `point_in_time_recovery_deployment_id` (Required): The source deployment's ID (also known as the CRN).
 - `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
 - `version`: The database version, for example, "6.0". Leave this field blank to use the latest, preferred version.
 - `key_protect_key`: ID (CRN) of the Key Protect resource used. This field is optional, for BYOK (Bring Your Own Key) encryption.

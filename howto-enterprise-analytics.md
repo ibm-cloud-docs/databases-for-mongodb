@@ -51,7 +51,7 @@ mongodb://$USERNAME:$PASSWORD@host-0:30783,host-1:30783,host-2:30783/?readPrefer
 
 Traditional BI tools are designed to work with tabular, row-and-column data. The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On connector for BI allows you to query MongoDB data with SQL using tools, such as Tableau, by connecting to the Analytics node and providing an SQL interface.
 
-You can access your BI Connector through the ODBC connector of your BI tool by using your username and password and the host URL, which look like:
+You can access your BI Connector through the ODBC connector of your BI tool by using your username and password and the host URL, which looks like:
 
 ```sh
 xyz1234-scfr5rer-496hjgo6ghtg-biconnector.abc12345deft7.databases.appdomain.cloud:32757
@@ -99,16 +99,12 @@ resource "ibm_database" "mongodb_enterprise" {
   group {
     group_id = "member"
 
-    memory { 
-      allocation_mb = 24576
+    host_flavor {
+      id = "b3c.8x32.encrypted"
     }
 
-    disk { 
-      allocation_mb = 122880
-    }
-
-    cpu {
-      allocation_count = 6
+    disk {
+      allocation_mb = 256000
     }
   }
 
@@ -196,7 +192,7 @@ curl --request PATCH \
     }
 }'
 ```
-Remember that the Analytics Node must be scaled **before** the BI Connector or your request will fail. {: .important}
+Remember that the Analytics Node must be deployed **before** the BI Connector or your request will fail. {: .important}
 
 To get the connection strings to connect to the Analytics Node and/or BI Connector, follow the instructions [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
 

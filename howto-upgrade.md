@@ -35,7 +35,6 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 
 | Current Version |	Major Version Upgrade Path |
 | ---- | ----- |
-| MongoDB 4.4 |	-> MongoDB 4.4 -> 5.0 |
 | MongoDB 5.0 |	-> MongoDB 5.0 -> 6.0 |
 | MongoDB 6.0 |	-> Latest version |
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
@@ -63,7 +62,7 @@ The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are
 ibmcloud resource service-instance-create example-upgrade databases-for-mongodb standard us-south \
 -p \ '{
   "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-  "version":"5.0"
+  "version":"6.0"
 }'
 ```
 {: pre}
@@ -81,11 +80,11 @@ curl -X POST \
   -H 'Content-Type: application/json' \
     -d '{
     "name": "my-instance",
-    "target": "bluemix-us-south",
+    "target": "us-south",
     "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
     "resource_plan_id": "databases-for-mongodb-standard",
     "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-    "version":"5.0"
+    "version":"6.0"
   }'
 ```
 {: pre}
