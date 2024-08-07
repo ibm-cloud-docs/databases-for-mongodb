@@ -152,10 +152,10 @@ The _Foundation Endpoint_ that is shown on the _Overview_ section of your servic
 The command looks like: 
 
 ```sh
-curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users' \
--H "Authorization: Bearer $APIKEY" \
--H "Content-Type: application/json" \
--d '{"username":"jane_smith", "password":"newsupersecurepassword"}'
+curl -X POST https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/{user_type} 
+-H 'Authorization: Bearer <>' 
+-H 'Content-Type: application/json' 
+-d '{"user": {"username": "user", "password": "v3ry-1-secUre-pAssword-2"}}' \
 ```
 {: pre}
 
