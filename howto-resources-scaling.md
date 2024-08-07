@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-06-30"
+  years: 2019, 2024
+lastupdated: "2024-08-07"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -12,22 +12,22 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Scaling Disk, Memory, and CPU
+# Scaling disk, memory, and CPU
 {: #resources-scaling}
 
 You can manually adjust the amount of resources available to your {{site.data.keyword.databases-for-mongodb}} deployment to suit your workload and the size of your data.
 
-## Resource Breakdown
+## Resource breakdown
 {: #resources-breakdown}
 
-{{site.data.keyword.databases-for-mongodb}} runs with three data members in a cluster, and resources are allocated to all members equally. For example, the minimum disk size of a MongoDB deployment is 30720 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 3072 MB, which equates to an initial allocation of 1024 MB per member.
+{{site.data.keyword.databases-for-mongodb}} runs with three data members in a cluster, and resources are allocated to all members equally. For example, the minimum disk size of a MongoDB deployment is 30720 MB, which equates to an initial size of 10240 MB per member. Minimum RAM for a MongoDB deployment is 12288 MB, which equates to an initial allocation of 4096 MB per member.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
 When you provision a deployment, you can select the initial resource allocation of disk and memory. After provision, you can scale your deployment as it needs more resources.
 
-### Disk Usage
+### Disk usage
 {: #resources-scaling-disk-usage}
 
 Your disk allocation must be enough to store all of your data. Your data is replicated to both data members so the total amount of disk that you use is at least twice the size of your data set. 
@@ -44,12 +44,12 @@ Memory resources are used for database operations and also control the amount of
 
 The amount of memory you allocate to your deployment is split between all members. Adding memory to the total allocation adds memory to all members equally.
 
-### Dedicated Cores
+### Dedicated cores
 {: #resources-scaling-dedicated-cores}
 
 You can enable or increase the CPU allocation to the deployment. With dedicated cores, your resource group is given a single-tenant host with a reserve of CPU shares. Your deployment is then guaranteed the minimum number of CPUs you specify. The default of 0 dedicated cores uses compute resources on shared hosts.
 
-## Scaling Considerations
+## Scaling considerations
 {: #resources-scaling-scale-consider}
 
 - Scaling your deployment up might cause your databases to restart. If your scaled deployment needs to be moved to a host with more capacity, then the databases are restarted as part of the move.
@@ -68,7 +68,10 @@ You can enable or increase the CPU allocation to the deployment. With dedicated 
 {: #resources-scaling-scale-ui}
 {: ui}
 
-A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
+For new hosting models, resource scaling is currently available through the [CLI](/docs/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling&interface=cli) and [API](/docs/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling&interface=api).
+{: note}
+
+A visual representation of your data members and their resource allocation is available on the _Resources_ page of your deployment on the {{site.data.keyword.cloud_notm}} console. 
 
 Adjust the slider to increase or decrease the resources that are allocated to your service. The UI currently uses a coarser-grained resolution than is available via the CLI or API. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
@@ -78,8 +81,12 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
-For example, the command to view the resource groups for a deployment named "example-deployment" is  
-`ibmcloud cdb deployment-groups example-deployment`
+For example, the command to view the resource groups for a deployment named "example-deployment" is the following:
+
+```sh
+ibmcloud cdb deployment-groups example-deployment
+```
+{: pre}
 
 This command produces the output:
 
@@ -111,29 +118,34 @@ Count   3
 
 The deployment has three members, with 6144 MB of RAM and 30720 MB of disk allocated in total. The "per member" allocation is 2048 MB of RAM and 10240 MB of disk. The minimum value is the lowest the total allocation that can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
-The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 12288 MB), you use the command:  
-`ibmcloud cdb deployment-groups-set example-deployment member --memory 12288`
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 12288 MB), you use the command:
+
+```sh
+ibmcloud cdb deployment-groups-set example-deployment member --memory 12288
+```
+{: pre}
 
 ## Scaling in the API
 {: #resources-scaling-scale-api}
 {: api}
 
-The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
+The _Foundation endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-To view the current and scalable resources on a deployment,
+To view the current and scalable resources on a deployment, use the following command:
+
 ```sh
-curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
+curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups -H 'Authorization: Bearer <>' \
 ```
+{: pre}
 
-To scale the memory of a deployment to 4096 MB of RAM for each memory member (for a total memory of 12288 MB).
+To scale the memory of a deployment to 4096 MB of RAM for each memory member (for a total memory of 12288 MB), use the following command:
+
 ```sh
-curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
--H "Authorization: Bearer $APIKEY" \
--H "Content-Type: application/json" \
--d '{"memory": {
-        "allocation_mb": 12288
-      }
-    }'
+curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/{group_id} 
+-H 'Authorization: Bearer <>' 
+-H 'Content-Type: application/json' 
+-d '{"memory": {"allocation_mb": 4096}}' \
 ```
+{: pre}
 
-More information is in the [API Reference](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups).
+For more information, see the [API reference](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups).

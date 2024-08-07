@@ -153,7 +153,7 @@ General Availability of {{site.data.keyword.databases-for-mongodb_full}} Enterpr
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb_full}}'s Improved High Availability Architecture
-:  At IBM Cloud Data Services, we are tirelessly investigating improvements to our service in order to offer our customers the best possible price-to-performance ratio balanced with data availability and safety. As part of that work, we are changing the default number of data members for {{site.data.keyword.databases-for-mongodb_full}} from two to three. See blog post announcement [here](https://www.ibm.com/cloud/blog/databases-for-mongodb-improved-high-availability-architecture).
+:  At IBM Cloud Data Services, we are tirelessly investigating improvements to our service in order to offer our customers the best possible price-to-performance ratio balanced with data availability and safety. As part of that work, we are changing the default number of data members for {{site.data.keyword.databases-for-mongodb_full}} from two to three.
 
 ## 13 April 2020
 {: #databases-for-mongodb-13apr2020}
