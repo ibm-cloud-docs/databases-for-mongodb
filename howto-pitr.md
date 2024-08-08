@@ -81,7 +81,7 @@ Available parameters are:
 - `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
 - `version`: The database version, for example, "6.0". Leave this field blank to use the latest, preferred version.
 - `key_protect_key`: ID (CRN) of the Key Protect resource used. This field is optional, for BYOK (Bring Your Own Key) encryption.
-- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See the [table](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) for available values.
+- `members_host_flavor`: The instance host size that you want to deploy. If not supplied, the new instance will be created with the same RAM and CPU as the source instance. See this [table](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli#host-flavor-parameter-cli) for available values.
 
 #### Example
 
