@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-08-08"
+lastupdated: "2024-08-12"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -14,7 +14,7 @@ subcollection: databases-for-mongodb
 # {{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager
 {: #ops-manager}
 
-The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment.
+The Ops Manager is only available with a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment.
 
 ## Before you begin with the MongoDB Enterprise Ops Manager
 {: #ops-manager-before-begin}
@@ -90,8 +90,8 @@ After you create an Ops Manager username and password, you can follow these inst
 
 1. Discover the Ops Manager link.
 
-    - You can do that with the following CLI command:
-    - 
+   - You can do that with the following CLI command:
+
         ```sh
         ibmcloud cdb deployment-connections <service_id> -t ops_manager
         ```
@@ -99,16 +99,15 @@ After you create an Ops Manager username and password, you can follow these inst
 
     If setting up Ops Manager with private endpoints, you must append `-e 'private'` to your command.
     {: .note}
+    
+  - Or with this [API command](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection){: external}:
 
-    - Or with the following [API command](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection) {: external}:
+    ```sh
+   curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>' 
+    ```
+    {: .pre}
 
-       ```sh
-       curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>' 
-
-       ```
-       {: .pre}
-
-1. Log in with the Ops Manager username and password you created for your deployment.
+1. Use the url retrieved in the previous step to log in with the Ops Manager username and password you created for your deployment.
 
 1. In the resulting view, select the **Invitations** tab.
   
