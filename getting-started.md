@@ -108,7 +108,7 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 You can provision a {{site.data.keyword.databases-for-mongodb}} instance by using the CLI. If you don't already have it, you need to install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started){: external}.
 
-You can follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) to provision a {{site.data.keyword.databases-for-mongodb}} instance.
+You can follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=cli) to provision a {{site.data.keyword.databases-for-mongodb}} instance.
 
 ## Step 2: Provision through the resource controller API
 {: #provision_instance_api}
