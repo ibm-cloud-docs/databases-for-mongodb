@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-08-12"
+lastupdated: "2024-08-13"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -102,10 +102,10 @@ After you create an Ops Manager username and password, you can follow these inst
     
   - Or with this [API command](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection){: external}:
 
-    ```sh
-   curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>' 
-    ```
-    {: .pre}
+      ```sh
+     curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>' 
+      ```
+      {: .pre}
 
 1. Use the url retrieved in the previous step to log in with the Ops Manager username and password you created for your deployment.
 
