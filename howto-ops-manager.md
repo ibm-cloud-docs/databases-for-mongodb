@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-08-08"
+lastupdated: "2024-08-13"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -14,18 +14,18 @@ subcollection: databases-for-mongodb
 # {{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager
 {: #ops-manager}
 
-The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment.
+The Ops Manager is only available with a {{site.data.keyword.databases-for-mongodb}} Enterprise Edition deployment.
 
 ## Before you begin with the MongoDB Enterprise Ops Manager
 {: #ops-manager-before-begin}
 
-- Follow the [Getting started](/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new&interface=ui) instructions to provision an instance of {{site.data.keyword.databases-for-mongodb}} Enterprise Edition and set the admin password. 
+- Follow the [Getting started](/docs/databases-for-mongodb?topic=databases-for-mongodb-getting-started-new&interface=ui) instructions to provision an instance of {{site.data.keyword.databases-for-mongodb}} Enterprise Edition and set the admin password.
 
 ## Create an Ops Manager user in the CLI
 {: #create-ops-man}
 {: cli}
 
-Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment. To do that, run the following command: 
+Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment. To do that, run the following command:
 
 ```sh
 ibmcloud cdb user-create <service_id> <username> <password> -t ops_manager -r <role>
@@ -33,16 +33,16 @@ ibmcloud cdb user-create <service_id> <username> <password> -t ops_manager -r <r
 {: pre}
 
 All fields except `role` are required. The `service_id` is also known as a CRN or deployment ID and is the unique identifier of your resources. It starts with `crn:...`.
-   
+
 Passwords must be at least 15 characters long and must contain at least one number and one letter. Passwords can contain uppercase and lowercase letters, numbers, - (hyphen), or _ (underscore).
 {: .note}
 
 Example command:
 
- ```sh
+```sh
  ibmcloud cdb user-create "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/40ddc34a953a8c02f10987b59085b60e:32bd88c9-1d96-4486-8012-1dgcd629e609::" newuser01 SuperSecure001! -t ops_manager -r group_read_only
- ```
- {: .pre}
+```
+{: .pre}
 
 The Ops Manager user has limited permissions.
 {: .note}
@@ -51,7 +51,7 @@ The Ops Manager user has limited permissions.
 {: #create-ops-man}
 {: api}
 
-Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment. To do that via the API, run the following command: 
+Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment. To do that via the API, run the following command:
 
 ```sh
    curl -X POST https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager \
@@ -62,14 +62,14 @@ Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise 
 {: pre}
 
 All fields except `role` are required. The `service_id` is also known as a CRN or deployment ID and is the unique identifier of your resources. It starts with `crn:...`.
-   
+
 Passwords must be at least 15 characters long and must contain at least one number and one letter. Passwords can contain uppercase and lowercase letters, numbers, - (hyphen), or _ (underscore).
 {: .note}
 
 ## Roles within Ops Manager
 {: #create-roles-man}
 
-When creating an Ops Manager user, you have the option of creating two roles: `group_data_access_admin` and `group_read_only`. 
+When creating an Ops Manager user, you have the option of creating two roles: `group_data_access_admin` and `group_read_only`.
 
 If no role is specified, `group_data_access_admin` is the default user, affording you Ops Manager default access and privileges. The `group_data_access_admin` role is equivalent to MongoDB's [Project Data Access Admin](https://docs.opsmanager.mongodb.com/current/reference/user-roles/#Project-Data-Access-Admin){: external} role.
 
@@ -90,47 +90,47 @@ After you create an Ops Manager username and password, you can follow these inst
 
 1. Discover the Ops Manager link.
 
-    - You can do that with the following CLI command:
-    - 
-        ```sh
-        ibmcloud cdb deployment-connections <service_id> -t ops_manager
-        ```
-        {: .pre}
+   - You can do that with the following CLI command:
 
-    If setting up Ops Manager with private endpoints, you must append `-e 'private'` to your command.
-    {: .note}
+     ```sh
+     ibmcloud cdb deployment-connections <service_id> -t ops_manager
+     ```
+     {: .pre}
 
-    - Or with the following [API command](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection) {: external}:
+     If setting up Ops Manager with private endpoints, you must append `-e 'private'` to your command.
+     {: .note}
 
-       ```sh
-       curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>' 
+   - Or with this [API command](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection){: external}:
 
-       ```
-       {: .pre}
+     ```sh
+     curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>'
+     ```
+     {: .pre}
 
-1. Log in with the Ops Manager username and password you created for your deployment.
+1. Use the url retrieved in the previous step to log in with the Ops Manager username and password you created for your deployment.
 
 1. In the resulting view, select the **Invitations** tab.
-  
+
 1. Click **Accept** for the invitation as role *Project Data Access Admin*. This step adds your Ops Manager user ID to the organization and project shown.
-  
-1. Lastly, to navigate to the instance view: 
-   - Click the **Ops Manager** logo in the menu bar. 
+
+1. Lastly, to navigate to the instance view:
+
+   - Click the **Ops Manager** logo in the menu bar.
    - Or select the **All Clusters** link.
-    
+
 On subsequent logins you arrive at the last view, so the prior procedure is only necessary on the first login.
 {: .tip}
 
 ## Connecting through private endpoints
 {: #private-endpoints}
 
-{{site.data.keyword.databases-for-mongodb}} Enterprise Edition offers an HTTPS accessible endpoint for the Ops Manager user interface. 
+{{site.data.keyword.databases-for-mongodb}} Enterprise Edition offers an HTTPS accessible endpoint for the Ops Manager user interface.
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Edition also offers both private and public cloud service endpoints. If you want to access the Management UI from a browser that is not on the private network, you must take these additional steps as listed in the [Connecting Through Private Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints#private-endpoints) documentation for {{site.data.keyword.cloud}} Databases.
 
 After you configure your environment for private endpoint access, you can go to to the {{site.data.keyword.databases-for-mongodb}} Enterprise management endpoint URL from your browser. For example, `https://bfdb-4263-8ad2-c9a4beaf4591.8f7bfc8f3faa4218afd56e0.databases.appdomain.cloud:323232`.
 
-
 ## Next steps
+{: #enterprise-ops-next-steps}
 
 MongoDB Ops Manager is a feature-rich user interface to manage your MongoDB deployment. For more information, see the [MongoDB Ops Manager documentation](https://www.mongodb.com/docs/ops-manager/current/){: external}.

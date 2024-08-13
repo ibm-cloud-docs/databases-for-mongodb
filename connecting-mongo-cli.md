@@ -30,7 +30,7 @@ The information the MongoDB shell needs to connect to your instance is in the "c
 
 | Field Name | Index | Description |
 | ---------- | ----- | ----------- |
-| `Bin` | | The recommended binary to create a connection; in this case it is `mongo`. |
+| `Bin` | | The recommended binary to create a connection; in this case it is `mongosh`. |
 | `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses  |`Arguments` as command-line parameters.
 | `Environment` | | A list of key/values you set as environment variables. |
 | `Arguments` | `0...` | The information that is passed as arguments to the command shown in the Bin field. |
@@ -58,7 +58,7 @@ mongosh -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed6
 ## Starting the MongoDB Shell from the IBM Cloud CLI
 {: #connecting-cli-client-ibmcloud-cli}
 
-The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named "example-mongo" with an "example-user", use the following command.
+If the MongoDB Shell is locally installed, you can use the `ibmcloud cdb deployment-connections` command to handle everything that is involved in creating the client connection. For example, to connect to a deployment named "example-mongo" with an "example-user", use the following command.
 
 ```sh
 ibmcloud cdb deployment-connections --start -u example-user example-mongo
