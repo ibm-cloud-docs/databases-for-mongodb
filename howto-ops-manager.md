@@ -103,7 +103,7 @@ After you create an Ops Manager username and password, you can follow these inst
   - Or with this [API command](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection){: external}:
 
       ```sh
-     curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H 'Authorization: Bearer <>' 
+     curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{service_id}/users/ops_manager/{user_id}/connections/{endpoint_type} -H         'Authorization: Bearer <>'
       ```
       {: .pre}
 
@@ -113,7 +113,8 @@ After you create an Ops Manager username and password, you can follow these inst
   
 1. Click **Accept** for the invitation as role *Project Data Access Admin*. This step adds your Ops Manager user ID to the organization and project shown.
   
-1. Lastly, to navigate to the instance view: 
+1. Lastly, to navigate to the instance view:
+
    - Click the **Ops Manager** logo in the menu bar. 
    - Or select the **All Clusters** link.
     
