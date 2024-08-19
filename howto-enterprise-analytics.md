@@ -158,7 +158,7 @@ Remember that the Analytics Node must be scaled **before** the BI Connector or y
 {: api}
 
 Provisioning via the API is a two-step process: 
-1. [Create](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance) a {{site.data.keyword.databases-for-mongodb}} EE deployment.
+1. [Create](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning) a {{site.data.keyword.databases-for-mongodb}} EE deployment.
 2. After that you can add the Analytics Node and BI Connector `group` to your deployment by using the [Scale Group](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) method.
 
 Example for Analytics Node:
