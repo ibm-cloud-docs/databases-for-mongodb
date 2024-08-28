@@ -246,18 +246,16 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 
 Follow these steps to provision by using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
-1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
+1. Obtain an [IAM token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
 
-2. You need to know the ID of the resource group that you would like to deploy to.Use this command to obtain a list of resource groups in your account:
+2. You need to know the ID of the resource group that you would like to deploy to. Use this command to obtain a list of resource groups in your account:
 
     ```sh
     curl -X GET "https://resource-controller.cloud.ibm.com/v2/resource_groups?account_id=<YOUR_ACCOUNT>" -H "Authorization: Bearer <TOKEN>"
     ```
     {: pre}
 
-3. You need to know the region you want to deploy to.
-
-   To list all of the regions that deployments can be provisioned into from the current region, use this API command:
+3. You need to know the region you want to deploy to. To list all of the regions that deployments can be provisioned into from the current region, use this API command:
 
    ```sh
     curl -X GET https://api.<YOUR-REGION>.databases.cloud.ibm.com/v5/ibm/regions -H 'Authorization: Bearer <TOKEN>' \
@@ -276,7 +274,7 @@ A host flavor represents fixed sizes of guaranteed resource allocations. To see 
         "deployment": {
           "type": "mongodb",
           "location": "us-south"
-        }
+        }'
   ```
   {: pre}
 
