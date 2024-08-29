@@ -264,7 +264,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
 
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
 
-A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability){: external} like this:
+  A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability){: external} like this:
 
   ```sh
     curl -X POST  https://api.{region}.databases.cloud.ibm.com/v5/ibm/capability/flavors  \
@@ -278,15 +278,15 @@ A host flavor represents fixed sizes of guaranteed resource allocations. To see 
   ```
   {: pre}
 
- This returns:
+  This returns:
 
   ```json
- {
+   {
     "deployment": {
         "type": "mongodb",
         "location": "us-south",
         "platform": "classic"
- },
+   },
     "capability": {
         "flavors": [
             {
@@ -368,9 +368,9 @@ A host flavor represents fixed sizes of guaranteed resource allocations. To see 
             }
         ]
     }
-}
-```
-{: pre}
+   }
+  ```
+  {: pre}
 
     As shown, the Isolated Compute host flavors available to a {{site.data.keyword.databases-for-mongodb}} instance in the `us-south` region are:
 
