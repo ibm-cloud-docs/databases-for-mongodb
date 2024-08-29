@@ -278,9 +278,9 @@ Follow these steps to provision by using the [Resource Controller API](https://c
   ```
   {: pre}
 
-  This returns:
+   This returns:
 
-  ```json
+   ```json
    {
     "deployment": {
         "type": "mongodb",
@@ -369,8 +369,8 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         ]
     }
    }
-  ```
-  {: pre}
+   ```
+   {: pre}
 
     As shown, the Isolated Compute host flavors available to a {{site.data.keyword.databases-for-mongodb}} instance in the `us-south` region are:
 
