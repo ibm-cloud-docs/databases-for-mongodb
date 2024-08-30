@@ -264,9 +264,9 @@ Follow these steps to provision by using the [Resource Controller API](https://c
 
 4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
 
-  A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability){: external} like this:
+   A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability){: external} like this:
 
-  ```sh
+   ```sh
     curl -X POST  https://api.{region}.databases.cloud.ibm.com/v5/ibm/capability/flavors  \
       -H 'Authorization: Bearer <>' \
       -H 'ContentType: application/json' \
@@ -274,103 +274,104 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "deployment": {
           "type": "mongodb",
           "location": "us-south"
-        }'
-  ```
-  {: pre}
+        }
+      }'
+    ```
+    {: pre}
 
-   This returns:
+    This returns:
 
-   ```json
-   {
-    "deployment": {
+    ```sh
+    {
+      "deployment": {
         "type": "mongodb",
         "location": "us-south",
         "platform": "classic"
-   },
-    "capability": {
+      },
+      "capability": {
         "flavors": [
-            {
-                "id": "b3c.4x16.encrypted",
-                "name": "4x16",
-                "cpu": {
-                    "allocation_count": 4
-                },
-                "memory": {
-                    "allocation_mb": 16384
-                },
-                "hosting_size": "xs"
+          {
+            "id": "b3c.4x16.encrypted",
+            "name": "4x16",
+            "cpu": {
+              "allocation_count": 4
             },
-            {
-                "id": "b3c.8x32.encrypted",
-                "name": "8x32",
-                "cpu": {
-                    "allocation_count": 8
-                },
-                "memory": {
-                    "allocation_mb": 32768
-                },
-                "hosting_size": "s"
+              "memory": {
+                "allocation_mb": 16384
             },
-            {
-                "id": "m3c.8x64.encrypted",
-                "name": "8x64",
-                "cpu": {
-                    "allocation_count": 8
-                },
-                "memory": {
-                    "allocation_mb": 65536
-                },
-                "hosting_size": "s+"
+              "hosting_size": "xs"
+          },
+          {
+            "id": "b3c.8x32.encrypted",
+            "name": "8x32",
+            "cpu": {
+              "allocation_count": 8
             },
-            {
-                "id": "b3c.16x64.encrypted",
-                "name": "16x64",
-                "cpu": {
-                    "allocation_count": 16
-                },
-                "memory": {
-                    "allocation_mb": 65536
-                },
-                "hosting_size": "m"
+            "memory": {
+              "allocation_mb": 32768
             },
-            {
-                "id": "b3c.32x128.encrypted",
-                "name": "32x128",
-                "cpu": {
-                    "allocation_count": 32
-                },
-                "memory": {
-                    "allocation_mb": 131072
-                },
-                "hosting_size": "l"
+            "hosting_size": "s"
+          },
+          {
+            "id": "m3c.8x64.encrypted",
+            "name": "8x64",
+            "cpu": {
+              "allocation_count": 8
             },
-            {
-                "id": "m3c.30x240.encrypted",
-                "name": "30x240",
-                "cpu": {
-                    "allocation_count": 30
-                },
-                "memory": {
-                    "allocation_mb": 245760
-                },
-                "hosting_size": "xl"
+            "memory": {
+              "allocation_mb": 65536
             },
-            {
-                "id": "multitenant",
-                "name": "multitenant",
-                "cpu": {
-                    "allocation_count": 0
-                },
-                "memory": {
-                    "allocation_mb": 0
-                },
-                "hosting_size": ""
-            }
+            "hosting_size": "s+"
+          },
+          {
+            "id": "b3c.16x64.encrypted",
+            "name": "16x64",
+            "cpu": {
+              "allocation_count": 16
+            },
+            "memory": {
+              "allocation_mb": 65536
+            },
+            "hosting_size": "m"
+          },
+          {
+            "id": "b3c.32x128.encrypted",
+            "name": "32x128",
+            "cpu": {
+              "allocation_count": 32
+            },
+            "memory": {
+              "allocation_mb": 131072
+            },
+            "hosting_size": "l"
+          },
+          {
+            "id": "m3c.30x240.encrypted",
+            "name": "30x240",
+            "cpu": {
+              "allocation_count": 30
+            },
+            "memory": {
+              "allocation_mb": 245760
+            },
+            "hosting_size": "xl"
+          },
+          {
+            "id": "multitenant",
+            "name": "multitenant",
+            "cpu": {
+              "allocation_count": 0
+            },
+            "memory": {
+              "allocation_mb": 0
+            },
+            "hosting_size": ""
+          }
         ]
+      }
     }
-   }
-   ```
-   {: pre}
+    ```
+    {: pre}
 
     As shown, the Isolated Compute host flavors available to a {{site.data.keyword.databases-for-mongodb}} instance in the `us-south` region are:
 
