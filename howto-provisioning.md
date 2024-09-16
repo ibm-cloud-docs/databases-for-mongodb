@@ -3,7 +3,7 @@
 copyright:
   years: 2019, 2024
 
-lastupdated: "2024-08-12"
+lastupdated: "2024-09-16"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -22,7 +22,8 @@ Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through 
 {: #catalog}
 {: ui}
 
-Provision from the console by specifying the following parameters:
+Provision from the console by specifying the following parameters.
+
 ### Platform
 {: #platform}
 {: ui}
@@ -102,20 +103,21 @@ Before provisioning, follow the instructions provided in the documentation to in
 3. Provision your database with the following command:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
+   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}' --service-endpoints="<Endpoint>"
    ```
    {: pre}
 
   For example, to provision a {{site.data.keyword.databases-for-mongodb}} Shared Compute hosting model instance, use a command like:
 
    ```sh
-   ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
+   ibmcloud resource service-instance-create test-database databases-for-mongodb standard us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "12288"}' --service-endpoints="private"
    ```
    {: pre}
 
-  Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+  Provision a {{site.data.keyword.databases-for-mongodb}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both an Isolated size selection, and separate CPU and RAM allocation selections.
+
    ```sh
-   ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
+   ibmcloud resource service-instance-create test-database databases-for-mongodb enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}' --service-endpoints="private"
    ```
    {: pre}
 
@@ -127,10 +129,10 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | `enterprise` or `platinum` |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} of your deployment, either `public` or `private`. The default value is `public`. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the following table or [Hosting models](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli).| |
+   | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} of your deployment, either `public` or `private`. |  |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
 
    In the CLI, `service-endpoints` is a flag, not a parameter.
@@ -236,7 +238,7 @@ ibmcloud resource service-instance-create databases-for-mongodb <SERVICE_NAME> s
 -p \ '{
   "backup_id": "crn:v1:blue:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "4096"
-}'
+}' --service-endpoints="private"
 ```
 {: .pre}
 
@@ -266,7 +268,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
 
    A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability){: external} like this:
 
-   ```sh
+    ```sh
     curl -X POST  https://api.{region}.databases.cloud.ibm.com/v5/ibm/capability/flavors  \
       -H 'Authorization: Bearer <>' \
       -H 'ContentType: application/json' \
@@ -389,20 +391,20 @@ See below for more information about the `members_host_flavor` parameter.
 ### Example
 {: api}
 
-    To deploy an instance with 16GB of RAM and 4 CPU cores on Isolated Compute:
+    To deploy an instance with 16 GB of RAM and 4 CPU cores on Isolated Compute, see the following example. Make sure to replace the `RESOURCE GROUP ID` value with an ID found under Manage > Account > Resource groups.
 
-       ```sh
-          curl -X POST \      
-              -H 'Authorization: Bearer <token>' \
-              -H 'Content-Type: application/json' \
-              -d '{ "name": "my-mongo", 
-                    "target": "eu-gb", 
-                    "resource_group": "0383da45d9a044r6d59d36f4689ae25d25", 
-                    "resource_plan_id": "databases-for-mongodb-standard", 
-                    "parameters": { "members_host_flavor":"b3c.4x16.encrypted"}}' 
-              https://resource-controller.cloud.ibm.com/v2/resource_instances 
-       ```
-       {: .pre}
+      ```sh
+      curl -X POST \      
+        -H 'Authorization: Bearer <token>' \
+        -H 'Content-Type: application/json' \
+        -d '{ "name": "my-mongo", 
+              "target": "eu-gb", 
+              "resource_group": "0383da45d9a044r6d59d36f4689ae25d25", 
+              "resource_plan_id": "databases-for-mongodb-standard", 
+              "parameters": { "members_host_flavor":"b3c.4x16.encrypted"}}' 
+        https://resource-controller.cloud.ibm.com/v2/resource_instances
+      ```
+      {: .pre}
 
    
    The fields in the command are described in the table that follows.
@@ -441,19 +443,19 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 {: #provisioning-parameters-api}
 {: api}
 
-   In the `--parameters` object you can provide additional information to create your service instance, including:
+  In the `--parameters` object you can provide additional information to create your service instance, including:
 
   | Field | Description |
   |-------|-------------|
   | `service_endpoints_type` | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. *A MongoDB deployment cannot have both public and private endpoints simultaneously. This parameter cannot be changed after provisioning.*|
-| `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=api).|
-| `backup_id` | A CRN of a backup resource to restore from. The backup must be created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<...>:backup:<uuid>`. If omitted, the database is provisioned empty.| 
-|`version` | The version of the database to be provisioned. If omitted, the database is created with the most recent major and minor version.|
-|`disk_encryption_key_crn`| The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about){: external}, which is then used for disk encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.|
-|`backup_encryption_key_crn` | The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started){: external} or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about){: external}, which is then used for backup encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`. To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=api#key-byok){: external}.|
-|`members_memory_allocation_mb` | Total amount of memory to be shared between the database members within the database. For example, if the value is "12288", and there are three database members, then the deployment gets 12 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.|
-|`members_disk_allocation_mb | |
-| `members_cpu_allocation_count`| Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts. This parameter only applies to `multitenant'. |
+  | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=api).|
+  | `backup_id` | A CRN of a backup resource to restore from. The backup must be created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<...>:backup:<uuid>`. If omitted, the database is provisioned empty.| 
+  |`version` | The version of the database to be provisioned. If omitted, the database is created with the most recent major and minor version.|
+  |`disk_encryption_key_crn`| The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about){: external}, which is then used for disk encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.|
+  |`backup_encryption_key_crn` | The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started){: external} or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about){: external}, which is then used for backup encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`. To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=api#key-byok){: external}.|
+  |`members_memory_allocation_mb` | Total amount of memory to be shared between the database members within the database. For example, if the value is "12288", and there are three database members, then the deployment gets 12 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.|
+  |`members_disk_allocation_mb | |
+  | `members_cpu_allocation_count`| Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts. This parameter only applies to `multitenant'. |
 
 ## Provisioning with Terraform
 {: #provisioning-terraform}
@@ -484,6 +486,7 @@ resource "ibm_database" "<your_database>" {
   location          = "eu-gb"
   service           = "databases-for-mongodb"
   resource_group_id = data.ibm_resource_group.group.id
+  service_endpoints = "private"
   tags              = ["tag1", "tag2"]
   adminpassword                = "password12"
   group {
@@ -532,6 +535,7 @@ resource "ibm_database" "<your_database>" {
   location          = "eu-gb"
   service           = "databases-for-mongodb"
   resource_group_id = data.ibm_resource_group.group.id
+  service_endpoints = "private"
   tags              = ["tag1", "tag2"]
   adminpassword                = "password12"
   group {
