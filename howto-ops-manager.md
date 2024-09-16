@@ -66,6 +66,24 @@ All fields except `role` are required. The `service_id` is also known as a CRN o
 Passwords must be at least 15 characters long and must contain at least one number and one letter. Passwords can contain uppercase and lowercase letters, numbers, - (hyphen), or _ (underscore).
 {: .note}
 
+You will get a response like this:
+
+```json
+{
+  "task": {
+    "id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/f19c0f5eff94b69ae419d3se4rfta7a0ed:de50e7c9-d534-4e13-af4f-c7429c58b78f:task:21a5721c-5eb2-4b8a-bb30-fd4f88e4ac49",
+    "description": "Creating Ops Manager user",
+    "status": "running",
+    "deployment_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/f19c0f5eff945rf6ythgf9db57e9a7a0ed:de50e7c9-d534-4e13-af4f-c7429c58b78f::",
+    "progress_percent": 0,
+    "created_at": "2024-08-19T10:44:08.000Z"
+  }
+}
+```
+{: pre}
+
+The `id` parameter is the user id and can be used below to obtain connection strings to your Ops Manager instance.
+
 ## Roles within Ops Manager
 {: #create-roles-man}
 
