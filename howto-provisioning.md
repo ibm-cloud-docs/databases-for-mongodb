@@ -103,7 +103,7 @@ Before provisioning, follow the instructions provided in the documentation to in
 3. Provision your database with the following command:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}' --service-endpoints="<Endpoint>"
+   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}' --service-endpoints="<endpoint>"
    ```
    {: pre}
 
