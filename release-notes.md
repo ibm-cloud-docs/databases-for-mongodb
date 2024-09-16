@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-07-10"
+lastupdated: "2024-09-16"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 16 September 2024
+{: #databases-for-mongodb-16sept2024}
+{: release-note}
+
+Private endpoints as new default
+:  To ensure best possible security for your databases, private endpoints are now the default in the {{site.data.keyword.cloud}} console. CLI and Terraform now require the endpoint type to be provided as part of creating an instance.
 
 ## 10 July 2024
 {: #databases-for-mongodb-10july2024}
