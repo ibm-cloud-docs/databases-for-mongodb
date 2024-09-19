@@ -170,7 +170,7 @@ The `members_host_flavor` parameter defines your Compute sizing.
     State:               provisioning
     Type:                service_instance
     Sub Type:            Public
-    Service Endpoints:   public
+    Service Endpoints:   private
     Allow Cleanup:       false
     Locked:              false
     Created at:          2023-06-26T19:42:07Z
@@ -205,7 +205,7 @@ The `members_host_flavor` parameter defines your Compute sizing.
    Type:                  service_instance
    Sub Type:              Public
    Locked:                false
-   Service Endpoints:     public
+   Service Endpoints:     private
    Created at:            2023-06-26T19:42:07Z
    Created by:            USER
    Updated at:            2023-06-26T19:53:25Z
@@ -384,12 +384,12 @@ Follow these steps to provision by using the [Resource Controller API](https://c
     - `b3c.32x128.encrypted`
     - `m3c.30x240.encrypted`
 
-See below for more information about the `members_host_flavor` parameter.
+    See below for more information about the `members_host_flavor` parameter.
 
-5. Once you have all the above information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
+    5. Once you have all the above information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
 
 
-```sh
+    ```sh
     curl -X POST \
       https://resource-controller.cloud.ibm.com/v2/resource_instances \
       -H "Authorization: Bearer <TOKEN>" \
@@ -407,12 +407,12 @@ See below for more information about the `members_host_flavor` parameter.
     {: pre}
 
 
-### Example
-{: api}
+    ### Example
+    {: api}
 
     To make a Shared Compute instance, follow this example:
 
- ```sh
+    ```sh
     curl -X POST \
       https://resource-controller.cloud.ibm.com/v2/resource_instances \
       -H "Authorization: Bearer <TOKEN>" \
@@ -437,18 +437,18 @@ See below for more information about the `members_host_flavor` parameter.
     
     To deploy an instance with 16 GB of RAM and 4 CPU cores on Isolated Compute, see the following example. Make sure to replace the `RESOURCE GROUP ID` value with an ID found under Manage > Account > Resource groups.
 
-      ```sh
-      curl -X POST \      
-      https://resource-controller.cloud.ibm.com/v2/resource_instances
-        -H 'Authorization: Bearer <token>' \
-        -H 'Content-Type: application/json' \
-        -d '{ "name": "my-mongo", 
-              "target": "eu-gb", 
-              "resource_group": "0383da45d9a044r6d59d36f4689ae25d25", 
-              "resource_plan_id": "databases-for-mongodb-standard", 
-              "parameters": { "members_host_flavor":"b3c.4x16.encrypted"}}' 
-      ```
-      {: .pre}
+    ```sh
+    curl -X POST \      
+    https://resource-controller.cloud.ibm.com/v2/resource_instances
+      -H 'Authorization: Bearer <token>' \
+      -H 'Content-Type: application/json' \
+      -d '{ "name": "my-mongo", 
+            "target": "eu-gb", 
+            "resource_group": "0383da45d9a044r6d59d36f4689ae25d25", 
+            "resource_plan_id": "databases-for-mongodb-standard", 
+            "parameters": { "members_host_flavor":"b3c.4x16.encrypted"}}' 
+    ```
+    {: .pre}
 
    
    The fields in the command are described in the table that follows.
@@ -487,7 +487,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 {: #provisioning-parameters-api}
 {: api}
 
-  In the `--parameters` object you can provide additional information to create your service instance, including:
+In the `--parameters` object you can provide additional information to create your service instance, including:
 
   | Field | Description |
   |-------|-------------|
