@@ -3,7 +3,7 @@
 copyright:
   years: 2019, 2024
 
-lastupdated: "2024-09-16"
+lastupdated: "2024-09-19"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -386,8 +386,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
 
     See below for more information about the `members_host_flavor` parameter.
 
-    5. Once you have all the above information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
-
+5. Once you have all the above information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
 
     ```sh
     curl -X POST \
@@ -405,7 +404,6 @@ Follow these steps to provision by using the [Resource Controller API](https://c
       }'
     ```
     {: pre}
-
 
     ### Example
     {: api}
@@ -431,9 +429,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
     ```
     {: pre}
 
-
     Provision a {{site.data.keyword.databases-for-elasticsearch}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#members_host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the members host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
-
     
     To deploy an instance with 16 GB of RAM and 4 CPU cores on Isolated Compute, see the following example. Make sure to replace the `RESOURCE GROUP ID` value with an ID found under Manage > Account > Resource groups.
 
@@ -449,7 +445,6 @@ Follow these steps to provision by using the [Resource Controller API](https://c
             "parameters": { "members_host_flavor":"b3c.4x16.encrypted"}}' 
     ```
     {: .pre}
-
    
    The fields in the command are described in the table that follows.
    
