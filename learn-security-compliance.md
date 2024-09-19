@@ -15,10 +15,10 @@ subcollection: databases-for-mongodb
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Security and Compliance
+# Security and compliance
 {: #security-compliance}
 
-## Protection Against Unauthorized Access
+## Protection against unauthorized access
 {: #security-compliance-protection}
 
 {{site.data.keyword.databases-for-mongodb_full}} use the following methods to protect data in transit or in storage.
@@ -32,7 +32,7 @@ subcollection: databases-for-mongodb
 - Dedicated Cores - Allocating dedicated cores to your deployment introduces hypervisor-level isolation to your database instance, using isolated virtual machines to ensure your data processing remains separated from other customers. It also provides a guaranteed minimum amount of CPUs to your deployment. Deployments with dedicated cores in the same Resource Group and {{site.data.keyword.cloud_notm}} Region may share a virtual machine.
 - IP allowlisting (deprecated) - All deployments support [allowlisting IP addresses](/docs/databases-for-mongodb?topic=databases-for-mongodb-allowlisting) to restrict access to the service.
 
-## Data Resilience
+## Data resilience
 {: #security-compliance-data}
 
 - [Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) are included in the service. {{site.data.keyword.databases-for-mongodb}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage){: external} and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security){: external}.
@@ -40,10 +40,10 @@ subcollection: databases-for-mongodb
 - If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database node resides on a different host in the datacenter. 
 - If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations.
 
-## Compliance Certifications
+## Compliance certifications
 {: #security-compliance-certifications}
 
-### SOC 2 Type 2 Certification
+### SOC 2 Type 2 certification
 {: #security-compliance-soc2}
 
 {{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 2 report for {{site.data.keyword.databases-for-mongodb}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. The Trust Services Principles define adequate control systems and establish industry standards for service providers such as IBM Cloud to safeguard their customers' data and information.
@@ -81,7 +81,7 @@ It is the customer’s responsibility to familiarize themselves with these proce
 
 A full list of PCI DSS-ready {{site.data.keyword.cloud_notm}} Platform services, and options to request a PCI DSS AOC and SRM guide, can be found at the [IBM Cloud compliance page](https://www.ibm.com/cloud/compliance/industry){: external}.
 
-### FIPS Encryption
+### FIPS encryption
 {: #security-compliance-fips}
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Edition is deployed with a FIPS 140-2 certified library for OpenSSL. For more information on MongoDB Enterprise and FIPS encryption, review the [documentation here](https://docs.mongodb.com/manual/tutorial/configure-fips/){: external}.

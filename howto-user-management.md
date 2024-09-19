@@ -11,7 +11,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing Users and Roles
+# Managing users and roles
 {: #user-management}
 
 {{site.data.keyword.databases-for-mongodb}} deployments come with authentication enabled and use MongoDB's [role-based access control](https://docs.mongodb.com/manual/core/authorization/){: external}.
@@ -47,26 +47,26 @@ The `admin` user has the following permissions:
 - [`readWriteAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWriteAnyDatabase){: external} provides the same privileges as [`readWrite`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readWrite){: external} on all databases except `local` and `config`. 
 - [`dbAdminAnyDatabase`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdminAnyDatabase){: external} provides the same privileges as [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin){: external} on all databases except `local` and `config`.
 
-### Setting the Admin Password in the UI
+### Setting the admin password in the UI
 {: #user-management-set-admin-password-ui}
 {: ui}
 
 Set your Admin Password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
-### Setting the Admin Password in the CLI
+### Setting the admin password in the CLI
 {: #user-management-set-admin-password-cli}
 {: cli}
 
 Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
 
-For example, to set the admin password for a deployment named `example-deployment`, use the following command:
+For example, to set the admin password for your deployment, use the following command:
 
 ```sh
-ibmcloud cdb user-password example-deployment admin <newpassword>
+ibmcloud cdb user-password <INSTANCE_NAME_OR_CRN> admin <NEWPASSWORD>
 ```
 {: pre}
 
-### Setting the Admin Password in the API
+### Setting the admin password in the API
 {: #user-management-set-admin-password-api}
 {: api}
 
@@ -80,7 +80,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ```
 {: pre}
 
-## Managing Users and Roles through the UI
+## Managing users and roles through the UI
 {: #user-management-ui}
 {: ui}
 
@@ -103,7 +103,7 @@ Users that you [create through _Service Credentials_](/docs/databases-for-mongod
 If you need users that are created from _Service Credentials_ to have a different role, you can use the admin user to change their role.
 
 
-## Managing Users and Roles through the CLI
+## Managing users and roles through the CLI
 {: #user-management-cli}
 {: cli}
 
@@ -113,10 +113,10 @@ If you need users to have a different role, you can use the `admin` user to chan
 
 Users that are created directly from the CLI do not appear in _Service Credentials_, but you can add them.
 
-1. If you manage your service through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command:
+1. If you manage your service through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli), create a new user with `cdb user-create`. For example, to create a new user for your deployment, use the following command:
 
 ```sh
-ibmcloud cdb user-create example-deployment <newusername> <newpassword>
+ibmcloud cdb user-create <INSTANCE_NAME_OR_CRN> <NEWUSERNAME> <NEWPASSWORD>
 ```
 {: pre}
 
@@ -137,7 +137,7 @@ replset:PRIMARY> show users
 {: pre}
 
 
-## Managing Users and Roles through the API
+## Managing users and roles through the API
 {: #user-management-api}
 {: api}
 
@@ -168,7 +168,7 @@ If the built-in users and roles do not suit your environment, [create users and 
 
 Users and roles that are created directly in MongoDB do not appear in _Service Credentials_ and are not integrated with your {{site.data.keyword.cloud_notm}} account or [IAM](/docs/databases-for-mongodb?topic=databases-for-mongodb-iam).
 
-## The `ibm` User
+## The `ibm` user
 {: #user-management-ibm}
 
 If you use the mongo shell to list the users on your deployment, you might notice a user that is named `ibm`. The `ibm` user is the internal root account that manages replication, cluster operations, and other functions that ensure the stability of your deployment. Changing or deleting to the `ibm` user is not advised and disrupts the stability of your deployment.

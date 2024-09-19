@@ -218,7 +218,7 @@ The `members_host_flavor` parameter defines your Compute sizing.
 - Optional: To delete a service instance, run the following command:
 
    ```sh
-   ibmcloud resource service-instance-delete <INSTANCE_NAME>
+   ibmcloud resource service-instance-delete <INSTANCE_NAME_OR_CRN>
    ```
    {: pre}
 

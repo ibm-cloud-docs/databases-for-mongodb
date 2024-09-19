@@ -22,7 +22,7 @@ The choice between the two depends on your specific needs, security requirements
 **{{site.data.keyword.databases-for-mongodb_full}} Enterprise** is only available on Isolated Compute and Dedicated Cores hosting models. Dedicated cores will be replaced by Isolated Compute as of May, 2025.
 {: note}
 
-## Enterprise Edition Features
+## Enterprise Edition features
 {: #mongodb-plans-ee}
 
 ### Ops Manager
@@ -56,7 +56,7 @@ By using the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analyti
 
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
 
-### Point-in-time Recovery
+### Point-in-time recovery
 {: #mongodbee-pitr}
 
 {{site.data.keyword.databases-for-mongodb}} Enterprise Plan offers point-in-time recovery (PITR). PITR restores an instance to a specific moment in time, allowing you to recover your data up to a particular point, such as just before a critical error or data loss occurred. This feature is essential for ensuring data durability and minimizing the impact of accidental data deletions or database corruption.For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Plan Point-in-time Recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr).

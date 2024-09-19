@@ -28,11 +28,11 @@ The Ops Manager is only available with a {{site.data.keyword.databases-for-mongo
 Before logging in to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Ops Manager, you must create an Ops Manager username and password for your deployment. To do that, run the following command:
 
 ```sh
-ibmcloud cdb user-create <service_id> <username> <password> -t ops_manager -r <role>
+ibmcloud cdb user-create <INSTANCE_CRN> <USERNAME> <PASSWORD> -t ops_manager -r <ROLE>
 ```
 {: pre}
 
-All fields except `role` are required. The `service_id` is also known as a CRN or deployment ID and is the unique identifier of your resources. It starts with `crn:...`.
+All fields except `role` are required. The `instance_crn` is also known as deployment ID and is the unique identifier of your resources. It starts with `crn:...`.
 
 Passwords must be at least 15 characters long and must contain at least one number and one letter. Passwords can contain uppercase and lowercase letters, numbers, - (hyphen), or _ (underscore).
 {: .note}

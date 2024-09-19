@@ -84,7 +84,7 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 For example, the command to view the resource groups for a deployment named "example-deployment" is the following:
 
 ```sh
-ibmcloud cdb deployment-groups example-deployment
+ibmcloud cdb deployment-groups <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 
@@ -121,7 +121,7 @@ The deployment has three members, with 6144 MB of RAM and 30720 MB of disk alloc
 The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 12288 MB), you use the command:
 
 ```sh
-ibmcloud cdb deployment-groups-set example-deployment member --memory 12288
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> member --memory 12288
 ```
 {: pre}
 

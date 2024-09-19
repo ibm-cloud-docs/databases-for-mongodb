@@ -13,12 +13,12 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Getting Connection Strings
+# Getting connection strings
 {: #connection-strings}
 
 Connection strings allow you to establish a connection between your application and your {{site.data.keyword.databases-for-mongodb}} instance.
 
-## Getting Connection Strings in the UI
+## Getting connection strings in the UI
 {: #connection-strings-ui}
 {: ui}
 
@@ -29,7 +29,7 @@ Follow these steps to retrieve your {{site.data.keyword.databases-for-mongodb}} 
    - **Connect using a CLI** - This section contains information for connecting to your deployment through the [{{site.data.keyword.IBM_notm}} CLI](https://www.ibm.com/cloud/cli){: external}.
    - **Connect using a MongoDB Enterprise Client** - This section allows you to get a TLS certificate and connect to your deployment.
 
-## Getting Connection Strings in the CLI
+## Getting connection strings in the CLI
 {: #connection-strings-cli}
 {: cli}
 
@@ -38,7 +38,7 @@ You can also retrieve connection strings using the [{{site.data.keyword.database
 The command looks like this: 
 
 ```sh
-ibmcloud cdb deployment-connections example-deployment -u <newusername> [--endpoint-type <endpoint type>]
+ibmcloud cdb deployment-connections <INSTANCE_NAME_OR_CRN> -u <NEWUSERNAME> [--endpoint-type <ENDPOINT_TYPE>]
 ```
 {: pre}
 
@@ -52,7 +52,7 @@ For more information, see [Connections Command options](/docs/databases-cli-plug
 - If you don't specify an `endpoint-type`, the connection string returns the public endpoint by default. 
 - If your deployment has only a private endpoint, specify `--endpoint-type private` or the commands return an error. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint.
 
-## Getting Connection Strings in the API
+## Getting connection strings in the API
 {: #connection-strings-api}
 {: api}
 
@@ -68,7 +68,7 @@ curl -X GET -H "Authorization: Bearer <>" 'https://api.{region}.databases.cloud.
 Remember to replace {region}, {id}, {userid}, and {endpoint_type} with the appropriate values.
 {: note}
 
-## Additional Users and Connection Strings
+## Additional users and connection strings
 {: #connection-strings-additional-users-strings}
 
 Access to your {{site.data.keyword.databases-for-mongodb}} deployment is not limited to the `admin` user. Create more users and retrieve connection strings specific to them by using the UI, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).

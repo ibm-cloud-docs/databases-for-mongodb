@@ -12,7 +12,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Point-in-time Recovery (PITR)
+# Point-in-time recovery (PITR)
 {: #pitr}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition offers PITR using any timestamp greater than the earliest available recovery point. To discover the earliest recovery point through the API, use the [point-in-time-recovery timestamp endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#getpitrdata).
@@ -67,15 +67,15 @@ If you use Key Protect and have a key, you must use the CLI to recover, and a co
 The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller CLI. Use the [`resource service-instance-create`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_create) command.
 
 ```sh
-ibmcloud resource service-instance-create <service_instance_name> <service_id> <service_plan_name> <region> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":""}'
+ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_ID> <SERVICE_PLAN_NAME> <REGION> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":""}'
 ```
 {: pre}
 
 Available parameters are:
 
-- `service_instance_name`(Required): The human-readable name of the new instance to be deployed, for example, `new-mongo`.
+- `instance_name`(Required): The human-readable name of the new instance to be deployed, for example, `new-mongo`.
 - `service_id`(Required): In this context this is `databases-for-mongodb`.
-- `service_plan_name`(Required): `Standard` or `enterprise`.
+- `service_plan_name`(Required): `standard` or `enterprise`.
 - `region` (Required): The {{site.data.keyword.cloud}} region where the new database will be deployed, for example, `eu-gb`.
 - `point_in_time_recovery_deployment_id` (Required): The source deployment's ID (also known as the CRN).
 - `point_in_time_recovery_time`: The point in time to which the backup is restored to, in the format `%Y-%m-%dT%H:%M:%SZ`, for example, `2024-05-10T08:15:00Z`. Leave this field blank to get the latest restorable point.
@@ -105,9 +105,9 @@ curl -X POST \
   -H 'Content-Type: application/json' \
     -d '{
     "name": "<SERVICE_INSTANCE_NAME>",
-    "target": "<region>",
-    "resource_group": "<your-resource-group>",
-    "resource_plan_id": "<service-id>",
+    "target": "<REGION>",
+    "resource_group": "<YOUR-RESOURCE-GROUP>",
+    "resource_plan_id": "<SERVICE-ID>",
     "parameters": {
       "point_in_time_recovery_time":"<TIMESTAMP>",
       "point_in_time_recovery_deployment_id":"<DEPLOYMENT_ID>"
@@ -186,20 +186,20 @@ resource "ibm_database" "mongodb_enterprise" {
 
 The above will restore to a new database with the same host size and disk size as the source. If you want to modify the host size or disk size of your deployment, refer to the [Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) for the right formatting.
 
-## Point-in-time Recovery (PITR) Offline Restore
+## Point-in-time recovery (PITR) offline restore
 {: #pitr-offline-restore}
 
 {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition requires two processes to initiate a restore. First, a snapshot is taken of the Ops Manager AppDB. This snapshot then serves as a PITR backup, which can be used to restore your database.
 
 In some [disaster recovery](#x2113280){: term} scenarios, the PITR process may fail. In such cases {{site.data.keyword.databases-for-mongodb}} Enterprise Edition Point-in-time Recovery (PITR) Offline Restore can be used to restore to the latest available snapshot. The Offline Restore option ensures data availability and system resilience in a case where the snapshot method doesn't work as expected.
 
-### Point-in-time Recovery (PITR) Offline Restore through the UI
+### Point-in-time recovery (PITR) offline restore through the UI
 {: #pitr-offline-restore-cli}
 {: ui}
 
 Initiate an Offline Restore through the {{site.data.keyword.cloud_notm}} Dashboard just as you would for a standard PITR. Choose the third Point-in-time recovery option.
 
-### Point-in-time Recovery (PITR) Offline Restore through the CLI
+### Point-in-time recovery (PITR) offline restore through the CLI
 {: #pitr-offline-restore-cli}
 {: cli}
 
@@ -244,7 +244,7 @@ Last Operation:
 The point-in-time-recovery timestamp must be formatted as follows: `%Y-%m-%dT%H:%M:%SZ`.
 {: important}
 
-### Point-in-time Recovery (PITR) Offline Restore through the API
+### Point-in-time recovery (PITR) offline restore through the API
 {: #pitr-offline-restore-api}
 {: api}
 
@@ -259,9 +259,9 @@ curl -X POST \
   -H 'Content-Type: application/json' \
     -d '{
     "name": "<SERVICE_INSTANCE_NAME>",
-    "target": "<region>",
-    "resource_group": "<your-resource-group-id>",
-    "resource_plan_id": "<service-id>",
+    "target": "<REGION>",
+    "resource_group": "<YOUR-RESOURCE-GROUP-ID>",
+    "resource_plan_id": "<SERVICE-ID>",
     "parameters": {
       "point_in_time_recovery_time":"<TIMESTAMP>",
       "point_in_time_recovery_deployment_id":"<DEPLOYMENT_ID>",
