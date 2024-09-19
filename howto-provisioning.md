@@ -495,6 +495,7 @@ In the `--parameters` object you can provide additional information to create yo
   |`members_memory_allocation_mb` | Total amount of memory to be shared between the database members within the database. For example, if the value is "12288", and there are three database members, then the deployment gets 12 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.|
   |`members_disk_allocation_mb | |
   | `members_cpu_allocation_count`| Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts. This parameter only applies to `multitenant'. |
+  {: caption="Table 3. The --parameters object" caption-side="bottom"}
 
 ## Provisioning with Terraform
 {: #provisioning-terraform}
