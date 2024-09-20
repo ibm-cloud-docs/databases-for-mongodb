@@ -55,11 +55,11 @@ You can upgrade to a new version by [restoring a backup](/docs/cloud-databases?t
 When you upgrade and restore from backup through the {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
 
 ```sh
-ibmcloud resource service-instance-create <service-name> <service-id> <service-plan-id> <region>
+ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_ID> <SERVICE_PLAN_ID> <REGION>
 ```
 {: pre}
 
-The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are all required. You also supply the `-p` with the version and backup ID parameters in a JSON object. The new deployment is automatically sized with the same disk and memory as the source deployment at the time of the backup.
+The parameters `instance_name`, `service_id`, `service_plan_id`, and `region` are all required. You also supply the `-p` with the version and backup ID parameters in a JSON object. The new deployment is automatically sized with the same disk and memory as the source deployment at the time of the backup.
 
 ```sh
 ibmcloud resource service-instance-create example-upgrade databases-for-mongodb standard us-south \

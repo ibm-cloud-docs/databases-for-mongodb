@@ -14,10 +14,10 @@ subcollection: databases-for-mongodb
 
 [MongoDB Compass](https://www.mongodb.com/docs/compass/current/){: external} is a powerful GUI for querying, aggregating, and analyzing your MongoDB data in a visual environment. Compass is free to use and source available, and can be run on macOS, Windows, and Linux.
 
-## Install and Connect to Compass
+## Install and connect to Compass
 {: #install-connect-mongodb-compass}
 
-Follow [the instructions](https://www.mongodb.com/try/download/compass) to download and install Compass on your machine.
+Follow [the instructions](https://www.mongodb.com/try/download/compass){: external} to download and install Compass on your machine.
 
 When you first open MongoDB Compass on the **New connection** page, enter your instance's connection information. All relevant connection information can be found within your instance's **Overview** page.
 

@@ -11,10 +11,10 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Setting the Admin Password
+# Setting the admin password
 {: #admin-password}
 
-## Setting the Admin Password through the UI
+## Setting the admin password through the UI
 {: #admin-password-ui}
 {: ui}
 
@@ -30,10 +30,11 @@ Set the admin password before you use it to connect. To set the password through
 
 Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password through the CLI.
 
-For example, to set the admin password for a deployment named "example-deployment", use the following command.
+For example, to set the admin password for your deployment, use the following command:
 ```sh
-ibmcloud cdb user-password example-deployment admin <newpassword>
+ibmcloud cdb user-password <INSTANCE_NAME_OR_CRN> admin <NEWPASSWORD>
 ```
+{: pre}
 
 ## Setting the admin password through the API
 {: #admin-password-api}

@@ -151,10 +151,10 @@ Set your admin password through the UI by selecting your instance from the [{{si
 
 Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
 
-For example, to set the admin password for a deployment named `example-deployment`, use the following command:
+For example, to set the admin password for your deployment, use the following command:
 
 ```sh
-ibmcloud cdb user-password example-deployment admin <newpassword>
+ibmcloud cdb user-password <INSTANCE_NAME_OR_CRN> admin <NEWPASSWORD>
 ```
 {: pre}
 

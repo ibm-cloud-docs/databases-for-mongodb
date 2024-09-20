@@ -41,7 +41,7 @@ The information the MongoDB shell needs to connect to your instance is in the "c
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-## MongoDB Shell Example
+## MongoDB Shell example
 {: #connecting-cli-client-mongo-example}
 
 ```sh
@@ -63,7 +63,7 @@ If the MongoDB Shell is locally installed, you can use the `ibmcloud cdb deploym
 ```sh
 ibmcloud cdb deployment-connections --start -u example-user example-mongo
 ```
-{: .pre}
+{: pre}
 
 The command prompts for the user's password and then runs the MongoDB command-line client to connect to the database.
 
@@ -78,4 +78,10 @@ The option `--start` must come before the parameters, otherwise connection infor
 3. Save the certificate to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the `--sslCAFile` parameter.
 
-You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `--sslCAFile` parameter.
+You can display the decoded certificate for your deployment with the CLI plug-in with the command: 
+```sh
+ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
+```
+{: pre}
+
+It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `--sslCAFile` parameter.

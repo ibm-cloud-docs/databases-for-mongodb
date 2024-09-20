@@ -32,7 +32,7 @@ The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On is made up o
     Long-running queries can negatively impact the operational workflow of your deployment. The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On introduces an extra data member, which isolates analytics workloads from operational workloads. The Analytics Node data is kept in sync with the other nodes, so any queries run against it produce the same results.
 
 
-### The Analytics Node
+### The Analytics node
 {: #mongodbee-analytics-node}
 
 The Analytics node isolates analytics from operational workload, allowing for long-running queries that do not impact operational workflow performance. You can use the Analytics node directly by using MongoDB queries, or through the BI Connector if you want to run SQL queries.
@@ -60,7 +60,7 @@ xyz1234-scfr5rer-496hjgo6ghtg-biconnector.abc12345deft7.databases.appdomain.clou
 The {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On connector for BI cannot be enabled without the Analytics node.
 {: .important}
 
-## MongoDB EE Analytics Add-On Considerations
+## MongoDB EE Analytics Add-On considerations
 {: #mongodbee-analytics-consider}
 
 Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE Analytics Add-On, consider the following:
@@ -73,7 +73,7 @@ Before taking advantage of the {{site.data.keyword.databases-for-mongodb}} EE An
     Scaling the disk space of the main database members results in proportional scaling of the Analytics member.
     {: .important}
 
-## Provisioning an Analytics Node and BI Connector
+## Provisioning an Analytics node and BI connector
 {: #mongodbee-analytics-node-provisioning}
 
 ### Provision using Terraform
