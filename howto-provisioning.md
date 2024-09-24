@@ -422,7 +422,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "resource_plan_id": "databases-for-mongodb-standard", \
         "parameters": { 
           "members_host_flavor": "multitenant", 
-          "memory": { "allocation_mb": 16384 }, 
+          "memory": { "allocation_mb": 12288 }, 
           "cpu": { "allocation_count": 4 } 
         } \
       }' \
