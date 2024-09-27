@@ -168,7 +168,7 @@ ibmcloud cdb groups <deployment_id> --json
 ```
 {: pre}
 
-## Switching to and between hosting models in the CLI
+## Switching to and between Hosting Models in the CLI
 {: #resources-switching-cli}
 {: cli}
 
@@ -251,7 +251,7 @@ curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}
 ```
 {: pre}
 
-## Switching to and between hosting models in the API
+## Switching to and between Hosting Models in the API
 {: #resources-switching-api}
 {: api}
 
@@ -262,7 +262,7 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{i
 -H 'Authorization: Bearer <>'
 -H 'Content-Type: application/json'
 -d '{"host_flavor": {"id": "multitenant"},
-     "cpu": {"allocation_count": 2},
+     "cpu": {"allocation_count": 3},
      "memory": {"allocation_mb": 12288}
     }' \
 ```
@@ -351,7 +351,7 @@ output "ICD MongoDB database connection string" {
 ```
 {: codeblock}
 
-## Switching to and scaling hosting models in Terraform
+## Switching to and Scaling Hosting Models in Terraform
 {: #resources-switching-terraform}
 {: terraform}
 
