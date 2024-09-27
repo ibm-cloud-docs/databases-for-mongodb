@@ -262,7 +262,7 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{i
 -H 'Authorization: Bearer <>'
 -H 'Content-Type: application/json'
 -d '{"host_flavor": {"id": "multitenant"},
-     "cpu": {"allocation_count": 2},
+     "cpu": {"allocation_count": 3},
      "memory": {"allocation_mb": 12288}
     }' \
 ```
