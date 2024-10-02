@@ -2,7 +2,7 @@
 
 copyright:
    years: 2024
-lastupdated: "2024-09-01"
+lastupdated: "2024-10-02"
 
 keywords: mongodb, geospatial
 
@@ -12,7 +12,7 @@ content-type: tutorial
 
 account-plan: paid
 
-completion-time: 60min
+completion-time: "60min"
 
 ---
 
@@ -36,7 +36,7 @@ This tutorial guides you through the steps of importing location-based data abou
 Before you begin, ensure you have the following:
 
 - An [{{site.data.keyword.cloud_notm}} Account](https://cloud.ibm.com/registration){: external}.
-- [Terraform](https://www.terraform.io/){: external} - to deploy infrastructure.
+- [Terraform](https://www.terraform.io/){: external} to deploy infrastructure.
 
 ## Obtain an API key to deploy infrastructure to your account
 {: #mongodb-geo-queries-obtain-key}
