@@ -9,10 +9,8 @@ keywords: mongodb, geospatial
 subcollection: databases-for-mongodb
 
 content-type: tutorial
-
 account-plan: paid
-
-completion-time: "60min"
+completion-time: 2h
 
 ---
 
