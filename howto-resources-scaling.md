@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-24"
+lastupdated: "2024-09-30"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -168,7 +168,7 @@ ibmcloud cdb groups <deployment_id> --json
 ```
 {: pre}
 
-## Switching to and between Hosting Models in the CLI
+## Switching to and between hosting models in the CLI
 {: #resources-switching-cli}
 {: cli}
 
@@ -251,7 +251,7 @@ curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}
 ```
 {: pre}
 
-## Switching to and between Hosting Models in the API
+## Switching to and between hosting models in the API
 {: #resources-switching-api}
 {: api}
 
@@ -351,7 +351,7 @@ output "ICD MongoDB database connection string" {
 ```
 {: codeblock}
 
-## Switching to and Scaling Hosting Models in Terraform
+## Switching to and Scaling hosting models in Terraform
 {: #resources-switching-terraform}
 {: terraform}
 
