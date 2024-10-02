@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-24"
+lastupdated: "2024-09-30"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -351,7 +351,7 @@ output "ICD MongoDB database connection string" {
 ```
 {: codeblock}
 
-## Switching to and scaling hosting models in Terraform
+## Switching to and Scaling hosting models in Terraform
 {: #resources-switching-terraform}
 {: terraform}
 
