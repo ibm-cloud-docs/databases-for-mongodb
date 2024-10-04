@@ -130,48 +130,48 @@ There are two scripts that you can use to query your data:
 
 1. `find_by_point.js`- With this script you feed it a lat/long pair and it returns the nearest taxi to that location, as in the following example:
 
-```sh
-    node find_by_point.js --longitude="-0.13"  --latitude=50.3
-```
-{: pre}
+    ```sh
+        node find_by_point.js --longitude="-0.13"  --latitude=50.3
+    ```
+    {: pre}
 
-You get a response like this:
+    You get a response like this:
 
-```json
-{
-  _id: new ObjectId('66bc7dd80fbd69a0f41c029b'),
-  type: 'Feature',
-  geometry: { type: 'Point', coordinates: [ -0.1002, 51.3611 ] },
-  properties: {
-    driver_name: 'Elisabeth Acuna',
-    taxi_id: 'ECJK0AG87JB00991',
-    vehicle_type: 'van',
-    phone_number: '+352-1224-498-598',
-    timestamp: '2024-08-14T09:50:16.884Z'
-  }
-}
-```
-{: pre}
+    ```json
+    {
+      _id: new ObjectId('66bc7dd80fbd69a0f41c029b'),
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [ -0.1002, 51.3611 ] },
+      properties: {
+        driver_name: 'Elisabeth Acuna',
+        taxi_id: 'ECJK0AG87JB00991',
+        vehicle_type: 'van',
+        phone_number: '+352-1224-498-598',
+        timestamp: '2024-08-14T09:50:16.884Z'
+      }
+    }
+    ```
+    {: pre}
 
-You can optionally add a `num_taxis` and a `vehicle_type` parameter to get more results, or filter by certain type of car (for example, sedan, van, sevenseater, minibus). See the following example.
+   You can optionally add a `num_taxis` and a `vehicle_type` parameter to get more results, or filter by certain type of car (for example, sedan, van, sevenseater, minibus). See the following example.
 
-```sh
-    node find_by_point.js --longitude="-0.13"  --latitude=50.3 --num_taxis=10 --vehicle_type=minibus
-```
-{: pre}
+    ```sh
+        node find_by_point.js --longitude="-0.13"  --latitude=50.3 --num_taxis=10 --vehicle_type=minibus
+    ```
+    {: pre}
 
-The script uses the [`$near` operator](https://www.mongodb.com/docs/manual/reference/operator/query/near/#mongodb-query-op.-near) of the geospatial capabilities of MongoDB.
+   The script uses the [`$near` operator](https://www.mongodb.com/docs/manual/reference/operator/query/near/#mongodb-query-op.-near) of the geospatial capabilities of MongoDB.
 
 2. `find_by_bounding_box.js` - With this script you feed it a bounding box and it returns up to five taxis within that, such as in the following example:
 
-```sh
-    node find_by_bounding_box.js --topleftlat=51.5019647 --topleftlong=-0.1494702 --bottomrightlong=-0.1249548 --bottomrightlat=51.4881758
-```
-{: pre}
+    ```sh
+        node find_by_bounding_box.js --topleftlat=51.5019647 --topleftlong=-0.1494702 --bottomrightlong=-0.1249548 --bottomrightlat=51.4881758
+    ```
+    {: pre}
 
-You can also add the `num_taxis` and `vehicle_type` parameters.
+   You can also add the `num_taxis` and `vehicle_type` parameters.
 
-The script uses the [`$geoWithin` operator](https://www.mongodb.com/docs/manual/reference/operator/query/geoWithin/#mongodb-query-op.-geoWithin) of the geospatial capabilities of MongoDB.
+   The script uses the [`$geoWithin` operator](https://www.mongodb.com/docs/manual/reference/operator/query/geoWithin/#mongodb-query-op.-geoWithin) of the geospatial capabilities of MongoDB.
 
 ## Conclusion and next steps
 {: #mongodb-geo-queries-conclusion}
