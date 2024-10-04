@@ -11,6 +11,7 @@ subcollection: databases-for-mongodb
 content-type: tutorial
 account-plan: paid
 completion-time: 2h
+
 ---
 
 {{site.data.keyword.attribute-definition-list}}
