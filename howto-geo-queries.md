@@ -98,16 +98,16 @@ The previous step produces two elements that you need to gain access to the data
 - The deployment certificate (`cert`). You need this certificate to connect securely to the database. Decode the certificate, save it to a file in the root folder of the project, and export the file name as an environment variable. You can do this on your terminal like this:
 
    ```sh
-       cd ..
-       echo "<the_cert_from_the_output>" | base64 --decode > ca.cert
-       export MONGO_CA_FILE="./ca.cert"
+   cd ..
+   echo "<the_cert_from_the_output>" | base64 --decode > ca.cert
+   export MONGO_CA_FILE="./ca.cert"
    ```
    {: pre}
 
 - The `url` to access the deployment. Replace the `$PASSWORD` parameter in that URL with the admin password from your `terraform.tfvars` file. Then, export it as an environment variable from the terminal like this:
 
    ```sh
-       export MONGO_URL="<the_url_from_the_output>"
+   export MONGO_URL="<the_url_from_the_output>"
    ```
    {: pre}
 
@@ -117,9 +117,9 @@ The script also creates a geo index on the `geometry` field of the data, which i
 
 To run the script, use the following command:
 
-   ```sh
-       npm install --save  #install all required node packages, including datamaker and mongodb
-       node import.js
+   ```json
+   npm install --save  #install all required node packages, including datamaker and mongodb
+   node import.js
    ```
    {: pre}
 
@@ -131,8 +131,8 @@ There are two scripts that you can use to query your data:
 
 1. `find_by_point.js`- With this script you feed it a lat/long pair and it returns the nearest taxi to that location, as in the following example:
 
-    ```sh
-        node find_by_point.js --longitude="-0.13"  --latitude=50.3
+    ```json
+    node find_by_point.js --longitude="-0.13"  --latitude=50.3
     ```
     {: pre}
 
@@ -156,8 +156,8 @@ There are two scripts that you can use to query your data:
 
    You can optionally add a `num_taxis` and a `vehicle_type` parameter to get more results, or filter by certain type of car (for example, sedan, van, sevenseater, minibus). See the following example.
 
-    ```sh
-        node find_by_point.js --longitude="-0.13"  --latitude=50.3 --num_taxis=10 --vehicle_type=minibus
+    ```json
+    node find_by_point.js --longitude="-0.13"  --latitude=50.3 --num_taxis=10 --vehicle_type=minibus
     ```
     {: pre}
 
@@ -165,8 +165,8 @@ There are two scripts that you can use to query your data:
 
 2. `find_by_bounding_box.js` - With this script you feed it a bounding box and it returns up to five taxis within that, such as in the following example:
 
-    ```sh
-        node find_by_bounding_box.js --topleftlat=51.5019647 --topleftlong=-0.1494702 --bottomrightlong=-0.1249548 --bottomrightlat=51.4881758
+    ```json
+    node find_by_bounding_box.js --topleftlat=51.5019647 --topleftlong=-0.1494702 --bottomrightlong=-0.1249548 --bottomrightlat=51.4881758
     ```
     {: pre}
 
