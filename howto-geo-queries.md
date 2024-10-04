@@ -2,7 +2,7 @@
 
 copyright:
    years: 2024
-lastupdated: "2024-10-02"
+lastupdated: "2024-10-04"
 
 keywords: mongodb, geospatial
 
@@ -51,10 +51,10 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 Get a local copy of the code that you need by cloning the public Github repository. Use the following command:
 
-```sh
-git clone https://github.com/IBM/ibm-mongodb-geospatial-queries
-```
-{: pre}
+   ```sh
+   git clone https://github.com/IBM/ibm-mongodb-geospatial-queries
+   ```
+   {: pre}
 
 ## Deploy an instance of {{site.data.keyword.databases-for-mongodb}} to your account
 {: #mongodb-geo-queries-install-infra}
@@ -97,19 +97,19 @@ The previous step produces two elements that you need to gain access to the data
 
 - The deployment certificate (`cert`). You need this certificate to connect securely to the database. Decode the certificate, save it to a file in the root folder of the project, and export the file name as an environment variable. You can do this on your terminal like this:
 
-```sh
-    cd ..
-    echo "<the_cert_from_the_output>" | base64 --decode > ca.cert
-    export MONGO_CA_FILE="./ca.cert"
-```
-{: pre}
+   ```sh
+       cd ..
+       echo "<the_cert_from_the_output>" | base64 --decode > ca.cert
+       export MONGO_CA_FILE="./ca.cert"
+   ```
+   {: pre}
 
 - The `url` to access the deployment. Replace the `$PASSWORD` parameter in that URL with the admin password from your `terraform.tfvars` file. Then, export it as an environment variable from the terminal like this:
 
-```sh
-    export MONGO_URL="<the_url_from_the_output>"
-```
-{: pre}
+   ```sh
+       export MONGO_URL="<the_url_from_the_output>"
+   ```
+   {: pre}
 
 You are ready to upload data. The `import.js` script uses a Node utility called [datamaker](https://www.npmjs.com/package/datamaker){: external} to generate a large amount of random data in the format specified in the `taxi.json` file, and uploads that data into MongoDB. The format is a standard [GeoJSON](https://geojson.org/){: external} format, which is required for MongDB [geospatial queries](https://www.mongodb.com/docs/manual/geospatial-queries/){: external} to work.
 
@@ -117,11 +117,11 @@ The script also creates a geo index on the `geometry` field of the data, which i
 
 To run the script, use the following command:
 
-```sh
-    npm install --save  #install all required node packages, including datamaker and mongodb
-    node import.js
-```
-{: pre}
+   ```sh
+       npm install --save  #install all required node packages, including datamaker and mongodb
+       node import.js
+   ```
+   {: pre}
 
 ## Query your data
 {: #mongodb-geo-queries-query-data}
@@ -186,7 +186,7 @@ You can explore more geospatial search features in the [MongoDB documentation](h
 
 Your {{site.data.keyword.databases-for-mongodb}} incurs charges. After you finish this tutorial, you can remove all the infrastructure by going to the `terraform` directory of the project and using the following command:
 
-```sh
-terraform destroy
-```
-{: pre}
+   ```sh
+   terraform destroy
+   ```
+   {: pre}
