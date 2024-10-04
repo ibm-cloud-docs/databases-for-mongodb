@@ -181,7 +181,7 @@ In this tutorial you used an {{site.data.keyword.databases-for-mongodb}} instanc
 
 You can explore more geospatial search features in the [MongoDB documentation](https://www.mongodb.com/docs/manual/geospatial-queries/#geospatial-queries){: external}.
 
-## Tear dowm your infrastructure
+## Tear down your infrastructure
 {: #mongodb-geo-queries-tear-down}
 
 Your {{site.data.keyword.databases-for-mongodb}} incurs charges. After you finish this tutorial, you can remove all the infrastructure by going to the `terraform` directory of the project and using the following command:
