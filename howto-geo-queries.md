@@ -11,19 +11,18 @@ subcollection: databases-for-mongodb
 content-type: tutorial
 account-plan: paid
 completion-time: 2h
-
 ---
 
-{{site.data.keyword.attribute-definition-list}}	
+{{site.data.keyword.attribute-definition-list}}
 
-# Explore the geospatial search capabilities of  {{site.data.keyword.databases-for-mongodb}} 
+# Explore the geospatial search capabilities of {{site.data.keyword.databases-for-mongodb}}
 {: #mongodb-geo-queries}
 {: toc-content-type="tutorial"}
 {: toc-completion-time="30min"}
 
 MongoDB's geospatial capabilities allow you to efficiently execute queries where geographical location is the key consideration. Consider, for example, how much of your everyday life is about your location or that of others. Where is the nearest Uber taxi? Where is the nearest Chinese restaurant? Which of my friends is nearest right now? These are all questions that apps like Uber, Google Search, and Whatsapp are constantly answering for their customers.
 
-This tutorial guides you through the steps of importing location-based data about taxis in London into a {{site.data.keyword.databases-for-mongodb}} database, and then querying that data in a variety of ways. 
+This tutorial guides you through the steps of importing location-based data about taxis in London into a {{site.data.keyword.databases-for-mongodb}} database, and then querying that data in a variety of ways.
 
 {{site.data.keyword.databases-for-mongodb}} is a paid-for service, so following this tutorial will incur charges.
 {: note}
@@ -71,10 +70,10 @@ In this step you deploy an instance of {{site.data.keyword.databases-for-mongodb
 
 1. In that folder, create a document that is named `terraform.tfvars` with the following fields:
 
-   ```sh
-    ibmcloud_api_key = "<your_api_key_from_step_1>"
-    region = "<the IBM region where you will deploy the MongoDB database>"
-    admin_password = "<the password of your mongodb admin user>"
+   ```json
+   ibmcloud_api_key = "<your_api_key_from_step_1>"
+   region = "<the IBM region where you will deploy the MongoDB database>"
+   admin_password = "<the password of your mongodb admin user>"
    ```
    {: pre}
 
@@ -95,7 +94,7 @@ In this step you deploy an instance of {{site.data.keyword.databases-for-mongodb
 
 The previous step produces two elements that you need to gain access to the database:
 
-1. The deployment certificate (`cert`). You need this certificate to connect securely to the database. Decode the certificate, save it to a file in the root folder of the project, and export the file name as an environment variable. You can do this on your terminal like this: 
+- The deployment certificate (`cert`). You need this certificate to connect securely to the database. Decode the certificate, save it to a file in the root folder of the project, and export the file name as an environment variable. You can do this on your terminal like this:
 
 ```sh
     cd ..
@@ -104,7 +103,7 @@ The previous step produces two elements that you need to gain access to the data
 ```
 {: pre}
 
-2. The `url` to access the deployment. Replace the `$PASSWORD` parameter in that URL with the admin password from your `terraform.tfvars` file. Then, export it as an environment variable from the terminal like this:
+- The `url` to access the deployment. Replace the `$PASSWORD` parameter in that URL with the admin password from your `terraform.tfvars` file. Then, export it as an environment variable from the terminal like this:
 
 ```sh
     export MONGO_URL="<the_url_from_the_output>"
@@ -127,7 +126,7 @@ To run the script, use the following command:
 {: #mongodb-geo-queries-query-data}
 {: step}
 
-There are two scripts that you can use to query your data: 
+There are two scripts that you can use to query your data:
 
 1. `find_by_point.js`- With this script you feed it a lat/long pair and it returns the nearest taxi to that location, as in the following example:
 
@@ -138,7 +137,7 @@ There are two scripts that you can use to query your data:
 
 You get a response like this:
 
-```
+```json
 {
   _id: new ObjectId('66bc7dd80fbd69a0f41c029b'),
   type: 'Feature',
@@ -176,7 +175,6 @@ The script uses the [`$geoWithin` operator](https://www.mongodb.com/docs/manual/
 
 ## Conclusion and next steps
 {: #mongodb-geo-queries-conclusion}
-{: step}
 
 In this tutorial you used an {{site.data.keyword.databases-for-mongodb}} instance to store data where location is an important factor. This data was stored as GeoJSON object, which allows the data to be indexed in MongoDB geospatial indexes. You can use these indexes to search over data for nearest results to a given point or within geographic boundaries.
 
@@ -184,7 +182,6 @@ You can explore more geospatial search features in the [MongoDB documentation](h
 
 ## Tear dowm your infrastructure
 {: #mongodb-geo-queries-tear-down}
-{: step}
 
 Your {{site.data.keyword.databases-for-mongodb}} incurs charges. After you finish this tutorial, you can remove all the infrastructure by going to the `terraform` directory of the project and using the following command:
 
