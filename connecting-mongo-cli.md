@@ -37,7 +37,7 @@ The information the MongoDB shell needs to connect to your instance is in the "c
 | `Certificate` | `Base64` | A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
 | `Certificate` | `Name` | The allocated name for the self-signed certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`.  |
-{: caption="Table 1. mongo/cli connection information" caption-side="top"}
+{: caption="mongo/cli connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 

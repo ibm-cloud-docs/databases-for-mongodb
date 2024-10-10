@@ -38,7 +38,7 @@ All the information a driver needs to make a connection to your deployment is in
 | `Composed` | `0...` | A URI combining Scheme, Authentication, Host, Path, and Replica Set name. |
 | `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
-{: caption="Table 1. mongodb/URI connection information" caption-side="top"}
+{: caption="mongodb/URI connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 

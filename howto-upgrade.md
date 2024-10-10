@@ -37,7 +37,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 | ---- | ----- |
 | MongoDB 5.0 |	-> MongoDB 5.0 -> 6.0 |
 | MongoDB 6.0 |	-> Latest version |
-{: caption="Table 1. Major version upgrade paths" caption-side="top"}
+{: caption="Major version upgrade paths" caption-side="top"}
 
 ## Upgrading in the UI
 {: #upgrading-ui}
