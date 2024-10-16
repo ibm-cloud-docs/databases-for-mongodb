@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-10-15"
+lastupdated: "2024-10-16"
 
 keywords:
 
@@ -23,7 +23,7 @@ subcollection: databases-for-mongodb
 ## Responsibilities
 {: #data-portability-responsibilities}
 
-IBM Cloud services provide interfaces and instructions to guide the customer to copy and store the service customer content, including the related configuration, on their own selected location.
+{{site.data.keyword.cloud}} services provide interfaces and instructions to guide the customer to copy and store the service customer content, including the related configuration, on their own selected location.
 
 The customer then is responsible for the use of the exported data and configuration for the purpose of data portability to other infrastructures.
 This can involve:
@@ -33,7 +33,7 @@ This can involve:
 - The conversion of the exported data and configuration to format required by the alternate infrastructure and adapted applications.
 
 
-For more information about your responsibilities when using {{site.data.keyword._service-name_notm}}, see [Shared responsibilities for {{site.data.keyword.databases-for-mongodb}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
+For more information about your responsibilities when using {{site.data.keyword.databases-for-mongodb}}, see [Shared responsibilities for {{site.data.keyword.databases-for-mongodb}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
 
 ## Data export procedures
 {: #data-portability-procedures}
@@ -60,4 +60,4 @@ The exported data can be uploaded to any other MongoDB instance using the [mongo
 ## Data ownership
 {: #data-ownership}
 
-All exported data are classified as Customer content and therefore apply to them the full customer ownership and licensing rights, as stated in [IBM Cloud Service Agreement](https://www.ibm.com/terms/?id=Z126-6304_WS).
+All exported data are classified as Customer content and therefore apply to them the full customer ownership and licensing rights, as stated in [{{site.data.keyword.cloud_notm}} Service Agreement](https://www.ibm.com/terms/?id=Z126-6304_WS).
