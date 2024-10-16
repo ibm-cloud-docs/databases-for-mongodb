@@ -101,6 +101,7 @@ toc:
       - include: ../cloud-databases/db-version-policy.md
       - include: ../cloud-databases/learn-getting-to-production.md
       - include: ../cloud-databases/reference-responsibilities.md
+      - data-portability.md
   - navgroup:
       id: help
       topics:
