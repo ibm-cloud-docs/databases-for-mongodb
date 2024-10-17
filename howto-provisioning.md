@@ -400,7 +400,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "resource_plan_id": "<SERVICE_PLAN_NAME>"
         "parameters": {
             "members_host_flavor": "<members_host_flavor_value>"
-            "service-endpoints":"<ENDPOINT>"
+            "service_endpoints":"<ENDPOINT>"
         }
       }'
     ```
@@ -423,7 +423,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "resource_plan_id": "databases-for-mongodb-standard", \
         "parameters": { 
           "members_host_flavor": "multitenant",
-          "service-endpoints":"private", 
+          "service_endpoints":"private", 
           "memory": { "allocation_mb": 12288 }, 
           "cpu": { "allocation_count": 4 } 
         } \
@@ -445,7 +445,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
             "resource_group": "0383da45d9a044r6d59d36f4689ae25d25", 
             "resource_plan_id": "databases-for-mongodb-standard", 
             "parameters": { "members_host_flavor":"b3c.4x16.encrypted"},
-            "service-endpoints":"private"
+            "service_endpoints":"private"
           }' 
     ```
     {: .pre}
@@ -460,7 +460,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
    | `resource_group`[Required]{: tag-red} | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance. See below for more details | -p |
    | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=api).| |
-   - `service-endpoints` [Required]{: tag-red} - The [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
+   - `service_endpoints` [Required]{: tag-red} - The [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
    {: caption="Basic command format fields" caption-side="top"}
 
 ### The `members_host_flavor` parameter
