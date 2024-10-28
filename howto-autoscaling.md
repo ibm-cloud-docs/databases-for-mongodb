@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-12-12"
+  years: 2020, 2024
+lastupdated: "2024-10-27"
 
 keywords: mongodb, databases, scaling, autoscaling, memory, disk I/O
 
@@ -19,7 +19,8 @@ Autoscaling is designed to respond to the short-to-medium term trends in resourc
 
 You can set your deployment to autoscale disk, RAM, or both.
 
-General Autoscaling parameters
+General Autoscaling parameters:
+
 - When to scale, based on usage over a period of time.
 - By how much to scale, as a percentage of the resources per member.
 - How often to scale, measured either in seconds, minutes, or hours.
@@ -66,12 +67,14 @@ To disable autoscaling, clear the boxes for the parameters that you no longer wa
 {: cli}
 
 You can get the autoscaling parameters for your deployment through the CLI by using the [`cdb deployment-autoscaling`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling) command.
+
 ```sh
 ibmcloud cdb deployment-autoscaling <INSTANCE_NAME_OR_CRN> member
 ```
 {: pre}
 
 To enable and set autoscaling parameters through the CLI, use a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling-set) command.
+
 ```sh
 ibmcloud cdb deployment-autoscaling-set <INSTANCE_NAME_OR_CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
 ```
@@ -82,29 +85,36 @@ ibmcloud cdb deployment-autoscaling-set <INSTANCE_NAME_OR_CRN> member '{"autosca
 {: api}
 
 You can get the autoscaling parameters for your deployment through the API by sending a `GET` request to the [`/deployments/{id}/groups/{group_id}/autoscaling`](/apidocs/cloud-databases-api/cloud-databases-api-v5#getautoscalingconditions) endpoint. Enabling autoscaling works by setting your desired `scalers` (`io_utilization` or `capacity`) to `true`.
+
 ```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling'
 ```
 
 To enable and set the autoscaling parameters for your deployment through the API, send a `POST` request to the endpoint. Enabling autoscaling works by setting the `scalers` (`io_utilization` or `capacity`) to `true`.
+
 ```sh
-curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling -H 'Authorization: Bearer <>'
--H 'Content-Type: application/json'
--d '{"autoscaling": {
-      "memory": {
-        "scalers": {
-          "io_utilization": {
-            "enabled": true,
-            "over_period": "5m",
-            "above_percent": 90}
-          },
-          "limits": {
-            "scale_increase_percent": 10.0,
-            "scale_period_seconds": 30,
-            "scale_maximum_mb": 125952,
-            "units": "mb"
-          }
-      }
-    }'
+curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling \
+-H 'Authorization: Bearer <>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "autoscaling": {
+        "memory": {
+            "scalers": {
+                "io_utilization": {
+                    "enabled": true,
+                    "over_period": "5m",
+                    "above_percent": 90
+                }
+            },
+            "limits": {
+                "scale_increase_percent": 10,
+                "scale_period_seconds": 30,
+                "scale_maximum_mb": 125952,
+                "units": "mb"
+            }
+        }
+    }
+}'
 ```
+
 To disable autoscaling, send the PATCH request with the currently enabled scalers set to `false`. If all of them are set to `false`, then autoscaling is disabled on your deployment.
