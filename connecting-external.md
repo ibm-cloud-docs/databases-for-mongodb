@@ -42,11 +42,10 @@ All the information a driver needs to make a connection to your deployment is in
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-Many MongoDB drivers are able to connect to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
+Many MongoDB drivers are able to connect to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. IBM Cloud Databases provides a highly available instance of MongoDB, so make sure to include all members in the connection string. For example,
 
 ```sh
-mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:30484/<database name>?authSource=admin&replicaSet=replset
-```
+mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187-0.databases.appdomain.cloud:30484,d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187-1.databases.appdomain.cloud:30484,d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187-2.databases.appdomain.cloud:30484/<database name>?authSource=admin&replicaSet=replset
 
 The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
 {: .tip}
