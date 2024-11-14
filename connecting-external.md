@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2024
-lastupdated: "2024-07-31"
+lastupdated: "2024-11-14"
 
 keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
 
@@ -26,7 +26,7 @@ When connecting an external application, use only drivers that are supported by 
 
 All the information a driver needs to make a connection to your deployment is in the "MongoDB" section of a credential created on the **Service credentials** page. The table contains a breakdown for reference.
 
-| Field Name | Index | Description |
+| Field name | Index | Description |
 | ---------- | ----- | ----------- |
 | `Type` | | Type of connection - for MongoDB, it is "URI" |
 | `Scheme` | | Scheme for a URI - for MongoDB, it is "mongodb" |
@@ -42,10 +42,12 @@ All the information a driver needs to make a connection to your deployment is in
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-Many MongoDB drivers are able to connect to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. IBM Cloud Databases provides a highly available instance of MongoDB, so make sure to include all members in the connection string. For example,
+Many MongoDB drivers are able to connect to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. {{site.data.keyword.databases-for}} provides a highly available instance of MongoDB, so make sure to include all members in the connection string. For example:
 
 ```sh
 mongodb://admin:$PASSWORD@d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187-0.databases.appdomain.cloud:30484,d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187-1.databases.appdomain.cloud:30484,d5eeee66-5bc4-498a-b73b-1307848f1eac.8f7bfd8f3faa4218aec56e069eb46187-2.databases.appdomain.cloud:30484/<database name>?authSource=admin&replicaSet=replset
+```
+{: pre}
 
 The `replicaSet` query parameter contains the replica set name for your deployment. It is probably `replset`. Some drivers and applications need it passed in separately.
 {: .tip}
