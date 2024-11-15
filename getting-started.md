@@ -230,7 +230,7 @@ Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mon
 - If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: external}.
 - For guidance on best practices, see [Best practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. 
 - Secure your deployment by adding [context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
-- Connect your deployment to [{{site.data.keyword.logs_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-logging) and [{{site.data.keyword.monitoring_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) for observability and alerting.
+- Connect your deployment to [{{site.data.keyword.logs_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-logging) and [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) for observability and alerting.
 - Explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functionality offered in the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 
 - Looking for more tools on managing your databases? Connect to your instance with the following tools:
