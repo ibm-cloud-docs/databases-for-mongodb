@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-08-02"
+lastupdated: "2024-11-15"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -32,7 +32,7 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 2: Provision through the console](#provision_instance_ui)
 * [Step 3: Set your Admin password through the console](#admin_pw)
 * [Step 4: Connect to your instance](#mongodb_connect)
-* [Next Steps](#next_steps)
+* [Next steps](#next_steps)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
@@ -42,7 +42,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 2: Provision through the CLI](#provision_instance_cli)
 * [Step 3: Set your Admin password through the CLI](#admin_pw)
 * [Step 4: Connect to your instance](#mongodb_connect)
-* [Next Steps](#next_steps)
+* [Next steps](#next_steps)
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
@@ -52,7 +52,7 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 2: Provision through the API](#provision_instance_api)
 * [Step 3: Set your Admin password](#admin_pw)
 * [Step 4: Connect to your instance](#mongodb_connect)
-* [Next Steps](#next_steps)
+* [Next steps](#next_steps)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -62,7 +62,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 2: Provision through Terraform](#provision_instance_tf)
 * [Step 3: Set your Admin password](#admin_pw)
 * [Step 4: Connect to your instance](#mongodb_connect)
-* [Next Steps](#next_steps)
+* [Next steps](#next_steps)
 {: terraform}
 
 
@@ -78,7 +78,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * {{site.data.keyword.databases-for-mongodb}} **Standard** is a fully managed NoSQL database service based on the MongoDB Community Edition.
 
-* {{site.data.keyword.databases-for-mongodb}} **Enterprise** offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#ops-manager), the [Analytics Add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#analytics-add-on), and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#point-in-time-recovery).
+* {{site.data.keyword.databases-for-mongodb}} **Enterprise** offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#ops-manager), the [Analytics add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#analytics-add-on), and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#point-in-time-recovery).
 
 ### Using APIs
 {: #using_apis}
@@ -228,9 +228,9 @@ Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mon
 {: #next_steps}
 
 - If you are using MongoDB for the first time, see the official [MongoDB documentation](https://docs.mongodb.com/){: external}.
-- For guidance on best practices, see [Best Practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. 
+- For guidance on best practices, see [Best practices for MongoDB on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/){: .external}. 
 - Secure your deployment by adding [context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
-- Connect your deployment to [IBM Cloud Log Analysis](/docs/cloud-databases?topic=cloud-databases-logging&interface=ui) and [IBM Cloud Monitoring](/docs/cloud-databases?topic=cloud-databases-monitoring&interface=ui) for observability and alerting.
+- Connect your deployment to [{{site.data.keyword.logs_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-logging) and [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) for observability and alerting.
 - Explore the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager) functionality offered in the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition.
 
 - Looking for more tools on managing your databases? Connect to your instance with the following tools:
