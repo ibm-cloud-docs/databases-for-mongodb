@@ -17,7 +17,7 @@ content-type: release-note
 # Release notes
 {: #mongodb-relnotes}
 
-Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full}} that are grouped by _date_ or _build number_.
+Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
 ## 15 November 2024
