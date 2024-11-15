@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-07-18"
+lastupdated: "2024-11-15"
 
 keywords: deployment, crn, task, gui, api endpoint
 
@@ -34,15 +34,16 @@ The resources tab contains information and configuration options on the size and
 ### Recent tasks
 {: #dashboard-overview-recent-tasks}
 
-Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24-48 hours. Unsuccessful tasks can show for 7-8 days. Tasks can also be retrieved from the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks) and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.at_full}} integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-activity-tracker).
+Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24-48 hours. Unsuccessful tasks can show for 7-8 days. Tasks can also be retrieved from the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks) and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through [{{site.data.keyword.atracker_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-at_events).
 
 ### Observability
 {: #dashboard-overview-observability}
 
 The _Observability_ tab provides access to the {{site.data.keyword.monitoringlong}}, logging, and event tracking integrations available for your deployment.
-- [{{site.data.keyword.at_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-activity-tracker)
-- [{{site.data.keyword.la_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-logging)
-- [{{site.data.keyword.monitoringfull}}](/docs/cloud-databases?topic=cloud-databases-monitoring)
+
+- [{{site.data.keyword.atracker_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-at_events)
+- [{{site.data.keyword.logs_full}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-logging)
+- [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring)
 
 ### Endpoints
 {: #dashboard-overview-endpoints}
@@ -58,16 +59,17 @@ You can manage your {{site.data.keyword.databases-for-mongodb}} service through 
 ## Backups and restore
 {: #dashboard-overview-backups-and-restore}
 
-The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) page.
+The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. More information is on the [Managing backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) page.
 
 ## Settings
 {: #dashboard-overview-settings}
 
-The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can
-- view encryption details. Encryption at rest is enabled for all {{site.data.keyword.databases-for-mongodb}} deployments. If you brought your own encryption key from [Key Protect](/docs/databases-for-mongodb?topic=databases-for-mongodb-key-protect&interface=ui), the panel provides a link to your Key Protect instance and the _Encryption key_ field has the name of the key.
-- [Change the admin password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management&interface=ui#user-management-set-admin-password-ui)
+The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can:
+
+- View encryption details. Encryption at rest is enabled for all {{site.data.keyword.databases-for-mongodb}} deployments. If you brought your own encryption key from [Key Protect](/docs/databases-for-mongodb?topic=databases-for-mongodb-key-protect&interface=ui), the panel provides a link to your Key Protect instance and the _Encryption key_ field has the name of the key.
+- [Change the admin password](/docs/databases-for-mongodb?topic=databases-for-mongodb-user-management&interface=ui#user-management-set-admin-password-ui).
 - [Implement or modify an IP allowlist](/docs/databases-for-mongodb?topic=databases-for-mongodb-allowlisting&interface=ui)
-- [Context-based restrictions](/docs/databases-for-mongodb?topic=databases-for-mongodb-cbr&interface=ui)
+- [Context-based restrictions](/docs/databases-for-mongodb?topic=databases-for-mongodb-cbr&interface=ui).
 
 ## Service credentials
 {: #dashboard-overview-service-cred}
