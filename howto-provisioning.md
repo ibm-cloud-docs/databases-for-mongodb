@@ -400,7 +400,8 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "resource_plan_id": "<SERVICE_PLAN_NAME>",
         "parameters": {
             "members_host_flavor": "<members_host_flavor_value>"
-            "service_endpoints":"<ENDPOINT>"
+            "service_endpoints":"<ENDPOINT>",
+            "version": "<version>"
         }
       }'
     ```
@@ -424,8 +425,8 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "parameters": { 
           "members_host_flavor": "multitenant",
           "service_endpoints":"private", 
-          "memory": { "allocation_mb": 12288 }, 
-          "cpu": { "allocation_count": 4 } 
+          "members_memory_allocation_mb": 12288, 
+          "members_cpu_allocation_count: 4 
         } \
       }' \
     ```
@@ -442,11 +443,12 @@ Follow these steps to provision by using the [Resource Controller API](https://c
       -H 'Content-Type: application/json' \
       -d '{ "name": "my-mongo", 
             "target": "eu-gb", 
-            "resource_group": "0383da45d9a044r6d59d36f4689ae25d25", 
+            "resource_group": "<RESOURCE_GROUP_ID>", 
             "resource_plan_id": "databases-for-mongodb-standard", 
             "parameters": { "members_host_flavor":"b3c.4x16.encrypted"},
             "service_endpoints":"private"
-          }' 
+          } \
+      }' \
     ```
     {: .pre}
    
