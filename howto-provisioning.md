@@ -397,7 +397,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "name": "<INSTANCE_NAME>",
         "target": "<targeted-region>",
         "resource_group": "RESOURCE_GROUP_ID",
-        "resource_plan_id": "<SERVICE_PLAN_NAME>"
+        "resource_plan_id": "<SERVICE_PLAN_NAME>",
         "parameters": {
             "members_host_flavor": "<members_host_flavor_value>"
             "service_endpoints":"<ENDPOINT>"
