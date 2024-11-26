@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-02-20"
+lastupdated: 2024-11-26
 
 keywords: mongodb, connection limits, terminating connections, mongodb connection pooling, mongodb managing connections
 
@@ -12,12 +12,13 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing Connections
+# Managing connections
 {: #managing-connections}
 
 Connections to your {{site.data.keyword.databases-for-mongodb}} deployment use resources, so it is important to consider how many connections you need when tuning your deployment's performance. PostgreSQL uses a `max_connections` setting to limit the number of connections (and resources that are consumed by connections) to prevent run-away connection behavior from overwhelming your deployment's resources.
 
 You can check the value of `max_connections` with your [admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user) and [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+
 ```sh
 ibmclouddb=> SHOW max_connections;
  max_connections
@@ -30,54 +31,61 @@ ibmclouddb=> SHOW max_connections;
 Many of the queries rely on the admin user's role as `pg_monitor`, which is only available in PostgreSQL 10 and newer. Users on PostgreSQL 9.x, might not have permissions to run all of the queries in these docs.
 {: .tip}
 
-## PostgreSQL Connection Limits
+## PostgreSQL connection limits
 {: #postgres-connection-limits}
 
 At provision, {{site.data.keyword.databases-for-mongodb}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. If the number of connections to the database exceeds the 100-connection limit, new connections fail and return an error.
+
 ```sh
 FATAL: remaining connection slots are reserved for
 non-replication superuser connections
 ```
+
 Exceeding the connection limit for your deployment can cause your database to be unreachable by your applications.
 
 You can check the number of connections to your deployment with the admin user, `psql`, and `pg_stat_database`.
+
 ```sql
 SELECT count(distinct(numbackends)) FROM pg_stat_database;
 ```
 {: .codeblock}
 
 If you need to figure out where the connections are going, you can break down the connections by database.
+
 ```sql
 SELECT datname, numbackends FROM pg_stat_database;
 ```
 {: .codeblock}
 
 To further investigate connections to a specific database, query `pg_stat_activity`.
+
 ```sql
 SELECT * FROM pg_stat_activity WHERE datname='ibmclouddb';
 ```
 {: .codeblock}
 
-## Terminating PostgreSQL Connections
+## Terminating PostgreSQL connections
 {: #terminate-connections}
 
 If you are on PostgreSQL 9.6 and newer, your admin user has the `pg_signal_backend` role. If you find connections that need to reset or be closed, the admin user can use both [`pg_cancel_backend` and `pg_terminate_backend`](https://www.postgresql.org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-SIGNAL-TABLE){: .external}. The `pid` of a process is found from the `pg_stat_activity` table.
 
 - `pg_cancel_backend` cancels a connection's current query without terminating the connection, and without stopping any other queries that it might be running.
+  
    ```sql
    SELECT pg_cancel_backend(pid);
    ```
    {: .codeblock}
 
 - `pg_terminate_backend` stops the entire process and closes the connection.
+
    ```sql
    SELECT pg_terminate_backend(pid);
    ```
-   {: .codeblock}{: pre}
+   {: .codeblock}
 
 The admin user does have the power to reset or close the connections for any user on the deployment except superusers. Be careful not to terminate replication connections from the `ibm-replication` user, as it interferes with the high-availability of your deployment.
 
-### End PostgreSQL Connections
+### End PostgreSQL connections
 {: #end-connections}
 
 If your deployment reaches the connection limit or you are having trouble connecting to your deployment and suspect that a high number of connections is a problem, disconnect all of the connections to your deployment.
@@ -85,13 +93,14 @@ If your deployment reaches the connection limit or you are having trouble connec
 In the UI, on the _Settings_ tab, there is a button to `End Connections` to your deployment. Use caution, as it disrupts anything that is connected to your deployment.
 
 The CLI command to end connections to the deployment is
+
 ```sh
 ibmcloud cdb deployment-kill-connections <deployment name or CRN>
 ```
 
 You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#kill-connections-to-a-postgresql-deployment) to perform the end all connections operation.
 
-## PostgreSQL Connection Pooling
+## PostgreSQL connection pooling
 {: #connection-pooling}
 
 One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling. If you find yourself setting the {{site.data.keyword.databases-for-mongodb_full}} connection limit to more than 500 connections, you should seriously consider using connection pooling or reevaluating how to more efficiently use and maintain connections. Performance benchmarking in the PostgreSQL community suggests 500 connections or fewer to be optimal for database performance.
@@ -100,7 +109,7 @@ Many PostgreSQL driver libraries have connection pooling classes and functions. 
 
 Alternatively, you can use a third-party tool such as [PgBouncer](https://pgbouncer.github.io/){: .external} to manage your application's connections.
 
-## Raising the PostgreSQL Connection Limit
+## Raising the PostgreSQL connection limit
 {: #raise-connection-limit}
 
 PostgreSQL allocates some amount of memory on a per connection basis, typically around 5 - 10 MB per connection. It is important to consider the total amount of memory that is available to your deployment before increasing the connection limit. To raise the connection limit, first you might want to [scale your deployment](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling) to ensure that you have enough memory to accommodate more connections.
