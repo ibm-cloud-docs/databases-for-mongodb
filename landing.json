@@ -1,78 +1,78 @@
 {
   "version": 2,
-  "title": "IBM® Event Streams for IBM Cloud®",
-  "introduction": "Event Streams for IBM Cloud® is a fully managed Kafka service, optimized to help you build intelligent applications that react to events in real time.",
-  "product_page": "https://www.ibm.com/products/event-streams",
-  "console_page": "/eventstreams-provisioning/6a7f4e38-f218-48ef-9dd2-df408747568e/create",
+  "title": "IBM Cloud® Databases for MongoDB",
+  "introduction": "MongoDB is a JSON document store with a rich query and aggregation framework.",
+  "product_page": "https://www.ibm.com/products/databases-for-mongodb",
+  "console_page": "/databases/databases-for-mongodb/create",
    "section_topics": {
     "links": [
       {
-        "title": "Getting started",
-        "href": "/docs/EventStreams?topic=EventStreams-getting-started"
+        "title": "Connecting with the MongoDB Shell",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client"
       },
       {
-        "title": "Overview",
-        "href": "/docs/EventStreams?topic=EventStreams-about"
+        "title": "Upgrading to a new major version",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui"
       },
       {
-        "title": "Restricting network access",
-        "href": "/docs/EventStreams?topic=EventStreams-restrict_access"
+        "title": "Release notes",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-relnotes"
       },
       {
-        "title": "Connecting to Event Streams",
-        "href": "/docs/EventStreams?topic=EventStreams-connecting"
+        "title": "Provisioning",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=ui"
       },
       {
-        "title": "Managing encryption",
-        "href": "/docs/EventStreams?topic=EventStreams-managing_encryption"
+        "title": "Plan overview",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans"
       },
       {
-        "title": "Using the Kafka API",
-        "href": "/docs/EventStreams?topic=EventStreams-kafka_using"
+        "title": "Service endpoint integration",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints&interface=ui"
       },
       {
-        "title": "Consuming messages",
-        "href": "/docs/EventStreams?topic=EventStreams-consuming_messages"
+        "title": "Managing Cloud Database backups",
+        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui"
       }
     ]
   },
   "section_highlights": [
     {
-      "title": "Norsk Tipping Case Study",
-      "description": "Improving the gaming experience with event streaming technology.",
-      "href": "https://www.ibm.com/case-studies/norsk-tipping",
+      "title": "IBM named a leader for cloud database management systems",
+      "description": "Gartner named IBM a leader in Gartner Magic Quadrant for 2021 Cloud Database Management Systems.",
+      "href": "https://www.ibm.com/blog/ibm-is-named-a-leader-in-the-2021-gartner-magic-quadrant-for-cloud-database-management-systems-dbms/",
       "type": "blog"
     },
     {
-      "title": "SiB Solutions Case Study",
-      "description": "SiB Solutions uses Kafka and AI to enable flawless logistics",
-      "href": "https://www.ibm.com/case-studies/sib-solutions",
-      "type": "case study"
+      "title": "IBM Training - Cloud",
+      "description": "Includes Power Virtual Server, SAP, VMware, Advocate, Architect, Developer, and Site Reliability Engineer, and more",
+      "href": "https://www.ibm.com/training/cloud",
+      "type": "training"
     }
   ],
   "section_devtools": {
-    "api": "/apidocs/event-streams/adminrest", 
-    "cli": "/docs/EventStreams?topic=EventStreams-cli_reference", 
-    "terraform": "/docs/EventStreams?topic=EventStreams-eventstreams-terraform"
+    "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
+    "cli": "/docs/databases-cli-plugin", 
+    "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
     },
   "section_updates": {
-    "view_more": "/docs/EventStreams?topic=EventStreams-event-streams-relnotes",
+    "view_more": "/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-relnotes",
     "tiles": [
       {
-        "date": "1 October 2024",
-        "title": "Terraform Updates"
+        "date": "16 September 2024",
+        "title": "Private endpoints as new default"
       },
       {
-        "date": "1 September 2024",
-        "title": "Schema Registry commands in CLI plugin v2.6.0"
+        "date": "10 July 2024",
+        "title": "Point In Time Recovery (PITR) speed enhancements for the Enterprise plan"
       },
       {
-        "date": "2 September 2024",
-        "title": "Reserved disk space percentage per topic metric available"
+        "date": "1 May 2024",
+        "title": "New hosting models"
       },
       {
-        "date": "1 March 2024",
-        "title": "Apache Kafka update"
+        "date": "18 January 2024",
+        "title": "Databases for MongoDB End of life announcement: Version 5 reaches end of life on September 25, 2024"
       }
     ]
   }
