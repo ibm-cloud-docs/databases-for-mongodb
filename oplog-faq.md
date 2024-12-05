@@ -1,11 +1,11 @@
 ---
 copyright:
-  years: 2023
-lastupdated: "2023-08-24"
+  years: 2023, 2024
+lastupdated: "2024-12-05"
 
 subcollection: databases-for-mongodb, oplog, operations log, oplogurl
 
-keywords: 
+keywords: operation log
 
 ---
 

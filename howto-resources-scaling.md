@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-11-18"
+lastupdated: "2024-12-02"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -70,7 +70,7 @@ The amount of memory you allocate to your deployment is split between all member
 
 If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database. 
 
-Old style dedicated core instances are deprecated, and will be removed in May 2025. For more information on the new hosting models, see the [Hosting models overview](/docs/cloud-databases?topic=cloud-databases-hosting-models).
+Old style dedicated core instances are deprecated, and will be removed in May 2025. For more information on the new hosting models, see the [Hosting models overview](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models).
 
 ## Scaling considerations
 {: #resources-scaling-scale-consider}
@@ -199,7 +199,7 @@ ibmcloud cdb groups <deployment_id> --json
 ```
 {: pre}
 
-## Switching to and between Hosting Models in the CLI
+## Switching to and between hosting models in the CLI
 {: #resources-switching-cli}
 {: cli}
 
@@ -294,7 +294,7 @@ curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}
 ```
 {: pre}
 
-## Switching to and between Hosting Models in the API
+## Switching to and between hosting models in the API
 {: #resources-switching-api}
 {: api}
 
@@ -401,11 +401,11 @@ output "ICD MongoDB database connection string" {
 ```
 {: codeblock}
 
-## Switching to and Scaling Hosting Models in Terraform
+## Switching to and Scaling hosting models in Terraform
 {: #resources-switching-terraform}
 {: terraform}
 
-Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be scaled to. You can change this later.
+Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=terraform) you want your database to be scaled to. You can change this later.
 
 To scale your {{site.data.keyword.databases-for-mongodb}} instance to the Shared Compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared Compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`. 
 
