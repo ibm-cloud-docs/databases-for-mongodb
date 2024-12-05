@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-11-15"
+lastupdated: "2024-12-05"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -125,7 +125,7 @@ You need an API key to perform actions via Terraform. Follow [these steps](/docs
 For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key.
  {: note}
 
-Once you have an API Key, follow [these steps](docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform) to provision a {{site.data.keyword.databases-for-mongodb}} instance using Terraform.
+Once you have an API Key, follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=terraform) to provision a {{site.data.keyword.databases-for-mongodb}} instance using Terraform.
 
 ## Step 3: Set the admin password
 {: #admin_pw}
