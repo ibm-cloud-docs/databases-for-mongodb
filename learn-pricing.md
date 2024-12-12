@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-08-07"
+lastupdated: "2024-12-12"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -39,7 +39,7 @@ A {{site.data.keyword.databases-for-mongodb}} EE Analytics node (only available 
 
 Templates are provided for ease of use and provide balanced resource allocations appropriate for general-purpose workloads. The **Custom** tab can be used to configure Disk, RAM, and vCPU, as desired.
 
-For combined pricing estimation, you can use the **Add to estimate** button at the bottom of the [{{site.data.keyword.databases-for-mongodb}} catalog page](https://cloud.ibm.com/catalog/databases-for-mongodb){: external}.
+For combined pricing estimation, you can use the **Add to estimate** button at the bottom of the [{{site.data.keyword.databases-for-mongodb}} catalog page](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}.
 
 ## Backups pricing
 {: #pricing-backup}
@@ -58,4 +58,3 @@ Most deployments will never go over the allotted credit.
 {: #mongodb-scale-member}
 
 {{site.data.keyword.databases-for-mongodb}} deployments have allocations for disk, CPU and RAM that are set by you at provisioning time. RAM and CPU can be scaled up and down depending on your workload needs. Disk cannot be scaled down, only up, to protect the integrity of your data. For more information on how to scale your resources, see [Scaling disk, memory, and CPU](/docs/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling).
-

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2023, 2024
-lastupdated: "2024-12-05"
+lastupdated: "2024-12-12"
 
 subcollection: databases-for-mongodb, oplog, operations log, oplogurl
 
@@ -41,4 +41,4 @@ db.createUser({user: "oplogUser", pwd: "PASSWORD", roles: [{role: "read", db: "l
 To set up {{site.data.keyword.databases-for-mongodb}} for use with open-source software, like [Meteor.js](https://www.meteor.com/){: external}, configure your MongoDB connection string.
 
 1. Create a user that can read the oplog.
-2. Configure your MongoDB server oplog URL environment variable. For more information, see Meteor's [MONGO_OPLOG_URL](https://docs.meteor.com/environment-variables.html#MONGO-OPLOG-URL){: external}.
+2. Configure your MongoDB server oplog URL environment variable. For more information, see Meteor's [MONGO_OPLOG_URL](https://docs.meteor.com/cli/environment-variables.html#mongo-oplog-url){: external}.
