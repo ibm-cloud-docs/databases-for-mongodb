@@ -41,9 +41,9 @@ For more information, see the [MongoDB documentation](https://docs.mongodb.com/m
 
 {{site.data.keyword.databases-for-mongodb}} uses the [WiredTiger storage engine](https://docs.mongodb.com/manual/core/wiredtiger/#memory-use){: .external}, which uses both the file system memory cache and an internal memory cache. MongoDB is most performant when it serves your data from its internal cache, a little less performant when the data is in the file system cache, and least performant when it has to grab your data from disk.
 
-The default size of the internal cache is `50% of (total RAM - 1 GB)` or `256 MB`, whichever is larger. For example, the minimum memory size of a {{site.data.keyword.databases-for-mongodb}} deployment is 1024 MB per data member, so the internal cache is 512 MB (because `(3072 MB / 2) - 1 GB = 512`.
+The default size of the internal cache is `50% of (total RAM per member - 1 GB)` or `256 MB`, whichever is larger. For example, the minimum memory size of a {{site.data.keyword.databases-for-mongodb}} deployment is 4096 MB per data member, so the internal cache is 1536 MB (because `0.5 * (4096 MB -  1024 MB) = 1536 MB`.
 
-The internal/file system cache ratio is not user-configurable on your deployment, but you can scale the total amount of memory to adjust the internal cache to make your database more performant. For example, if you scale the memory to 4096 MB per member the internal cache size becomes 5120 MB. `(12288 MB / 2) - 1 GB = 5120 MB.`
+The internal/file system cache ratio is not user-configurable on your deployment, but you can scale the total amount of memory to adjust the internal cache to make your database more performant. For example, if you scale the memory to 5120 MB per member the internal cache size becomes 2048 MB. `0.5 * (5120 MB - 1024 MB) = 2048 MB.`
 
 Another way to use autoscaling is to set memory to scale when disk I/O utilization hits a certain threshold. Increasing memory decreases the amount that MongoDB reads or writes to disk, so additional memory might alleviate pressure on disk I/O by supporting more caching.
 
