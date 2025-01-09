@@ -45,13 +45,13 @@ The information the MongoDB shell needs to connect to your instance is in the "c
 {: #connecting-cli-client-mongo-example}
 
 ```sh
-mongosh -u admin -p $PASSWORD --ssl --sslCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
+mongosh -u admin -p $PASSWORD --tls --tlsCAFile c5f07836-d94c-11e8-a2e9-62ec2ed68f84 --authenticationDatabase admin --host replset/bd574ce4-7b36-4274-9976-96db98a3ac10-0.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484,bd574ce4-7b36-4274-9976-96db98a3ac10-1.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:30484
 ```
 
 * `mongosh` - The command itself.
 * `-u` - The parameter for the username.
 * `-p` - The parameter for the password.
-* `--ssl --sslCAFile` - The path and name of the self-signed certificate for your deployment.
+* `--tls --tlsCAFile` - The path and name of the self-signed certificate for your deployment.
 * `--authenticationDatabase` - The database where the user and its credentials are created and stored.
 * `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members.
 
@@ -76,7 +76,7 @@ The option `--start` must come before the parameters, otherwise connection infor
 1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information.
 2. If needed, decode the Base64 string into text.
 3. Save the certificate to a file. (You can use the Name that is provided or your own file name).
-4. Provide the path to the certificate to the `--sslCAFile` parameter.
+4. Provide the path to the certificate to the `--tlsCAFile` parameter.
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command: 
 ```sh
@@ -84,4 +84,4 @@ ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 
-It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `--sslCAFile` parameter.
+It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `--tlsCAFile` parameter.
