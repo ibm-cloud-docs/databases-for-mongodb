@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: 2025-01-09
+lastupdated: 2025-02-17
 
 keywords: mongodb, connection limits, terminating connections, mongodb connection pooling, mongodb managing connections
 
