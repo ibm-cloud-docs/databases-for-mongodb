@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-11-15"
+  years: 2019, 2025
+lastupdated: "2025-01-31"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,16 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 31 January 2025
+{: #databases-for-mongodb-31jan2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} end of life announcement: Version 6 reaches end of life on **July 30, 2025**
+:  All {{site.data.keyword.databases-for-mongodb_full}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. However, there are no SLAs for this forced migration.
+
+We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
+
 
 ## 15 November 2024
 {: #databases-for-mongodb-15nov2024}
