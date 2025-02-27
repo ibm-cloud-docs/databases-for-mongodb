@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-01-31"
+lastupdated: "2025-02-27"
 
 keywords: databases-for-mongodb release notes
 
@@ -20,14 +20,28 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 28 February 2025
+{: #databases-for-mongodb-28feb2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} Deprecation of BI Connector from {{site.data.keyword.databases-for-mongodb_full}} EE on March 31, 2025
+:  After March 31, 2025, the {{site.data.keyword.databases-for-mongodb_full}} Enterprise (EE) feature [BI Connector](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics&interface=api#mongodbee-analytics-connector-bi) will no longer be available for deployment as an analytics add-on. All existing deployments of BI Connector analytics add-on will be disabled after this date.
+
+## 01 February 2025
+{: #databases-for-mongodb-01feb2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} version 7 is preferred
+:  {{site.data.keyword.databases-for-mongodb_full}} version 7 is now available. Customers using previous version of {{site.data.keyword.databases-for-mongodb_full}} can migrate to version 7, which is the next available version.
+
 ## 31 January 2025
 {: #databases-for-mongodb-31jan2025}
 {: release-note}
 
-{{site.data.keyword.databases-for-mongodb}} end of life announcement: Version 6 reaches end of life on **July 30, 2025**
+{{site.data.keyword.databases-for-mongodb}} end of life announcement: Version 6 reaches end of life on July 30, 2025
 :  All {{site.data.keyword.databases-for-mongodb_full}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. However, there are no SLAs for this forced migration.
 
-We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
+We recommend that you upgrade by following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading){: external}.
 
 
 ## 15 November 2024
