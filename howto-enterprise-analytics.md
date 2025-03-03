@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2023
-lastupdated: "2023-04-17"
+  years: 2020, 2025
+lastupdated: "2025-02-27"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, analytics, bi connector
 
@@ -13,6 +13,9 @@ subcollection: databases-for-mongodb
 
 # MongoDB Enterprise Edition Analytics Add-On
 {: #mongodbee-analytics}
+
+Analytics Add-On for {{site.data.keyword.databases-for-mongodb}} Enterprise Edition is deprecated after March 31,2025.
+{: deprecated}
 
 The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/){: external} to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/){: external}.
 
