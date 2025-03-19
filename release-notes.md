@@ -21,7 +21,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: shortdesc}
 
 ## 10 March 2025
-{: #{: #databases-for-mongodb-10mar2025}
+{: #databases-for-mongodb-10mar2025}
 {: release-note}
 
 {{site.data.keyword.databases-for-mongodb}} {{site.data.keyword.satelliteshort}} plan is deprecated
