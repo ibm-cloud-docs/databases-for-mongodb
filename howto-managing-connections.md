@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-03-10"
+lastupdated: "2025-04-09"
 
 keywords: mongodb, connection limits, terminating connections, mongodb connection pooling, mongodb managing connections
 
@@ -105,7 +105,7 @@ You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm
 
 One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling. If you find yourself setting the {{site.data.keyword.databases-for-mongodb_full}} connection limit to more than 500 connections, you should seriously consider using connection pooling or reevaluating how to more efficiently use and maintain connections. Performance benchmarking in the PostgreSQL community suggests 500 connections or fewer to be optimal for database performance.
 
-Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case. For example, the Python driver Psycopg2 has [classes to handle connection pooling in your application](http://initd.org/psycopg/docs/pool.html){: .external}. The Java PostgreSQL JDBC driver has methods for [connection pooling at both the application and application server level](https://jdbc.postgresql.org/documentation/datasource/){: .external}.
+Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case. For example, the Python driver Psycopg2 has [classes to handle connection pooling in your application](https://www.psycopg.org/psycopg3/docs/advanced/pool.html){: .external}. The Java PostgreSQL JDBC driver has methods for [connection pooling at both the application and application server level](https://jdbc.postgresql.org/documentation/datasource/){: .external}.
 
 Alternatively, you can use a third-party tool such as [PgBouncer](https://www.pgbouncer.org/){: .external} to manage your application's connections.
 
