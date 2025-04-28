@@ -77,6 +77,7 @@ toc:
           - include: ../cloud-databases/manage-scc.md
           - learn-security-compliance.md
           - include: ../cloud-databases/howto-cbr.md
+          - include: ../cloud-databases/cbr-tutorial.md
           - include: ../cloud-databases/howto-allowlists.md
           - include: ../cloud-databases/reference-service-endpoints.md
           - include: ../cloud-databases/howto-vpes.md
@@ -89,7 +90,6 @@ toc:
       topics:
       - include: ../cloud-databases/hello-world-tutorial.md
       - include: ../cloud-databases/k8-tutorial.md
-      - include: ../cloud-databases/cbr-tutorial.md
       - include: ../cloud-databases/disk-util-alerts-tutorial.md
       - howto-geo-queries.md
       - howto-timeseries.md
