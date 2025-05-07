@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2024
-lastupdated: "2024-07-31"
+  years: 2024, 2025
+lastupdated: "2025-05-06"
 
 keywords: mongodb, databases, mongo compass
 
@@ -36,7 +36,7 @@ To connect to your deployment with MongoDB Compass, complete the following steps
 ## Use MongoDB Compass
 {: #using-mongodb-compass}
 
-After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. The cluster contains three nodes, the two data nodes and the third arbiter node, so it shows the three hosts and their replica set. Also shown is the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} Enterprise uses the Enterprise version.
+After you connect to your deployment, you see a basic overview. Included is a simple summary of the cluster and the default databases. In the **Show Connection Info** section, it displays the three data-bearing members in your replica set, the number of databases and collections, and the current MongoDB version. {{site.data.keyword.databases-for-mongodb}} Standard uses the Community version while {{site.data.keyword.databases-for-mongodb}} Enterprise uses the Enterprise version.
 
 Next, you see the default databases for your deployment, which all hold information related to the database instance. 
 
