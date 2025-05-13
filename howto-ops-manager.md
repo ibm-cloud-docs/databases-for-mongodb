@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2024
-lastupdated: "2024-08-13"
+  years: 2020, 2025
+lastupdated: "2025-05-13"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition
 
@@ -101,7 +101,7 @@ For more information on roles with Ops Manager, see MongoDB's [Ops Manager roles
 
 The {{site.data.keyword.databases-for-mongodb}} Enterprise Edition service is provisioned with access to the MongodDB Ops Manager user interface.
 
-As {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses self-signed certificates, your browser may require you to accept the certificate or add the certificate to your certificate store before being able to log in.
+As {{site.data.keyword.databases-for-mongodb}} Enterprise Edition uses service proprietary certificates, your browser may require you to accept the certificate or add the certificate to your certificate store before being able to log in.
 {: .tip}
 
 After you create an Ops Manager username and password, you can follow these instructions to get access to the {{site.data.keyword.databases-for-mongodb}} Enterprise Edition instance within the Ops Manager UI:
