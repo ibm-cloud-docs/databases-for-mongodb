@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-12-18"
+  years: 2019, 2025
+lastupdated: "2025-05-13"
 
 keywords: mongodb, databases, mongo shell, mongosh
 
@@ -28,14 +28,14 @@ Connection strings are displayed in the _Endpoints_ panel of your deployment's _
 
 The information the MongoDB shell needs to connect to your instance is in the "cli" section of the connection strings. The table contains a breakdown for reference.
 
-| Field Name | Index | Description |
+| Field name | Index | Description |
 | ---------- | ----- | ----------- |
 | `Bin` | | The recommended binary to create a connection; in this case it is `mongosh`. |
 | `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses  |`Arguments` as command-line parameters.
 | `Environment` | | A list of key/values you set as environment variables. |
 | `Arguments` | `0...` | The information that is passed as arguments to the command shown in the Bin field. |
-| `Certificate` | `Base64` | A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate. |
+| `Certificate` | `Base64` | A service proprietary certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
+| `Certificate` | `Name` | The allocated name for the service proprietary certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`.  |
 {: caption="mongo/cli connection information" caption-side="top"}
 
@@ -51,7 +51,7 @@ mongosh -u admin -p $PASSWORD --tls --tlsCAFile c5f07836-d94c-11e8-a2e9-62ec2ed6
 * `mongosh` - The command itself.
 * `-u` - The parameter for the username.
 * `-p` - The parameter for the password.
-* `--tls --tlsCAFile` - The path and name of the self-signed certificate for your deployment.
+* `--tls --tlsCAFile` - The path and name of the service proprietary certificate for your deployment.
 * `--authenticationDatabase` - The database where the user and its credentials are created and stored.
 * `--host` - The replica set name, followed by a `/`, and the hosts of the replica set members.
 
@@ -70,7 +70,7 @@ The command prompts for the user's password and then runs the MongoDB command-li
 The option `--start` must come before the parameters, otherwise connection information is returned and the MongoDB Shell is not started.
 {: .tip}
 
-## Using the self-signed certificate
+## Using the service proprietary certificate
 {: #connecting-cli-client-cert}
 
 1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information.
@@ -78,7 +78,8 @@ The option `--start` must come before the parameters, otherwise connection infor
 3. Save the certificate to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the `--tlsCAFile` parameter.
 
-You can display the decoded certificate for your deployment with the CLI plug-in with the command: 
+You can display the decoded certificate for your deployment with the CLI plug-in with the command:
+
 ```sh
 ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
 ```

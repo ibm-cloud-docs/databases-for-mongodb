@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-12-05"
+  years: 2019, 2025
+lastupdated: "2025-05-13"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -244,8 +244,8 @@ Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mon
     - [MongoDB Node.js Driver Connection Guide](https://docs.mongodb.com/drivers/node/current/fundamentals/connection/){: external}
 
 - For information on TLS/SSL certificate configuration in the API, see the following topics:
-    - [Driver TLS and self-signed certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app#mongodb-tls-certificate-support)
-    - [Using the self-signed certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client#connecting-cli-client-cert)
+    - [Driver TLS and service proprietary certificate support](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app#mongodb-tls-certificate-support)
+    - [Using the service proprietary certificate in mongo Shell](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client#connecting-cli-client-cert)
     - [MongoDB TLS/SSL configuration for clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: external}
 
 - To ensure the stability of your applications and databases, see the following topics:

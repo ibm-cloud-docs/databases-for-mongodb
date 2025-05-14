@@ -1,9 +1,9 @@
 ---
 copyright:
-  years: 2017, 2024
-lastupdated: "2024-11-14"
+  years: 2017, 2025
+lastupdated: "2025-05-13"
 
-keywords: mongodb, databases, connecting, pymongo, java driver, self-signed certificate, mongodbee, tls, cipher suite
+keywords: mongodb, databases, connecting, pymongo, java driver, service proprietary certificate, mongodbee, tls, cipher suite
 
 subcollection: databases-for-mongodb
 
@@ -36,7 +36,7 @@ All the information a driver needs to make a connection to your deployment is in
 | `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. Mongo 3.6 uses SCRAM SHA 1, whereas Mongo 4.2 uses SHA 256 |
 | `Hosts` | `0...` | A hostname and port to connect to |
 | `Composed` | `0...` | A URI combining Scheme, Authentication, Host, Path, and Replica Set name. |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment |
+| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
 {: caption="mongodb/URI connection information" caption-side="top"}
 
@@ -147,7 +147,7 @@ MongoClient.connect(connectionString, options, function (err, db) {
 ```
 {: codeblock}
 
-## Driver TLS and self-signed certificate support
+## Driver TLS and service proprietary certificate support
 {: #mongodb-tls-certificate-support}
 
 All connections to {{site.data.keyword.databases-for-mongodb}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption.
@@ -163,11 +163,11 @@ The following [cipher suites](https://www.mongodb.com/docs/manual/core/security-
 - DHE-RSA-AES128-GCM-SHA256
 - DHE-RSA-AES256-GCM-SHA384
 
-Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
+Your deployment also comes with a service proprietary certificate so the driver can verify the server upon connection.
 
 For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/databases-for-mongodb?topic=databases-for-mongodb-faq-cert){: external}.
 
-### Using the self-signed certificate
+### Using the service proprietary certificate
 {: #mongodb-using-cert}
 
 1. Copy the certificate information from the *Endpoints* panel or the Base64 field of the connection information.
@@ -178,7 +178,7 @@ For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ]
  *For MacOS, ensure sure you have the certificate imported into your trust store, and mark the certificate as `trust always`.
 {: .tip}
 
-### CLI plug-in support for the self-signed certificate
+### CLI plug-in support for the service proprietary certificate
 {: #mongodb-cli-plugin}
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the driver.

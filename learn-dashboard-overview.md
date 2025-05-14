@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-11-15"
+  years: 2018, 2025
+lastupdated: "2025-05-13"
 
 keywords: deployment, crn, task, gui, api endpoint
 
@@ -48,7 +48,7 @@ The _Observability_ tab provides access to the {{site.data.keyword.monitoringlon
 ### Endpoints
 {: #dashboard-overview-endpoints}
 
-The _Endpoints_ pane within the _Overview_ pane contains connection strings for your deployment. Each tab contains connection information tailored to the type of connection or the protocol that uses it. Basic information includes things like _hostname_ and _port_, as well as the TLS self-signed certificate, TLS/SSL parameters, and the default database of your deployment.
+The _Endpoints_ pane within the _Overview_ pane contains connection strings for your deployment. Each tab contains connection information tailored to the type of connection or the protocol that uses it. Basic information includes things like _hostname_ and _port_, as well as the TLS service proprietary certificate, TLS/SSL parameters, and the default database of your deployment.
 
 For more information on reference tables for the different connection types, see [Getting credentials and connection strings](/docs/databases-for-mongodb?topic=databases-for-mongodb-connection-strings).
 
