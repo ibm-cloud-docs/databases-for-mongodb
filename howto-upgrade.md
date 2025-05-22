@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-02-09"
+  years: 2019, 2025
+lastupdated: "2025-05-22"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -90,3 +90,32 @@ curl -X POST \
   }'
 ```
 {: pre}
+
+## In-place upgrades
+{: #upgrading-in-place}
+
+In-place version upgrades upgrade your database to the new version without the need for restoring a backup to a new deployment. The advantage of this type of upgrade is that connection strings do not change and therefore applications do not need updating in order to connect after the upgrade. Follow the process below before starting an in-place upgrade.
+
+### Before you begin
+{: #upgrading-considerations}
+
+Consider the following aspects before starting the upgrade procedure.
+
+- Your deployment must be in a healthy state before upgrading.
+- Depending on the database type, you may only be able to upgrade to the *next* major version, instead of specifying the version of your choice.
+- Each major version contains some feautres that may not be backward-compatible with previous versions. Check the release notes from the database vendor to see any changes that may affect your applications.
+- It is not possible to downgrade versions in-place. You can only downgrade from a backup.
+
+### Upgrade procedure
+{: #upgrading-in-place-procedure}
+
+1. Create a new {{site.data.keyword.databases-for}} for {{site.data.keyword.databases-for-mongodb}} to test the upgrade process.
+    Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data. 
+2. Point your staging application to the test deployment.
+    Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
+3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page.
+4. Confirm that your staging application works with the new database version.
+5. Upgrade your production database deployment to the new version.
+
+### Troubleshooting
+{: #upgrading-in-place-troubleshooting}
