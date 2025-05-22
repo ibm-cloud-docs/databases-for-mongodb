@@ -11,7 +11,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Upgrading to a new Major Version
+# Upgrading to a new major version
 {: #upgrading}
 
 When a major version of a database is at its end of life (EOL), upgrade to the next available major version.
@@ -109,10 +109,15 @@ Consider the following aspects before starting the upgrade procedure.
 ### Upgrade procedure
 {: #upgrading-in-place-procedure}
 
-1. Create a new {{site.data.keyword.databases-for}} for {{site.data.keyword.databases-for-mongodb}} to test the upgrade process.
-    Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data. 
-2. Point your staging application to the test deployment.
-    Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
+#### Create a new {{site.data.keyword.databases-for}} for {{site.data.keyword.databases-for-mongodb}} to test the upgrade process
+{: step}
+
+Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data.
+
+#### Point your staging application to the test deployment
+{: step}
+
+Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
 3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page.
 4. Confirm that your staging application works with the new database version.
 5. Upgrade your production database deployment to the new version.
