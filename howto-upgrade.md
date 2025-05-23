@@ -109,30 +109,24 @@ Consider the following aspects before starting the upgrade procedure.
 ### Upgrade procedure
 {: #upgrading-in-place-procedure}
 
-1. Create a new {{site.data.keyword.databases-for}} for {{site.data.keyword.databases-for-mongodb}} to test the upgrade process
+1. Create a new {{site.data.keyword.databases-for}} for {{site.data.keyword.databases-for-mongodb}} to test the upgrade process <n>
+  Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data.
 
-Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data.
+2. Point your staging application to the test deployment <n>
+  Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
 
-2. Point your staging application to the test deployment
+3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <n>
+  This will put your database into read-only mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
 
-Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
+4. Confirm that your staging application works with the new database version. <n>
+  If your application works, this step confirms that it is safe to upgrade your production database.
 
-3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page.
+5. Upgrade your production database deployment to the new version. <n>
+  When you confirmed that your application works correctly using the new version of the database, you can return to the management console and start the process of upgrading your production deployment. <n>
+  Create a backup before starting the in-place upgrade process. 
+  {: important}
 
-This will put your database into read-only mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
-
-4. Confirm that your staging application works with the new database version.
-
-If your application works, this step confirms that it is safe to upgrade your production database.
-
-5. Upgrade your production database deployment to the new version.
-
-When you confirmed that your application works correctly using the new version of the database, you can return to the management console and start the process of upgrading your production deployment.
-
-Create a backup before starting the in-place upgrade process. 
-{: important}
-
-Once the in-place upgrade process started, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new instance.
+  Once the in-place upgrade process started, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new instance.
 
 ### Troubleshooting
 {: #upgrading-in-place-troubleshooting}
