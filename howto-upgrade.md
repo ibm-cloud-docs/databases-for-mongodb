@@ -33,7 +33,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 ## Upgrade paths
 {: #upgrading-paths}
 
-| Current Version |	Major Version Upgrade Path |
+| Current version |	Major version upgrade path |
 | ---- | ----- |
 | MongoDB 6 |	-> MongoDB 7 |
 {: caption="Major version upgrade paths" caption-side="top"}
