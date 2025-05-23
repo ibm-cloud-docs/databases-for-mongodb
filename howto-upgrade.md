@@ -91,10 +91,12 @@ curl -X POST \
 ```
 {: pre}
 
-## In-place upgrades
+## In-place major version upgrades
 {: #upgrading-in-place}
 
-In-place version upgrades upgrade your database to the new version without the need for restoring a backup to a new deployment. The advantage of this type of upgrade is that connection strings do not change and therefore applications do not need updating in order to connect after the upgrade. Follow the process below before starting an in-place upgrade.
+In-place major version upgrades (IPMVU) upgrade your database to the next new [major version](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy#version-definitions) without the need for restoring a backup to a new deployment. The advantage of this type of upgrade is that connection strings do not change and therefore applications do not need updating in order to connect after the upgrade. Follow the process below before starting an in-place upgrade. In-place major version upgrade is supported for the MongoDB Community Edition. 
+
+There are two options available, with backup before the upgrade and without backup before the upgrade. The service instance will be configured to perform *[setUserWriteBlockMode](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode)* during backup and version upgrade to ensure a safe upgrade. As soon as the version upgrade of the database is completed, the *writeBlockMode* is removed.
 
 ### Before you begin
 {: #upgrading-considerations}
@@ -118,7 +120,17 @@ Consider the following aspects before starting the upgrade procedure.
   Create a backup before starting the in-place upgrade process. 
   {: important}
 
-  Once the in-place upgrade process started, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new instance.
+  Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new instance.
 
 ### Troubleshooting
 {: #upgrading-in-place-troubleshooting}
+
+#### User with *bypassWriteBlockingMode*
+{: #upgrading-in-place-bypassWriteBlockingMode}
+
+To ensure a safe upgrade, no user must be able to perform a write action during backup or upgrade. Before you enter *writeBlockMode*, a check is performed if any user has the privilege to *bypassWriteBlockingMode*. If such a user is identified, the task enters a failed state. Any retry will fail and only removing a user with such a privilege allows to execute the in-place major version upgrade.
+
+#### Healthchecks
+{: #upgrading-in-place-healthchecks}
+
+If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. This can happen due to maintenance. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
