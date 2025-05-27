@@ -57,17 +57,18 @@ Consider the following aspects before starting the upgrade procedure.
   ```sh
   ibmcloud cdb deployment-version-upgrade --help
   ```
+
   {: pre}
 
   The following shows an example output of the command:
-  
+
   ```sh
   NAME:
     deployment-version-upgrade, version-upgrade - Upgrade the version of deployment. The database will be put into READ-ONLY mode during upgrade. It is strongly advised to test before upgrading. To learn more, refer to the version upgrade documentation.
-  
+
   USAGE:
     ibmcloud cdb deployment-version-upgrade <NAME|ID> VERSION [-ea TIMESTAMP] [-ei VALUE] [--skip-backup] [--json] [--api-version] 
-    
+
   OPTIONS:
     --expire-at, --ea  --expire-at value, --ea value  Option to specify how long to wait for the job to start before the upgrade is cancelled. Must be in the ISO8601 UTC format yyyy-mm-ddThh:mm:ssZ (e.g. 2025-01-31T14:45:00Z) and between 5 minutes and 24 hours from now. Cannot be used with expire-in
     --expire-in, --ei  --expire-in value, --ei value  Option to specify how long to wait for the job to start before the upgrade is cancelled. Must be in minutes(m) or hours(h). Cannot be used with expire-at. Min: 5m, Max: 24h. Default: 5m.
@@ -76,6 +77,7 @@ Consider the following aspects before starting the upgrade procedure.
     --api-version, -v  --api-version value, -v value  API Version used for request.
     --nowait, -n       --nowait, -n                   Do not wait for command completion.
   ```
+
   {: pre}
 
 2. The following is a command success example and its output:
@@ -83,6 +85,7 @@ Consider the following aspects before starting the upgrade procedure.
   ```sh
   ibmcloud cdb deployment-version-upgrade crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: "7.0"
   ```
+
   {: pre}
 
 
@@ -115,7 +118,7 @@ Consider the following aspects before starting the upgrade procedure.
   ibmcloud cdb deployment-capability-show crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: versions
   ```
   {: pre}
-  
+
   Output:
   
   ```sh
@@ -185,9 +188,9 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 ## Upgrade paths
 {: #upgrading-paths}
 
-| Current version |	Major version upgrade path |
+| Current version | Major version upgrade path |
 | ---- | ----- |
-| MongoDB 6 |	-> MongoDB 7 |
+| MongoDB 6 | MongoDB 7 |
 {: caption="Major version upgrade paths" caption-side="top"}
 
 ## Upgrading in the UI
