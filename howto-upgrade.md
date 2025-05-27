@@ -52,106 +52,103 @@ Consider the following aspects before starting the upgrade procedure.
 {: #upgrading-in-place-cli}
 {: cli}
 
-1. Use the following command for help:
+Use the following command for help:
 
-  ```sh
-  ibmcloud cdb deployment-version-upgrade --help
-  ```
+```sh
+ibmcloud cdb deployment-version-upgrade --help
+```
+{: pre}
 
+The following shows an example output of the command:
+
+```sh
+NAME:
+  deployment-version-upgrade, version-upgrade - Upgrade the version of deployment. The database will be put into READ-ONLY mode during upgrade. It is strongly advised to test before upgrading. To learn more, refer to the version upgrade documentation.
+
+USAGE:
+  ibmcloud cdb deployment-version-upgrade <NAME|ID> VERSION [-ea TIMESTAMP] [-ei VALUE] [--skip-backup] [--json] [--api-version] 
+
+OPTIONS:
+  --expire-at, --ea  --expire-at value, --ea value  Option to specify how long to wait for the job to start before the upgrade is cancelled. Must be in the ISO8601 UTC format yyyy-mm-ddThh:mm:ssZ (e.g. 2025-01-31T14:45:00Z) and between 5 minutes and 24 hours from now. Cannot be used with expire-in
+  --expire-in, --ei  --expire-in value, --ei value  Option to specify how long to wait for the job to start before the upgrade is cancelled. Must be in minutes(m) or hours(h). Cannot be used with expire-at. Min: 5m, Max: 24h. Default: 5m.
+  --skip-backup, -s  --skip-backup, -s              Option to skip taking a backup before upgrading the database version. This is only applicable for supported database types. To learn more, refer to the version upgrade documentation.
+  --json, -j         --json, -j                     Results as JSON.
+  --api-version, -v  --api-version value, -v value  API Version used for request.
+  --nowait, -n       --nowait, -n                   Do not wait for command completion.
+``
   {: pre}
 
-  The following shows an example output of the command:
+The following is a command success example and its output:
 
-  ```sh
-  NAME:
-    deployment-version-upgrade, version-upgrade - Upgrade the version of deployment. The database will be put into READ-ONLY mode during upgrade. It is strongly advised to test before upgrading. To learn more, refer to the version upgrade documentation.
-
-  USAGE:
-    ibmcloud cdb deployment-version-upgrade <NAME|ID> VERSION [-ea TIMESTAMP] [-ei VALUE] [--skip-backup] [--json] [--api-version] 
-
-  OPTIONS:
-    --expire-at, --ea  --expire-at value, --ea value  Option to specify how long to wait for the job to start before the upgrade is cancelled. Must be in the ISO8601 UTC format yyyy-mm-ddThh:mm:ssZ (e.g. 2025-01-31T14:45:00Z) and between 5 minutes and 24 hours from now. Cannot be used with expire-in
-    --expire-in, --ei  --expire-in value, --ei value  Option to specify how long to wait for the job to start before the upgrade is cancelled. Must be in minutes(m) or hours(h). Cannot be used with expire-at. Min: 5m, Max: 24h. Default: 5m.
-    --skip-backup, -s  --skip-backup, -s              Option to skip taking a backup before upgrading the database version. This is only applicable for supported database types. To learn more, refer to the version upgrade documentation.
-    --json, -j         --json, -j                     Results as JSON.
-    --api-version, -v  --api-version value, -v value  API Version used for request.
-    --nowait, -n       --nowait, -n                   Do not wait for command completion.
-  ```
-
-  {: pre}
-
-2. The following is a command success example and its output:
-
-  ```sh
-  ibmcloud cdb deployment-version-upgrade crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: "7.0"
-  ```
-
-  {: pre}
+```sh
+ibmcloud cdb deployment-version-upgrade crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: "7.0"
+```
+{: pre}
 
 
-  ```sh
-  The deployment is being upgraded to version 7.0 in this task:
-  
-  Key                   Value
-  ID                    crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:task:baf30e8b-19b9-4422-9322-570bea011d3f
-  Deployment ID         crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd::
-  Description           Upgrading instance
-  Created At            2025-05-13T08:36:49Z
-  Status                running
-  Progress Percentage   0
-  ```
-  {: pre}
+```sh
+The deployment is being upgraded to version 7.0 in this task:
 
-3. See the following failure output example including a hint:
+Key                   Value
+ID                    crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:task:baf30e8b-19b9-4422-9322-570bea011d3f
+Deployment ID         crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd::
+Description           Upgrading instance
+Created At            2025-05-13T08:36:49Z
+Status                running
+Progress Percentage   0
+```
+{: pre}
 
-  ```sh
-  HINT: To view the list of allowed upgrade versions for this deployment, refer to 'Upgrade Transitions' after running:
-  ibmcloud cdb deployment-capability-show crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: versions
-  FAILED
-  Error response from server. Status code: 422; message: {"errors":{"version":["In-place version task currently running. You cannot trigger another upgrade until the task is complete.","in-place upgrade from version 6.0 to 8.0 is not supported"]}}
-  ```
-  {: pre}
+See the following failure output example including a hint:
 
-4. The following example shows the command to view upgrade and restore transitions for an instance:
+```sh
+HINT: To view the list of allowed upgrade versions for this deployment, refer to 'Upgrade Transitions' after running:
+ibmcloud cdb deployment-capability-show crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: versions
+FAILED
+Error response from server. Status code: 422; message: {"errors":{"version":["In-place version task currently running. You cannot trigger another upgrade until the task is complete.","in-place upgrade from version 6.0 to 8.0 is not supported"]}}
+```
+{: pre}
 
-  ```sh
-  ibmcloud cdb deployment-capability-show crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: versions
-  ```
-  {: pre}
+The following example shows the command to view upgrade and restore transitions for an instance:
 
-  Output:
-  
-  ```sh
-  Retrieving capability information from a deployment for crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:b0aea38b-e56b-4bf8-b460-a604ff846af9::...
-  OK
-  
-  Deployment   
-  Type         mongodb
-  Version      6.0
-  Platform     classic
-  HostFlavor   multitenant
-  Location     eu-gb
-  
-  Capability                       
-  type                             mongodb
-  version                          6.0
-  status                           deprecated
-  is_preferred                     false
-                                   
-  -----Upgrade Transition 1-----   
-  application                      mongodb
-  method                           in-place
-  skip_backup_supported            true
-  from_version                     6.0
-  to_version                       7.0
-                                   
-  -----Restore Transition 1-----   
-  application                      mongodb
-  method                           restore
-  from_version                     6.0
-  to_version                       7.0
-  ```
-  {: pre}
+```sh
+ibmcloud cdb deployment-capability-show crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:f9928834-e503-43de-8d3c-f1663cf449fd:: versions
+```
+{: pre}
+
+Output:
+
+```sh
+Retrieving capability information from a deployment for crn:v1:staging:public:databases-for-mongodb:eu-gb:a/b9552134280015ebfde430a819fa4bb3:b0aea38b-e56b-4bf8-b460-a604ff846af9::...
+OK
+
+Deployment   
+Type         mongodb
+Version      6.0
+Platform     classic
+HostFlavor   multitenant
+Location     eu-gb
+
+Capability                       
+type                             mongodb
+version                          6.0
+status                           deprecated
+is_preferred                     false
+                                 
+-----Upgrade Transition 1-----   
+application                      mongodb
+method                           in-place
+skip_backup_supported            true
+from_version                     6.0
+to_version                       7.0
+                               
+-----Restore Transition 1-----   
+application                      mongodb
+method                           restore
+from_version                     6.0
+to_version                       7.0
+```
+{: pre}
 
 ### Troubleshooting
 {: #upgrading-in-place-troubleshooting}
