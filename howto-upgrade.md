@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-05-23"
+lastupdated: "2025-05-27"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -13,6 +13,9 @@ subcollection: databases-for-mongodb
 
 # Upgrading to a new major version
 {: #upgrading}
+
+## Restoring from backup
+{: #upgrading-restoring-from-backup}
 
 When a major version of a database is at its end of life (EOL), upgrade to the next available major version.
 
