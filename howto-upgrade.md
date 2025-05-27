@@ -14,10 +14,55 @@ subcollection: databases-for-mongodb
 # Upgrading to a new major version
 {: #upgrading}
 
+## In-place major version upgrades
+{: #upgrading-in-place}
+
+In-place major version upgrades (IPMVU) upgrade your database to the next new [major version](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy#version-definitions) without the need for restoring a backup to a new deployment. The advantage of this type of upgrade is that connection strings do not change and therefore applications do not need updating in order to connect after the upgrade. Follow the process below before starting an in-place upgrade. In-place major version upgrade is supported for the MongoDB Community Edition. 
+
+There are two options available, with backup before the upgrade and without backup before the upgrade. The service instance will be configured to perform *[setUserWriteBlockMode](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode)* during backup and version upgrade to ensure a safe upgrade. As soon as the version upgrade of the database is completed, the *writeBlockMode* is removed.
+
+### Before you begin
+{: #upgrading-considerations}
+
+Consider the following aspects before starting the upgrade procedure.
+
+- Your deployment must be in a healthy state before upgrading.
+- Depending on the database type, you may only be able to upgrade to the *next* major version, instead of specifying the version of your choice.
+- Each major version contains some feautres that may not be backward-compatible with previous versions. Check the release notes from the database vendor to see any changes that may affect your applications.
+- It is not possible to downgrade versions in-place. You can only downgrade from a backup.
+
+### Upgrade procedure
+{: #upgrading-in-place-procedure}
+
+1. Create a new {{site.data.keyword.databases-for-mongodb}} to test the upgrade process <br> Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data.
+2. Point your staging application to the test deployment <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
+3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <br> This will put your database into read-only mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
+4. Confirm that your staging application works with the new database version. <br>   If your application works, this step confirms that it should be safe to upgrade your production database.
+5. Upgrade your production database deployment to the new version. <br> Once you confirmed that your application works correctly by using the new version of the database, you can return to the management console and start the process of upgrading your production deployment.
+
+  Create a backup before starting the in-place upgrade process. This step is optional, but strongly recommended.
+  {: important}
+
+  Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new instance.
+
+### Troubleshooting
+{: #upgrading-in-place-troubleshooting}
+
+#### User with *bypassWriteBlockingMode*
+{: #upgrading-in-place-bypassWriteBlockingMode}
+
+To ensure a safe upgrade, no user must be able to perform a write action during backup or upgrade. Before you enter *writeBlockMode*, a check is performed if any user has the privilege to *bypassWriteBlockingMode*. If such a user is identified, the task enters a failed state. Any retry will fail and only removing a user with such a privilege allows to execute the in-place major version upgrade.
+
+#### Healthchecks
+{: #upgrading-in-place-healthchecks}
+
+If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. This can happen due to maintenance. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
+
+
 ## Restoring from backup
 {: #upgrading-restoring-from-backup}
 
-When a major version of a database is at its end of life (EOL), upgrade to the next available major version.
+Before a major version of a database reaches its end of life (EOL), upgrade to the next available major version.
 
 Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
@@ -93,47 +138,3 @@ curl -X POST \
   }'
 ```
 {: pre}
-
-## In-place major version upgrades
-{: #upgrading-in-place}
-
-In-place major version upgrades (IPMVU) upgrade your database to the next new [major version](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy#version-definitions) without the need for restoring a backup to a new deployment. The advantage of this type of upgrade is that connection strings do not change and therefore applications do not need updating in order to connect after the upgrade. Follow the process below before starting an in-place upgrade. In-place major version upgrade is supported for the MongoDB Community Edition. 
-
-There are two options available, with backup before the upgrade and without backup before the upgrade. The service instance will be configured to perform *[setUserWriteBlockMode](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode)* during backup and version upgrade to ensure a safe upgrade. As soon as the version upgrade of the database is completed, the *writeBlockMode* is removed.
-
-### Before you begin
-{: #upgrading-considerations}
-
-Consider the following aspects before starting the upgrade procedure.
-
-- Your deployment must be in a healthy state before upgrading.
-- Depending on the database type, you may only be able to upgrade to the *next* major version, instead of specifying the version of your choice.
-- Each major version contains some feautres that may not be backward-compatible with previous versions. Check the release notes from the database vendor to see any changes that may affect your applications.
-- It is not possible to downgrade versions in-place. You can only downgrade from a backup.
-
-### Upgrade procedure
-{: #upgrading-in-place-procedure}
-
-1. Create a new {{site.data.keyword.databases-for}} for {{site.data.keyword.databases-for-mongodb}} to test the upgrade process <br> Create this new deployment with the current version you are using. You can create it by [restoring a backup]() from your existing deployment, so it contains data.
-2. Point your staging application to the test deployment <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
-3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <br> This will put your database into read-only mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
-4. Confirm that your staging application works with the new database version. <br>   If your application works, this step confirms that it is safe to upgrade your production database.
-5. Upgrade your production database deployment to the new version. <br> When you confirmed that your application works correctly using the new version of the database, you can return to the management console and start the process of upgrading your production deployment.
-
-  Create a backup before starting the in-place upgrade process. 
-  {: important}
-
-  Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new instance.
-
-### Troubleshooting
-{: #upgrading-in-place-troubleshooting}
-
-#### User with *bypassWriteBlockingMode*
-{: #upgrading-in-place-bypassWriteBlockingMode}
-
-To ensure a safe upgrade, no user must be able to perform a write action during backup or upgrade. Before you enter *writeBlockMode*, a check is performed if any user has the privilege to *bypassWriteBlockingMode*. If such a user is identified, the task enters a failed state. Any retry will fail and only removing a user with such a privilege allows to execute the in-place major version upgrade.
-
-#### Healthchecks
-{: #upgrading-in-place-healthchecks}
-
-If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. This can happen due to maintenance. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
