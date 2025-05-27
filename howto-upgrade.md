@@ -21,6 +21,9 @@ In-place major version upgrades (IPMVU) upgrade your database to the next new [m
 
 There are two options available, with backup before the upgrade and without backup before the upgrade. The service instance will be configured to perform *[setUserWriteBlockMode](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode)* during backup and version upgrade to ensure a safe upgrade. As soon as the version upgrade of the database is completed, the *writeBlockMode* is removed.
 
+When scheduling a backup, consider that the time to perform a version upgrade is strongly influenced by the backup time.
+{: note}
+
 ### Before you begin
 {: #upgrading-considerations}
 
