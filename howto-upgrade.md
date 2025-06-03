@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-02-09"
+  years: 2019, 2025
+lastupdated: "2025-05-28"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -11,10 +11,15 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Upgrading to a new Major Version
+# Upgrading to a new major version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), upgrade to the next available major version.
+
+
+## Restoring from backup
+{: #upgrading-restoring-from-backup}
+
+Before a major version of a database reaches its end of life (EOL), upgrade to the next available major version.
 
 Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
@@ -33,9 +38,9 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 ## Upgrade paths
 {: #upgrading-paths}
 
-| Current Version |	Major Version Upgrade Path |
+| Current version | Major version upgrade path |
 | ---- | ----- |
-| MongoDB 6 |	-> MongoDB 7 |
+| MongoDB 6 | MongoDB 7 |
 {: caption="Major version upgrade paths" caption-side="top"}
 
 ## Upgrading in the UI
