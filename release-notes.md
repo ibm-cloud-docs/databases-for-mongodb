@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-03-19"
+lastupdated: "2025-06-05"
 
 keywords: databases-for-mongodb release notes
 
@@ -156,7 +156,7 @@ Protecting {{site.data.keyword.databases-for-mongodb_full}} resources with conte
 {: release-note}
 
 Mapping Global COVID-19 cases with the {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On and Tableau tutorial published
-:  The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/){: .external} to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/){: .external}. For more information, see [{{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics). This tutorial familiarizes you with the Analytics Add-On using Tableau to visualize data in your MongoDB instance. For more information, see [Mapping Global COVID-19 cases with the Databases for MongoDB EE (Enterprise Edition) Analytics Add-On and Tableau](/docs/cloud-databases?topic=cloud-databases-bi-connector-tutorial-description).
+:  The {{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On allows you to run long-running analytical queries or provision a [MongoDB Connector for business intelligence(BI)](https://docs.mongodb.com/bi-connector/current/){: .external} to make your query data compatible with BI tools, such as [Tableau](https://www.tableau.com/){: .external}. For more information, see [{{site.data.keyword.databases-for-mongodb}} EE (Enterprise Edition) Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics). This tutorial familiarizes you with the Analytics Add-On using Tableau to visualize data in your MongoDB instance.
 
 ## 31 May 2022
 {: #databases-for-mongodb-31may2022}
