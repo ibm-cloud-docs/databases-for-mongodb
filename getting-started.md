@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-05-13"
+lastupdated: "2025-06-05"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -249,5 +249,5 @@ Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mon
     - [MongoDB TLS/SSL configuration for clients](https://docs.mongodb.com/manual/tutorial/configure-ssl-clients/){: external}
 
 - To ensure the stability of your applications and databases, see the following topics:
-    - [High-availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability)
+    - [High-availability](/docs/databases-for-mongodb?topic=databases-for-mongodb-ha-dr)
     - [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance)
