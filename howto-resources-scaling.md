@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-12-02"
+  years: 2019, 2025
+lastupdated: "2025-06-05"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -61,7 +61,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 ### RAM
 {: #resources-scaling-ram}
 
-Memory resources are used for database operations and also control the amount of memory that is allocated to the [internal and file system cache](/docs/databases-for-mongodb?topic=databases-for-mongodb-high-availability). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
+Memory resources are used for database operations and also control the amount of memory that is allocated to the [internal and file system cache](/docs/databases-for-mongodb?topic=databases-for-mongodb-ha-dr). If your database can serve most of the requests from the cache, then it doesn't have to read from disk and performs better. 
 
 The amount of memory you allocate to your deployment is split between all members. Adding memory to the total allocation adds memory to all members equally.
 
