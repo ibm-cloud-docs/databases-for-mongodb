@@ -49,7 +49,6 @@ toc:
           - howto-auditlogging.md
           - howto-ops-manager.md
           - howto-pitr.md
-          - howto-enterprise-analytics.md
       - topicgroup:
           label: Connecting to Databases for MongoDB
           topics:
