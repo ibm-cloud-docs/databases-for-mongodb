@@ -39,6 +39,7 @@ The Ops Manager is only available with an {{site.data.keyword.databases-for-mong
 
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager).
 
+
 ### Analytics Add-On
 {: #mongodbee-analytics-addon}
 
@@ -55,6 +56,7 @@ The {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On
 By using the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On, unlock the full potential of your MongoDB data for analytics and reporting purposes. It enables integration with popular BI tools, SQL-based analytics, performance optimization, and data governance, allowing you to derive valuable insights and make data-driven decisions from your MongoDB databases.
 
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
+--->
 
 ### Point-in-time recovery
 {: #mongodbee-pitr}
