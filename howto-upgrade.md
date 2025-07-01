@@ -16,8 +16,8 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb}} provides two different upgrade paths:
 
-1. In-place upgrade to a new major version (currently supported for MongoDB Community Edition).
-2. Restoring from backup (supported for MongoDB Community, MongoDB Enterprise, and MongoDB Sharding Editions).
+- In-place upgrade to a new major version (currently supported for MongoDB Community Edition).
+- Restoring from backup (supported for MongoDB Community, MongoDB Enterprise, and MongoDB Sharding Editions).
 
 ## In-place major version upgrades
 {: #upgrading-in-place}
@@ -28,7 +28,7 @@ There are two options when performing an in-place major version upgrade:
 
 1. In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
   
-  During the in-place major version upgrade window (including a backup), the deployment is set to *[setUserWriteBlockMode]*(https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
+  During the in-place major version upgrade window (including a backup), the deployment is set to *[setUserWriteBlockMode](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode)*, which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
 {: important}
 
 2. In-place major version upgrade without backup (not recommended): This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
@@ -53,7 +53,7 @@ Consider the following aspects before starting the upgrade procedure.
 2. Point your staging application to the test deployment. <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
 3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <br> This will put your database into READ-ONLY mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
 4. Confirm that your staging application works with the new database version. <br> If your application works, this step confirms that it should be safe to upgrade your production database.
-5. Upgrade your production database deployment to the new version. <br> Once you confirmed that your application works correctly by using the new version of the database, you can return to the management console and start the process of upgrading your production deployment.
+5. Upgrade your production database deployment to the new version. <br> Once you confirmed that your application works correctly by using the new version of the database, you can return to the management console and start the process of upgrading your production deployment. In the **Deployment details** section of the *Overview* page, click the **Upgrade major version** button and follow the steps.
 
    Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new deployment. If you select 'In-place major version upgrade with backup', the backup that is created can be used to restore in a new deployment.
 
@@ -207,5 +207,31 @@ curl -X POST   https://resource-controller.cloud.ibm.com/v2/resource_instances  
     "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
     "version":"7.0"
   }'
+```
+
+### Upgrading through Terraform
+{: #upgrading-terraform}
+{: terraform}
+
+Use Terraform to restore to a backup from an older version to a new version.
+
+1. Set your `backup_id`. For more information, see [`backup_id`](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#backup_id){: external}.
+1. Set your `version` in the version attribute. For more information, see [`version`](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#version){: external}.
+
+The code looks like:
+
+```tf
+resource "ibm_database" "<your-instance>" {
+  name                                 = "<your_database_name>"
+  service                              = "<service>"
+  plan                                 = "<plan>"
+  location                             = "<region>"
+  version                              = "<version>"
+  backup_id                            = "<backup_id>"
+}
+```
+{: codeblock}
+
+For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}
 ```
 {: pre}
