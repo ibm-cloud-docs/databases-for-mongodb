@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-07-01"
 
 keywords: databases-for-mongodb release notes
 
@@ -162,7 +162,7 @@ Mapping Global COVID-19 cases with the {{site.data.keyword.databases-for-mongodb
 {: #databases-for-mongodb-31may2022}
 {: release-note}
 
-Provision a {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform tutorial published
+Provision an {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform tutorial published
 :  In this tutorial, you learn how to use Terraform to provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance that includes the {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition Analytics Add-On. For more information, see [Provision a Databases for {{site.data.keyword.databases-for-mongodb_full}} Enterprise Edition instance with Terraform](/docs/cloud-databases?topic=cloud-databases-tutorial-provision-mongodbee-tf).
 
 ## 26 April 2022
