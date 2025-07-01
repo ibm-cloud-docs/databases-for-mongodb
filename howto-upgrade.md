@@ -26,15 +26,15 @@ In-place major version upgrade allows you to upgrade your deployment to the next
 
 There are two options when performing an in-place major version upgrade:
 
-1. In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
+- In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
   
-  During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
-{: important}
+   During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
+   {: important}
 
-2. In-place major version upgrade without backup (not recommended): This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
+- In-place major version upgrade without backup (not recommended): This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
 
-During the in-place major version upgrade window (including a backup), the deployment is set to *[setUserWriteBlockMode](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode)*, which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
-{: important}
+   Create a backup before starting the in-place upgrade process. This step is optional, but strongly recommended.
+   {: important}
 
 ### Before you begin
 {: #upgrading-considerations}
