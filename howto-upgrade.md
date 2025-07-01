@@ -29,7 +29,7 @@ There are two options when performing an in-place major version upgrade:
 - In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
   
    During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
-   {: important}
+{: important}
 
 - In-place major version upgrade without backup (not recommended): This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
 
@@ -106,13 +106,13 @@ The `expiration for starting upgrade` allows you to configure a 'timeout' period
 
 To upgrade, just add or change the `version` value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
 
+Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
+{: .attention}
+
 The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading.
 
 Upgrading may require more time than the default timeout. A longer timeout value can be set with using the timeouts attribute.
 {: .note}
-
-Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
-{: .attention}
 
 Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start.
 
