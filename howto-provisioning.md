@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-05-20"
+lastupdated: "2025-07-01"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
 
@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 # Provisioning
 {: #provisioning}
 
-Provision a {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Provision an {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
