@@ -83,6 +83,24 @@ ibmcloud cdb deployment-version-upgrade --help
 
 The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
 
+### Upgrading through Terraform
+{: #upgrading-terraform}
+{: terraform}
+
+To upgrade, just add or change the version value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
+
+The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading. To learn more, refer to the version upgrade documentation.
+
+Upgrading may require more time than the default timeout. A longer timeout value can be set with using the timeouts attribute.
+{: .note}
+
+Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
+{: .attention}
+
+Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start. For more information, see the [Sample MongoDB Enterprise database instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-mongodb-enterprise-database-instance).
+
+If a task is in progress and you start an upgrade that times out before it is completed, note that some tasks may be queued and will not proceed until the version upgrade completes.
+
 ### Troubleshooting
 {: #upgrading-in-place-troubleshooting}
 
@@ -132,6 +150,8 @@ For new hosting models (isolated compute and shared compute), upgrading to a new
 
 You can upgrade to a new version by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from the _Backups and restore_ page of your deployment on the {{site.data.keyword.cloud_notm}} console. Click **Restore backup** on a backup to open a page in a new tab where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore backup** to start the provision and restore process.
 
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+
 ### Upgrading through the CLI
 {: #upgrading-cli}
 {: cli}
@@ -153,8 +173,6 @@ ibmcloud resource service-instance-create example-upgrade databases-for-mongodb 
 }'
 ```
 {: pre}
-
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
 
 ### Upgrading through the API
 {: #upgrading-api}
@@ -179,21 +197,3 @@ curl -X POST \
 {: pre}
 
 The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
-
-### Upgrading through Terraform
-{: #upgrading-terraform}
-{: terraform}
-
-To upgrade, just add or change the version value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
-
-The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading. To learn more, refer to the version upgrade documentation.
-
-Upgrading may require more time than the default timeout. A longer timeout value can be set with using the timeouts attribute.
-{: .note}
-
-Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
-{: .attention}
-
-Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start. For more information, see the [Sample MongoDB Enterprise database instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-mongodb-enterprise-database-instance).
-
-If a task is in progress and you start an upgrade that times out before it is completed, note that some tasks may be queued and will not proceed until the version upgrade completes.
