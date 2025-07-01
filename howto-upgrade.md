@@ -46,8 +46,9 @@ Consider the following aspects before starting the upgrade procedure.
 - Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.mongodb.com/docs/manual/release-notes/) from the database vendor to see any changes that may affect your applications.
 - Downgrading a deployment to a previous version is not supported.
 
-### Upgrade procedure
-{: #upgrading-in-place-procedure}
+### Upgrading in the UI
+{: #upgrading-in-place-ui}
+{: ui}
 
 1. Create a new {{site.data.keyword.databases-for-mongodb}} to test the upgrade process. <br> Create the deployment by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from your existing deployment with the same version.
 2. Point your staging application to the test deployment. <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
@@ -56,10 +57,6 @@ Consider the following aspects before starting the upgrade procedure.
 5. Upgrade your production database deployment to the new version. <br> Once you confirmed that your application works correctly by using the new version of the database, you can return to the management console and start the process of upgrading your production deployment. In the **Deployment details** section of the *Overview* page, click the **Upgrade major version** button and follow the steps.
 
    Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new deployment. If you select 'In-place major version upgrade with backup', the backup that is created can be used to restore in a new deployment.
-
-### Upgrading in the UI
-{: #upgrading-in-place-ui}
-{: ui}
 
 The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
 
