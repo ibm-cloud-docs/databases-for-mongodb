@@ -56,6 +56,12 @@ Consider the following aspects before starting the upgrade procedure.
 
    Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new deployment. If you select 'In-place major version upgrade with backup', the backup that is created can be used to restore in a new deployment.
 
+### Upgrading in the UI
+{: #upgrading-in-place-ui}
+{: ui}
+
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+
 ### Upgrading through the API
 {: #upgrading-in-place-api}
 {: api}
@@ -162,8 +168,6 @@ For new hosting models (isolated compute and shared compute), upgrading to a new
 {: note}
 
 You can upgrade to a new version by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from the _Backups and restore_ page of your deployment on the {{site.data.keyword.cloud_notm}} console. Click **Restore backup** on a backup to open a page in a new tab where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore backup** to start the provision and restore process.
-
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
 
 ### Upgrading through the CLI
 {: #upgrading-cli}
