@@ -96,7 +96,6 @@ To ensure a safe upgrade, no user must be able to perform a write action during 
 
 If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. This can happen due to maintenance. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
 
-
 ## Restoring from backup
 {: #upgrading-restoring-from-backup}
 
@@ -187,12 +186,10 @@ The `expiration for starting upgrade` allows you to configure a 'timeout' period
 
 To upgrade, just add or change the version value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
 
-version - (Optional, String) The version of the database to be provisioned or upgraded to. If omitted, the database is created with the latest supported major and minor version. This field can be updated to perform an in-place upgrade without forcing the creation of a new resource. The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading. To learn more, refer to the version upgrade documentation.
+The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading. To learn more, refer to the version upgrade documentation.
 
 Upgrading may require more time than the default timeout. A longer timeout value can be set with using the timeouts attribute.
 {: .note}
-
-version_upgrade_skip_backup - (Optional, Boolean) Whether to skip taking a backup before upgrading the database version. This is only applicable to databases that do not support point-in-time restore (PITR). To learn more, refer to the version upgrade documentation.
 
 Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
 {: .attention}
