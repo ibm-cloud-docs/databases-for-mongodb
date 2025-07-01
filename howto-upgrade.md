@@ -32,8 +32,6 @@ There are two options when performing an in-place major version upgrade:
 During the in-place major version upgrade window (including a backup), the deployment is set to *[setUserWriteBlockMode]*(https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
 {: important}
 
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
-
 ### Before you begin
 {: #upgrading-considerations}
 
@@ -48,7 +46,7 @@ Consider the following aspects before starting the upgrade procedure.
 {: #upgrading-in-place-procedure}
 
 1. Create a new {{site.data.keyword.databases-for-mongodb}} to test the upgrade process. <br> Create the deployment by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from your existing deployment with the same version.
-2. Point your staging application to the test deployment <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
+2. Point your staging application to the test deployment. <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
 3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <br> This will put your database into read-only mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
 4. Confirm that your staging application works with the new database version. <br> If your application works, this step confirms that it should be safe to upgrade your production database.
 5. Upgrade your production database deployment to the new version. <br> Once you confirmed that your application works correctly by using the new version of the database, you can return to the management console and start the process of upgrading your production deployment.
@@ -83,6 +81,8 @@ To view full details of command parameters:
 ibmcloud cdb deployment-version-upgrade --help
 ```
 
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+
 ### Troubleshooting
 {: #upgrading-in-place-troubleshooting}
 
@@ -116,7 +116,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 - The entire process can be rerun at any point.
 - A fresh restoration reduces the likelihood that unneeded artifacts of the older version of the database are carried over to the new database.
 
-## Upgrade paths
+### Upgrade paths
 {: #upgrading-paths}
 
 | Current version | Major version upgrade path |
@@ -124,7 +124,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 | MongoDB 6 | MongoDB 7 |
 {: caption="Major version upgrade paths" caption-side="top"}
 
-## Upgrading in the UI
+### Upgrading in the UI
 {: #upgrading-ui}
 {: ui}
 
@@ -133,7 +133,7 @@ For new hosting models (isolated compute and shared compute), upgrading to a new
 
 You can upgrade to a new version by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from the _Backups and restore_ page of your deployment on the {{site.data.keyword.cloud_notm}} console. Click **Restore backup** on a backup to open a page in a new tab where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore backup** to start the provision and restore process.
 
-## Upgrading through the CLI
+### Upgrading through the CLI
 {: #upgrading-cli}
 {: cli}
 
@@ -155,7 +155,9 @@ ibmcloud resource service-instance-create example-upgrade databases-for-mongodb 
 ```
 {: pre}
 
-## Upgrading through the API
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+
+### Upgrading through the API
 {: #upgrading-api}
 {: api}
 
@@ -177,7 +179,9 @@ curl -X POST \
 ```
 {: pre}
 
-## Upgrading through Terraform
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+
+### Upgrading through Terraform
 {: #upgrading-terraform}
 {: terraform}
 
