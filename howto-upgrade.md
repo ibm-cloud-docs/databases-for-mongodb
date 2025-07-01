@@ -27,6 +27,10 @@ In-place major version upgrade allows you to upgrade your deployment to the next
 There are two options when performing an in-place major version upgrade:
 
 1. In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
+  
+  During the in-place major version upgrade window (including a backup), the deployment is set to *[setUserWriteBlockMode]*(https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
+{: important}
+
 2. In-place major version upgrade without backup (not recommended): This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
 
 During the in-place major version upgrade window (including a backup), the deployment is set to *[setUserWriteBlockMode]*(https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
@@ -47,12 +51,9 @@ Consider the following aspects before starting the upgrade procedure.
 
 1. Create a new {{site.data.keyword.databases-for-mongodb}} to test the upgrade process. <br> Create the deployment by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from your existing deployment with the same version.
 2. Point your staging application to the test deployment. <br> Update your staging application to point to the test deployment. Confirm that your test application can connect successfully to the staging deployment and that the application operates as expected. Perform any required performance and operational testing of the staging environment.
-3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <br> This will put your database into read-only mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
+3. Upgrade the major version of your test deployment by clicking on the **Upgrade major version** button on the *Overview* page. <br> This will put your database into READ-ONLY mode while the upgrade process completes. Note how long the upgrade takes to complete so that you can use the upgrade expiry setting to contain upgrades within your maintenance window.
 4. Confirm that your staging application works with the new database version. <br> If your application works, this step confirms that it should be safe to upgrade your production database.
 5. Upgrade your production database deployment to the new version. <br> Once you confirmed that your application works correctly by using the new version of the database, you can return to the management console and start the process of upgrading your production deployment.
-
-   Create a backup before starting the in-place upgrade process. This step is optional, but strongly recommended.
-   {: important}
 
    Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new deployment. If you select 'In-place major version upgrade with backup', the backup that is created can be used to restore in a new deployment.
 
@@ -73,7 +74,7 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{i
 ```
 {: pre}
 
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window. For more information, see the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdatabaseinplaceversionupgrade).
 
 ### Upgrading through the CLI
 {: #upgrading-in-place-cli}
@@ -103,12 +104,12 @@ ibmcloud cdb deployment-version-upgrade --help
 The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
 
 ### Upgrading through Terraform
-{: #upgrading-terraform}
+{: #upgrading-in-place-terraform}
 {: terraform}
 
-To upgrade, just add or change the version value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
+To upgrade, just add or change the `version` value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
 
-The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading. To learn more, refer to the version upgrade documentation.
+The database will be put into READ-ONLY mode during upgrade. It is highly recommended to test before upgrading.
 
 Upgrading may require more time than the default timeout. A longer timeout value can be set with using the timeouts attribute.
 {: .note}
@@ -116,9 +117,9 @@ Upgrading may require more time than the default timeout. A longer timeout value
 Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
 {: .attention}
 
-Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start. For more information, see the [Sample MongoDB Enterprise database instance](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#sample-mongodb-enterprise-database-instance).
+Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start.
 
-If a task is in progress and you start an upgrade that times out before it is completed, note that some tasks may be queued and will not proceed until the version upgrade completes.
+If an upgrade is in progress, note that some tasks may be queued and will not proceed until the version upgrade completes.
 
 ### Troubleshooting
 {: #upgrading-in-place-troubleshooting}
