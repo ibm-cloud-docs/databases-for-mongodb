@@ -57,10 +57,10 @@ Consider the following aspects before starting the upgrade procedure.
    Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new deployment. If you select 'In-place major version upgrade with backup', the backup that is created can be used to restore in a new deployment.
 
 ### Upgrading through the API
-{: #upgrading-api}
+{: #upgrading-in-place-api}
 {: api}
 
-Similar to provisioning through the API, you need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+Use the following command to upgrade in-place:
 
 ```sh
 curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/version?expiration_datetime='2027-07-07T17:17:17Z' -H 'Authorization: Bearer <>' -H 'Content-Type: application/json' -d '{"version": "7.2"}' \
@@ -184,5 +184,23 @@ ibmcloud resource service-instance-create example-upgrade databases-for-mongodb 
   "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "version":"7.0"
 }'
+```
+{: pre}
+
+### Upgrading through the API
+{: #upgrading-api}
+{: api}
+
+Similar to provisioning through the API, you need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+
+```sh
+curl -X POST   https://resource-controller.cloud.ibm.com/v2/resource_instances   -H 'Authorization: Bearer <>'   -H 'Content-Type: application/json'     -d '{
+    "name": "my-instance",
+    "target": "us-south",
+    "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
+    "resource_plan_id": "databases-for-mongodb-standard",
+    "backup_id": "crn:v1:bluemix:public:databases-for-mongodb:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
+    "version":"7.0"
+  }'
 ```
 {: pre}
