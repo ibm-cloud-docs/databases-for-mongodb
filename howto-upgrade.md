@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-01"
+lastupdated: "2025-07-02"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -31,9 +31,9 @@ There are two options when performing an in-place major version upgrade:
    During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
 {: important}
 
-- In-place major version upgrade without backup (not recommended): This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
+- In-place major version upgrade without backup: This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment to ensure data integrity and minimal downtime.
 
-   Create a backup before starting the in-place upgrade process. This step is optional, but strongly recommended.
+   In-place upgrade without backup is not recommended. It may result in data loss if the upgrade fails at any stage, as there will be no immediate backup to restore from.
    {: important}
 
 ### Before you begin
@@ -67,7 +67,7 @@ The `expiration for starting upgrade` allows you to configure a 'timeout' period
 Use the following command to upgrade in-place:
 
 ```sh
-curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/version?expiration_datetime='2027-07-07T17:17:17Z' -H 'Authorization: Bearer <>' -H 'Content-Type: application/json' -d '{"version": "7.2"}' \
+curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/version -H 'Authorization: Bearer <>' -H 'Content-Type: application/json' -d '{"version": "7.0"}'
 ```
 {: pre}
 
