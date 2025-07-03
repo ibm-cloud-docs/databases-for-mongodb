@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-02"
+lastupdated: "2025-07-03"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -16,21 +16,20 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb}} provides two different upgrade paths:
 
-- In-place upgrade to a new major version (currently supported for MongoDB Community Edition).
-- Restoring from backup (supported for MongoDB Community, MongoDB Enterprise, and MongoDB Sharding Editions).
+- In-place upgrade to a new major version (currently supported for MongoDB Standard Plan).
+- Restoring from backup (supported for MongoDB Standard Plan, MongoDB Enterprise Plan).
 
 ## In-place major version upgrades
 {: #upgrading-in-place}
 
-In-place major version upgrade allows you to upgrade your deployment to the next new [major version](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy#version-definitions), eliminating the need to restore a backup into a new deployment. This approach maintains the same connection strings, without the need to reconfigure the deployment. However, if the new major version requires application adjustments, these must be addressed. 
+In-place major version upgrade allows you to upgrade your deployment to the next new [major version](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy#version-definitions), eliminating the need to [restore a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-restoring-from-backup) into a new deployment. This approach maintains the same connection strings, without the need to reconfigure the deployment. However, if the new major version requires application adjustments, these must be addressed.
+
+   During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
+{: important}
 
 There are two options when performing an in-place major version upgrade:
 
 - In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
-  
-   During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
-{: important}
-
 - In-place major version upgrade without backup: This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment.
 
    In-place upgrade without backup is not recommended. It may result in data loss if the upgrade fails at any stage, as there will be no immediate backup to restore from.
@@ -42,7 +41,7 @@ There are two options when performing an in-place major version upgrade:
 Consider the following aspects before starting the upgrade procedure.
 
 - Your deployment must be in a healthy state before upgrading.
-- Currently, you can only upgrade to the *next* major version, instead of specifying the version of your choice.
+- You can only upgrade to the *next* major version, instead of specifying the version of your choice.
 - Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.mongodb.com/docs/manual/release-notes/) from the database vendor to see any changes that may affect your applications.
 - Downgrading a deployment to a previous version is not supported.
 
