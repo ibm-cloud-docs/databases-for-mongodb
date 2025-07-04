@@ -105,6 +105,9 @@ The `expiration for starting upgrade` allows you to configure a 'timeout' period
 {: #upgrading-in-place-terraform}
 {: terraform}
 
+Available in Terraform provider version >= 1.79.2 
+{: .note}
+
 To upgrade, just add or change the `version` value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
 
 Skipping a backup is not recommended. Skipping a backup before a version upgrade is dangerous and may result in data loss if the upgrade fails at any stage — there will be no immediate backup to restore from.
