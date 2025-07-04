@@ -197,7 +197,7 @@ ibmcloud resource service-instance-create example-upgrade databases-for-mongodb 
 {: #upgrading-api}
 {: api}
 
-Similar to provisioning through the API, you need to complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+Similar to provisioning through the API, you must complete [the necessary steps to use the resource controller API](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. Also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
 
 ```sh
 curl -X POST   https://resource-controller.cloud.ibm.com/v2/resource_instances   -H 'Authorization: Bearer <>'   -H 'Content-Type: application/json'     -d '{
@@ -209,6 +209,7 @@ curl -X POST   https://resource-controller.cloud.ibm.com/v2/resource_instances  
     "version":"7.0"
   }'
 ```
+{: pre}
 
 ### Upgrading through Terraform
 {: #upgrading-terraform}
@@ -219,7 +220,7 @@ Use Terraform to restore to a backup from an older version to a new version.
 1. Set your `backup_id`. For more information, see [`backup_id`](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#backup_id){: external}.
 1. Set your `version` in the version attribute. For more information, see [`version`](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#version){: external}.
 
-The code looks like:
+The code looks like as follows:
 
 ```tf
 resource "ibm_database" "<your-instance>" {
@@ -233,6 +234,4 @@ resource "ibm_database" "<your-instance>" {
 ```
 {: codeblock}
 
-For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}
-```
-{: pre}
+For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}.
