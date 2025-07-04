@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-03"
+lastupdated: "2025-07-04"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -41,6 +41,8 @@ There are two options when performing an in-place major version upgrade:
 Consider the following aspects before starting the upgrade procedure.
 
 - Your deployment must be in a healthy state before upgrading.
+- Your deployment must have at least 2 GB free disk space.
+- Your deployment must have no user with privilege to *bypassWriteBlockingMode*.
 - You can only upgrade to the *next* major version, instead of specifying the version of your choice.
 - Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.mongodb.com/docs/manual/release-notes/) from the database vendor to see any changes that may affect your applications.
 - Downgrading a deployment to a previous version is not supported.
