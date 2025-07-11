@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-09"
+lastupdated: "2025-07-11"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -46,7 +46,7 @@ Consider the following aspects before starting the upgrade procedure.
 - You can only upgrade to the *next* major version, instead of specifying the version of your choice.
 - Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.mongodb.com/docs/manual/release-notes/) from the database vendor to see any changes that may affect your applications.
 - Downgrading a deployment to a previous version is not supported.
-- In-place major version upgrade cannot be cancelled once it is scheduled.
+- In-place major version upgrade cannot be cancelled once it started.
 
 ### Upgrading in the UI
 {: #upgrading-in-place-ui}
