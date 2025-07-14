@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-11"
+lastupdated: "2025-07-14"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -60,7 +60,7 @@ Consider the following aspects before starting the upgrade procedure.
 
    Once the in-place upgrade process starts, it cannot be stopped or rolled back. So, in the unlikely event of an error, your database deployment could become unrecoverable. Therefore, create a backup that you can then use to restore to a new deployment. If you select 'In-place major version upgrade with backup', the backup that is created can be used to restore in a new deployment.
 
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 30 minutes, then your upgrade job must start within 30 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 30 minutes, so that if it doesn't start within that time, it won't overrun your window.
 
 ### Upgrading through the API
 {: #upgrading-in-place-api}
@@ -73,7 +73,7 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{i
 ```
 {: pre}
 
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window. For more information, see the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdatabaseinplaceversionupgrade).
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 30 minutes, then your upgrade job must start within 30 minutes of you confirming that you want to upgrade. Therefore, set the expiration to a timestamp of 30 minutes from now, so that if it doesn't start within that time, it won't overrun your window. The expiration must be between 5 minutes (default) and 24 hours from now. For more information, see the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdatabaseinplaceversionupgrade).
 
 ### Upgrading through the CLI
 {: #upgrading-in-place-cli}
@@ -100,7 +100,7 @@ To view full details of command parameters:
 ibmcloud cdb deployment-version-upgrade --help
 ```
 
-The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 50 minutes, then your upgrade job must start within 10 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 10 minutes, so that if it doesn't start within that time, it won't overrun your window.
+The `expiration for starting upgrade` allows you to configure a 'timeout' period that the upgrade job must start within before it is automatically cancelled. In addition, test the upgrade in staging upfront to ensure that the upgrade completes within your desired time window. If, for example, you want to complete the upgrade within 1 hour, and you tested the upgrade and know that it takes 30 minutes, then your upgrade job must start within 30 minutes of you confirming that you want to upgrade. Therefore, set the expiration to 30 minutes, so that if it doesn't start within that time, it won't overrun your window. The  expiration must be between 5 mins (default) and 24 hours from now. There are two ways to set expiration using CLI `--expire-in` or `--expire-at`. For more information refer to the command help.
 
 ### Upgrading through Terraform
 {: #upgrading-in-place-terraform}
@@ -119,7 +119,7 @@ The database will be put into READ-ONLY mode during upgrade. It is highly recomm
 Upgrading may require more time than the default timeout. A longer timeout value can be set with using the timeouts attribute.
 {: .note}
 
-Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start.
+Terraform has timeouts instead of expiration timestamps. Therefore, increase your timeout, as your timeout update value is used as the expiration. For example, if you set a timeout of 20 minutes, the expiration will be set to 20 minutes and if the upgrade does not start in that time frame, it expires and the upgrade will not start. Note that the maximum expiration is 24 hours — so even if you set a timeout of 36 hours, the upgrade will expire if it hasn't started within the first 24 hours.
 
 If an upgrade is in progress, note that some tasks may be queued and will not proceed until the version upgrade completes.
 
