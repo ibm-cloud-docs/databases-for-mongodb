@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-05-28"
+  years: 2024, 2025
+lastupdated: "2025-07-16"
 
 keywords: mongodb ee, mongodb enterprise, mongodb enterprise edition, mongodb eneterprise plan
 
@@ -30,12 +30,12 @@ The choice between the two depends on your specific needs, security requirements
 
 The Ops Manager is only available with an {{site.data.keyword.databases-for-mongodb}} Enterprise Plan deployment. MongoDB Ops Manager allows administrators to monitor, deploy, configure, and optimize MongoDB deployments. Ops Manager offers a range of features that help streamline database management and enhance operational efficiency. Here are some key benefits and features of MongoDB Ops Manager:
 
-- Monitoring and Alerting
-- Backup and Recovery
-- Automation and Deployment
-- Performance Optimization
-- [Security and Compliance](/docs/databases-for-mongodb?topic=databases-for-mongodb-manage-security-compliance&interface=api)
-- Scalability and Capacity Planning
+- Monitoring and alerting
+- Backup and recovery
+- Automation and deployment
+- Performance optimization
+- [Security and compliance](/docs/databases-for-mongodb?topic=databases-for-mongodb-manage-security-compliance&interface=api)
+- Scalability and capacity planning
 
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager).
 
