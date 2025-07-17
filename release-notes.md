@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-01"
+lastupdated: "2025-07-17"
 
 keywords: databases-for-mongodb release notes
 
@@ -20,6 +20,22 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 25 June 2025
+{: #databases-for-mongodb-25jun2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}}: In-place major verion upgrade is available for Standard plan
+:   In-place major verion upgrade is available for the *Standard plan*. This is a major improvement for IBM {{site.data.keyword.databases-for}} end-of-life experience. The in-place major verion upgrade option offers  the following benefits:
+
+   * Database connection parameters are retained after upgrade.
+   * It is faster than the [Backup & restore](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-restoring-from-backup) method.
+   * Application stays connected with the database during the upgrade.
+   * You can choose the time of the upgrade.
+
+For more information, see [In-place major version upgrade](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-in-place).
+
+You can continue to use the [Backup & restore](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-restoring-from-backup) method for {{site.data.keyword.databases-for-mongodb}} Standard plan and Enterprise plan.
+
 ## 10 March 2025
 {: #databases-for-mongodb-10mar2025}
 {: release-note}
@@ -31,7 +47,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: #databases-for-mongodb-28feb2025}
 {: release-note}
 
-{{site.data.keyword.databases-for-mongodb}} Deprecation of BI Connector from {{site.data.keyword.databases-for-mongodb_full}} EE on March 31, 2025
+{{site.data.keyword.databases-for-mongodb}}: Deprecation of BI Connector from {{site.data.keyword.databases-for-mongodb_full}} EE on March 31, 2025
 :  After March 31, 2025, the {{site.data.keyword.databases-for-mongodb_full}} Enterprise (EE) feature [BI Connector](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics&interface=api#mongodbee-analytics-connector-bi) will no longer be available for deployment as an analytics add-on. All existing deployments of BI Connector analytics add-on will be disabled after this date.
 
 ## 01 February 2025
