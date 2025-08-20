@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-07-16"
+lastupdated: "2025-08-20"
 
 keywords: mongodb ee, mongodb enterprise, mongodb enterprise edition, mongodb eneterprise plan
 
@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 # Plan overview 
 {: #mongodb-plans}
 
-{{site.data.keyword.databases-for}} offers two plans for MongoDB: **{{site.data.keyword.databases-for-mongodb_full}} Standard** and **{{site.data.keyword.databases-for-mongodb_full}} Enterprise**. {{site.data.keyword.databases-for-mongodb}} is a fully managed NoSQL database service based on the MongoDB Community Edition. {{site.data.keyword.databases-for-mongodb}} Enterprise offers advanced features, such as the [MongoDB Ops Manager](#mongodbee-ops-manager), the [Analytics Add-on](#mongodbee-analytics-addon), and [point-in-time recovery](#mongodbee-pitr).
+{{site.data.keyword.databases-for}} offers two plans for MongoDB: **{{site.data.keyword.databases-for-mongodb_full}} Standard** and **{{site.data.keyword.databases-for-mongodb_full}} Enterprise**. {{site.data.keyword.databases-for-mongodb}} is a fully managed NoSQL database service based on the MongoDB Community Edition. {{site.data.keyword.databases-for-mongodb}} Enterprise offers advanced features, such as the [MongoDB Ops Manager](#mongodbee-ops-manager), and [point-in-time recovery](#mongodbee-pitr).
 
 The choice between the two depends on your specific needs, security requirements, and budget.
 
@@ -40,23 +40,6 @@ The Ops Manager is only available with an {{site.data.keyword.databases-for-mong
 For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager).
 
 
-### Analytics Add-On
-{: #mongodbee-analytics-addon}
-
-The {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On enhances the capabilities of {{site.data.keyword.databases-for-mongodb}}. The add-on enables users to leverage powerful analytics and business intelligence (BI) tools to extract insights and perform advanced analytics on their MongoDB data. Here are the key features and benefits of the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On:
-
-1. Integration with [MongoDB Connector for BI](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics&interface=api#mongodbee-analytics-connector-bi): The add-on allows you to connect popular business intelligence (BI) tools, such as Tableau, Power BI, or Looker, directly to your MongoDB database. It leverages the MongoDB Connector for BI, which provides an SQL interface to query and analyze the data stored in MongoDB collections.
-
-2. SQL-based Analytics: With the add-on, you can use SQL queries to perform analytics and reporting on your MongoDB data. This simplifies the process of extracting insights from the database and enables users familiar with SQL to leverage their existing skills for MongoDB analytics.
-
-4. Performance Optimization: The add-on optimizes query performance by utilizing MongoDB's native indexes and query execution plans. It leverages the rich indexing capabilities of MongoDB to speed up data retrieval and processing, allowing for efficient analytics on large datasets.
-
-6. Scalability and Availability: The add-on is designed to work seamlessly with {{site.data.keyword.databases-for-mongodb}} Enterprise deployments, providing scalability and high availability. It can handle large volumes of data and support high-performance analytics for demanding workloads.
-
-By using the {{site.data.keyword.databases-for-mongodb}} Enterprise Plan Analytics Add-On, unlock the full potential of your MongoDB data for analytics and reporting purposes. It enables integration with popular BI tools, SQL-based analytics, performance optimization, and data governance, allowing you to derive valuable insights and make data-driven decisions from your MongoDB databases.
-
-For more information, see [{{site.data.keyword.databases-for-mongodb}} Enterprise Analytics Add-On](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodbee-analytics).
---->
 
 ### Point-in-time recovery
 {: #mongodbee-pitr}
