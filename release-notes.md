@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-17"
+lastupdated: "2025-09-11"
 
 keywords: databases-for-mongodb release notes
 
@@ -20,11 +20,18 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 28 August 2025
+{: #databases-for-mongodb-28aug2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-mongodb}} version 8 is preferred
+:  {{site.data.keyword.databases-for-mongodb_full}} version 8 is now available. If you use a previous version of {{site.data.keyword.databases-for-mongodb_full}}, you can migrate to version 8, which is the next available version.
+
 ## 25 June 2025
 {: #databases-for-mongodb-25jun2025}
 {: release-note}
 
-{{site.data.keyword.databases-for-mongodb}}: In-place major verion upgrade is available for Standard plan
+In-place major verion upgrade is available for Standard plan
 :   In-place major verion upgrade is available for the *Standard plan*. This is a major improvement for IBM {{site.data.keyword.databases-for}} end-of-life experience. The in-place major verion upgrade option offers  the following benefits:
 
    * Database connection parameters are retained after upgrade.
