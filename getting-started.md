@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-09-12"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -176,6 +176,7 @@ The `id` parameter needs to be URL-encoded for the above API call to work.
 {: important}
 
 ### Setting the admin password through Terraform
+{: #admin_pw_set_tf}
 {: terraform}
 
 The admin password is passed in as one of the database resource parameters in the Terraform script. There is no need for any further action.
@@ -186,6 +187,7 @@ The admin password is passed in as one of the database resource parameters in th
 You can easily connect to your instance by either using the Mongo Shell (a command line interface) or Mongo Compass, a powerful GUI for querying and analyizing your data. Both of these tools are provided my MongoDB.
 
 ### Using the Mongo Shell
+{: #mongo_shell}
 
 Follow [these instructions](/docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-cli-client&interface=ui) to download and connect to the Mongo Shell.
 
@@ -221,6 +223,7 @@ db.movies.find( { title: "The Favourite" } )
 You now connected to your database and wrote and read data using the Mongo Shell.
 
 ### Using MongoDB Compass
+{: #mongodb_compass}
 
 Follow [these instructions]( /docs/databases-for-mongodb?topic=databases-for-mongodb-connecting-mongodb-compass&interface=ui) to download MongoDB Compass and use it to connect to your {{site.data.keyword.databases-for-mongodb}} instance. You can write and read data using the [MongoDB Compass documentation](https://docs.mongodb.com/compass/current){: external}.
 
