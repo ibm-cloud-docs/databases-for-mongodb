@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2024, 2025
-lastupdated: "2025-09-11"
+lastupdated: "2025-09-15"
 
 keywords: mongodb ee, mongodb enterprise, mongodb enterprise edition, mongodb enterprise plan
 
@@ -23,15 +23,13 @@ The choice between the two depends on your specific needs, security requirements
 
 | Feature | Standard plan | Enterprise plan |
 |---------|---------------|-----------------|
-| **Edition** | MongoDB Community Edition | MongoDB Enterprise Edition with IBM-managed Ops Manager. |
-| **Hosting model** | Available on Shared or Isolated compute | Available only on Isolated compute. |
-| **Ops Manager** | Not included | Included. Provides monitoring, configuration, backup, automation, and security tooling. |
-| **High availability** | Replica sets for fault tolerance and high availability | Enhanced replication and automated failover with [Enterprise Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager). |
-| **Backups** | Daily automated snapshots for disaster recovery. Manual, on-demand backups also supported. | Continuous, incremental backups with [Point-in-Time Recovery](#mongodbee-pitr) for up to 7 days. Includes queryable daily snapshots and manual, on-demand backups. |
+| **Edition** | Fully managed MongoDB Community Edition | Fully managed MongoDB Enterprise Edition |
+| **Hosting model** | Available on Shared or Isolated compute | Available only on Isolated compute |
+| **Ops Manager** | Not included | Included. Provides monitoring, configuration, backup, automation, and security tooling |
+| **Backups** | Daily automated snapshots for disaster recovery. Manual, on-demand backups also supported | Continuous, incremental backups with [Point-in-Time Recovery](#mongodbee-pitr) for up to 7 days. |
 | **Restores** | Standard restore from backups | Faster restore performance from incremental snapshots and PITR |
-| **Monitoring** | Basic host and database metrics (CPU, memory, ops/sec) through [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) integration | Ops Manager dashboards with real-time and historical views, query profiler, automated index recommendations, custom alerts, plus [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) integration. |
-| **Auditing** | Basic activity review | Granular auditing of schema changes, authentication events, and CRUD operations for compliance and security. |
-| **Encryption** | Automatic decryption. Encryption must be managed explicitly by the application. | Automatic decryption and service-managed encryption at rest and in transit. |
+| **Monitoring** | Basic host and database metrics (CPU, memory, ops/sec) through [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) integration | Ops Manager dashboards with real-time and historical views, query profiler, automated index recommendations, custom alerts, plus [{{site.data.keyword.monitoringfull}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring) integration |
+| **Auditing** | Event auditing through IBM Cloud Activity Tracker | IBM Cloud Activity Tracker plus granular auditing of schema changes, authentication events, and CRUD operations via Ops Manager |
 {: caption="Feature comparison" caption-side="top"}
 
 ## Choosing a plan
