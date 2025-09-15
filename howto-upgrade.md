@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-08-12"
+lastupdated: "2025-09-11"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
 
@@ -161,7 +161,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 
 | Current version | Major version upgrade path |
 | ---- | ----- |
-| MongoDB 6 | MongoDB 7 |
+| MongoDB 7 | MongoDB 8 |
 {: caption="Major version upgrade paths" caption-side="top"}
 
 ### Upgrading in the UI
