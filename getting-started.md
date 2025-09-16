@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-09-12"
+lastupdated: "2025-09-16"
 
 keywords: mongodb, databases, mongodb compass, mongodbee, mongodb enterprise, mongodb ee provision, mongodb compass, mongodb ops manager, mongodb compass, admin password, logging and monitoring
 
@@ -65,7 +65,6 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Next steps](#next_steps)
 {: terraform}
 
-
 ## Before you begin
 {: #prereqs}
 
@@ -78,7 +77,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * {{site.data.keyword.databases-for-mongodb}} **Standard** is a fully managed NoSQL database service based on the MongoDB Community Edition.
 
-* {{site.data.keyword.databases-for-mongodb}} **Enterprise** offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#ops-manager), the [Analytics add-on](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#analytics-add-on), and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#point-in-time-recovery).
+* {{site.data.keyword.databases-for-mongodb}} **Enterprise** offers advanced features, such as the [MongoDB Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans#ops-manager) and [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr).
 
 ### Using APIs
 {: #using_apis}
@@ -89,7 +88,7 @@ Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/
 You will need an API key to perform actions via the API. Follow [these steps](/docs/account?topic=account-userapikey&interface=ui#create_user_key){: external} to create an IBM Cloud API key that enables you to use the API to provision infrastructure into your account. You can create up to 20 API keys.
 
 For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key.
- {: note}
+{: note}
 
 ## Step 2: Provision through the console
 {: #provision_instance_ui}
@@ -97,9 +96,7 @@ For security reasons, the API key is only available to be copied or downloaded a
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 1. Click the [{{site.data.keyword.databases-for-mongodb}} service](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external} in the **catalog**.
-
 1. Follow [these steps](/docs/databases-for-mongodb?topic=databases-for-mongodb-provisioning&interface=ui) to provision a {{site.data.keyword.databases-for-mongodb}} instance.
-
 1. When your instance is provisioned, click the instance name to view more information.
 
 ## Step 2: Provision through the CLI
@@ -137,7 +134,6 @@ When you provision a {{site.data.keyword.databases-for-mongodb}} deployment, an 
 
 Set the admin password before using it to connect.
 {: important}
-
 
 ### Set the admin password through the UI
 {: #admin_pw_set_ui}
