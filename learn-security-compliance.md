@@ -81,10 +81,6 @@ It is the customer’s responsibility to familiarize themselves with these proce
 
 A full list of PCI DSS-ready {{site.data.keyword.cloud_notm}} Platform services, and options to request a PCI DSS AOC and SRM guide, can be found at the [IBM Cloud compliance page](https://www.ibm.com/cloud/compliance/industry){: external}.
 
-### FIPS encryption
-{: #security-compliance-fips}
-
-{{site.data.keyword.databases-for-mongodb}} Enterprise Edition is deployed with a FIPS 140-2 certified library for OpenSSL. For more information on MongoDB Enterprise and FIPS encryption, review the [documentation here](https://docs.mongodb.com/manual/tutorial/configure-fips/){: external}.
 
 ## Terms
 {: #security-compliance-terms}
