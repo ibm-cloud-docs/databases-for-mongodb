@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-09-24"
+lastupdated: "2025-09-25"
 
 keyowrds: mongodb, databases, pricing, scaling, resources
 
@@ -32,7 +32,6 @@ Minimum deployment sizes depend on the hosting model used. For more information,
 {{site.data.keyword.databases-for-mongodb}} Standard Plan deployments have a minimum of 10 GB of disk, 16 GB of RAM and 4 CPU cores per data member.
 {{site.data.keyword.databases-for-mongodb}} Enterprise Plan deployments have a minimum of 20 GB of disk, 16 GB of RAM and 4 CPU cores per data member.
 
-A {{site.data.keyword.databases-for-mongodb}} EE Analytics node (only available on the Enterprise Plan) is priced as an additional data member.
 
 ## Using the pricing calculator
 {: #mongodb-price-calc}
@@ -58,4 +57,3 @@ Most deployments will never go over the allotted credit.
 {: #mongodb-scale-member}
 
 {{site.data.keyword.databases-for-mongodb}} deployments have allocations for disk, CPU and RAM that are set by you at provisioning time. RAM and CPU can be scaled up and down depending on your workload needs. Disk cannot be scaled down, only up, to protect the integrity of your data. For more information on how to scale your resources, see [Scaling disk, memory, and CPU](/docs/databases-for-mongodb?topic=databases-for-mongodb-resources-scaling).
-
