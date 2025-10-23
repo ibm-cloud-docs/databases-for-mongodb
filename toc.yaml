@@ -48,6 +48,9 @@ toc:
           - howto-auditlogging.md
           - howto-ops-manager.md
           - howto-pitr.md
+          - enterprise-sharding.md
+          - enterprise-sharding-provisioning.md
+          - enterprise-sharding-scaling.md
       - topicgroup:
           label: Connecting to Databases for MongoDB
           topics:
