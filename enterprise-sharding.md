@@ -2,7 +2,7 @@
 copyright:
 
   years: 2025
-lastupdated: "2025-10-23"
+lastupdated: "2025-11-03"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -39,16 +39,17 @@ subcollection: databases-for-mongodb
 
 Sharding is not only an infrastructure operation. It is a shared responsibility between the provider and the customer. {{site.data.keyword.databases-for}} is responsible for provisioning nodes according to user needs, scaling vertically or horizontally. You are expected to:  
 
-- [Enable sharding in each database](#mongodbee-sharding-enable-sharding-databases) within your EE Sharding instance.  
-- [Enable sharding for each collection](#mongodbee-sharding-enable-sharding-collections). Unsharded collections get stored in a single shard. These unbalanced nodes can get full before others and cause operational problems.
-- Select an appropriate [shard key](#mongodbee-sharding-enable-sharding-collections-shard-key) to distribute data evenly and avoid shard overloading.  
-- Optimize queries to minimize scatter/gather operations, which are costly in both time and resources.  
-- Additional infrastructure incurs additional cost. See [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).  
+- Enable sharding for each collection. Unsharded collections get stored in a single shard. These unbalanced nodes can get full before others and cause operational problems.
+- Select an appropriate [shard key](https://www.mongodb.com/docs/manual/core/sharding-shard-key/){: external} to distribute data evenly and avoid shard overloading.  
+- Optimize queries to minimize scatter and gather operations, which are costly in both time and resources.  
+- Additional infrastructure incurs additional cost. For more information, see [Pricing](/docs/databases-for-mongodb?topic=databases-for-mongodb-pricing).  
 
 For more information, see [Responsibilities for {{site.data.keyword.databases-for}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-responsibilities-cloud-databases).
 {: tip}
 
 ### Key considerations
+{: #enterprise-sharding-key-considerations}
+
 - **Max cluster size**: Up to 6 shards × 3 members (18 members total).  
 - **Storage**: Maximum of 4 TB per shard (2 TB recommended best practice).  
 - **Scaling**: Shards can only be added, not removed. Plan your scaling strategy in advance.  
@@ -57,7 +58,3 @@ For more information, see [Responsibilities for {{site.data.keyword.databases-fo
 - **Migration**: Existing unsharded deployments cannot be converted. To adopt sharding, create a new sharded deployment and migrate your data.  
 - **Shard-key design**: Use high-cardinality keys to ensure balanced distribution and reduce scatter/gather overhead. 
  
-
-
-
-
