@@ -2,9 +2,9 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-09-26"
+lastupdated: "2025-11-03"
 
-keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee
+keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee, sharding
 
 subcollection: databases-for-mongodb
 
@@ -63,7 +63,7 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: ui}
 
 - **Database version:** [Set only at deployment]{: tag-red} This is the deployment version of your database. We recommend running the preferred version to ensure optimal performance. For more information, see [Versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-- **Database edition:** [Set only at deployment]{: tag-red} Select either Standard or Enterprise. Note that the Enterprise plan is not available with Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans).
+- **Database edition:** [Set only at deployment]{: tag-red} Select from the Standard, Enterprise or Enterprise Sharding plans. Note that the Enterprise and Enterprise Sharding plans are not available with Shared hosting. For more information, see [Plans](/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-plans).
 - **Encryption:** [Set only at deployment]{: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui){: external}, an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
 - **Endpoints:** [Set only at deployment]{: tag-red} Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} on your deployment. The default setting is *private*.
 
@@ -94,7 +94,7 @@ Before provisioning, follow the instructions provided in the documentation to in
 3. Provision your database with the following command:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p '{"members_host_flavor": "<members_host_flavor value>"}' --service-endpoints="<Endpoint>"
+   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP> -p '{"members_host_flavor": "<members_host_flavor value>"}' --service-endpoints="<endpoint>"
    ```
    {: pre}
 
@@ -118,7 +118,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    |-------|------------|------------|
    | `INSTANCE_NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-mongodb}}, use `databases-for-mongodb`. |  |
-   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | `enterprise` or `standard` |  |
+   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | `enterprise`, `enterprise-sharding` or `standard` |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
