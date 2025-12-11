@@ -1,8 +1,7 @@
 ---
 copyright:
-  years: 2020, 2024
-
-lastupdated: "2024-07-18"
+  years: 2025
+lastupdated: "2025-12-02"
 
 keywords: databases, opsman, mongodbee, Enterprise Edition, ops manager, pitr, mongodb point-in-time recovery, mongodb pitr, mongodb terraform
 
@@ -30,6 +29,21 @@ When restoring to a specific point within the last 7 days, with a restore time a
 {: .codeblock}
 
 In this phase, the point-in-time-recovery timestamp endpoint always returns *current time* - *approximately one week*.{: important}
+
+## Snapshots
+{: #snapshots}
+
+MongoDB Enterprise Edition offers PITR via [snapshots](https://www.mongodb.com/docs/ops-manager/current/tutorial/view-snapshots/){: external} maintained by the [Ops Manager](/docs/databases-for-mongodb?topic=databases-for-mongodb-ops-manager). 
+
+There are specific [PITR considerations](https://www.mongodb.com/docs/ops-manager/current/tutorial/restore-pit-snapshot-http/#considerations){: external} where PITR is not supported.
+
+## PITR after version upgrade
+{: #version-upgrade}
+
+Point‑in‑time recovery can restore to a time after a [major version upgrade](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui) as soon as a backup has completed. Reversion to the earlier version before the major version upgrade, within the last 7 days, is allowed only if that version remains supported.
+
+PITR is not available for a version that does not have a completed backup.
+{: important} 
 
 ## Recovery
 {: #recovery}

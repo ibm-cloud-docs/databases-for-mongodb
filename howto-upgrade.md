@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2019, 2025
-lastupdated: "2025-09-24"
+lastupdated: "2025-12-02"
 
-keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance
+keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance, in-place upgrade
 
 subcollection: databases-for-mongodb
 
@@ -16,8 +16,8 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.databases-for-mongodb}} provides two different upgrade paths:
 
-- In-place upgrade to a new major version (currently supported for MongoDB Standard Plan).
-- Restoring from backup (supported for MongoDB Standard Plan, MongoDB Enterprise Plan).
+- In-place upgrade to a new major version (currently supported for MongoDB Standard Plan, MongoDB Enterprise Plan).
+- Restoring from backup (supported for MongoDB Standard Plan and MongoDB Enterprise Plan).
 
 ## In-place major version upgrades
 {: #upgrading-in-place}
@@ -29,11 +29,14 @@ In-place major version upgrade allows you to upgrade your deployment to the next
 
 There are two options when performing an in-place major version upgrade:
 
-- In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety.
+- In-place major version upgrade with backup: This path creates a backup before performing the actual upgrade, providing an added layer of safety (the only option for the MongoDB Enterprise Plan).
 - In-place major version upgrade without backup: This option proceeds with the upgrade without creating a backup beforehand. In the event that the in-place upgrade is unsuccessful, you will need to restore your deployment from the latest backup into a new deployment.
 
    In-place upgrade without backup is not recommended. It may result in data loss if the upgrade fails at any stage, as there will be no immediate backup to restore from.
    {: important}
+
+   [Point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr) after an in-place upgrade requires a completed backup. Without a backup no PITR capability can be provided on that version.
+   {: important} 
 
 ### Before you begin
 {: #upgrading-considerations}
@@ -47,7 +50,7 @@ Consider the following aspects before starting the upgrade procedure.
 - Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.mongodb.com/docs/manual/release-notes/) from the database vendor to see any changes that may affect your applications.
 - Downgrading a deployment to a previous version is not supported.
 - In-place major version upgrade cannot be cancelled once it started.
-- For MongoDB Enterprise Edition, there must be at least one backup available before upgrading.
+- For MongoDB Enterprise Edition, there must be at least one backup available before upgrading and ensure that a backup can be taken after upgrade.
 
 ### Upgrading in the UI
 {: #upgrading-in-place-ui}
@@ -135,7 +138,11 @@ To ensure a safe upgrade, no user must be able to perform a write action during 
 #### Healthchecks
 {: #upgrading-in-place-healthchecks}
 
-If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. This can happen due to maintenance. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
+If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. 
+
+For MongoDB Enterprise Edition, the support of [PITR](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr) requires that current snapshots without gaps exist, and no snapshots will be performed during upgrade. If PITR cannot be guaranteed, in-place upgrade will fail. 
+
+This states can happen due to maintenance or database usage. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
 
 ## Restoring from backup
 {: #upgrading-restoring-from-backup}
