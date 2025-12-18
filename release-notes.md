@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-09-24"
+lastupdated: "2025-12-18"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,22 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 12 December 2025
+{: #databases-for-mongodb-12dec2025}
+{: release-note}
+
+In-place major verion upgrade is available for Enterprise plan
+:   In-place major verion upgrade, previously available only for the *Standard plan*, is now also available for the *Enterprise plan*. This is a major improvement for {{site.data.keyword.databases-for}} end-of-life experience. The in-place major verion upgrade option offers the following benefits:
+
+   * Database connection parameters are retained after upgrade.
+   * It is faster than the [Backup and restore](docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-restoring-from-backup) method.
+   * Application stays connected with the database during the upgrade.
+   * You can choose the time of the upgrade.
+
+For more information, see [In-place major version upgrade](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-in-place).
+
+You can continue to use the [Backup and restore](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-restoring-from-backup) method for {{site.data.keyword.databases-for-mongodb}} Standard plan and Enterprise plan.
 
 ## 28 August 2025
 {: #databases-for-mongodb-28aug2025}
