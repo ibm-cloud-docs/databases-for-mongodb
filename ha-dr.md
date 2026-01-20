@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-10-14"
+  years: 2026
+lastupdated: "2026-01-20"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, mongodb
 
@@ -25,7 +25,7 @@ subcollection: databases-for-mongodb
 
 ![Architecture](images/MongoDB_high_availability.svg){: caption="MongoDB high availability architecture" caption-side="bottom"}
 
-{{site.data.keyword.databases-for-mongodb}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with three data members - one primary and two secondary members. The two member replica set is kept up to date using asynchronous replication. A distributed consensus mechanism is used to maintain cluster state and handle failovers. If the primary is unavailable, the replica set elects a secondary to be primary and continues normal operation. The old primary rejoins the set when available. The primary and secondary members will always be in different zones of an MZR. If a zone failure results in a member failing, the new replica will be created in a surviving zone.
+{{site.data.keyword.databases-for-mongodb}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with three data members - one primary and two secondary members. The two member replica set is kept up to date using asynchronous replication. A distributed consensus mechanism is used to maintain cluster state and handle failovers. If the primary is unavailable, the replica set elects a secondary to be the primary and continues normal operation. The old primary rejoins the set when available. The primary and secondary members will always be in different zones of an MZR. If a zone failure results in a member failing, the new replica will be created in a surviving zone.
 
 ### High availability features
 {: #ha-features}
@@ -54,7 +54,7 @@ The general strategy for disaster recovery is to create a new database, such as 
 | Feature | Description | Consideration |
 | -------------- | -------------- | -------------- |
 | Backup restore | Create database from previously created backup; see [Managing Cloud Databases backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups). | New connection strings for the restored database must be referenced throughout the workload. |
-| Point-in-time restore | Create database from the live production using [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr). | This is only possible for the Enterprse plan and if the active database is available and the RPO (disaster) falls within the supported window. It is not useful if the production cluster is unavailable. New connection strings for the restored database must be referenced throughout the workload. |
+| Point-in-time restore | Create database from the live production using [point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr). | This is only possible for the Enterprise plan and if the active database is available and the RPO (disaster) falls within the supported window. It is not useful if the production cluster is unavailable. New connection strings for the restored database must be referenced throughout the workload. |
 {: caption="Disaster recovery features" caption-side="top"}
 
 ### Planning for disaster recovery
