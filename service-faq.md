@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023
-lastupdated: "2023-08-29"
+  years: 2023, 2026
+lastupdated: "2026-02-11"
 
 keywords: mongodb
 
@@ -12,7 +12,7 @@ subcollection: databases-for-mongodb, platform, operating system
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.databases-for-mongodb_full}} Service FAQ
+# {{site.data.keyword.databases-for-mongodb_full}} service FAQ
 {: #faq-mongodb-service}
 {: faq}
 {: support}
