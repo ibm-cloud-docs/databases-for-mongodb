@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "title": "IBM Cloud\u00ae Databases for MongoDB",
+  "title": "IBM Cloud® Databases for MongoDB",
   "introduction": "MongoDB is a JSON document store with a rich query and aggregation framework.",
   "product_page": "https://www.ibm.com/products/databases-for-mongodb",
   "console_page": "/databases/databases-for-mongodb/create",
@@ -31,8 +31,8 @@
         "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-service-endpoints&interface=ui"
       },
       {
-        "title": "Managing Cloud Database backups",
-        "href": "/docs/databases-for-mongodb?topic=databases-for-mongodb-dashboard-backups&interface=ui"
+        "title": "Gen 2 docs",
+        "href": "/docs/databases-for-mongodb-gen2"
       }
     ]
   },

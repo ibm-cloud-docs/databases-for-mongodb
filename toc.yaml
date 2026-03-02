@@ -33,6 +33,9 @@ toc:
       - learn-performance.md
       - learn-pricing.md
       - release-notes.md
+      - link:
+          label: Gen 2 docs
+          href: https://cloud.ibm.com/docs/cloud-databases-gen2
   - navgroup:
       id: howto
       topics:
