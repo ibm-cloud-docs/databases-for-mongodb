@@ -35,7 +35,7 @@ OK
 
 In the following example, the `member` allocation count is set to 6. The value must meet the following criteria:
 
-- Minimum: 3 
+- Minimum: 3
 - Maximum: 18
 - Step size: Must be a multiple of 3 (for example, 3, 6, 9, and so on). Values, such as 5 or 7 are not valid.
 
@@ -65,7 +65,7 @@ curl -X PATCH
 
 To configure the number of shards, set the `allocation_count` parameter in your deployment configuration. The value must meet the following criteria:
 
-- Minimum: 3 
+- Minimum: 3
 - Maximum: 18
 - Step size: Must be a multiple of 3 (for example, 3, 6, 9, and so on). Values, such as 5 or 7 are not valid.
 
@@ -78,9 +78,9 @@ You cannot reduce the allocation count after provisioning.
 {: #mongodbee-sharding-scaling}
 {: terraform}
 
-When managing infrastructure as code, modify your Terraform configuration through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}. Use Terraform to instruct {{site.data.keyword.cloud}} to allocate resources for the additional shard. Alternatively, you can use pre-built, open-source and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.databases-for-mongodb}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest){: external} that supports enterprise and enterprise-sharding plan.
+When managing infrastructure as code, modify your Terraform configuration through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}. Use Terraform to instruct {{site.data.keyword.cloud}} to allocate resources for the additional shard. Alternatively, you can use pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.databases-for-mongodb}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest){: external} that support enterprise and the enterprise-sharding plan.
 
-Use the following template to add an additional shard group to your existing Terraform configuration. 
+Use the following template to add an additional shard group to your existing Terraform configuration.
 
 ```terraform
 
@@ -108,8 +108,8 @@ resource "ibm_database" "mongodbees_example" {
 {: pre}
 
 To configure the number of shards, set the `group.members.allocation_count` parameter in your deployment configuration. The value must meet the following criteria:
-  
-- Minimum: 3 
+
+- Minimum: 3
 - Maximum: 18
 - Step size: Must be a multiple of 3 (for example, 3, 6, 9, and so on). Values, such as 5 or 7 are not valid.
 

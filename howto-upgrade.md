@@ -24,7 +24,7 @@ subcollection: databases-for-mongodb
 
 In-place major version upgrade allows you to upgrade your deployment to the next new [major version](/docs/databases-for-mongodb?topic=databases-for-mongodb-versioning-policy#version-definitions), eliminating the need to [restore a backup](/docs/databases-for-mongodb?topic=databases-for-mongodb-upgrading&interface=ui#upgrading-restoring-from-backup) into a new deployment. This approach maintains the same connection strings, without the need to reconfigure the deployment. However, if the new major version requires application adjustments, these must be addressed.
 
-   During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed. 
+   During the in-place major version upgrade window (including a backup), the deployment is set to [*setUserWriteBlockMode*](https://www.mongodb.com/docs/manual/reference/command/setUserWriteBlockMode/#mongodb-dbcommand-dbcmd.setUserWriteBlockMode), which only allows read operations but no write opertions to the deployment to ensure a safe upgrade. As soon as the major version upgrade of the deployment is completed, the *writeBlockMode* is removed.
 {: important}
 
 There are two options when performing an in-place major version upgrade:
@@ -36,7 +36,7 @@ There are two options when performing an in-place major version upgrade:
    {: important}
 
    [Point-in-time recovery](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr) after an in-place upgrade requires a completed backup. Without a backup no PITR capability can be provided on that version.
-   {: important} 
+   {: important}
 
 ### Before you begin
 {: #upgrading-considerations}
@@ -83,7 +83,7 @@ The `expiration for starting upgrade` allows you to configure a 'timeout' period
 {: #upgrading-in-place-cli}
 {: cli}
 
-Available in CDB plugin version >= 0.20.0 
+Available in CDB plugin version >= 0.20.0
 {: .note}
 
 To view the list of allowed upgrade and restore transitions for the deployment:
@@ -110,7 +110,7 @@ The `expiration for starting upgrade` allows you to configure a 'timeout' period
 {: #upgrading-in-place-terraform}
 {: terraform}
 
-Available in Terraform provider version >= 1.79.2 
+Available in Terraform provider version >= 1.79.2
 {: .note}
 
 To upgrade, just add or change the `version` value in your configuration. There is also an optional bool flag, `version_upgrade_skip_backup`, that you can set to skip backup.
@@ -138,16 +138,16 @@ To ensure a safe upgrade, no user must be able to perform a write action during 
 #### Healthchecks
 {: #upgrading-in-place-healthchecks}
 
-If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. 
+If a service instance is low on resources, the task fails because a safe upgrade cannot be guaranteed under these circumstances. The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails.
 
-For MongoDB Enterprise Edition, the support of [PITR](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr) requires that current snapshots without gaps exist, and no snapshots will be performed during upgrade. If PITR cannot be guaranteed, in-place upgrade will fail. 
+For MongoDB Enterprise Edition, the support of [PITR](/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr) requires that current snapshots without gaps exist, and no snapshots will be performed during upgrade. If PITR cannot be guaranteed, in-place upgrade will fail.
 
 This states can happen due to maintenance or database usage. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
 
 ## Restoring from backup
 {: #upgrading-restoring-from-backup}
 
-Before a major version of a database reaches its end of life (EOL), upgrade to the next available major version by restoring from a backup into a new database instance. 
+Before a major version of a database reaches its end of life (EOL), upgrade to the next available major version by restoring from a backup into a new database instance.
 
 Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
@@ -243,4 +243,4 @@ resource "ibm_database" "<your-instance>" {
 ```
 {: codeblock}
 
-For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}. Alternatively, you can use [Terraform IBM Modules (TIM)](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) to create a new database instance from a backup instance, [see how a {{site.data.keyword.databases-for-mongodb}} can be created from a backup instance](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest/examples/backup-restore){: external}.
+For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}. Alternatively, you can use [Terraform IBM Modules (TIM)](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) to create a new database instance from a backup instance. For more information, see [Restore from backup example](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest/examples/backup-restore){: external}.
