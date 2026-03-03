@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-12-02"
+  years: 2019, 2026
+lastupdated: "2026-03-03"
 
 keywords: mongodb, databases, upgrading, new deployment, major version, upgrade, new instance, in-place upgrade
 
@@ -243,4 +243,4 @@ resource "ibm_database" "<your-instance>" {
 ```
 {: codeblock}
 
-For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}.
+For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/database_backups){: external}. Alternatively, you can use [Terraform IBM Modules (TIM)](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) to create a new database instance from a backup instance, [see how a {{site.data.keyword.databases-for-mongodb}} can be created from a backup instance](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest/examples/backup-restore){: external}.

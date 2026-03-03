@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-09-24"
+  years: 2019, 2026
+lastupdated: "2026-03-03"
 
 keywords: mongodb, databases, scaling, memory, disk IOPS, CPU
 
@@ -400,6 +400,8 @@ output "ICD MongoDB database connection string" {
 }
 ```
 {: codeblock}
+
+Alternatively, you can use pre-built, open-source and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.databases-for-mongodb}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest){: external} that supports auto-scaling feature.
 
 ## Switching to and Scaling hosting models in Terraform
 {: #resources-switching-terraform}

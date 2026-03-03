@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-10-23"
+  years: 2026
+lastupdated: "2026-03-03"
 
 keywords: databases, mongodbee, Enterprise Edition, sharding, horizontal scaling
 
@@ -78,7 +78,7 @@ You cannot reduce the allocation count after provisioning.
 {: #mongodbee-sharding-scaling}
 {: terraform}
 
-When managing infrastructure as code, modify your Terraform configuration through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}. Use Terraform to instruct {{site.data.keyword.cloud}} to allocate resources for the additional shard. 
+When managing infrastructure as code, modify your Terraform configuration through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}. Use Terraform to instruct {{site.data.keyword.cloud}} to allocate resources for the additional shard. Alternatively, you can use pre-built, open-source and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.databases-for-mongodb}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest){: external} that supports enterprise and enterprise-sharding plan.
 
 Use the following template to add an additional shard group to your existing Terraform configuration. 
 
