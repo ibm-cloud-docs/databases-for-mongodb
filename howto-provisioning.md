@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-11-03"
+  years: 2019, 2026
+lastupdated: "2026-03-03"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision mongodb, provision mongodb enterprise, provision mongodb ee, sharding
 
@@ -15,7 +15,7 @@ subcollection: databases-for-mongodb
 # Provisioning
 {: #provisioning}
 
-Provision an {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Provision an {{site.data.keyword.databases-for-mongodb_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-mongodb/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
@@ -413,38 +413,38 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "target": "us-south", \
         "resource_group": "<RESOURCE_GROUP_ID>", \
         "resource_plan_id": "databases-for-mongodb-standard", \
-        "parameters": { 
+        "parameters": {
           "members_host_flavor": "multitenant",
-          "service_endpoints":"private", 
-          "members_memory_allocation_mb": 12288, 
-          "members_cpu_allocation_count: 4 
+          "service_endpoints":"private",
+          "members_memory_allocation_mb": 12288,
+          "members_cpu_allocation_count: 4
         } \
       }' \
     ```
     {: pre}
 
     Provision a {{site.data.keyword.databases-for-elasticsearch}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#members_host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the members host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
-    
+
     To deploy an instance with 16 GB of RAM and 4 CPU cores on Isolated Compute, see the following example. Make sure to replace the `RESOURCE GROUP ID` value with an ID found under Manage > Account > Resource groups.
 
     ```sh
-    curl -X POST \      
+    curl -X POST \
     https://resource-controller.cloud.ibm.com/v2/resource_instances
       -H 'Authorization: Bearer <token>' \
       -H 'Content-Type: application/json' \
-      -d '{ "name": "my-mongo", 
-            "target": "eu-gb", 
-            "resource_group": "<RESOURCE_GROUP_ID>", 
-            "resource_plan_id": "databases-for-mongodb-standard", 
+      -d '{ "name": "my-mongo",
+            "target": "eu-gb",
+            "resource_group": "<RESOURCE_GROUP_ID>",
+            "resource_plan_id": "databases-for-mongodb-standard",
             "parameters": { "members_host_flavor":"b3c.4x16.encrypted"},
             "service_endpoints":"private"
           } \
       }' \
     ```
     {: .pre}
-   
+
    The fields in the command are described in the table that follows.
-   
+
    | Field | Description | Flag |
    |-------|------------|------------|
    | `name` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
@@ -504,7 +504,7 @@ In the `--parameters` object you can provide additional information to create yo
 - [Install the Terraform CLI and the IBM Cloud Provider plug-in](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-setup_cli#tf_installation){: external}.
 - Make sure you have an [IBM Cloud API key](/docs/account?topic=account-userapikey&interface=ui#create_user_key){: external}.
 
-Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external} supports provisioning {{site.data.keyword.databases-for}} deployments.
+Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external} supports provisioning {{site.data.keyword.databases-for}} deployments. Alternatively, you can use Terraform IBM Modules to manage your infrastructure through [Terraform IBM Modules for {{site.data.keyword.databases-for-mongodb}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-mongodb/ibm/latest){: external}.
 
 Select the [hosting model](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later.
 
