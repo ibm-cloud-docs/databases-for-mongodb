@@ -14,10 +14,10 @@ subcollection: databases-for-mongodb
 
 
 
-# Troubleshooting performance for IBM Cloud Databases for MongoDB
+# Troubleshooting performance for {{site.data.keyword.messagehub_notm}}
 {: #troubleshooting-performance}
 
-This guide helps you identify and resolve performance issues in your **IBM Cloud Databases for MongoDB** deployment running on IBM Cloud and powered by MongoDB.
+This guide helps you identify and resolve performance issues in your **{{site.data.keyword.messagehub_notm}}** deployment running on IBM Cloud and powered by MongoDB.
 
 If your applications are experiencing slow responses, timeouts, or inconsistent database performance, follow the steps below.
 
@@ -508,7 +508,7 @@ db.currentOp({
 
 
 
-## IBM Cloud-Specific Features and Tools
+## IBM Cloud-specific features and tools
 {: #features-tools}
 
 ### Using IBM Cloud Monitoring (Sysdig)
@@ -602,7 +602,7 @@ Action: Trigger scaling workflow
 
 
 
-## IBM Cloud Activity Tracker Integration
+## IBM Cloud Activity Tracker integration
 {: #activity-tracker-integration}
 
 IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that may impact performance.
@@ -677,18 +677,18 @@ Result: Improved performance after scaling
 * Use for post-incident analysis
 
 
-## IBM Cloud Scaling Options
-{: scaling-options}
+## IBM Cloud scaling options
+{: #scaling-options}
 
 IBM Cloud Databases for MongoDB offers flexible scaling options to match your performance needs.
 
 ### Vertical scaling (compute and memory)
-{: vertical-scaling}
+{: #vertical-scaling}
 
 Scale CPU and memory resources to handle increased workload.
 
 #### Via IBM Cloud Console
-{: scaling-console}
+{: #scaling-console}
 
 1. Navigate to your MongoDB deployment
 2. Click **Resources** in the left navigation
@@ -697,7 +697,7 @@ Scale CPU and memory resources to handle increased workload.
 5. Click **Scale**
 
 #### Via IBM Cloud CLI
-{: scaling-cli}
+{: #scaling-cli}
 
 ```bash
 # Scale memory to 8GB and CPU to 4 cores
@@ -707,7 +707,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 
 #### Considerations
-{: scaling-considerations}
+{: #scaling-considerations}
 
 * Brief connection disruption during scaling
 * Plan for 5-10 minutes downtime
@@ -715,12 +715,12 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * Monitor metrics after scaling
 
 ### Horizontal scaling (replica set members)
-{: scaling-horizontal}
+{: #scaling-horizontal}
 
 Add replica set members for read scaling and high availability.
 
-#### Via IBM Cloud Console
-{: scaling-horizontal-console}
+#### Via IBM Cloud console
+{: #scaling-horizontal-console}
 
 1. Navigate to **Resources**
 2. Adjust **Members** slider
@@ -728,7 +728,7 @@ Add replica set members for read scaling and high availability.
 4. Click **Scale**
 
 #### Via IBM Cloud CLI
-{: scaling-horizontal-cli}
+{: #scaling-horizontal-cli}
 
 ```bash
 # Add a replica set member
@@ -737,7 +737,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 
 #### Benefits
-{: horizontal-benefits}
+{: #horizontal-benefits}
 
 * Distribute read load across secondaries
 * Improved fault tolerance
@@ -745,12 +745,12 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * No downtime for adding members
 
 ### Storage scaling
-{: storage-scaling}
+{: #storage-scaling}
 
 Increase disk space and IOPS for better performance.
 
-#### Via IBM Cloud Console
-{: storage-scaling-console}
+#### Via IBM Cloud console
+{: #storage-scaling-console}
 
 1. Navigate to **Resources**
 2. Adjust **Disk** slider
@@ -758,7 +758,7 @@ Increase disk space and IOPS for better performance.
 4. Click **Scale**
 
 #### Via IBM Cloud CLI
-{: storage-scaling-cli}
+{: #storage-scaling-cli}
 
 ```bash
 # Scale disk to 100GB
@@ -767,7 +767,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 
 #### Important notes
-{: storage-scaling-notes}
+{: #storage-scaling-notes}
 
 * Storage can only be increased, not decreased
 * IOPS scale with disk size
@@ -775,7 +775,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * Monitor disk usage trends
 
 ### Scaling best practices
-{: storage-scaling-best}
+{: #storage-scaling-best}
 
 | Scenario | Recommended Action |
 |----------|-------------------|
@@ -787,7 +787,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 | Write-heavy workload | Scale CPU and memory |
 
 ### Cost optimization
-{: storage-scaling-cost}
+{: #storage-scaling-cost}
 
 * Right-size your deployment
 * Use monitoring to identify actual needs
@@ -795,7 +795,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * Consider reserved capacity for predictable workloads
 
 ### Automation
-{: storage-scaling-automation}
+{: #storage-scaling-automation}
 
 ```bash
 # Example: Auto-scale based on CPU threshold
@@ -804,13 +804,13 @@ if [ $(ibmcloud cdb deployment-metrics <deployment-id> --metric cpu) -gt 80 ]; t
 fi
 ```
 
-## IBM Cloud CLI and API for Diagnostics
-{: cli-api-diagnostics}
+## IBM Cloud CLI and API for diagnostics
+{: #cli-api-diagnostics}
 
 Use IBM Cloud CLI and API for automated diagnostics and monitoring.
 
 ### Installing IBM Cloud CLI
-{: install-cli}
+{: #install-cli}
 
 ```bash
 # Install IBM Cloud CLI
@@ -821,10 +821,10 @@ ibmcloud plugin install cloud-databases
 ```
 
 ### Essential diagnostic commands
-{: diagnostic-commands}
+{: #diagnostic-commands}
 
 #### Get deployment information
-{: deployment-info}
+{: #deployment-info}
 
 ```bash
 # List all MongoDB deployments
@@ -835,7 +835,7 @@ ibmcloud cdb deployment <deployment-id>
 ```
 
 #### Check deployment status
-{: deployment-status}
+{: #deployment-status}
 
 ```bash
 # Get deployment status
@@ -846,7 +846,7 @@ ibmcloud cdb deployment-connections <deployment-id>
 ```
 
 #### Monitor metrics
-{: monitor-metrics}
+{: #monitor-metrics}
 
 ```bash
 # Get CPU metrics
@@ -860,7 +860,7 @@ ibmcloud cdb deployment-metrics <deployment-id> --metric disk
 ```
 
 #### Scaling operations
-{: scaling-operations}
+{: #scaling-operations}
 
 ```bash
 # Scale memory
@@ -877,7 +877,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 
 #### Backup operations
-{: backup-operations}
+{: #backup-operations}
 
 ```bash
 # List backups
@@ -888,10 +888,10 @@ ibmcloud cdb backup <backup-id>
 ```
 
 ### Using the IBM Cloud API
-{: api}
+{: #cloud-api}
 
 #### Authentication
-{: authentication}
+{: #authentication}
 
 ```bash
 # Get IAM token
@@ -899,7 +899,7 @@ export IAM_TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r '.iam_token')
 ```
 
 #### Get deployment metrics via API
-{: api-metrics}
+{: #api-metrics}
 
 ```bash
 # Get metrics
@@ -909,7 +909,7 @@ curl -X GET \
 ```
 
 #### Scale deployment via API
-{: api-metrics-scale}
+{: #api-metrics-scale}
 
 ```bash
 # Scale resources
@@ -928,7 +928,7 @@ curl -X PATCH \
 ```
 
 ### Sample diagnostic script
-{: sample-script}
+{: #sample-script}
 
 ```bash
 #!/bin/bash
@@ -969,7 +969,7 @@ echo "=== Diagnostics Complete ==="
 ```
 
 ### Automation recommendations
-{: automation}
+{: #automation}
 
 * Schedule regular health checks
 * Integrate with monitoring systems
@@ -978,16 +978,16 @@ echo "=== Diagnostics Complete ==="
 * Log all operations for audit trail
 
 
-## IBM Cloud Network Optimization
-{: network}
+## IBM Cloud network optimization
+{: #network}
 
 Network configuration significantly impacts MongoDB performance, especially for distributed applications.
 
 ### Private endpoints vs public endpoints
-{: endpoints}
+{: #endpoints}
 
 #### Private endpoints (recommended)
-{: private-endpoints}
+{: #private-endpoints}
 
 **Benefits:**
 * Lower latency
@@ -1006,7 +1006,7 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 ```
 
 #### Public endpoints
-{: public-endpoints}
+{: #public-endpoints}
 
 **Use cases:**
 * External applications
@@ -1019,12 +1019,12 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 * Rotate credentials regularly
 
 ### Service endpoints
-{: service-endpoints}
+{: #service-endpoints}
 
 IBM Cloud Service Endpoints provide optimized connectivity within IBM Cloud.
 
 #### Benefits
-{: service-endpoints-benefits}
+{: #service-endpoints-benefits}
 
 
 * Reduced latency
@@ -1033,7 +1033,7 @@ IBM Cloud Service Endpoints provide optimized connectivity within IBM Cloud.
 * Cost savings on bandwidth
 
 #### Configuration
-{: service-endpoints-config}
+{: #service-endpoints-config}
 
 ```bash
 # Enable service endpoint
@@ -1041,19 +1041,19 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 ```
 
 ### Multi-zone deployment considerations
-{: multizone}
+{: #multizone}
 
-IBM Cloud Databases for MongoDB can span multiple availability zones.
+{{site.data.keyword.databases-for-mongodb}} can span multiple availability zones.
 
 #### Performance implications
-{: multizone-implications}
+{: #multizone-implications}
 
 * **Intra-zone latency**: < 1ms
 * **Inter-zone latency**: 1-5ms
 * **Cross-region latency**: 50-200ms
 
 #### Best practices
-{: multizone-best}
+{: #multizone-best}
 
 * Deploy applications in the same region
 * Use read preferences to minimize latency
@@ -1061,18 +1061,18 @@ IBM Cloud Databases for MongoDB can span multiple availability zones.
 * Monitor replication lag between zones
 
 ### Network latency troubleshooting
-{: latency}
+{: #latency}
 
 #### Measure latency from application
-{: measure-latency}
+{: #measure-latency}
 
 ```bash
 # Test connection latency
 time mongo "mongodb://host:port/database" --eval "db.runCommand({ping: 1})"
 ```
 
-#### Check from IBM Cloud Shell
-{: measure-latency-shell}
+#### Check from IBM Cloud shell
+{: #measure-latency-shell}
 
 ```bash
 # Ping test (if ICMP allowed)
@@ -1083,7 +1083,7 @@ nc -zv your-mongodb-host.databases.appdomain.cloud 27017
 ```
 
 #### MongoDB connection diagnostics
-{: measure-latency-connection}
+{: #measure-latency-connection}
 
 ```js
 // Check network latency
@@ -1094,19 +1094,19 @@ db.serverStatus().connections
 ```
 
 ### Geographic distribution
-{: geographic}
+{: #geographic}
 
 For globally distributed applications:
 
 #### Strategies
-{: latency-strategies}
+{: #latency-strategies}
 
 * **Single region**: Lowest latency, single point of failure
 * **Multi-region with read replicas**: Read scaling, eventual consistency
 * **Cross-region replication**: Disaster recovery, higher latency
 
 #### Recommendations
-{: latency-recommendations}
+{: #latency-recommendations}
 
 * Place database close to primary user base
 * Use CDN for static content
@@ -1114,7 +1114,7 @@ For globally distributed applications:
 * Consider data residency requirements
 
 ### Bandwidth optimization
-{: latency-bandwidth}
+{: #latency-bandwidth}
 
 * Use projections to limit data transfer
 * Implement pagination for large result sets
@@ -1122,7 +1122,7 @@ For globally distributed applications:
 * Use bulk operations to reduce round trips
 
 ### Connection pooling best practices
-{: latency-pooling}
+{: #latency-pooling}
 
 ```javascript
 // Node.js example
@@ -1136,13 +1136,13 @@ const client = new MongoClient(uri, {
 ```
 
 
-## IBM Cloud Support Integration
-{: support-integration}
+## IBM Cloud Support integration
+{: #support-integration}
 
 Know when and how to engage IBM Cloud Support for performance issues.
 
 ### When to contact IBM Support
-{: contact-IBM}
+{: #contact-IBM}
 
 Contact support if:
 
@@ -1155,12 +1155,12 @@ Contact support if:
 * Backup or restore problems
 
 ### Before contacting support
-{: before-contact}
+{: #before-contact}
 
 Gather the following information:
 
 #### Deployment details
-{: deployment-details}
+{: #deployment-details}
 
 * Deployment ID (CRN)
 * Region and availability zones
@@ -1168,7 +1168,7 @@ Gather the following information:
 * MongoDB version
 
 #### Issue details
-{: issue-details}
+{: #issue-details}
 
 * Time window of the issue (with timezone)
 * Symptoms observed
@@ -1176,7 +1176,7 @@ Gather the following information:
 * Recent changes (code, configuration, scaling)
 
 #### Performance data
-{: performance-data}
+{: #performance-data}
 
 * Monitoring screenshots from Sysdig
 * Query examples causing issues
@@ -1184,7 +1184,7 @@ Gather the following information:
 * Activity Tracker events during issue window
 
 #### MongoDB diagnostics
-{: mongodb-diagnostics}
+{: #mongodb-diagnostics}
 
 ```bash
 # Collect diagnostic data
@@ -1196,10 +1196,10 @@ mongo "your-connection-string" --eval "
 ```
 
 ### Opening a support ticket
-{: open-ticket}
+{: #open-ticket}
 
-#### Via IBM Cloud Console
-{: ticket-console}
+#### Via IBM Cloud console
+{: #ticket-console}
 
 1. Navigate to **Support** in top menu
 2. Click **Create a case**
@@ -1209,7 +1209,7 @@ mongo "your-connection-string" --eval "
 6. Attach diagnostic files
 
 #### Via IBM Cloud CLI
-{: ticket-cli}
+{: #ticket-cli}
 
 ```bash
 # Create support case
@@ -1221,7 +1221,7 @@ ibmcloud support case-create \
 ```
 
 ### Severity levels
-{: ticket-severity}
+{: #ticket-severity}
 
 | Severity | Description | Response Time |
 |----------|-------------|---------------|
@@ -1231,7 +1231,7 @@ ibmcloud support case-create \
 | 4 (Low) | General questions, feature requests | 8 hours |
 
 ### Escalation procedures
-{: escalation}
+{: #escalation}
 
 If issue is not resolved within expected timeframe:
 
@@ -1241,7 +1241,7 @@ If issue is not resolved within expected timeframe:
 4. For critical issues, request management escalation
 
 ### SLA considerations
-{: sla}
+{: #sla}
 
 * Review your service level agreement
 * Understand uptime guarantees
@@ -1249,7 +1249,7 @@ If issue is not resolved within expected timeframe:
 * Document all outages for SLA credits
 
 ### Support best practices
-{: support-best}
+{: #support-best}
 
 * Provide complete information upfront
 * Respond promptly to support requests
@@ -1258,7 +1258,7 @@ If issue is not resolved within expected timeframe:
 * Provide feedback on support experience
 
 ### Self-service resources
-{: self-service}
+{: #self-service}
 
 Before opening a ticket, check:
 
@@ -1267,8 +1267,8 @@ Before opening a ticket, check:
 * [IBM Cloud Status page](https://cloud.ibm.com/status)
 * Community forums and Stack Overflow
 
-## Quick Reference: Diagnostic Commands
-{: quick-reference-commands}
+## Quick reference: diagnostic commands
+{: #quick-reference-commands}
 
 Essential MongoDB commands for performance troubleshooting.
 
@@ -1291,7 +1291,7 @@ Essential MongoDB commands for performance troubleshooting.
 | `db.printReplicationInfo()` | Oplog information | Oplog size, time range | Sufficient for recovery |
 
 ### Quick diagnostic workflow
-{: workflow}
+{: #workflow}
 
 ```js
 // 1. Check overall health
@@ -1319,8 +1319,8 @@ db.currentOp({ waitingForLock: true })
 
 
 
-## Performance Troubleshooting Flowchart
-{: flowchart}
+## Performance troubleshooting flowchart
+{: #flowchart}
 
 ```
 ┌─────────────────────────────────┐
@@ -1408,16 +1408,16 @@ db.currentOp({ waitingForLock: true })
 ```
 
 
-## Common Anti-Patterns
-{: anti-patterns}
+## Common anti-patterns
+{: #anti-patterns}
 
 Avoid these common mistakes that lead to performance issues.
 
 ### Query anti-patterns
-{: query-anti-patterns}
+{: #query-anti-patterns}
 
 #### 1. Missing indexes
-{: missing-indexes}
+{: #missing-indexes}
 
 **Problem:**
 ```js
@@ -1432,7 +1432,7 @@ db.users.createIndex({ email: 1 })
 ```
 
 #### 2. Inefficient regex queries
-{: regex}
+{: #regex}
 
 **Problem:**
 ```js
@@ -1448,7 +1448,7 @@ db.users.find({ $text: { $search: "john" } })
 ```
 
 #### 3. Large skip() operations
-{: skip}
+{: #skip}
 
 **Problem:**
 ```js
@@ -1463,7 +1463,7 @@ db.collection.find({ _id: { $gt: lastSeenId } }).limit(10)
 ```
 
 #### 4. Selecting unnecessary fields
-{: fields}
+{: #fields}
 
 **Problem:**
 ```js
@@ -1478,7 +1478,7 @@ db.users.find({ status: "active" }, { name: 1, email: 1 })
 ```
 
 #### 5. Inefficient aggregation pipelines
-{: pipelines}
+{: #pipelines}
 
 **Problem:**
 ```js
@@ -1499,10 +1499,10 @@ db.orders.aggregate([
 ```
 
 ### Schema design issues
-{: schema-design}
+{: #schema-design}
 
 #### 1. Unbounded arrays
-{: arrays}
+{: #arrays}
 
 **Problem:**
 ```js
@@ -1524,7 +1524,7 @@ db.orders.aggregate([
 ```
 
 #### 2. Excessive embedding
-{: embedding}
+{: #embedding}
 
 **Problem:**
 ```js
@@ -1552,7 +1552,7 @@ db.orders.aggregate([
 ```
 
 #### 3. Large documents
-{: documents}
+{: #documents}
 
 **Problem:**
 ```js
@@ -1573,10 +1573,10 @@ db.orders.aggregate([
 ```
 
 ### Connection management mistakes
-{: management}
+{: #management}
 
 #### 1. Not using connection pooling
-{: connection-pooling}
+{: #connection-pooling}
 
 **Problem:**
 ```js
@@ -1601,7 +1601,7 @@ app.get('/api/users', async (req, res) => {
 ```
 
 #### 2. Not closing cursors
-{: cursors}
+{: #cursors}
 
 **Problem:**
 ```js
@@ -1622,7 +1622,7 @@ try {
 ```
 
 #### 3. Too many connections
-{: connections}
+{: #connections}
 
 **Problem:**
 ```js
@@ -1641,10 +1641,10 @@ const client = new MongoClient(uri);
 ```
 
 ### Indexing pitfalls
-{: indexing-pitfalls}
+{: #indexing-pitfalls}
 
 #### 1. Too many indexes
-{: too-many-indexes}
+{: #too-many-indexes}
 
 **Problem:**
 ```js
@@ -1660,7 +1660,7 @@ db.collection.createIndex({ field3: 1 })
 **Solution:** Keep only necessary indexes, use compound indexes
 
 #### 2. Wrong index order in compound indexes
-{: wrong-order}
+{: #wrong-order}
 
 **Problem:**
 ```js
@@ -1675,7 +1675,7 @@ db.collection.createIndex({ status: 1, createdAt: 1 })
 ```
 
 #### 3. Not using covered queries
-{: covered-queries}
+{: #covered-queries}
 
 **Problem:**
 ```js
@@ -1692,8 +1692,8 @@ db.users.createIndex({ email: 1, name: 1 })
 db.users.find({ email: "user@example.com" }, { name: 1, email: 1, _id: 0 })
 ```
 
-## Appendix: Metrics Thresholds
-{: metrics-thresholds}
+## Appendix: metrics thresholds
+{: #metrics-thresholds}
 
 Recommended thresholds for key performance metrics.
 
@@ -1713,7 +1713,7 @@ Recommended thresholds for key performance metrics.
 | **Backup Duration** | > 1 hour | > 4 hours | Consider scaling or optimization |
 
 ### Monitoring frequency recommendations
-{: frequency}
+{: #frequency}
 
 | Metric Category | Check Frequency | Retention Period |
 |----------------|----------------|------------------|
@@ -1725,10 +1725,10 @@ Recommended thresholds for key performance metrics.
 | Disk growth | Every 1 hour | 90 days |
 
 ### Alert configuration examples
-{: config-examples}
+{: #config-examples}
 
-#### CPU Alert
-{: cpu}
+#### CPU alert
+{: #cpu}
 
 ```
 Condition: CPU > 80% for 10 consecutive minutes
@@ -1736,8 +1736,8 @@ Action: Send notification to ops team
 Escalation: Page on-call if > 90% for 15 minutes
 ```
 
-#### Memory Alert
-{: memory}
+#### Memory alert
+{: #memory}
 
 ```
 Condition: Memory > 85% for 15 consecutive minutes
@@ -1745,8 +1745,8 @@ Action: Send notification to ops team
 Escalation: Auto-scale if > 95% for 10 minutes
 ```
 
-#### Replication Lag Alert
-{: lag}
+#### Replication lag alert
+{: #lag}
 
 ```
 Condition: Lag > 10 seconds
@@ -1754,8 +1754,8 @@ Action: Send notification immediately
 Escalation: Page on-call if > 60 seconds
 ```
 
-#### Disk Space Alert
-{: disk-space}
+#### Disk space alert
+{: #disk-space}
 
 ```
 Condition: Disk > 80%
@@ -1763,8 +1763,8 @@ Action: Send notification to ops team
 Escalation: Create incident if > 90%
 ```
 
-## Best Practices Summary
-{: summary}
+## Best practices summary
+{: #summary}
 
 | Area | Recommendation |
 |------|---------------|
@@ -1786,29 +1786,29 @@ Escalation: Create incident if > 90%
 
 
 
-## Additional Resources
-{: resources}
+## Additional resources
+{: #resources}
 
-### IBM Cloud Documentation
-{: docs}
+### IBM Cloud documentation
+{: #docs}
 
-* [IBM Cloud Databases for MongoDB Documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
-* [IBM Cloud Monitoring Documentation](https://cloud.ibm.com/docs/monitoring)
-* [IBM Cloud Activity Tracker Documentation](https://cloud.ibm.com/docs/activity-tracker)
-* [IBM Cloud CLI Reference](https://cloud.ibm.com/docs/cli)
+* [IBM Cloud Databases for MongoDB documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
+* [IBM Cloud Monitoring documentation](https://cloud.ibm.com/docs/monitoring)
+* [IBM Cloud Activity Tracker documentation](https://cloud.ibm.com/docs/activity-tracker)
+* [IBM Cloud CLI reference](https://cloud.ibm.com/docs/cli)
 
-### MongoDB Documentation
-{: mongodb-docs}
+### MongoDB documentation
+{: #mongodb-docs}
 
-* [MongoDB Performance Best Practices](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/)
-* [MongoDB Indexing Strategies](https://docs.mongodb.com/manual/applications/indexes/)
-* [MongoDB Query Optimization](https://docs.mongodb.com/manual/core/query-optimization/)
+* [MongoDB Performance best practices](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/)
+* [MongoDB indexing strategies](https://docs.mongodb.com/manual/applications/indexes/)
+* [MongoDB query optimization](https://docs.mongodb.com/manual/core/query-optimization/)
 * [WiredTiger Storage Engine](https://docs.mongodb.com/manual/core/wiredtiger/)
 
-### Community Resources
-{: community-resources}
+### Community resources
+{: #community-resources}
 
-* [MongoDB Community Forums](https://www.mongodb.com/community/forums/)
+* [MongoDB community forums](https://www.mongodb.com/community/forums/)
 * [Stack Overflow - MongoDB Tag](https://stackoverflow.com/questions/tagged/mongodb)
 * [IBM Cloud Community](https://community.ibm.com/community/user/cloud/home)
 
