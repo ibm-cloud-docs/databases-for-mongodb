@@ -13,11 +13,10 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-
-# Troubleshooting performance for {{site.data.keyword.messagehub_notm}}
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}}
 {: #troubleshooting-performance}
 
-This guide helps you identify and resolve performance issues in your **{{site.data.keyword.messagehub_notm}}** deployment running on IBM Cloud and powered by MongoDB.
+This guide helps you identify and resolve performance issues in your **{{site.data.keyword.databases-for-mongodb}}** deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
 
 If your applications are experiencing slow responses, timeouts, or inconsistent database performance, follow the steps below.
 
@@ -40,7 +39,7 @@ You might observe:
 ### Step 1: Check resource utilization
 {: #troubleshooting-step1}
 
-Log in to the IBM Cloud console and navigate to your MongoDB deployment.
+Log in to the {{site.data.keyword.cloud_notm}} console and navigate to your MongoDB deployment.
 
 Review the **Monitoring** section for:
 
@@ -412,6 +411,7 @@ rs.conf()
 | `w: "majority"` | High | Medium | Default, balanced approach |
 | `w: <number>` | Medium-High | Medium-Low | Specific replica count |
 | `j: true` | Highest | Lowest | Critical data requiring journal sync |
+{: caption="Write concern options" caption-side="top"}
 
 
 #### Read preference options
@@ -424,6 +424,7 @@ rs.conf()
 | `secondary` | Eventual | High | Analytics, reporting |
 | `secondaryPreferred` | Eventual | High | Read scaling |
 | `nearest` | Eventual | Highest | Lowest latency |
+{: caption="Read preference options" caption-side="top"}
 
 
 #### Check read preference in your application
@@ -457,10 +458,10 @@ db.collection('users').find({}).readPreference('secondary')
 
 Backup operations and maintenance tasks can temporarily affect performance.
 
-#### IBM Cloud backup schedule
+#### {{site.data.keyword.cloud_notm}} backup schedule
 {: #troubleshooting-step11-schedule}
 
-IBM Cloud Databases for MongoDB performs automatic backups. Check your backup schedule in the IBM Cloud console under **Backups**.
+IBM Cloud Databases for MongoDB performs automatic backups. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
 
 #### Check for ongoing backup operations
 {: #troubleshooting-step11-backup}
@@ -508,7 +509,7 @@ db.currentOp({
 
 
 
-## IBM Cloud-specific features and tools
+## {{site.data.keyword.cloud_notm}}-specific features and tools
 {: #features-tools}
 
 ### Using IBM Cloud Monitoring (Sysdig)
@@ -519,7 +520,7 @@ IBM Cloud Databases for MongoDB integrates with IBM Cloud Monitoring powered by 
 #### Accessing monitoring dashboards
 {: #dashboards}
 
-1. Navigate to your MongoDB deployment in IBM Cloud console
+1. Navigate to your MongoDB deployment in {{site.data.keyword.cloud_notm}} console
 2. Click **Monitoring** in the left navigation
 3. Click **Launch Monitoring** to open Sysdig dashboard
 
@@ -549,19 +550,19 @@ IBM Cloud Databases for MongoDB integrates with IBM Cloud Monitoring powered by 
 
 Create alerts for critical thresholds:
 
-```
+```sh
 Alert: High CPU Usage
 Condition: CPU > 80% for 10 minutes
 Action: Notify operations team
 ```
 
-```
+```sh
 Alert: Replication Lag
 Condition: Replication lag > 5 seconds
 Action: Page on-call engineer
 ```
 
-```
+```sh
 Alert: Disk Space
 Condition: Disk usage > 85%
 Action: Trigger scaling workflow
@@ -611,7 +612,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 {: #activity-tracker-access}
 
 
-1. Navigate to **Observability** > **Activity Tracker** in IBM Cloud console
+1. Navigate to **Observability** > **Activity Tracker** in {{site.data.keyword.cloud_notm}} console
 2. Select your region
 3. Filter events by your MongoDB instance
 
@@ -650,7 +651,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 {: #example-analysis}
 
 
-```
+```sh
 Event: Database scaled from 2GB to 4GB RAM
 Time: 2024-01-15 14:30:00 UTC
 Impact: Temporary connection disruption (30 seconds)
@@ -677,7 +678,7 @@ Result: Improved performance after scaling
 * Use for post-incident analysis
 
 
-## IBM Cloud scaling options
+## {{site.data.keyword.cloud_notm}} scaling options
 {: #scaling-options}
 
 IBM Cloud Databases for MongoDB offers flexible scaling options to match your performance needs.
@@ -687,7 +688,7 @@ IBM Cloud Databases for MongoDB offers flexible scaling options to match your pe
 
 Scale CPU and memory resources to handle increased workload.
 
-#### Via IBM Cloud Console
+#### Via {{site.data.keyword.cloud_notm}} console
 {: #scaling-console}
 
 1. Navigate to your MongoDB deployment
@@ -696,7 +697,7 @@ Scale CPU and memory resources to handle increased workload.
 4. Review cost impact
 5. Click **Scale**
 
-#### Via IBM Cloud CLI
+#### Via {{site.data.keyword.cloud_notm}} CLI
 {: #scaling-cli}
 
 ```bash
@@ -719,7 +720,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 
 Add replica set members for read scaling and high availability.
 
-#### Via IBM Cloud console
+#### Via {{site.data.keyword.cloud_notm}} console
 {: #scaling-horizontal-console}
 
 1. Navigate to **Resources**
@@ -727,7 +728,7 @@ Add replica set members for read scaling and high availability.
 3. Review configuration
 4. Click **Scale**
 
-#### Via IBM Cloud CLI
+#### Via {{site.data.keyword.cloud_notm}} CLI
 {: #scaling-horizontal-cli}
 
 ```bash
@@ -749,7 +750,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 
 Increase disk space and IOPS for better performance.
 
-#### Via IBM Cloud console
+#### Via {{site.data.keyword.cloud_notm}} console
 {: #storage-scaling-console}
 
 1. Navigate to **Resources**
@@ -757,7 +758,7 @@ Increase disk space and IOPS for better performance.
 3. Review IOPS allocation
 4. Click **Scale**
 
-#### Via IBM Cloud CLI
+#### Via {{site.data.keyword.cloud_notm}} CLI
 {: #storage-scaling-cli}
 
 ```bash
@@ -777,7 +778,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ### Scaling best practices
 {: #storage-scaling-best}
 
-| Scenario | Recommended Action |
+| Scenario | Recommended action |
 |----------|-------------------|
 | High CPU (>80%) | Scale CPU cores |
 | High Memory (>80%) | Scale memory allocation |
@@ -785,6 +786,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 | Connection limits | Scale to higher tier |
 | Read-heavy workload | Add replica members |
 | Write-heavy workload | Scale CPU and memory |
+{: caption="Scaling best practices" caption-side="top"}
 
 ### Cost optimization
 {: #storage-scaling-cost}
@@ -804,12 +806,12 @@ if [ $(ibmcloud cdb deployment-metrics <deployment-id> --metric cpu) -gt 80 ]; t
 fi
 ```
 
-## IBM Cloud CLI and API for diagnostics
+## {{site.data.keyword.cloud_notm}} CLI and API for diagnostics
 {: #cli-api-diagnostics}
 
-Use IBM Cloud CLI and API for automated diagnostics and monitoring.
+Use {{site.data.keyword.cloud_notm}} CLI and API for automated diagnostics and monitoring.
 
-### Installing IBM Cloud CLI
+### Installing {{site.data.keyword.cloud_notm}} CLI
 {: #install-cli}
 
 ```bash
@@ -887,7 +889,7 @@ ibmcloud cdb backups <deployment-id>
 ibmcloud cdb backup <backup-id>
 ```
 
-### Using the IBM Cloud API
+### Using the {{site.data.keyword.cloud_notm}} API
 {: #cloud-api}
 
 #### Authentication
@@ -978,7 +980,7 @@ echo "=== Diagnostics Complete ==="
 * Log all operations for audit trail
 
 
-## IBM Cloud network optimization
+## {{site.data.keyword.cloud_notm}} network optimization
 {: #network}
 
 Network configuration significantly impacts MongoDB performance, especially for distributed applications.
@@ -993,15 +995,17 @@ Network configuration significantly impacts MongoDB performance, especially for 
 * Lower latency
 * Enhanced security
 * No internet egress charges
-* Better performance for IBM Cloud workloads
+* Better performance for {{site.data.keyword.cloud_notm}} workloads
 
 **Setup:**
+
 1. Navigate to **Settings** > **Endpoints**
 2. Enable **Private endpoint**
 3. Update connection strings in applications
 
 **Connection string example:**
-```
+
+```sh
 mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSource=admin&replicaSet=replset
 ```
 
@@ -1021,7 +1025,7 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 ### Service endpoints
 {: #service-endpoints}
 
-IBM Cloud Service Endpoints provide optimized connectivity within IBM Cloud.
+{{site.data.keyword.cloud_notm}} Service Endpoints provide optimized connectivity within {{site.data.keyword.cloud_notm}}.
 
 #### Benefits
 {: #service-endpoints-benefits}
@@ -1071,7 +1075,7 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 time mongo "mongodb://host:port/database" --eval "db.runCommand({ping: 1})"
 ```
 
-#### Check from IBM Cloud shell
+#### Check from {{site.data.keyword.cloud_notm}} shell
 {: #measure-latency-shell}
 
 ```bash
@@ -1136,10 +1140,10 @@ const client = new MongoClient(uri, {
 ```
 
 
-## IBM Cloud Support integration
+## {{site.data.keyword.cloud_notm}} Support integration
 {: #support-integration}
 
-Know when and how to engage IBM Cloud Support for performance issues.
+Know when and how to engage {{site.data.keyword.cloud_notm}} Support for performance issues.
 
 ### When to contact IBM Support
 {: #contact-IBM}
@@ -1198,7 +1202,7 @@ mongo "your-connection-string" --eval "
 ### Opening a support ticket
 {: #open-ticket}
 
-#### Via IBM Cloud console
+#### Via {{site.data.keyword.cloud_notm}} console
 {: #ticket-console}
 
 1. Navigate to **Support** in top menu
@@ -1208,7 +1212,7 @@ mongo "your-connection-string" --eval "
 5. Provide detailed description
 6. Attach diagnostic files
 
-#### Via IBM Cloud CLI
+#### Via {{site.data.keyword.cloud_notm}} CLI
 {: #ticket-cli}
 
 ```bash
@@ -1229,6 +1233,7 @@ ibmcloud support case-create \
 | 2 (High) | Significant performance degradation | 2 hours |
 | 3 (Medium) | Moderate impact, workaround available | 4 hours |
 | 4 (Low) | General questions, feature requests | 8 hours |
+{: caption="Severity levels" caption-side="top"}
 
 ### Escalation procedures
 {: #escalation}
@@ -1262,9 +1267,9 @@ If issue is not resolved within expected timeframe:
 
 Before opening a ticket, check:
 
-* [IBM Cloud Databases documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
+* [{{site.data.keyword.cloud_notm}} Databases documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
 * [MongoDB documentation](https://docs.mongodb.com/)
-* [IBM Cloud Status page](https://cloud.ibm.com/status)
+* [{{site.data.keyword.cloud_notm}} Status page](https://cloud.ibm.com/status)
 * Community forums and Stack Overflow
 
 ## Quick reference: diagnostic commands
@@ -1289,6 +1294,7 @@ Essential MongoDB commands for performance troubleshooting.
 | `sh.status()` | Sharding status (if applicable) | Chunk distribution | Even distribution |
 | `db.adminCommand({ top: 1 })` | Collection usage statistics | Hot collections | Identify optimization targets |
 | `db.printReplicationInfo()` | Oplog information | Oplog size, time range | Sufficient for recovery |
+{: caption="Diagnostic commands" caption-side="top"}
 
 ### Quick diagnostic workflow
 {: #workflow}
@@ -1322,7 +1328,7 @@ db.currentOp({ waitingForLock: true })
 ## Performance troubleshooting flowchart
 {: #flowchart}
 
-```
+``````sh
 ┌─────────────────────────────────┐
 │   Performance Issue Detected    │
 └────────────┬────────────────────┘
@@ -1711,6 +1717,7 @@ Recommended thresholds for key performance metrics.
 | **Page Faults** | > 100/sec | > 1000/sec | Scale memory |
 | **Network Latency** | > 10ms | > 50ms | Check network configuration |
 | **Backup Duration** | > 1 hour | > 4 hours | Consider scaling or optimization |
+{: caption="Metrics thresholds" caption-side="top"}
 
 ### Monitoring frequency recommendations
 {: #frequency}
@@ -1723,6 +1730,7 @@ Recommended thresholds for key performance metrics.
 | Connection statistics | Every 5 minutes | 14 days |
 | Backup status | Every 1 hour | 90 days |
 | Disk growth | Every 1 hour | 90 days |
+{: caption="Monitoring frequency" caption-side="top"}
 
 ### Alert configuration examples
 {: #config-examples}
@@ -1730,7 +1738,7 @@ Recommended thresholds for key performance metrics.
 #### CPU alert
 {: #cpu}
 
-```
+```sh
 Condition: CPU > 80% for 10 consecutive minutes
 Action: Send notification to ops team
 Escalation: Page on-call if > 90% for 15 minutes
@@ -1739,7 +1747,7 @@ Escalation: Page on-call if > 90% for 15 minutes
 #### Memory alert
 {: #memory}
 
-```
+```sh
 Condition: Memory > 85% for 15 consecutive minutes
 Action: Send notification to ops team
 Escalation: Auto-scale if > 95% for 10 minutes
@@ -1748,7 +1756,7 @@ Escalation: Auto-scale if > 95% for 10 minutes
 #### Replication lag alert
 {: #lag}
 
-```
+```sh
 Condition: Lag > 10 seconds
 Action: Send notification immediately
 Escalation: Page on-call if > 60 seconds
@@ -1757,7 +1765,7 @@ Escalation: Page on-call if > 60 seconds
 #### Disk space alert
 {: #disk-space}
 
-```
+```sh
 Condition: Disk > 80%
 Action: Send notification to ops team
 Escalation: Create incident if > 90%
@@ -1778,24 +1786,25 @@ Escalation: Create incident if > 90%
 | **Write Concern** | Balance durability with performance needs |
 | **Schema Design** | Avoid unbounded arrays and excessive embedding |
 | **Backup Planning** | Schedule during low-traffic periods |
-| **Network** | Use private endpoints for IBM Cloud workloads |
+| **Network** | Use private endpoints for {{site.data.keyword.cloud_notm}} workloads |
 | **Security** | Rotate credentials regularly, use IP allowlisting |
 | **Documentation** | Document baseline metrics and normal patterns |
 | **Testing** | Test performance changes in non-production first |
 | **Support** | Gather diagnostics before contacting support |
+{: caption="Best practices" caption-side="top"}
 
 
 
 ## Additional resources
 {: #resources}
 
-### IBM Cloud documentation
+### {{site.data.keyword.cloud_notm}} documentation
 {: #docs}
 
-* [IBM Cloud Databases for MongoDB documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
+* [{{site.data.keyword.cloud_notm}} Databases for MongoDB documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
 * [IBM Cloud Monitoring documentation](https://cloud.ibm.com/docs/monitoring)
 * [IBM Cloud Activity Tracker documentation](https://cloud.ibm.com/docs/activity-tracker)
-* [IBM Cloud CLI reference](https://cloud.ibm.com/docs/cli)
+* [{{site.data.keyword.cloud_notm}} CLI reference](https://cloud.ibm.com/docs/cli)
 
 ### MongoDB documentation
 {: #mongodb-docs}
