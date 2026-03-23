@@ -16,16 +16,16 @@ subcollection: databases-for-mongodb
 # Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}}
 {: #troubleshooting-performance}
 
-This guide helps you identify and resolve performance issues in your **{{site.data.keyword.databases-for-mongodb}}** deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
+Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
 
-If your applications are experiencing slow responses, timeouts, or inconsistent database performance, follow the steps below.
+If your applications are experiencing slow responses, timeouts, or inconsistent database performance, complete following the steps.
 
 
 
 ## Symptoms of performance issues
 {: #troubleshooting-symptoms}
 
-You might observe:
+You might observe some of the following symptoms:
 
 * Increased application latency
 * Slow query log entries
@@ -34,7 +34,7 @@ You might observe:
 * Replication lag
 * Connection timeouts
 
-
+Complete these steps to determine the cause of the issues:
 
 ### Step 1: Check resource utilization
 {: #troubleshooting-step1}
@@ -509,7 +509,7 @@ db.currentOp({
 
 
 
-## {{site.data.keyword.cloud_notm}}-specific features and tools
+## {{site.data.keyword.cloud_notm}}-specific features and tools to help troubleshoot performance
 {: #features-tools}
 
 ### Using IBM Cloud Monitoring (Sysdig)
@@ -1328,9 +1328,9 @@ db.currentOp({ waitingForLock: true })
 ## Performance troubleshooting flowchart
 {: #flowchart}
 
-``````sh
+```sh
 ┌─────────────────────────────────┐
-│   Performance Issue Detected    │
+│   Performance issue detected    │
 └────────────┬────────────────────┘
              │
              ▼
@@ -1346,12 +1346,12 @@ db.currentOp({ waitingForLock: true })
         ▼         │
 ┌──────────────┐  │
 │ Scale        │  │
-│ Resources    │  │
+│ resources    │  │
 └──────────────┘  │
                   │ NO
                   ▼
         ┌─────────────────────┐
-        │ Check Slow Queries  │
+        │ Check slow queries  │
         │ db.system.profile   │
         └─────────┬───────────┘
                   │
@@ -1360,8 +1360,8 @@ db.currentOp({ waitingForLock: true })
              ▼         │
         ┌─────────┐    │
         │ Optimize│    │
-        │ Queries │    │
-        │ & Indexes│   │
+        │ queries │    │
+        │ & indexes│   │
         └─────────┘    │
                        │ NO
                        ▼
@@ -1375,13 +1375,13 @@ db.currentOp({ waitingForLock: true })
                   ▼         │
              ┌─────────┐    │
              │ Kill or │    │
-             │ Optimize│    │
+             │ optimize│    │
              └─────────┘    │
                             │ NO
                             ▼
                    ┌────────────────┐
-                   │ Check Cache    │
-                   │ Hit Ratio      │
+                   │ Check cache    │
+                   │ hit ratio      │
                    └────────┬───────┘
                             │
                        ┌────┴────┐
@@ -1389,13 +1389,13 @@ db.currentOp({ waitingForLock: true })
                        ▼         │
                   ┌─────────┐    │
                   │ Scale   │    │
-                  │ Memory  │    │
+                  │ memory  │    │
                   └─────────┘    │
                                  │ NO
                                  ▼
                         ┌────────────────┐
                         │ Check          │
-                        │ Replication    │
+                        │ replication    │
                         └────────┬───────┘
                                  │
                             ┌────┴────┐
@@ -1403,7 +1403,7 @@ db.currentOp({ waitingForLock: true })
                             ▼         │
                        ┌─────────┐    │
                        │ Scale   │    │
-                       │ or Fix  │    │
+                       │ or fix  │    │
                        └─────────┘    │
                                       │ NO
                                       ▼
@@ -1412,6 +1412,7 @@ db.currentOp({ waitingForLock: true })
                              │ Support        │
                              └────────────────┘
 ```
+{: caption="MongoDB disaster recovery architecture" caption-side="bottom"}
 
 
 ## Common anti-patterns
