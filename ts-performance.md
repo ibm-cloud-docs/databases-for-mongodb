@@ -113,21 +113,21 @@ db.collection.find({ ... }).explain("executionStats")
 
 Slow queries are one of the most common causes of degraded performance.
 
-1. Enable profiling
+1. Enable profiling:
 
     ```js
     db.setProfilingLevel(1, { slowms: 100 })
     ```
     {: codeblock}
 
-2. Review recent slow operations
+2. Review recent slow operations:
 
     ```js
     db.system.profile.find().sort({ ts: -1 }).limit(20)
     ```
    {: codeblock}
 
-3. Analyze query execution
+3. Analyze query execution:
 
     ```js
     db.collection.find({ ... }).explain("executionStats")
@@ -306,6 +306,68 @@ db.serverStatus().globalLock
 * Schedule maintenance operations during low-traffic periods
 * Use read concern and write concern appropriately
 
+### Step 7: Check for lock contention
+{: #troubleshooting-step7}
+
+Lock contention can severely impact concurrent operations and overall throughput.
+
+* Check global lock statistics
+
+    ```js
+    db.serverStatus().locks
+    ```
+   {: codeblock}
+
+* Check current operations for locks
+
+    ```js
+    db.currentOp({
+      $or: [
+        { waitingForLock: true },
+        { "locks.Global": "w" }
+      ]
+    })
+    ```
+    {: codeblock}
+
+* Analyze lock wait time
+
+  ```js
+  db.serverStatus().globalLock
+  ```
+  {: codeblock}
+
+#### What to look for
+{: #troubleshooting-step7-symptoms}
+
+* High `currentQueue` values (readers or writers)
+* Operations with `waitingForLock: true`
+* Long-running operations holding locks
+* Index builds blocking operations
+
+#### Common causes
+{: #troubleshooting-step7-causes}
+
+* Long-running queries without proper indexes
+* Large write operations
+* Index builds on large collections
+* Administrative commands (compact, repairDatabase)
+
+#### Recommended actions
+{: #troubleshooting-step7-actions}
+
+* Kill long-running operations if necessary:
+  ```js
+  db.killOp(opid)
+  ```
+* Build indexes in the background:
+  ```js
+  db.collection.createIndex({ field: 1 }, { background: true })
+  ```
+* Break large operations into smaller batches
+* Schedule maintenance operations during low-traffic periods
+* Use read concern and write concern appropriately
+
 
 ### Step 8: Analyze workload patterns
 {: #troubleshooting-step8}
@@ -359,6 +421,58 @@ print("Read ratio: " + (stats.query + stats.getmore) / (stats.query + stats.getm
 * Review indexing strategy for hot collections
 * Consider sharding for write-heavy collections
 
+### Step 8: Analyze workload patterns
+{: #troubleshooting-step8}
+
+Understanding your workload patterns helps identify optimization opportunities.
+
+* Check operation counters:
+
+
+    ```js
+    db.serverStatus().opcounters
+    ```
+    {: codeblock}
+
+* Analyze operations over time:
+
+    ```js
+    db.serverStatus().opcountersRepl
+    ```
+    {: codeblock}
+
+* Identify hot collections:
+
+    ```js
+    db.adminCommand({ top: 1 })
+    ```
+    {: codeblock}
+
+* Check read vs write ratio:
+
+    ```js
+    var stats = db.serverStatus().opcounters;
+    print("Read ratio: " + (stats.query + stats.getmore) / (stats.query + stats.getmore + stats.insert + stats.update + stats.delete));
+    ```
+    {: codeblock}
+
+#### What to look for
+{: #troubleshooting-step8-symptoms}
+
+* Disproportionate operations on specific collections
+* High read-to-write or write-to-read ratios
+* Sudden spikes in operation counts
+* Time-based patterns (peak hours)
+
+#### Recommended actions
+{: #troubleshooting-step8-actions}
+
+* Optimize frequently accessed collections first
+* Consider read replicas for read-heavy workloads
+* Use appropriate read preferences
+* Implement caching for frequently read data
+* Review indexing strategy for hot collections
+* Consider sharding for write-heavy collections
 
 ### Step 9: Investigate memory pressure and cache efficiency
 {: #troubleshooting-step9}
@@ -371,6 +485,7 @@ MongoDB's WiredTiger storage engine relies heavily on cache efficiency.
 ```js
 db.serverStatus().wiredTiger.cache
 ```
+{: codeblock}
 
 #### Key metrics to review
 {: #troubleshooting-step9-metrics}
@@ -383,6 +498,7 @@ print("Pages read into cache: " + cache["pages read into cache"]);
 print("Pages written from cache: " + cache["pages written from cache"]);
 print("Cache hit ratio: " + (1 - cache["pages read into cache"] / (cache["pages read into cache"] + cache["pages requested from the cache"])));
 ```
+{: codeblock}
 
 #### Check for eviction pressure
 {: #troubleshooting-step9-pressure}
@@ -390,6 +506,7 @@ print("Cache hit ratio: " + (1 - cache["pages read into cache"] / (cache["pages 
 ```js
 db.serverStatus().wiredTiger.cache["pages evicted by application threads"]
 ```
+{: codeblock}
 
 #### What to look for
 {: #troubleshooting-step9-symptoms}
@@ -405,6 +522,71 @@ db.serverStatus().wiredTiger.cache["pages evicted by application threads"]
 ```js
 db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 ```
+{: codeblock}
+
+#### Recommended actions
+{: #troubleshooting-step9-actions}
+
+* Scale to a plan with more memory if cache is consistently full
+* Review and optimize indexes (remove unused indexes)
+* Limit result set sizes in queries
+* Use projections to reduce document size
+* Consider archiving old data
+* Monitor working set size trends
+
+#### Memory allocation best practices
+{: #troubleshooting-step9-best}
+
+* WiredTiger cache should be 50% of available RAM (default)
+* Leave sufficient memory for OS and other processes
+* Monitor swap usage (should be minimal)
+
+### Step 9: Investigate memory pressure and cache efficiency
+{: #troubleshooting-step9}
+
+MongoDB's WiredTiger storage engine relies heavily on cache efficiency.
+
+* Check WiredTiger cache statistics:
+
+    ```js
+    db.serverStatus().wiredTiger.cache
+    ```
+    {: codeblock}
+
+* Review key metrics:
+
+    ```js
+    var cache = db.serverStatus().wiredTiger.cache;
+    print("Cache size: " + cache["bytes currently in the cache"]);
+    print("Max cache size: " + cache["maximum bytes configured"]);
+    print("Pages read into cache: " + cache["pages read into cache"]);
+    print("Pages written from cache: " + cache["pages written from cache"]);
+    print("Cache hit ratio: " + (1 - cache["pages read into cache"] / (cache["pages read into cache"] + cache["pages requested from the cache"])));
+    ```
+    {: codeblock}
+
+* Check for eviction pressure:
+
+    ```js
+    db.serverStatus().wiredTiger.cache["pages evicted by application threads"]
+    ```
+    {: codeblock}
+
+#### What to look for
+{: #troubleshooting-step9-symptoms}
+
+* Cache hit ratio below 95%
+* High eviction rates
+* Cache size consistently at maximum
+* Application threads performing evictions
+
+#### Estimate working set size
+{: #troubleshooting-step9-size}
+
+```js
+db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
+```
+{: codeblock}
 
 #### Recommended actions
 {: #troubleshooting-step9-actions}
@@ -435,6 +617,7 @@ Write concern and read preference settings significantly impact performance and 
 ```js
 db.getWriteConcern()
 ```
+{: codeblock}
 
 #### Check replica set configuration
 {: #troubleshooting-step10-config}
@@ -442,6 +625,7 @@ db.getWriteConcern()
 ```js
 rs.conf()
 ```
+{: codeblock}
 
 #### Write concern options
 {: #troubleshooting-step10-options}
@@ -475,6 +659,76 @@ rs.conf()
 // Example in Node.js driver
 db.collection('users').find({}).readPreference('secondary')
 ```
+{: codeblock}
+
+#### What to look for
+{: #troubleshooting-step10-symptoms}
+
+* Overly strict write concerns for non-critical data
+* Using `primary` read preference when eventual consistency is acceptable
+* Not leveraging secondaries for read-heavy workloads
+
+#### Recommended actions
+{: #troubleshooting-step10-actions}
+
+* Use `w: 1` for high-throughput, non-critical writes
+* Use `w: "majority"` for important data (default)
+* Use `secondary` or `secondaryPreferred` for analytics queries
+* Consider `nearest` for geographically distributed applications
+* Balance consistency requirements with performance needs
+* Test different configurations under load
+
+
+### Step 10: Review write concern and read preference settings
+{: #troubleshooting-step10}
+
+Write concern and read preference settings significantly impact performance and consistency.
+
+* Check current write concern
+
+    ```js
+    db.getWriteConcern()
+    ```
+    {: codeblock}
+
+
+* Check replica set configuration
+
+    ```js
+    rs.conf()
+    ```
+    {: codeblock}
+
+* Write concern options:
+
+    | Write Concern | Durability | Performance | Use Case |
+    |---------------|------------|-------------|----------|
+    | `w: 1` | Low | High | Non-critical data, high throughput |
+    | `w: "majority"` | High | Medium | Default, balanced approach |
+    | `w: <number>` | Medium-High | Medium-Low | Specific replica count |
+    | `j: true` | Highest | Lowest | Critical data requiring journal sync |
+    {: caption="Write concern options" caption-side="top"}
+
+
+* Read preference options:
+
+    | Read Preference | Consistency | Performance | Use Case |
+    |-----------------|-------------|-------------|----------|
+    | `primary` | Highest | Medium | Default, strong consistency |
+    | `primaryPreferred` | High | Medium-High | Fallback to secondary |
+    | `secondary` | Eventual | High | Analytics, reporting |
+    | `secondaryPreferred` | Eventual | High | Read scaling |
+    | `nearest` | Eventual | Highest | Lowest latency |
+    {: caption="Read preference options" caption-side="top"}
+
+
+* Check read preference in your application:
+
+    ```js
+    // Example in Node.js driver
+    db.collection('users').find({}).readPreference('secondary')
+    ```
+    {: codeblock}
 
 #### What to look for
 {: #troubleshooting-step10-symptoms}
@@ -612,10 +866,10 @@ Action: Trigger scaling workflow
 ### Creating custom dashboards
 {: #custom-dashboard}
 
-1. In Sysdig, click **Dashboards** > **Create Dashboard**
-2. Add panels for key metrics
-3. Use filters to focus on your MongoDB deployment
-4. Save and share with your team
+1. In Sysdig, click **Dashboards** > **Create Dashboard**.
+2. Add panels for key metrics.
+3. Use filters to focus on your MongoDB deployment.
+4. Save and share with your team.
 
 ### Example dashboard layout
 {: #dashboard-layout}
@@ -644,7 +898,7 @@ Action: Trigger scaling workflow
 
 
 
-## IBM Cloud Activity Tracker integration
+## IBM Cloud Activity Tracker {{site.data.keyword.atracker_full_notm}} integration
 {: #activity-tracker-integration}
 
 IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that may impact performance.
@@ -653,9 +907,9 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 {: #activity-tracker-access}
 
 
-1. Navigate to **Observability** > **Activity Tracker** in {{site.data.keyword.cloud_notm}} console
-2. Select your region
-3. Filter events by your MongoDB instance
+1. Navigate to **Observability** > **Activity Tracker** in {{site.data.keyword.cloud_notm}} console.
+2. Select your region.
+3. Filter events by your MongoDB instance.
 
 ### Key events to monitor
 {: #key-events}
@@ -663,7 +917,6 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 
 #### Configuration changes
 {: #config-changes}
-
 
 * Scaling operations (CPU, memory, disk)
 * Backup configuration changes
@@ -673,7 +926,6 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 #### Performance-impacting events
 {: #performance-events}
 
-
 * Database restarts
 * Failover events
 * Maintenance operations
@@ -681,7 +933,6 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 
 ### Correlating events with performance issues
 {: #events-performance}
-
 
 1. Note the timestamp of performance degradation
 2. Search Activity Tracker for events around that time
@@ -698,6 +949,7 @@ Time: 2024-01-15 14:30:00 UTC
 Impact: Temporary connection disruption (30 seconds)
 Result: Improved performance after scaling
 ```
+{: codeblock}
 
 ### Audit trail for compliance
 {: #audit-compliance}
@@ -747,6 +999,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
   --memory 8192 \
   --cpu-allocation 4
 ```
+{: codeblock}
 
 #### Considerations
 {: #scaling-considerations}
@@ -777,6 +1030,7 @@ Add replica set members for read scaling and high availability.
 ibmcloud cdb deployment-groups-set <deployment-id> member \
   --members 4
 ```
+{: codeblock}
 
 #### Benefits
 {: #horizontal-benefits}
@@ -807,6 +1061,7 @@ Increase disk space and IOPS for better performance.
 ibmcloud cdb deployment-groups-set <deployment-id> member \
   --disk-allocation 102400
 ```
+{: codeblock}
 
 #### Important notes
 {: #storage-scaling-notes}
@@ -846,6 +1101,7 @@ if [ $(ibmcloud cdb deployment-metrics <deployment-id> --metric cpu) -gt 80 ]; t
   ibmcloud cdb deployment-groups-set <deployment-id> member --cpu-allocation 6
 fi
 ```
+{: codeblock}
 
 ## {{site.data.keyword.cloud_notm}} CLI and API for diagnostics
 {: #cli-api-diagnostics}
@@ -862,6 +1118,7 @@ curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
 # Install databases plugin
 ibmcloud plugin install cloud-databases
 ```
+{: codeblock}
 
 ### Essential diagnostic commands
 {: #diagnostic-commands}
@@ -876,6 +1133,7 @@ ibmcloud cdb deployments --type mongodb
 # Get specific deployment details
 ibmcloud cdb deployment <deployment-id>
 ```
+{: codeblock}
 
 #### Check deployment status
 {: #deployment-status}
@@ -887,6 +1145,7 @@ ibmcloud cdb deployment-status <deployment-id>
 # Get connection strings
 ibmcloud cdb deployment-connections <deployment-id>
 ```
+{: codeblock}
 
 #### Monitor metrics
 {: #monitor-metrics}
@@ -901,6 +1160,7 @@ ibmcloud cdb deployment-metrics <deployment-id> --metric memory
 # Get disk metrics
 ibmcloud cdb deployment-metrics <deployment-id> --metric disk
 ```
+{: codeblock}
 
 #### Scaling operations
 {: #scaling-operations}
@@ -918,6 +1178,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ibmcloud cdb deployment-groups-set <deployment-id> member \
   --disk-allocation 204800
 ```
+{: codeblock}
 
 #### Backup operations
 {: #backup-operations}
@@ -929,6 +1190,7 @@ ibmcloud cdb backups <deployment-id>
 # Get backup information
 ibmcloud cdb backup <backup-id>
 ```
+{: codeblock}
 
 ### Using the {{site.data.keyword.cloud_notm}} API
 {: #cloud-api}
@@ -940,6 +1202,7 @@ ibmcloud cdb backup <backup-id>
 # Get IAM token
 export IAM_TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r '.iam_token')
 ```
+{: codeblock}
 
 #### Get deployment metrics via API
 {: #api-metrics}
@@ -950,6 +1213,7 @@ curl -X GET \
   "https://api.{region}.databases.cloud.ibm.com/v5/deployments/{deployment-id}/metrics" \
   -H "Authorization: ${IAM_TOKEN}"
 ```
+{: codeblock}
 
 #### Scale deployment via API
 {: #api-metrics-scale}
@@ -969,6 +1233,7 @@ curl -X PATCH \
     }
   }'
 ```
+{: codeblock}
 
 ### Sample diagnostic script
 {: #sample-script}
@@ -1049,6 +1314,7 @@ Network configuration significantly impacts MongoDB performance, especially for 
 ```sh
 mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSource=admin&replicaSet=replset
 ```
+{: codeblock}
 
 #### Public endpoints
 {: #public-endpoints}
@@ -1071,7 +1337,6 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 #### Benefits
 {: #service-endpoints-benefits}
 
-
 * Reduced latency
 * No public internet traversal
 * Improved security posture
@@ -1084,6 +1349,7 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 # Enable service endpoint
 ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 ```
+{: codeblock}
 
 ### Multi-zone deployment considerations
 {: #multizone}
@@ -1115,6 +1381,7 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 # Test connection latency
 time mongo "mongodb://host:port/database" --eval "db.runCommand({ping: 1})"
 ```
+{: codeblock}
 
 #### Check from {{site.data.keyword.cloud_notm}} shell
 {: #measure-latency-shell}
@@ -1126,6 +1393,7 @@ ping -c 10 your-mongodb-host.databases.appdomain.cloud
 # TCP connection test
 nc -zv your-mongodb-host.databases.appdomain.cloud 27017
 ```
+{: codeblock}
 
 #### MongoDB connection diagnostics
 {: #measure-latency-connection}
@@ -1137,6 +1405,7 @@ db.runCommand({ ping: 1 })
 // Check connection pool stats
 db.serverStatus().connections
 ```
+{: codeblock}
 
 ### Geographic distribution
 {: #geographic}
@@ -1179,6 +1448,7 @@ const client = new MongoClient(uri, {
   socketTimeoutMS: 45000
 });
 ```
+{: codeblock}
 
 
 ## {{site.data.keyword.cloud_notm}} Support integration
@@ -1243,7 +1513,7 @@ mongo "your-connection-string" --eval "
 ### Opening a support ticket
 {: #open-ticket}
 
-#### Via {{site.data.keyword.cloud_notm}} console
+#### Using the {{site.data.keyword.cloud_notm}} console
 {: #ticket-console}
 
 1. Navigate to **Support** in top menu
@@ -1253,7 +1523,7 @@ mongo "your-connection-string" --eval "
 5. Provide detailed description
 6. Attach diagnostic files
 
-#### Via {{site.data.keyword.cloud_notm}} CLI
+#### Using the {{site.data.keyword.cloud_notm}} CLI
 {: #ticket-cli}
 
 ```bash
@@ -1264,6 +1534,7 @@ ibmcloud support case-create \
   --severity 2 \
   --offering databases-for-mongodb
 ```
+{: codeblock}
 
 ### Severity levels
 {: #ticket-severity}
@@ -1279,34 +1550,34 @@ ibmcloud support case-create \
 ### Escalation procedures
 {: #escalation}
 
-If issue is not resolved within expected timeframe:
+If the issue is not resolved within the expected timeframe:
 
-1. Update the support case with urgency
-2. Request escalation to senior engineer
-3. Contact your IBM account team
-4. For critical issues, request management escalation
+1. Update the support case with urgency.
+2. Request escalation to a senior engineer.
+3. Contact your IBM account team.
+4. For critical issues, request management escalation.
 
 ### SLA considerations
 {: #sla}
 
-* Review your service level agreement
-* Understand uptime guarantees
-* Know your support entitlements
-* Document all outages for SLA credits
+* Review your service level agreement.
+* Understand uptime guarantees.
+* Know your support entitlements.
+* Document all outages for SLA credits.
 
 ### Support best practices
 {: #support-best}
 
-* Provide complete information upfront
-* Respond promptly to support requests
-* Test suggested solutions in non-production first
-* Document resolution for future reference
-* Provide feedback on support experience
+* Provide complete information upfront.
+* Respond promptly to support requests.
+* Test suggested solutions in non-production first.
+* Document resolution for future reference.
+* Provide feedback on support experience.
 
 ### Self-service resources
 {: #self-service}
 
-Before opening a ticket, check:
+Before opening a ticket, check the following:
 
 * [{{site.data.keyword.cloud_notm}} Databases documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
 * [MongoDB documentation](https://docs.mongodb.com/)
@@ -1363,6 +1634,7 @@ print("Cache hit ratio: " + (hitRatio * 100).toFixed(2) + "%");
 // 6. Check for lock contention
 db.currentOp({ waitingForLock: true })
 ```
+{: codeblock}
 
 
 
@@ -1820,21 +2092,20 @@ Escalation: Create incident if > 90%
 |------|---------------|
 | **Indexing** | Regularly review and remove unused indexes |
 | **Monitoring** | Configure alerts for CPU, memory, disk, and replication lag |
-| **Capacity Planning** | Keep disk usage below 80%, scale proactively |
-| **Query Design** | Use explain plans during development |
+| **Capacity planning** | Keep disk usage below 80%, scale proactively |
+| **Query design** | Use explain plans during development |
 | **Scaling** | Scale proactively before saturation |
-| **Connection Pooling** | Use connection pools, avoid per-request connections |
-| **Read Preferences** | Use secondaries for read-heavy workloads |
-| **Write Concern** | Balance durability with performance needs |
-| **Schema Design** | Avoid unbounded arrays and excessive embedding |
-| **Backup Planning** | Schedule during low-traffic periods |
+| **Connection pooling** | Use connection pools, avoid per-request connections |
+| **Read preferences** | Use secondaries for read-heavy workloads |
+| **Write concern** | Balance durability with performance needs |
+| **Schema design** | Avoid unbounded arrays and excessive embedding |
+| **Backup planning** | Schedule during low-traffic periods |
 | **Network** | Use private endpoints for {{site.data.keyword.cloud_notm}} workloads |
 | **Security** | Rotate credentials regularly, use IP allowlisting |
 | **Documentation** | Document baseline metrics and normal patterns |
 | **Testing** | Test performance changes in non-production first |
 | **Support** | Gather diagnostics before contacting support |
 {: caption="Best practices" caption-side="top"}
-
 
 
 ## Additional resources
@@ -1862,5 +2133,3 @@ Escalation: Create incident if > 90%
 * [MongoDB community forums](https://www.mongodb.com/community/forums/)
 * [Stack Overflow - MongoDB Tag](https://stackoverflow.com/questions/tagged/mongodb)
 * [IBM Cloud Community](https://community.ibm.com/community/user/cloud/home)
-
----
