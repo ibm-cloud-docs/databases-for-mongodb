@@ -113,25 +113,28 @@ db.collection.find({ ... }).explain("executionStats")
 
 Slow queries are one of the most common causes of degraded performance.
 
-1. Enable profiling
+    1. Enable profiling
 
 
-```js
-db.setProfilingLevel(1, { slowms: 100 })
-```
+    ```js
+    db.setProfilingLevel(1, { slowms: 100 })
+    ```
+    {: codeblock}
 
-2. Review recent slow operations
+    2. Review recent slow operations
 
 
-```js
-db.system.profile.find().sort({ ts: -1 }).limit(20)
-```
+    ```js
+    db.system.profile.find().sort({ ts: -1 }).limit(20)
+    ```
+   {: codeblock}
 
-3. Analyze query execution
+    3. Analyze query execution
 
-```js
-db.collection.find({ ... }).explain("executionStats")
-```
+    ```js
+    db.collection.find({ ... }).explain("executionStats")
+    ```
+    {: codeblock}
 
 #### What to look for
 {: #troubleshooting-step2-symptoms}
