@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}}
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 15:53
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -113,23 +113,21 @@ db.collection.find({ ... }).explain("executionStats")
 
 Slow queries are one of the most common causes of degraded performance.
 
-    1. Enable profiling
-
+1. Enable profiling
 
     ```js
     db.setProfilingLevel(1, { slowms: 100 })
     ```
     {: codeblock}
 
-    2. Review recent slow operations
-
+2. Review recent slow operations
 
     ```js
     db.system.profile.find().sort({ ts: -1 }).limit(20)
     ```
    {: codeblock}
 
-    3. Analyze query execution
+3. Analyze query execution
 
     ```js
     db.collection.find({ ... }).explain("executionStats")
