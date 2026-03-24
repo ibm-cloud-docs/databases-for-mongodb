@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-03-23"
+lastupdated: "2026-03-24"
 
 keywords: mongodb, databases, monitoring, scaling, autoscaling, resources, troubleshooting
 
@@ -18,14 +18,15 @@ subcollection: databases-for-mongodb
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
 
-If your applications are experiencing slow responses, timeouts, or inconsistent database performance, complete following the steps.
+For information about performance tuning, see [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance&interface=ui).
 
+If your applications are experiencing slow responses, timeouts, or inconsistent database performance, complete following the steps.
 
 
 ## Symptoms of performance issues
 {: #troubleshooting-symptoms}
 
-You might observe some of the following symptoms:
+You might observe some of the following symptoms that indicate problems with performance:
 
 * Increased application latency
 * Slow query log entries
@@ -34,7 +35,7 @@ You might observe some of the following symptoms:
 * Replication lag
 * Connection timeouts
 
-Complete these steps to determine the cause of the issues:
+Complete the following steps to determine the cause of the issues:
 
 ### Step 1: Check resource utilization
 {: #troubleshooting-step1}
@@ -64,7 +65,6 @@ Review the **Monitoring** section for:
 * Review workload spikes in your application
 
 If resource usage remains elevated for sustained periods, scaling is recommended.
-
 
 
 ### Step 2: Identify slow queries
@@ -108,6 +108,47 @@ db.collection.find({ ... }).explain("executionStats")
 * Ensure aggregation pipelines begin with `$match`
 * Avoid large `skip()` pagination
 
+### Step 2: Identify slow queries
+{: #troubleshooting-step2}
+
+Slow queries are one of the most common causes of degraded performance.
+
+1. Enable profiling
+
+
+```js
+db.setProfilingLevel(1, { slowms: 100 })
+```
+
+2. Review recent slow operations
+
+
+```js
+db.system.profile.find().sort({ ts: -1 }).limit(20)
+```
+
+3. Analyze query execution
+
+```js
+db.collection.find({ ... }).explain("executionStats")
+```
+
+#### What to look for
+{: #troubleshooting-step2-symptoms}
+
+* `COLLSCAN` (collection scan instead of index usage)
+* High `totalDocsExamined` compared to `nReturned`
+* Blocking sort stages
+
+#### Recommended actions
+{: #troubleshooting-step2-actions}
+
+* Create appropriate indexes
+* Use compound indexes for multi-field queries
+* Ensure aggregation pipelines begin with `$match`
+* Avoid large `skip()` pagination
+
+
 
 ### Step 3: Review connection usage
 {: #troubleshooting-step3}
@@ -125,14 +166,13 @@ db.serverStatus().connections
 {: #troubleshooting-step3-actions}
 
 * Use connection pooling in your application
-* Avoid opening a new connection per request
+* Avoid opening a new connection for each request
 * Close unused cursors
 
 Connection limits are determined by your deployment plan.
 
 ### Step 4: Check replication health
 {: #troubleshooting-step4}
-
 
 Replication lag can affect read performance and data freshness.
 
@@ -1704,7 +1744,7 @@ db.users.find({ email: "user@example.com" }, { name: 1, email: 1, _id: 0 })
 
 Recommended thresholds for key performance metrics.
 
-| Metric | Warning Threshold | Critical Threshold | Recommended Action |
+| Metric | Warning threshold | Critical threshold | Recommended action |
 |--------|------------------|-------------------|-------------------|
 | **CPU Utilization** | > 75% | > 90% | Scale CPU cores |
 | **Memory Utilization** | > 80% | > 95% | Scale memory allocation |
@@ -1802,10 +1842,10 @@ Escalation: Create incident if > 90%
 ### {{site.data.keyword.cloud_notm}} documentation
 {: #docs}
 
-* [{{site.data.keyword.cloud_notm}} Databases for MongoDB documentation](https://cloud.ibm.com/docs/databases-for-mongodb)
-* [IBM Cloud Monitoring documentation](https://cloud.ibm.com/docs/monitoring)
-* [IBM Cloud Activity Tracker documentation](https://cloud.ibm.com/docs/activity-tracker)
-* [{{site.data.keyword.cloud_notm}} CLI reference](https://cloud.ibm.com/docs/cli)
+* [{{site.data.keyword.cloud_notm}} Databases for MongoDB documentation](/docs/databases-for-mongodb)
+* [IBM Cloud Monitoring documentation](/docs/monitoring)
+* [IBM Cloud Activity Tracker documentation](/docs/activity-tracker)
+* [{{site.data.keyword.cloud_notm}} CLI reference](/docs/cli)
 
 ### MongoDB documentation
 {: #mongodb-docs}
