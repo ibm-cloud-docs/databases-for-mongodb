@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} thu
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 12:16
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -65,46 +65,7 @@ Complete the following steps to determine the cause of the issues:
 If resource usage remains elevated for sustained periods, scaling is recommended.
 
 
-### Step 2: Identify slow queries
-{: #troubleshooting-step2}
 
-Slow queries are one of the most common causes of degraded performance.
-
-#### Enable profiling
-{: #troubleshooting-step2-profiling}
-
-```js
-db.setProfilingLevel(1, { slowms: 100 })
-```
-
-#### Review recent slow operations
-{: #troubleshooting-step2-recent}
-
-```js
-db.system.profile.find().sort({ ts: -1 }).limit(20)
-```
-
-#### Analyze query execution
-{: #troubleshooting-step2-query}
-
-```js
-db.collection.find({ ... }).explain("executionStats")
-```
-
-#### What to look for
-{: #troubleshooting-step2-symptoms}
-
-* `COLLSCAN` (collection scan instead of index usage)
-* High `totalDocsExamined` compared to `nReturned`
-* Blocking sort stages
-
-#### Recommended actions
-{: #troubleshooting-step2-actions}
-
-* Create appropriate indexes
-* Use compound indexes for multi-field queries
-* Ensure aggregation pipelines begin with `$match`
-* Avoid large `skip()` pagination
 
 ### Step 2: Identify slow queries
 {: #troubleshooting-step2}
@@ -132,14 +93,14 @@ Slow queries are one of the most common causes of degraded performance.
     ```
     {: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step2-symptoms}
 
 * `COLLSCAN` (collection scan instead of index usage)
 * High `totalDocsExamined` compared to `nReturned`
 * Blocking sort stages
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step2-actions}
 
 * Create appropriate indexes
@@ -154,14 +115,15 @@ Slow queries are one of the most common causes of degraded performance.
 
 High or poorly managed connections can impact performance.
 
-#### Check connection statistics
+#### Check connection statistics:
 {: #troubleshooting-step3-statistics}
 
 ```js
 db.serverStatus().connections
 ```
+{: codeblock}
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step3-actions}
 
 * Use connection pooling in your application
@@ -175,14 +137,14 @@ Connection limits are determined by your deployment plan.
 
 Replication lag can affect read performance and data freshness.
 
-#### Check replication status
+#### Check replication status:
 {: #troubleshooting-step4-status}
 
 ```js
 rs.printSecondaryReplicationInfo()
 ```
 
-#### Common causes of lag
+#### Common causes of lag:
 {: #troubleshooting-step4-lag}
 
 * High write throughput
@@ -204,15 +166,16 @@ If your deployment uses sharding:
 ```js
 sh.status()
 ```
+{: codeblock}
 
-#### Check for
+#### Check for:
 {: #troubleshooting-step5-check}
 
 * Uneven chunk distribution
 * Jumbo chunks
 * Traffic concentrated on a single shard
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step5-actions}
 
 * Review shard key selection
@@ -226,14 +189,14 @@ Improper shard key selection can significantly affect performance at scale.
 
 Deleting a significant percentage of data does not immediately reduce disk usage at the operating system level.
 
-#### Possible impacts
+#### Possible impacts:
 {: #troubleshooting-step6-impacts}
 
 * Internal fragmentation
 * High disk utilization
 * Reduced performance
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step6-actions}
 
 * Plan compaction operations carefully
@@ -242,67 +205,6 @@ Deleting a significant percentage of data does not immediately reduce disk usage
 
 For managed deployments, schedule maintenance activities appropriately.
 
-### Step 7: Check for lock contention
-{: #troubleshooting-step7}
-
-Lock contention can severely impact concurrent operations and overall throughput.
-
-#### Check global lock statistics
-{: #troubleshooting-step7-statistics}
-
-```js
-db.serverStatus().locks
-```
-
-#### Check current operations for locks
-{: #troubleshooting-step7-locks}
-
-```js
-db.currentOp({
-  $or: [
-    { waitingForLock: true },
-    { "locks.Global": "w" }
-  ]
-})
-```
-
-#### Analyze lock wait time
-{: #troubleshooting-step7-wait}
-
-```js
-db.serverStatus().globalLock
-```
-
-#### What to look for
-{: #troubleshooting-step7-symptoms}
-
-* High `currentQueue` values (readers or writers)
-* Operations with `waitingForLock: true`
-* Long-running operations holding locks
-* Index builds blocking operations
-
-#### Common causes
-{: #troubleshooting-step7-causes}
-
-* Long-running queries without proper indexes
-* Large write operations
-* Index builds on large collections
-* Administrative commands (compact, repairDatabase)
-
-#### Recommended actions
-{: #troubleshooting-step7-actions}
-
-* Kill long-running operations if necessary:
-  ```js
-  db.killOp(opid)
-  ```
-* Build indexes in the background:
-  ```js
-  db.collection.createIndex({ field: 1 }, { background: true })
-  ```
-* Break large operations into smaller batches
-* Schedule maintenance operations during low-traffic periods
-* Use read concern and write concern appropriately
 
 ### Step 7: Check for lock contention
 {: #troubleshooting-step7}
@@ -335,7 +237,7 @@ Lock contention can severely impact concurrent operations and overall throughput
   ```
   {: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step7-symptoms}
 
 * High `currentQueue` values (readers or writers)
@@ -343,7 +245,7 @@ Lock contention can severely impact concurrent operations and overall throughput
 * Long-running operations holding locks
 * Index builds blocking operations
 
-#### Common causes
+#### Common causes:
 {: #troubleshooting-step7-causes}
 
 * Long-running queries without proper indexes
@@ -351,7 +253,7 @@ Lock contention can severely impact concurrent operations and overall throughput
 * Index builds on large collections
 * Administrative commands (compact, repairDatabase)
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step7-actions}
 
 * Kill long-running operations if necessary:
@@ -366,58 +268,6 @@ Lock contention can severely impact concurrent operations and overall throughput
 * Schedule maintenance operations during low-traffic periods
 * Use read concern and write concern appropriately
 
-
-### Step 8: Analyze workload patterns
-{: #troubleshooting-step8}
-
-Understanding your workload patterns helps identify optimization opportunities.
-
-#### Check operation counters
-{: #troubleshooting-step8-counters}
-
-```js
-db.serverStatus().opcounters
-```
-
-#### Analyze operations over time
-{: #troubleshooting-step8-time}
-
-```js
-db.serverStatus().opcountersRepl
-```
-
-### Identify hot collections
-{: #troubleshooting-step8-hot}
-
-```js
-db.adminCommand({ top: 1 })
-```
-
-### Check read vs write ratio
-{: #troubleshooting-step8-ratio}
-
-```js
-var stats = db.serverStatus().opcounters;
-print("Read ratio: " + (stats.query + stats.getmore) / (stats.query + stats.getmore + stats.insert + stats.update + stats.delete));
-```
-
-#### What to look for
-{: #troubleshooting-step8-symptoms}
-
-* Disproportionate operations on specific collections
-* High read-to-write or write-to-read ratios
-* Sudden spikes in operation counts
-* Time-based patterns (peak hours)
-
-#### Recommended actions
-{: #troubleshooting-step8-actions}
-
-* Optimize frequently accessed collections first
-* Consider read replicas for read-heavy workloads
-* Use appropriate read preferences
-* Implement caching for frequently read data
-* Review indexing strategy for hot collections
-* Consider sharding for write-heavy collections
 
 ### Step 8: Analyze workload patterns
 {: #troubleshooting-step8}
@@ -454,7 +304,7 @@ Understanding your workload patterns helps identify optimization opportunities.
     ```
     {: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step8-symptoms}
 
 * Disproportionate operations on specific collections
@@ -462,82 +312,16 @@ Understanding your workload patterns helps identify optimization opportunities.
 * Sudden spikes in operation counts
 * Time-based patterns (peak hours)
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step8-actions}
 
-* Optimize frequently accessed collections first
-* Consider read replicas for read-heavy workloads
-* Use appropriate read preferences
-* Implement caching for frequently read data
-* Review indexing strategy for hot collections
-* Consider sharding for write-heavy collections
+* Optimize frequently accessed collections first.
+* Consider read replicas for read-heavy workloads.
+* Use appropriate read preferences.
+* Implement caching for frequently read data.
+* Review indexing strategy for hot collections.
+* Consider sharding for write-heavy collections.
 
-### Step 9: Investigate memory pressure and cache efficiency
-{: #troubleshooting-step9}
-
-MongoDB's WiredTiger storage engine relies heavily on cache efficiency.
-
-#### Check WiredTiger cache statistics
-{: #troubleshooting-step9-statistics}
-
-```js
-db.serverStatus().wiredTiger.cache
-```
-{: codeblock}
-
-#### Key metrics to review
-{: #troubleshooting-step9-metrics}
-
-```js
-var cache = db.serverStatus().wiredTiger.cache;
-print("Cache size: " + cache["bytes currently in the cache"]);
-print("Max cache size: " + cache["maximum bytes configured"]);
-print("Pages read into cache: " + cache["pages read into cache"]);
-print("Pages written from cache: " + cache["pages written from cache"]);
-print("Cache hit ratio: " + (1 - cache["pages read into cache"] / (cache["pages read into cache"] + cache["pages requested from the cache"])));
-```
-{: codeblock}
-
-#### Check for eviction pressure
-{: #troubleshooting-step9-pressure}
-
-```js
-db.serverStatus().wiredTiger.cache["pages evicted by application threads"]
-```
-{: codeblock}
-
-#### What to look for
-{: #troubleshooting-step9-symptoms}
-
-* Cache hit ratio below 95%
-* High eviction rates
-* Cache size consistently at maximum
-* Application threads performing evictions
-
-#### Estimate working set size
-{: #troubleshooting-step9-size}
-
-```js
-db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
-```
-{: codeblock}
-
-#### Recommended actions
-{: #troubleshooting-step9-actions}
-
-* Scale to a plan with more memory if cache is consistently full
-* Review and optimize indexes (remove unused indexes)
-* Limit result set sizes in queries
-* Use projections to reduce document size
-* Consider archiving old data
-* Monitor working set size trends
-
-#### Memory allocation best practices
-{: #troubleshooting-step9-best}
-
-* WiredTiger cache should be 50% of available RAM (default)
-* Leave sufficient memory for OS and other processes
-* Monitor swap usage (should be minimal)
 
 ### Step 9: Investigate memory pressure and cache efficiency
 {: #troubleshooting-step9}
