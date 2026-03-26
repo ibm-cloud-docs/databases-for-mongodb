@@ -607,23 +607,19 @@ db.currentOp({
 #### Key metrics to track:
 {: #key-metrics}
 
-###### Platform metrics
-{: #platform-metrics}
+* **Platform metrics**
+    * **CPU utilization** - Target: < 75% sustained
+    * **Memory utilization** - Target: < 80% sustained
+    * **Disk utilization** - Target: < 80%
+    * **Disk IOPS** - Monitor for saturation
+    * **Network throughput** - Identify bandwidth constraints
 
-* **CPU utilization** - Target: < 75% sustained
-* **Memory utilization** - Target: < 80% sustained
-* **Disk utilization** - Target: < 80%
-* **Disk IOPS** - Monitor for saturation
-* **Network throughput** - Identify bandwidth constraints
-
-###### MongoDB-specific metrics
-{: #mongodb-metrics}
-
-* **Operations per second** - Track workload patterns
-* **Active connections** - Monitor against plan limits
-* **Replication lag** - Target: < 1 second
-* **Query execution time** - Identify slow queries
-* **Cache hit ratio** - Target: > 95%
+* **MongoDB-specific metrics**
+    * **Operations per second** - Track workload patterns
+    * **Active connections** - Monitor against plan limits
+    * **Replication lag** - Target: < 1 second
+    * **Query execution time** - Identify slow queries
+    * **Cache hit ratio** - Target: > 95%
 
 ### Setting up alerts
 {: #alert-setup}
@@ -670,7 +666,7 @@ Action: Trigger scaling workflow
 ### Historical analysis
 {: #analysis}
 
-* Use time range selector for historical data
+* Use the time range selector for historical data
 * Compare current metrics with baseline
 * Identify trends and patterns
 * Correlate events with performance changes
@@ -678,12 +674,11 @@ Action: Trigger scaling workflow
 ### Recommended actions
 {: #actions}
 
-* Set up alerts before issues occur
-* Review dashboards daily
-* Establish baseline metrics
-* Document normal vs abnormal patterns
-* Use metrics for capacity planning
-
+* Set up alerts before issues occur.
+* Review dashboards daily.
+* Establish baseline metrics.
+* Document normal vs abnormal patterns.
+* Use metrics for capacity planning.
 
 
 ## IBM Cloud Activity Tracker integration
@@ -695,11 +690,11 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 {: #activity-tracker-access}
 
 
-1. Navigate to **Observability** > **Activity Tracker** in {{site.data.keyword.cloud_notm}} console.
+1. Navigate to **Observability** > **Activity Tracker** in the {{site.data.keyword.cloud_notm}} console.
 2. Select your region.
 3. Filter events by your MongoDB instance.
 
-### Key events to monitor
+### Key events to monitor:
 {: #key-events}
 
 
@@ -748,37 +743,37 @@ Result: Improved performance after scaling
 * Review access patterns
 * Identify unauthorized changes
 
-### Recommended actions
+### Recommended actions:
 {: #activity-tracker-actions}
 
 
-* Review Activity Tracker logs regularly
-* Set up alerts for critical events
-* Document change management procedures
-* Correlate events with performance metrics
-* Use for post-incident analysis
+* Review Activity Tracker logs regularly.
+* Set up alerts for critical events.
+* Document change management procedures.
+* Correlate events with performance metrics.
+* Use for post-incident analysis.
 
 
 ## {{site.data.keyword.cloud_notm}} scaling options
 {: #scaling-options}
 
-IBM Cloud Databases for MongoDB offers flexible scaling options to match your performance needs.
+{{site.data.keyword.databases-for-mongodb}} offers flexible scaling options to match your performance needs.
 
 ### Vertical scaling (compute and memory)
 {: #vertical-scaling}
 
 Scale CPU and memory resources to handle increased workload.
 
-#### Via {{site.data.keyword.cloud_notm}} console
+#### Using the {{site.data.keyword.cloud_notm}} console
 {: #scaling-console}
 
-1. Navigate to your MongoDB deployment
-2. Click **Resources** in the left navigation
-3. Adjust **Memory** and **CPU** sliders
-4. Review cost impact
-5. Click **Scale**
+1. Navigate to your MongoDB deployment.
+2. Click **Resources** in the left navigation.
+3. Adjust **Memory** and **CPU** sliders.
+4. Review cost impact.
+5. Click **Scale**.
 
-#### Via {{site.data.keyword.cloud_notm}} CLI
+#### Using the {{site.data.keyword.cloud_notm}} CLI
 {: #scaling-cli}
 
 ```bash
@@ -802,15 +797,15 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 
 Add replica set members for read scaling and high availability.
 
-#### Via {{site.data.keyword.cloud_notm}} console
+#### Using the {{site.data.keyword.cloud_notm}} console
 {: #scaling-horizontal-console}
 
-1. Navigate to **Resources**
-2. Adjust **Members** slider
-3. Review configuration
-4. Click **Scale**
+1. Navigate to **Resources**.
+2. Adjust **Members** slider.
+3. Review configuration.
+4. Click **Scale**.
 
-#### Via {{site.data.keyword.cloud_notm}} CLI
+#### Using the {{site.data.keyword.cloud_notm}} CLI
 {: #scaling-horizontal-cli}
 
 ```bash
@@ -833,7 +828,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 
 Increase disk space and IOPS for better performance.
 
-#### Via {{site.data.keyword.cloud_notm}} console
+#### Using the {{site.data.keyword.cloud_notm}} console
 {: #storage-scaling-console}
 
 1. Navigate to **Resources**
@@ -841,7 +836,7 @@ Increase disk space and IOPS for better performance.
 3. Review IOPS allocation
 4. Click **Scale**
 
-#### Via {{site.data.keyword.cloud_notm}} CLI
+#### Using the {{site.data.keyword.cloud_notm}} CLI
 {: #storage-scaling-cli}
 
 ```bash
@@ -875,10 +870,10 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ### Cost optimization
 {: #storage-scaling-cost}
 
-* Right-size your deployment
-* Use monitoring to identify actual needs
-* Scale down during low-traffic periods (if supported)
-* Consider reserved capacity for predictable workloads
+* Right size your deployment.
+* Use monitoring to identify actual needs.
+* Scale down during low-traffic periods (if supported).
+* Consider reserved capacity for predictable workloads.
 
 ### Automation
 {: #storage-scaling-automation}
