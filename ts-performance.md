@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 17:11
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 17:32
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -599,7 +599,7 @@ Action: Trigger scaling workflow
 * Identify trends and patterns
 * Correlate events with performance changes
 
-### Recommended actions
+#### Recommended actions
 {: #actions}
 
 * Set up alerts before issues occur.
@@ -768,7 +768,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * No downtime for storage scaling
 * Monitor disk usage trends
 
-### Scaling best practices
+#### Scaling best practices
 {: #storage-scaling-best}
 
 | Scenario | Recommended action |
@@ -781,7 +781,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 | Write-heavy workload | Scale CPU and memory |
 {: caption="Scaling best practices" caption-side="top"}
 
-### Cost optimization
+#### Cost optimization
 {: #storage-scaling-cost}
 
 * Right size your deployment.
@@ -789,7 +789,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * Scale down during low-traffic periods (if supported).
 * Consider reserved capacity for predictable workloads.
 
-### Automation
+#### Automation
 {: #storage-scaling-automation}
 
 ```bash
@@ -800,12 +800,12 @@ fi
 ```
 {: codeblock}
 
-## {{site.data.keyword.cloud_notm}} CLI and API for diagnostics
+### {{site.data.keyword.cloud_notm}} CLI and API for diagnostics
 {: #cli-api-diagnostics}
 
 Use {{site.data.keyword.cloud_notm}} CLI and API for automated diagnostics and monitoring.
 
-### Installing {{site.data.keyword.cloud_notm}} CLI
+#### Installing {{site.data.keyword.cloud_notm}} CLI
 {: #install-cli}
 
 ```bash
@@ -817,11 +817,11 @@ ibmcloud plugin install cloud-databases
 ```
 {: codeblock}
 
-### Essential diagnostic commands
+#### Essential diagnostic commands
 {: #diagnostic-commands}
 
-#### Get deployment information:
-{: #deployment-info}
+* **Get deployment information:**
+
 
 ```bash
 # List all MongoDB deployments
@@ -832,8 +832,7 @@ ibmcloud cdb deployment <deployment-id>
 ```
 {: codeblock}
 
-#### Check deployment status:
-{: #deployment-status}
+* **Check deployment status:**
 
 ```bash
 # Get deployment status
@@ -844,8 +843,7 @@ ibmcloud cdb deployment-connections <deployment-id>
 ```
 {: codeblock}
 
-#### Monitor metrics:
-{: #monitor-metrics}
+* **Monitor metrics:**
 
 ```bash
 # Get CPU metrics
@@ -859,8 +857,7 @@ ibmcloud cdb deployment-metrics <deployment-id> --metric disk
 ```
 {: codeblock}
 
-#### Scaling operations:
-{: #scaling-operations}
+* **Scaling operations:**
 
 ```bash
 # Scale memory
@@ -877,8 +874,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 {: codeblock}
 
-#### Backup operations:
-{: #backup-operations}
+* **Backup operations:**
 
 ```bash
 # List backups
@@ -889,11 +885,10 @@ ibmcloud cdb backup <backup-id>
 ```
 {: codeblock}
 
-### Using the {{site.data.keyword.cloud_notm}} API
+#### Using the {{site.data.keyword.cloud_notm}} API
 {: #cloud-api}
 
-#### Authentication:
-{: #authentication}
+* **Authentication:**
 
 ```bash
 # Get IAM token
@@ -901,8 +896,7 @@ export IAM_TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r '.iam_token')
 ```
 {: codeblock}
 
-#### Get deployment metrics using the API
-{: #api-metrics}
+* **Get deployment metrics using the API:**
 
 ```bash
 # Get metrics
@@ -912,8 +906,7 @@ curl -X GET \
 ```
 {: codeblock}
 
-#### Scale deployment using the API
-{: #api-metrics-scale}
+* **Scale deployment using the API:**
 
 ```bash
 # Scale resources
@@ -932,8 +925,7 @@ curl -X PATCH \
 ```
 {: codeblock}
 
-### Sample diagnostic script
-{: #sample-script}
+* ***Sample diagnostic script:**
 
 ```bash
 #!/bin/bash
@@ -973,8 +965,7 @@ echo ""
 echo "=== Diagnostics Complete ==="
 ```
 
-### Automation recommendations
-{: #automation}
+* **Automation recommendations**
 
 * Schedule regular health checks.
 * Integrate with monitoring systems.
@@ -983,12 +974,12 @@ echo "=== Diagnostics Complete ==="
 * Log all operations for audit trail.
 
 
-## {{site.data.keyword.cloud_notm}} network optimization
+### {{site.data.keyword.cloud_notm}} network optimization
 {: #network}
 
 Network configuration significantly impacts MongoDB performance, especially for distributed applications.
 
-### Private endpoints compared to public endpoints
+#### Private endpoints compared to public endpoints
 {: #endpoints}
 
 #### Private endpoints (recommended)
@@ -1026,7 +1017,7 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 * Enforce TLS/SSL.
 * Rotate credentials regularly.
 
-### Service endpoints
+#### Service endpoints
 {: #service-endpoints}
 
 {{site.data.keyword.cloud_notm}} service endpoints provide optimized connectivity within {{site.data.keyword.cloud_notm}}.
@@ -1048,7 +1039,7 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 ```
 {: codeblock}
 
-### Multi-zone deployment considerations
+#### Multi-zone deployment considerations
 {: #multizone}
 
 {{site.data.keyword.databases-for-mongodb}} can span multiple availability zones.
@@ -1068,11 +1059,10 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 * Consider `nearest` read preference for multi-zone apps.
 * Monitor replication lag between zones.
 
-### Network latency troubleshooting
+#### Network latency troubleshooting
 {: #latency}
 
-#### Measure latency from application
-{: #measure-latency}
+* **Measure latency from application**
 
 ```bash
 # Test connection latency
@@ -1080,8 +1070,7 @@ time mongo "mongodb://host:port/database" --eval "db.runCommand({ping: 1})"
 ```
 {: codeblock}
 
-#### Check from {{site.data.keyword.cloud_notm}} shell
-{: #measure-latency-shell}
+* **Check from {{site.data.keyword.cloud_notm}} shell**
 
 ```bash
 # Ping test (if ICMP allowed)
@@ -1104,7 +1093,7 @@ db.serverStatus().connections
 ```
 {: codeblock}
 
-### Geographic distribution
+#### Geographic distribution
 {: #geographic}
 
 For globally distributed applications:
@@ -1132,7 +1121,7 @@ For globally distributed applications:
 * Compress data at application level
 * Use bulk operations to reduce round trips
 
-### Connection pooling best practices
+#### Connection pooling best practices
 {: #latency-pooling}
 
 ```javascript
@@ -1148,12 +1137,12 @@ const client = new MongoClient(uri, {
 {: codeblock}
 
 
-## {{site.data.keyword.cloud_notm}} Support integration
+### {{site.data.keyword.cloud_notm}} Support integration
 {: #support-integration}
 
 Know when and how to engage {{site.data.keyword.cloud_notm}} Support for performance issues.
 
-### When to contact IBM Support
+#### When to contact IBM Support
 {: #contact-IBM}
 
 Contact support if the following apply:
@@ -1166,37 +1155,33 @@ Contact support if the following apply:
 * Deployment health issues.
 * Backup or restore problems.
 
-### Before contacting support
+#### Before contacting support
 {: #before-contact}
 
 Gather the following information:
 
-#### Deployment details
-{: #deployment-details}
+* **Deployment details**
 
 * Deployment ID (CRN)
 * Region and availability zones
 * Current plan and resources
 * MongoDB version
 
-#### Issue details
-{: #issue-details}
+* **Issue details**
 
 * Time window of the issue (with timezone)
 * Symptoms observed
 * Impact on applications
 * Recent changes (code, configuration, scaling)
 
-#### Performance data
-{: #performance-data}
+* **Performance data**
 
 * Monitoring screenshots from Sysdig
 * Query examples causing issues
 * Output from diagnostic commands
 * Activity Tracker events during the issue window
 
-#### MongoDB diagnostics
-{: #mongodb-diagnostics}
+* **MongoDB diagnostics**
 
 ```bash
 # Collect diagnostic data
@@ -1208,7 +1193,7 @@ mongo "your-connection-string" --eval "
 ```
 {: codeblock}
 
-### Opening a support ticket
+#### Opening a support ticket
 {: #open-ticket}
 
 #### Using the {{site.data.keyword.cloud_notm}} console
