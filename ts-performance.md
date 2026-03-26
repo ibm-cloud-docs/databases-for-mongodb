@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 14:44
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 17:11
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -126,9 +126,9 @@ db.serverStatus().connections
 #### Recommended actions:
 {: #troubleshooting-step3-actions}
 
-* Use connection pooling in your application
-* Avoid opening a new connection for each request
-* Close unused cursors
+* Use connection pooling in your application.
+* Avoid opening a new connection for each request.
+* Close unused cursors.
 
 Connection limits are determined by your deployment plan.
 
@@ -155,14 +155,14 @@ rs.printSecondaryReplicationInfo()
 #### Recommended actions
 {: #troubleshooting-step4-actions}
 
-* Scale storage performance
-* Review write concern settings
-* Scale to a higher plan if lag is persistent
+* Scale storage performance.
+* Review write concern settings.
+* Scale to a higher plan if lag is persistent.
 
 ### Step 5: Sharded cluster considerations (if applicable)
 {: #troubleshooting-step5}
 
-If your deployment uses sharding:
+If your deployment uses sharding, run:
 
 ```js
 sh.status()
@@ -179,9 +179,9 @@ sh.status()
 #### Recommended actions:
 {: #troubleshooting-step5-actions}
 
-* Review shard key selection
-* Avoid monotonically increasing shard keys
-* Consider hashed shard keys
+* Review shard key selection.
+* Avoid monotonically increasing shard keys.
+* Consider hashed shard keys.
 
 Improper shard key selection can significantly affect performance at scale.
 
@@ -200,9 +200,9 @@ Deleting a significant percentage of data does not immediately reduce disk usage
 #### Recommended actions:
 {: #troubleshooting-step6-actions}
 
-* Plan compaction operations carefully
-* Consider dump and restore for severe fragmentation
-* Keep disk utilization below 80–85%
+* Plan compaction operations carefully.
+* Consider dump and restore for severe fragmentation.
+* Keep disk utilization below 80–85%.
 
 For managed deployments, schedule maintenance activities appropriately.
 
@@ -241,10 +241,10 @@ Lock contention can severely impact concurrent operations and overall throughput
 #### What to look for:
 {: #troubleshooting-step7-symptoms}
 
-* High `currentQueue` values (readers or writers)
-* Operations with `waitingForLock: true`
-* Long-running operations holding locks
-* Index builds blocking operations
+* High `currentQueue` values (readers or writers).
+* Operations with `waitingForLock: true`.
+* Long-running operations holding locks.
+* Index builds that block operations.
 
 #### Common causes:
 {: #troubleshooting-step7-causes}
@@ -376,19 +376,19 @@ db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 #### Recommended actions:
 {: #troubleshooting-step9-actions}
 
-* Scale to a plan with more memory if the cache is consistently full
-* Review and optimize indexes (remove unused indexes)
-* Limit result set sizes in queries
-* Use projections to reduce document size
-* Consider archiving old data
-* Monitor working set size trends
+* Scale to a plan with more memory if the cache is consistently full.
+* Review and optimize indexes (remove unused indexes).
+* Limit result set sizes in queries.
+* Use projections to reduce document size.
+* Consider archiving old data.
+* Monitor working set size trends.
 
 #### Memory allocation best practices
 {: #troubleshooting-step9-best}
 
 * The WiredTiger cache should be 50% of available RAM (default).
 * Leave sufficient memory for OS and other processes.
-* Monitor swap usage (should be minimal).
+* Monitor swap usage, which should be minimal.
 
 
 ### Step 10: Review write concern and read preference settings
@@ -468,7 +468,7 @@ Backup operations and maintenance tasks can temporarily affect performance.
 #### {{site.data.keyword.cloud_notm}} backup schedule
 {: #troubleshooting-step11-schedule}
 
-{{site.data.keyword.databases-for-mongodb}} performs automatic backups. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
+{{site.data.keyword.databases-for-mongodb}} automatically backs up. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
 
 #### Check for ongoing backup operations:
 {: #troubleshooting-step11-backup}
@@ -530,26 +530,26 @@ db.currentOp({
 
 1. Navigate to your MongoDB deployment in {{site.data.keyword.cloud_notm}} console.
 2. Click **Monitoring** in the left navigation.
-3. Click **Launch Monitoring** to open Sysdig dashboard.
+3. Click **Launch Monitoring** to open the Sysdig dashboard.
 
 #### Key metrics to track:
 {: #key-metrics}
 
 * **Platform metrics:**
-    * **CPU utilization** - Target: < 75% sustained
-    * **Memory utilization** - Target: < 80% sustained
-    * **Disk utilization** - Target: < 80%
-    * **Disk IOPS** - Monitor for saturation
-    * **Network throughput** - Identify bandwidth constraints
+    * **CPU utilization** - target: < 75% sustained
+    * **Memory utilization** - target: < 80% sustained
+    * **Disk utilization** - target: < 80%
+    * **Disk IOPS** - monitor for saturation
+    * **Network throughput** - identify bandwidth constraints
 
 * **MongoDB-specific metrics:**
-    * **Operations per second** - Track workload patterns
-    * **Active connections** - Monitor against plan limits
-    * **Replication lag** - Target: < 1 second
-    * **Query execution time** - Identify slow queries
-    * **Cache hit ratio** - Target: > 95%
+    * **Operations per second** - track workload patterns
+    * **Active connections** - monitor against plan limits
+    * **Replication lag** - target: < 1 second
+    * **Query execution time** - identify slow queries
+    * **Cache hit ratio** - target: > 95%
 
-### Setting up alerts
+#### Setting up alerts
 {: #alert-setup}
 
 Create alerts for critical thresholds:
@@ -575,7 +575,7 @@ Action: Trigger scaling workflow
 ```
 {: codeblock}
 
-### Creating custom dashboards
+#### Creating custom dashboards
 {: #custom-dashboard}
 
 1. In Sysdig, click **Dashboards** > **Create Dashboard**.
@@ -583,7 +583,7 @@ Action: Trigger scaling workflow
 3. Use filters to focus on your MongoDB deployment.
 4. Save and share with your team.
 
-### Example dashboard layout
+#### Example dashboard layout
 {: #dashboard-layout}
 
 * **Row 1**: CPU, memory, disk utilization
@@ -591,7 +591,7 @@ Action: Trigger scaling workflow
 * **Row 3**: Replication lag, query performance
 * **Row 4**: Cache statistics, lock contention
 
-### Historical analysis
+#### Historical analysis
 {: #analysis}
 
 * Use the time range selector for historical data
@@ -605,16 +605,16 @@ Action: Trigger scaling workflow
 * Set up alerts before issues occur.
 * Review dashboards daily.
 * Establish baseline metrics.
-* Document normal vs abnormal patterns.
+* Document normal patterns compared to abnormal patterns.
 * Use metrics for capacity planning.
 
 
-## IBM Cloud Activity Tracker integration
+### IBM Cloud Activity Tracker integration
 {: #activity-tracker-integration}
 
 IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that can impact performance.
 
-### Accessing Activity Tracker
+#### Accessing Activity Tracker
 {: #activity-tracker-access}
 
 
@@ -622,27 +622,23 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 2. Select your region.
 3. Filter events by your MongoDB instance.
 
-### Key events to monitor:
+#### Key events to monitor:
 {: #key-events}
 
 
-#### Configuration changes
-{: #config-changes}
+* **Configuration changes:**
+    * Scaling operations (CPU, memory, disk)
+    * Backup configuration changes
+    * Network configuration updates
+    * User access modifications
 
-* Scaling operations (CPU, memory, disk)
-* Backup configuration changes
-* Network configuration updates
-* User access modifications
+* **Performance-impacting events**
+    * Database restarts
+    * Failover events
+    * Maintenance operations
+    * Index creation and deletion
 
-#### Performance-impacting events
-{: #performance-events}
-
-* Database restarts
-* Failover events
-* Maintenance operations
-* Index creation/deletion
-
-### Correlating events with performance issues
+#### Correlating events with performance issues
 {: #events-performance}
 
 1. Note the timestamp of performance degradation.
@@ -650,7 +646,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 3. Look for configuration changes or administrative actions.
 4. Correlate with monitoring metrics.
 
-### Example event analysis
+#### Example event analysis
 {: #example-analysis}
 
 
@@ -662,18 +658,16 @@ Result: Improved performance after scaling
 ```
 {: codeblock}
 
-### Audit trail for compliance
+#### Audit trail for compliance
 {: #audit-compliance}
-
 
 * Track who made changes and when
 * Maintain compliance with security policies
 * Review access patterns
 * Identify unauthorized changes
 
-### Recommended actions:
+#### Recommended actions:
 {: #activity-tracker-actions}
-
 
 * Review Activity Tracker logs regularly.
 * Set up alerts for critical events.
@@ -682,27 +676,24 @@ Result: Improved performance after scaling
 * Use for post-incident analysis.
 
 
-## {{site.data.keyword.cloud_notm}} scaling options
+### {{site.data.keyword.cloud_notm}} scaling options
 {: #scaling-options}
 
 {{site.data.keyword.databases-for-mongodb}} offers flexible scaling options to match your performance needs.
 
-### Vertical scaling (compute and memory)
+#### Vertical scaling (compute and memory)
 {: #vertical-scaling}
 
 Scale CPU and memory resources to handle increased workload.
 
-#### Using the {{site.data.keyword.cloud_notm}} console
-{: #scaling-console}
-
+* **Using the {{site.data.keyword.cloud_notm}} console:**
 1. Navigate to your MongoDB deployment.
 2. Click **Resources** in the left navigation.
 3. Adjust **Memory** and **CPU** sliders.
 4. Review cost impact.
 5. Click **Scale**.
 
-#### Using the {{site.data.keyword.cloud_notm}} CLI
-{: #scaling-cli}
+* **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
 ```bash
 # Scale memory to 8GB and CPU to 4 cores
@@ -720,21 +711,18 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * Scale proactively before saturation.
 * Monitor metrics after scaling.
 
-### Horizontal scaling (replica set members)
+#### Horizontal scaling (replica set members)
 {: #scaling-horizontal}
 
 Add replica set members for read scaling and high availability.
 
-#### Using the {{site.data.keyword.cloud_notm}} console
-{: #scaling-horizontal-console}
-
+* **Using the {{site.data.keyword.cloud_notm}} console:**
 1. Navigate to **Resources**.
 2. Adjust **Members** slider.
 3. Review configuration.
 4. Click **Scale**.
 
-#### Using the {{site.data.keyword.cloud_notm}} CLI
-{: #scaling-horizontal-cli}
+* **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
 ```bash
 # Add a replica set member
@@ -751,21 +739,19 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 * Better geographic distribution
 * No downtime for adding members
 
-### Storage scaling
+#### Storage scaling
 {: #storage-scaling}
 
 Increase disk space and IOPS for better performance.
 
-#### Using the {{site.data.keyword.cloud_notm}} console:
-{: #storage-scaling-console}
+* **Using the {{site.data.keyword.cloud_notm}} console:**
 
 1. Navigate to **Resources**.
 2. Adjust **Disk** slider.
 3. Review IOPS allocation.
 4. Click **Scale**.
 
-#### Using the {{site.data.keyword.cloud_notm}} CLI:
-{: #storage-scaling-cli}
+* **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
 ```bash
 # Scale disk to 100GB
@@ -1002,7 +988,7 @@ echo "=== Diagnostics Complete ==="
 
 Network configuration significantly impacts MongoDB performance, especially for distributed applications.
 
-### Private endpoints vs public endpoints
+### Private endpoints compared to public endpoints
 {: #endpoints}
 
 #### Private endpoints (recommended)
