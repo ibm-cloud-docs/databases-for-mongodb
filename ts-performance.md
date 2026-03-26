@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-03-24"
+lastupdated: "2026-03-26"
 
 keywords: mongodb, databases, monitoring, scaling, autoscaling, resources, troubleshooting
 
@@ -13,14 +13,12 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 15:53
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} thu
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
 
-For information about performance tuning, see [Performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance&interface=ui).
-
-If your applications are experiencing slow responses, timeouts, or inconsistent database performance, complete following the steps.
+If your applications are experiencing slow responses, timeouts, or inconsistent database performance, consider the following steps and information.
 
 
 ## Symptoms of performance issues
@@ -40,16 +38,16 @@ Complete the following steps to determine the cause of the issues:
 ### Step 1: Check resource utilization
 {: #troubleshooting-step1}
 
-Log in to the {{site.data.keyword.cloud_notm}} console and navigate to your MongoDB deployment.
+1. Log in to the {{site.data.keyword.cloud_notm}} console and navigate to your MongoDB deployment.
 
-Review the **Monitoring** section for:
+2. Review the **Monitoring** section for:
 
 * CPU utilization
 * Memory usage
 * Disk IOPS and latency
 * Active connections
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step1-symptoms}
 
 * CPU consistently above 75%
@@ -57,12 +55,12 @@ Review the **Monitoring** section for:
 * Disk latency increasing over time
 * Connections approaching plan limits
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step1-actions}
 
-* Scale your deployment to a higher plan
-* Increase storage or IOPS if disk latency is high
-* Review workload spikes in your application
+* Scale your deployment to a higher plan.
+* Increase storage or IOPS if disk latency is high.
+* Review workload spikes in your application.
 
 If resource usage remains elevated for sustained periods, scaling is recommended.
 
@@ -782,7 +780,7 @@ db.currentOp({
 
 * PITR maintains continuous backup capability
 * Minimal performance impact under normal conditions
-* May increase disk I/O slightly
+* Might increase disk I/O slightly
 
 ### Recommended actions
 {: #troubleshooting-step11-actions}
@@ -898,10 +896,10 @@ Action: Trigger scaling workflow
 
 
 
-## IBM Cloud Activity Tracker {{site.data.keyword.atracker_full_notm}} integration
+## IBM Cloud Activity Tracker integration
 {: #activity-tracker-integration}
 
-IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that may impact performance.
+IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that can impact performance.
 
 ### Accessing Activity Tracker
 {: #activity-tracker-access}
@@ -2115,6 +2113,7 @@ Escalation: Create incident if > 90%
 {: #docs}
 
 * [{{site.data.keyword.cloud_notm}} Databases for MongoDB documentation](/docs/databases-for-mongodb)
+* [Performance tuning](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance&interface=ui).
 * [IBM Cloud Monitoring documentation](/docs/monitoring)
 * [IBM Cloud Activity Tracker documentation](/docs/activity-tracker)
 * [{{site.data.keyword.cloud_notm}} CLI reference](/docs/cli)
