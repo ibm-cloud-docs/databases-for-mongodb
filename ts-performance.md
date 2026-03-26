@@ -977,10 +977,7 @@ ibmcloud plugin install cloud-databases
 ### {{site.data.keyword.cloud_notm}} network optimization
 {: #network}
 
-Network configuration significantly impacts MongoDB performance, especially for distributed applications.
-
-#### Private endpoints compared to public endpoints
-{: #endpoints}
+Network configuration significantly impacts MongoDB performance, especially for distributed applications. Compare private endpoints with public endpoints:
 
 #### Private endpoints (recommended)
 {: #private-endpoints}
@@ -1701,18 +1698,18 @@ Recommended thresholds for key performance metrics.
 
 | Metric | Warning threshold | Critical threshold | Recommended action |
 |--------|------------------|-------------------|-------------------|
-| **CPU utilization** | > 75% | > 90% | Scale CPU cores |
-| **Memory utilization** | > 80% | > 95% | Scale memory allocation |
-| **Disk utilization** | > 80% | > 90% | Scale disk space |
-| **Disk IOPS** | > 80% of limit | > 95% of limit | Increase disk size for more IOPS |
-| **Active connections** | > 80% of limit | > 95% of limit | Scale plan or optimize connection pooling |
-| **Replication lag** | > 5 seconds | > 30 seconds | Investigate and scale if needed |
+| **CPU utilization** | &amp;gt; 75% | &amp;gt; 90% | Scale CPU cores |
+| **Memory utilization** | &amp;gt; 80% | &amp;gt; 95% | Scale memory allocation |
+| **Disk utilization** | &amp;gt; 80% | &amp;gt; 90% | Scale disk space |
+| **Disk IOPS** | &amp;gt; 80% of limit | &amp;gt; 95% of limit | Increase disk size for more IOPS |
+| **Active connections** | &amp;gt; 80% of limit | &amp;gt; 95% of limit | Scale plan or optimize connection pooling |
+| **Replication lag** | &amp;gt; 5 seconds | &amp;gt; 30 seconds | Investigate and scale if needed |
 | **Cache hit ratio** | < 95% | < 90% | Scale memory or optimize queries |
-| **Query execution time** | > 100ms (avg) | > 1000ms (avg) | Optimize queries and indexes |
-| **Lock wait time** | > 100ms | > 1000ms | Optimize operations and kill long-running queries |
-| **Page faults** | > 100/sec | > 1000/sec | Scale memory |
-| **Network latency** | > 10ms | > 50ms | Check network configuration |
-| **Backup duration** | > 1 hour | > 4 hours | Consider scaling or optimization |
+| **Query execution time** | &amp;gt; 100ms (avg) | &amp;gt; 1000ms (avg) | Optimize queries and indexes |
+| **Lock wait time** | &amp;gt; 100ms | &amp;gt; 1000ms | Optimize operations and kill long-running queries |
+| **Page faults** | &amp;gt; 100/sec | &amp;gt; 1000/sec | Scale memory |
+| **Network latency** | &amp;gt; 10ms | &amp;gt; 50ms | Check network configuration |
+| **Backup duration** | &amp;gt; 1 hour | &amp;gt; 4 hours | Consider scaling or optimization |
 {: caption="Metrics thresholds" caption-side="top"}
 
 ### Monitoring frequency recommendations
