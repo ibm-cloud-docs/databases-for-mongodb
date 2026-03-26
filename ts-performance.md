@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 13:18
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 14:44
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -143,6 +143,7 @@ Replication lag can affect read performance and data freshness.
 ```js
 rs.printSecondaryReplicationInfo()
 ```
+{: codeblock}
 
 #### Common causes of lag:
 {: #troubleshooting-step4-lag}
@@ -395,79 +396,6 @@ db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 
 Write concern and read preference settings significantly impact performance and consistency.
 
-#### Check current write concern:
-{: #troubleshooting-step10-concern}
-
-```js
-db.getWriteConcern()
-```
-{: codeblock}
-
-#### Check replica set configuration:
-{: #troubleshooting-step10-config}
-
-```js
-rs.conf()
-```
-{: codeblock}
-
-#### Write concern options:
-{: #troubleshooting-step10-options}
-
-| Write Concern | Durability | Performance | Use Case |
-|---------------|------------|-------------|----------|
-| `w: 1` | Low | High | Non-critical data, high throughput |
-| `w: "majority"` | High | Medium | Default, balanced approach |
-| `w: <number>` | Medium-High | Medium-Low | Specific replica count |
-| `j: true` | Highest | Lowest | Critical data requiring journal sync |
-{: caption="Write concern options" caption-side="top"}
-
-
-#### Read preference options:
-{: #troubleshooting-step10-options}
-
-| Read Preference | Consistency | Performance | Use Case |
-|-----------------|-------------|-------------|----------|
-| `primary` | Highest | Medium | Default, strong consistency |
-| `primaryPreferred` | High | Medium-High | Fallback to secondary |
-| `secondary` | Eventual | High | Analytics, reporting |
-| `secondaryPreferred` | Eventual | High | Read scaling |
-| `nearest` | Eventual | Highest | Lowest latency |
-{: caption="Read preference options" caption-side="top"}
-
-
-#### Check read preference in your application:
-{: #troubleshooting-step10-read}
-
-```js
-// Example in Node.js driver
-db.collection('users').find({}).readPreference('secondary')
-```
-{: codeblock}
-
-#### What to look for:
-{: #troubleshooting-step10-symptoms}
-
-* Overly strict write concerns for non-critical data
-* Using `primary` read preference when eventual consistency is acceptable
-* Not leveraging secondaries for read-heavy workloads
-
-#### Recommended actions:
-{: #troubleshooting-step10-actions}
-
-* Use `w: 1` for high-throughput, non-critical writes.
-* Use `w: "majority"` for important data (default).
-* Use `secondary` or `secondaryPreferred` for analytics queries.
-* Consider `nearest` for geographically distributed applications.
-* Balance consistency requirements with performance needs.
-* Test different configurations under load.
-
-
-### Step 10: Review write concern and read preference settings
-{: #troubleshooting-step10}
-
-Write concern and read preference settings significantly impact performance and consistency.
-
 * Check current write concern:
 
     ```js
@@ -569,7 +497,7 @@ db.currentOp({
 * Minimal performance impact under normal conditions
 * Might increase disk I/O slightly
 
-### Recommended actions:
+#### Recommended actions:
 {: #troubleshooting-step11-actions}
 
 * Schedule application maintenance during backup windows.
@@ -658,10 +586,10 @@ Action: Trigger scaling workflow
 ### Example dashboard layout
 {: #dashboard-layout}
 
-* **Row 1**: CPU, Memory, Disk utilization
-* **Row 2**: Operations/sec, Active connections
-* **Row 3**: Replication lag, Query performance
-* **Row 4**: Cache statistics, Lock contention
+* **Row 1**: CPU, memory, disk utilization
+* **Row 2**: Operations per second, active connections
+* **Row 3**: Replication lag, query performance
+* **Row 4**: Cache statistics, lock contention
 
 ### Historical analysis
 {: #analysis}
@@ -846,7 +774,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 {: codeblock}
 
-#### Important notes:
+#### Important information:
 {: #storage-scaling-notes}
 
 * Storage can only be increased, not decreased
@@ -860,7 +788,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 | Scenario | Recommended action |
 |----------|-------------------|
 | High CPU (>80%) | Scale CPU cores |
-| High Memory (>80%) | Scale memory allocation |
+| High memory (>80%) | Scale memory allocation |
 | Disk latency | Increase disk size for more IOPS |
 | Connection limits | Scale to higher tier |
 | Read-heavy workload | Add replica members |
@@ -1899,7 +1827,6 @@ Escalation: Create incident if > 90%
 {: #docs}
 
 * [{{site.data.keyword.cloud_notm}} Databases for MongoDB documentation](/docs/databases-for-mongodb)
-* [Performance tuning](/docs/databases-for-mongodb?topic=databases-for-mongodb-performance&interface=ui).
 * [IBM Cloud Monitoring documentation](/docs/monitoring)
 * [IBM Cloud Activity Tracker documentation](/docs/activity-tracker)
 * [{{site.data.keyword.cloud_notm}} CLI reference](/docs/cli)
