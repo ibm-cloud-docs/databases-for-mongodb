@@ -211,14 +211,14 @@ For managed deployments, schedule maintenance activities appropriately.
 
 Lock contention can severely impact concurrent operations and overall throughput.
 
-* Check global lock statistics
+* Check global lock statistics:
 
     ```js
     db.serverStatus().locks
     ```
    {: codeblock}
 
-* Check current operations for locks
+* Check current operations for locks:
 
     ```js
     db.currentOp({
@@ -230,7 +230,7 @@ Lock contention can severely impact concurrent operations and overall throughput
     ```
     {: codeblock}
 
-* Analyze lock wait time
+* Analyze lock wait time:
 
   ```js
   db.serverStatus().globalLock
@@ -248,10 +248,10 @@ Lock contention can severely impact concurrent operations and overall throughput
 #### Common causes:
 {: #troubleshooting-step7-causes}
 
-* Long-running queries without proper indexes
-* Large write operations
-* Index builds on large collections
-* Administrative commands (compact, repairDatabase)
+* Long-running queries without proper indexes.
+* Large write operations.
+* Index builds on large collections.
+* Administrative commands (compact, repairDatabase).
 
 #### Recommended actions:
 {: #troubleshooting-step7-actions}
@@ -260,13 +260,15 @@ Lock contention can severely impact concurrent operations and overall throughput
   ```js
   db.killOp(opid)
   ```
+  {: codeblock}
 * Build indexes in the background:
   ```js
   db.collection.createIndex({ field: 1 }, { background: true })
   ```
-* Break large operations into smaller batches
-* Schedule maintenance operations during low-traffic periods
-* Use read concern and write concern appropriately
+  {: codeblock}
+* Break large operations into smaller batches.
+* Schedule maintenance operations during low-traffic periods.
+* Use read concern and write concern appropriately.
 
 
 ### Step 8: Analyze workload patterns
@@ -354,7 +356,7 @@ MongoDB's WiredTiger storage engine relies heavily on cache efficiency.
     ```
     {: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step9-symptoms}
 
 * Cache hit ratio below 95%
@@ -362,7 +364,7 @@ MongoDB's WiredTiger storage engine relies heavily on cache efficiency.
 * Cache size consistently at maximum
 * Application threads performing evictions
 
-#### Estimate working set size
+#### Estimate working set size:
 {: #troubleshooting-step9-size}
 
 ```js
@@ -370,10 +372,10 @@ db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 ```
 {: codeblock}
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step9-actions}
 
-* Scale to a plan with more memory if cache is consistently full
+* Scale to a plan with more memory if the cache is consistently full
 * Review and optimize indexes (remove unused indexes)
 * Limit result set sizes in queries
 * Use projections to reduce document size
@@ -383,9 +385,9 @@ db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 #### Memory allocation best practices
 {: #troubleshooting-step9-best}
 
-* WiredTiger cache should be 50% of available RAM (default)
-* Leave sufficient memory for OS and other processes
-* Monitor swap usage (should be minimal)
+* The WiredTiger cache should be 50% of available RAM (default).
+* Leave sufficient memory for OS and other processes.
+* Monitor swap usage (should be minimal).
 
 
 ### Step 10: Review write concern and read preference settings
@@ -393,7 +395,7 @@ db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 
 Write concern and read preference settings significantly impact performance and consistency.
 
-#### Check current write concern
+#### Check current write concern:
 {: #troubleshooting-step10-concern}
 
 ```js
@@ -401,7 +403,7 @@ db.getWriteConcern()
 ```
 {: codeblock}
 
-#### Check replica set configuration
+#### Check replica set configuration:
 {: #troubleshooting-step10-config}
 
 ```js
@@ -409,7 +411,7 @@ rs.conf()
 ```
 {: codeblock}
 
-#### Write concern options
+#### Write concern options:
 {: #troubleshooting-step10-options}
 
 | Write Concern | Durability | Performance | Use Case |
@@ -421,7 +423,7 @@ rs.conf()
 {: caption="Write concern options" caption-side="top"}
 
 
-#### Read preference options
+#### Read preference options:
 {: #troubleshooting-step10-options}
 
 | Read Preference | Consistency | Performance | Use Case |
@@ -434,7 +436,7 @@ rs.conf()
 {: caption="Read preference options" caption-side="top"}
 
 
-#### Check read preference in your application
+#### Check read preference in your application:
 {: #troubleshooting-step10-read}
 
 ```js
@@ -443,22 +445,22 @@ db.collection('users').find({}).readPreference('secondary')
 ```
 {: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step10-symptoms}
 
 * Overly strict write concerns for non-critical data
 * Using `primary` read preference when eventual consistency is acceptable
 * Not leveraging secondaries for read-heavy workloads
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step10-actions}
 
-* Use `w: 1` for high-throughput, non-critical writes
-* Use `w: "majority"` for important data (default)
-* Use `secondary` or `secondaryPreferred` for analytics queries
-* Consider `nearest` for geographically distributed applications
-* Balance consistency requirements with performance needs
-* Test different configurations under load
+* Use `w: 1` for high-throughput, non-critical writes.
+* Use `w: "majority"` for important data (default).
+* Use `secondary` or `secondaryPreferred` for analytics queries.
+* Consider `nearest` for geographically distributed applications.
+* Balance consistency requirements with performance needs.
+* Test different configurations under load.
 
 
 ### Step 10: Review write concern and read preference settings
@@ -466,7 +468,7 @@ db.collection('users').find({}).readPreference('secondary')
 
 Write concern and read preference settings significantly impact performance and consistency.
 
-* Check current write concern
+* Check current write concern:
 
     ```js
     db.getWriteConcern()
@@ -474,7 +476,7 @@ Write concern and read preference settings significantly impact performance and 
     {: codeblock}
 
 
-* Check replica set configuration
+* Check replica set configuration:
 
     ```js
     rs.conf()
@@ -483,7 +485,7 @@ Write concern and read preference settings significantly impact performance and 
 
 * Write concern options:
 
-    | Write Concern | Durability | Performance | Use Case |
+    | Write concern | Durability | Performance | Use case |
     |---------------|------------|-------------|----------|
     | `w: 1` | Low | High | Non-critical data, high throughput |
     | `w: "majority"` | High | Medium | Default, balanced approach |
@@ -494,7 +496,7 @@ Write concern and read preference settings significantly impact performance and 
 
 * Read preference options:
 
-    | Read Preference | Consistency | Performance | Use Case |
+    | Read preference | Consistency | Performance | Use case |
     |-----------------|-------------|-------------|----------|
     | `primary` | Highest | Medium | Default, strong consistency |
     | `primaryPreferred` | High | Medium-High | Fallback to secondary |
@@ -512,22 +514,22 @@ Write concern and read preference settings significantly impact performance and 
     ```
     {: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step10-symptoms}
 
 * Overly strict write concerns for non-critical data
 * Using `primary` read preference when eventual consistency is acceptable
 * Not leveraging secondaries for read-heavy workloads
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step10-actions}
 
-* Use `w: 1` for high-throughput, non-critical writes
-* Use `w: "majority"` for important data (default)
-* Use `secondary` or `secondaryPreferred` for analytics queries
-* Consider `nearest` for geographically distributed applications
-* Balance consistency requirements with performance needs
-* Test different configurations under load
+* Use `w: 1` for high-throughput, non-critical writes.
+* Use `w: "majority"` for important data (default).
+* Use `secondary` or `secondaryPreferred` for analytics queries.
+* Consider `nearest` for geographically distributed applications.
+* Balance consistency requirements with performance needs.
+* Test different configurations under load.
 
 
 ### Step 11: Monitor backup and maintenance impact
@@ -538,9 +540,9 @@ Backup operations and maintenance tasks can temporarily affect performance.
 #### {{site.data.keyword.cloud_notm}} backup schedule
 {: #troubleshooting-step11-schedule}
 
-IBM Cloud Databases for MongoDB performs automatic backups. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
+{{site.data.keyword.databases-for-mongodb}} performs automatic backups. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
 
-#### Check for ongoing backup operations
+#### Check for ongoing backup operations:
 {: #troubleshooting-step11-backup}
 
 ```js
@@ -551,8 +553,9 @@ db.currentOp({
   ]
 })
 ```
+{: codeblock}
 
-#### What to look for
+#### What to look for:
 {: #troubleshooting-step11-symptoms}
 
 * Performance degradation during backup windows
@@ -566,23 +569,23 @@ db.currentOp({
 * Minimal performance impact under normal conditions
 * Might increase disk I/O slightly
 
-### Recommended actions
+### Recommended actions:
 {: #troubleshooting-step11-actions}
 
-* Schedule application maintenance during backup windows
-* Monitor performance metrics during backup times
-* Consider scaling if backups consistently impact performance
-* Review backup retention policies
-* Plan for increased resource usage during restore operations
+* Schedule application maintenance during backup windows.
+* Monitor performance metrics during backup times.
+* Consider scaling if backups consistently impact performance.
+* Review backup retention policies.
+* Plan for increased resource usage during restore operations.
 
 #### Maintenance operation best practices
 {: #troubleshooting-step11-best}
 
-* Schedule index builds during low-traffic periods
-* Use background index builds when possible
-* Monitor replication lag during maintenance
-* Test maintenance operations in non-production first
-* Coordinate with IBM Cloud maintenance windows
+* Schedule index builds during low-traffic periods.
+* Use background index builds when possible.
+* Monitor replication lag during maintenance.
+* Test maintenance operations in non-production first.
+* Coordinate with {{site.data.keyword.cloud_notm}} maintenance windows.
 
 
 
@@ -592,19 +595,19 @@ db.currentOp({
 ### Using IBM Cloud Monitoring (Sysdig)
 {: #sysdig}
 
-IBM Cloud Databases for MongoDB integrates with IBM Cloud Monitoring powered by Sysdig for comprehensive observability.
+{{site.data.keyword.databases-for-mongodb}} integrates with IBM Cloud Monitoring powered by Sysdig for comprehensive observability.
 
 #### Accessing monitoring dashboards
 {: #dashboards}
 
-1. Navigate to your MongoDB deployment in {{site.data.keyword.cloud_notm}} console
-2. Click **Monitoring** in the left navigation
-3. Click **Launch Monitoring** to open Sysdig dashboard
+1. Navigate to your MongoDB deployment in {{site.data.keyword.cloud_notm}} console.
+2. Click **Monitoring** in the left navigation.
+3. Click **Launch Monitoring** to open Sysdig dashboard.
 
-#### Key metrics to track
+#### Key metrics to track:
 {: #key-metrics}
 
-##### Platform metrics
+###### Platform metrics
 {: #platform-metrics}
 
 * **CPU utilization** - Target: < 75% sustained
@@ -613,7 +616,7 @@ IBM Cloud Databases for MongoDB integrates with IBM Cloud Monitoring powered by 
 * **Disk IOPS** - Monitor for saturation
 * **Network throughput** - Identify bandwidth constraints
 
-##### MongoDB-specific metrics
+###### MongoDB-specific metrics
 {: #mongodb-metrics}
 
 * **Operations per second** - Track workload patterns
@@ -632,18 +635,21 @@ Alert: High CPU Usage
 Condition: CPU > 80% for 10 minutes
 Action: Notify operations team
 ```
+{: codeblock}
 
 ```sh
 Alert: Replication Lag
 Condition: Replication lag > 5 seconds
 Action: Page on-call engineer
 ```
+{: codeblock}
 
 ```sh
 Alert: Disk Space
 Condition: Disk usage > 85%
 Action: Trigger scaling workflow
 ```
+{: codeblock}
 
 ### Creating custom dashboards
 {: #custom-dashboard}
