@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 19:50
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} vert scaling list
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -687,11 +687,11 @@ Result: Improved performance after scaling
 Scale CPU and memory resources to handle increased workload.
 
 * **Using the {{site.data.keyword.cloud_notm}} console:**
-1. Navigate to your MongoDB deployment.
-2. Click **Resources** in the left navigation.
-3. Adjust **Memory** and **CPU** sliders.
-4. Review cost impact.
-5. Click **Scale**.
+    1. Navigate to your MongoDB deployment.
+    2. Click **Resources** in the left navigation.
+    3. Adjust **Memory** and **CPU** sliders.
+    4. Review cost impact.
+    5. Click **Scale**.
 
 * **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
