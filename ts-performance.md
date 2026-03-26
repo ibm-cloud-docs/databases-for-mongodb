@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 8888
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 22:07
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -152,7 +152,7 @@ rs.printSecondaryReplicationInfo()
 * Disk bottlenecks
 * Network latency
 
-#### Recommended actions
+#### Recommended actions:
 {: #troubleshooting-step4-actions}
 
 * Scale storage performance.
@@ -599,7 +599,7 @@ Action: Trigger scaling workflow
 * Identify trends and patterns
 * Correlate events with performance changes
 
-#### Recommended actions
+#### Recommended actions:
 {: #actions}
 
 * Set up alerts before issues occur.
@@ -874,106 +874,104 @@ ibmcloud plugin install cloud-databases
     ```
     {: codeblock}
 
-88888888
-
 * **Backup operations:**
 
-```bash
-# List backups
-ibmcloud cdb backups <deployment-id>
+    ```bash
+    # List backups
+    ibmcloud cdb backups <deployment-id>
 
-# Get backup information
-ibmcloud cdb backup <backup-id>
-```
-{: codeblock}
+    # Get backup information
+    ibmcloud cdb backup <backup-id>
+    ```
+    {: codeblock}
 
 #### Using the {{site.data.keyword.cloud_notm}} API
 {: #cloud-api}
 
 * **Authentication:**
 
-```bash
-# Get IAM token
-export IAM_TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r '.iam_token')
-```
-{: codeblock}
+    ```bash
+    # Get IAM token
+    export IAM_TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r '.iam_token')
+    ```
+    {: codeblock}
 
 * **Get deployment metrics using the API:**
 
-```bash
-# Get metrics
-curl -X GET \
-  "https://api.{region}.databases.cloud.ibm.com/v5/deployments/{deployment-id}/metrics" \
-  -H "Authorization: ${IAM_TOKEN}"
-```
-{: codeblock}
+    ```bash
+    # Get metrics
+    curl -X GET \
+      "https://api.{region}.databases.cloud.ibm.com/v5/deployments/{deployment-id}/metrics" \
+      -H "Authorization: ${IAM_TOKEN}"
+    ```
+    {: codeblock}
 
 * **Scale deployment using the API:**
 
-```bash
-# Scale resources
-curl -X PATCH \
-  "https://api.{region}.databases.cloud.ibm.com/v5/deployments/{deployment-id}/groups/member" \
-  -H "Authorization: ${IAM_TOKEN}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "memory": {
-      "allocation_mb": 16384
-    },
-    "cpu": {
-      "allocation_count": 8
-    }
-  }'
-```
-{: codeblock}
+    ```bash
+    # Scale resources
+    curl -X PATCH \
+      "https://api.{region}.databases.cloud.ibm.com/v5/deployments/{deployment-id}/groups/member" \
+      -H "Authorization: ${IAM_TOKEN}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "memory": {
+          "allocation_mb": 16384
+        },
+        "cpu": {
+          "allocation_count": 8
+        }
+      }'
+    ```
+    {: codeblock}
 
 * ***Sample diagnostic script:**
 
-```bash
-#!/bin/bash
-# MongoDB Performance Check Script
+    ```bash
+    #!/bin/bash
+    # MongoDB Performance Check Script
 
-DEPLOYMENT_ID="your-deployment-id"
+    DEPLOYMENT_ID="your-deployment-id"
 
-echo "=== MongoDB Performance Diagnostics ==="
-echo ""
+    echo "=== MongoDB Performance Diagnostics ==="
+    echo ""
 
-# Check CPU
-CPU=$(ibmcloud cdb deployment-metrics $DEPLOYMENT_ID --metric cpu --output json | jq -r '.metrics[0].value')
-echo "CPU Usage: ${CPU}%"
-if [ $(echo "$CPU > 80" | bc) -eq 1 ]; then
-  echo "⚠️  WARNING: High CPU usage detected"
-fi
+    # Check CPU
+    CPU=$(ibmcloud cdb deployment-metrics $DEPLOYMENT_ID --metric cpu --output json | jq -r '.metrics[0].value')
+    echo "CPU Usage: ${CPU}%"
+    if [ $(echo "$CPU > 80" | bc) -eq 1 ]; then
+      echo "⚠️  WARNING: High CPU usage detected"
+    fi
 
-# Check Memory
-MEMORY=$(ibmcloud cdb deployment-metrics $DEPLOYMENT_ID --metric memory --output json | jq -r '.metrics[0].value')
-echo "Memory Usage: ${MEMORY}%"
-if [ $(echo "$MEMORY > 80" | bc) -eq 1 ]; then
-  echo "⚠️  WARNING: High memory usage detected"
-fi
+    # Check Memory
+    MEMORY=$(ibmcloud cdb deployment-metrics $DEPLOYMENT_ID --metric memory --output json | jq -r '.metrics[0].value')
+    echo "Memory Usage: ${MEMORY}%"
+    if [ $(echo "$MEMORY > 80" | bc) -eq 1 ]; then
+      echo "⚠️  WARNING: High memory usage detected"
+    fi
 
-# Check Disk
-DISK=$(ibmcloud cdb deployment-metrics $DEPLOYMENT_ID --metric disk --output json | jq -r '.metrics[0].value')
-echo "Disk Usage: ${DISK}%"
-if [ $(echo "$DISK > 80" | bc) -eq 1 ]; then
-  echo "⚠️  WARNING: High disk usage detected"
-fi
+    # Check Disk
+    DISK=$(ibmcloud cdb deployment-metrics $DEPLOYMENT_ID --metric disk --output json | jq -r '.metrics[0].value')
+    echo "Disk Usage: ${DISK}%"
+    if [ $(echo "$DISK > 80" | bc) -eq 1 ]; then
+      echo "⚠️  WARNING: High disk usage detected"
+    fi
 
-# Check Status
-STATUS=$(ibmcloud cdb deployment-status $DEPLOYMENT_ID --output json | jq -r '.status')
-echo "Deployment Status: ${STATUS}"
+    # Check Status
+    STATUS=$(ibmcloud cdb deployment-status $DEPLOYMENT_ID --output json | jq -r '.status')
+    echo "Deployment Status: ${STATUS}"
 
-echo ""
-echo "=== Diagnostics Complete ==="
-```
+    echo ""
+    echo "=== Diagnostics Complete ==="
+    ```
 
 * **Automation recommendations**
 
-* Schedule regular health checks.
-* Integrate with monitoring systems.
-* Automate scaling based on thresholds.
-* Create alerts for critical metrics.
-* Log all operations for audit trail.
+    * Schedule regular health checks.
+    * Integrate with monitoring systems.
+    * Automate scaling based on thresholds.
+    * Create alerts for critical metrics.
+    * Log all operations for audit trail.
 
 
 ### {{site.data.keyword.cloud_notm}} network optimization
@@ -988,36 +986,36 @@ Network configuration significantly impacts MongoDB performance, especially for 
 {: #private-endpoints}
 
 **Benefits:**
-* Lower latency
-* Enhanced security
-* No internet egress charges
-* Better performance for {{site.data.keyword.cloud_notm}} workloads
+    * Lower latency
+    * Enhanced security
+    * No internet egress charges
+    * Better performance for {{site.data.keyword.cloud_notm}} workloads
 
 **Setup:**
 
-1. Navigate to **Settings** > **Endpoints**.
-2. Enable **Private endpoint**.
-3. Update connection strings in applications.
+    1. Navigate to **Settings** > **Endpoints**.
+    2. Enable **Private endpoint**.
+    3. Update connection strings in applications.
 
 **Connection string example:**
 
-```sh
-mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSource=admin&replicaSet=replset
-```
-{: codeblock}
+    ```sh
+    mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSource=admin&replicaSet=replset
+    ```
+    {: codeblock}
 
 #### Public endpoints
 {: #public-endpoints}
 
 **Use cases:**
-* External applications
-* Development and testing
-* Hybrid cloud scenarios
+    * External applications
+    * Development and testing
+    * Hybrid cloud scenarios
 
 **Security considerations:**
-* Use IP allowlisting.
-* Enforce TLS/SSL.
-* Rotate credentials regularly.
+    * Use IP allowlisting.
+    * Enforce TLS/SSL.
+    * Rotate credentials regularly.
 
 #### Service endpoints
 {: #service-endpoints}
@@ -1066,22 +1064,22 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 
 * **Measure latency from application**
 
-```bash
-# Test connection latency
-time mongo "mongodb://host:port/database" --eval "db.runCommand({ping: 1})"
-```
-{: codeblock}
+    ```bash
+    # Test connection latency
+    time mongo "mongodb://host:port/database" --eval "db.runCommand({ping: 1})"
+    ```
+    {: codeblock}
 
 * **Check from {{site.data.keyword.cloud_notm}} shell**
 
-```bash
-# Ping test (if ICMP allowed)
-ping -c 10 your-mongodb-host.databases.appdomain.cloud
+    ```bash
+    # Ping test (if ICMP allowed)
+    ping -c 10 your-mongodb-host.databases.appdomain.cloud
 
-# TCP connection test
-nc -zv your-mongodb-host.databases.appdomain.cloud 27017
-```
-{: codeblock}
+    # TCP connection test
+    nc -zv your-mongodb-host.databases.appdomain.cloud 27017
+    ```
+    {: codeblock}
 
 #### MongoDB connection diagnostics
 {: #measure-latency-connection}
@@ -1164,36 +1162,36 @@ Gather the following information:
 
 * **Deployment details**
 
-* Deployment ID (CRN)
-* Region and availability zones
-* Current plan and resources
-* MongoDB version
+    * Deployment ID (CRN)
+    * Region and availability zones
+    * Current plan and resources
+    * MongoDB version
 
 * **Issue details**
 
-* Time window of the issue (with timezone)
-* Symptoms observed
-* Impact on applications
-* Recent changes (code, configuration, scaling)
+    * Time window of the issue (with timezone)
+    * Symptoms observed
+    * Impact on applications
+    * Recent changes (code, configuration, scaling)
 
 * **Performance data**
 
-* Monitoring screenshots from Sysdig
-* Query examples causing issues
-* Output from diagnostic commands
-* Activity Tracker events during the issue window
+    * Monitoring screenshots from Sysdig
+    * Query examples causing issues
+    * Output from diagnostic commands
+    * Activity Tracker events during the issue window
 
 * **MongoDB diagnostics**
 
-```bash
-# Collect diagnostic data
-mongo "your-connection-string" --eval "
-  printjson(db.serverStatus());
-  printjson(db.currentOp());
-  printjson(rs.status());
-" > mongodb-diagnostics.json
-```
-{: codeblock}
+    ```bash
+    # Collect diagnostic data
+    mongo "your-connection-string" --eval "
+      printjson(db.serverStatus());
+      printjson(db.currentOp());
+      printjson(rs.status());
+    " > mongodb-diagnostics.json
+    ```
+    {: codeblock}
 
 #### Opening a support ticket
 {: #open-ticket}
@@ -1274,7 +1272,7 @@ Before opening a ticket, check the following:
 
 Essential MongoDB commands for performance troubleshooting.
 
-| Command | Purpose | Key Metrics | Normal Values |
+| Command | Purpose | Key metrics | Normal values |
 |---------|---------|-------------|---------------|
 | `db.serverStatus()` | Overall server statistics | CPU, memory, connections | Varies by workload |
 | `db.serverStatus().connections` | Connection statistics | current, available | < 80% of available |
@@ -1410,7 +1408,7 @@ db.currentOp({ waitingForLock: true })
                              │ Support        │
                              └────────────────┘
 ```
-{: caption="MongoDB disaster recovery architecture" caption-side="bottom"}
+{: caption="Troubleshooting flowchart" caption-side="bottom"}
 
 
 ## Common anti-patterns
@@ -1424,84 +1422,84 @@ Avoid these common mistakes that lead to performance issues.
 #### 1. Missing indexes
 {: #missing-indexes}
 
-**Problem:**
-```js
-// No index on 'email' field
-db.users.find({ email: "user@example.com" })
-```
+    **Problem:**
+    ```js
+    // No index on 'email' field
+    db.users.find({ email: "user@example.com" })
+    ```
 
-**Solution:**
-```js
-// Create index
-db.users.createIndex({ email: 1 })
-```
+    **Solution:**
+    ```js
+    // Create index
+    db.users.createIndex({ email: 1 })
+    ```
 
 #### 2. Inefficient regex queries
 {: #regex}
 
-**Problem:**
-```js
-// Case-insensitive regex without index
-db.users.find({ name: /john/i })
-```
+    **Problem:**
+    ```js
+    // Case-insensitive regex without index
+    db.users.find({ name: /john/i })
+    ```
 
-**Solution:**
-```js
-// Use text index or exact match
-db.users.createIndex({ name: "text" })
-db.users.find({ $text: { $search: "john" } })
-```
+    **Solution:**
+    ```js
+    // Use text index or exact match
+    db.users.createIndex({ name: "text" })
+    db.users.find({ $text: { $search: "john" } })
+    ```
 
 #### 3. Large skip() operations
 {: #skip}
 
-**Problem:**
-```js
-// Skipping thousands of documents
-db.collection.find().skip(10000).limit(10)
-```
+    **Problem:**
+    ```js
+    // Skipping thousands of documents
+    db.collection.find().skip(10000).limit(10)
+    ```
 
-**Solution:**
-```js
-// Use range queries with indexed field
-db.collection.find({ _id: { $gt: lastSeenId } }).limit(10)
-```
+    **Solution:**
+    ```js
+    // Use range queries with indexed field
+    db.collection.find({ _id: { $gt: lastSeenId } }).limit(10)
+    ```
 
 #### 4. Selecting unnecessary fields
 {: #fields}
 
-**Problem:**
-```js
-// Fetching entire documents
-db.users.find({ status: "active" })
-```
+    **Problem:**
+    ```js
+    // Fetching entire documents
+    db.users.find({ status: "active" })
+    ```
 
-**Solution:**
-```js
-// Use projection
-db.users.find({ status: "active" }, { name: 1, email: 1 })
-```
+    **Solution:**
+    ```js
+    // Use projection
+    db.users.find({ status: "active" }, { name: 1, email: 1 })
+    ```
 
 #### 5. Inefficient aggregation pipelines
 {: #pipelines}
 
-**Problem:**
-```js
-// $match after $lookup
-db.orders.aggregate([
-  { $lookup: { ... } },
-  { $match: { status: "completed" } }
-])
-```
+    **Problem:**
+    ```js
+    // $match after $lookup
+    db.orders.aggregate([
+      { $lookup: { ... } },
+      { $match: { status: "completed" } }
+    ])
+    ```
 
-**Solution:**
-```js
-// $match first to reduce documents
-db.orders.aggregate([
-  { $match: { status: "completed" } },
-  { $lookup: { ... } }
-])
-```
+    **Solution:**
+    ```js
+    // $match first to reduce documents
+    db.orders.aggregate([
+      { $match: { status: "completed" } },
+      { $lookup: { ... } }
+    ])
+    ```
 
 ### Schema design issues
 {: #schema-design}
@@ -1509,73 +1507,73 @@ db.orders.aggregate([
 #### 1. Unbounded arrays
 {: #arrays}
 
-**Problem:**
-```js
-// Array grows indefinitely
-{
-  userId: 123,
-  activities: [/* thousands of items */]
-}
-```
+    **Problem:**
+    ```js
+    // Array grows indefinitely
+    {
+      userId: 123,
+      activities: [/* thousands of items */]
+    }
+    ```
 
-**Solution:**
-```js
-// Use separate collection or bucketing
-{
-  userId: 123,
-  month: "2024-01",
-  activities: [/* limited items */]
-}
-```
+    **Solution:**
+    ```js
+    // Use separate collection or bucketing
+    {
+      userId: 123,
+      month: "2024-01",
+      activities: [/* limited items */]
+    }
+    ```
 
 #### 2. Excessive embedding
 {: #embedding}
 
-**Problem:**
-```js
-// Deeply nested documents
-{
-  user: {
-    profile: {
-      settings: {
-        preferences: {
-          // many levels deep
+    **Problem:**
+    ```js
+    // Deeply nested documents
+    {
+      user: {
+        profile: {
+          settings: {
+            preferences: {
+              // many levels deep
+            }
+          }
         }
       }
     }
-  }
-}
-```
+    ```
 
-**Solution:**
-```js
-// Flatten or use references
-{
-  userId: 123,
-  profileId: 456
-}
-```
+    **Solution:**
+    ```js
+    // Flatten or use references
+    {
+      userId: 123,
+      profileId: 456
+    }
+    ```
 
 #### 3. Large documents
 {: #documents}
 
-**Problem:**
-```js
-// Documents approaching 16MB limit
-{
-  data: "very large string...",
-  attachments: [/* large binary data */]
-}
-```
+    **Problem:**
+    ```js
+    // Documents approaching 16MB limit
+    {
+      data: "very large string...",
+      attachments: [/* large binary data */]
+    }
+    ```
 
-**Solution:**
-```js
-// Store large data separately (GridFS or object storage)
-{
-  dataRef: "s3://bucket/key",
-  attachments: [{ ref: "gridfs://id" }]
-}
-```
+    **Solution:**
+    ```js
+    // Store large data separately (GridFS or object storage)
+    {
+      dataRef: "s3://bucket/key",
+      attachments: [{ ref: "gridfs://id" }]
+    }
+    ```
 
 ### Connection management mistakes
 {: #management}
@@ -1583,67 +1581,67 @@ db.orders.aggregate([
 #### 1. Not using connection pooling
 {: #connection-pooling}
 
-**Problem:**
-```js
-// Creating new connection per request
-app.get('/api/users', async (req, res) => {
-  const client = await MongoClient.connect(uri);
-  // ...
-  await client.close();
-});
-```
+    **Problem:**
+    ```js
+    // Creating new connection per request
+    app.get('/api/users', async (req, res) => {
+      const client = await MongoClient.connect(uri);
+      // ...
+      await client.close();
+    });
+    ```
 
-**Solution:**
-```js
-// Reuse connection pool
-const client = new MongoClient(uri, { maxPoolSize: 50 });
-await client.connect();
+    **Solution:**
+    ```js
+    // Reuse connection pool
+    const client = new MongoClient(uri, { maxPoolSize: 50 });
+    await client.connect();
 
-app.get('/api/users', async (req, res) => {
-  const db = client.db();
-  // ...
-});
-```
+    app.get('/api/users', async (req, res) => {
+      const db = client.db();
+      // ...
+    });
+    ```
 
 #### 2. Not closing cursors
 {: #cursors}
 
-**Problem:**
-```js
-// Cursor left open
-const cursor = db.collection.find();
-// Never closed
-```
+    **Problem:**
+    ```js
+    // Cursor left open
+    const cursor = db.collection.find();
+    // Never closed
+    ```
 
-**Solution:**
-```js
-// Always close cursors
-const cursor = db.collection.find();
-try {
-  await cursor.forEach(doc => { /* process */ });
-} finally {
-  await cursor.close();
-}
-```
+    **Solution:**
+    ```js
+    // Always close cursors
+    const cursor = db.collection.find();
+    try {
+      await cursor.forEach(doc => { /* process */ });
+    } finally {
+      await cursor.close();
+    }
+    ```
 
 #### 3. Too many connections
 {: #connections}
 
-**Problem:**
-```js
-// One connection per user session
-const connections = new Map();
-users.forEach(user => {
-  connections.set(user.id, new MongoClient(uri));
-});
-```
+    **Problem:**
+    ```js
+    // One connection per user session
+    const connections = new Map();
+    users.forEach(user => {
+      connections.set(user.id, new MongoClient(uri));
+    });
+    ```
 
-**Solution:**
-```js
-// Share connection pool across application
-const client = new MongoClient(uri);
-// All users share the same pool
-```
+    **Solution:**
+    ```js
+    // Share connection pool across application
+    const client = new MongoClient(uri);
+    // All users share the same pool
+    ```
 
 ### Indexing pitfalls
 {: #indexing-pitfalls}
@@ -1651,51 +1649,51 @@ const client = new MongoClient(uri);
 #### 1. Too many indexes
 {: #too-many-indexes}
 
-**Problem:**
-```js
-// Index on every field
-db.collection.createIndex({ field1: 1 })
-db.collection.createIndex({ field2: 1 })
-db.collection.createIndex({ field3: 1 })
-// ... 20+ indexes
-```
+    **Problem:**
+    ```js
+    // Index on every field
+    db.collection.createIndex({ field1: 1 })
+    db.collection.createIndex({ field2: 1 })
+    db.collection.createIndex({ field3: 1 })
+    // ... 20+ indexes
+    ```
 
-**Impact:** Slows down writes and increases storage
+    **Impact:** Slows down writes and increases storage.
 
-**Solution:** Keep only necessary indexes and use compound indexes
+    **Solution:** Keep only necessary indexes and use compound indexes.
 
 #### 2. Wrong index order in compound indexes
 {: #wrong-order}
 
-**Problem:**
-```js
-// Query: { status: "active", createdAt: { $gt: date } }
-// Index: { createdAt: 1, status: 1 }  // Wrong order
-```
+    **Problem:**
+    ```js
+    // Query: { status: "active", createdAt: { $gt: date } }
+    // Index: { createdAt: 1, status: 1 }  // Wrong order
+    ```
 
-**Solution:**
-```js
-// Correct order: equality first, range second
-db.collection.createIndex({ status: 1, createdAt: 1 })
-```
+    **Solution:**
+    ```js
+    // Correct order: equality first, range second
+    db.collection.createIndex({ status: 1, createdAt: 1 })
+    ```
 
 #### 3. Not using covered queries
 {: #covered-queries}
 
-**Problem:**
-```js
-// Index exists but query not covered
-db.users.createIndex({ email: 1 })
-db.users.find({ email: "user@example.com" }, { name: 1, email: 1 })
-// Still fetches documents
-```
+    **Problem:**
+    ```js
+    // Index exists but query not covered
+    db.users.createIndex({ email: 1 })
+    db.users.find({ email: "user@example.com" }, { name: 1, email: 1 })
+    // Still fetches documents
+    ```
 
-**Solution:**
-```js
-// Include all projected fields in index
-db.users.createIndex({ email: 1, name: 1 })
-db.users.find({ email: "user@example.com" }, { name: 1, email: 1, _id: 0 })
-```
+    **Solution:**
+    ```js
+    // Include all projected fields in index
+    db.users.createIndex({ email: 1, name: 1 })
+    db.users.find({ email: "user@example.com" }, { name: 1, email: 1, _id: 0 })
+    ```
 
 ## Appendix: metrics thresholds
 {: #metrics-thresholds}
