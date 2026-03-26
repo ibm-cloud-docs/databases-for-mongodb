@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} vert scaling list
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 8888
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -695,13 +695,13 @@ Scale CPU and memory resources to handle increased workload.
 
 * **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
-```bash
-# Scale memory to 8GB and CPU to 4 cores
-ibmcloud cdb deployment-groups-set <deployment-id> member \
-  --memory 8192 \
-  --cpu-allocation 4
-```
-{: codeblock}
+    ```bash
+    # Scale memory to 8GB and CPU to 4 cores
+    ibmcloud cdb deployment-groups-set <deployment-id> member \
+      --memory 8192 \
+      --cpu-allocation 4
+    ```
+    {: codeblock}
 
 #### Considerations
 {: #scaling-considerations}
@@ -717,19 +717,19 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 Add replica set members for read scaling and high availability.
 
 * **Using the {{site.data.keyword.cloud_notm}} console:**
-1. Navigate to **Resources**.
-2. Adjust **Members** slider.
-3. Review configuration.
-4. Click **Scale**.
+    1. Navigate to **Resources**.
+    2. Adjust **Members** slider.
+    3. Review configuration.
+    4. Click **Scale**.
 
 * **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
-```bash
-# Add a replica set member
-ibmcloud cdb deployment-groups-set <deployment-id> member \
-  --members 4
-```
-{: codeblock}
+    ```bash
+    # Add a replica set member
+    ibmcloud cdb deployment-groups-set <deployment-id> member \
+      --members 4
+    ```
+    {: codeblock}
 
 #### Benefits
 {: #horizontal-benefits}
@@ -746,19 +746,19 @@ Increase disk space and IOPS for better performance.
 
 * **Using the {{site.data.keyword.cloud_notm}} console:**
 
-1. Navigate to **Resources**.
-2. Adjust **Disk** slider.
-3. Review IOPS allocation.
-4. Click **Scale**.
+    1. Navigate to **Resources**.
+    2. Adjust **Disk** slider.
+    3. Review IOPS allocation.
+    4. Click **Scale**.
 
 * **Using the {{site.data.keyword.cloud_notm}} CLI:**
 
-```bash
-# Scale disk to 100GB
-ibmcloud cdb deployment-groups-set <deployment-id> member \
-  --disk-allocation 102400
-```
-{: codeblock}
+    ```bash
+    # Scale disk to 100GB
+    ibmcloud cdb deployment-groups-set <deployment-id> member \
+      --disk-allocation 102400
+    ```
+    {: codeblock}
 
 #### Important information:
 {: #storage-scaling-notes}
@@ -823,56 +823,58 @@ ibmcloud plugin install cloud-databases
 * **Get deployment information:**
 
 
-```bash
-# List all MongoDB deployments
-ibmcloud cdb deployments --type mongodb
+    ```bash
+    # List all MongoDB deployments
+    ibmcloud cdb deployments --type mongodb
 
-# Get specific deployment details
-ibmcloud cdb deployment <deployment-id>
-```
-{: codeblock}
+    # Get specific deployment details
+    ibmcloud cdb deployment <deployment-id>
+    ```
+    {: codeblock}
 
 * **Check deployment status:**
 
-```bash
-# Get deployment status
-ibmcloud cdb deployment-status <deployment-id>
+    ```bash
+    # Get deployment status
+    ibmcloud cdb deployment-status <deployment-id>
 
-# Get connection strings
-ibmcloud cdb deployment-connections <deployment-id>
-```
-{: codeblock}
+    # Get connection strings
+    ibmcloud cdb deployment-connections <deployment-id>
+    ```
+    {: codeblock}
 
 * **Monitor metrics:**
 
-```bash
-# Get CPU metrics
-ibmcloud cdb deployment-metrics <deployment-id> --metric cpu
+    ```bash
+    # Get CPU metrics
+    ibmcloud cdb deployment-metrics <deployment-id> --metric cpu
 
-# Get memory metrics
-ibmcloud cdb deployment-metrics <deployment-id> --metric memory
+    # Get memory metrics
+    ibmcloud cdb deployment-metrics <deployment-id> --metric memory
 
-# Get disk metrics
-ibmcloud cdb deployment-metrics <deployment-id> --metric disk
-```
-{: codeblock}
+    # Get disk metrics
+    ibmcloud cdb deployment-metrics <deployment-id> --metric disk
+    ```
+    {: codeblock}
 
 * **Scaling operations:**
 
-```bash
-# Scale memory
-ibmcloud cdb deployment-groups-set <deployment-id> member \
-  --memory 16384
+    ```bash
+    # Scale memory
+    ibmcloud cdb deployment-groups-set <deployment-id> member \
+      --memory 16384
 
-# Scale CPU
-ibmcloud cdb deployment-groups-set <deployment-id> member \
-  --cpu-allocation 8
+    # Scale CPU
+    ibmcloud cdb deployment-groups-set <deployment-id> member \
+      --cpu-allocation 8
 
-# Scale disk
-ibmcloud cdb deployment-groups-set <deployment-id> member \
-  --disk-allocation 204800
-```
-{: codeblock}
+    # Scale disk
+    ibmcloud cdb deployment-groups-set <deployment-id> member \
+      --disk-allocation 204800
+    ```
+    {: codeblock}
+
+88888888
 
 * **Backup operations:**
 
