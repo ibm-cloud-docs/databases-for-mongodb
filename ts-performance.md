@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 17:32
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 19:50
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -1108,18 +1108,18 @@ For globally distributed applications:
 #### Recommendations
 {: #latency-recommendations}
 
-* Place database close to primary user base
-* Use CDN for static content
-* Implement application-level caching
-* Consider data residency requirements
+* Place database close to primary user base.
+* Use CDN for static content.
+* Implement application-level caching.
+* Consider data residency requirements.
 
-### Bandwidth optimization
+#### Bandwidth optimization
 {: #latency-bandwidth}
 
-* Use projections to limit data transfer
-* Implement pagination for large result sets
-* Compress data at application level
-* Use bulk operations to reduce round trips
+* Use projections to limit data transfer.
+* Implement pagination for large result sets.
+* Compress data at application level.
+* Use bulk operations to reduce round trips.
 
 #### Connection pooling best practices
 {: #latency-pooling}
@@ -1219,7 +1219,7 @@ ibmcloud support case-create \
 ```
 {: codeblock}
 
-### Severity levels
+#### Severity levels
 {: #ticket-severity}
 
 | Severity | Description | Response time |
@@ -1230,7 +1230,7 @@ ibmcloud support case-create \
 | 4 (Low) | General questions, feature requests | 8 hours |
 {: caption="Severity levels" caption-side="top"}
 
-### Escalation procedures
+#### Escalation procedures
 {: #escalation}
 
 If the issue is not resolved within the expected timeframe:
@@ -1240,7 +1240,7 @@ If the issue is not resolved within the expected timeframe:
 3. Contact your IBM account team.
 4. For critical issues, request management escalation.
 
-### SLA considerations
+#### SLA considerations
 {: #sla}
 
 * Review your service level agreement.
@@ -1248,7 +1248,7 @@ If the issue is not resolved within the expected timeframe:
 * Know your support entitlements.
 * Document all outages for SLA credits.
 
-### Support best practices
+#### Support best practices
 {: #support-best}
 
 * Provide complete information upfront.
@@ -1257,7 +1257,7 @@ If the issue is not resolved within the expected timeframe:
 * Document resolution for future reference.
 * Provide feedback on support experience.
 
-### Self-service resources
+#### Self-service resources
 {: #self-service}
 
 Before opening a ticket, check the following:
