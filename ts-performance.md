@@ -13,7 +13,7 @@ subcollection: databases-for-mongodb
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 12:16
+# Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}} 13:18
 {: #troubleshooting-performance}
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
@@ -103,10 +103,10 @@ Slow queries are one of the most common causes of degraded performance.
 #### Recommended actions:
 {: #troubleshooting-step2-actions}
 
-* Create appropriate indexes
-* Use compound indexes for multi-field queries
-* Ensure aggregation pipelines begin with `$match`
-* Avoid large `skip()` pagination
+* Create appropriate indexes.
+* Use compound indexes for multi-field queries.
+* Ensure aggregation pipelines begin with `$match`.
+* Avoid large `skip()` pagination.
 
 
 
@@ -607,14 +607,14 @@ db.currentOp({
 #### Key metrics to track:
 {: #key-metrics}
 
-* **Platform metrics**
+* **Platform metrics:**
     * **CPU utilization** - Target: < 75% sustained
     * **Memory utilization** - Target: < 80% sustained
     * **Disk utilization** - Target: < 80%
     * **Disk IOPS** - Monitor for saturation
     * **Network throughput** - Identify bandwidth constraints
 
-* **MongoDB-specific metrics**
+* **MongoDB-specific metrics:**
     * **Operations per second** - Track workload patterns
     * **Active connections** - Monitor against plan limits
     * **Replication lag** - Target: < 1 second
@@ -717,10 +717,10 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 ### Correlating events with performance issues
 {: #events-performance}
 
-1. Note the timestamp of performance degradation
-2. Search Activity Tracker for events around that time
-3. Look for configuration changes or administrative actions
-4. Correlate with monitoring metrics
+1. Note the timestamp of performance degradation.
+2. Search Activity Tracker for events around that time.
+3. Look for configuration changes or administrative actions.
+4. Correlate with monitoring metrics.
 
 ### Example event analysis
 {: #example-analysis}
@@ -787,10 +787,10 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 #### Considerations
 {: #scaling-considerations}
 
-* Brief connection disruption during scaling
-* Plan for 5-10 minutes downtime
-* Scale proactively before saturation
-* Monitor metrics after scaling
+* Brief connection disruption during scaling.
+* Plan for 5-10 minutes downtime.
+* Scale proactively before saturation.
+* Monitor metrics after scaling.
 
 ### Horizontal scaling (replica set members)
 {: #scaling-horizontal}
@@ -828,15 +828,15 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 
 Increase disk space and IOPS for better performance.
 
-#### Using the {{site.data.keyword.cloud_notm}} console
+#### Using the {{site.data.keyword.cloud_notm}} console:
 {: #storage-scaling-console}
 
-1. Navigate to **Resources**
-2. Adjust **Disk** slider
-3. Review IOPS allocation
-4. Click **Scale**
+1. Navigate to **Resources**.
+2. Adjust **Disk** slider.
+3. Review IOPS allocation.
+4. Click **Scale**.
 
-#### Using the {{site.data.keyword.cloud_notm}} CLI
+#### Using the {{site.data.keyword.cloud_notm}} CLI:
 {: #storage-scaling-cli}
 
 ```bash
@@ -846,7 +846,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 {: codeblock}
 
-#### Important notes
+#### Important notes:
 {: #storage-scaling-notes}
 
 * Storage can only be increased, not decreased
@@ -906,7 +906,7 @@ ibmcloud plugin install cloud-databases
 ### Essential diagnostic commands
 {: #diagnostic-commands}
 
-#### Get deployment information
+#### Get deployment information:
 {: #deployment-info}
 
 ```bash
@@ -918,7 +918,7 @@ ibmcloud cdb deployment <deployment-id>
 ```
 {: codeblock}
 
-#### Check deployment status
+#### Check deployment status:
 {: #deployment-status}
 
 ```bash
@@ -930,7 +930,7 @@ ibmcloud cdb deployment-connections <deployment-id>
 ```
 {: codeblock}
 
-#### Monitor metrics
+#### Monitor metrics:
 {: #monitor-metrics}
 
 ```bash
@@ -945,7 +945,7 @@ ibmcloud cdb deployment-metrics <deployment-id> --metric disk
 ```
 {: codeblock}
 
-#### Scaling operations
+#### Scaling operations:
 {: #scaling-operations}
 
 ```bash
@@ -963,7 +963,7 @@ ibmcloud cdb deployment-groups-set <deployment-id> member \
 ```
 {: codeblock}
 
-#### Backup operations
+#### Backup operations:
 {: #backup-operations}
 
 ```bash
@@ -978,7 +978,7 @@ ibmcloud cdb backup <backup-id>
 ### Using the {{site.data.keyword.cloud_notm}} API
 {: #cloud-api}
 
-#### Authentication
+#### Authentication:
 {: #authentication}
 
 ```bash
@@ -987,7 +987,7 @@ export IAM_TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r '.iam_token')
 ```
 {: codeblock}
 
-#### Get deployment metrics via API
+#### Get deployment metrics using the API
 {: #api-metrics}
 
 ```bash
@@ -998,7 +998,7 @@ curl -X GET \
 ```
 {: codeblock}
 
-#### Scale deployment via API
+#### Scale deployment using the API
 {: #api-metrics-scale}
 
 ```bash
@@ -1062,11 +1062,11 @@ echo "=== Diagnostics Complete ==="
 ### Automation recommendations
 {: #automation}
 
-* Schedule regular health checks
-* Integrate with monitoring systems
-* Automate scaling based on thresholds
-* Create alerts for critical metrics
-* Log all operations for audit trail
+* Schedule regular health checks.
+* Integrate with monitoring systems.
+* Automate scaling based on thresholds.
+* Create alerts for critical metrics.
+* Log all operations for audit trail.
 
 
 ## {{site.data.keyword.cloud_notm}} network optimization
@@ -1088,9 +1088,9 @@ Network configuration significantly impacts MongoDB performance, especially for 
 
 **Setup:**
 
-1. Navigate to **Settings** > **Endpoints**
-2. Enable **Private endpoint**
-3. Update connection strings in applications
+1. Navigate to **Settings** > **Endpoints**.
+2. Enable **Private endpoint**.
+3. Update connection strings in applications.
 
 **Connection string example:**
 
@@ -1104,18 +1104,18 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 
 **Use cases:**
 * External applications
-* Development/testing
+* Development and testing
 * Hybrid cloud scenarios
 
 **Security considerations:**
-* Use IP allowlisting
-* Enforce TLS/SSL
-* Rotate credentials regularly
+* Use IP allowlisting.
+* Enforce TLS/SSL.
+* Rotate credentials regularly.
 
 ### Service endpoints
 {: #service-endpoints}
 
-{{site.data.keyword.cloud_notm}} Service Endpoints provide optimized connectivity within {{site.data.keyword.cloud_notm}}.
+{{site.data.keyword.cloud_notm}} service endpoints provide optimized connectivity within {{site.data.keyword.cloud_notm}}.
 
 #### Benefits
 {: #service-endpoints-benefits}
@@ -1149,10 +1149,10 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 #### Best practices
 {: #multizone-best}
 
-* Deploy applications in the same region
-* Use read preferences to minimize latency
-* Consider `nearest` read preference for multi-zone apps
-* Monitor replication lag between zones
+* Deploy applications in the same region.
+* Use read preferences to minimize latency.
+* Consider `nearest` read preference for multi-zone apps.
+* Monitor replication lag between zones.
 
 ### Network latency troubleshooting
 {: #latency}
@@ -1242,15 +1242,15 @@ Know when and how to engage {{site.data.keyword.cloud_notm}} Support for perform
 ### When to contact IBM Support
 {: #contact-IBM}
 
-Contact support if:
+Contact support if the following apply:
 
-* Performance issues persist after following this guide
-* Replication lag continues despite optimization
-* Disk latency remains high without workload spikes
-* Suspected infrastructure-level issues
-* Unexpected behavior after scaling
-* Deployment health issues
-* Backup or restore problems
+* Performance issues persist after following this guide.
+* Replication lag continues despite optimization.
+* Disk latency remains high without workload spikes.
+* Suspected infrastructure-level issues.
+* Unexpected behavior after scaling.
+* Deployment health issues.
+* Backup or restore problems.
 
 ### Before contacting support
 {: #before-contact}
@@ -1279,7 +1279,7 @@ Gather the following information:
 * Monitoring screenshots from Sysdig
 * Query examples causing issues
 * Output from diagnostic commands
-* Activity Tracker events during issue window
+* Activity Tracker events during the issue window
 
 #### MongoDB diagnostics
 {: #mongodb-diagnostics}
@@ -1292,6 +1292,7 @@ mongo "your-connection-string" --eval "
   printjson(rs.status());
 " > mongodb-diagnostics.json
 ```
+{: codeblock}
 
 ### Opening a support ticket
 {: #open-ticket}
@@ -1299,12 +1300,12 @@ mongo "your-connection-string" --eval "
 #### Using the {{site.data.keyword.cloud_notm}} console
 {: #ticket-console}
 
-1. Navigate to **Support** in top menu
-2. Click **Create a case**
-3. Select **Databases for MongoDB**
-4. Choose severity level
-5. Provide detailed description
-6. Attach diagnostic files
+1. Navigate to **Support** in the top menu.
+2. Click **Create a case**.
+3. Select **Databases for MongoDB**.
+4. Choose severity level.
+5. Provide detailed description.
+6. Attach diagnostic files.
 
 #### Using the {{site.data.keyword.cloud_notm}} CLI
 {: #ticket-cli}
@@ -1322,7 +1323,7 @@ ibmcloud support case-create \
 ### Severity levels
 {: #ticket-severity}
 
-| Severity | Description | Response Time |
+| Severity | Description | Response time |
 |----------|-------------|---------------|
 | 1 (Critical) | Production down, data loss | 1 hour |
 | 2 (High) | Significant performance degradation | 2 hours |
@@ -1758,9 +1759,9 @@ db.collection.createIndex({ field3: 1 })
 // ... 20+ indexes
 ```
 
-**Impact:** Slows down writes, increases storage
+**Impact:** Slows down writes and increases storage
 
-**Solution:** Keep only necessary indexes, use compound indexes
+**Solution:** Keep only necessary indexes and use compound indexes
 
 #### 2. Wrong index order in compound indexes
 {: #wrong-order}
@@ -1802,24 +1803,24 @@ Recommended thresholds for key performance metrics.
 
 | Metric | Warning threshold | Critical threshold | Recommended action |
 |--------|------------------|-------------------|-------------------|
-| **CPU Utilization** | > 75% | > 90% | Scale CPU cores |
-| **Memory Utilization** | > 80% | > 95% | Scale memory allocation |
-| **Disk Utilization** | > 80% | > 90% | Scale disk space |
+| **CPU utilization** | > 75% | > 90% | Scale CPU cores |
+| **Memory utilization** | > 80% | > 95% | Scale memory allocation |
+| **Disk utilization** | > 80% | > 90% | Scale disk space |
 | **Disk IOPS** | > 80% of limit | > 95% of limit | Increase disk size for more IOPS |
-| **Active Connections** | > 80% of limit | > 95% of limit | Scale plan or optimize connection pooling |
-| **Replication Lag** | > 5 seconds | > 30 seconds | Investigate and scale if needed |
-| **Cache Hit Ratio** | < 95% | < 90% | Scale memory or optimize queries |
-| **Query Execution Time** | > 100ms (avg) | > 1000ms (avg) | Optimize queries and indexes |
-| **Lock Wait Time** | > 100ms | > 1000ms | Optimize operations, kill long-running queries |
-| **Page Faults** | > 100/sec | > 1000/sec | Scale memory |
-| **Network Latency** | > 10ms | > 50ms | Check network configuration |
-| **Backup Duration** | > 1 hour | > 4 hours | Consider scaling or optimization |
+| **Active connections** | > 80% of limit | > 95% of limit | Scale plan or optimize connection pooling |
+| **Replication lag** | > 5 seconds | > 30 seconds | Investigate and scale if needed |
+| **Cache hit ratio** | < 95% | < 90% | Scale memory or optimize queries |
+| **Query execution time** | > 100ms (avg) | > 1000ms (avg) | Optimize queries and indexes |
+| **Lock wait time** | > 100ms | > 1000ms | Optimize operations and kill long-running queries |
+| **Page faults** | > 100/sec | > 1000/sec | Scale memory |
+| **Network latency** | > 10ms | > 50ms | Check network configuration |
+| **Backup duration** | > 1 hour | > 4 hours | Consider scaling or optimization |
 {: caption="Metrics thresholds" caption-side="top"}
 
 ### Monitoring frequency recommendations
 {: #frequency}
 
-| Metric Category | Check Frequency | Retention Period |
+| Metric category | Check frequency | Retention period |
 |----------------|----------------|------------------|
 | Resource utilization | Every 1 minute | 30 days |
 | Query performance | Every 5 minutes | 14 days |
@@ -1875,16 +1876,16 @@ Escalation: Create incident if > 90%
 |------|---------------|
 | **Indexing** | Regularly review and remove unused indexes |
 | **Monitoring** | Configure alerts for CPU, memory, disk, and replication lag |
-| **Capacity planning** | Keep disk usage below 80%, scale proactively |
+| **Capacity planning** | Keep disk usage below 80% and scale proactively |
 | **Query design** | Use explain plans during development |
 | **Scaling** | Scale proactively before saturation |
-| **Connection pooling** | Use connection pools, avoid per-request connections |
+| **Connection pooling** | Use connection pools and avoid per-request connections |
 | **Read preferences** | Use secondaries for read-heavy workloads |
 | **Write concern** | Balance durability with performance needs |
 | **Schema design** | Avoid unbounded arrays and excessive embedding |
 | **Backup planning** | Schedule during low-traffic periods |
 | **Network** | Use private endpoints for {{site.data.keyword.cloud_notm}} workloads |
-| **Security** | Rotate credentials regularly, use IP allowlisting |
+| **Security** | Rotate credentials regularly and use IP allowlisting |
 | **Documentation** | Document baseline metrics and normal patterns |
 | **Testing** | Test performance changes in non-production first |
 | **Support** | Gather diagnostics before contacting support |
@@ -1906,7 +1907,7 @@ Escalation: Create incident if > 90%
 ### MongoDB documentation
 {: #mongodb-docs}
 
-* [MongoDB Performance best practices](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/)
+* [MongoDB performance best practices](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/)
 * [MongoDB indexing strategies](https://docs.mongodb.com/manual/applications/indexes/)
 * [MongoDB query optimization](https://docs.mongodb.com/manual/core/query-optimization/)
 * [WiredTiger Storage Engine](https://docs.mongodb.com/manual/core/wiredtiger/)
@@ -1916,4 +1917,4 @@ Escalation: Create incident if > 90%
 
 * [MongoDB community forums](https://www.mongodb.com/community/forums/)
 * [Stack Overflow - MongoDB Tag](https://stackoverflow.com/questions/tagged/mongodb)
-* [IBM Cloud Community](https://community.ibm.com/community/user/cloud/home)
+* [IBM Cloud community](https://community.ibm.com/community/user/cloud/home)
