@@ -12,23 +12,22 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-
 # {{site.data.keyword.cloud_notm}} specific features and tools to help troubleshoot performance
-{: # #features-tools}
+{: #features-tools}
 
-### Using IBM Cloud Monitoring (Sysdig)
+## Using IBM Cloud Monitoring (Sysdig)
 {: #sysdig}
 
 {{site.data.keyword.databases-for-mongodb}} integrates with IBM Cloud Monitoring powered by Sysdig for comprehensive observability.
 
-#### Accessing monitoring dashboards
+### Accessing monitoring dashboards
 {: #dashboards}
 
 1. Navigate to your MongoDB deployment in {{site.data.keyword.cloud_notm}} console.
 2. Click **Monitoring** in the left navigation.
 3. Click **Launch Monitoring** to open the Sysdig dashboard.
 
-#### Key metrics to track:
+### Key metrics to track:
 {: #key-metrics}
 
 * **Platform metrics:**
@@ -45,7 +44,7 @@ subcollection: databases-for-mongodb
     * **Query execution time** - identify slow queries
     * **Cache hit ratio** - target: > 95%
 
-#### Setting up alerts
+### Setting up alerts
 {: #alert-setup}
 
 Create alerts for critical thresholds:
@@ -71,7 +70,7 @@ Action: Trigger scaling workflow
 ```
 {: codeblock}
 
-#### Creating custom dashboards
+### Creating custom dashboards
 {: #custom-dashboard}
 
 1. In Sysdig, click **Dashboards** > **Create Dashboard**.
@@ -79,7 +78,7 @@ Action: Trigger scaling workflow
 3. Use filters to focus on your MongoDB deployment.
 4. Save and share with your team.
 
-#### Example dashboard layout
+### Example dashboard layout
 {: #dashboard-layout}
 
 * **Row 1**: CPU, memory, disk utilization
@@ -87,7 +86,7 @@ Action: Trigger scaling workflow
 * **Row 3**: Replication lag, query performance
 * **Row 4**: Cache statistics, lock contention
 
-#### Historical analysis
+### Historical analysis
 {: #analysis}
 
 * Use the time range selector for historical data
@@ -95,7 +94,7 @@ Action: Trigger scaling workflow
 * Identify trends and patterns
 * Correlate events with performance changes
 
-#### Recommended actions:
+### Recommended actions:
 {: #actions}
 
 * Set up alerts before issues occur.
@@ -105,12 +104,12 @@ Action: Trigger scaling workflow
 * Use metrics for capacity planning.
 
 
-### IBM Cloud Activity Tracker integration
+## IBM Cloud Activity Tracker integration
 {: #activity-tracker-integration}
 
 IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that can impact performance.
 
-#### Accessing Activity Tracker
+### Accessing Activity Tracker
 {: #activity-tracker-access}
 
 
@@ -118,7 +117,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 2. Select your region.
 3. Filter events by your MongoDB instance.
 
-#### Key events to monitor:
+### Key events to monitor:
 {: #key-events}
 
 
@@ -134,7 +133,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
     * Maintenance operations
     * Index creation and deletion
 
-#### Correlating events with performance issues
+### Correlating events with performance issues
 {: #events-performance}
 
 1. Note the timestamp of performance degradation.
@@ -142,7 +141,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 3. Look for configuration changes or administrative actions.
 4. Correlate with monitoring metrics.
 
-#### Example event analysis
+### Example event analysis
 {: #example-analysis}
 
 
@@ -154,7 +153,7 @@ Result: Improved performance after scaling
 ```
 {: codeblock}
 
-#### Audit trail for compliance
+### Audit trail for compliance
 {: #audit-compliance}
 
 * Track who made changes and when
@@ -162,7 +161,7 @@ Result: Improved performance after scaling
 * Review access patterns
 * Identify unauthorized changes
 
-#### Recommended actions:
+### Recommended actions:
 {: #activity-tracker-actions}
 
 * Review Activity Tracker logs regularly.
@@ -172,12 +171,12 @@ Result: Improved performance after scaling
 * Use for post-incident analysis.
 
 
-### {{site.data.keyword.cloud_notm}} scaling options
+## {{site.data.keyword.cloud_notm}} scaling options
 {: #scaling-options}
 
 {{site.data.keyword.databases-for-mongodb}} offers flexible scaling options to match your performance needs.
 
-#### Vertical scaling (compute and memory)
+### Vertical scaling (compute and memory)
 {: #vertical-scaling}
 
 Scale CPU and memory resources to handle increased workload.
@@ -199,7 +198,7 @@ Scale CPU and memory resources to handle increased workload.
     ```
     {: codeblock}
 
-#### Considerations
+### Considerations
 {: #scaling-considerations}
 
 * Brief connection disruption during scaling.
@@ -207,7 +206,7 @@ Scale CPU and memory resources to handle increased workload.
 * Scale proactively before saturation.
 * Monitor metrics after scaling.
 
-#### Horizontal scaling (replica set members)
+### Horizontal scaling (replica set members)
 {: #scaling-horizontal}
 
 Add replica set members for read scaling and high availability.
@@ -227,7 +226,7 @@ Add replica set members for read scaling and high availability.
     ```
     {: codeblock}
 
-#### Benefits
+### Benefits
 {: #horizontal-benefits}
 
 * Distribute read load across secondaries
@@ -235,7 +234,7 @@ Add replica set members for read scaling and high availability.
 * Better geographic distribution
 * No downtime for adding members
 
-#### Storage scaling
+### Storage scaling
 {: #storage-scaling}
 
 Increase disk space and IOPS for better performance.
@@ -256,7 +255,7 @@ Increase disk space and IOPS for better performance.
     ```
     {: codeblock}
 
-#### Important information:
+### Important information:
 {: #storage-scaling-notes}
 
 * Storage can only be increased, not decreased
@@ -264,7 +263,7 @@ Increase disk space and IOPS for better performance.
 * No downtime for storage scaling
 * Monitor disk usage trends
 
-#### Scaling best practices
+### Scaling best practices
 {: #storage-scaling-best}
 
 | Scenario | Recommended action |
@@ -277,7 +276,7 @@ Increase disk space and IOPS for better performance.
 | Write-heavy workload | Scale CPU and memory |
 {: caption="Scaling best practices" caption-side="top"}
 
-#### Cost optimization
+### Cost optimization
 {: #storage-scaling-cost}
 
 * Right size your deployment.
@@ -285,7 +284,7 @@ Increase disk space and IOPS for better performance.
 * Scale down during low-traffic periods (if supported).
 * Consider reserved capacity for predictable workloads.
 
-#### Automation
+### Automation
 {: #storage-scaling-automation}
 
 ```bash
@@ -296,12 +295,12 @@ fi
 ```
 {: codeblock}
 
-### {{site.data.keyword.cloud_notm}} CLI and API for diagnostics
+## {{site.data.keyword.cloud_notm}} CLI and API for diagnostics
 {: #cli-api-diagnostics}
 
 Use {{site.data.keyword.cloud_notm}} CLI and API for automated diagnostics and monitoring.
 
-#### Installing {{site.data.keyword.cloud_notm}} CLI
+### Installing {{site.data.keyword.cloud_notm}} CLI
 {: #install-cli}
 
 ```bash
@@ -313,7 +312,7 @@ ibmcloud plugin install cloud-databases
 ```
 {: codeblock}
 
-#### Essential diagnostic commands
+### Essential diagnostic commands
 {: #diagnostic-commands}
 
 * **Get deployment information:**
@@ -381,7 +380,7 @@ ibmcloud plugin install cloud-databases
     ```
     {: codeblock}
 
-#### Using the {{site.data.keyword.cloud_notm}} API
+### Using the {{site.data.keyword.cloud_notm}} API
 {: #cloud-api}
 
 * **Authentication:**
@@ -470,12 +469,12 @@ ibmcloud plugin install cloud-databases
     * Log all operations for audit trail.
 
 
-### {{site.data.keyword.cloud_notm}} network optimization
+## {{site.data.keyword.cloud_notm}} network optimization
 {: #network}
 
 Network configuration significantly impacts MongoDB performance, especially for distributed applications. Compare private endpoints with public endpoints:
 
-#### Private endpoints (recommended)
+### Private endpoints (recommended)
 {: #private-endpoints}
 
 **Benefits:**
@@ -496,7 +495,7 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 ```
 {: codeblock}
 
-#### Public endpoints
+### Public endpoints
 {: #public-endpoints}
 
 **Use cases:**
@@ -509,12 +508,12 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 * Enforce TLS/SSL.
 * Rotate credentials regularly.
 
-#### Service endpoints
+### Service endpoints
 {: #service-endpoints}
 
 {{site.data.keyword.cloud_notm}} service endpoints provide optimized connectivity within {{site.data.keyword.cloud_notm}}.
 
-#### Benefits
+### Benefits
 {: #service-endpoints-benefits}
 
 * Reduced latency
@@ -522,7 +521,7 @@ mongodb://user:pass@host.private.databases.appdomain.cloud:port/database?authSou
 * Improved security posture
 * Cost savings on bandwidth
 
-#### Configuration
+### Configuration
 {: #service-endpoints-config}
 
 ```bash
@@ -531,19 +530,19 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 ```
 {: codeblock}
 
-#### Multi-zone deployment considerations
+### Multi-zone deployment considerations
 {: #multizone}
 
 {{site.data.keyword.databases-for-mongodb}} can span multiple availability zones.
 
-#### Performance implications
+### Performance implications
 {: #multizone-implications}
 
 * **Intra-zone latency**: < 1ms
 * **Inter-zone latency**: 1-5ms
 * **Cross-region latency**: 50-200ms
 
-#### Best practices
+### Best practices
 {: #multizone-best}
 
 * Deploy applications in the same region.
@@ -551,7 +550,7 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
 * Consider `nearest` read preference for multi-zone apps.
 * Monitor replication lag between zones.
 
-#### Network latency troubleshooting
+### Network latency troubleshooting
 {: #latency}
 
 * **Measure latency from application**
@@ -573,7 +572,7 @@ ibmcloud cdb deployment-service-endpoint-enable <deployment-id>
     ```
     {: codeblock}
 
-#### MongoDB connection diagnostics
+### MongoDB connection diagnostics
 {: #measure-latency-connection}
 
 ```js
@@ -585,19 +584,19 @@ db.serverStatus().connections
 ```
 {: codeblock}
 
-#### Geographic distribution
+### Geographic distribution
 {: #geographic}
 
 For globally distributed applications:
 
-#### Strategies
+### Strategies
 {: #latency-strategies}
 
 * **Single region**: Lowest latency, single point of failure
 * **Multi-region with read replicas**: Read scaling, eventual consistency
 * **Cross-region replication**: Disaster recovery, higher latency
 
-#### Recommendations
+### Recommendations
 {: #latency-recommendations}
 
 * Place database close to primary user base.
@@ -605,7 +604,7 @@ For globally distributed applications:
 * Implement application-level caching.
 * Consider data residency requirements.
 
-#### Bandwidth optimization
+### Bandwidth optimization
 {: #latency-bandwidth}
 
 * Use projections to limit data transfer.
@@ -613,7 +612,7 @@ For globally distributed applications:
 * Compress data at application level.
 * Use bulk operations to reduce round trips.
 
-#### Connection pooling best practices
+### Connection pooling best practices
 {: #latency-pooling}
 
 ```javascript
@@ -629,12 +628,12 @@ const client = new MongoClient(uri, {
 {: codeblock}
 
 
-### {{site.data.keyword.cloud_notm}} Support integration
+## {{site.data.keyword.cloud_notm}} Support integration
 {: #support-integration}
 
 Know when and how to engage {{site.data.keyword.cloud_notm}} Support for performance issues.
 
-#### When to contact IBM Support
+### When to contact IBM Support
 {: #contact-IBM}
 
 Contact support if the following apply:
@@ -647,7 +646,7 @@ Contact support if the following apply:
 * Deployment health issues.
 * Backup or restore problems.
 
-#### Before contacting support
+### Before contacting support
 {: #before-contact}
 
 Gather the following information:
@@ -685,10 +684,10 @@ Gather the following information:
     ```
     {: codeblock}
 
-#### Opening a support ticket
+### Opening a support ticket
 {: #open-ticket}
 
-#### Using the {{site.data.keyword.cloud_notm}} console
+### Using the {{site.data.keyword.cloud_notm}} console
 {: #ticket-console}
 
 1. Navigate to **Support** in the top menu.
@@ -698,7 +697,7 @@ Gather the following information:
 5. Provide detailed description.
 6. Attach diagnostic files.
 
-#### Using the {{site.data.keyword.cloud_notm}} CLI
+### Using the {{site.data.keyword.cloud_notm}} CLI
 {: #ticket-cli}
 
 ```bash
@@ -711,7 +710,7 @@ ibmcloud support case-create \
 ```
 {: codeblock}
 
-#### Severity levels
+### Severity levels
 {: #ticket-severity}
 
 | Severity | Description | Response time |
@@ -722,7 +721,7 @@ ibmcloud support case-create \
 | 4 (Low) | General questions, feature requests | 8 hours |
 {: caption="Severity levels" caption-side="top"}
 
-#### Escalation procedures
+### Escalation procedures
 {: #escalation}
 
 If the issue is not resolved within the expected timeframe:
@@ -732,7 +731,7 @@ If the issue is not resolved within the expected timeframe:
 3. Contact your IBM account team.
 4. For critical issues, request management escalation.
 
-#### SLA considerations
+### SLA considerations
 {: #sla}
 
 * Review your service level agreement.
@@ -740,7 +739,7 @@ If the issue is not resolved within the expected timeframe:
 * Know your support entitlements.
 * Document all outages for SLA credits.
 
-#### Support best practices
+### Support best practices
 {: #support-best}
 
 * Provide complete information upfront.
@@ -749,7 +748,7 @@ If the issue is not resolved within the expected timeframe:
 * Document resolution for future reference.
 * Provide feedback on support experience.
 
-#### Self-service resources
+### Self-service resources
 {: #self-service}
 
 Before opening a ticket, check the following:

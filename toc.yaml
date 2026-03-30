@@ -115,7 +115,7 @@ toc:
       id: help
       topics:
       - topicgroup:
-          label: Troubleshooting3
+          label: Troubleshooting
           topics:
           - ts-performance.md
           - ts-tools.md
