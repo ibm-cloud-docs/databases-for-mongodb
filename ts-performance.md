@@ -58,7 +58,6 @@ Complete the following steps to determine the cause of the issues:
 #### Recommended actions:
 {: #troubleshooting-step1-actions}
 
-* Scale your deployment to a higher plan.
 * Increase storage or IOPS if disk latency is high.
 * Review workload spikes in your application.
 
@@ -98,7 +97,7 @@ Slow queries are one of the most common causes of degraded performance.
 
 * `COLLSCAN` (collection scan instead of index usage)
 * High `totalDocsExamined` compared to `nReturned`
-* Blocking sort stages
+* Blocking sort stages (Liam: extra info needed)
 
 #### Recommended actions:
 {: #troubleshooting-step2-actions}
@@ -162,6 +161,14 @@ rs.printSecondaryReplicationInfo()
 ### Step 5: Sharded cluster considerations (if applicable)
 {: #troubleshooting-step5}
 
+You might need sharding when:
+* Working set > RAM
+* Single-node IOPS maxed out even after scaling
+* Horizontal write scaling required
+* Collections exceed 1–2 TB
+
+For more information, see [performance tuning](https://www.mongodb.com/docs/manual/administration/performance-tuning/) and [sharding](https://www.mongodb.com/docs/manual/sharding/).
+
 If your deployment uses sharding, run:
 
 ```js
@@ -204,7 +211,7 @@ Deleting a significant percentage of data does not immediately reduce disk usage
 * Consider dump and restore for severe fragmentation.
 * Keep disk utilization below 80–85%.
 
-For managed deployments, schedule maintenance activities appropriately.
+Schedule maintenance activities appropriately.
 
 
 ### Step 7: Check for lock contention
@@ -387,7 +394,7 @@ db.serverStatus().wiredTiger.cache["tracked dirty bytes in the cache"]
 {: #troubleshooting-step9-best}
 
 * The WiredTiger cache should be 50% of available RAM (default).
-* Leave sufficient memory for OS and other processes.
+* Leave sufficient memory for other processes.
 * Monitor swap usage, which should be minimal.
 
 
@@ -468,7 +475,7 @@ Backup operations and maintenance tasks can temporarily affect performance.
 #### {{site.data.keyword.cloud_notm}} backup schedule
 {: #troubleshooting-step11-schedule}
 
-{{site.data.keyword.databases-for-mongodb}} automatically backs up. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
+{{site.data.keyword.databases-for-mongodb}} automatically does a backup. Check your backup schedule in the {{site.data.keyword.cloud_notm}} console under **Backups**.
 
 #### Check for ongoing backup operations:
 {: #troubleshooting-step11-backup}
@@ -490,17 +497,10 @@ db.currentOp({
 * Increased disk I/O during backups
 * Replication lag during backups
 
-#### Point-in-Time Recovery (PITR) considerations
-{: #troubleshooting-step11-pitr}
-
-* PITR maintains continuous backup capability
-* Minimal performance impact under normal conditions
-* Might increase disk I/O slightly
 
 #### Recommended actions:
 {: #troubleshooting-step11-actions}
 
-* Schedule application maintenance during backup windows.
 * Monitor performance metrics during backup times.
 * Consider scaling if backups consistently impact performance.
 * Review backup retention policies.
