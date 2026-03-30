@@ -115,10 +115,9 @@ toc:
       id: help
       topics:
       - topicgroup:
-          label: Troubleshooting1
+          label: Troubleshooting2
           topics:
           - ts-performance.md
-          - ts-tools.md
           - ts-connect.md
           - ts-workload.md
           - include: ../cloud-databases/ts-terraform.md
