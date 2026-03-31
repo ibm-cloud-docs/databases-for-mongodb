@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-01-27"
+lastupdated: "2026-03-31"
 
 keywords: databases-for-mongodb release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-mongodb_full_notm}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 27 March 2026
+{: #databases-for-elasticsearch-27mar2026}
+{: release-note}
+
+Deprecation of {{site.data.keyword.hscrypto}}
+: {{site.data.keyword.cloud}} is transitioning its dedicated key management offering from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant). As part of this transition, {{site.data.keyword.hscrypto}} will reach **End of Life (EOL) on March 20, 2027**. After this date, the service will no longer be supported, and any remaining instances will be terminated.
+To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information on how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/cloud-databases?topic=cloud-databases-hpcs#migrating_hpcs_to_kp).
 
 ## 12 December 2025
 {: #databases-for-mongodb-12dec2025}
@@ -258,4 +266,4 @@ New Regions Available for IBM Cloud Database Services
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-mongodb_full}}
-:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. 
+:  {{site.data.keyword.databases-for-mongodb_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family.
