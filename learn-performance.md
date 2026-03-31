@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-03-24"
+lastupdated: "2026-03-31"
 
 keywords: mongodb, databases, monitoring, scaling, autoscaling, resources, WiredTiger
 
@@ -73,5 +73,3 @@ Many of the MongoDB utilities and commands need the [Cluster Monitor](https://ww
 {: .tip}
 
 For more information, see the [Best Practices blog post](https://www.ibm.com/blog/best-practices-for-mongodb-on-the-ibm-cloud/).
-
-For in-depth help with performance problems, see [Troubleshooting performance for {{site.data.keyword.databases-for-mongodb}}](/docs/databases-for-mongodb?topic=databases-for-mongodb-troubleshooting-performance).
