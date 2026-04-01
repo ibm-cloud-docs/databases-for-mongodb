@@ -9,7 +9,7 @@ toc:
     console-page: /catalog/services/databases-for-mongodb
     product-page: https://www.ibm.com/cloud/databases-for-mongodb
     path: databases-for-mongodb
-    label: Databases For MongoDB Gen 1
+    label: Databases for MongoDB Gen 1
   entries:
   - navgroup:
       id: learn
