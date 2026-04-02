@@ -4,7 +4,7 @@ copyright:
   years: 2026
 lastupdated: "2026-04-02"
 
-keywords: mongodb, databases, monitoring, scaling, autoscaling, resources, troubleshooting
+keywords: mongodb, databases, monitoring, scaling, autoscaling, resources, troubleshooting, flowchart
 
 subcollection: databases-for-mongodb
 
@@ -12,8 +12,15 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Performance troubleshooting flowchart
+# Best practices for performance
+{: #best-practices}
+
+Use this information to apply best practices.
+
+## Performance troubleshooting flowchart
 {: #flowchart}
+
+Use the flowchart to determine how to troubleshoot performance.
 
 ```sh
 ┌─────────────────────────────────┐
