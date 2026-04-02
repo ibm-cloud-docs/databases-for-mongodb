@@ -119,6 +119,7 @@ toc:
           topics:
           - ts-performance.md
           - ts-tools.md
+          - ts-support.md
           - ts-best-practices.md
           - ts-connect.md
           - ts-workload.md
