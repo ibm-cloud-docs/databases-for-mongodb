@@ -269,11 +269,13 @@ Lock contention can severely impact concurrent operations and overall throughput
   db.killOp(opid)
   ```
   {: codeblock}
+
 * Build indexes in the background:
   ```js
   db.collection.createIndex({ field: 1 }, { background: true })
   ```
   {: codeblock}
+
 * Break large operations into smaller batches.
 * Schedule maintenance operations during low-traffic periods.
 * Use read concern and write concern appropriately.

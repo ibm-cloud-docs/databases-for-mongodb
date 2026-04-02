@@ -12,7 +12,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-## Performance troubleshooting flowchart
+# Performance troubleshooting flowchart
 {: #flowchart}
 
 ```sh
