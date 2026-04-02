@@ -15,25 +15,21 @@ subcollection: databases-for-mongodb
 # {{site.data.keyword.cloud_notm}} specific tools and diagnostic commands for troubleshooting performance
 {: #features-tools}
 
-
-## {{site.data.keyword.cloud_notm}} specific tools and features
-{: #tools}
-
 You can use various tools and features of {{site.data.keyword.cloud_notm}} to aid performance troubleshooting.
 
-### Using IBM Cloud Monitoring (Sysdig)
+## Using IBM Cloud Monitoring (Sysdig)
 {: #sysdig}
 
 MongoDB integrates with IBM Cloud Monitoring powered by Sysdig for comprehensive observability.
 
-#### Accessing monitoring dashboards
+### Accessing monitoring dashboards
 {: #dashboards}
 
 1. Navigate to your MongoDB deployment in {{site.data.keyword.cloud_notm}} console.
 2. Click **Monitoring** in the left navigation.
 3. Click **Launch Monitoring** to open the Sysdig dashboard.
 
-#### Key metrics to track:
+### Key metrics to track:
 {: #key-metrics}
 
 * **Platform metrics:**
@@ -49,7 +45,7 @@ MongoDB integrates with IBM Cloud Monitoring powered by Sysdig for comprehensive
     * **Query execution time** - identify slow queries
     * **Cache hit ratio** - target: > 95%
 
-#### Setting up alerts
+### Setting up alerts
 {: #alert-setup}
 
 Create alerts for critical thresholds:
@@ -75,7 +71,7 @@ Action: Trigger scaling workflow
 ```
 {: codeblock}
 
-#### Creating custom dashboards
+### Creating custom dashboards
 {: #custom-dashboard}
 
 1. In Sysdig, click **Dashboards** > **Create Dashboard**.
@@ -83,7 +79,7 @@ Action: Trigger scaling workflow
 3. Use filters to focus on your MongoDB deployment.
 4. Save and share with your team.
 
-#### Example dashboard layout
+### Example dashboard layout
 {: #dashboard-layout}
 
 * **Row 1**: CPU, memory, disk utilization
@@ -91,7 +87,7 @@ Action: Trigger scaling workflow
 * **Row 3**: Replication lag, query performance
 * **Row 4**: Cache statistics, lock contention
 
-#### Historical analysis
+### Historical analysis
 {: #analysis}
 
 * Use the time range selector for historical data
@@ -99,7 +95,7 @@ Action: Trigger scaling workflow
 * Identify trends and patterns
 * Correlate events with performance changes
 
-#### Recommended actions:
+### Recommended actions:
 {: #actions}
 
 * Set up alerts before issues occur.
@@ -109,12 +105,12 @@ Action: Trigger scaling workflow
 * Use metrics for capacity planning.
 
 
-### IBM Cloud Activity Tracker integration
+## IBM Cloud Activity Tracker integration
 {: #activity-tracker-integration}
 
 IBM Cloud Activity Tracker helps you track configuration changes and administrative actions that can impact performance.
 
-#### Accessing Activity Tracker
+### Accessing Activity Tracker
 {: #activity-tracker-access}
 
 
@@ -122,7 +118,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 2. Select your region.
 3. Filter events by your MongoDB instance.
 
-#### Key events to monitor:
+### Key events to monitor:
 {: #key-events}
 
 
@@ -138,7 +134,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
     * Maintenance operations
     * Index creation and deletion
 
-#### Correlating events with performance issues
+### Correlating events with performance issues
 {: #events-performance}
 
 1. Note the timestamp of performance degradation.
@@ -146,7 +142,7 @@ IBM Cloud Activity Tracker helps you track configuration changes and administrat
 3. Look for configuration changes or administrative actions.
 4. Correlate with monitoring metrics.
 
-#### Example event analysis
+### Example event analysis
 {: #example-analysis}
 
 
@@ -166,7 +162,7 @@ Result: Improved performance after scaling
 * Review access patterns
 * Identify unauthorized changes
 
-#### Recommended actions:
+### Recommended actions:
 {: #activity-tracker-actions}
 
 * Review Activity Tracker logs regularly.
@@ -176,12 +172,12 @@ Result: Improved performance after scaling
 * Use for post-incident analysis.
 
 
-### {{site.data.keyword.cloud_notm}} scaling options
+## {{site.data.keyword.cloud_notm}} scaling options
 {: #scaling-options}
 
 {{site.data.keyword.databases-for-mongodb}} offers flexible scaling options to match your performance needs.
 
-#### Vertical scaling (compute and memory)
+### Vertical scaling (compute and memory)
 {: #vertical-scaling}
 
 Scale CPU and memory resources to handle increased workload.
@@ -203,7 +199,7 @@ Scale CPU and memory resources to handle increased workload.
     ```
     {: codeblock}
 
-#### Considerations
+### Considerations
 {: #scaling-considerations}
 
 * Brief connection disruption during scaling.
@@ -211,7 +207,7 @@ Scale CPU and memory resources to handle increased workload.
 * Scale proactively before saturation.
 * Monitor metrics after scaling.
 
-#### Horizontal scaling (replica set members)
+### Horizontal scaling (replica set members)
 {: #scaling-horizontal}
 
 Add replica set members for read scaling and high availability.
@@ -231,7 +227,7 @@ Add replica set members for read scaling and high availability.
     ```
     {: codeblock}
 
-#### Benefits
+### Benefits
 {: #horizontal-benefits}
 
 * Distribute read load across secondaries
@@ -239,7 +235,7 @@ Add replica set members for read scaling and high availability.
 * Better geographic distribution
 * No downtime for adding members
 
-#### Storage scaling
+### Storage scaling
 {: #storage-scaling}
 
 Increase disk space and IOPS for better performance.
@@ -260,7 +256,7 @@ Increase disk space and IOPS for better performance.
     ```
     {: codeblock}
 
-#### Important information:
+### Important information:
 {: #storage-scaling-notes}
 
 * Storage can only be increased, not decreased
@@ -268,7 +264,7 @@ Increase disk space and IOPS for better performance.
 * No downtime for storage scaling
 * Monitor disk usage trends
 
-#### Scaling best practices
+### Scaling best practices
 {: #storage-scaling-best}
 
 | Scenario | Recommended action |
@@ -281,7 +277,7 @@ Increase disk space and IOPS for better performance.
 | Write-heavy workload | Scale CPU and memory |
 {: caption="Scaling best practices" caption-side="top"}
 
-#### Cost optimization
+### Cost optimization
 {: #storage-scaling-cost}
 
 * Right size your deployment.
@@ -289,7 +285,7 @@ Increase disk space and IOPS for better performance.
 * Scale down during low-traffic periods (if supported).
 * Consider reserved capacity for predictable workloads.
 
-#### Automation
+### Automation
 {: #storage-scaling-automation}
 
 ```bash

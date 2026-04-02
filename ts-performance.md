@@ -18,6 +18,11 @@ subcollection: databases-for-mongodb
 
 Use this guide to help you identify and resolve performance issues in your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}} and powered by MongoDB.
 
+You can also find more information about solving performance problems as follows:
+* [IBM Cloud tools and diagnostic commands for troubleshooting performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-features-tools)
+* [Best practices for performance](/docs/databases-for-mongodb?topic=databases-for-mongodb-best-practices)
+* [IBM Cloud Support integration](/docs/databases-for-mongodb?topic=databases-for-mongodb-support-integration)
+
 If your applications are experiencing slow responses, timeouts, or inconsistent database performance, consider the following steps and information.
 
 
