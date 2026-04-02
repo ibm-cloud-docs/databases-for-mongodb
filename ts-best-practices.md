@@ -15,12 +15,12 @@ subcollection: databases-for-mongodb
 # Best practices for performance
 {: #best-practices}
 
-Use this information to apply best practices.
+Use this information to apply best practices to your {{site.data.keyword.databases-for-mongodb}} deployment running on {{site.data.keyword.cloud_notm}}.
 
 ## Performance troubleshooting flowchart
 {: #flowchart}
 
-Use the flowchart to determine how to troubleshoot performance.
+Use the flowchart to determine how to troubleshoot performance and steps to take next.
 
 ```sh
 ┌─────────────────────────────────┐

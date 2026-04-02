@@ -119,7 +119,7 @@ toc:
           topics:
           - ts-performance.md
           - ts-tools.md
-          - ts4.md
+          - ts-best-practices.md
           - ts-connect.md
           - ts-workload.md
           - include: ../cloud-databases/ts-terraform.md

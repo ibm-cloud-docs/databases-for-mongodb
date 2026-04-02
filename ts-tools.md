@@ -12,7 +12,7 @@ subcollection: databases-for-mongodb
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.cloud_notm}} specific tools and diagnostic commands to help troubleshoot performance
+# {{site.data.keyword.cloud_notm}} specific tools and diagnostic commands for troubleshooting performance
 {: #features-tools}
 
 
